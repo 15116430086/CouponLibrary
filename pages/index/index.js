@@ -1,7 +1,8 @@
 //index.js
 //获取应用实例
-const app = getApp()
 
+var utils = require("../../utils/util.js")
+const app = getApp();
 Page({
   data: {
     motto: 'Hello World',

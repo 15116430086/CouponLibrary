@@ -34,6 +34,8 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    appkeyid: "CouponShopManger:miniapp",
+    apiurl: "http://test.miboon.com/LibraryAPI/"
   }
 })

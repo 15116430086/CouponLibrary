@@ -1,4 +1,8 @@
 // pages/chooseTicket/chooseTicket.js
+var utils = require("../../utils/util.js")
+const app = getApp();
+var apiUrl = app.globalData.apiurl;
+var appKeyId = app.globalData.appkeyid;
 Page({
 
     /**
@@ -77,6 +81,19 @@ Page({
 
     },
 
+    GetData: function () {
+      var data = {};
+      data.pGroupID = 100001;
+      utils.AjaxRequest(apiUrl + "CouponView/CoupoInfoView/QueryCouponInfo", "POST", data, appKeyId, this.GetDataBack)
+    },
+    GetDataBack: function (json) {
+      console.log(json);
+      var data = json.data.Data;
+      if (data) {
+        console.log(data.msg);
+      }
+    },
+
     /**
      * 生命周期函数--监听页面加载
      */
@@ -85,14 +102,16 @@ Page({
         console.log(that.data.imgUrls)
         that.setData({
             imgUrls: that.data.imgUrls
-        })
+        })      
+      that.GetData();
     },
+
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
-
+     
     },
 
     /**

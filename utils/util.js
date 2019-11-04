@@ -1,27 +1,44 @@
-function formatNumber(n) {
-    const str = n.toString()
-    return str[1] ? str : `0${str}`
+const formatTime = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
-export function formatTime(date) {
-    var date = new Date(date);
-    const year = date.getFullYear()
-    const month = date.getMonth() + 1
-    const day = date.getDate()
-
-    const hour = date.getHours()
-    const minute = date.getMinutes()
-    const second = date.getSeconds()
-        //t1 年月
-    const t1 = [year, month].map(formatNumber).join('/')
-    const t2 = [hour, minute, second].map(formatNumber).join(':')
-
-    return `${t1}`
+const formatNumber = n => {
+  n = n.toString()
+  return n[1] ? n : '0' + n
 }
 
+function AjaxRequest(pUrl, pType, pData, pAppKeyId, pCallBack) {
+  wx.request({
+    url: pUrl, //仅为示例，并非真实的接口地址
+    data: pData,
+    header: {
+      'content-type': 'application/x-www-form-urlencoded', // 默认值
+      "appKeyId": pAppKeyId
+    },
+    method: pType,
+    success(res) {
+      pCallBack(res);
+    },
+    fail(res) {
+      wx.showToast({
+        title: res.errMsg//'请求失败',
+      })
+    }
+  })
+}
+function consoleLog(msg) {
+  console.log(msg);
 
-
-export default {
-    formatNumber,
-    formatTime
+}
+module.exports = {
+  formatTime: formatTime,
+  AjaxRequest: AjaxRequest,
+  Console: consoleLog
 }
