@@ -1,10 +1,12 @@
 //index.js
 //获取应用实例
-const app = getApp()
 
+var utils = require("../../utils/util.js")
+const app = getApp();
 Page({
   data: {
-    motto: 'Hello World',
+    primarySize: 'default',
+    motto: '绑定手机登录',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -15,13 +17,32 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function () {
+  getPhoneNumber(res) {
+    // 登录
+    var detail = res.detail;
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId      
+        app.globalData.logincode = res.code;
+        this.GetWxLoginAuth(detail);
+      }
+    })    
+ 
+  },
+  onLoad: function() {
     if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
+      // 在没有 open-type=getUserInfo 版本的兼容处理
+      wx.getUserInfo({
+        success: res => {
+          app.globalData.userInfo = res.userInfo
+          this.setData({
+            userInfo: res.userInfo,
+            hasUserInfo: true
+          })
+          this.GetWxLoginAuth(res);
+        }
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -29,6 +50,8 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+
+        this.GetWxLoginAuth(res);
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -39,6 +62,7 @@ Page({
             userInfo: res.userInfo,
             hasUserInfo: true
           })
+          this.GetWxLoginAuth(res);
         }
       })
     }
@@ -49,6 +73,33 @@ Page({
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
-    })
+    }) 
+
+    app.onLaunch();
+  },
+  GetWxLoginAuth: function (res) {
+    var data = {};
+    data.Text = res.encryptedData;
+    data.AesIV = res.iv;
+    data.code = app.globalData.logincode
+    data.appkeyid = wx.getStorageSync('appkeyid');
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetWxLoginAuth", "POST", data, app.globalData.appkeyid, this.getUserInfoBack)
+  },
+  getUserInfoBack: function(json) {
+    console.log(json);
+    var json = json.data.Data;
+    if (json) {
+      console.log(json.msg);
+      if (json.flag && json.state == 3) {
+        app.globalData.AppWxUserInfo = json.data.AppWxUserInfo;
+        app.globalData.AppStaffInfo = json.data.AppStaffInfo;
+        app.globalData.AppGroupInfo = json.data.AppGroupInfo;
+        app.globalData.appkeyid = json.AppKeyId;
+        wx.setStorageSync('appkeyid', json.AppKeyId)
+        wx.navigateTo({
+          url: '../home/home',
+        })
+      }
+    }
   }
 })

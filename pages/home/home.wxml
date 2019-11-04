@@ -4,12 +4,12 @@
   <view class="home-top">
     <view class="homeTop-name">湖南基数科技</view>
     <view class="homeTop-left">
-      <view class="search-box">
+      <view class="search-box" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >
         <image src="/static/images/serch.png" background-size="cover"></image>
         <view>搜索领券</view>
       </view>
       <view class="mes-box">
-        <view>2</view>
+        <view>{{CouponCount.countNewMsg}}</view>
         <image src="/static/images/talk.png" background-size="cover" style="width:23.45px;height:23.64px"></image>
       </view>
     </view>
@@ -24,9 +24,9 @@
           <view>发券动态</view>
         </view>
         <view class="dynblock-mes">
-          <view>商家领取: 1000</view>
-          <view>会员领取: 500</view>
-          <view>会员核销: 300</view>
+          <view>发券数量: {{CouponCount.sumReleaseNUM}}</view>
+          <view>领券商家: {{CouponCount.groupNUM}}</view>
+          <view>商家领取: {{CouponCount.sumReceiveNUM}}</view>
         </view>
       </view>
       <!-- 推券动态 -->
@@ -37,9 +37,9 @@
           <view>推券动态</view>
         </view>
         <view class="dynblock-mes">
-          <view>推券数量: 1000</view>
-          <view>核销数量: 500</view>
-          <view>推券佣金: 300</view>
+          <view>会员领券: {{CouponCount.CouponNUM}}</view>
+          <view>会员核销: {{CouponCount.WriteOffNUM}}</view>
+          <view>推券佣金: {{CouponCount.sumIncomeMoney}}</view>
         </view>
       </view>
     </view>
@@ -52,7 +52,7 @@
       <image src="/static/images/home/1.png"></image>
 
     </navigator>
-    <navigator url="../sendTicket/sendTicket" hover-class="none">
+    <navigator url="../chooseTicket/chooseTicket" hover-class="none">
       <image src="/static/images/home/2.png"></image>
 
     </navigator>

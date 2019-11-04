@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/chooseTicket/chooseTicket",
     "pages/home/home",
-      "pages/sendTicketTwo/sendTicketTwo",
+    "pages/sendTicketTwo/sendTicketTwo",
     "pages/sendTicketOne/sendTicketOne",
     "pages/sendTicket/sendTicket",
     "pages/ticketMes/ticketMes",
@@ -16,7 +17,6 @@
     "pages/groupMes/groupMes",
     "pages/getTicketList/getTicketList",
     "pages/sendTicketConfigChild/sendTicketConfigChild",
-    "pages/index/index",
     "pages/logs/logs",
     "template/swiper/swiper",
     "template/ScrollView/ScrollView",
@@ -25,8 +25,12 @@
     "template/BotOne/BotOne",
     "template/TicketBox/TicketBox",
     "template/payStore/payStore"
- 
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于账户默认地址信息"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

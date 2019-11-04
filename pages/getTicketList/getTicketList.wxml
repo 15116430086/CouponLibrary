@@ -11,10 +11,9 @@
             style="margin-left:30rpx;margin-right:30rpx"
           />
           <input
-            value="value"
-            placeholder="搜索券面名称"
-            bindInput="onChange"
-            bindtap="onSearch"
+            value="{{searchValue}}"
+            placeholder="请输入券面名称"         
+            bindblur="onbindblur"
           />
         </view>
         <image
@@ -25,7 +24,7 @@
           v-if="flag==1"
         />
       </view>
-      <view class="home-btn">搜索</view>
+      <view class="home-btn" data-="Search" bindtap="onSearch">搜索</view>
     </view>
     <!-- 下拉框 -->
     <view class="home-sel">
@@ -43,7 +42,7 @@
       </view>
     </view>
     <view class="ticketBox">
-        <block wx:for="{{hotTicketBox}}">
+        <block wx:for="{{hotTicketBox}}" wx:key="*this">
       <template is="hotTicketBox" data="{{...item}}"></template>
     </block>
     </view>

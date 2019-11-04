@@ -2,8 +2,8 @@
 <template name="ScrollView">
     <view class="swiper-item">
         <view class="item-box">
-            <image src="{{url}}"></image>
-            <view class="swiper-div">{{title}}</view>
+            <image src="{{ImageOne}}"></image>
+            <view class="swiper-div">{{GroupName}}</view>
         </view>
     </view>
 </template>

@@ -8,6 +8,6 @@
     </block>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <button type="primary" size="{{primarySize}}" open-type="getPhoneNumber"  text bindgetphonenumber="getPhoneNumber">{{motto}}</button>
   </view>
 </view>
