@@ -1,0 +1,12 @@
+ <view class="home-box">
+    <view class="home-img">
+      <image src="/static/images/rule2.png" />
+    </view>
+    <navigator class="home-block" url="../sendTicketConfigChild/main">
+      <view class="home-name">
+        <view>AAA代金券名称</view>
+        <view class="home-rule">默认规则</view>
+      </view>
+      <image src="/static/images/right-arr1.png" />
+    </navigator>
+  </view>

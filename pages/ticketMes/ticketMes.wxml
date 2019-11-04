@@ -1,0 +1,55 @@
+
+<import src="/template/payStore/payStore" />
+
+<view class="home-box">
+    <view class="swiper">
+        <swiper class='swiper' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true' indicator-dots="{{color}}" indicator-active-color="{{activeColor}}">
+            <block wx:for="{{images}}" wx:for-index="index">
+                <swiper-item>
+                    <image src='{{item.url}}' class='u-img-slide' mode='aspectFill'></image>
+                </swiper-item>
+            </block>
+        </swiper>
+  </view>
+    <view class="home-mes">
+      <view class="home-groupName">20元现金抵用券</view>
+      <view class="home-tishi">
+        <view class="ht-left">到店专享 | 无条件使用</view>
+        <view class="ht-right">已销量 1121</view>
+      </view>
+    </view>
+    <view class="home-groupMes">
+      <image src="/static/images/rule.png" />
+      <!-- 查看更多 有接口了再写 -->
+      <view class="home-groupMask">
+        查看图文
+        <image src="/static/images/botarr.png" />
+      </view>
+    </view>
+
+    <!-- 消费门店 -->
+    <view class="home-storeName">消费门店</view>
+
+    <view style="margin-bottom:70px;">
+      <block wx:for="{{shopArrays}}">
+    <template is="payStore" data="{{...item}}"></template>
+</block>
+    </view>
+    <!-- 底部盒子 -->
+    <view class="goods-bottom">
+      <view class="goodsbot-left">
+        <view class="goodsbot-left-view">
+          <view style="color: #E24500;font-weight: 600;">
+            ￥
+            <text style="font-size: 22px;">32</text>
+          </view>
+          <view style="color: #666666;">
+            券面值:￥
+            <text>20</text>
+          </view>
+        </view>
+        <view class="goods-ticket">限时优惠</view>
+      </view>
+      <view class="goods-btn" bindtap="payBtn">立即购买</view>
+    </view>
+  </view>

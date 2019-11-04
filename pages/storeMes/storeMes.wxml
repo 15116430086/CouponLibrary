@@ -1,0 +1,53 @@
+<!-- pages/storeMes/storeMes.wxml -->
+<!-- <text>pages/storeMes/storeMes.wxml</text> -->
+<import src="/template/HotTicket/HotTicket" />
+<import src="/template/payStore/payStore" />
+<import src="/template/TicketBox/TicketBox" />
+<!-- <Swiper :images="images" :height="height" /> -->
+<view class="swiper">
+    <swiper class='swiper' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true' indicator-dots="{{color}}" indicator-active-color="{{activeColor}}">
+        <block wx:for="{{images}}" wx:for-index="index">
+            <swiper-item>
+                <image src='{{item.url}}' class='u-img-slide' mode='aspectFill'></image>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
+<view class="home-mes">
+    <view class="homeg-box">
+        <view class="hb-left">
+            <view class="hbleft-title">湖南梦江南足浴会所</view>
+            <view class="hbmes-box">
+                <view class="hbleft-mes">
+                    <image src="/static/images/add1.png" style="width:9px;" />
+                    <view style="margin-left:10px">芙蓉区五一大道人瑞潇湘国际一楼213号</view>
+                </view>
+                <view class="hbleft-mes">
+                    <image src="/static/images/tel.png" />
+                    <view>0731-1234567</view>
+                </view>
+                <view class="hbleft-mes">
+                    <image src="/static/images/dwei.png" />
+                    <view>该店与你相距 500m</view>
+                </view>
+            </view>
+        </view>
+        <view class="hb-right">立即拨打</view>
+    </view>
+</view>
+<!-- 领券介绍 -->
+<view class="home-ticket">
+    <view class="home-ticketName">领券介绍</view>
+    <view class="home-tbox">
+        <!-- <TicketMes :ticketBox="ticketBox" /> -->
+        <block wx:for="{{ticketBox}}">
+            <template is="TicketBox" data="{{...item}}"></template>
+        </block>
+    </view>
+</view>
+<!-- 其他门店 -->
+<view class="home-storeName">其他门店</view>
+<block wx:for="{{shopArrays}}">
+    <template is="payStore" data="{{...item}}"></template>
+</block>
+<!-- <PayStore :PayStore="shopArrays" /> -->

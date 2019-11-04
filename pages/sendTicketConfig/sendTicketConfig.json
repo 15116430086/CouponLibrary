@@ -1,0 +1,7 @@
+{
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "赠券配置",
+    "navigationBarTextStyle": "black"
+}

@@ -1,0 +1,184 @@
+/* pages/ticketMes/ticketMes.wxss */
+
+@import"/template/payStore/payStore.wxss";
+page {
+    margin: 0px;
+    height: 0px;
+    background-color: #ededed;
+}
+
+.swiper {
+    width: 100%;
+    height: 426rpx;
+}
+
+.swiper image {
+    width: 100%;
+    height: 426rpx;
+}
+
+.home-mes {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+.home-groupName {
+    width: calc(100% - 40px);
+    height: 22px;
+    color: #000000;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 12px;
+    line-height: 22px;
+    margin-bottom: 12px;
+}
+
+.home-tishi {
+    width: calc(100% - 40px);
+    height: 22px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.ht-left {
+    color: #e85819;
+}
+
+.ht-right {
+    color: #999999;
+}
+
+.home-groupMes {
+    margin-top: 10px;
+    width: 100%;
+    height: auto;
+    color: #666666;
+    font-size: 14px;
+    background-color: #ffffff;
+}
+
+.home-groupMes image {
+    width: 100%;
+    height: 373px;
+}
+
+.home-box {
+    width: 100%;
+    height: auto;
+}
+
+.home-groupMask {
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    color: #e85819;
+    font-size: 14px;
+    border-top: 1px solid #ededed;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #ffffff;
+    justify-content: center;
+}
+
+.home-groupMask image {
+    width: 9px;
+    height: 5px;
+    margin-left: 5px;
+}
+
+.home-ticket,
+.home-store {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.home-ticketName {
+    text-indent: 20px;
+    height: 49px;
+    color: #000000;
+    font-size: 16px;
+    line-height: 49px;
+    border-bottom: 1px solid #ededed;
+    background-color: #ffffff;
+}
+
+.home-tbox {
+    width: calc(100% - 40px);
+    margin: 0px auto;
+}
+
+.home-storeName {
+    text-indent: 20px;
+    height: 40px;
+    color: #000000;
+    font-size: 14px;
+    line-height: 50px;
+    margin-top: 10px;
+    background-color: #ffffff;
+}
+
+.goods-bottom {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border-top: 1px solid #eeeeee;
+}
+
+.goodsbot-left {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 47px;
+    margin-left: 20px;
+}
+
+.goodsbot-left-view {
+    font-size: 12px;
+    height: 100%;
+}
+
+.goods-ticket {
+    width: 55px;
+    height: 19px;
+    line-height: 19px;
+    border-radius: 9px;
+    font-size: 11px;
+    color: #E24500;
+    background-color: #FCEDE7;
+    text-align: center;
+    position: relative;
+    top: 5px;
+    left: -10px;
+}
+
+.goods-btn {
+    width: 88px;
+    height: 32px;
+    background: radial-gradient(circle, rgba(255, 112, 49, 1) 0%, rgba(244, 75, 0, 1) 100%);
+    border-radius: 16px;
+    color: #ffffff;
+    font-size: 14px;
+    /* font-weight: 600; */
+    text-align: center;
+    line-height: 32px;
+    margin-right: 10px;
+}

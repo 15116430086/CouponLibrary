@@ -1,0 +1,75 @@
+<!-- pages/chooseTicket/chooseTicket.wxml -->
+<import src="/template/ScrollView/ScrollView" />
+<import src="/template/HotTicket/HotTicket" />
+<import src="/template/ShopMes/ShopMes" />
+<import src="/template/BotOne/BotOne" />
+
+<view class="home-box">
+  <!-- 头部 -->
+  <view class="home-top">
+    <view class="homeTop-name">
+      长沙
+      <image src="/static/images/botarr.png"></image>
+    </view>
+    <view class="search-box">
+      <image src="/static/images/serch.png" background-size="cover"></image>
+      <view>搜索领券</view>
+    </view>
+    <view class="mes-box">快速领券</view>
+  </view>
+  <!-- 轮播图 -->
+  <view class="swiper">
+    <swiper class='swiper' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true' indicator-dots="{{color}}" indicator-active-color="{{activeColor}}">
+      <block wx:for="{{images}}" wx:for-index="index">
+        <swiper-item>
+          <image src='{{item.url}}' class='u-img-slide' mode='aspectFill'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 附近商户 -->
+  <view class="near-shop">
+    <view class="ns-title">
+      <view>附近商户</view>
+    </view>
+    <view class="ns-scroll">
+      <block>
+        <view class="swiper-home">
+          <scroll-view scroll-x="true" style="width: 100%">
+            <block wx:for="{{imgUrls}}">
+              <template is="ScrollView" data="{{...item}}"></template>
+            </block>
+          </scroll-view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 推广集团 -->
+  <view class="near-shop">
+    <view class="ns-title">
+      <view>推广集团</view>
+      <navigator class="ns-title-div" url="../moreShop/main?uid=1" hover-class="none">
+        查看更多
+        <image src="/static/images/right-arr.png"></image>
+      </navigator>
+    </view>
+    <!-- <ShopMes :shopArrays="shopArrays" /> -->
+    <block wx:for="{{shopArrays}}">
+      <template is="ShopMes" data="{{...item}}"></template>
+    </block>
+  </view>
+  <!-- 热门优惠券 -->
+  <view class="near-shop cbot">
+    <view class="ns-title">
+      <view>热门优惠券</view>
+    </view>
+    <block wx:for="{{hotTicketBox}}">
+      <template is="hotTicketBox" data="{{...item}}"></template>
+    </block>
+  </view>
+  <!-- 底部栏 -->
+  <view class="choose-bot">
+    <block wx:for="{{BotOne}}">
+    <template is="BotOne" data="{{...item}}"></template></block>
+  </view>
+</view>

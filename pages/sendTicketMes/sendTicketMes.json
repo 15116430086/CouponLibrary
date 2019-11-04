@@ -1,0 +1,12 @@
+{
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "赠券明细",
+    "navigationBarTextStyle": "black",
+    "usingComponents": {
+        "van-datetime-picker": "/static/vant/datetime-picker/index",
+        "van-picker": "/static/vant/picker/index",
+        "van-popup": "/static/vant/popup/index"
+    }
+}

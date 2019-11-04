@@ -1,0 +1,98 @@
+/* pages/sendTicketMes/sendTicketMes.wxss */
+
+page {
+    background-color: #ededed;
+    width: 100%;
+    height: 100%;
+}
+
+.home-box {
+    width: 100%;
+    height: auto;
+    background-color: #ffffff;
+    padding-bottom: 10px;
+}
+
+.home-sel {
+    width: calc(100% - 40px);
+    height: 60px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home-span {
+    width: 103px;
+    /* margin-right: 20rpx; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #666666;
+    font-size: 14px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    height: 60rpx;
+}
+
+.home-span image {
+    display: block;
+    flex-shrink: 1;
+    width: 14rpx;
+    height: 10rpx;
+    margin-left: 40rpx;
+    border-radius: 5px;
+}
+
+.stm-mes {
+    color: #333333;
+    width: calc(100% - 40px);
+    text-align: left;
+    font-size: 14px;
+    margin: 10px auto;
+    font-weight: 600;
+}
+
+.stm-block {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.stm-block image {
+    margin-left: 20px;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 1;
+    border-radius: 5px;
+}
+
+.stmb-left {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 38px;
+}
+
+.stm-top {
+    color: #333333;
+    font-size: 14px;
+}
+
+.stm-bot {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #666666;
+    font-size: 13px;
+}
+
+.stm-bot view {
+    margin-right: 15px;
+}

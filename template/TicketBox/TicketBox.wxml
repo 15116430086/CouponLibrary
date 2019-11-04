@@ -1,0 +1,15 @@
+<template name="TicketBox">
+  <!-- 底部栏 -->
+  <block>
+    <view class="ticket-shop">
+      <view class="ticketShop-one">
+        <view class="tsone-one">￥5</view>
+        <view>券面值:￥50</view>
+      </view>
+      <view class="ticketShop-two">
+        <view class="tstwo-one">{{name}}</view>
+        <view>已领取{{num}}</view>
+      </view>
+    </view>
+  </block>
+</template>

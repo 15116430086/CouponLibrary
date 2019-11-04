@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/chooseTicket/chooseTicket",
+    "pages/home/home",
+      "pages/sendTicketTwo/sendTicketTwo",
+    "pages/sendTicketOne/sendTicketOne",
+    "pages/sendTicket/sendTicket",
+    "pages/ticketMes/ticketMes",
+    "pages/storeMes/storeMes",
+    "pages/sendTicketMes/sendTicketMes",
+    "pages/sendTicketConfig/sendTicketConfig",
+    "pages/paySuccess/paySuccess",
+    "pages/orderPay/orderPay",
+    "pages/myTicket/myTicket",
+    "pages/moreShop/moreShop",
+    "pages/groupMes/groupMes",
+    "pages/getTicketList/getTicketList",
+    "pages/sendTicketConfigChild/sendTicketConfigChild",
+    "pages/index/index",
+    "pages/logs/logs",
+    "template/swiper/swiper",
+    "template/ScrollView/ScrollView",
+    "template/HotTicket/HotTicket",
+    "template/ShopMes/ShopMes",
+    "template/BotOne/BotOne",
+    "template/TicketBox/TicketBox",
+    "template/payStore/payStore"
+ 
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "券库商家助手",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

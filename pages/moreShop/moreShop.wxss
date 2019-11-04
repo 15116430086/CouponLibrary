@@ -1,0 +1,13 @@
+/* pages/moreShop/moreShop.wxss */
+
+@import"/template/ShopMes/ShopMes.wxss";
+page {
+    background-color: #efefef
+}
+
+.home-box {
+    width: 100%;
+    height: 100%;
+    background-color: #efefef;
+    font-family: PingFang SC;
+}

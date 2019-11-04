@@ -1,0 +1,52 @@
+/* pages/sendTicketConfig/sendTicketConfig.wxss */
+
+page {
+    background-color: #ededed;
+    width: 100%;
+    height: 100%;
+}
+
+.home-box {
+    width: 100%;
+    height: auto;
+    background-color: #ffffff;
+    padding-bottom: 10px;
+}
+
+.home-img {
+    width: 100%;
+    height: 99px;
+}
+
+.home-img image {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.home-block {
+    width: calc(100% - 40px);
+    height: 64px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home-block image {
+    width: 5px;
+    height: 9px;
+    display: block;
+    flex-shrink: 1;
+}
+
+.home-name {
+    color: #333333;
+    font-size: 16px;
+}
+
+.home-rule {
+    color: #666666;
+    font-size: 14px;
+}

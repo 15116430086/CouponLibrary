@@ -1,0 +1,106 @@
+<!--pages/home/home.wxml-->
+<view class="home-box">
+  <!-- 头部 -->
+  <view class="home-top">
+    <view class="homeTop-name">湖南基数科技</view>
+    <view class="homeTop-left">
+      <view class="search-box">
+        <image src="/static/images/serch.png" background-size="cover"></image>
+        <view>搜索领券</view>
+      </view>
+      <view class="mes-box">
+        <view>2</view>
+        <image src="/static/images/talk.png" background-size="cover" style="width:23.45px;height:23.64px"></image>
+      </view>
+    </view>
+  </view>
+  <!-- 动态栏 -->
+  <view class="dynamic-box">
+    <view class="dyn-block">
+      <!-- 发券动态 -->
+      <view class="dynblock-left">
+        <view class="dyn-title">
+          <image src="/static/images/home/fq.png"></image>
+          <view>发券动态</view>
+        </view>
+        <view class="dynblock-mes">
+          <view>商家领取: 1000</view>
+          <view>会员领取: 500</view>
+          <view>会员核销: 300</view>
+        </view>
+      </view>
+      <!-- 推券动态 -->
+      <view class="dynblock-left">
+        <view class="dyn-title">
+          <image src="/static/images/home/lq.png"></image>
+
+          <view>推券动态</view>
+        </view>
+        <view class="dynblock-mes">
+          <view>推券数量: 1000</view>
+          <view>核销数量: 500</view>
+          <view>推券佣金: 300</view>
+        </view>
+      </view>
+    </view>
+    <!-- 通知栏上下轮播 -->
+    <view class="dyn-botmes">A商家领用了100张【10元现金抵用券】</view>
+  </view>
+  <!-- 导航栏 -->
+  <view class="home-nav">
+    <navigator url="../sendTicket/main?uid=1" hover-class="none">
+      <image src="/static/images/home/1.png"></image>
+
+    </navigator>
+    <navigator url="../sendTicket/sendTicket" hover-class="none">
+      <image src="/static/images/home/2.png"></image>
+
+    </navigator>
+    <navigator url="../sendTicket/main" hover-class="none">
+      <image src="/static/images/home/3.png"></image>
+       
+    </navigator>
+    <navigator url="../sendTicket/main" hover-class="none">
+      <image src="/static/images/home/4.png"></image>
+      
+    </navigator>
+    <navigator url="../sendTicket/main" hover-class="none">
+      <image src="/static/images/home/5.png"></image>
+       
+    </navigator>
+    <navigator url="../sendTicket/main" hover-class="none">
+      <image src="/static/images/home/6.png"></image>
+      
+    </navigator>
+    <navigator url="../sendTicket/main" hover-class="none">
+      <image src="/static/images/home/7.png"></image>
+      
+    </navigator>
+    <navigator url="../sendTicket/main" hover-class="none">
+      <image src="/static/images/home/8.png"></image>
+  
+    </navigator>
+    <navigator url="../sendTicket/main" hover-class="none">
+      <image src="/static/images/home/9.png"></image>
+   
+    </navigator>
+    <navigator url="../sendTicket/main" hover-class="none">
+      <image src="/static/images/home/10.png"></image>
+       
+    </navigator>
+    <navigator url="../sendTicket/main" hover-class="none">
+      <image src="/static/images/home/11.png"></image>
+      
+    </navigator>
+    <navigator url="../sendTicket/main" hover-class="none">
+      <image src="/static/images/home/12.png"></image>
+       
+    </navigator>
+
+  </view>
+  <view class="home-bot">
+    <view>券库讲堂</view>
+    <view>在线客服</view>
+    <view>投诉建议</view>
+  </view>
+</view>

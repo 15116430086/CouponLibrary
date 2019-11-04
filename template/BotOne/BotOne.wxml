@@ -1,0 +1,11 @@
+<template name="BotOne">
+    <!-- 底部栏 -->
+    <block>
+        <view class="cblock">
+            <view class="cb-box" bindtap="turnHome" style="color:{{color}}" data-id="{{id}}">
+                <image src="{{url}}" class="choose-bot-image"></image>
+                {{title}}
+            </view>
+        </view>
+    </block>
+</template>

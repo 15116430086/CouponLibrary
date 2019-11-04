@@ -1,0 +1,19 @@
+<template name="payStore">
+  <!-- 底部栏 -->
+  <block>
+    <view class="ticket-box"> 
+      <image class="ticket-img" src="{{url}}" />
+      <navigator class="ticket-mes" url="../storeMes/main?uid=3">
+        <view class="ticket-mes-p">时尚小赵</view>
+        <view class="ticket-sec">
+          <image src="/static/images/add.png" class="ticket-secimg" />
+          <text>{{address}}</text>
+        </view>
+        <view class="ticket-mes-ul">
+          <view>餐饮/聚餐</view>
+          <view style="color:#016FB4;font-size:12px">进店消费</view>
+        </view>
+      </navigator>
+    </view>
+  </block>
+</template>

@@ -1,0 +1,21 @@
+<template name="hotTicketBox">
+    <view class="hotbox">
+      <view class="hotblock">
+        <view class="ticket-box"  data-id="{{id}}" bindtap="clickP">
+          <image class="ticket-img" src="{{url}}" />
+          <view class="ticket-mes">
+            <view class="ticket-ul-p">
+              <view class="ticket-mes-p">20现金抵用券</view>
+              <view class="ticket-mesmes">天知道足浴</view>
+            </view>
+
+            <view class="ticket-mes-ul">
+              <view class="one">限量2000份</view>|
+              <view class="two">109已领</view>
+            </view>
+          </view>
+        </view>
+        <view class="hotbtn">立即领取</view>
+      </view>
+    </view>
+  </template>

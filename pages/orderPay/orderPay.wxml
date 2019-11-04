@@ -1,0 +1,32 @@
+ <view class="home-box">
+    <view class="goods-mes">
+      <view class="goodsmes-mes">
+        <view class="goodsmesmes-box">
+          <image src="/static/images/swp.png" />
+          <view class="goodsmes-mes-ul-one">
+            <view>临时停车收费券（人瑞·潇湘国际）</view>
+            <view style="font-size: 13px;color: #666666;">周一到周日 l 06：00-24:00 l 免预约</view>
+          </view>
+        </view>
+
+        <view class="goodsmes-price">￥5</view>
+      </view>
+      <view class="goods-num">
+        <view>数量</view>
+        <view class="numbox">
+          <text>最大可购买100张</text>
+          <image src="/static/images/jian.png" class="jian" />
+          <input class="init" value="1" type="number" />
+          <image src="/static/images/jia.png" class="jia" />
+        </view>
+      </view>
+      <view class="goods-true">
+        <view>实付金额</view>
+        <view style="color: #E85819;">￥32</view>
+      </view>
+    </view>
+    <button class="pay-btn">
+      ￥
+      <text>20</text> 确认付款
+    </button>
+  </view>

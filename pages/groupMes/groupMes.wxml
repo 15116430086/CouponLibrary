@@ -1,0 +1,39 @@
+<import src="/template/TicketBox/TicketBox" />
+<import src="/template/payStore/payStore" />
+<view class="home-box">
+    <view class="swiper">
+        <swiper class='swiper' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true' indicator-dots="{{color}}" indicator-active-color="{{activeColor}}">
+            <block wx:for="{{images}}" wx:for-index="index">
+                <swiper-item>
+                    <image src='{{item.url}}' class='u-img-slide' mode='aspectFill'></image>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="home-mes">
+        <view class="home-groupName">集团介绍</view>
+        <view class="home-groupMes">
+            1，欢迎光临本店，您的支持是我们最大的前进动力， 本店所有产品均低价销售，并且保证质量
+        1，欢迎光临本店，您的支持是我们最大的前进动力， 本店所有产品均低价销售，并且保证质量
+        1，欢迎光临本店，您的支持是我们最大的前进动力， 本店所有产品均低价销售，并且保证质量
+            <!-- 查看更多 有接口了再写 -->
+            <view class="home-groupMask">查看更多</view>
+        </view>
+    </view>
+    <!-- 领券介绍 -->
+    <view class="home-ticket">
+        <view class="home-ticketName">领券介绍</view>
+        <view class="home-tbox">
+            <!-- <TicketMes :ticketBox = "ticketBox"/> -->
+            <block wx:for="{{ticketBox}}">
+                <template is="TicketBox" data="{{...item}}"></template>
+            </block>
+        </view>
+    </view>
+    <!-- 消费门店 -->
+    <view class="home-storeName">消费门店</view>
+    <!-- <PayStore :PayStore="shopArrays" /> -->
+    <block wx:for="{{shopArrays}}">
+                <template is="payStore" data="{{...item}}"></template>
+            </block>
+</view>

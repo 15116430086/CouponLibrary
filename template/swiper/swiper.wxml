@@ -1,0 +1,14 @@
+<!--components/swiper/swiper.wxml-->
+<template name="SwiperItem">
+
+<image src="{{item.url}}" class="swiper"></image><view>{{item.url}}</view>
+</template>
+
+
+
+<template name="msgItem">
+  <view>
+    <text> {{index}}: {{msg}} </text>
+    <text> Time: {{time}} </text>
+  </view>
+</template>

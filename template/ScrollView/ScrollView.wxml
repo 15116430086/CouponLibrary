@@ -1,0 +1,9 @@
+<!-- template/ScrollView/ScrollView.wxml -->
+<template name="ScrollView">
+    <view class="swiper-item">
+        <view class="item-box">
+            <image src="{{url}}"></image>
+            <view class="swiper-div">{{title}}</view>
+        </view>
+    </view>
+</template>

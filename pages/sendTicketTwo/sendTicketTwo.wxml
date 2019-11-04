@@ -1,0 +1,91 @@
+<!-- 导航 -->
+<view class='top_nav'>
+    <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.typeId}}' catchtap='handleTap'>
+        {{item.name}}
+    </view>
+</view>
+<!-- 代金券 -->
+<view hidden='{{currentId!=1}}' class="mes-block">
+    <view class="mes-top">
+        <view class="top-mes">
+            现金抵用券，将券发布至指定商户或券平台，商户
+            <text>免费领券</text>
+            赠送给其会员为您引流并赚取佣金。
+        </view>
+    </view>
+    <view class="ticket-box">
+        <view class="ticket-block">
+            <view class="ticket-name">券名称</view>
+            <input type="text" value="20元现金抵用券" />
+        </view>
+        <view class="ticket-block">
+            <view class="ticket-name">券面值</view>
+            <input type="text" value="20元现金抵用券" />
+        </view>
+        <view class="ticket-block">
+            <view class="ticket-name">会员领券数量</view>
+            <input type="text" value="20元现金抵用券" />
+        </view>
+        <view class="ticket-block">
+            <view class="ticket-name">核销方式</view>
+            <input type="text" value="20元现金抵用券" />
+        </view>
+        <view class="ticket-block">
+            <view class="ticket-name">有效期</view>
+            <input type="text" value="领用后一个月" />
+        </view>
+        <view class="ticket-blocks">
+            <view class="ticket-name">使用规则</view>
+            <textarea class="textarea" type="text" value="领用后一个月" placeholder="{{placeholder}}" placeholder-class="placeholder" maxlength="{{maxlength}}" focus="{{focus}}" auto-height="{{auto-height}}" show-confirm-bar="{{show-confirm-bar}}"></textarea>
+        </view>
+    </view>
+    <!-- 添加券面图片 -->
+    <view class="addImg">
+        <view class="addImg-name">添加券面图片</view>
+        <view class="addImg-box">
+            <image src="/static/images/img.png" />
+            <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx"/>
+        </view>
+    </view>
+    <view class="playBtn">开始发券</view>
+</view>
+<!-- 团购券 -->
+<view hidden='{{currentId!=2}}' class="mes-block">
+   <view class="mes-top">
+        <view class="top-mes">
+           联盟商户购买商品团购券后，销售或赠送给消费者，消费者可使用团购券在线下或线上兑换商品。
+        </view>
+    </view>
+    <view class="ticket-box">
+        <view class="ticket-block">
+            <view class="ticket-name">券名称</view>
+            <input type="text" value="20元现金抵用券" />
+        </view>
+        <view class="ticket-block">
+            <view class="ticket-name">券面值</view>
+            <input type="text" value="20元现金抵用券" />
+        </view>
+        <view class="ticket-block">
+            <view class="ticket-name">核销方式</view>
+            <input type="text" value="" />
+        </view>
+
+        <view class="ticket-block">
+            <view class="ticket-name">有效期</view>
+            <input type="text" value="领用后一个月" />
+        </view>
+        <view class="ticket-blocks">
+            <view class="ticket-name">使用规则</view>
+            <textarea class="textarea" type="text" value="领用后一个月" placeholder="{{placeholder}}" placeholder-class="placeholder" maxlength="{{maxlength}}" focus="{{focus}}" auto-height="{{auto-height}}" show-confirm-bar="{{show-confirm-bar}}"></textarea>
+        </view>
+    </view>
+    <!-- 添加券面图片 -->
+    <view class="addImg">
+        <view class="addImg-name">添加券面图片</view>
+        <view class="addImg-box">
+            <image src="/static/images/img.png" />
+            <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx"/>
+        </view>
+    </view>
+    <view class="playBtn">开始发券</view>
+</view>

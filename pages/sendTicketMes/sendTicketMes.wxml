@@ -1,0 +1,83 @@
+<view class="home-box">
+    <view class="home-sel">
+      <view class="home-span" bindtap="showPopup1">
+        <view>全部店铺</view>
+        <image src="/static/images/sel.png" />
+      </view>
+      <view class="home-span" bindtap="showPopup2">
+        <view>券类型</view>
+        <image src="/static/images/sel.png" />
+      </view>
+      <view class="home-span" bindtap="showPopup3">
+        <view>选择日期</view>
+        <image src="/static/images/sel.png" />
+      </view>
+    </view>
+    <view class="stm-mes">
+      数量 :
+      <text style="margin-right:10px;">100</text> 抵用金额 : ￥
+      <text>500</text>
+    </view>
+    <view class="stm-block">
+      <image src="/static/images/swp.png" />
+      <view class="stmb-left">
+        <view class="stm-top">某优惠券名称</view>
+        <view class="stm-bot">
+          <view>A店铺</view>
+          <view>2019-09-09 14:23</view>
+        </view>
+      </view>
+    </view>
+    <view class="stm-block">
+      <image src="/static/images/swp.png" />
+      <view class="stmb-left">
+        <view class="stm-top">某优惠券名称</view>
+        <view class="stm-bot">
+          <view>A店铺</view>
+          <view>2019-09-09 14:23</view>
+        </view>
+      </view>
+    </view>
+    <!-- 商铺类型 -->
+    <van-popup
+      show="{{show1}}"
+      bind:close="onClose1"
+      position="bottom"
+      close-on-click-overlay
+      overlay
+      safe-area-inset-bottom
+    >
+      <van-picker show-toolbar columns="{{columns1}}" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
+    </van-popup>
+
+    <!-- 券类型 -->
+    <van-popup
+      show="{{show2}}"
+      bind:close="onClose"
+      position="bottom"
+      close-on-click-overlay
+      overlay
+      safe-area-inset-bottom
+    >
+      <van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+    </van-popup>
+
+    <!-- 时间 -->
+    <van-popup
+      show="{{show3}}"
+      bind:close="onClose"
+      position="bottom"
+      close-on-click-overlay
+      overlay
+      safe-area-inset-bottom
+    >
+      <van-datetime-picker
+        type="year-month"
+        value="{{currentDate}}"
+        min-date="{{minDate}}"
+        bind:input="onInput"
+        bind:confirm="confirm"
+        bind:change="change"
+      />
+    </van-popup>
+  </view>

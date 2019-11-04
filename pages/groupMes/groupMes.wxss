@@ -1,0 +1,96 @@
+/* pages/groupMes/groupMes.wxss */
+
+@import"/template/TicketBox/TicketBox.wxss";
+@import"/template/payStore/payStore.wxss";
+.swiper {
+    width: 100%;
+    height: 426rpx;
+}
+
+.swiper image {
+    height: 100%;
+    width: 100%;
+}
+
+page {
+    margin: 0px;
+    height: 0px;
+    background-color: #ededed;
+}
+
+.home-mes {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+}
+
+.home-groupName {
+    width: calc(100% - 40px);
+    height: 22px;
+    color: #000000;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 12px;
+}
+
+.home-groupMes {
+    width: calc(100% - 40px);
+    height: 247px;
+    color: #666666;
+    font-size: 14px;
+    position: relative;
+}
+
+.home-box {
+    width: 100%;
+    height: auto;
+}
+
+.home-groupMask {
+    width: 100%;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    color: #666666;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    border-top: 1px solid #ededed;
+}
+
+.home-ticket,
+.home-store {
+    margin-top: 10px;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.home-ticketName {
+    text-indent: 20px;
+    height: 49px;
+    color: #000000;
+    font-size: 16px;
+    line-height: 49px;
+    border-bottom: 1px solid #ededed;
+    background-color: #ffffff;
+}
+
+.home-tbox {
+    width: calc(100% - 40px);
+    margin: 0px auto;
+}
+
+.home-storeName {
+    text-indent: 20px;
+    height: 40px;
+    color: #000000;
+    font-size: 14px;
+    line-height: 50px;
+    margin-top: 10px;
+    background-color: #ffffff;
+}
