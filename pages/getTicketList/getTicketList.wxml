@@ -1,49 +1,35 @@
 <import src="/template/HotTicket/HotTicket" />
 
 <view class="home-box">
-    <!-- 搜索框 -->
-    <view class="home-top">
-      <view class="search-box">
-        <view class="search-left">
-          <image
-            src="/static/images/serch.png"
-            background-size="cover"
-            style="margin-left:30rpx;margin-right:30rpx"
-          />
-          <input
-            value="{{searchValue}}"
-            placeholder="请输入券面名称"         
-            bindblur="onbindblur"
-          />
-        </view>
-        <image
-          src="/static/images/err.png"
-          background-size="cover"
-          style="margin-right:30rpx;"
-          bindtap="onClear"
-          v-if="flag==1"
-        />
+  <!-- 搜索框 -->
+  <view class="home-top">
+    <view class="search-box">
+      <view class="search-left">
+        <image src="/static/images/serch.png" background-size="cover" style="margin-left:30rpx;margin-right:30rpx" />
+        <input value="{{searchValue}}" placeholder="请输入券面名称" bindblur="onbindblur" />
       </view>
-      <view class="home-btn" data-="Search" bindtap="onSearch">搜索</view>
+      <image src="/static/images/err.png" background-size="cover" style="margin-right:30rpx;" bindtap="onClear" v-if="flag==1" />
     </view>
-    <!-- 下拉框 -->
-    <view class="home-sel">
-      <view class="home-span">
-        <view>全城</view>
-        <image src="/static/images/sel.png" />
-      </view>
-      <view class="home-span">
-        <view>行业</view>
-        <image src="/static/images/sel.png" />
-      </view>
-      <view class="home-span">
-        <view>券类型</view>
-        <image src="/static/images/sel.png" />
-      </view>
+    <view class="home-btn" data-="Search" bindtap="onSearch">搜索</view>
+  </view>
+  <!-- 下拉框 -->
+  <view class="home-sel">
+    <view class="home-span">
+      <view>全城</view>
+      <image src="/static/images/sel.png" />
     </view>
-    <view class="ticketBox">
-        <block wx:for="{{hotTicketBox}}" wx:key="*this">
-      <template is="hotTicketBox" data="{{...item}}"></template>
-    </block>
+    <view class="home-span">
+      <view>行业</view>
+      <image src="/static/images/sel.png" />
+    </view>
+    <view class="home-span">
+      <view>券类型</view>
+      <image src="/static/images/sel.png" />
     </view>
   </view>
+  <view class="ticketBox">
+    <block wx:for="{{hotTicketBox}}" wx:key="*this">
+      <template is="hotTicketBox" data="{{...item}}"></template>
+    </block>
+  </view>
+</view>

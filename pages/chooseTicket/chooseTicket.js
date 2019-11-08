@@ -1,12 +1,9 @@
 // pages/chooseTicket/chooseTicket.js
 var utils = require("../../utils/util.js")
 const app = getApp();
-<<<<<<< HEAD
 var page = 1; //初始化页数
-=======
 var apiUrl = app.globalData.apiurl;
 var appKeyId = app.globalData.appkeyid;
->>>>>>> e931b86b466610ae48452611cf407162bf1952ad
 Page({
 
   /**
