@@ -98,7 +98,7 @@ Page({
       title: '数据加载中...',
     })
     var data = {};
-    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pGroupID = app.globalData.pGroupID //app.globalData.AppGroupInfo.GroupID;
     data.pPageIndex = page;
     data.pPageSize = 1;
     data.pLatitudeX = app.globalData.latitudeX;

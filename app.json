@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/chooseTicket/chooseTicket",
+    "pages/ticketMes/ticketMes",
     "pages/home/home",
     "pages/sendTicketTwo/sendTicketTwo",
+    "pages/index/index",
+    "pages/chooseTicket/chooseTicket",
     "pages/sendTicketOne/sendTicketOne",
     "pages/sendTicket/sendTicket",
-    "pages/ticketMes/ticketMes",
     "pages/storeMes/storeMes",
     "pages/sendTicketMes/sendTicketMes",
     "pages/sendTicketConfig/sendTicketConfig",

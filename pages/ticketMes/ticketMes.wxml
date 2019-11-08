@@ -50,6 +50,6 @@
         </view>
         <view class="goods-ticket">限时优惠</view>
       </view>
-      <view class="goods-btn" bindtap="payBtn">立即购买</view>
+      <view class="goods-btn" bindtap="payBtn">立即领取</view>
     </view>
   </view>

@@ -1,4 +1,6 @@
 // pages/ticketMes/ticketMes.js
+var utils = require("../../utils/util.js")
+const app=getApp();
 Page({
 
     /**
@@ -24,62 +26,37 @@ Page({
                 num: "123",
                 name: "临时停车收费券"
             }
-        ]
+        ],
+      CouponID:"100110",
+      ReceiveID:"4558897"
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
+       // this.data.CouponID=options.CouponID;
+       // this.data.ReceiveID=options.ReceiveID;
+      var datas = {
+        ReceiveID: this.data.ReceiveID,
+        groupId: 100001,//app.globalData.pGroupID,
+        couponId: this.data.CouponID,
+        LatitudeX: app.globalData.LatitudeX || "28.22778",
+        LongitudeY: app.globalData.LongitudeY || "112.93886"
 
+      }
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/collarCouponDetail", "POST", datas, app.globalData.appkeyid, this.collarCouponDetail)
     },
 
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function() {
-
+      
     },
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {
+  collarCouponDetail:function(json){
+    console.log(json);
 
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function() {
-
-    }
+  }
 })
