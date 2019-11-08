@@ -37,7 +37,9 @@ Page({
   GetDataBack: function(json) {
     console.log(json);
     var json = json.data.Data;
-    if (json) {
+    //隐藏 加载中的提示
+    wx.hideLoading();
+    if (json.flag) {
       console.log(json.msg);
       if (page == 1) {
         this.setData({
@@ -56,8 +58,15 @@ Page({
       }
 
     }
-    //隐藏 加载中的提示
-    wx.hideLoading();
+    else
+    {
+      wx.showToast({
+        title: '没有找到相关数据!',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -76,6 +85,11 @@ Page({
     let that = this;
     page = 1;
     that.GetData(page);
+  },
+  onBindReceiveTap: function (event) {
+    wx.navigateTo({
+      url: '../ticketMes/ticketMes?CouponID=' + event.currentTarget.dataset.couponid + '&ReleaseID=' + event.currentTarget.dataset.releaseid,
+    })
   },
 
   /**
