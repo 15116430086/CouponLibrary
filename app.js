@@ -45,7 +45,7 @@ App({
     appkeyid: null,
     latitudeX: 28.22778,
     longitudeY: 112.93886,
-    //apiurl: "http://test.miboon.com/LibraryAPI/"
-    apiurl: "http://localhost:2214/"
+    apiurl: "http://test.miboon.com/LibraryAPI/"
+    //apiurl: "http://localhost:2214/"
   }
 })
