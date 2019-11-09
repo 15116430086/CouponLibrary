@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/ticketMes/ticketMes",
     "pages/home/home",
-    "pages/index/index",
     "pages/chooseTicket/chooseTicket",
     "pages/sendTicketTwo/sendTicketTwo",
     "pages/sendTicketOne/sendTicketOne",
