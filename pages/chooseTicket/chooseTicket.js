@@ -93,6 +93,12 @@ Page({
       url: '../ticketMes/ticketMes?CouponID=' + event.currentTarget.dataset.couponid + '&ReleaseID=' + event.currentTarget.dataset.releaseid,
     })
   },
+  onGroupDetailsTap: function (event)
+  {
+    wx.navigateTo({
+      url: '../groupMes/groupMes?GroupID=' + event.currentTarget.dataset.groupid
+    })
+  },
   GetData: function(page) {
     let that = this;
     //显示 加载中的提示
