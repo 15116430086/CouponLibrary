@@ -1,6 +1,7 @@
 {
-    "usingComponents": {},
-    "navigationBarTitleText": "我的券",
-    "navigationBarBackgroundColor": "#FF7031",
-    "navigationBarTextStyle": "white"
+  "usingComponents": {},
+  "navigationBarTitleText": "我的券",
+  "navigationBarBackgroundColor": "#FF7031",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true
 }

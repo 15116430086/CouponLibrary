@@ -164,3 +164,19 @@ page {
     border: 1px solid transparent;
     outline: none;
 }
+.notpay-btn {
+    display: block;
+    width: 335px;
+    height: 49px;
+    background: rgb(122, 121, 120);
+    opacity: 1;
+    border-radius: 10px;
+    margin: 16px auto;
+    text-align: center;
+    font-size: 16px;
+    line-height: 49px;
+    color: #ffffff;
+    padding: 0;
+    border: 1px solid transparent;
+    outline: none;
+}

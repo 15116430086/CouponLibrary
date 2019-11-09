@@ -24,7 +24,7 @@
     <swiper class='swiper' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true' indicator-dots="{{color}}" indicator-active-color="{{activeColor}}">
       <block wx:for="{{images}}" wx:for-index="index" wx:key="*this">
         <swiper-item>
-          <image src='{{item.ImageOne}}'  bindtap='GetData' class='u-img-slide' mode='aspectFill'></image>
+          <image src='{{item.ImageOne}}' data-GroupID='{{item.GroupID}}'  bindtap='onGroupDetailsTap' class='u-img-slide' mode='aspectFill'></image>
         </swiper-item>
       </block>
     </swiper>

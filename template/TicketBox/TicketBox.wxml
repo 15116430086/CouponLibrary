@@ -1,14 +1,14 @@
 <template name="TicketBox">
   <!-- 底部栏 -->
-  <block>
-    <view class="ticket-shop">
+  <block wx:for="{{ListCoupon_ReleaseQuery}}" wx:key="ReleaseID">
+    <view class="ticket-shop" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">
       <view class="ticketShop-one">
-        <view class="tsone-one">￥5</view>
-        <view>券面值:￥50</view>
+        <view class="tsone-one">￥{{item.SalePrice}}</view>
+        <view>券面值:￥{{item.CouponMoney}}</view>
       </view>
       <view class="ticketShop-two">
-        <view class="tstwo-one">{{name}}</view>
-        <view>已领取{{num}}</view>
+        <view class="tstwo-one">{{item.CouponName}}</view>
+        <view>已领取{{item.ReceiveNUM}}</view>
       </view>
     </view>
   </block>

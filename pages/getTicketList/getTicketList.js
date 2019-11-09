@@ -9,6 +9,7 @@ Page({
    */
   data: {
     searchValue: "",
+    lastpage: 0,
     hotTicketBox: [{
         url: "/static/images/swp.png",
         id: 1
@@ -138,10 +139,12 @@ Page({
       that.GetData(page);
     } else if (that.data.lastpage == page) {
       page++;
-      wx.showModal({
-        title: '到底了',
-        content: '请休息一会再看呗！',
+      wx.showToast({
+        title: '没有更多数据!',
+        icon: 'success',
+        duration: 2000
       })
+
     }
   },
 

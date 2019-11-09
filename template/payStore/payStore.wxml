@@ -2,16 +2,17 @@
   <!-- 底部栏 -->
   <block>
     <view class="ticket-box"> 
-      <image class="ticket-img" src="{{url}}" />
+      <image class="ticket-img" wx:if="{{ImageOne}}" src="{{ImageOne}}" />
+      <image class="ticket-img" wx:else src="/static/images/swp.png" />
       <navigator class="ticket-mes" url="../storeMes/main?uid=3">
-        <view class="ticket-mes-p">时尚小赵</view>
+        <view class="ticket-mes-p">{{ShopName}}</view>
         <view class="ticket-sec">
           <image src="/static/images/add.png" class="ticket-secimg" />
-          <text>{{address}}</text>
+          <text>{{ShopAddress}}</text>
         </view>
         <view class="ticket-mes-ul">
-          <view>餐饮/聚餐</view>
-          <view style="color:#016FB4;font-size:12px">进店消费</view>
+          <view>{{IndustryName}}|{{IndustryLabel}}</view>
+          <view style="color:#016FB4;font-size:12px">{{Distance}}km</view>
         </view>
       </navigator>
     </view>
