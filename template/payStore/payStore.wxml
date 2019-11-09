@@ -11,8 +11,8 @@
           <text>{{ShopAddress}}</text>
         </view>
         <view class="ticket-mes-ul">
-          <view>{{Distance}}km</view>
-         <!-- <view style="color:#016FB4;font-size:12px">进店消费</view>>-->
+          <view>{{IndustryName}}|{{IndustryLabel}}</view>
+          <view style="color:#016FB4;font-size:12px">{{Distance}}km</view>
         </view>
       </navigator>
     </view>
