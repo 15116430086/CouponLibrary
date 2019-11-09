@@ -8,9 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    groupInfo:[{
-      GroupName:"湖南券库",
-      Introduction:"/static/images/swp.png"
+    groupInfo: [{
+      GroupName: "湖南券库",
+      Introduction: "/static/images/swp.png"
     }],
     images: [{
         url: "/static/images/swp.png"
@@ -41,6 +41,11 @@ Page({
       }
     ],
   },
+  onBindReceiveTap: function(event) {
+    wx.navigateTo({
+      url: '../ticketMes/ticketMes?CouponID=' + event.currentTarget.dataset.couponid + '&ReleaseID=' + event.currentTarget.dataset.releaseid,
+    })
+  },
   GetData: function(page) {
     let that = this;
     //显示 加载中的提示
@@ -62,16 +67,16 @@ Page({
     var json = json.data.Data;
     if (json.flag) {
       console.log(json.msg);
-      if (json.pictures.length==0)
-      {
+      if (json.pictures.length == 0) {
         json.pictures = [{
-          ImageOne:json.data[0].ImageOne
+          ImageOne: json.data[0].ImageOne
         }];
       }
       that.setData({
-        images: json.pictures,       
+        images: json.pictures,
         shopArrays: json.shops,
         ticketBox: json.data,
+        groupInfo: json.data[0],
         lastpage: json.pageCount //你的总页数
       });
 
@@ -85,7 +90,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    mSendGroupID=options.GroupID;
+    mSendGroupID = options.GroupID;
     let that = this;
     that.GetData(1);
   },
