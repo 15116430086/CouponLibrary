@@ -7,28 +7,12 @@ Page({
      * 页面的初始数据
      */
     data: {
-        images: [{
-                url: "/static/images/swp.png"
-            },
-            {
-                url: "/static/images/swp.png"
-            },
-            {
-                url: "/static/images/swp.png"
-            }
-        ],
-        height: "426rpx",
-        ticketBox: [{
-                num: "456",
-                name: "临时停车收费券"
-            },
-            {
-                num: "123",
-                name: "临时停车收费券"
-            }
-        ],
+      images:null,
       CouponID:"100110",
-      ReceiveID:"4558897"
+      ReceiveID:"12345454",
+      datalist:null,
+      shoplist:null
+     
     },
 
     /**
@@ -38,14 +22,14 @@ Page({
        // this.data.CouponID=options.CouponID;
        // this.data.ReceiveID=options.ReceiveID;
       var datas = {
-        ReceiveID: this.data.ReceiveID,
-        groupId: 100001,//app.globalData.pGroupID,
+        ReleaseID: this.data.ReceiveID,
+        groupId: app.globalData.AppGroupInfo.GroupID,
         couponId: this.data.CouponID,
-        LatitudeX: app.globalData.LatitudeX || "28.22778",
-        LongitudeY: app.globalData.LongitudeY || "112.93886"
+        LatitudeX: app.globalData.latitudeX || "28.22778",
+        LongitudeY: app.globalData.longitudeY || "112.93886"
 
       }
-      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/collarCouponDetail", "POST", datas, app.globalData.appkeyid, this.collarCouponDetail)
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetShangfamilyCoupondetails", "POST", datas, app.globalData.appkeyid, this.collarCouponDetail)
     },
 
     /**
@@ -55,8 +39,28 @@ Page({
       
     },
 
-  collarCouponDetail:function(json){
-    console.log(json);
+  collarCouponDetail:function(res){
+      let chat=this;
+      var json=res.data.Data;
+      if(json.flag){
+        chat.setData({
+          datalist:json.data,
+          shoplist: json.shops
+        });
+
+      
+        if (json.pictures.length){
+              chat.setData({
+                images :json.pictures
+              });
+        }
+      }
+
+  },
+  payBtn:function(event){
+       wx.navigateTo({
+         url: '../orderPay/orderPay?CouponID=' + this.data.CouponID + '&ReceiveID=' + this.data.ReceiveID
+       }) 
 
   }
 })
