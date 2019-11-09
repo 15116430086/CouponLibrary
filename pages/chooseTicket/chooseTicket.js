@@ -56,6 +56,7 @@ Page({
         id: 2
       }
     ],
+    currentID: "1",
     BotOne: [{
         url: "/static/images/pt1.png",
         title: "平台选券",
@@ -98,6 +99,13 @@ Page({
     wx.navigateTo({
       url: '../groupMes/groupMes?GroupID=' + event.currentTarget.dataset.groupid
     })
+  },
+  onBindBotOneTap: function (event) {
+    let that = this;
+    if (event.target.id != that.data.currentID)
+      wx.navigateTo({
+        url: '../myTicket/myTicket'
+      })
   },
   GetData: function(page) {
     let that = this;

@@ -13,7 +13,7 @@
   <view class="home-mes">
     <view class="home-groupName">集团介绍</view>
     <view class="home-groupMes">
-      {{groupInfo.Introduction}}
+      {{groupInfo.Introduction}}       
       <!-- 查看更多 有接口了再写 -->
       <view class="home-groupMask">查看更多</view>
     </view>

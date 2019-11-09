@@ -2,7 +2,7 @@
     <!-- 底部栏 -->
     <block>
         <view class="cblock">
-            <view class="cb-box" bindtap="turnHome" style="color:{{color}}" data-id="{{id}}">
+            <view class="cb-box" bindtap="turnHome" style="color:{{color}}" id="{{id}}" data-id="{{id}}" bindtap="onBindBotOneTap">
                 <image src="{{url}}" class="choose-bot-image"></image>
                 {{title}}
             </view>

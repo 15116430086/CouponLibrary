@@ -1,4 +1,6 @@
 // pages/sendTicketConfig/sendTicketConfig.js
+const app = getApp();
+var page = 1;
 Page({
 
   /**

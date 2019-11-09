@@ -1,53 +1,62 @@
 <import src="/template/BotOne/BotOne" />
- 
- <view class="homebox">
-    <view class="home-top">
-      <view class="home-name">{{motto}}</view>
-      <view class="homeTop-mid">
-        <view class="htm-div">
-          <image src="/static/images/tclass.png" />
-          <view>券类型 : 2</view>
-        </view>
-        <view class="htm-div">
-          <image src="/static/images/tnum.png" />
-          <view>券数量 : 1000</view>
-        </view>
+
+<view class="homebox">
+  <view class="home-top">
+    <view class="home-name">{{motto}}</view>
+    <view class="homeTop-mid">
+      <view class="htm-div">
+        <image src="/static/images/tclass.png" />
+        <view>券类型 : {{couponNUM}}</view>
       </view>
-      <view class="homeTop-mid">
-        <navigator class="htm-btn" url="../sendTicketConfig/main">赠券配置</navigator>
-        <navigator class="htm-btn" url="../sendTicketMes/main">赠券明细</navigator>
+      <view class="htm-div">
+        <image src="/static/images/tnum.png" />
+        <view>券数量 : {{receiveNUM}}</view>
       </view>
     </view>
-    <view class="home-mid">
+    <view class="homeTop-mid">
+      <navigator class="htm-btn" url="../sendTicketConfig/sendTicketConfig">赠券配置</navigator>
+      <navigator class="htm-btn" url="../sendTicketMes/sendTicketMes">赠券明细</navigator>
+    </view>
+  </view>
+  <view class="home-mid">
+    <block wx:for="{{receiveList}}" wx:index="index" wx:key="ReceiveID">
       <view class="home-card">
         <view class="home-one one">
-          <view style="font-size:16px;font-weight:600">20元现金代金券</view>
-          <view style="color:#E85819;">继续领券</view>
+          <view style="font-size:16px;font-weight:600">{{item.CouponName}}</view>
+          <view style="color:#E85819;" data-ReleaseID='{{item.ReleaseID}}' data-CouponID='{{item.CouponID}}' bindtap="onBindReceiveTap" >继续领券</view>
         </view>
         <view class="home-one two">
-          <view style="color:#000000;font-weight:600">领券数 : 10000</view>
+          <view style="color:#000000;font-weight:600">领券数 : {{item.ReceiveNUM}}</view>
         </view>
-        <view class="home-one three">
-          <view>会员领用 : 300</view>
-          <view>使用数量 : 100</view>
+
+        <view class="home-one three" wx:if="{{item.UnitMoney>0 || item.ReceiveMoney>0 }}" >
+          <view>领券单价 : {{item.UnitMoney}}</view>
+          <view>领券金额 : {{item.ReceiveMoney}}</view>
         </view>
         <view class="home-one four">
-          <view>待用数量 : 200</view>
-          <view>过期数量 : 100</view>
+          <view>会员领用 : {{item.GiveNUM}}</view>
+          <view>使用数量 : {{item.ConsumeNUM}}</view>
         </view>
+
         <view class="home-one five">
-          <view style="color:#000000;">领券日期 : 2019-09-12</view>
-          <view style="color:#429859;">赚佣金 : ￥200</view>
+          <view>待用数量 : {{item.StandByNUM}}</view>
+          <view>过期数量 : {{item.ExpireNUM}}</view>
+        </view>
+        <view class="home-one Six">
+          <view style="color:#000000;">领券日期 : {{item.ReceiveDate}}</view>
+          <view style="color:#429859;">赚佣金 : ￥{{item.Commission}}</view>
         </view>
       </view>
-    </view>
-    <view class="homebot">
-      <view style="color:#E85819">*默认会员赠送规则描述</view>
-      <view>免费券会员可自主领用，团购券全部员工可扫码赠券</view>
-    </view>
-     <!-- 底部栏 -->
+    </block>
+  </view>
+  <view class="homebot">
+    <view style="color:#E85819">*默认会员赠送规则描述</view>
+    <view>免费券会员可自主领用，团购券全部员工可扫码赠券</view>
+  </view>
+  <!-- 底部栏 -->
   <view class="choose-bot">
-    <block wx:for="{{BotOne}}">
-    <template is="BotOne" data="{{...item}}"></template></block>
+    <block wx:for="{{BotOne}}"wx:index="index" wx:key="*this">
+      <template is="BotOne" data="{{...item}}"></template>
+    </block>
   </view>
-  </view>
+</view>
