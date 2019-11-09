@@ -42,7 +42,7 @@ App({
     AppWxUserInfo: null,
     AppStaffInfo: null,
     AppGroupInfo: { GroupID: 100001, GroupName:"湖南券库移分公司"},
-    appkeyid: "CouponShopManger:a7c55e21-b0bd-4828-9937-2484822bcaa9",
+    appkeyid: "CouponShopManger:34b238c4-0c75-4dfa-81fe-9fe5c40571fa",
     latitudeX: 28.22778,
     longitudeY: 112.93886,
     //apiurl: "http://test.miboon.com/LibraryAPI/"

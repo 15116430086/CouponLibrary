@@ -1,0 +1,67 @@
+<!-- pages/orderManagement/orderManagement.wxml -->
+<view class='top_nav'>
+    <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id"  data-tagid='{{item.atg}}'     id='{{item.typeId}}'   catchtap='handleTap'>
+        {{item.name}}
+    </view>
+</view>
+
+<view hidden='{{currentId!=0}}' class="mes-block">
+    <block wx:for="{{stayorderlist}}" wx:for-index="index" wx:key="WriteOffOrderID">
+        <view class="mes-top">
+            <view class="mes-left">
+                <image src="/static/images/swp.png" />
+                {{item.ConsumptionName}}
+            </view>
+            <view class="mes-right">*{{item.Number}}</view>
+        </view>
+        <view class="mes-bot">
+            <view class="bot-left">
+                <view class="bot-blue">订单号：{{item.WriteOffOrderID}}</view>
+                <view class="bot-time">{{item.PayDate}}</view>
+            </view>
+            <view wx:if="{{item.ProductType==0}}" class="bot-type">待发货</view>
+            <view wx:elif="{{item.ProductType==1}}" class="bot-type">待办理</view>
+            <view wx:else class="bot-type"></view>
+        </view>
+    </block>
+</view>
+
+<view hidden='{{currentId!=1}}' class="mes-block">
+    <block wx:for="{{alreadyorderlist}}" wx:for-index="index" wx:key="WriteOffOrderID">
+        <view class="mes-top">
+            <view class="mes-left">
+                <image src="/static/images/swp.png" />
+                {{item.ConsumptionName}}
+            </view>
+            <view class="mes-right" style="color:#666666">*{{item.Number}}</view>
+        </view>
+        <view class="mes-bot">
+            <view class="bot-left">
+                <view class="bot-blue">订单号：{{item.WriteOffOrderID}}</view>
+                <view class="bot-time">{{item.PayDate}}</view>
+            </view>
+            <view wx:if="{{item.ProductType==0}}" class="bot-type" style="color:#CCCCCC">已发货</view>
+            <view wx:elif="{{item.ProductType==1}}" class="bot-type" style="color:#CCCCCC">已受理</view>
+            <view wx:else class="bot-type" style="color:#CCCCCC"></view>
+        </view>
+    </block>
+</view>
+
+<view hidden='{{currentId!=2}}' class="mes-block">
+    <block wx:for="{{completedorderlist}}" wx:for-index="index" wx:key="WriteOffOrderID">
+        <view class="mes-top">
+            <view class="mes-left">
+                <image src="/static/images/swp.png" />
+                {{item.ConsumptionName}}
+            </view>
+            <view class="mes-right" style="color:#666666">*{{item.Number}}</view>
+        </view>
+        <view class="mes-bot">
+            <view class="bot-left">
+                <view class="bot-blue">订单号：{{item.WriteOffOrderID}}</view>
+                <view class="bot-time">{{item.PayDate}}</view>
+            </view>
+            <view class="bot-type" style="color:#CCCCCC">已完成</view>
+        </view>
+    </block>
+</view>

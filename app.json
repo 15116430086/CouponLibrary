@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/orderManagement/orderManagement",
     "pages/ticketMes/ticketMes",
     "pages/home/home",
     "pages/chooseTicket/chooseTicket",
