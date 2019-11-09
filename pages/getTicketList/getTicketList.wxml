@@ -10,7 +10,7 @@
       </view>
       <image src="/static/images/err.png" background-size="cover" style="margin-right:30rpx;" bindtap="onClear" v-if="flag==1" />
     </view>
-    <view class="home-btn" data-="Search" bindtap="onSearch">搜索</view>
+    <view class="home-btn" bindtap="onSearch">搜索</view>
   </view>
   <!-- 下拉框 -->
   <view class="home-sel">

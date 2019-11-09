@@ -2,8 +2,6 @@
 var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1; //初始化页数
-var apiUrl = app.globalData.apiurl;
-var appKeyId = app.globalData.appkeyid;
 Page({
 
   /**
@@ -90,7 +88,11 @@ Page({
       url: '../getTicketList/getTicketList',
     })
   },
-
+  onBindReceiveTap: function (event) {
+    wx.navigateTo({
+      url: '../ticketMes/ticketMes?CouponID=' + event.currentTarget.dataset.couponid + '&ReleaseID=' + event.currentTarget.dataset.releaseid,
+    })
+  },
   GetData: function(page) {
     let that = this;
     //显示 加载中的提示

@@ -41,12 +41,11 @@ App({
     logincode: null,
     AppWxUserInfo: null,
     AppStaffInfo: null,
-    AppGroupInfo: null,
+    AppGroupInfo: {GroupID:100001},
     appkeyid: "CouponShopManger:a7c55e21-b0bd-4828-9937-2484822bcaa9",
     latitudeX: 28.22778,
     longitudeY: 112.93886,
     //apiurl: "http://test.miboon.com/LibraryAPI/"
-    apiurl: "http://localhost:2214/",
-    pGropID:100001
+    apiurl: "http://localhost:2214/"
   }
 })

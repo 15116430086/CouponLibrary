@@ -1,7 +1,13 @@
 {
   "pages": [
+<<<<<<< HEAD
     "pages/ticketMes/ticketMes",
     "pages/home/home",
+=======
+    "pages/home/home",
+    "pages/index/index",
+    "pages/chooseTicket/chooseTicket",
+>>>>>>> d3ee5e7a530bdcdd32bd94a8283a8e368e4299ae
     "pages/sendTicketTwo/sendTicketTwo",
     "pages/index/index",
     "pages/chooseTicket/chooseTicket",
