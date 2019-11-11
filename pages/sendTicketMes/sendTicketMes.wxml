@@ -1,43 +1,37 @@
+<wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="home-box">
     <view class="home-sel">
       <view class="home-span" bindtap="showPopup1">
-        <view>全部店铺</view>
+        <view>{{shopName}}</view>
         <image src="/static/images/sel.png" />
       </view>
       <view class="home-span" bindtap="showPopup2">
-        <view>券类型</view>
+        <view>{{typeName}}</view>
         <image src="/static/images/sel.png" />
       </view>
       <view class="home-span" bindtap="showPopup3">
-        <view>选择日期</view>
+        <view>{{selectDate}}</view>
         <image src="/static/images/sel.png" />
       </view>
     </view>
     <view class="stm-mes">
-      数量 :
-      <text style="margin-right:10px;">100</text> 抵用金额 : ￥
-      <text>500</text>
+      总数量 :
+      <text style="margin-right:10px;">{{sumCouponNum}}</text> 总面额：￥
+      <text>{{sumCouponMoney}}</text>
     </view>
+    <block wx:for="{{GiveCouponList}}">
     <view class="stm-block">
-      <image src="/static/images/swp.png" />
+      <image src="{{item.UserAvatar}}" />
       <view class="stmb-left">
-        <view class="stm-top">某优惠券名称</view>
+        <view class="stm-top" wx:if="{{item.ShopID==0}}">{{item.CouponName}}【平台自领】</view>
+        <view wx:else>{{item.CouponName}}【{{item.ShopName}}赠送】</view>
         <view class="stm-bot">
-          <view>A店铺</view>
-          <view>2019-09-09 14:23</view>
+          <view>会员：{{item.UserName}}</view>         
+          <view>{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
         </view>
       </view>
     </view>
-    <view class="stm-block">
-      <image src="/static/images/swp.png" />
-      <view class="stmb-left">
-        <view class="stm-top">某优惠券名称</view>
-        <view class="stm-bot">
-          <view>A店铺</view>
-          <view>2019-09-09 14:23</view>
-        </view>
-      </view>
-    </view>
+    </block>
     <!-- 商铺类型 -->
     <van-popup
       show="{{show1}}"
@@ -47,7 +41,7 @@
       overlay
       safe-area-inset-bottom
     >
-      <van-picker show-toolbar columns="{{columns1}}" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
+      <van-picker show-toolbar columns="{{shoplist}}" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
     </van-popup>
 
     <!-- 券类型 -->
@@ -72,12 +66,13 @@
       safe-area-inset-bottom
     >
       <van-datetime-picker
-        type="year-month"
+        type="date"
         value="{{currentDate}}"
         min-date="{{minDate}}"
         bind:input="onInput"
         bind:confirm="confirm"
         bind:change="change"
+        formatter="{{ formatter }}"
       />
     </van-popup>
   </view>

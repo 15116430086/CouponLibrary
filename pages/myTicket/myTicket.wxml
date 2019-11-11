@@ -1,5 +1,5 @@
 <import src="/template/BotOne/BotOne" />
-
+<wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="homebox">
   <view class="home-top">
     <view class="home-name">{{motto}}</view>
@@ -23,13 +23,13 @@
       <view class="home-card">
         <view class="home-one one">
           <view style="font-size:16px;font-weight:600">{{item.CouponName}}</view>
-          <view style="color:#E85819;" data-ReleaseID='{{item.ReleaseID}}' data-CouponID='{{item.CouponID}}' bindtap="onBindReceiveTap" >继续领券</view>
+          <view style="color:#E85819;" data-ReleaseID='{{item.ReleaseID}}' data-CouponID='{{item.CouponID}}' bindtap="onBindReceiveTap">继续领券</view>
         </view>
         <view class="home-one two">
           <view style="color:#000000;font-weight:600">领券数 : {{item.ReceiveNUM}}</view>
         </view>
 
-        <view class="home-one three" wx:if="{{item.UnitMoney>0 || item.ReceiveMoney>0 }}" >
+        <view class="home-one three" wx:if="{{item.UnitMoney>0 || item.ReceiveMoney>0 }}">
           <view>领券单价 : {{item.UnitMoney}}</view>
           <view>领券金额 : {{item.ReceiveMoney}}</view>
         </view>
@@ -43,7 +43,7 @@
           <view>过期数量 : {{item.ExpireNUM}}</view>
         </view>
         <view class="home-one Six">
-          <view style="color:#000000;">领券日期 : {{item.ReceiveDate}}</view>
+          <view style="color:#000000;">领券日期 : {{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd hh:mm:ss",true)}}</view>
           <view style="color:#429859;">赚佣金 : ￥{{item.Commission}}</view>
         </view>
       </view>
@@ -55,7 +55,7 @@
   </view>
   <!-- 底部栏 -->
   <view class="choose-bot">
-    <block wx:for="{{BotOne}}"wx:index="index" wx:key="*this">
+    <block wx:for="{{BotOne}}" wx:index="index" wx:key="*this">
       <template is="BotOne" data="{{...item}}"></template>
     </block>
   </view>

@@ -24,14 +24,15 @@ page {
 }
 
 .home-span {
-    width: 103px;
+    width: 30%;
+    white-space: nowrap;
     /* margin-right: 20rpx; */
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     color: #666666;
-    font-size: 14px;
+    font-size: 28rpx;
     background-color: #f4f4f4;
     border-radius: 10px;
     height: 60rpx;
