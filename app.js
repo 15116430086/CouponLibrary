@@ -42,7 +42,7 @@ App({
     AppWxUserInfo: null,
     AppStaffInfo: null,
     AppGroupInfo: {GroupID:100001},
-    appkeyid: "CouponShopManger:a7c55e21-b0bd-4828-9937-2484822bcaa9",
+    appkeyid: "",
     latitudeX: 28.22778,
     longitudeY: 112.93886,
     //apiurl: "http://test.miboon.com/LibraryAPI/"

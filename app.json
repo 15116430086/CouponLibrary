@@ -1,8 +1,9 @@
 {
   "pages": [
-    "pages/ticketMes/ticketMes",
-    "pages/home/home",
     "pages/index/index",
+    "pages/home/home",
+    "pages/logs/logs",
+    "pages/ticketMes/ticketMes",
     "pages/chooseTicket/chooseTicket",
     "pages/sendTicketTwo/sendTicketTwo",
     "pages/sendTicketOne/sendTicketOne",
@@ -17,7 +18,6 @@
     "pages/groupMes/groupMes",
     "pages/getTicketList/getTicketList",
     "pages/sendTicketConfigChild/sendTicketConfigChild",
-    "pages/logs/logs",
     "template/swiper/swiper",
     "template/ScrollView/ScrollView",
     "template/HotTicket/HotTicket",
