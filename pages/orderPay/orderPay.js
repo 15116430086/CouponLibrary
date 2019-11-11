@@ -65,22 +65,40 @@ Page({
   },
   seve:function(event){
     var chta=this;
+    if (chta.data.repeat){
+      wx.showLoading({
+        title:"数据提交中...",
+        mask:true
+      });
     var datas={
       pGroupID: app.globalData.AppGroupInfo.GroupID,
       pReleaseID: chta.data.ReceiveID,
       pReceiveNUM: chta.data.number
     }
+
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/AddCouponReceive", "POST", datas, app.globalData.appkeyid, this.CouponReceive)
+    }else{
+      wx.showToast({
+        title: "请勿重复提交",
+        icon: "none"
+      });
+    }
   },
   CouponReceive:function(res){
     var json=res.data.Data;
+    wx.hideLoading({});
     if(json.flag){
       if (json.ispay){//说明是要掉支付
-        var oJsApiParam =json.paydata;
+        var oJsApiParam = JSON.parse(json.paydata);
         wx.requestPayment({
-          oJsApiParam,
+          'timeStamp': oJsApiParam.timeStamp,
+          'nonceStr': oJsApiParam.nonceStr,
+          'package': oJsApiParam.package,
+          'signType': 'MD5',
+          'paySign': oJsApiParam.paySign,
           success(res) {
-            wx.redirectTo({ url: '../pages/myTicket/myTicket' })
+            console.log(res);
+            wx.redirectTo({ url: '../pages/myTicket/myTicket' });
            },
           fail(res) { }
         })
