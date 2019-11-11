@@ -38,5 +38,19 @@
     "navigationBarTitleText": "券库商家助手",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-switch": "static/vant/switch/index",
+    "van-radio": "static/vant/radio/index",
+    "van-radio-group": "static/vant/radio-group/index",
+    "van-cell": "static/vant/cell/index",
+    "van-cell-group": "static/vant/cell-group/index",
+    "van-checkbox": "static/vant/checkbox/index",
+    "van-checkbox-group": "static/vant/checkbox-group/index",
+    "van-collapse": "static/vant/collapse/index",
+    "van-collapse-item": "static/vant/collapse-item/index",
+    "van-popup": "static/vant/popup/index",
+    "van-toast": "static/vant/toast/index",
+    "van-picker": "static/vant/picker/index"
+  }
 }
