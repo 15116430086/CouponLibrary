@@ -38,7 +38,8 @@ Page({
       return;
     }
     this.setData({
-      number: this.data.number + 1
+      number: parseInt(this.data.number + 1) ,
+      SalePrice: this.data.datalist[0].SalePrice * (this.data.number +1)
     });
 
   },
@@ -47,7 +48,8 @@ Page({
       return;
     }
     this.setData({
-      number: this.data.number - 1
+      number: parseInt(this.data.number - 1) ,
+      SalePrice: this.data.datalist[0].SalePrice* (this.data.number - 1)
     });
   },
   blurnuber:function(event){
@@ -59,7 +61,8 @@ Page({
       event.detail.value=this.data.number;
     }
       this.setData({
-        number: event.detail.value
+        number: parseInt(event.detail.value),
+        SalePrice: this.data.datalist[0].SalePrice * event.detail.value
       });
     
   },
@@ -98,20 +101,40 @@ Page({
           'paySign': oJsApiParam.paySign,
           success(res) {
             console.log(res);
-            wx.redirectTo({ url: '../pages/myTicket/myTicket' });
-           },
-          fail(res) { }
+            if (res.errMsg == "requestPayment:ok") { }
+            wx.redirectTo({ url: '../pages/paySuccess/paySuccess' });
+          },
+          fail(res) {
+            if (res.errMsg == "requestPayment:fail cancel") {
+              wx.showToast({
+                title: "您取消了支付",
+                icon: "none"
+              });
+            } else {//调用支付接口失败
+              wx.showToast({
+                title: res.errMsg,
+                icon: "none"
+              });
+            }
+            chta.setData({
+              repeat: true
+            });
+          }
         })
-      }else{
+      }else{//不用调用支付接口 
         wx.showToast({
           title: json.msg,
           icon: "none"
         });
+        wx.redirectTo({ url: '../pages/myTicket/myTicket' });
       }
-    }else{
+    }else{//领取失败
       wx.showToast({
         title: json.msg,
         icon: "none"
+      });
+      chta.setData({
+        repeat: true
       });
     }
 

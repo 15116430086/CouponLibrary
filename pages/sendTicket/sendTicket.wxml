@@ -1,4 +1,4 @@
 <view class="home-box">
     <image src="/static/images/send.png" />
-    <view class="homebox-p">您还没有发券, <text>“去发券”</text></view>
+    <view class="homebox-p">您还没有发券, <text bindtap="Issuingvoucher">“去发券”</text></view>
   </view>

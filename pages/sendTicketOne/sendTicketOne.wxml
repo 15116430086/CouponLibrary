@@ -2,105 +2,39 @@
 <!-- 我要发券明细页面 -->
 <view class="top-box">
     <view class="tb-left">
-        <view>托管佣金 : ￥5000</view>
-        <view>已发 : ￥2000 | 已退 : ￥2000</view>
+        <view>托管佣金 : ￥{{ReleaseCommission}}</view>
+        <view>已发 : ￥{{Comission}} | 已退 : ￥{{BackCommission}}</view>
     </view>
     <image src="/static/images/right-arr2.png" />
 </view>
 <view class="mes-box">
-    <view class="ticket-box">
+ <view class="ticket-box"  wx:if="{{datalist}}!=true && {{pPageIndex}}==1">暂无发券记录 </view>
+<block wx:for="{{datalist}}">
+  <view class="ticket-box">
         <view class="tb-title">
-            <view>20元现金代金券</view>
+            <view>{{item.CouponName}}</view>
             <image src="/static/images/wrt.png" />
         </view>
-        <view class="tb-mes" style="color:#000;margin-bottom:30rpx;">已发券 : 10000</view>
+        <view class="tb-mes" style="color:#000;margin-bottom:30rpx;">已发券 :{{item.ReleaseNUM}}</view>
         <view class="tb-mes">
-            <view>领用商家 : 10</view>
-            <view>待用数量 : 200</view>
+            <view>领用商家  :{{item.ReceiveShopNUM}} </view>
+            <view>领取数量 :{{item.ReceiveNUM}}</view>
         </view>
         <view class="tb-mes">
-            <view>会员领用 : 300</view>
-            <view>使用数量 : 200</view>
+            <view>会员领取 :{{item.GiveNUM}}</view>
+            <view>使用数量 : {{item.ConsumeNUM}}</view>
         </view>
         <view class="tb-mes">
-            <view>领用数量 : 100</view>
-            <view>过期数量 : 200</view>
+            <view>待用数量 :{{(item.ReleaseNUM-item.ReceiveNUM) + (item.GiveNUM-item.ConsumeNUM-item.ExpireNUM)}}</view>
+            <view>过期数量 :{{item.ExpireNUM}}  </view>
         </view>
         <view class="tb-bot">
             <view style="margin-left:50rpx">继续发券</view>
             <view style="margin-right:50rpx">查看明细</view>
         </view>
     </view>
-    <view class="ticket-box">
-        <view class="tb-title">
-            <view>20元现金代金券</view>
-            <image src="/static/images/wrt.png" />
-        </view>
-        <view class="tb-mes" style="color:#000;margin-bottom:30rpx;">已发券 : 10000</view>
-        <view class="tb-mes">
-            <view>领用商家 : 10</view>
-            <view>待用数量 : 200</view>
-        </view>
-        <view class="tb-mes">
-            <view>会员领用 : 300</view>
-            <view>使用数量 : 200</view>
-        </view>
-        <view class="tb-mes">
-            <view>领用数量 : 100</view>
-            <view>过期数量 : 200</view>
-        </view>
-        <view class="tb-bot">
-            <view style="margin-left:50rpx">继续发券</view>
-            <view style="margin-right:50rpx">查看明细</view>
-        </view>
-    </view>
-    <view class="ticket-box">
-        <view class="tb-title">
-            <view>20元现金代金券</view>
-            <image src="/static/images/wrt.png" />
-        </view>
-        <view class="tb-mes" style="color:#000;margin-bottom:30rpx;">已发券 : 10000</view>
-        <view class="tb-mes">
-            <view>领用商家 : 10</view>
-            <view>待用数量 : 200</view>
-        </view>
-        <view class="tb-mes">
-            <view>会员领用 : 300</view>
-            <view>使用数量 : 200</view>
-        </view>
-        <view class="tb-mes">
-            <view>领用数量 : 100</view>
-            <view>过期数量 : 200</view>
-        </view>
-        <view class="tb-bot">
-            <view style="margin-left:50rpx">继续发券</view>
-            <view style="margin-right:50rpx">查看明细</view>
-        </view>
-    </view>
-    <view class="ticket-box">
-        <view class="tb-title">
-            <view>20元现金代金券</view>
-            <image src="/static/images/wrt.png" />
-        </view>
-        <view class="tb-mes" style="color:#000;margin-bottom:30rpx;">已发券 : 10000</view>
-        <view class="tb-mes">
-            <view>领用商家 : 10</view>
-            <view>待用数量 : 200</view>
-        </view>
-        <view class="tb-mes">
-            <view>会员领用 : 300</view>
-            <view>使用数量 : 200</view>
-        </view>
-        <view class="tb-mes">
-            <view>领用数量 : 100</view>
-            <view>过期数量 : 200</view>
-        </view>
-        <view class="tb-bot">
-            <view style="margin-left:50rpx">继续发券</view>
-            <view style="margin-right:50rpx">查看明细</view>
-        </view>
-    </view>
+</block>
 </view>
 <view class="box-bot">
-        <view class="sendBtn">我要发券</view>
+        <view class="sendBtn" bindtap="Issuing">我要发券</view>
     </view>
