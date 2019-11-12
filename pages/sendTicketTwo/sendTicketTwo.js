@@ -7,14 +7,6 @@ Page({
      * 页面的初始数据
      */
     data: {
-        currentId: '1',
-        section: [{
-            name: '代金券',
-            typeId: '1'
-        }, {
-            name: '团购券',
-            typeId: '2'
-        }],
         "placeholder": "请输入文本",
         "maxlength": -1, // 最大输入长度，设置为 -1 的时候不限制最大长度
         "focus": true,
@@ -23,7 +15,38 @@ Page({
          coverImg1:"",//封面图片
          coverImg2: "",//封面图片
          ruleimg1:[],//规则图片
-         ruleimg2: []//规则图片
+         ruleimg2: [],//规则图片
+      WriteOffType: [
+        { name: '0', value: '线上',checked: 'true' },
+        { name: '1', value: '线下',  },
+        
+      ],
+      ReceiveRule:[
+        { name: '0', value: '首次领取', checked: 'true' },
+        { name: '1', value: '可重复领取', },
+
+      ],
+      CouponType: [{ name: '0', value: '代金券', checked: 'true' },
+        { name: '1', value: '团购券', },],
+       describe:"现金抵用券，将券发布至指定商户或券平台，商户免费领券 赠送给其会员为您引流并赚取佣金",
+       Datetype:true,//默认领取后多少天
+      selectDate: "选择日期",
+      currentDate: new Date().getTime(),
+      minDate: new Date("2019-10-01").getTime(),
+      formatter(type, value) {
+        if (type === 'year') {
+          return `${value}年`;
+        } else if (type === 'month') {
+          return `${value}月`;
+        } else {
+          return `${value} 日`;
+        }
+        return value;
+      },
+      typeData: [{ name: '0', value: '领取后多少天', checked: 'true' },
+        { name: '1', value: '选择到期时间', },],
+      show3: false
+
     },
 
     /**
@@ -33,6 +56,23 @@ Page({
       console.log(this.data.ruleimg1);
 
     },
+    CouponTypeChange:function(event){
+      if (event.detail.value==1){
+        this.setData({ describe:"联盟商户购买商品团购券后，销售或赠送给消费者，消费者可使用团购券在线下或线上兑换商品."});
+      }else{
+        this.setData({ describe: "现金抵用券，将券发布至指定商户或券平台，商户 免费领券 赠送给其会员为您引流并赚取佣金" });
+      }
+      
+
+  },
+  typeDataChange: function (event){
+    if (event.detail.value == 1) {
+      this.setData({ Datetype:false})
+    }else{
+      this.setData({ Datetype: true })
+    }
+
+  },
     //点击每个导航的点击事件
     handleTap: function(e) {
         let id = e.currentTarget.id;
@@ -42,7 +82,10 @@ Page({
             })
         }
     },
+  radioChange:function(){
 
+
+  },
   addimg:function(event){
    
     utils.UploadImg(1, app.globalData.appkeyid,this.imglist1);
@@ -53,7 +96,39 @@ Page({
     chat.setData({ coverImg1: res[0]});
     
   },
+  showPopup3() {
 
+    let that = this;
+    that.setData({
+      show3: true
+    })
+  },
+  onClose(e) {
+
+    let that = this;
+    that.setData({
+      show3: false
+    })
+  },
+  confirm(event) {
+    console.log(event.detail); // 打印出了时间
+    let timestamp = event.detail;
+    console.log(utils.formatTime(timestamp));
+    console.log(utils.sysFormatDate(utils.formatTime(timestamp), "yyyy-MM-dd"));
+
+    let that = this;
+    that.setData({
+      show3: false,
+      selectDate: utils.sysFormatDate(utils.formatTime(timestamp), "yyyy-MM-dd")
+    })
+  },
+  onCancel(e) {
+    let that = this;
+    that.setData({
+      show3: false
+    })
+  },
+  
   imglist2:function(res){
     var chat=this;
     var imgs = [];

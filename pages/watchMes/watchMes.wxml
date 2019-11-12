@@ -1,0 +1,81 @@
+<!--pages/watchMes/watchMes.wxml-->
+<view class="v-box">
+  <view class="v-top">
+    <view class="v-title">{{CouponInfo.CouponName}}</view>
+    <view class="v-go">继续发券</view>
+  </view>
+  <view class="v-mid">已发券:{{CouponInfo.ReleaseNUM}}</view>
+  <view class="v-block">
+    <view class="v-c">
+      <view>领用商家：{{CouponInfo.ReceiveShopNUM}}</view>
+      <view>领取数量：{{CouponInfo.ReceiveNUM}}</view>
+    </view>
+    <view class="v-c">
+      <view>会员领用：{{CouponInfo.GiveNUM}}</view>
+      <view>使用数量：{{CouponInfo.ConsumeNUM}}</view>
+    </view>
+    <view class="v-c">
+      <view>待用数量：{{(item.ReleaseNUM-item.ReceiveNUM) + (item.GiveNUM-item.ConsumeNUM-item.ExpireNUM)}}</view>
+      <view>过期数量：{{CouponInfo.ExpireNUM}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="v-bot">
+<!-- 已通过 -->
+  <view class="v-class">
+    <view class="v-left">
+      <view class="v-name">
+        <view>已发布：200张</view>
+        <view>已领：200张</view>
+      </view>
+      <view class="v-time">2019-10-09 20:10</view>
+    </view>
+    <view class="v-right">
+      <view class="v-span" style="color:#429859;border:1px solid #429859">已通过</view>
+      <image src="/static/images/right-arr1.png"></image>
+    </view>
+  </view>
+<!-- 未支付 未审核 -->
+  <view class="v-class">
+    <view class="v-left">
+      <view class="v-name">
+        <view>已发布：200张</view>
+        <view>未领取</view>
+      </view>
+      <view class="v-time">2019-10-09 20:10</view>
+    </view>
+    <view class="v-right">
+      <view class="v-span" style="color:#F08002;border:1px solid #F08002">未审核</view>
+      <image src="/static/images/right-arr1.png"></image>
+    </view>
+  </view>
+  <view class="v-class">
+    <view class="v-left">
+      <view class="v-name">
+        <view>已发布：200张</view>
+        <view>未领取</view>
+      </view>
+      <view class="v-time">2019-10-09 20:10</view>
+    </view>
+    <view class="v-right">
+      <view class="v-span" style="color:#F08002;border:1px solid #F08002">未支付</view>
+      <!-- <image src="/static/images/right-arr1.png"></image> -->
+    </view>
+  </view>
+
+  <!-- 未通过 -->
+  <view class="v-class">
+    <view class="v-left">
+      <view class="v-name">
+        <view>已发布：200张</view>
+        <view>未领取</view>
+      </view>
+      <view class="v-time">2019-10-09 20:10</view>
+    </view>
+    <view class="v-right">
+      <view class="v-span" style="color:#E30000;border:1px solid #E30000">未通过</view>
+      <image src="/static/images/right-arr1.png"></image>
+    </view>
+  </view>
+</view>
