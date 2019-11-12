@@ -1,0 +1,9 @@
+<!--pages/goodsNotice/goodsNotice.wxml-->
+<view class="v-box">
+    <view class="v-title">
+        <view class="v-left">商品描述</view>
+        <image src="/static/images/gou.png" />
+    </view>
+    <textarea class="v-txt" placeholder="请输入..." placeholder-class="v-p" maxlength="500" adjust-position show-confirm-bar></textarea>
+    <view class="v-bot">限500字内</view>
+</view>

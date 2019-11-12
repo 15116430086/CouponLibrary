@@ -1,0 +1,55 @@
+/* pages/goodsNotice/goodsNotice.wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.v-box {
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+    padding-top: 20rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.v-title {
+    width: calc(100% - 80rpx);
+    margin-bottom: 20rpx;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-left {
+    color: #666666;
+    font-size: 28rpx;
+}
+
+.v-title image {
+    width: 24rpx;
+    height: 16rpx;
+}
+
+.v-txt {
+    width: calc(100% - 80rpx);
+    height: 260rpx;
+    display: block;
+}
+
+.v-p {
+    color: #CCCCCC;
+    font-size: 24rpx;
+}
+
+.v-bot {
+    width: calc(100% - 80rpx);
+    text-align: right;
+    color: #CCCCCC;
+    font-size: 24rpx;
+    margin-bottom: 20rpx;
+}

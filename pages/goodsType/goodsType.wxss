@@ -1,0 +1,38 @@
+/* pages/goodsType/goodsType.wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.v-boxs {
+    width: calc(100% - 80rpx);
+    margin: 40rpx auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.v-block image {
+    width: 34rpx;
+    height: 34rpx;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+.v-block {
+    margin-right: 20rpx;
+    color: #333333;
+    font-size: 28rpx;
+    background-color: #FFF;
+    border-radius: 20rpx;
+    padding: 20rpx 50rpx 20rpx 50rpx;
+    position: relative;
+}
+
+.selected {
+    background-color: #FFF0DE;
+    color: #E85819;
+}

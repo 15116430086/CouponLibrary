@@ -1,0 +1,20 @@
+<!-- pages/startTicket/startTicket.wxml -->
+<view class="v-box">
+
+    <view class="mes-block">
+        <view class="ticket-box">
+             <view class="ticket-block">
+                <view class="ticket-name">业务姓名</view>
+                <input type="text" placeholder="(自输入)" placeholder-class="ipb" />
+            </view>
+            <view class="ticket-block" style="border:none">
+                <view class="ticket-name">联系方式</view>
+                <input type="number" placeholder="(自输入)"  placeholder-class="ipb" />
+            </view>
+        
+        </view>
+    </view>
+</view>
+ <view class="playBtn">确认</view>
+<!-- <view class="v-box" bindtap="imgbtn">点我</view>
+<image src="{{imageUrl}}" /> -->

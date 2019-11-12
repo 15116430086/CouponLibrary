@@ -7,9 +7,11 @@
 
 <view hidden='{{currentId!=0}}' class="mes-block">
     <block wx:for="{{stayorderlist}}" wx:for-index="index" wx:key="WriteOffOrderID">
+    <navigator url="../businessAccept/businessAccept?type={{item.ProductType}}&orderid={{item.WriteOffOrderID}}&orderstate={{item.State}}">
         <view class="mes-top">
             <view class="mes-left">
-                <image src="/static/images/swp.png" />
+                <image wx:if="{{ item.ImageOne=='' }}" src="/static/images/swp.png"></image>
+                <image wx:else src="{{item.ImageOne}}"></image>
                 {{item.ConsumptionName}}
             </view>
             <view class="mes-right">*{{item.Number}}</view>
@@ -23,14 +25,17 @@
             <view wx:elif="{{item.ProductType==1}}" class="bot-type">待办理</view>
             <view wx:else class="bot-type"></view>
         </view>
+        </navigator>
     </block>
 </view>
 
 <view hidden='{{currentId!=1}}' class="mes-block">
     <block wx:for="{{alreadyorderlist}}" wx:for-index="index" wx:key="WriteOffOrderID">
+    <navigator url="../businessAccept/businessAccept?type={{item.ProductType}}&orderid={{item.WriteOffOrderID}}&orderstate={{item.State}}">
         <view class="mes-top">
             <view class="mes-left">
-                <image src="/static/images/swp.png" />
+                <image wx:if="{{ item.ImageOne=='' }}" src="/static/images/swp.png"></image>
+                <image wx:else src="{{item.ImageOne}}"></image>
                 {{item.ConsumptionName}}
             </view>
             <view class="mes-right" style="color:#666666">*{{item.Number}}</view>
@@ -44,14 +49,17 @@
             <view wx:elif="{{item.ProductType==1}}" class="bot-type" style="color:#CCCCCC">已受理</view>
             <view wx:else class="bot-type" style="color:#CCCCCC"></view>
         </view>
+        </navigator>
     </block>
 </view>
 
 <view hidden='{{currentId!=2}}' class="mes-block">
     <block wx:for="{{completedorderlist}}" wx:for-index="index" wx:key="WriteOffOrderID">
+    <navigator url="../businessAccept/businessAccept?type={{item.ProductType}}&orderid={{item.WriteOffOrderID}}&orderstate={{item.State}}">
         <view class="mes-top">
             <view class="mes-left">
-                <image src="/static/images/swp.png" />
+                <image wx:if="{{ item.ImageOne=='' }}" src="/static/images/swp.png"></image>
+                <image wx:else src="{{item.ImageOne}}"></image>
                 {{item.ConsumptionName}}
             </view>
             <view class="mes-right" style="color:#666666">*{{item.Number}}</view>
@@ -63,5 +71,6 @@
             </view>
             <view class="bot-type" style="color:#CCCCCC">已完成</view>
         </view>
+        </navigator>
     </block>
 </view>

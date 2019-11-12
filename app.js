@@ -47,7 +47,7 @@ App({
     appkeyid: "CouponShopManger:34b238c4-0c75-4dfa-81fe-9fe5c40571fa",
     latitudeX: 28.22778,
     longitudeY: 112.93886,
-    apiurl: "http://test.miboon.com/LibraryAPI/"
-    //apiurl: "http://localhost:2214/"
+    //apiurl: "http://test.miboon.com/LibraryAPI/"
+    apiurl: "http://localhost:7562/"
   }
 })

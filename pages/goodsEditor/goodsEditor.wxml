@@ -1,0 +1,104 @@
+<!-- 普通商品 -->
+<view class="mes-block">
+    <view class="ticket-box">
+        <navigator url="../goodsType/goodsType">
+            <view class="ticket-block">
+                <view class="ticket-name">商品类别</view>
+                <view class="ticket-flex">
+                    <view class="tf-name">普通商品</view>
+                    <image src="/static/images/right-arr1.png" />
+                </view>
+                <!-- <input type="text" value="20元现金抵用券" /> -->
+            </view>
+        </navigator>
+        <view class="ticket-block">
+            <view class="ticket-name">商品名称</view>
+            <input type="text"  bindinput ="ProductNameInput" value="{{productName}}" />
+        </view>
+        <!-- 添加券面图片 -->
+        <view class="addImg">
+            <view class="ticket-flex">
+                <view class="ticket-name">商品图片</view>
+                <view class="ticket-name">1/3</view>
+            </view>
+            <view class="addImg-box">
+                <image src="/static/images/img.png" />
+                <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left:40rpx" />
+            </view>
+        </view>
+        <view wx:if="{{ type==0 }}">
+                <view class="ticket-block">
+                    <view class="ticket-flex" bindtap="showPopup">
+                        <view class="ticket-name">规格类型 (价格/库存)</view>
+                        <image src="/static/images/right-arr1.png" />
+                    </view>
+                    <view class="input-box">
+                        <view class="input-block" style="margin-top:10rpx;">
+                            价格
+                            <input type="text" bindinput ="SalePriceInput" value="{{salePrice}}" placeholder="(自输入)" placeholder-class="ip" />
+                        </view>
+                        <view class="input-block" style="border:none;margin-top:40rpx;">
+                            库存
+                            <input type="text" bindinput ="CourierNumberInput" value="{{stockNum}}" placeholder="(自输入)" placeholder-class="ip" />
+                        </view>
+                    </view>
+                </view>
+                <view class="ticket-block">
+                    <view class="ticket-name">分组 (选填)</view>
+                    <input type="text" bindinput ="GroupingInput" value="领用后一个月" />
+                </view>
+                <navigator url="../goodsNotice/goodsNotice">
+                    <view class="ticket-block">
+                        <view class="ticket-name">商品描述</view>
+                        <view class="ticket-flex">
+                            <view class="tf-name">已填写</view>
+                            <image src="/static/images/right-arr1.png" />
+                        </view>
+                        <!-- <input type="text" value="20元现金抵用券" /> -->
+                    </view>
+                </navigator>
+                <view class="ticket-block">
+                    <view class="ticket-name">运费 (选填)</view>
+                    <input type="text" bindinput ="PostageInput" value="2" />
+                </view>
+          </view>
+          <view  wx:elif="{{ type==1 }}">
+              <view class="ticket-block">
+                    <view class="ticket-name">业务收费</view>
+                    <input type="text" bindinput ="BusinesschargeInput" value="￥2" />
+                </view>
+              <navigator url="../goodsNotice/goodsNotice">
+                  <view class="ticket-block">
+                      <view class="ticket-name">业务描述</view>
+                      <view class="ticket-flex">
+                          <view class="tf-name">已填写</view>
+                          <image src="/static/images/right-arr1.png" />
+                      </view>
+                      <!-- <input type="text" value="20元现金抵用券" /> -->
+                  </view>
+              </navigator>
+              <navigator url="../yewuDescribe/yewuDescribe">
+                  <view class="ticket-block">
+                      <view class="ticket-name">业主信息</view>
+                      <view class="ticket-flex">
+                          <view class="tf-name">已定义 <text>在线购买需要填写的内容，默认：姓名，手机</text></view>
+                          <image src="/static/images/right-arr1.png" />
+                      </view>
+                      <!-- <input type="text" value="20元现金抵用券" /> -->
+                  </view>
+                </navigator>
+          </view>
+    </view>
+    <view class="playBtn" bindtap="ReleaseProduct">发布商品</view>
+</view>
+<view class="mask" hover-stop-propagation='true' wx:if="{{show}}">
+    <view class="mask-page">
+        <view class="mask-box">
+            <view class="mb-title">
+                规格选择
+                <text>(最多可再选择3项)</text>
+            </view>
+            <view class="mb-down" catchtap="onClose">完成</view>
+        </view>
+    </view>
+</view>

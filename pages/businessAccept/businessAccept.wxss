@@ -1,0 +1,86 @@
+/* pages/businessAccept/businessAccept.wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.v-all {
+    background-color: #FFF;
+    width: 100%;
+    height: auto;
+}
+
+.v-box {
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+    box-shadow: 0px 8rpx 20rpx rgba(0, 0, 0, 0.1);
+    height: 200rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin-bottom: 10rpx; */
+}
+
+.v-title {
+    width: calc(100% - 80rpx);
+    color: #000;
+    font-size: 32rpx;
+    font-weight: 600;
+    margin-bottom: 26rpx;
+}
+
+.v-wait {
+    width: calc(100% - 80rpx);
+    color: #016FB4;
+    font-size: 32rpx;
+}
+
+.v-bot {
+    box-shadow: 0px 8rpx 20rpx rgba(0, 0, 0, 0.06);
+    /* margin-top: 10rpx; */
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.v-block {
+    width: calc(100% - 80rpx);
+    height: 144rpx;
+    border-bottom: 1px solid #EDEDED;
+}
+
+.v-name {
+    width: 100%;
+    color: #666666;
+    font-size: 28rpx;
+    margin-top: 40rpx;
+}
+
+.v-mes {
+    width: 100%;
+    color: #000000;
+    font-size: 32rpx;
+}
+
+.ip {
+    color: #666666;
+    font-size: 28rpx;
+}
+
+.v-btn {
+    color: #FFF;
+    width: 670rpx;
+    height: 98rpx;
+    text-align: center;
+    line-height: 98rpx;
+    font-size: 32rpx;
+    border-radius: 20rpx;
+    margin: 40rpx auto;
+    background-color: #E85819;
+}

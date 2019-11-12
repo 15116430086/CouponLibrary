@@ -1,0 +1,7 @@
+<!-- pages/goodsType/goodsType.wxml -->
+<view class="v-boxs">
+    <view class="v-block {{idb==item.Item_id?'selected':''}}" wx:for="{{threeList}}" wx:key="" bindtap='selectThree' data-id="{{item.Item_id}}">
+        {{item.Item_Name}}
+        <image src="/static/images/cha.png" wx:if="{{idb==item.Item_id}}" />
+    </view>
+</view>

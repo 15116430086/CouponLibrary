@@ -1,0 +1,64 @@
+<block>
+  <view class='top_nav'>
+    <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.typeId}}' catchtap='handleTap'>
+      {{item.name}}
+    </view>
+    <navigator url="../goodsEditor/goodsEditor">
+        <view class="top-btn">新增商品</view>
+    </navigator>
+  </view>
+</block>
+
+<view hidden='{{currentId!=0}}'>
+  <block wx:for="{{stayorderlist}}" wx:for-index="index" wx:key="ProductID">
+    <view class="v-box">
+      <view class="v-block">
+        <view class="v-left">
+          <image wx:if="{{ item.ImageOne=='' }}" src="/static/images/swp.png"></image>
+          <image wx:else src="{{item.ImageOne}}"></image>
+          <view class="v-mid">
+            <view class="v-title">{{item.ProductName}}</view>
+            <view class="v-mes">
+              <view>销量 {{item.SaleNum}}</view>
+              <view>库存 {{item.StockNum}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="v-right">¥{{item.SalePrice}}</view>
+      </view>
+      <view class="v-bot">
+        <view class="v-span">本商品最大购买量{{item.StockNum}}</view>
+        <view class="v-set">
+         <navigator url="../goodsEditor/goodsEditor?type={{item.ProductType}}&productid={{item.ProductID}}">
+              <view class="v-blue">编辑</view>
+          </navigator>
+          <view class="v-blue" data-ProductID='{{item.ProductID}}' data-ProductName='{{item.ProductName}}' bindtap="Lowershelf">下架</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view hidden='{{currentId!=1}}'>
+  <block wx:for="{{alreadyorderlist}}" wx:for-index="index" wx:key="ProductID">
+    <view class="v-box">
+      <view class="v-block">
+        <view class="v-left">
+          <image wx:if="{{ item.ImageOne=='' }}" src="/static/images/swp.png"></image>
+          <image wx:else src="{{item.ImageOne}}"></image>
+          <view class="v-mid">
+            <view class="v-title" style="color:#999999">{{item.ProductName}}</view>
+            <view class="v-mes" style="color:#999999">
+              <view>销量 {{item.SaleNum}}</view>
+              <view>库存 {{item.StockNum}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="v-right" style="color:#999999">¥{{item.SalePrice}}</view>
+      </view>
+      <view class="v-bot"  style="color:#CCCCCC;justify-content: flex-end;font-size:28rpx">
+        该商品已下架
+      </view>
+    </view>
+  </block>
+</view>
