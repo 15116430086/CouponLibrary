@@ -1,6 +1,16 @@
-<view class="content">
-    <image src="/static/images/ok.png" />
-    <view class="content-p">恭喜您! 领券成功</view>
-    <navigator class="content-div one" url="../myTicket/myTicket">我的券</navigator>
-    <navigator class="content-div two" url="../chooseTicket/chooseTicket" open-type="reLaunch">继续领券</navigator>
-  </view>
+<view class="content" wx:if="{{!flag}}">
+  <image src="/static/images/ok.png" />
+  <view class="content-p">恭喜您! 领券成功</view>
+  <navigator class="content-div one" url="../myTicket/myTicket">我的券</navigator>
+  <navigator class="content-div two" url="../chooseTicket/chooseTicket" open-type="reLaunch">
+    继续领券
+  </navigator>
+</view>
+<view class="content" wx:if="{{flag}}">
+  <image src="/static/images/ok.png" />
+  <view class="content-p">恭喜您! 券消费成功</view>
+  <navigator class="content-div one" url="../myTicket/main?uid=1">继续核券</navigator>
+  <navigator class="content-div two" url="../chooseTicket/main?uid=1" open-type="reLaunch">
+    返回
+  </navigator>
+</view>

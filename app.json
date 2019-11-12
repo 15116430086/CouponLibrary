@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/goodsEditor/goodsEditor",
     "pages/goodsType/goodsType",
     "pages/yewuDescribe/yewuDescribe",
@@ -7,11 +8,9 @@
     "pages/goodsManager/goodsManager",
     "pages/orderManagement/orderManagement",
     "pages/businessAccept/businessAccept",
-    "pages/index/index",
     "pages/home/home",
     "pages/logs/logs",
     "pages/ticketMes/ticketMes",
-    "pages/orderManagement/orderManagement",
     "pages/chooseTicket/chooseTicket",
     "pages/sendTicketTwo/sendTicketTwo",
     "pages/sendTicketOne/sendTicketOne",

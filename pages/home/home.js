@@ -11,14 +11,26 @@ Page({
     CouponCount: null,
     lastpage: 0
   },
-
-  GetData: function() {
+  onWxScanCode: function () {
+    wx.navigateTo({
+      url: '../scanCheck/scanCheck?CouponCode=CIF1911121931000002'
+    }); 
+    /*wx.scanCode({
+      success(res) {
+        console.log(res)
+        wx.navigateTo({
+          url: '../scanCheck/scanCheck?CouponCode='+res.result
+        });                        
+      }
+    })*/
+  },
+  GetData: function () {
     let that = this;
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponHomeView/GetHomeCouponCount", "POST", data, app.globalData.appkeyid, that.GetDataBack)
   },
-  GetDataBack: function(json) {
+  GetDataBack: function (json) {
     let that = this;
     console.log(json);
     var data = json.data.Data;
@@ -33,7 +45,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     let that = this;
     that.GetData();
   },
@@ -41,49 +53,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })
