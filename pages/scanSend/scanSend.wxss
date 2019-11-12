@@ -1,0 +1,139 @@
+/* pages/scanSend/scanSend.wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.sS-All {
+    width: 100%;
+    padding-top: 10px;
+    height: auto;
+    background-color: #ffffff;
+}
+
+.sS-box {
+    margin: 10px auto;
+    width: calc(100% - 80rpx);
+    height: 228rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.sS-block {
+    width: calc(100% - 100rpx);
+    height: 168rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sS-block image {
+    width: 168rpx;
+    display: block;
+    height: 168rpx;
+}
+
+.sS-mesbox {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-left: 40rpx;
+}
+
+.sS-name {
+    color: #000000;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+
+.sS-mes {
+    color: #333333;
+    font-size: 28rpx;
+}
+
+.sS-mes text {
+    color: #999999;
+    font-size: 22rpx;
+}
+
+.sS-bot {
+    font-size: 24rpx;
+    color: #E85819;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ssb-one {
+    color: #999999;
+    margin-right: 10rpx;
+}
+
+.sS-right {
+    width: 60rpx;
+    height: 168rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #E85819;
+    font-size: 32rpx;
+    font-weight: 600;
+    justify-content: space-between;
+}
+
+.sS-right image {
+    width: 44rpx;
+    height: 44rpx;
+    display: block;
+}
+
+.mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.mask-box {
+    width: calc(100% - 216rpx);
+    height: 698rpx;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20rpx;
+}
+
+.mask-t {
+    color: #000;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+
+.mask-m {
+    color: #333;
+    font-size: 28rpx;
+    margin-top: 10rpx;
+    margin-bottom: 20rpx;
+}
+
+.mask-b {
+    color: #E85819;
+    font-size: 32rpx;
+}
+
+.mask-box image {
+    width: 354rpx;
+    height: 354rpx;
+    margin-bottom: 20rpx;
+}

@@ -1,0 +1,199 @@
+/* pages/scanCheck/scanCheck.wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.swiper {
+    width: 100%;
+    height: 440rpx;
+}
+
+.swiper image {
+    height: 100%;
+    width: 100%;
+}
+
+.sc-top {
+    width: 100%;
+    height: 156rpx;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sct-left {
+    margin-left: 40rpx;
+}
+
+.sl-one {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10rpx;
+}
+
+.sl-two {
+    color: #E85819;
+    font-size: 14px;
+}
+
+.sc-btn {
+    width: 156rpx;
+    height: 60rpx;
+    margin-right: 40rpx;
+    background: rgba(255, 240, 222, 1);
+    border-radius: 15px;
+    color: #E85819;
+    line-height: 60rpx;
+    font-size: 24rpx;
+    text-align: center;
+}
+
+.ruleBox,
+.imageBox {
+    margin-top: 20rpx;
+    width: 100%;
+    background-color: #ffffff;
+    height: auto;
+}
+
+.ruleBox image,
+.imageBox image {
+    width: 100%;
+    height: 746rpx;
+}
+
+.seeBtn {
+    width: 100%;
+    height: 88rpx;
+    background-color: #ffffff;
+    color: #E85819;
+    font-size: 28rpx;
+    text-align: center;
+    line-height: 88rpx;
+    border-top: 1px solid #EDEDED;
+}
+
+.seeBtn image {
+    width: 18rpx;
+    height: 10rpx;
+}
+
+.payStoreBox {
+    width: 100%;
+    margin-top: 20rpx;
+}
+
+.ps-name {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-indent: 40rpx;
+    color: #333333;
+    font-size: 28rpx;
+    background-color: #ffffff;
+}
+
+
+/* .ticket-all {
+    width: 100%;
+    height: auto;
+    font-weight: 600;
+    
+} */
+
+.ticket-box {
+    width: 100%;
+    height: 220rpx;
+    margin-bottom: 20rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #fff;
+    /* border-bottom: 0.3px solid #EFEFEF; */
+}
+
+.ticket-img {
+    width: 168rpx;
+    height: 168rpx;
+    margin-left: 40rpx;
+}
+
+.ticket-mes {
+    width: calc(100% - 140px);
+    height: 168rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 30rpx;
+    flex-shrink: 1;
+}
+
+.ticket-sec {
+    width: 99%;
+    font-size: 24rpx;
+    font-weight: 500;
+    line-height: 34rpx;
+    height: 34rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ticket-secimg {
+    margin-right: 16rpx;
+    width: 18rpx;
+    height: 24rpx;
+}
+
+.ticket-sec span {
+    width: calc(100% - 10px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*禁止换行显示*/
+    white-space: nowrap;
+}
+
+.ticket-mes-p {
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    color: rgba(51, 51, 51, 1);
+}
+
+.ticket-mes-ul {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 17px;
+    color: rgba(153, 153, 153, 1);
+}
+
+.tm-li-right {
+    width: auto;
+    color: #016FB4;
+    font-size: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.tm-li-right image {
+    width: 5px;
+    height: 9px;
+    display: block;
+    margin-left: 5px;
+}
+
+.tmbox {
+    width: auto;
+    height: auto;
+}

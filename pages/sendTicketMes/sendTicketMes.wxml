@@ -59,7 +59,7 @@
     <!-- 时间 -->
     <van-popup
       show="{{show3}}"
-      bind:close="onClose"
+      bind:close="onClose2"
       position="bottom"
       close-on-click-overlay
       overlay
@@ -70,7 +70,8 @@
         value="{{currentDate}}"
         min-date="{{minDate}}"
         bind:input="onInput"
-        bind:confirm="confirm"
+        bind:cancel="onCancel2"
+        bind:confirm="confirm"       
         bind:change="change"
         formatter="{{ formatter }}"
       />

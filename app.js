@@ -40,7 +40,7 @@ App({
     userInfo: null,
     logincode: null,
     AppWxUserInfo: null,
-    AppStaffInfo: null, 
+    AppStaffInfo: null,
     AppGroupInfo: { GroupID: 100001, GroupName:"湖南券库移分公司"},
     appkeyid: "CouponShopManger:da34f625-eb05-4937-9292-4563d2af4dcb",
     latitudeX: 28.22778,

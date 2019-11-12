@@ -10,7 +10,6 @@
     "pages/businessAccept/businessAccept",
     "pages/logs/logs",
     "pages/ticketMes/ticketMes",
-    "pages/orderManagement/orderManagement",
     "pages/chooseTicket/chooseTicket",
     "pages/sendTicketTwo/sendTicketTwo",
     "pages/sendTicketOne/sendTicketOne",
