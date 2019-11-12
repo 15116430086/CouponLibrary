@@ -10,7 +10,7 @@ Page({
   data: {
     memberchecked: true,
     staffchecked: true,
-    AppointStaff:0,
+    AppointStaff: 0,
     radio: '1',
     shopList: [{
         id: 1,
@@ -74,7 +74,7 @@ Page({
         staffchecked: json.data.AppointStaff > 0,
         radio: json.data.AppointStaff.toString(),
         shopList: json.data.ListCoupon_ShopInfo
-        
+
       });
     } else {
       wx.showToast({
@@ -104,12 +104,15 @@ Page({
     console.log(e);
     let that = this;
     let detail = e.detail;
+    var data = {};
     let index = e.currentTarget.dataset.index;
     if (index == 1) {
+      data.pMemberCollar = detail ? 1 : 0;
       that.setData({
         memberchecked: detail
       })
     } else {
+      data.pAppointStaff = detail ? 1 : 0;
       // 需要手动对 checked 状态进行更新
       that.setData({
         staffchecked: detail,
@@ -117,50 +120,120 @@ Page({
       });
     }
 
+    that.setCouponGiveConfig(data);
+
   },
   radioChange(event) {
     console.log(event)
-    this.setData({
+    let that = this;
+    that.setData({
       radio: event.detail
     });
   },
-  onClick(event) {
+  onAppointStaffClick(event) {
+    let that = this;
     const {
       name
     } = event.currentTarget.dataset;
-    this.setData({
+    that.setData({
       radio: name
     });
+
+    if (name === "1") {
+      var shopList = that.data.shopList;
+      for (let i in shopList) {
+        var configStaffList = shopList[i].ListCoupon_GiveConfigStaff
+        shopList[i].IsSelected = false;
+        for (let j in configStaffList) {
+          shopList[i].ListCoupon_GiveConfigStaff[j].cdType = false;
+        }
+      }
+
+      that.setData({
+        shopList: shopList,
+      });
+
+      var data = {
+        pAppointStaff: name
+      };
+      that.setCouponGiveConfig(data);
+    }
+
   },
-  noop() {},
-  itemSelected: function(e) {
+  onStaffSelectedTap: function(e) {
     console.log(e)
+    var that = this;
     var findex = e.currentTarget.dataset.findex;
     var index = e.currentTarget.dataset.index;
 
-    this.data.shopList[findex].ListCoupon_GiveConfigStaff[index].cdType = !this.data.shopList[findex].ListCoupon_GiveConfigStaff[index].cdType;
+    that.data.shopList[findex].ListCoupon_GiveConfigStaff[index].cdType = !that.data.shopList[findex].ListCoupon_GiveConfigStaff[index].cdType;
 
-    this.setData({
-      shopList: this.data.shopList,
+    that.setData({
+      shopList: that.data.shopList,
     });
+    var staffconfig = [{
+      StaffID: that.data.shopList[findex].ListCoupon_GiveConfigStaff[index].StaffID,
+      CouponID: mCouponID,
+      GroupID: app.globalData.AppGroupInfo.GroupID,
+      ShopID: that.data.shopList[findex].ListCoupon_GiveConfigStaff[index].ShopID,
+      IsOpenConfig: that.data.shopList[findex].ListCoupon_GiveConfigStaff[index].cdType
+    }];
+    var data = {
+      pAppointStaff: 2,
+      pCoupon_GiveConfigInfo: utils.syJsonSafe(staffconfig)
+    };
+
+    that.setCouponGiveConfig(data);
   },
-  isOpen(e) {
+  onShopCheckedTap(e) {
     var that = this;
     var idx = e.currentTarget.dataset.index;
     console.log(idx);
     that.data.shopList[idx].IsSelected = !that.data.shopList[idx].IsSelected;
-    var isSelected = that.data.shopList[idx].IsSelected ;
+    var isSelected = that.data.shopList[idx].IsSelected;
     var shopStaffConfig = that.data.shopList[idx].ListCoupon_GiveConfigStaff
+    var staffconfig = [];
     for (let i in shopStaffConfig) {
       that.data.shopList[idx].ListCoupon_GiveConfigStaff[i].cdType = isSelected
+      var cofing = {
+        StaffID: that.data.shopList[idx].ListCoupon_GiveConfigStaff[i].StaffID,
+        CouponID: mCouponID,
+        GroupID: app.globalData.AppGroupInfo.GroupID,
+        ShopID: that.data.shopList[idx].ListCoupon_GiveConfigStaff[i].ShopID,
+        IsOpenConfig: isSelected
+      };
+      staffconfig.push(cofing);
     }
+
     that.setData({
       shopList: that.data.shopList
     });
-    return true;
+
+    var data = {
+      pAppointStaff: 2,
+      pCoupon_GiveConfigInfo: utils.syJsonSafe(staffconfig)
+    };
+
+    that.setCouponGiveConfig(data);
 
   },
 
+  setCouponGiveConfig: function(data) {
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pCouponID = mCouponID;
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/SetCouponGiveConfig", "POST", data, app.globalData.appkeyid, this.setCouponGiveConfigBack)
+  },
+  setCouponGiveConfigBack: function(json) {
+    console.log(json);
+    var json = json.data.Data;
+    if (json.flag) {
+      wx.showToast({
+        title: '设置成功！',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
