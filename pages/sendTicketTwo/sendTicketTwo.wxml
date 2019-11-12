@@ -51,7 +51,7 @@
     <view class="addImg">
         <view class="addImg-name">添加券面图片</view>
         <view class="addImg-box" bindtap="addimg">
-          <image wx:if="{{coverImg}}" src="{{coverImg}}" />
+          <image wx:if="{{coverImg1}}" src="{{coverImg1}}" />
             <image wx:else src="/static/images/img.png" />
             <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx"/>
         </view>

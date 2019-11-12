@@ -1,4 +1,5 @@
 // pages/sendTicketTwo/sendTicketTwo.js
+var utils = require("../../utils/util.js")
 var app=getApp();
 Page({
 
@@ -43,86 +44,28 @@ Page({
     },
 
   addimg:function(event){
+   
+    utils.UploadImg(1, app.globalData.appkeyid,this.imglist1);
+  },
+  imglist1:function(res){
     let chat = this;
-    wx.chooseImage({
-      count:1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success(res) {
-        // tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths;
-        chat.setData({
-          coverImg:tempFilePaths[0]
-        })
-        const uploadTask = wx.uploadFile({
-          url:"http://test.miboon.com/LibraryAPI/CouponView/UploadImageView/UploadImgs", //开发者服务器的 url
-          filePath: tempFilePaths[0], // 要上传文件资源的路径 String类型！！！
-          name: 'fileUp', // 文件对应的 key ,(后台接口规定的关于图片的请求参数)
-          formData: { data: {}}, 
-          header: {
-            'content-type': 'multipart/form-data', // 默认值
-            "appKeyId": app.globalData.appkeyid
-          },// HTTP 请求中其他额外的参数
-          success: function (res) {
-            console.log('success', res.data, res.statusCode);
+    res[0] = res[0].replace("true|","");
+    chat.setData({ coverImg1: res[0]});
+    
+  },
 
-
-          },
-          fail: function (res) {
-          }
-        });
-        uploadTask.onProgressUpdate((res) => {
-          console.log('上传进度', res.progress)
-          console.log('已经上传的数据长度', res.totalBytesSent)
-          console.log('预期需要上传的数据总长度', res.totalBytesExpectedToSend)
-        })
-      }
-    });
+  imglist2:function(res){
+    var chat=this;
+    var imgs = [];
+    for(var s in res){
+      res[s] = res[s].replace("true|", "");
+      imgs.push(res[s]);
+    }
+    var oldlists = chat.data.ruleimg1;
+    var imglist = oldlists.concat(imgs)
+    chat.setData({ ruleimg1: imglist });
   },
   ruleaddimg:function(event){
-    var chat=this;
-    wx.chooseImage({
-      count: 9,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success(res) {
-        // tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths;
-        var imgs=[];
-        var oldlists = chat.data.ruleimg1;
-        
-        for (var s in tempFilePaths){
-          imgs.push(tempFilePaths[s]);
-
-          var tempFilePaths = res.tempFilePaths;
-          
-          const uploadTask = wx.uploadFile({
-            url: "http://test.miboon.com/LibraryAPI/CouponView/UploadImageView/UploadImgs", //开发者服务器的 url
-            filePath: tempFilePaths[s], // 要上传文件资源的路径 String类型！！！
-            name: 'fileUp', // 文件对应的 key ,(后台接口规定的关于图片的请求参数)
-            formData: { data: {} },
-            header: {
-              'content-type': 'multipart/form-data', // 默认值
-              "appKeyId": app.globalData.appkeyid
-            },// HTTP 请求中其他额外的参数
-            success: function (res) {
-              console.log('success', res.data, res.statusCode);
-
-
-            },
-            fail: function (res) {
-            }
-          });
-          uploadTask.onProgressUpdate((res) => {
-            console.log('上传进度', res.progress)
-           
-          })
-
-        }    
-        var imglist = oldlists.concat(imgs) 
-        chat.setData({ ruleimg1: imglist});
-      }
-    });
-
+    utils.UploadImg(9, app.globalData.appkeyid, this.imglist2);
   }
 })
