@@ -112,10 +112,17 @@ function syFormatMoney(value) {
   return value.replace(/^(\d+)(?:\.0+$|(\.\d+?)0+$)/, "$1$2");
 }
 
+function syJsonSafe(obj) {
+  var oBackStr = JSON.stringify(obj);
+  oBackStr = oBackStr.replace(/\+/g, "%2B");
+  return escape(oBackStr);
+}
+
 module.exports = {
   formatTime: formatTime,
   AjaxRequest: AjaxRequest,
   sysFormatDate: sysFormatDate,
   syFormatMoney: syFormatMoney,
+  syJsonSafe: syJsonSafe,
   Console: consoleLog
 }

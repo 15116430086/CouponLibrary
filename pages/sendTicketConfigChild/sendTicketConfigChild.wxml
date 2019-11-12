@@ -14,10 +14,10 @@
     <view class="radio-block" wx:if="{{staffchecked}}">
         <van-radio-group value="{{ radio }}" bind:change="radioChange">
             <van-cell-group>
-                <van-cell title="全部员工" value-class="value-class" title-class="title-class" clickable data-name="1" bind:click="onClick">
+                <van-cell title="全部员工" value-class="value-class" title-class="title-class" clickable data-name="1" bind:click="onAppointStaffClick">
                     <van-radio name="1" value="{{AppointStaff}}" checked-color="#E85819" />
                 </van-cell>
-                <van-cell title="指定员工" value-class="value-class" title-class="title-class" clickable data-name="2" bind:click="onClick">
+                <van-cell title="指定员工" value-class="value-class" title-class="title-class" clickable data-name="2" bind:click="onAppointStaffClick">
                     <van-radio name="2" value="{{AppointStaff}}" checked-color="#E85819" />
                 </van-cell>
             </van-cell-group>
@@ -25,13 +25,13 @@
     </view>
     <view class="check-block" wx:if="{{radio == 2}}">
         <block wx:for="{{shopList}}" wx:key="ShopID" wx:for-index="findex">
-            <view class='item_container' bindtap='isOpen' data-shopid="{{item.ShopID}}" data-index='{{findex}}'>
+            <view class='item_container' bindtap='onShopCheckedTap' data-shopid="{{item.ShopID}}" data-index='{{findex}}'>
                 <text class='text3'>{{item.ShopName}}</text>
                 <image class='select_icon' src="{{item.IsSelected?'/static/images/f2.png':'/static/images/f1.png'}}"></image>
             </view>
             <view hidden="{{!item.IsSelected}}">
                 <block wx:for="{{item.ListCoupon_GiveConfigStaff}}" wx:for-index="index" wx:for-item="items" wx:key="StaffID">
-                    <view class='item_container' bindtap='itemSelected' data-findex="{{findex}}" data-index='{{index}}' data-id='{{items.StaffID}}'>
+                    <view class='item_container' bindtap='onStaffSelectedTap' data-findex="{{findex}}" data-index='{{index}}' data-id='{{items.StaffID}}'>
                         <view class="txt">
                            <image class="text1" src="{{items.StaffAvatar}}" ></image>
                             <text class='text'>{{items.StaffName}}</text>
