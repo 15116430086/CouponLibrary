@@ -8,8 +8,8 @@ Page({
      */
     data: {
       images:null,
-      CouponID:"100110",//"100110",
-      ReceiveID:"12345454",//"12345454",
+      CouponID:"",//"100110",
+      ReceiveID:"",//"12345454",
       datalist:null,
       shoplist:null
      
@@ -19,8 +19,8 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-      //this.data.CouponID = options.CouponID;
-      //this.data.ReceiveID = options.ReleaseID;
+      this.data.CouponID = options.CouponID;
+      this.data.ReceiveID = options.ReleaseID;
       var datas = {
         ReleaseID: this.data.ReceiveID,
         groupId: app.globalData.AppGroupInfo.GroupID,

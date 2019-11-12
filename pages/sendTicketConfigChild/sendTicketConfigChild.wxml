@@ -1,2 +1,45 @@
-<!--pages/sendTicketConfigChild/sendTicketConfigChild.wxml-->
-<text>pages/sendTicketConfigChild/sendTicketConfigChild.wxml</text>
+<view class="home-top">
+    <view class="bot-block">
+        <view class="home-title">会员自领</view>
+        <view class="home-right">
+            <van-switch checked="{{ memberchecked }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange" data-index="1" />
+        </view>
+    </view>
+    <view class="bot-block">
+        <view class="home-title">员工赠送</view>
+        <view class="home-right">
+            <van-switch checked="{{ staffchecked }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange" data-index="2" />
+        </view>
+    </view>
+    <view class="radio-block" wx:if="{{staffchecked}}">
+        <van-radio-group value="{{ radio }}" bind:change="radioChange">
+            <van-cell-group>
+                <van-cell title="全部员工" value-class="value-class" title-class="title-class" clickable data-name="1" bind:click="onClick">
+                    <van-radio name="1" value="{{AppointStaff}}" checked-color="#E85819" />
+                </van-cell>
+                <van-cell title="指定员工" value-class="value-class" title-class="title-class" clickable data-name="2" bind:click="onClick">
+                    <van-radio name="2" value="{{AppointStaff}}" checked-color="#E85819" />
+                </van-cell>
+            </van-cell-group>
+        </van-radio-group>
+    </view>
+    <view class="check-block" wx:if="{{radio == 2}}">
+        <block wx:for="{{shopList}}" wx:key="ShopID" wx:for-index="findex">
+            <view class='item_container' bindtap='isOpen' data-shopid="{{item.ShopID}}" data-index='{{findex}}'>
+                <text class='text3'>{{item.ShopName}}</text>
+                <image class='select_icon' src="{{item.IsSelected?'/static/images/f2.png':'/static/images/f1.png'}}"></image>
+            </view>
+            <view hidden="{{!item.IsSelected}}">
+                <block wx:for="{{item.ListCoupon_GiveConfigStaff}}" wx:for-index="index" wx:for-item="items" wx:key="StaffID">
+                    <view class='item_container' bindtap='itemSelected' data-findex="{{findex}}" data-index='{{index}}' data-id='{{items.StaffID}}'>
+                        <view class="txt">
+                           <image class="text1" src="{{items.StaffAvatar}}" ></image>
+                            <text class='text'>{{items.StaffName}}</text>
+                        </view>
+                        <image class='select_icon' src="{{items.cdType?'/static/images/f2.png':'/static/images/f1.png'}}"></image>
+                    </view>
+                </block>
+            </view>
+        </block>
+    </view>
+</view>

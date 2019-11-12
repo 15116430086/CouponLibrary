@@ -45,7 +45,7 @@
         <view class="goodsbot-left-view">
           <view style="color: #E24500;font-weight: 600;">
             ￥
-            <text style="font-size: 22px;">{{datalist[0].SalePrice }}</text>
+            <text style="font-size: 15px;">{{datalist[0].SalePrice }}</text>
           </view>
           <view style="color: #666666;">
             券面值:￥

@@ -34,16 +34,25 @@
             <view class="ticket-name">有效期</view>
             <input type="text" value="领用后一个月" />
         </view>
-        <view class="ticket-blocks">
-            <view class="ticket-name">使用规则</view>
-            <textarea class="textarea" type="text" value="领用后一个月" placeholder="{{placeholder}}" placeholder-class="placeholder" maxlength="{{maxlength}}" focus="{{focus}}" auto-height="{{auto-height}}" show-confirm-bar="{{show-confirm-bar}}"></textarea>
+        <view class="addImg">
+            <view class="addImg-name">使用规则</view>
+             <view class="addImg-box" bindtap="ruleaddimg">
+                <view wx:if="{{ruleimg1.length>0}}">
+                   <block wx:for="{{ruleimg1}}">
+                      <image src="{{item}}" />
+                   </block>
+                </view>
+                <image src="/static/images/img.png" />
+                <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx"/>
+        </view>
         </view>
     </view>
     <!-- 添加券面图片 -->
     <view class="addImg">
         <view class="addImg-name">添加券面图片</view>
-        <view class="addImg-box">
-            <image src="/static/images/img.png" />
+        <view class="addImg-box" bindtap="addimg">
+          <image wx:if="{{coverImg1}}" src="{{coverImg1}}" />
+            <image wx:else src="/static/images/img.png" />
             <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx"/>
         </view>
     </view>
@@ -83,7 +92,8 @@
     <view class="addImg">
         <view class="addImg-name">添加券面图片</view>
         <view class="addImg-box">
-            <image src="/static/images/img.png" />
+            <image wx:if="{{coverImg2}}" src="{{coverImg2}}" />
+            <image wx:else src="/static/images/img.png" />
             <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx"/>
         </view>
     </view>

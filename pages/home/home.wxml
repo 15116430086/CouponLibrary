@@ -48,7 +48,7 @@
   </view>
   <!-- 导航栏 -->
   <view class="home-nav">
-    <navigator url="../sendTicket/main?uid=1" hover-class="none">
+    <navigator url="../sendTicket/sendTicket?uid=1" hover-class="none">
       <image src="/static/images/home/1.png"></image>
 
     </navigator>
