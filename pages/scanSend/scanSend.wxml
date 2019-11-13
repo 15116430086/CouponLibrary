@@ -1,0 +1,40 @@
+<!-- pages/scanSend/scanSend.wxml -->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<view class="sS-All">
+  <block wx:for="{{receiveList}}"  wx:for-index="index" wx:key="ReceiveID">
+    <view class="sS-box">
+      <view class="sS-block">
+        <image src="{{item.ImageOne}}"  />
+        <view class="sS-mesbox">
+          <view class="sS-top">
+            <view class="sS-name">{{item.CouponName}}</view>
+            <view class="sS-mes">{{item.GroupName}}
+              <text wx:if="{{item.CouponType==0}}">(现金券)</text>
+              <text wx:else>(团购券)</text>
+            </view>
+            <view class="sS-mes">
+              <text>领券日期：{{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd")}}</text>
+            </view>
+          </view>
+          <view class="sS-bot">
+            <view class="ssb-one" wx:if="{{item.ExpiredType==1}}">领取后{{item.ExpirationDate}}天内有效 l</view>
+            <view class="ssb-one" wx:else>{{item.ExpirationDate}}前有效 l</view>
+            <view>剩余{{item.BalanceUNM}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="sS-right">
+        <image src="/static/images/ewm.png" data-index="{{index}}" id="{{item.ReceiveID}}" bindtap="onShowQrCodeTap" />
+        <view class="sS-price">￥{{item.CouponMoney}}</view>
+      </view>
+    </view>
+  </block>
+</view>
+<view class="mask" hidden="{{showQrCode}}" bindtap="onCloseQrCodeTap" >
+  <view class="mask-box" catchtap="onQrCodeTap">
+    <view class="mask-t">{{shopData.CouponName}}</view>
+    <view class="mask-m">{{shopData.GroupName}}</view>
+    <image src="{{qrCodeImgUrl}}" />
+    <view class="mask-b">请扫码领券</view>
+  </view>
+</view>

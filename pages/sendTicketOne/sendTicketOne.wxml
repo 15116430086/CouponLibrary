@@ -8,7 +8,7 @@
     <image src="/static/images/right-arr2.png" />
 </view>
 <view class="mes-box">
- <view class="ticket-box"  wx:if="{{datalist}}!=true && {{pPageIndex}}==1">暂无发券记录 </view>
+ <view class="ticket-box"  wx:if="{{!datalist}}">暂无发券记录 </view>
 <block wx:for="{{datalist}}">
   <view class="ticket-box">
         <view class="tb-title">
@@ -30,7 +30,7 @@
         </view>
         <view class="tb-bot">
             <view style="margin-left:50rpx">继续发券</view>
-            <view style="margin-right:50rpx">查看明细</view>
+            <view style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" bindtap="Details">查看明细</view>
         </view>
     </view>
 </block>

@@ -1,0 +1,108 @@
+/* pages/watchMes/watchMes.wxss */
+page{
+  background-color: #EDEDED;
+}
+.v-box,.v-bot{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFF;
+  margin-bottom: 20rpx;
+}
+.v-top{
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+  width: calc(100% - 80rpx);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+.v-title{
+  color:#000000;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+.v-go{
+  border:1px solid #E85819;
+  color:#E85819;
+  width: 184rpx;height: 64rpx;
+  border-radius: 32rpx;
+  background-color: #FFF0DE;
+  text-align: center;
+  line-height: 64rpx;
+}
+.v-mid{
+  width: calc(100% - 80rpx);
+  text-align: left;
+  color:#333333;
+  margin-bottom: 40rpx;
+  font-size: 28rpx;
+}
+
+.v-block{
+  width: calc(100% - 272rpx);
+  color:#333333;
+  margin-bottom: 40rpx;
+  font-size: 28rpx;
+}
+.v-c{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between
+}
+
+.v-class{
+  width: calc(100% - 80rpx);
+  height: 128rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.v-left{
+  width: calc(100% - 240rpx);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.v-name{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color:#000000;
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
+}
+.v-time{
+  color:#666666;
+  font-size: 24rpx;
+}
+
+.v-right{
+  width: 180rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.v-span{
+  width: 88rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  font-size: 22rpx;
+  margin-right: 80rpx;
+}
+.v-right image{
+  width: 14rpx;height: 22rpx;
+}

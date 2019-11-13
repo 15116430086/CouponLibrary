@@ -99,10 +99,10 @@ Page({
         url: '../sendTicketTwo/sendTicketTwo',
       })
   },
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  Details: function (event) {
+    var CouponIDs = event.currentTarget.dataset.couponid
+      wx.navigateTo({
+        url: '../watchMes/watchMes?CouponID=' + CouponIDs,
+      })
   }
 })

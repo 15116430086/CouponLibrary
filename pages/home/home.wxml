@@ -48,7 +48,7 @@
   </view>
   <!-- 导航栏 -->
   <view class="home-nav">
-    <navigator url="../sendTicket/sendTicket?uid=1" hover-class="none">
+    <navigator url="../sendTicketOne/sendTicketOne" hover-class="none">
       <image src="/static/images/home/1.png"></image>
 
     </navigator>
@@ -56,11 +56,11 @@
       <image src="/static/images/home/2.png"></image>
 
     </navigator>
-    <navigator url="../sendTicket/main" hover-class="none">
+    <navigator url="../scanSend/scanSend" hover-class="none">
       <image src="/static/images/home/3.png"></image>
        
     </navigator>
-    <navigator url="../sendTicket/main" hover-class="none">
+    <navigator url="../sendTicket/main" bindtap="onWxScanCode" hover-class="none">
       <image src="/static/images/home/4.png"></image>
       
     </navigator>
@@ -72,7 +72,7 @@
       <image src="/static/images/home/6.png"></image>
       
     </navigator>
-    <navigator url="../sendTicket/main" hover-class="none">
+    <navigator url="../orderManagement/orderManagement" hover-class="none">
       <image src="/static/images/home/7.png"></image>
       
     </navigator>
@@ -84,7 +84,7 @@
       <image src="/static/images/home/9.png"></image>
    
     </navigator>
-    <navigator url="../sendTicket/main" hover-class="none">
+    <navigator url="../goodsManager/goodsManager" hover-class="none">
       <image src="/static/images/home/10.png"></image>
        
     </navigator>

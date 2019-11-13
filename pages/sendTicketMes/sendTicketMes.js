@@ -119,7 +119,7 @@ Page({
       })
     }
   },
-  onClose(e) {
+  onClose2(e) {
     let that = this;
     that.setData({
       show3: false
@@ -218,6 +218,12 @@ Page({
     let that = this;
     that.setData({
       show1: false
+    })
+  },
+  onCancel2(e) {
+    let that = this;
+    that.setData({
+      show3: false
     })
   },
   onClose1(e) {
