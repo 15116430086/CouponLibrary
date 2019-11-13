@@ -1,0 +1,15 @@
+<view class="v-box">
+    <view class="v-title">店员</view>
+    <view class="v-block" wx:for="{{applyList}}" bindtap='selectApply'  data-index='{{index}}'>
+       <view class="v-left">
+            <image src="/static/images/swp.png" />
+            <view class="v-name">{{item.Name}}</view>
+        </view>
+        <view class="v-right">
+            <image src="{{item.isSelect?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-arr" />
+        </view>
+    </view>
+    
+</view>
+
+<view class="v-btn">添加为店长</view>

@@ -69,6 +69,7 @@ Page({
   seve:function(event){
     var chta=this;
     if (chta.data.repeat){
+      chat.setData({repeat:false});
       wx.showLoading({
         title:"数据提交中...",
         mask:true

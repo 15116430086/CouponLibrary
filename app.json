@@ -26,6 +26,14 @@
     "pages/sendTicketConfigChild/sendTicketConfigChild",
     "pages/watchMes/watchMes",
     "pages/watchMesOne/watchMesOne",
+    "pages/bossMes/bossMes",
+    "pages/doorContor/doorContor",
+    "pages/doorScan/doorScan",
+    "pages/staffChoose/staffChoose",
+    "pages/staffManagements/staffManagements",
+    "pages/thronesManagers/thronesManagers",
+
+
     "template/swiper/swiper",
     "template/ScrollView/ScrollView",
     "template/HotTicket/HotTicket",

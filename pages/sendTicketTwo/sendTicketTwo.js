@@ -1,5 +1,6 @@
 // pages/sendTicketTwo/sendTicketTwo.js
 var utils = require("../../utils/util.js")
+var region = require("../../utils/region.js")
 var app=getApp();
 Page({
 
@@ -45,8 +46,14 @@ Page({
       },
       typeData: [{ name: '0', value: '领取后多少天', checked: 'true' },
         { name: '1', value: '选择到期时间', },],
-      show3: false
-
+      show3: false,
+      provinces:[],
+      citys:[],
+      areas:[],
+      value:["选择省","选择市","选择区"],
+      sheng:"",
+      shi:"",
+      qu:""
     },
 
     /**
@@ -55,7 +62,27 @@ Page({
     onLoad: function(options) {
       console.log(this.data.ruleimg1);
 
+      region.query(this.data.provinces, this.regionList)
+
     },
+
+  regionList:function(res){
+    var chat=this;
+    chat.setData({ provinces:res});
+    console.log(chat.data.provinces);
+  },
+
+  bindChange:function(event){
+    var val=event.detail.value;
+
+ 
+    this.setData({
+      sheng: this.data.provinces[val[0]],
+      
+    })
+
+  },
+
     CouponTypeChange:function(event){
       if (event.detail.value==1){
         this.setData({ describe:"联盟商户购买商品团购券后，销售或赠送给消费者，消费者可使用团购券在线下或线上兑换商品."});

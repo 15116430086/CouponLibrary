@@ -1,0 +1,126 @@
+/* pages/doorContor/doorContor.wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.v-box {
+    width: calc(100% - 80rpx);
+    margin: 20rpx auto;
+}
+
+.v-mes {
+    width: 100%;
+    height: 80rpx;
+    color: #999999;
+    font-size: 28rpx;
+    margin-bottom: 20rpx;
+}
+
+.v-mes text {
+    color: #E30000;
+    margin-right: 10rpx;
+}
+
+.v-block {
+    width: 100%;
+    height: 160rpx;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: #666666;
+    font-size: 32rpx;
+}
+
+.v-block image {
+    width: 120rpx;
+    height: 120rpx;
+    margin-left: 64rpx;
+    margin-right: 40rpx;
+}
+
+.m-block {
+    width: 100%;
+    height: 160rpx;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 20rpx;
+}
+
+.v-title {
+    text-indent: 64rpx;
+    color: #000;
+    font-size: 32rpx;
+    font-weight: 600;
+    margin-bottom: 20rpx;
+}
+
+.v-num {
+    color: #666666;
+    font-size: 28rpx;
+    text-indent: 64rpx;
+}
+
+.mask {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.v-mask {
+    width: calc(100% - 80rpx);
+    height: 382rpx;
+    background-color: #ffffff;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 32rpx;
+    color: #333333;
+}
+
+.v-mid {
+    width: 476rpx;
+    height: 88rpx;
+    background-color: #EDEDED;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.v-mid input {
+    width: calc(100% - 66rpx);
+    height: 100%;
+    text-indent: 20rpx;
+    text-align: left;
+    margin-left: 30rpx;
+}
+
+.v-mid image {
+    width: 26rpx;
+    height: 26rpx;
+    display: block;
+    margin-right: 60rpx;
+}
+
+.p-class {
+    color: #E0E0E0;
+}
+
+.v-bot {
+    color: #E85819;
+    font-weight: 600;
+}

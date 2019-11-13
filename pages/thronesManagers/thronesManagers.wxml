@@ -1,0 +1,57 @@
+<!--pages/thronesManager /thronesManager.wxml-->
+<view class="v-box">
+    <view class="v-top">
+        <image src="/static/images/swp.png" class="v-img"/>
+        <view class="v-title">
+            <view class="v-txt">湖南券库网络科技</view>
+            <image src="/static/images/wrt3.png" />
+        </view>
+         <view class="v-title">
+            <view class="v-tname">湖南券库网络科技</view>
+            <view class="v-span">店长</view>
+        </view>
+    </view>
+    <view class="v-mid">
+        请选择需要开启的权限
+    </view>
+
+    <view class="v-bot">
+        <view class="v-block">
+            <view class="v-left">
+                <view class="v-t">退款权限</view>
+                <view class="v-m">将异常订单退款给用户</view>
+            </view>
+             <van-switch checked="{{ checked1 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange" data-index="1" />
+        </view>
+         <view class="v-block">
+            <view class="v-left">
+                <view class="v-t">查看打款记录权限</view>
+                <view class="v-m">查看结算资金每日打款记录</view>
+            </view>
+             <van-switch checked="{{ checked2 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange2" data-index="2" />
+        </view>
+         <view class="v-block">
+            <view class="v-left">
+                <view class="v-t">修改门店信息权限</view>
+                <view class="v-m">支持修改门店信息和图片</view>
+            </view>
+             <van-switch checked="{{ checked3 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange3" data-index="3" />
+        </view>
+         <view class="v-block">
+            <view class="v-left">
+                <view class="v-t">设置店长</view>
+                <view class="v-m">增加/删减店长和管理权限</view>
+            </view>
+             <van-switch checked="{{ checked4 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange4" data-index="4" />
+        </view>
+         <view class="v-block">
+            <view class="v-left">
+                <view class="v-t">管理店员</view>
+                <view class="v-m">增加/删减店员和管理权限</view>
+            </view>
+             <van-switch checked="{{ checked5 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange5" data-index="5" />
+        </view>
+    </view>
+</view>
+
+<view class="v-btn">确认</view>
