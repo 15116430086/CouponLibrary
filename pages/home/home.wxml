@@ -64,7 +64,7 @@
       <image src="/static/images/home/4.png"></image>
       
     </navigator>
-    <navigator url="../sendTicket/main" hover-class="none">
+    <navigator url="../management/management" hover-class="none">
       <image src="/static/images/home/5.png"></image>
        
     </navigator>

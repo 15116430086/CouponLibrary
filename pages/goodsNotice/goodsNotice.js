@@ -1,10 +1,25 @@
 // pages/goodsNotice/goodsNotice.js
+var utils = require("../../utils/util.js")
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+      type:1,//0商品1业务
+  },
+
+//商品，业务描述
+  DescribeInput: function (e) {
+    this.setData({
+      Describe: e.detail.value
+    })
+  },
+
+//点勾
+  Hook:function(e){
+    console.log(this.data.Describe);
 
   },
 
@@ -12,7 +27,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+      that.setData({
+      })
   },
 
   /**

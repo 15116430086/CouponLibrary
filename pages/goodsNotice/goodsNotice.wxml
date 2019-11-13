@@ -1,9 +1,10 @@
 <!--pages/goodsNotice/goodsNotice.wxml-->
 <view class="v-box">
     <view class="v-title">
-        <view class="v-left">商品描述</view>
-        <image src="/static/images/gou.png" />
+        <view class="v-left" wx:if="{{ type==0 }}">商品描述</view>
+        <view class="v-left" wx:if="{{ type==1 }}">业务描述</view>
+        <image src="/static/images/gou.png" bindtap="Hook" />
     </view>
-    <textarea class="v-txt" placeholder="请输入..." placeholder-class="v-p" maxlength="500" adjust-position show-confirm-bar></textarea>
+    <textarea class="v-txt" bindinput ="DescribeInput" placeholder="请输入..." placeholder-class="v-p" maxlength="500" adjust-position show-confirm-bar></textarea>
     <view class="v-bot">限500字内</view>
 </view>

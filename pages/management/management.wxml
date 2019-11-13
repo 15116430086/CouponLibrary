@@ -1,0 +1,33 @@
+<!-- pages/management/management.wxml -->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<view class="m-box">
+    <view class="mb-block" style="margin-right:60rpx">
+        <view class="mb-title">今日新增会员</view>
+        <view class="mb-num">{{TodayUserNUM}}人</view>
+    </view>
+    <view class="mb-block" style="margin-left:60rpx">
+        <view class="mb-title">历史会员</view>
+        <view class="mb-num1">{{HistoryUserUNM}}人</view>
+        <view class="mb-mes">(数据统计至昨天)</view>
+    </view>
+</view>
+<view class="m-allbox">
+    <view class="m-mid">会员列表</view>
+        <block wx:for="{{userlist}}" wx:for-index="index" wx:key="UserID">
+            <navigator url="../moneyDetail/moneyDetail?userid={{item.UserID}}">
+                <view class="m-bot">
+                    <view class="mbot-block">
+                        <view class="mbot-box">
+                            <image wx:if="{{item.UserAvatar==''}}" src="/static/images/swp.png" class="mbot-img" />
+                            <image wx:else src="{{item.UserAvatar}}" class="mbot-img" />
+                            <view class="mbb-left">
+                                <view class="mbot-name">{{item.UserName}}</view>
+                                <view class="mbot-bot">注册日期 : {{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss")}}</view>
+                            </view>
+                        </view>
+                        <image src="/static/images/right-arr1.png" class="mbot-arr" />
+                    </view>
+                </view>
+            </navigator>
+        </block>
+</view>

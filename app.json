@@ -1,11 +1,14 @@
 {
   "pages": [
-    "pages/home/home",
+    "pages/moneyDetail/moneyDetail",
+    "pages/management/management",
     "pages/index/index",
     "pages/goodsEditor/goodsEditor",
     "pages/goodsType/goodsType",
     "pages/yewuDescribe/yewuDescribe",
     "pages/goodsNotice/goodsNotice",
+    "pages/orderManagement/orderManagement",
+    "pages/home/home",
     "pages/goodsManager/goodsManager",
     "pages/businessAccept/businessAccept",
     "pages/logs/logs",
