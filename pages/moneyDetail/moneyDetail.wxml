@@ -1,0 +1,58 @@
+<!-- pages/moneyDetail/moneyDetail.wxml -->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<view class="m-top">
+    <view class="mD-top">
+        <image src="/static/images/swp.png" />
+        <view class="mDt-name">欧阳默默</view>
+        <view class="mDt-price">￥0.12</view>
+    </view>
+    <view class="mD-bot">
+        <view class="mDb-block">
+            <view class="mD-title">交易状态</view>
+            <view class="mD-mes">支付成功</view>
+        </view>
+        <view class="mDb-block">
+            <view class="mD-title">交易时间</view>
+            <view class="mD-mes">支付成功</view>
+        </view>
+        <view class="mDb-block">
+            <view class="mD-title">交易单号</view>
+            <view class="mD-mes">支付成功</view>
+        </view>
+        <view class="mDb-block">
+            <view class="mD-title">商户单号</view>
+            <view class="mD-mes">支付成功</view>
+        </view>
+    </view>
+</view>
+<view class="m-Mid">
+    <view class='top_nav'>
+        <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.typeId}}' catchtap='handleTap'>
+            {{item.name}}
+        </view>
+    </view>
+    <view hidden='{{currentId!=0}}' class="mes-block">
+        <block wx:for="{{hecoupon}}" wx:for-index="index" wx:key="UserID">
+            <view class="m-mesBlock">
+                <view class="mbb-left">
+                    <view class="mbot-name"> ({{item.CouponName}}) 已核销</view>
+        
+                    <view class="mbot-bot"><text >{{item.ShopName==null?'':item.ShopName}}</text> <text >{{common.sysFormatDate(item.PayDate,"yyyy-MM-dd hh:mm:ss")}}</text></view>
+                </view>
+                <view class="m-right">￥{{item.CouponMoney}}</view>
+            </view>
+        </block>
+    </view>
+    <view hidden='{{currentId!=1}}' class="mes-block">
+          <block wx:for="{{lingcoupon}}" wx:for-index="index" wx:key="UserID">
+            <view class="m-mesBlock">
+                <view class="mbb-left">
+                    <view class="mbot-name"> ({{item.CouponName}}) 已领取</view>
+        
+                    <view class="mbot-bot"><text >{{item.ShopName==null?'':item.ShopName}}</text> <text >{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss")}}</text></view>
+                </view>
+              
+            </view>
+        </block>
+    </view>
+</view>

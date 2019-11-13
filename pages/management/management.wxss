@@ -1,0 +1,118 @@
+/* pages/management/management.wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.m-box {
+    width: 100%;
+    height: 340rpx;
+    background-color: #FF7031;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.mb-block {
+    width: 228rpx;
+    height: 228rpx;
+    background-color: #FFF;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.mb-title {
+    color: #666666;
+    font-size: 24rpx;
+    margin-top: 42rpx;
+}
+
+.mb-num,
+.mb-num1 {
+    margin-top: 22rpx;
+    font-size: 44rpx;
+    font-weight: 600;
+}
+
+.mb-num {
+    color: #E85819
+}
+
+.mb-mes {
+    margin-top: 12rpx;
+    color: #999999;
+    font-size: 20rpx
+}
+
+.m-mid {
+    margin: 0px auto;
+    width: calc(100% - 80rpx);
+    height: 120rpx;
+    line-height: 120rpx;
+    /* text-indent: 40rpx; */
+    text-align: left;
+    font-size: 32rpx;
+    color: #333333;
+    border-bottom: 1px solid #EDEDED;
+    background-color: #FFF;
+}
+
+.m-allbox,
+.m-bot {
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+}
+
+.mbot-block {
+    width: 100%;
+    height: 120rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mbot-img {
+    width: 76rpx;
+    height: 76rpx;
+    border-radius: 10rpx;
+    margin-right: 20rpx;
+}
+
+.mbot-arr {
+    width: 10rpx;
+    height: 18rpx;
+    display: block;
+    margin-right: 40rpx;
+}
+
+.mbot-box {
+    margin-left: 40rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mbb-left {
+    width: auto;
+    height: 76rpx;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.mbot-name {
+    color: #000000;
+    font-size: 32rpx;
+    margin-bottom: 5rpx;
+}
+
+.mbot-bot {
+    color: #666666;
+    font-size: 28rpx;
+}
