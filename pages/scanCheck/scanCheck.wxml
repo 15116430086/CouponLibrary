@@ -1,6 +1,6 @@
 <!-- pages/scanCheck/scanCheck.wxml -->
 <swiper class='swiper' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true' indicator-dots="{{color}}" indicator-active-color="{{activeColor}}">
-  <block wx:for="{{images}}" wx:for-index="index" wx:key="index" >
+  <block wx:for="{{images}}" wx:for-index="index" wx:key="index">
     <swiper-item>
       <image src='{{item.url}}' class='u-img-slide' mode='aspectFill'></image>
     </swiper-item>
@@ -8,14 +8,18 @@
 </swiper>
 <view class="sc-top">
   <view class="sct-left">
-    <view class="sl-one">{{couponiteminfo.CouponName}}</view>
+    <view class="sl-one">{{couponiteminfo.CouponName}}
+      <text wx:if="{{couponiteminfo.State==0}}" >待核销</text>
+      <text wx:else>已核销</text>
+    </view>
+    <view class="sl-two">会员：{{userInfo.UserName}} | 有效期：{{couponiteminfo.ExpirationDate}}</view>
   </view>
-  <view class="sc-btn">核销此券</view>
+  <view class="sc-btn" wx:if="{{couponiteminfo.State==0}}" data-couponCode="{{couponiteminfo.CouponCode}}" data-userID="{{couponiteminfo.UserID}}" bindtap="onCouponWriteOffTap" >核销此券</view>
 </view>
 <view class="ruleBox">
   <image wx:if="{{couponiteminfo.ReceiveRule!=''}}" src="{{couponiteminfo.ReceiveRule}}" />
   <image wx:else src="/static/images/rule1.png" />
-  <view class="seeBtn" bindtap="onShowDs" >
+  <view class="seeBtn" bindtap="onShowDs">
     查看详细
     <image src="/static/images/botarr.png" />
   </view>
@@ -23,7 +27,7 @@
 <view class="imageBox" wx:if="{{couponiteminfo.CouponDetails!='' && flag}}">
   <image src="{{couponiteminfo.CouponDetails}}" />
 </view>
-<view class="imageBox" wx:for="{{pictures}}"  wx:key="PictureID" wx:if="{{flag}}">
+<view class="imageBox" wx:for="{{pictures}}" wx:key="PictureID" wx:if="{{flag}}">
   <image src="{{item.ImageURL}}" />
 </view>
 <!--

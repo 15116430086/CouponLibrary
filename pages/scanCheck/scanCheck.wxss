@@ -35,6 +35,11 @@ page {
     margin-bottom: 10rpx;
 }
 
+.sl-one text
+{
+font-size: 12px; font-weight: 500; line-height: 17px; color: rgba(153, 153, 153, 1);
+}
+
 .sl-two {
     color: #E85819;
     font-size: 14px;

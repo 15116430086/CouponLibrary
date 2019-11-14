@@ -1,0 +1,41 @@
+<!-- 搜索框 -->
+<view class="v-top">
+    <view class="home-top">
+        <view class="search-box">
+            <view class="search-left">
+                <image src="/static/images/serch.png" background-size="cover" style="margin-left:20rpx;margin-right:10rpx" />
+                <input value="" placeholder="商品/业务名称" placeholder-class="ip" bindInput="onChange" bindtap="onSearch" focus="true" />
+            </view>
+            <image src="/static/images/err.png" background-size="cover" style="margin-right:15rpx;" bindtap="onClear" v-if="flag==1" />
+        </view>
+        <view class="home-btn">搜索</view>
+    </view>
+</view>
+<view class="v-box">
+    <van-checkbox-group value="{{ result }}" bind:change="onChange">
+        <view class="v-block">
+            <view class="v-left">
+                <image src="/static/images/swp.png" />
+                <view class="v-mid">
+                    <view class="v-t">中国联通宽带受理业务</view>
+                    <view class="v-b">售价：¥1000</view>
+                </view>
+            </view>
+            <van-checkbox name="c" checked-color="#E85819"></van-checkbox>
+        </view>
+        <view class="v-block">
+            <view class="v-left">
+                <image src="/static/images/swp.png" />
+                <view class="v-mid">
+                    <view class="v-t">中国联通宽带受理业务</view>
+                    <view class="v-b">售价：¥1000</view>
+                </view>
+            </view>
+            <van-checkbox name="b" checked-color="#E85819"></van-checkbox>
+        </view>
+    </van-checkbox-group>
+</view>
+<view class="v-btn">
+    确定
+</view>
+

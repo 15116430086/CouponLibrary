@@ -1,0 +1,174 @@
+/* pages/merchantReg/merchantReg.wxss */
+
+/* pages/sendTicketTwo/sendTicketTwo.wxss */
+
+page {
+  background-color: #ededed;
+}
+
+.top_nav {
+  /* border-bottom: 1px solid #e6d9af; */
+  width: 100%;
+  height: 80rpx;
+  background-color: #fff;
+  padding-left: 40rpx;
+}
+
+.nav-name {
+  display: inline-block;
+  color: #999;
+  width: auto;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: left;
+  font-size: 32rpx;
+  margin-right: 54rpx;
+}
+
+.ticket-block input {
+  width: 100%;
+}
+
+.ip {
+  color: #ccc;
+  font-size: 32rpx;
+}
+
+.nav-hover {
+  color: #e85819;
+  font-size: 32rpx;
+  font-weight: 600;
+  border-bottom: 8rpx solid #e85819;
+}
+
+.mes-block {
+  width: 100%;
+  height: auto;
+}
+
+.mes-top {
+  width: 100%;
+  background-color: #fff;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  height: auto;
+}
+
+.top-mes {
+  width: calc(100% - 80rpx);
+  margin: 0px auto;
+  color: #999;
+  font-size: 14px;
+  /* text-indent: 40rpx; */
+}
+
+.top-mes text {
+  color: #d75047;
+}
+
+.ticket-box {
+  margin-top: 10rpx;
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+}
+
+.ticket-block {
+  margin: 0px auto;
+  width: calc(100% - 80rpx);
+  height: 120rpx;
+  padding-top: 20rpx;
+  border-bottom: 1px solid #ededed;
+}
+
+.ticket-blocks {
+  margin: 0px auto;
+  width: calc(100% - 80rpx);
+  height: auto;
+  padding-top: 20rpx;
+  border-bottom: 1px solid #ededed;
+}
+
+.ticket-name {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20rpx;
+}
+
+.t-bot {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.t-down {
+  color: #000;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.seeMes {
+  color: #016fb4;
+  font-size: 32rpx;
+}
+
+.t-bot image {
+  width: 42rpx;
+  height: 34rpx;
+}
+
+.addImg {
+  margin-top: 20rpx;
+  width: 100%;
+  height: 320rpx;
+  background-color: #fff;
+  padding-top: 10rpx;
+}
+
+.addImg-name {
+  color: #000;
+  font-size: 16px;
+  text-indent: 40rpx;
+}
+
+.addImg-box {
+  margin-top: 25rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.addImg-box image {
+  width: 180rpx;
+  height: 180rpx;
+  margin-left: 40rpx;
+}
+
+.playBtn {
+  width: 670rpx;
+  height: 80rpx;
+  background: rgba(232, 88, 25, 1);
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 20rpx;
+  margin: 35rpx auto;
+  color: #fff;
+  font-size: 32rpx;
+}
+
+.playBtn  button {
+  height: 80rpx;
+  background: none;
+  border: none;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: #fff;
+}
+
+.playBtn button::after {
+  border: none;
+}

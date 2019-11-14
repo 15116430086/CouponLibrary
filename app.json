@@ -1,14 +1,16 @@
 {
   "pages": [
+    "pages/login/login",
+    "pages/merchantReg/merchantReg",
+    "pages/index/index",
+    "pages/home/home",
     "pages/moneyDetail/moneyDetail",
     "pages/management/management",
-    "pages/index/index",
     "pages/goodsEditor/goodsEditor",
     "pages/goodsType/goodsType",
     "pages/yewuDescribe/yewuDescribe",
     "pages/goodsNotice/goodsNotice",
     "pages/orderManagement/orderManagement",
-    "pages/home/home",
     "pages/goodsManager/goodsManager",
     "pages/businessAccept/businessAccept",
     "pages/logs/logs",
@@ -39,7 +41,7 @@
   ],
   "permission": {
     "scope.userLocation": {
-      "desc": "你的位置信息将用于账户默认地址信息"
+      "desc": "地理定位将用作商户注册默认位置"
     }
   },
   "window": {
