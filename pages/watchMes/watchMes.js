@@ -18,6 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({ pCouponID: options.CouponID});
     var datas = {
       pCouponID: options.CouponID,
       pPageIndex: this.data.pageIndex,
@@ -62,6 +63,19 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    if (this.data.Paging){
+      var datas = {
+        pCouponID: this.data.pCouponID,
+        pPageIndex: this.data.pageIndex,
+        pPageSize: 5
+      }
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponReleaseInfo", "POST", datas, app.globalData.appkeyid, this.GetCouponReleaseInfo);
+    }
+  },
+  See:function(event){
+    var releaseid = event.currentTarget.dataset.releaseid
+   wx.navigateTo({
+     url: '../watchMesOne/watchMesOne?releaseid=' + releaseid,
+   })
   }
 })

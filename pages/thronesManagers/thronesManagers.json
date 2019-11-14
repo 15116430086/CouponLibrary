@@ -1,0 +1,7 @@
+{
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "权限管理",
+    "navigationBarTextStyle": "black"
+}

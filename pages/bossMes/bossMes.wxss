@@ -1,0 +1,103 @@
+/* pages/bossMes/bossMes.wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.v-box {
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.v-top {
+    width: 100%;
+    height: 270rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.v-title {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+.v-img {
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 10rpx;
+    display: block;
+    margin-bottom: 20rpx;
+}
+
+.v-txt {
+    color: #333333;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+
+.v-title image {
+    width: 26rpx;
+    height: 26rpx;
+    margin-left: 20rpx;
+}
+
+.v-tname {
+    color: #666666;
+    font-size: 24rpx;
+}
+
+.v-span {
+    color: #E85819;
+    width: 80rpx;
+    height: 32rpx;
+    text-align: center;
+    line-height: 32rpx;
+    font-size: 22rpx;
+    margin-left: 20rpx;
+    border: 1px solid rgba(232, 88, 25, 1);
+    border-radius: 3px;
+}
+
+.v-mid {
+    width: calc(100% - 80rpx);
+    border-top: 1px solid #EDEDED;
+    height: 132rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-mid image {
+    width: 10rpx;
+    height: 18rpx;
+}
+
+.v-left {
+    color: #333333;
+    font-size: 32rpx;
+}
+
+.v-btn {
+    width: 670rpx;
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+    color: #FFF;
+    font-size: 32rpx;
+    margin: 40rpx auto;
+    background: rgba(232, 88, 25, 1);
+    border-radius: 20rpx;
+}

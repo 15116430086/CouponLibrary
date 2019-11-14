@@ -1,0 +1,7 @@
+{
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "店员管理",
+    "navigationBarTextStyle": "black"
+}
