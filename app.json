@@ -1,8 +1,10 @@
 {
   "pages": [
-    "pages/moneyDetail/moneyDetail",
-    "pages/management/management",
     "pages/index/index",
+    "pages/myMoney/myMoney",
+    "pages/banlanceMes/banlanceMes",
+    "pages/management/management",
+    "pages/moneyDetail/moneyDetail",
     "pages/goodsEditor/goodsEditor",
     "pages/goodsType/goodsType",
     "pages/yewuDescribe/yewuDescribe",
