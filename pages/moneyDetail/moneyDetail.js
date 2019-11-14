@@ -12,64 +12,83 @@ var pageM = [{
 }];
 
 Page({
-    /**
-     * 页面的初始数据
-     */
-    data: {
-        userid:'',
-        hecoupon:[],
-        lingcoupon:[],
-        currentId: '0',
-        section: [{
-            name: '核券记录',
-            typeId: '0'
-        }, {
-            name: '领券记录',
-            typeId: '1'
-        }]
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    userid: '',
+    showOrder: { 
+      PayDate:'无',
+      WriteOffOrderID:'无',
+      Trade_no: '无',
+      ReceivableMoney: 0
     },
+    hecoupon: [],
+    lingcoupon: [],
+    currentId: '0',
+    section: [{
+      name: '核券记录',
+      typeId: '0'
+    }, {
+      name: '领券记录',
+      typeId: '1'
+    }]
+  },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function(options) {
-      let that = this;
-      that.setData({
-        userid: '10000501'
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
+    let that = this;
+    that.setData({
+      userid: options.userid
+    })
+    that.GetData();
+  },
+
+  //点击每个导航的点击事件
+  handleTap: function(e) {
+    let that = this;
+    let id = e.currentTarget.id;
+    if (id) {
+      this.setData({
+        currentId: id,
       })
-      that.GetData();
-    }, 
-    
-    //点击每个导航的点击事件
-    handleTap: function(e) {
-      let that = this;
-      let id = e.currentTarget.id;
-      if (id) {
-        this.setData({
-          currentId: id,
-        })
 
-        if (pageM[id].iscleck) {
-          that.GetData();
-        }
+      if (pageM[id].iscleck) {
+        that.GetData();
       }
-    },
+    }
+  },
+  onOrderTap: function(e) {
+    const {
+      index
+    } = e.currentTarget.dataset;
+    var that = this;
+    that.showOrderDetails(index);
+  },
+  showOrderDetails: function(index) {
+    var that = this;
+    var showOrder = that.data.hecoupon[index];
+    that.setData({
+      showOrder: showOrder
+    });
+  },
 
-  GetData: function () {
+  GetData: function() {
     let that = this;
     //显示 加载中的提示
     wx.showLoading({
       title: '数据加载中...',
     })
     var pageindex = pageM[that.data.currentId].page;
-
     var data = {};
     data.pUserID = that.data.userid;
     data.pPageIndex = pageindex;
     data.pPageSize = 5;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserView/GetCouponUserReceiveAndConsume", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
-  GetDataBack: function (json) {
+  GetDataBack: function(json) {
     let that = this;
     var json = json.data.Data;
     if (json.flag) {
@@ -84,6 +103,8 @@ Page({
           that.setData({
             hecoupon: json.CouponConsume
           })
+          if (json.CouponConsume.length > 0)
+            that.showOrderDetails(0)
         }
       }
 
@@ -93,7 +114,7 @@ Page({
           that.setData({
             lingcoupon: json.CouponItem
           })
-        } 
+        }
       }
     } else {
       pageM[that.data.currentId].iscleck = false;
@@ -107,17 +128,16 @@ Page({
     wx.hideLoading();
   },
 
-gethecoupon:function()
-{
+  gethecoupon: function() {
     let that = this;
     var pageindex = pageM[that.data.currentId].page;
-    var data={}
+    var data = {}
     data.pUserID = that.data.userid;
     data.pPageIndex = pageindex;
     data.pPageSize = 5;
-  utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserView/GetCouponUserConsume", "POST", data, app.globalData.appkeyid, this.gethecouponBack)
-},
-  gethecouponBack: function (json) {
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserView/GetCouponUserConsume", "POST", data, app.globalData.appkeyid, this.gethecouponBack)
+  },
+  gethecouponBack: function(json) {
     let that = this;
     var json = json.data.Data;
     if (json.flag) {
@@ -127,8 +147,7 @@ gethecoupon:function()
       that.setData({
         hecoupon: newlists
       });
-    }
-    else {
+    } else {
       pageM[that.data.currentId].iscleck = false;
       wx.showToast({
         title: '暂无数据!',
@@ -138,7 +157,7 @@ gethecoupon:function()
     }
   },
 
-  getlingcoupon: function () {
+  getlingcoupon: function() {
     let that = this;
     var pageindex = pageM[that.data.currentId].page;
     var data = {}
@@ -147,7 +166,7 @@ gethecoupon:function()
     data.pPageSize = 5;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserView/GetCouponUserReceive", "POST", data, app.globalData.appkeyid, this.getlingcouponBack)
   },
-  getlingcouponBack: function (json) {
+  getlingcouponBack: function(json) {
     let that = this;
     var json = json.data.Data;
     if (json.flag) {
@@ -157,8 +176,7 @@ gethecoupon:function()
       that.setData({
         lingcoupon: newlists
       });
-    }
-    else {
+    } else {
       pageM[that.data.currentId].iscleck = false;
       wx.showToast({
         title: '暂无数据!',
@@ -172,15 +190,14 @@ gethecoupon:function()
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     let that = this;
 
-    if(that.data.currentId==0){
+    if (that.data.currentId == 0) {
       if (pageM[that.data.currentId].lastpage > pageM[that.data.currentId].page) {
         pageM[that.data.currentId].page++;
         that.gethecoupon();
-      } 
-      else if (pageM[that.data.currentId].lastpage == pageM[that.data.currentId].page) {
+      } else if (pageM[that.data.currentId].lastpage == pageM[that.data.currentId].page) {
         pageM[that.data.currentId].page++;
         wx.showToast({
           title: '没有更多数据!',
@@ -188,14 +205,11 @@ gethecoupon:function()
           duration: 2000
         })
       }
-    }
-    else
-    {
+    } else {
       if (pageM[that.data.currentId].lastpage > pageM[that.data.currentId].page) {
         pageM[that.data.currentId].page++;
         that.getlingcoupon();
-      }
-      else if (pageM[that.data.currentId].lastpage == pageM[that.data.currentId].page) {
+      } else if (pageM[that.data.currentId].lastpage == pageM[that.data.currentId].page) {
         pageM[that.data.currentId].page++;
         wx.showToast({
           title: '没有更多数据!',
@@ -207,46 +221,45 @@ gethecoupon:function()
   },
 
 
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
+  },
 
-    },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {
+  },
 
-    },
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function() {
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
+  },
 
-    },
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function() {
 
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
+  },
 
-    },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
 
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function() {
+  },
 
-    },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function() {
 
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function() {
-
-    }
+  }
 })

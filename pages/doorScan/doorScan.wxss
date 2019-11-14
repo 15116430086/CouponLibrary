@@ -1,0 +1,27 @@
+/* pages/doorScan/doorScan.wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.v-box {
+    width: 100%;
+    height: 772rpx;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.v-box image {
+    width: 506rpx;
+    height: 506rpx;
+    margin-bottom: 20rpx;
+}
+
+.v-name {
+    color: #E85819;
+    font-size: 32rpx;
+    font-weight: 600;
+}

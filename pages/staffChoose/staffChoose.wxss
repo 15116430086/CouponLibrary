@@ -1,0 +1,83 @@
+/* pages/staffManagement /staffManagement .wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.v-box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    margin-bottom: 20rpx;
+}
+
+.v-title {
+    width: calc(100% - 80rpx);
+    height: 84rpx;
+    text-align: left;
+    color: #666;
+    font-size: 28rpx;
+    line-height: 84rpx;
+    border-bottom: 1px solid #EDEDED;
+}
+
+.v-n {
+    color: #666;
+    font-size: 28rpx;
+}
+
+.v-block {
+    width: calc(100% - 80rpx);
+    height: 132rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-left,
+.v-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.v-left image {
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 10rpx;
+}
+
+.v-txt {
+    color: #CCCCCC;
+    font-size: 28rpx;
+}
+
+.v-name {
+    color: #000;
+    font-size: 32rpx;
+    margin-left: 40rpx;
+    /* font-weight: 600; */
+}
+
+.v-arr {
+    width: 25rpx;
+    height: 25rpx;
+    margin-left: 20rpx;
+}
+
+.v-btn {
+    width: 670rpx;
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+    color: #FFF;
+    font-size: 32rpx;
+    margin: 40rpx auto;
+    background: rgba(232, 88, 25, 1);
+    border-radius: 20rpx;
+}

@@ -68,7 +68,7 @@
       <image src="/static/images/home/5.png"></image>
        
     </navigator>
-    <navigator url="../sendTicket/main" hover-class="none">
+    <navigator url="../doorContor/doorContor" hover-class="none">
       <image src="/static/images/home/6.png"></image>
       
     </navigator>
@@ -76,7 +76,7 @@
       <image src="/static/images/home/7.png"></image>
       
     </navigator>
-    <navigator url="../sendTicket/main" hover-class="none">
+    <navigator url="../myMoney/myMoney" hover-class="none">
       <image src="/static/images/home/8.png"></image>
   
     </navigator>
