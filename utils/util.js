@@ -7,7 +7,9 @@ const formatTime = date => {
   const minute = date.getMinutes()
   const second = date.getSeconds()
 
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  // return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  return [year, month, day].map(formatNumber).join('/')
+
 }
 
 const formatNumber = n => {
@@ -15,7 +17,7 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-function AjaxRequest(pUrl, pType, pData, pAppKeyId, pCallBack) {
+function AjaxRequest(pUrl, pType, pData, pAppKeyId, pCallBack,p) {
   wx.request({
     url: pUrl, //仅为示例，并非真实的接口地址
     data: pData,
@@ -25,7 +27,7 @@ function AjaxRequest(pUrl, pType, pData, pAppKeyId, pCallBack) {
     },
     method: pType,
     success(res) {
-      pCallBack(res);
+      pCallBack(res, p);
     },
     fail(res) {
       wx.showToast({
@@ -143,7 +145,8 @@ function UploadImg(count, pAppKeyId, pCallBack) {
             "appKeyId": pAppKeyId
           }, // HTTP 请求中其他额外的参数
           success: function(res) {
-            var json = JSON.parse(res.data)
+            var json = JSON.parse(res.data);
+            json.Data = json.Data.replace("true|", "");
             imgs.push(json.Data);
             if (imgs.length == tempFilePaths.length) {
               wx.hideLoading();

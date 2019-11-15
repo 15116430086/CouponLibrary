@@ -88,7 +88,7 @@ Page({
   getUserInfoBack: function(json) {
     console.log(json);
     var json = json.data.Data;
-    if (json) {
+    if (json.flag) {
       console.log(json.msg);
       if (json.flag && json.state == 3) {
         wx.setStorageSync('appkeyid', json.data)

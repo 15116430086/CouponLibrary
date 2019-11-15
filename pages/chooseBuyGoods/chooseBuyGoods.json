@@ -1,0 +1,7 @@
+{
+    "usingComponents": {},
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "选择购买商品",
+    "navigationBarBackgroundColor": "#FFF",
+    "navigationBarTextStyle": "black"
+}

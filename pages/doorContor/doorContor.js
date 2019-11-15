@@ -107,5 +107,10 @@ Page({
         icon: "none"
       });
     }
+  },
+  Jump:function(event){
+    wx.navigateTo({
+      url: '../doorManager/doorManager?ShopID=' + event.currentTarget.dataset.id,
+    })
   }
 })
