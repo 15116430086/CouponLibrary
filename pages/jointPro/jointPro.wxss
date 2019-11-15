@@ -1,0 +1,137 @@
+/* pages/jointPro/jointPro.wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.top_nav {
+    /* border-bottom: 1px solid #e6d9af; */
+    width: 100%;
+    height: 110rpx;
+    background-color: #ffffff;
+    padding-left: 40rpx;
+    border-bottom: 4rpx solid #EDEDED;
+}
+
+.nav-name {
+    display: inline-block;
+    color: #999999;
+    width: auto;
+    font-weight: 600;
+    height: 102rpx;
+    line-height: 102rpx;
+    text-align: left;
+    font-size: 28rpx;
+    margin-right: 54rpx;
+}
+
+.nav-hover {
+    color: #E85819;
+    font-size: 32rpx;
+    font-weight: 600;
+    border-bottom: 8rpx solid #E85819;
+}
+
+.v-box {
+    /* margin-top: 20rpx; */
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+    /* padding-bottom: 20rpx; */
+}
+
+.v-block {
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
+    height: 200rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-left {
+    width: calc(100% - 200rpx);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.v-left image {
+    width: 128rpx;
+    height: 128rpx;
+    border-radius: 10rpx;
+    margin-right: 40rpx;
+}
+
+.v-mid {
+    width: calc(100% - 168rpx);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 128rpx;
+}
+
+.v-t {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #000000;
+    font-size: 28rpx;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.v-t text {
+    margin-left: 10rpx;
+    display: block;
+    width: 86rpx;
+    height: 32rpx;
+    font-size: 22rpx;
+    text-align: center;
+    line-height: 32rpx;
+    color: #999;
+    border: 1px solid #EDEDED;
+}
+
+.v-b {
+    color: #666666;
+    font-size: 26rpx;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-right {
+    width: 156rpx;
+    height: 60rpx;
+    background: rgba(255, 240, 222, 1);
+    border-radius: 30rpx;
+    text-align: center;
+    line-height: 60rpx;
+    color: #E85819;
+    font-size: 24rpx;
+    position: relative;
+    top: 30rpx;
+}
+
+.v-btn {
+    width: 670rpx;
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+    color: #FFF;
+    font-size: 32rpx;
+    margin: 40rpx auto;
+    background: #E85819;
+    border-radius: 20rpx;
+}

@@ -17,7 +17,7 @@ Page({
     ],
     couponiteminfo: null,
     pictures: [],
-    shops: [],
+    userInfo: null,
     indicatorDots: true,
     autoplay: true,
     interval: 3000,
@@ -36,6 +36,47 @@ Page({
     })
 
   },
+  onCouponWriteOffTap: function(e) {
+    let that = this;
+    //显示 加载中的提示
+    wx.showLoading({
+      title: '核券处理中...',
+    })
+    const {
+      couponcode,
+      userid
+    } = e.currentTarget.dataset;
+    var data = {};
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pStaffID = app.globalData.AppStaffInfo.StaffID
+    data.pUserID = userid;
+    data.pCouponCode = couponcode;
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/AddCouponSweepCodeWriteOffOrder", "POST", data, app.globalData.appkeyid, this.CouponWriteOffBack)
+  },
+  CouponWriteOffBack: function(json) {
+    console.log(json);
+    var json = json.data.Data;
+    //隐藏 加载中的提示
+    wx.hideLoading();
+    if (json.flag) {
+      wx.showToast({
+        title: json.msg,
+        icon: 'success',
+        duration: 2000
+      })
+      setTimeout(function () {
+        wx.redirectTo({
+          url: '../home/home',
+        })},2000);  
+    } else {
+      wx.showToast({
+        title: json.msg,
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+
   GetData: function() {
     let that = this;
     //显示 加载中的提示
@@ -44,7 +85,7 @@ Page({
     })
     var data = {};
     data.CouponCode = mCouponCode;
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/CouponDetail", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/GetCheckCouponDetail", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {
     console.log(json);
@@ -59,7 +100,7 @@ Page({
         }],
         couponiteminfo: json.data[0],
         pictures: json.pictures,
-        shops: json.shops
+        userInfo: json.userinfo
       });
     } else {
       wx.showToast({

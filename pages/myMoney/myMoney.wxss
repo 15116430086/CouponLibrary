@@ -1,0 +1,164 @@
+/* pages/myMoney/myMoney.wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.v-box {
+    width: 100%;
+    height: 282rpx;
+    background-color: #FF7031;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.v-block {
+    width: calc(100% - 200rpx);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.v-top {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.v-title {
+    color: #333333;
+    font-size: 32rpx;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.v-cash {
+    color: #FFFFFF;
+    font-size: 48rpx;
+    font-weight: 600;
+    width: 384rpx;
+    border-bottom: 1px solid #FFFFFF;
+    margin-left: 10rpx;
+}
+
+.v-cash text {
+    font-size: 28rpx;
+}
+
+.v-mid {
+    color: #FFFFFF;
+    font-size: 26rpx;
+    width: 100%;
+    white-space: nowrap;
+    margin-top: 20rpx;
+}
+
+.v-bot {
+    margin-top: 40rpx;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-btn {
+    width: 252rpx;
+    height: 80rpx;
+    text-align: center;
+    line-height: 80rpx;
+    background-color: #FFF0DE;
+    color: #E85819;
+    font-size: 28rpx;
+    font-weight: 600;
+    border-radius: 40rpx;
+}
+
+.v-all {
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+}
+
+.m-block {
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
+    height: 120rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.m-left {
+    width: calc(100% - 138rpx);
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.m-left image {
+    width: 76rpx;
+    height: 76rpx;
+    margin-right: 20rpx;
+    border-radius: 10rpx;
+}
+
+.m-mid {
+    width: 426rpx;
+    height: 76rpx;
+}
+
+.m-right {
+    width: 108rpx;
+    height: auto;
+    text-align: right;
+}
+
+.m-title {
+    width: 100%;
+    color: #000;
+    font-size: 28rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.m-mes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.m-time {
+    color: #666666;
+    font-size: 24rpx;
+    margin-right: 20rpx;
+}
+
+.m-span {
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 6rpx;
+    font-size: 22rpx;
+    line-height: 36rpx;
+    text-align: center;
+}
+
+.m-num {
+    color: #429859;
+    font-size: 24rpx;
+}
+
+.m-txt {
+    color: #E85819;
+    font-size: 20rpx;
+    white-space: nowrap;
+}

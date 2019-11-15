@@ -1,0 +1,25 @@
+<!--pages/banlanceMes/banlanceMes.wxml-->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<view class="v-top">
+    <view class="v-box">
+        <view class="v-money">结算总金额:</view>
+        <view class="v-price"><text>￥</text>{{sumBalanceMoney}}</view>
+    </view>
+    <view class="v-mes">
+        佣金退还¥{{sumDrawbackMoney}} | 佣金收入¥{{sumCommissionMoney}} | 代收资金¥{{sumCollectionMoney}}
+    </view>
+</view>
+
+<view class="v-mid">
+  <block wx:for="{{Settlementdetailslist}}" wx:for-index="index" wx:key="WithdrawalID">
+      <view class="v-block">
+          <view class="v-left">
+              <view class="v-title">¥{{item.WithdrawalMoney}}【{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss")}}】</view>
+              <view class="v-span">佣金退还¥{{item.oCoupon_CapitalItemInfo.sumDrawbackMoney}} l 佣金收入¥{{item.oCoupon_CapitalItemInfo.sumCommissionMoney}} l 代收资金¥{{item.oCoupon_CapitalItemInfo.sumCollectionMoney}}</view>
+          </view>
+          <view class="v-right" wx:if="{{item.State==0}}" style="color:#F08002;border:1px solid #F08002">结算中</view>
+          <view class="v-right" wx:elif="{{item.State==1}}" style="color:#429859;border:1px solid #429859">已结算</view>
+          <view class="v-right" wx:elif="{{item.State==2}}" style="color:#ff0000;border:1px solid #F08002">已取消</view>
+      </view>
+  </block>
+</view>
