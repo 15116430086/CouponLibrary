@@ -6,7 +6,7 @@
         添加新的门店
     </view>
     <block wx:for="{{shoplist}}">
-    <view class="m-block">
+    <view class="m-block" data-id="{{item.ShopID}}" bindtap="Jump">
         <view class="v-title">{{item.ShopName}}</view>
         <view class="v-num">当前{{item.Staffcount}}人加入</view>
     </view>

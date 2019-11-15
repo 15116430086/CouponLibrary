@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/moneyDetail/moneyDetail",
     "pages/management/management",
     "pages/index/index",
@@ -8,7 +9,6 @@
     "pages/yewuDescribe/yewuDescribe",
     "pages/goodsNotice/goodsNotice",
     "pages/orderManagement/orderManagement",
-    "pages/home/home",
     "pages/goodsManager/goodsManager",
     "pages/businessAccept/businessAccept",
     "pages/logs/logs",
@@ -35,8 +35,7 @@
     "pages/staffChoose/staffChoose",
     "pages/staffManagements/staffManagements",
     "pages/thronesManagers/thronesManagers",
-
-
+    "pages/doorManager/doorManager",
     "template/swiper/swiper",
     "template/ScrollView/ScrollView",
     "template/HotTicket/HotTicket",
