@@ -1,0 +1,19 @@
+<!--pages/login/login.wxml-->
+<view class="v-box">
+    
+        <image src="/static/images/logo.png" class="logo"/>
+        <view class="v-topTitle">欢迎进入券库！</view>
+        <view class="v-topMes">券库是致力于提升商家会员权益的资源整合平台,是实体商户之间互推互赚,合作共赢的桥梁.</view>
+        <button class="loginBtn" open-type="getUserInfo" bindgetuserinfo="onMerchantRegTap" >立即注册</button>
+        <button class="phoneBtn" style="margin-bottom:40rpx" bindtap="onPhoneLoginTap" >手机号码登录</button>
+
+        <view class="v-bot">
+            <block wx:for="{{itemImage}}">
+            <view class="v-class">
+                <image src="{{item.image}}" />
+                <view class="v-title" style="font-weight:500">{{item.title}}</view>
+                <view class="v-title">{{item.span}}</view>
+            </view>
+            </block>
+        </view>
+</view>

@@ -2,7 +2,8 @@
     <view class="v-title">店员</view>
     <view class="v-block" wx:for="{{applyList}}" bindtap='selectApply'  data-index='{{index}}'>
        <view class="v-left">
-            <image src="/static/images/swp.png" />
+             <image wx:if="{{item.StaffAvatar!=''}}" src="{{item.StaffAvatar}}" />
+             <image wx:else src="/static/images/swp.png" />
             <view class="v-name">{{item.Name}}</view>
         </view>
         <view class="v-right">
@@ -12,4 +13,4 @@
     
 </view>
 
-<view class="v-btn">添加为店长</view>
+<view class="v-btn">添加为管理员</view>

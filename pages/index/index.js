@@ -91,13 +91,9 @@ Page({
     if (json.flag) {
       console.log(json.msg);
       if (json.flag && json.state == 3) {
-        app.globalData.AppWxUserInfo = json.data.AppWxUserInfo;
-        app.globalData.AppStaffInfo = json.data.AppStaffInfo;
-        app.globalData.AppGroupInfo = json.data.AppGroupInfo;
-        app.globalData.appkeyid = json.AppKeyId;
-        wx.setStorageSync('appkeyid', json.AppKeyId)
+        wx.setStorageSync('appkeyid', json.data)
         wx.navigateTo({
-          url: '../home/home',
+          url: '../login/login',
         })
       }
     }

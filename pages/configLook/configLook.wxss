@@ -1,0 +1,205 @@
+/* pages/configLook/configLook.wxss */
+
+page {
+    background: #EDEDED;
+}
+
+.swiper {
+    width: 100%;
+    height: 470rpx;
+}
+
+.swiper image {
+    height: 100%;
+    width: 100%;
+}
+
+.goods-info {
+    width: 100%;
+    height: 274rpx;
+    background-color: #ffffff;
+}
+
+.goods-box {
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
+    padding-top: 20rpx;
+    position: relative;
+}
+
+.goodsbox-p {
+    color: #E85819;
+    font-size: 22rpx;
+    font-weight: 600;
+}
+
+.goodsbox-ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #F08002;
+    font-size: 24rpx;
+    margin-top: 10rpx;
+    margin-bottom: 24rpx;
+}
+
+.goodsbox-ul view {
+    background-color: #FFF0DE;
+    text-align: center;
+    width: 170rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    border-radius: 34rpx;
+    margin-right: 20rpx;
+}
+
+.goods-title {
+    width: 544rpx;
+    height: 88rpx;
+    color: #000000;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+
+.goodsbox-p text {
+    font-size: 36rpx;
+}
+
+.goods-mes {
+    width: 100%;
+    margin-top: 20rpx;
+    background-color: #ffffff;
+    margin-bottom: 140rpx;
+}
+
+.goodsmes-t {
+    width: 100%;
+    height: 98rpx;
+    line-height: 98rpx;
+    text-indent: 40rpx;
+    font-size: 32rpx;
+    color: #000000;
+    border-bottom: 2rpx solid #eeeeee;
+    font-weight: 600;
+}
+
+.goods-total {
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
+    padding-top: 30rpx;
+    padding-bottom: 30rpx;
+}
+
+.goodst-div image {
+    display: block;
+    margin-right: 26rpx;
+    width: 30rpx;
+    height: 36rpx;
+}
+
+.goodst-div {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 24rpx;
+    font-size: 24rpx;
+    color: #666666;
+}
+
+.goodst-div view {
+    width: calc(100% - 56rpx);
+}
+
+.goods-bottom {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 120rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border-top: 2rpx solid #eeeeee;
+}
+
+.goodsbot-left {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 94rpx;
+    margin-left: 40rpx;
+}
+
+.goodsbot-left-view {
+    font-size: 24rpx;
+    height: 100%;
+}
+
+.goods-ticket {
+    width: 110rpx;
+    height: 38rpx;
+    line-height: 38rpx;
+    border-radius: 18rpx;
+    font-size: 22rpx;
+    color: #E24500;
+    background-color: #FCEDE7;
+    text-align: center;
+    position: relative;
+    top: 14rpx;
+    margin-left: 10rpx;
+}
+
+.goods-btn {
+    width: 176rpx;
+    height: 64rpx;
+    background: radial-gradient(circle, rgba(255, 112, 49, 1) 0%, rgba(244, 75, 0, 1) 100%);
+    border-radius: 32rpx;
+    color: #ffffff;
+    font-size: 28rpx;
+    /* font-weight: 600; */
+    text-align: center;
+    line-height: 64rpx;
+    margin-right: 20rpx;
+}
+
+.v-top {
+    width: 100%;
+    height: 130rpx;
+    background-color: #FFF0DE;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.v-one {
+    color: #333333;
+    font-size: 32rpx;
+    text-indent: 40rpx;
+}
+
+.v-two {
+    color: #E85819;
+    font-size: 32rpx;
+    font-weight: 600;
+    text-indent: 20rpx;
+}
+
+.share {
+    position: absolute;
+    right: 0rpx;
+    top: 25rpx;
+    color: #016FB4;
+    font-size: 28rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.share image {
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 10rpx;
+}
