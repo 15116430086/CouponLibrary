@@ -2,6 +2,7 @@
   "pages": [
     "pages/login/login",
     "pages/merchantReg/merchantReg",
+    "pages/phoneLogin/phoneLogin",
     "pages/home/home",
     "pages/index/index",
     "pages/myMoney/myMoney",

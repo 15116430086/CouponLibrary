@@ -24,7 +24,32 @@ Page({
     columns: ["现金券", "团购券"],
     industryName: "",
     industryCode: "",
-    enterpriseLicensing: "http://test.miboon.com/file/image/20191025215104232.jpg"
+    enterpriseLicensing: "http://test.miboon.com/file/image/20191025215104232.jpg",
+    flag:false
+  },
+  onUpFileImg: function() {
+    let that = this;
+    utils.UploadImg(1, app.globalData.appkeyid, that.UpFileImgBak)
+  },
+  UpFileImgBak: function(img) {
+    let that = this;
+    if (img.length > 0) {
+      that.setData({
+        enterpriseLicensing: img[0],
+        flag: true
+      })
+      wx.showToast({
+        title: "上传成功!",
+        icon: "none",
+        duration: 2000
+      })
+    } else {
+      wx.showToast({
+        title: "上传失败!",
+        icon: "none",
+        duration: 2000
+      })
+    }   
   },
   GetData: function() {
     let that = this;
@@ -148,7 +173,7 @@ Page({
       content: '您确定注册成' + typename,
       success: function(res) {
         if (res.confirm) {
-          console.log('用户点击确定')          
+          console.log('用户点击确定')
           that.RegCouponGroup(data)
         }
       }
@@ -171,7 +196,7 @@ Page({
               app.globalData.userInfo = res.userInfo
               data.LatitudeX = app.globalData.latitudeX.toString()
               data.LongitudeY = app.globalData.longitudeY.toString()
-              data.RegionID="430102";
+              data.RegionID = "430102";
               data = {
                 pCoupon_Group: utils.syJsonSafe(data),
                 Text: res.encryptedData,
@@ -200,8 +225,8 @@ Page({
     if (json) {
       console.log(json.msg);
       if (json.flag) {
-        wx.setStorageSync('appkeyid', json.data)
-        var appkeyid = wx.getStorageSync('appkeyid');
+        wx.setStorageSync('miniappkeyid', json.data)
+        var appkeyid = wx.getStorageSync('miniappkeyid');
         if (appkeyid) {
           app.globalData.appkeyid = appkeyid.FSessionKey;
           var loginInfo = JSON.parse(appkeyid.FContent);

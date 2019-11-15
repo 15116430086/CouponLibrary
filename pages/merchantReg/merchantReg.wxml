@@ -26,7 +26,7 @@
   <view class="ticket-box">
     <view class="ticket-block">
       <view class="ticket-name">所属行业</view>
-      <input type="text" name="IndustryCode" bindtap="showPopup" value="{{industryName}}" placeholder="选择所属行业" placeholder-class="ip" />
+      <input type="text" name="IndustryCode" bindtap="showPopup" disabled="true" value="{{industryName}}" placeholder="选择所属行业" placeholder-class="ip" />
     </view>
     <view class="ticket-block">
       <view class="ticket-name">公司全称</view>
@@ -34,11 +34,11 @@
     </view>
     <view class="ticket-block">
       <view class="ticket-name">营业执照</view>
-      <view class="t-bot">
-        <view class="ip">点击拍照或者上传</view>
+      <view class="t-bot" bindtap="onUpFileImg" wx:if="{{!flag}}" >
+        <view class="ip">点击上传或拍照</view>
         <image src="/static/images/zxj.png" />
       </view>
-      <view class="t-bot" wx:if="{{1==0}}">
+      <view class="t-bot" wx:if="{{flag}}">
         <view class="t-down">已上传</view>
         <view class="seeMes">查看预览</view>
       </view>

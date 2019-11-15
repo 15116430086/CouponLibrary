@@ -72,8 +72,8 @@ Page({
       }
     })
 
-    var appkeyid = wx.getStorageSync('appkeyid');
-    if (appkeyid) {
+    var appkeyid = wx.getStorageSync('miniappkeyid');
+    if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
       app.globalData.appkeyid = appkeyid.FSessionKey;
       var loginInfo = JSON.parse(appkeyid.FContent);
       app.globalData.AppWxUserInfo = loginInfo.AppWxUserInfo;
