@@ -143,7 +143,8 @@ function UploadImg(count, pAppKeyId, pCallBack) {
             "appKeyId": pAppKeyId
           }, // HTTP 请求中其他额外的参数
           success: function(res) {
-            var json = JSON.parse(res.data)
+            var json = JSON.parse(res.data);
+            json.Data = json.Data.replace("true|", "");
             imgs.push(json.Data);
             if (imgs.length == tempFilePaths.length) {
               wx.hideLoading();
