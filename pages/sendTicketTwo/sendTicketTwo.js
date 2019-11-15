@@ -1,173 +1,382 @@
 // pages/sendTicketTwo/sendTicketTwo.js
-var utils = require("../../utils/util.js")
-var region = require("../../utils/region.js")
-var app=getApp();
+let app = getApp();
+let utils = require("../../utils/util.js")
+
 Page({
 
-    /**
-     * 页面的初始数据
-     */
-    data: {
-        "placeholder": "请输入文本",
-        "maxlength": -1, // 最大输入长度，设置为 -1 的时候不限制最大长度
-        "focus": true,
-        "auto-height": true, // 是否自动增高，设置auto-height时，style.height不生效
-        "adjust-position": true, // 键盘弹起时，是否自动上推页面,
-         coverImg1:"",//封面图片
-         coverImg2: "",//封面图片
-         ruleimg1:[],//规则图片
-         ruleimg2: [],//规则图片
-      WriteOffType: [
-        { name: '0', value: '线上',checked: 'true' },
-        { name: '1', value: '线下',  },
-        
-      ],
-      ReceiveRule:[
-        { name: '0', value: '首次领取', checked: 'true' },
-        { name: '1', value: '可重复领取', },
-
-      ],
-      CouponType: [{ name: '0', value: '代金券', checked: 'true' },
-        { name: '1', value: '团购券', },],
-       describe:"现金抵用券，将券发布至指定商户或券平台，商户免费领券 赠送给其会员为您引流并赚取佣金",
-       Datetype:true,//默认领取后多少天
-      selectDate: "选择日期",
-      currentDate: new Date().getTime(),
-      minDate: new Date("2019-10-01").getTime(),
-      formatter(type, value) {
-        if (type === 'year') {
-          return `${value}年`;
-        } else if (type === 'month') {
-          return `${value}月`;
-        } else {
-          return `${value} 日`;
-        }
-        return value;
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    currentId: '1',
+    section: [{
+      name: '代金券',
+      typeId: '1'
+    }, {
+      name: '团购券',
+      typeId: '2'
+    }],
+    "placeholder": "请输入文本",
+    "maxlength": -1, // 最大输入长度，设置为 -1 的时候不限制最大长度
+    "focus": true,
+    "auto-height": true, // 是否自动增高，设置auto-height时，style.height不生效
+    "adjust-position": true, // 键盘弹起时，是否自动上推页面
+    getItem: [{
+        id: '001',
+        title: '仅首次领取',
+        isSel: false,
+        type: 0
       },
-      typeData: [{ name: '0', value: '领取后多少天', checked: 'true' },
-        { name: '1', value: '选择到期时间', },],
-      show3: false,
-      provinces:[],
-      citys:[],
-      areas:[],
-      value:["选择省","选择市","选择区"],
-      sheng:"",
-      shi:"",
-      qu:""
-    },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function(options) {
-      console.log(this.data.ruleimg1);
-
-      region.query(this.data.provinces, this.regionList)
-
-    },
-
-  regionList:function(res){
-    var chat=this;
-    chat.setData({ provinces:res});
-    console.log(chat.data.provinces);
-  },
-
-  bindChange:function(event){
-    var val=event.detail.value;
-
- 
-    this.setData({
-      sheng: this.data.provinces[val[0]],
-      
-    })
-
-  },
-
-    CouponTypeChange:function(event){
-      if (event.detail.value==1){
-        this.setData({ describe:"联盟商户购买商品团购券后，销售或赠送给消费者，消费者可使用团购券在线下或线上兑换商品."});
-      }else{
-        this.setData({ describe: "现金抵用券，将券发布至指定商户或券平台，商户 免费领券 赠送给其会员为您引流并赚取佣金" });
+      {
+        id: '002',
+        title: '可重复领取',
+        isSel: false,
+        type: 1
       }
-      
-
-  },
-  typeDataChange: function (event){
-    if (event.detail.value == 1) {
-      this.setData({ Datetype:false})
-    }else{
-      this.setData({ Datetype: true })
-    }
-
-  },
-    //点击每个导航的点击事件
-    handleTap: function(e) {
-        let id = e.currentTarget.id;
-        if (id) {
-            this.setData({
-                currentId: id
-            })
-        }
+    ],
+    idx: "",
+    shareshow: false,
+    getItem1: [{
+        id: '001',
+        title: '线上受理',
+        isSel: false,
+        type: 0
+      },
+      {
+        id: '002',
+        title: '线下消费',
+        isSel: false,
+        type: 1
+      }
+    ],
+    idb: "",
+    shareshow1: false,
+    getItem2: [{
+        id: '001',
+        title: '指定日期',
+        isSel: false
+      },
+      {
+        id: '002',
+        title: '指定时间',
+        isSel: false
+      }
+    ],
+    idd: "",
+    shareshow2: false,
+    date: "日期",
+    currentDate: new Date().getTime(),
+    minDate: new Date().getTime(),
+    formatter(type, value) {
+      if (type === 'year') {
+        return `${value}年`;
+      } else if (type === 'month') {
+        return `${value}月`;
+      }
+      return value;
     },
-  radioChange:function(){
+    show: false,
+    pArrProductID: [],
+    pCoupon_Info: {
+      CouponType: 0,
+      CouponName: "",
+      CouponMoney: 100,
+      ExpirationDate: '',
+      ExpiredType: 10,
+      CouponDetails: "",
+      ReleaseNUM: "", //发布数量
+      ReceiveUpperLimit: 0,
+      UsageRule: "",
+      ImageOne: "",
+      ReceiveRule:0,  //领取规则
+      WriteOffType:0, //核销方式
+      SalePrice: "", //领购售价
+      pArrProductID:[]
+    },
+    imageOne:"",
+    imageTwo:"",
+    imageTre:"",
+    idm:""
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(options) {
 
 
   },
-  addimg:function(event){
-   
-    utils.UploadImg(1, app.globalData.appkeyid,this.imglist1);
+  formSubmit: function(e) {
+    console.log(e.detail.value)
+    let val = e.detail.value;
+    let that = this;
+    let pCoupon_Info = that.data.pCoupon_Info;
+    pCoupon_Info.CouponName = val.CouponName; //券名称
+    pCoupon_Info.CouponMoney = val.CouponMoney; //券面值
+    pCoupon_Info.ReleaseNUM = val.ReleaseNUM; //券数量
+    pCoupon_Info.ReceiveUpperLimit = val.ReceiveUpperLimit; //领取上限
+    pCoupon_Info.SalePrice = val.SalePrice; //
+    if (pCoupon_Info.CouponName && pCoupon_Info.CouponMoney && pCoupon_Info.ReleaseNUM && pCoupon_Info.ReceiveUpperLimit && pCoupon_Info.SalePrice && pCoupon_Info.pArrProductID.length<0) {
+      console.log(pCoupon_Info);
+    }
   },
-  imglist1:function(res){
-    let chat = this;
-    res[0] = res[0].replace("true|","");
-    chat.setData({ coverImg1: res[0]});
+
+  //点击每个导航的点击事件
+  handleTap: function(e) {
+
+    let id = e.currentTarget.id;
+    if (id) {
+      this.setData({
+        currentId: id
+      })
+    }
+  },
+  onInput(event) {
+    this.setData({
+      currentDate: event.detail
+    });
+  },
+  onClose() {
+    this.setData({
+      show: false
+    });
+  },
+
+  confirmDate(e) {
+    console.log(e.detail);
+    let that = this;
+    let timer = e.detail;
+    let pCoupon_Info = that.data.pCoupon_Info;
+    timer = utils.formatTime(timer);
+    console.log(timer)
+    pCoupon_Info.ExpirationDate = timer;
+    that.setData({
+      date: timer,
+      show: false
+    })
+  },
+  //领购规则 
+  clickRule(e) {
+    var that = this;
+    var shareshow = that.data.shareshow
+    that.setData({
+      shareshow: !that.data.shareshow
+    })
+  },
+
+
+
+  clickTrue(e) {
+    let that = this;
+    let id = e.currentTarget.dataset.id;
+    let pCoupon_Info = that.data.pCoupon_Info;
+    let type = e.currentTarget.dataset.type;
+    pCoupon_Info.ReceiveRule = type;
+    console.log(type)
+    that.setData({
+      idx: id
+    })
+  },
+
+
+
+  // 核销方式
+  clickRule1(e) {
+    var that = this;
+    var shareshow = that.data.shareshow1
+    that.setData({
+      shareshow1: !that.data.shareshow1
+    })
+  },
+  clickTrue1(e) {
+    let that = this;
+    let id = e.currentTarget.dataset.id;
+    let pCoupon_Info = that.data.pCoupon_Info;
+    let type = e.currentTarget.dataset.type;
+    pCoupon_Info.WriteOffType = type;
+
+    that.setData({
+      idb: id
+    })
+  },
+
+
+  // 券有效期
+  clickRule2(e) {
+    var that = this;
+    var shareshow = that.data.shareshow2
+    that.setData({
+      shareshow2: !that.data.shareshow2
+    })
+  },
+  clickTrue2(e) {
+    let that = this;
+    let id = e.currentTarget.dataset.id;
+    if (id == "001") {
+      that.setData({
+        show: true
+      });
+    }
+    that.setData({
+      idd: id
+    })
+  },
+
+  GetData: function() {
+    let that = this;
+    var data = {};
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pCoupon_Info = {
+      CouponType: 0,
+      CouponName: "134165456456",
+      CouponMoney: 100,
+      ExpirationDate: '2020-05-11',
+      ExpiredType: 10
+    };
+    data.pArrProductID = [1002, 1003, 1001];
+    //   utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/NewCouponInfo", "POST", data, app.globalData.appkeyid, that.GetDataBack)
+    // },
+    // GetDataBack: function (json) {
+    //   let that = this;
+    //   console.log(json);
+    //   var data = json.data.Data;
+    //   if (data) {
+    //     console.log(data.msg);
+    //     that.setData({
+    //       CouponCount: data
+    //     })
+    //   }
+  },
+  //添加图片
+  imgadd(e){
+    let that = this;
+    let id = e.currentTarget.dataset.id;
+    console.log(id);
+    let pAppKeyId = app.globalData.appkeyid
+    utils.UploadImg(1, pAppKeyId, that.pCallBack,id)
     
   },
-  showPopup3() {
+  pCallBack(e,p){
+    console.log(e)
+    let img = e[0]
+    console.log(img)
+    let that = this;
+    let pCoupon_Info = that.data.pCoupon_Info;
 
-    let that = this;
-    that.setData({
-      show3: true
-    })
-  },
-  onClose(e) {
 
-    let that = this;
-    that.setData({
-      show3: false
-    })
-  },
-  confirm(event) {
-    console.log(event.detail); // 打印出了时间
-    let timestamp = event.detail;
-    console.log(utils.formatTime(timestamp));
-    console.log(utils.sysFormatDate(utils.formatTime(timestamp), "yyyy-MM-dd"));
-
-    let that = this;
-    that.setData({
-      show3: false,
-      selectDate: utils.sysFormatDate(utils.formatTime(timestamp), "yyyy-MM-dd")
-    })
-  },
-  onCancel(e) {
-    let that = this;
-    that.setData({
-      show3: false
-    })
-  },
-  
-  imglist2:function(res){
-    var chat=this;
-    var imgs = [];
-    for(var s in res){
-      res[s] = res[s].replace("true|", "");
-      imgs.push(res[s]);
+    if(img[0]=="true"){
+      pCoupon_Info.ImageOne = img[1]
+      that.setData({
+        imageOne:img[1]
+      })
     }
-    var oldlists = chat.data.ruleimg1;
-    var imglist = oldlists.concat(imgs)
-    chat.setData({ ruleimg1: imglist });
   },
-  ruleaddimg:function(event){
-    utils.UploadImg(9, app.globalData.appkeyid, this.imglist2);
+
+
+  //添加图片
+  imgadd2(e) {
+    let that = this;
+    let id = e.currentTarget.dataset.id;
+    let pAppKeyId = app.globalData.appkeyid
+    utils.UploadImg(1, pAppKeyId, that.pCallBack2)
+
+  },
+  pCallBack2(e) {
+    console.log(e)
+    let img = e[0].split("|");
+    console.log(img)
+    let that = this;
+    let pCoupon_Info = that.data.pCoupon_Info;
+
+
+    if (img[0] == "true") {
+      pCoupon_Info.UsageRule = img[1];
+      that.setData({
+        imageTwo: img[1]
+      })
+    }
+  },
+
+
+  imgadd3(e) {
+    let that = this;
+    let id = e.currentTarget.dataset.id;
+    console.log(id);
+    let pAppKeyId = app.globalData.appkeyid
+    utils.UploadImg(1, pAppKeyId, that.pCallBack3)
+
+  },
+  pCallBack3(e) {
+    console.log(e)
+    let img = e[0].split("|");
+    console.log(img)
+    let that = this;
+    let pCoupon_Info = that.data.pCoupon_Info;
+
+    if (img[0] == "true") {
+      pCoupon_Info.CouponDetails = img[1];
+      that.setData({
+        imageTre: img[1]
+      })
+    }
+  },
+
+
+
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+      let that = this;
+    console.log(that.data.pArrProductID)
+    that.data.pCoupon_Info.pArrProductID = that.data.pArrProductID;
+    console.log(that.data.pCoupon_Info)
+  },
+  jumpChoose(e){
+    wx.navigateTo({
+      url: '../chooseBuyGoods/chooseBuyGoods',
+    })
+  },
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function() {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function() {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function() {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function() {
+
   }
 })

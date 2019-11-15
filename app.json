@@ -1,6 +1,7 @@
 {
   "pages": [
-        "pages/home/home",
+    "pages/chooseBuyGoods/chooseBuyGoods",
+    "pages/home/home",
     "pages/index/index",
     "pages/moneyDetail/moneyDetail",
     "pages/management/management",
@@ -9,7 +10,6 @@
     "pages/yewuDescribe/yewuDescribe",
     "pages/goodsNotice/goodsNotice",
     "pages/orderManagement/orderManagement",
-
     "pages/goodsManager/goodsManager",
     "pages/businessAccept/businessAccept",
     "pages/logs/logs",
@@ -36,8 +36,6 @@
     "pages/staffChoose/staffChoose",
     "pages/staffManagements/staffManagements",
     "pages/thronesManagers/thronesManagers",
-
-
     "template/swiper/swiper",
     "template/ScrollView/ScrollView",
     "template/HotTicket/HotTicket",
@@ -70,6 +68,7 @@
     "van-collapse-item": "static/vant/collapse-item/index",
     "van-popup": "static/vant/popup/index",
     "van-toast": "static/vant/toast/index",
-    "van-picker": "static/vant/picker/index"
+    "van-picker": "static/vant/picker/index",
+    "van-datetime-picker": "static/vant/datetime-picker/index"
   }
 }
