@@ -11,16 +11,17 @@
         <view class="ticket-box">
              <view class="ticket-block">
                 <view class="ticket-name">发布代金券数量</view>
-                <input type="text" value="1000(自输入)" />
+                <input type="number" bindblur="Commissionratio" value="" />
             </view>
-            <view class="ticket-block">
+            <view class="ticket-block"  bindtap="clickRule2">
                 <view class="ticket-name">指定商户</view>
                 <view class="ticket-flex">
-                    <view class="tf-name">不限(自选)</view>
+                    <view class="tf-name">默认不限/点击自选</view>
                     <image src="/static/images/right-arr1.png" />
                 </view>
                 <!-- <input type="text" value="20元现金抵用券" /> -->
             </view>
+
            <view class="ticket-block">
                 <view class="ticket-name">指定地区</view>
                 <view class="ticket-flex">
@@ -29,25 +30,29 @@
                 </view>
                 <!-- <input type="text" value="20元现金抵用券" /> -->
             </view>
+
+        <picker name="picker_hx" class="cybm_pic_1" value="{{df_value}}" data-selecthx="{{pic_array[hx_index].IndustryName}}" 
+        range="{{pic_array}}" range-key="{{'IndustryName'}}"  bindchange="bindPickerChange_hx"  >
             <view class="ticket-block">
                 <view class="ticket-name">指定行业</view>
                 <view class="ticket-flex">
-                    <view class="tf-name">餐饮,休闲(自选)</view>
+                    <view class="tf-name">{{Industryvalue}}</view>
                     <image src="/static/images/right-arr1.png" />
                 </view>
                 <!-- <input type="text" value="20元现金抵用券" /> -->
             </view>
+          </picker>
+
             <view class="ticket-block">
                 <view class="ticket-name">单商户领取限制</view>
-                <input type="text" value="100(自输入)" />
+                <input type="number" bindblur="Limit" value="" />
             </view>
             
             <view class="ticket-block">
-                <view class="ticket-name">托管推广佣金</view>
+                <view class="ticket-name">托管推广佣金/托管佣金为面值10%</view>
                 <view class="ticket-flex">
                     <view class="tf-name">
-                        托管佣金为面值10%
-                        <text>(佣金=10%*(发布数量*券面值))</text>
+                        {{Commission}}
                     </view>
                 </view>
                 <!-- <input type="text" value="20元现金抵用券" /> -->
@@ -55,6 +60,6 @@
         </view>
     </view>
 </view>
- <view class="playBtn">支付佣金</view>
+ <view class="playBtn" bindtap="pay">支付佣金</view>
 <!-- <view class="v-box" bindtap="imgbtn">点我</view>
 <image src="{{imageUrl}}" /> -->

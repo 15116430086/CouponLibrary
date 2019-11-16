@@ -197,3 +197,30 @@ page {
     color: #ffffff;
     font-size: 32rpx;
 }
+
+.ticket-blocks {
+  margin: 0px auto;
+  width: 100%;
+  height: auto;
+  padding-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  /* border-bottom: 1px solid #EDEDED; */
+}
+.bot-boxs {
+  width: calc(100% - 80rpx);
+  margin: 0px auto;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.bot-span {
+  color: #666;
+  font-size: 28rpx;
+  margin-left: 40rpx;
+}
