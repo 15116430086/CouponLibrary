@@ -1,0 +1,34 @@
+<!-- 搜索框 -->
+<view class="v-top">
+    <view class="home-top">
+        <view class="search-box">
+            <view class="search-left">
+                <image src="/static/images/serch.png" background-size="cover" style="margin-left:30rpx;margin-right:30rpx" />
+                <input value="" placeholder="商品/业务名称" bindInput="onChange" bindtap="onSearch" focus="true" />
+            </view>
+            <image src="/static/images/err.png" background-size="cover" style="margin-right:30rpx;" bindtap="onClear" v-if="flag==1" />
+        </view>
+        <view class="home-btn">搜索</view>
+    </view>
+</view>
+<view class="v-box">
+    <!-- <van-checkbox-group value="{{ result }}" bind:change="onChange">
+        <van-checkbox name="a">复选框 a</van-checkbox>
+        <van-checkbox name="b">复选框 b</van-checkbox>
+        <van-checkbox name="c">复选框 c</van-checkbox>
+    </van-checkbox-group> -->
+    <van-checkbox-group value="{{ result }}" bind:change="onChange">
+        <view class="v-block" wx:for="{{userlist}}">
+            <view class="v-left">
+                <image src="{{item.ImageOne==''?'/static/images/swp.png':item.ImageOne}}" />
+                <view class="v-mid">
+                    <view class="v-t">{{item.ProductName}}</view>
+                    <view class="v-b">售价：¥{{item.SalePrice}}</view>
+                </view>
+            </view>
+                <van-checkbox name="{{item.ProductID}}" checked-color="#E85819"></van-checkbox>
+        </view>
+        
+    </van-checkbox-group>
+</view>
+<view class="v-btn" bindtap="jumpBack">确定</view>

@@ -1,0 +1,46 @@
+<!-- pages/doorManager/doorManager.wxml -->
+<view class="v-box">
+    <view class="v-block">
+        <view class="v-title">
+            <view class="v-txt">{{datalist[0].ShopName}}</view>
+            <image bindtap="updateshop" src="/static/images/wrt3.png" />
+        </view>
+       <image src="/static/images/pen1.png" class="v-mes-image"/>
+    </view>
+</view>
+<view class="v-bot">
+    <view class="ticket-flex">
+        <view class="tf-left">
+            <image src="/static/images/ewm3.png" class="tf-left-image"/>
+            <view class="tf-name">普通商品</view>
+        </view>
+        <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
+    </view>
+    <view class="ticket-flex">
+        <view class="tf-left">
+            <image src="/static/images/man.png" class="tf-left-image"/>
+            <view class="tf-name">店员管理</view>
+        </view>
+        <view class="tf-left" bindtap="Jump">
+            <view class="tft-txt">{{datalist[0].Staffcount}}人</view>
+            <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
+        </view>
+    </view>
+    <view class="ticket-flex">
+        <view class="tf-left">
+            <image src="/static/images/shop.png" class="tf-left-image"/>
+            <view class="tf-name">普通商品</view>
+        </view>
+        <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
+    </view>
+</view>
+<view class="mask" hidden="{{Popup}}" bindtap="coles">
+    <view class="v-mask"  catchtap="nocoles" >
+        <view class="vmask-title">修改店铺名称</view>
+        <view class="v-mid">
+            <input type="text" placeholder="请输入店铺名称" value=""  bindblur="blurs" placeholder-class="p-class"/>
+            <image src="/static/images/wrt2.png" />
+        </view>
+        <view class="v-bot" bindtap="shopUpdate">确认修改</view>
+    </view>
+</view>

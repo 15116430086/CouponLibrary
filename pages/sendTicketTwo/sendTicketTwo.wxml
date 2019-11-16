@@ -1,122 +1,127 @@
-<wxs module="common" src="../../utils/common.wxs"></wxs>
+<!-- 导航 -->
+<view class='top_nav'>
+  <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.typeId}}' catchtap='handleTap'>
+    {{item.name}}
+  </view>
+</view>
 <!-- 代金券 -->
-<view class="mes-block">
+<view hidden='{{currentId!=1}}' class="mes-block">
   <view class="mes-top">
     <view class="top-mes">
-      {{describe}}
-
+      现金抵用券，将券发布至指定商户或券平台，商户
+      <text>免费领券</text> 赠送给其会员为您引流并赚取佣金。
     </view>
   </view>
-  <view class="ticket-box">
+</view>
+<view hidden='{{currentId!=2}}' class="mes-block">
+  <view class="mes-top">
+    <view class="top-mes">联盟商户购买商品团购券后，销售或赠送给消费者，消费者可使用团购券在线下或线上兑换商品。</view>
+  </view>
+</view>
 
-    <view class="ticket-block">
-      <view class="ticket-name">券类型</view>
-      <radio-group class="radio-group" bindchange="CouponTypeChange">
-        <radio class="radio" wx:for-items="{{CouponType}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
-          <text>{{item.value}}</text>
-        </radio>
-      </radio-group>
-    </view>
-
-
-    <view class="ticket-block">
-      <view class="ticket-name">券名称</view>
-      <input type="text" placeholder="输入券名称" bindblur="" data-id="CouponName1" value="" />
-    </view>
-    <view class="ticket-block">
-      <view class="ticket-name">券面值</view>
-      <input type="text" placeholder="输入券面值" data-id="CouponMoney1" value="" />
-    </view>
-    <view class="ticket-block">
-      <view class="ticket-name">领取上限</view>
-      <input type="number" placeholder="0为不限制数量" value="" />
-    </view>
-
-    <view class="ticket-block">
-      <view class="ticket-name">发布数量</view>
-      <input type="number" placeholder="输入发布数量" value="" />
-    </view>
-    <view class="ticket-block">
-      <view class="ticket-name">领购售价</view>
-      <input type="digit" placeholder="输入领购售价" value="" />
-    </view>
-    <view class="ticket-block">
-      <view class="ticket-name">领取规则</view>
-      <radio-group class="radio-group" bindchange="radioChange">
-        <radio class="radio" wx:for-items="{{ReceiveRule}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
-          <text>{{item.value}}</text>
-        </radio>
-      </radio-group>
-    </view>
-    <view class="ticket-block">
-      <view class="ticket-name">核销方式</view>
-      <radio-group class="radio-group" bindchange="radioChange">
-        <radio class="radio" wx:for-items="{{WriteOffType}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
-          <text>{{item.value}}</text>
-        </radio>
-      </radio-group>
-    </view>
-
-    <view class="ticket-block">
-      <view class="ticket-name">指定商品</view>
-      已选
-      <input type="text" value="0" />
-    </view>
-
-    <view class="ticket-block">
-      <view class="ticket-name">有效期</view>
-      <radio-group class="radio-group" bindchange="typeDataChange">
-        <radio class="radio" wx:for-items="{{typeData}}" wx:key="name" value="{{item.name}}" checked="{{item.checked}}">
-          <text>{{item.value}}</text>
-        </radio>
-      </radio-group>
-
-
-
-      <input type="text" wx:if="{{Datetype}}" value="" />
-      <view class="home-span" bindtap="showPopup3" wx:else>
-        <view>{{selectDate}}</view>
-        <image src="/static/images/sel.png" />
-      </view>
-
-    </view>
-    <view class="addImg">
-      <view class="addImg-name">使用规则</view>
-      <view class="addImg-box" bindtap="ruleaddimg">
-        <view wx:if="{{ruleimg1.length>0}}">
-          <block wx:for="{{ruleimg1}}">
-            <image src="{{item}}" />
-          </block>
-        </view>
-        <image src="/static/images/img.png" />
-
-      </view>
+<form class="ticket-box" bindsubmit="formSubmit">
+  <view class="ticket-block">
+    <view class="ticket-name">券名称</view>
+    <input type="text" placeholder="20元现金抵用券" name="CouponName" />
+  </view>
+  <view class="ticket-block">
+    <view class="ticket-name">券面值</view>
+    <input type="number" placeholder="20" name="CouponMoney" />
+  </view>
+  <view class="ticket-block">
+    <view class="ticket-name">发布数量</view>
+    <input type="number" placeholder="100" name="ReleaseNUM" />
+  </view>
+  <view class="ticket-block">
+    <view class="ticket-name">领取上限</view>
+    <input type="number" placeholder="1000" name="ReceiveUpperLimit" />
+  </view>
+  <view class="ticket-block">
+    <view class="ticket-name">领购售价</view>
+    <input type="number" placeholder="15" name="SalePrice" />
+  </view>
+  <!-- 领购规则 -->
+  <view class="ticket-block" bindtap="clickRule">
+    <view class="ticket-name">领购规则</view>
+    <view class="bot-box">
+      <view class="bot-left">可重复领取</view>
+      <image src="/static/images/botarr.png" class="bot-box-image" />
     </view>
   </view>
-  <!-- 添加券面图片 -->
+  <block wx:if="{{shareshow}}">
+    <view class="ticket-blocks">
+      <view class="bot-boxs" wx:for="{{getItem}}" data-id="{{item.id}}" data-type="{{item.type}}" bindtap="clickTrue" wx:key="index">
+        <view class="bot-span">{{item.title}}</view>
+        <image src="{{idx==item.id?'/static/images/ok.png':'/static/images/okk.png'}}" class="bot-ok" />
+      </view>
+    </view>
+  </block>
+  <!-- 核销方式 -->
+  <view class="ticket-block" bindtap="clickRule1">
+    <view class="ticket-name">核销方式</view>
+    <view class="bot-box">
+      <view class="bot-left">
+        线上受理
+        <text wx:if="{{idb=='001'}}" bindtap="jumpChoose">(请选择受理商品/业务)</text>
+      </view>
+      <image src="/static/images/botarr.png" class="bot-box-image" />
+    </view>
+  </view>
+  <block wx:if="{{shareshow1}}">
+    <view class="ticket-blocks">
+      <view class="bot-boxs" wx:for="{{getItem1}}" data-type="{{item.type}}" data-id="{{item.id}}" bindtap="clickTrue1" wx:key="index">
+        <view class="bot-span">{{item.title}}</view>
+        <image src="{{idb==item.id?'/static/images/ok.png':'/static/images/okk.png'}}" class="bot-ok" />
+      </view>
+    </view>
+  </block>
+  <!-- 券有效期 -->
+  <view class="ticket-block" bindtap="clickRule2">
+    <view class="ticket-name">券有效期</view>
+    <view class="bot-box">
+      <view class="bot-left">{{date}}</view>
+      <image src="/static/images/botarr.png" class="bot-box-image" />
+    </view>
+  </view>
+  <block wx:if="{{shareshow2}}">
+    <view class="ticket-blocks">
+      <view class="bot-boxs" wx:for="{{getItem2}}" data-id="{{item.id}}" bindtap="clickTrue2" wx:key="index">
+        <view class="bot-span">{{item.title}}</view>
+        <image src="{{idd==item.id?'/static/images/ok.png':'/static/images/okk.png'}}" class="bot-ok" />
+      </view>
+    </view>
+  </block>
+  <van-popup show="{{ show }}" position="bottom" z-index="300" bind:close="onClose" safe-area-inset-bottom>
+    <van-datetime-picker type="date" value="{{ currentDate }}" bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+  </van-popup>
+
+  <!-- 添加图片 -->
   <view class="addImg">
-    <view class="addImg-name">添加券面图片</view>
-    <view class="addImg-box" bindtap="addimg">
-      <image wx:if="{{coverImg1}}" src="{{coverImg1}}" />
-      <image wx:else src="/static/images/img.png" />
-      <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx" />
+    <view class="ticket-name">添加图片</view>
+    <view class="addImg-box">
+      <image src="{{imageOne}}" wx:if="{{imageOne}}" />
+      <image src="/static/images/img.png" bindtap="imgadd" wx:else></image>
+      <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left: 40rpx;" />
     </view>
   </view>
-  <view class="playBtn">开始发券</view>
-</view>
 
-
-<view>
-  <view>选择地址{{sheng}}-{{shi}}-{{qu}}</view>
-  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
-    <picker-view-column>
-      <view wx:for="{{provinces}}" style="line-height: 50px">{{item.RegionName}}</view>
-    </picker-view-column>
-    <picker-view-column>
-      <view wx:for="{{months}}" style="line-height: 50px">{{item}}</view>
-    </picker-view-column>
-    <picker-view-column>
-      <view wx:for="{{days}}" style="line-height: 50px">{{item}}</view>
-    </picker-view-column>
-  </picker-view>
-</view>
+  <!-- 使用规则 -->
+  <view class="addImg">
+    <view class="ticket-name">使用规则</view>
+    <view class="addImg-box">
+      <image src="{{imageTwo}}" wx:if="{{imageTwo}}" />
+      <image src="/static/images/img.png" bindtap="imgadd2" wx:else />
+      <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left: 40rpx;" />
+    </view>
+  </view>
+  <!-- 券详情 -->
+  <view class="addImg">
+    <view class="ticket-name">券详情</view>
+    <view class="addImg-box">
+      <image src="{{imageTre}}" wx:if="{{imageTre}}" />
+      <image src="/static/images/img.png" bindtap="imgadd3" wx:else />
+      <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left: 40rpx;" />
+    </view>
+  </view>
+  <button class="playBtn" formType="submit">开始发券</button>
+</form>

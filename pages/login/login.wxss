@@ -1,0 +1,98 @@
+/* pages/login/login.wxss */
+
+page {
+    background-color: #FF7031;
+}
+
+.v-box {
+    width: calc(100% - 80rpx);
+    height: auto;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 104rpx;
+    height: 104rpx;
+    display: block;
+    margin-top: 20rpx;
+}
+
+.v-topTitle {
+    color: #FFF;
+    font-size: 44rpx;
+    text-align: center;
+    margin: 20rpx auto;
+    font-weight: 600;
+}
+
+.v-topMes {
+    width: calc(100% - 80rpx);
+    color: #FFF;
+    font-size: 28rpx;
+    text-align: center;
+}
+
+.loginBtn {
+    display: block;
+    width: 598rpx;
+    height: 98rpx;
+    background: rgba(255, 240, 222, 1);
+    color: #E85819;
+    font-size: 32rpx;
+    text-align: center;
+    line-height: 98rpx;
+    border-radius: 20rpx;
+    margin-top: 60rpx;
+}
+
+.phoneBtn {
+    display: block;
+    width: 598rpx;
+    height: 98rpx;
+    background: #FF7031;
+    color: #FFF;
+    font-size: 32rpx;
+    text-align: center;
+    line-height: 98rpx;
+    border-radius: 20rpx;
+    margin-top: 40rpx;
+}
+
+.v-bot {
+    width: calc(100% - 80rpx);
+    height: 550rpx;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-radius: 20rpx;
+}
+
+.v-class {
+    width: 216rpx;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.v-class image {
+    width: 82rpx;
+    height: 84rpx;
+    display: block;
+    margin-bottom: 20rpx;
+}
+
+.v-title {
+    color: #666666;
+    font-size: 24rpx;
+    text-align: center;
+    margin-bottom: 10rpx;
+}

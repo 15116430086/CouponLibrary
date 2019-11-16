@@ -1,0 +1,21 @@
+<!--pages/phoneLogin/phoneLogin.wxml-->
+<view class="box">
+    <view class="home_top">
+        <view class="v-title">您好!</view>
+        <view class="v-tip">欢迎来到券库科技商家助手</view>
+    </view>
+</view>
+<view class="v-mid">
+    <view class="v-block">
+        <image src="/static/images/p.png" />
+        <input class="v-input" type="number" maxlength="11" placeholder-class="ip" placeholder="请输入手机号"/>
+    </view>
+    <view class="v-block">
+        <image src="/static/images/key.png" />
+        <input class="v-input1" type="number" maxlength="6" placeholder-class="ip" placeholder="输入验证码"/>
+        <view class="v-btn">发送验证码</view>        
+    </view>
+    <button class="v-true">确认登录</button>
+     <button class="v-wxtel" style="color:#016FB4;" open-type="getPhoneNumber" bindgetphonenumber="onPhoneLoginTap">授权微信手机号登录</button>
+    <view class="v-mes"><text style="color:#E85819">*</text>点击确认既为同意<text style="color:#016FB4">“用户协议”</text></view>
+</view>

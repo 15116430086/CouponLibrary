@@ -1,0 +1,48 @@
+ <view class="mes-block">
+        <view class="ticket-box">
+             <view class="ticket-block">
+                <view class="ticket-name">启用状态</view>
+                <view class="ticket-flex">
+                    <view class="tf-name" style="color:#E30000">未启用</view>
+                    <!-- <image src="/static/images/right-arr1.png" /> -->
+                </view>
+            </view>
+            <view class="ticket-block">
+                <view class="ticket-name">指定商户</view>
+                <view class="ticket-flex">
+                    <view class="tf-name">不限（自选）</view>
+                    <image src="/static/images/right-arr1.png" />
+                </view>
+            </view>
+             <view class="ticket-block">
+                <view class="ticket-name">指定地区</view>
+                <view class="ticket-flex">
+                    <view class="tf-name">不限（自选）</view>
+                    <image src="/static/images/right-arr1.png" />
+                </view>
+            </view>
+             <view class="ticket-block">
+                <view class="ticket-name">指定行业</view>
+                <view class="ticket-flex">
+                    <view class="tf-name">餐饮、休闲（自选）</view>
+                    <image src="/static/images/right-arr1.png" />
+                </view>
+            </view>
+          
+            <view class="ticket-block">
+                <view class="ticket-name">补贴联盟商户金额</view>
+                <input type="text" value="#100（自输入）" />
+            </view>
+            
+            <view class="ticket-block">
+                <view class="ticket-name">黑名单</view>
+                <view class="ticket-flex">
+                    <view class="tf-name">无</view>
+                    <!-- <image src="/static/images/right-arr1.png" /> -->
+                </view>
+                <!-- <input type="text" value="20元现金抵用券" /> -->
+            </view>
+            
+        </view>
+        <view class="playBtn">确定</view>
+    </view>

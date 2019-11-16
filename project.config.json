@@ -39,13 +39,36 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"gamePlugin": {
 			"current": -1,
 			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "我要发券",
+					"pathName": "pages/sendTicketTwo/sendTicketTwo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "选择关联商品",
+					"pathName": "pages/chooseBuyGoods/chooseBuyGoods",
+					"query": "",
+					"scene": null
+				}
+			]
 		}
 	}
 }

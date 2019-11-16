@@ -1,0 +1,56 @@
+<!-- pages/jointPro/jointPro.wxml -->
+<view class='top_nav'>
+    <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.typeId}}' catchtap='handleTap'>
+        {{item.name}}
+    </view>
+</view>
+<view hidden='{{currentId!=1}}'>
+    <block>
+        <view class="v-box">
+            <view class="v-block">
+                <view class="v-left">
+                    <image src="/static/images/swp.png" />
+                    <view class="v-mid">
+                        <view class="v-t">
+                            中国联通
+                            <text>未启用</text>
+                        </view>
+                        <view class="v-b">
+                            <view>售价 ¥200</view>
+                            <view>补贴 ¥50</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="v-right">促销规则</view>
+            </view>
+        </view>
+        <view class="v-btn">
+            添加促销商品
+        </view>
+    </block>
+</view>
+<view hidden='{{currentId!=2}}'>
+     <block>
+        <view class="v-box">
+            <view class="v-block">
+                <view class="v-left">
+                    <image src="/static/images/swp.png" />
+                    <view class="v-mid" style="justify-content: space-around;">
+                        <view class="v-t">
+                            20元抵用券
+                        </view>
+                        <view class="v-b">
+                            <view>面值 ¥200</view>
+                            <view>券成本 ¥50</view>
+                        </view>
+                    </view>
+                </view>
+                <view class="v-right" wx:if="{{0==1}}">配置产品</view>
+                <view class="v-right">配置查看</view>
+            </view>
+        </view>
+        <view class="v-btn">
+            选择券类型
+        </view>
+    </block>
+</view>

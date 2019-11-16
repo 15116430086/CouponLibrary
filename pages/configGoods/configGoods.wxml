@@ -1,0 +1,87 @@
+<!-- 搜索框 -->
+<block>
+    <view class="v-top">
+        <view class="home-top">
+            <view class="home-span" bindtap="showPopup">
+                <view>面值金额</view>
+                <image src="/static/images/sel.png" />
+            </view>
+            <view class="home-span">
+                <view>补贴金额</view>
+                <image src="/static/images/sel.png" />
+            </view>
+            <view class="h-right" bindtap="onlyMine">仅查看我的</view>
+        </view>
+    </view>
+    <view class='top_nav'>
+        <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.typeId}}' catchtap='handleTap'>
+            {{item.name}}
+        </view>
+    </view>
+</block>
+<view hidden='{{currentId!=1}}'>
+    <block>
+        <view class="v-box">
+            <van-checkbox-group value="{{ result }}" bind:change="onChange">
+                <view class="v-block">
+                    <view class="v-left">
+                        <image src="/static/images/swp.png" />
+                        <view class="v-mid">
+                            <view class="v-t">中国联通宽带受理业务</view>
+                            <view class="v-b">时尚水果店</view>
+                            <view class="v-p">售价¥100 l 补贴¥50</view>
+                        </view>
+                    </view>
+                    <van-checkbox name="c" checked-color="#E85819"></van-checkbox>
+                </view>
+                <view class="v-block">
+                    <view class="v-left">
+                        <image src="/static/images/swp.png" />
+                        <view class="v-mid">
+                            <view class="v-t">中国联通宽带受理业务</view>
+                            <view class="v-b">时尚水果店</view>
+                            <view class="v-p">售价¥100 l 补贴¥50</view>
+                        </view>
+                    </view>
+                    <van-checkbox name="b" checked-color="#E85819"></van-checkbox>
+                </view>
+            </van-checkbox-group>
+        </view>
+        <view class="v-btn">确定</view>
+    </block>
+</view>
+<view hidden='{{currentId!=2}}'></view>
+<view hidden='{{currentId!=3}}'>
+    <block>
+        <view class="v-box">
+            <van-checkbox-group value="{{ result }}" bind:change="onChange">
+                <view class="v-block">
+                    <view class="v-left">
+                        <image src="/static/images/swp.png" />
+                        <view class="v-mid">
+                            <view class="v-t">中国联通宽带受理业务</view>
+                            <view class="v-b">时尚水果店</view>
+                            <view class="v-p">售价¥100 l 补贴¥50</view>
+                        </view>
+                    </view>
+                    <van-checkbox name="c" checked-color="#E85819"></van-checkbox>
+                </view>
+                <view class="v-block">
+                    <view class="v-left">
+                        <image src="/static/images/swp.png" />
+                        <view class="v-mid">
+                            <view class="v-t">中国联通宽带受理业务</view>
+                            <view class="v-b">时尚水果店</view>
+                            <view class="v-p">售价¥100 l 补贴¥50</view>
+                        </view>
+                    </view>
+                    <van-checkbox name="b" checked-color="#E85819"></van-checkbox>
+                </view>
+            </van-checkbox-group>
+        </view>
+        <view class="v-btn">确定</view>
+    </block>
+</view>
+<van-popup show="{{ show }}" position="bottom" custom-style="height: auto;" bind:close="onClose" safe-area-inset-bottom>
+    <van-picker show-toolbar title="标题" columns="{{ columns }}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-popup>
