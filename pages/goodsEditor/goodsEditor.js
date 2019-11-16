@@ -61,6 +61,7 @@ Page({
 
   //点击发布按钮
   ReleaseProduct: function (event) {
+    console.log(this.data.ProductName);
     if (!this.data.ProductName) {
       wx.showToast({
         title: '请输入商品名称!',

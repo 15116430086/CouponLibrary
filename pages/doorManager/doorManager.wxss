@@ -108,3 +108,61 @@ page {
     height: 28rpx;
     margin-right: 20rpx;
 }
+.mask {
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.v-mask {
+    width: calc(100% - 80rpx);
+    height: 382rpx;
+    background-color: #ffffff;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 32rpx;
+    color: #333333;
+}
+
+.v-mid {
+    width: 476rpx;
+    height: 88rpx;
+    background-color: #EDEDED;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.v-mid input {
+    width: calc(100% - 66rpx);
+    height: 100%;
+    text-indent: 20rpx;
+    text-align: left;
+    margin-left: 30rpx;
+}
+
+.v-mid image {
+    width: 26rpx;
+    height: 26rpx;
+    display: block;
+    margin-right: 60rpx;
+}
+
+.p-class {
+    color: #E0E0E0;
+}
+
+.v-bot {
+    color: #E85819;
+    font-weight: 600;
+}
