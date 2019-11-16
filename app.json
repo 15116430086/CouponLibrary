@@ -1,18 +1,20 @@
 {
   "pages": [
+    "pages/fastGet/fastGet",
+    "pages/shopChoose/shopChoose",
+    "pages/sendTicketMes/sendTicketMes",
+    "pages/goodsEditor/goodsEditor",
     "pages/index/index",
+    "pages/shopCli/shopCli",
     "pages/myMoney/myMoney",
     "pages/banlanceMes/banlanceMes",
-        "pages/home/home",
-    "pages/index/index",
+    "pages/home/home",
     "pages/moneyDetail/moneyDetail",
     "pages/management/management",
-    "pages/goodsEditor/goodsEditor",
     "pages/goodsType/goodsType",
     "pages/yewuDescribe/yewuDescribe",
     "pages/goodsNotice/goodsNotice",
     "pages/orderManagement/orderManagement",
-
     "pages/goodsManager/goodsManager",
     "pages/businessAccept/businessAccept",
     "pages/logs/logs",
@@ -22,7 +24,6 @@
     "pages/sendTicketOne/sendTicketOne",
     "pages/sendTicket/sendTicket",
     "pages/storeMes/storeMes",
-    "pages/sendTicketMes/sendTicketMes",
     "pages/sendTicketConfig/sendTicketConfig",
     "pages/paySuccess/paySuccess",
     "pages/orderPay/orderPay",
@@ -39,8 +40,6 @@
     "pages/staffChoose/staffChoose",
     "pages/staffManagements/staffManagements",
     "pages/thronesManagers/thronesManagers",
-
-
     "template/swiper/swiper",
     "template/ScrollView/ScrollView",
     "template/HotTicket/HotTicket",
