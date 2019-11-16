@@ -53,6 +53,7 @@ Page({
       chat.setData({
         pageIndex: parseInt(chat.data.pageIndex + 1)
       });
+      console.log(chat.data.applyList);
     } else {
       wx.showToast({
         title: json.msg,
@@ -65,7 +66,12 @@ Page({
         let that = this;
         let applyList = that.data.applyList;
         var item = applyList[index];
-        item.isSelect = !item.isSelect;
+      if (item.isSelect =='false'){
+        item.isSelect ='true'
+      }else{
+        item.isSelect = 'false'
+      }
+        //item.isSelect = !item.isSelect;
         this.setData({
             applyList: this.data.applyList,
         });
@@ -86,5 +92,47 @@ Page({
       url: '../doorScan/doorScan?shopid=' + this.data.shopID,
     })
   },
+  addAdministration:function(event){
+    var list="";
+    for (var s in this.data.applyList){
+      if (this.data.applyList[s].isSelect=='true'){
+        list+=this.data.applyList[s].StaffID+",";
+      }
+    }
+    if(list!=""){
+      wx.showLoading({
+        title: "数据提交中...",
+        mask: true
+      });
+      var datas={
+        item: list,
+        shopID:this.data.shopid
+      }
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/updateStaff", "POST", datas, app.globalData.appkeyid, this.updateStaff);
+    }else{
+      wx.showToast({
+        title: "请选择店员",
+        icon: "none"
+      });
 
+    }
+  },
+  updateStaff:function(res){
+    var chat=this;
+    var json=res.data.Data;
+    if(json.flag){
+      wx.showToast({
+        title: "添加成功",
+        icon: "none"
+      });
+      wx.redirectTo({
+        url: "../staffManagements/staffManagements?ShopID=" + chat.data.shopid
+      })
+    }else{
+      wx.showToast({
+        title: "添加失败",
+        icon: "none"
+      });
+    }
+  }
 })
