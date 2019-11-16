@@ -1,9 +1,10 @@
 {
     "pages": [
+        "pages/login/login",
+        "pages/startTicket/startTicket",
         "pages/chooseBuyGoods/chooseBuyGoods",
         "pages/home/home",
         "pages/index/index",
-        "pages/login/login",
         "pages/logs/logs",
         "pages/moneyDetail/moneyDetail",
         "pages/management/management",
@@ -36,11 +37,9 @@
         "pages/doorScan/doorScan",
         "pages/staffChoose/staffChoose",
         "pages/staffManagements/staffManagements",
-        "pages/thronesManagers/thronesManagers", <<
-        << << < HEAD ===
-        === =
-        "pages/doorManager/doorManager", >>>
-        >>> > 9918 deff280cef6b7c1f7cf44bd261c752e40a77 "template/swiper/swiper",
+        "pages/thronesManagers/thronesManagers",
+        "pages/doorManager/doorManager", 
+        "template/swiper/swiper",
         "template/ScrollView/ScrollView",
         "template/HotTicket/HotTicket",
         "template/ShopMes/ShopMes",
