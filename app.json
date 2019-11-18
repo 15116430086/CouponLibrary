@@ -1,8 +1,8 @@
 {
     "pages": [
+        "pages/industryChoose/industryChoose",
         "pages/login/login",
         "pages/startTicket/startTicket",
-        "pages/industryChoose/industryChoose",
         "pages/chooseBuyGoods/chooseBuyGoods",
         "pages/home/home",
         "pages/index/index",
