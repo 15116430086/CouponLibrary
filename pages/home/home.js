@@ -9,7 +9,13 @@ Page({
    */
   data: {
     CouponCount: null,
-    lastpage: 0
+    lastpage: 0,
+    noticeList:[
+      {title:"A商家领用了100张【10元现金券】"},
+      { title: "B商家领用了100张【10元现金券】" },
+      { title: "C商家领用了100张【10元现金券】" },
+
+    ]
   },
   onWxScanCode: function () {
     wx.navigateTo({
@@ -42,6 +48,27 @@ Page({
     }
   },
 
+Jumptap:function(){
+   wx.navigateTo({
+     url: '../getTicketList/getTicketList',
+   })
+},
+
+  noticetap:function(){
+    wx.navigateTo({
+      url: '../sysNotice/sysNotice',
+    })
+  },
+
+
+  JumpwatchMesOne:function(e){
+    var releaseid = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../watchMesOne/watchMesOne?releaseid=' + releaseid,
+    })
+  },
+
+  
   /**
    * 生命周期函数--监听页面加载
    */

@@ -19,12 +19,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-      this.data.CouponID = options.CouponID;
+    
       this.data.ReceiveID = options.ReleaseID;
       var datas = {
         ReleaseID: this.data.ReceiveID,
         groupId: app.globalData.AppGroupInfo.GroupID,
-        couponId: this.data.CouponID,
         LatitudeX: app.globalData.latitudeX || "28.22778",
         LongitudeY: app.globalData.longitudeY || "112.93886"
 

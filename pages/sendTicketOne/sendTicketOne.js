@@ -31,6 +31,17 @@ Page({
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponReleaseList", "POST", datas, app.globalData.appkeyid, this.GetCouponReleaseList);
   },
 
+  jumpOk(e){
+    let index = e.currentTarget.dataset.index;
+    let CouponID = e.currentTarget.dataset.couponid;
+    let datalist = this.data.datalist;
+    let data = JSON.stringify(datalist[index]);
+    console.log(data)
+    wx.navigateTo({
+      url: '../startTicket/startTicket?pCoupon_Info=' + data + "&CouponID=" + CouponID,
+    })
+  },
+
   GetCouponReleaseList:function(res){
     wx.hideLoading({});
     var chat=this;

@@ -1,0 +1,72 @@
+<!-- pages/startTicket/startTicket.wxml -->
+<view class="v-box">
+    <view class="v-top">
+        <view class="v-title">代金券发布</view>
+        <view class="v-rule">
+            <text>注*</text>
+            配置联盟商代金券领取权限，并支付联盟商推广托管佣金，仅会员成功核销后，才结算佣金。代金券过期，佣金将自动退还。
+        </view>
+    </view>
+    <view class="mes-block">
+        <view class="ticket-box">
+             <view class="ticket-block">
+                <view class="ticket-name">发布代金券数量</view>
+                <input type="number" bindblur="Commissionratio" value="" />
+            </view>
+            <view class="ticket-block">
+                <view class="ticket-name">指定商户</view>
+                <view class="ticket-flex" bindtap="showHide">
+                    <view class="tf-name" wx:if="{{sign==1}}">全部</view>
+                    <view class="tf-name" wx:elif="{{sign==2}}">自营店铺</view>
+                    <view class="tf-name" wx:elif="{{sign==3}}">已选{{GroupIDList.length}}个商户</view>
+                    <image src="/static/images/right-arr1.png" />
+                </view>
+                <view class="t-botbox" wx:if="{{shows}}">
+                    <view class="t-bblock" wx:for="{{contents}}" data-id="{{item.id}}" data-index="{{index}}" wx:key="index" bindtap="selChoose">
+                        <view class="t-bbname">{{item.title}}</view>
+                        <image src="{{idx==item.id?'/static/images/ok.png':'/static/images/okk.png'}}" />
+                    </view>
+                </view>
+                <!-- <input type="text" value="20元现金抵用券" /> -->
+            </view>
+
+           <view class="ticket-block" wx:if="{{shareshow2}}">
+                <view class="ticket-name">指定地区</view>
+                <view class="ticket-flex">
+                    <view class="tf-name">湖南 丨长沙</view>
+                    <image src="/static/images/right-arr1.png" />
+                </view>
+                <!-- <input type="text" value="20元现金抵用券" /> -->
+            </view>
+
+        
+            <view class="ticket-block"  wx:if="{{shareshow2}}">
+                <view class="ticket-name">指定行业</view>
+                <view class="ticket-flex">
+                    <view class="tf-name">{{Industryvalue}}</view>
+                    <image src="/static/images/right-arr1.png" />
+                </view>
+                <!-- <input type="text" value="20元现金抵用券" /> -->
+            </view>
+
+
+            <view class="ticket-block">
+                <view class="ticket-name">单商户领取限制</view>
+                <input type="number" bindblur="Limit" value="" />
+            </view>
+            
+            <view class="ticket-block">
+                <view class="ticket-name">托管推广佣金/托管佣金为面值10%</view>
+                <view class="ticket-flex">
+                    <view class="tf-name">
+                        {{Commission}}
+                    </view>
+                </view>
+                <!-- <input type="text" value="20元现金抵用券" /> -->
+            </view>
+        </view>
+    </view>
+</view>
+ <view class="playBtn" bindtap="pay">支付佣金</view>
+<!-- <view class="v-box" bindtap="imgbtn">点我</view>
+<image src="{{imageUrl}}" /> -->

@@ -1,5 +1,5 @@
 <view class="v-box">
     <image src="/static/images/erwm.png" />
-    <view class="v-name">扫码加入</view>
+    <view class="v-name" bindtap="addStaff">扫码加入</view>
 </view>
 

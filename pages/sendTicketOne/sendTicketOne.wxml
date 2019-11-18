@@ -9,7 +9,7 @@
 </view>
 <view class="mes-box">
  <view class="ticket-box"  wx:if="{{!datalist}}">暂无发券记录 </view>
-<block wx:for="{{datalist}}">
+<block wx:for="{{datalist}}" wx:key="index" wx:for-index="index">
   <view class="ticket-box">
         <view class="tb-title">
             <view>{{item.CouponName}}</view>
@@ -29,7 +29,7 @@
             <view>过期数量 :{{item.ExpireNUM}}  </view>
         </view>
         <view class="tb-bot">
-            <view style="margin-left:50rpx">继续发券</view>
+            <view style="margin-left:50rpx"  bindtap="jumpOk" data-index="{{index}}" data-CouponID="{{item.CouponID}}">继续发券</view>
             <view style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" bindtap="Details">查看明细</view>
         </view>
     </view>

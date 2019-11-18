@@ -4,11 +4,11 @@
   <view class="home-top">
     <view class="homeTop-name">湖南基数科技</view>
     <view class="homeTop-left">
-      <view class="search-box" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >
+      <view class="search-box" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" bindtap="Jumptap" >
         <image src="/static/images/serch.png" background-size="cover"></image>
         <view>搜索领券</view>
       </view>
-      <view class="mes-box">
+      <view class="mes-box" bindtap="noticetap">
         <view>{{CouponCount.countNewMsg}}</view>
         <image src="/static/images/talk.png" background-size="cover" style="width:23.45px;height:23.64px"></image>
       </view>
@@ -44,7 +44,11 @@
       </view>
     </view>
     <!-- 通知栏上下轮播 -->
-    <view class="dyn-botmes">A商家领用了100张【10元现金抵用券】</view>
+    <swiper class="dyn-botmes" interval="3000" autoplay="true" vertical='true' circular='true'>
+      <block wx:for="{{CouponCount.ReceiveCouponList}}" wx:key="{{index}}" >
+      <swiper-item><view bindtap="JumpwatchMesOne" data-id="{{item.ReleaseID}}" >{{item.GroupName}}领取了{{item.ReceiveNUM}}张【{{item.CouponName}}】</view></swiper-item>
+      </block>
+    </swiper>
   </view>
   <!-- 导航栏 -->
   <view class="home-nav">
@@ -84,7 +88,7 @@
       <image src="/static/images/home/9.png"></image>
    
     </navigator>
-    <navigator url="../goodsManager/goodsManager" hover-class="none">
+    <navigator url="../shopCli/shopCli" hover-class="none">
       <image src="/static/images/home/10.png"></image>
        
     </navigator>

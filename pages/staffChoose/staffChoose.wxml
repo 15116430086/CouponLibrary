@@ -7,10 +7,10 @@
             <view class="v-name">{{item.Name}}</view>
         </view>
         <view class="v-right">
-            <image src="{{item.isSelect?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-arr" />
+            <image src="{{item.isSelect=='true'?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-arr" />
         </view>
     </view>
     
 </view>
 
-<view class="v-btn">添加为管理员</view>
+<view class="v-btn" bindtap="addAdministration">添加为管理员</view>

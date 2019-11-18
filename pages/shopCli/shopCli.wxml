@@ -2,37 +2,43 @@
 <view class="v-box">
     <view class="v-block">
         <view class="v-c">
-            <view class="v-title">今日访客</view>
-            <view class="v-num" style="color:#E85819">2</view>
+            <view class="v-title">今日成交金额</view>
+            <view class="v-num" style="color:#E85819">{{todaySumMoney}}</view>
         </view>
         <view class="v-c">
             <view class="v-title">今日成交订单</view>
-            <view class="v-num">0</view>
+            <view class="v-num">{{todayOrderNUM}}</view>
         </view>
         <view class="v-c">
             <view class="v-title">总成交订单</view>
-            <view class="v-num">0</view>
+            <view class="v-num">{{totalOrderNUM}}</view>
         </view>
         <view class="v-c">
             <view class="v-title">总销售额 (元)</view>
             <view class="v-num">
                 <text>￥</text>
-                12000
+                {{totalSumMoney}}
             </view>
         </view>
     </view>
 </view>
-<view class="v-bot">
-    <view class="vb-name">商品管理</view>
-    <image src="/static/images/right-arr1.png" />
-</view>
-<view class="v-bot">
-    <view class="vb-name">订单管理</view>
-    <view class="v-right">
-        <text>有两笔订单待处理</text>
-    <image src="/static/images/right-arr1.png" />
+
+<navigator url="../goodsManager/goodsManager">
+    <view class="v-bot">
+        <view class="vb-name">商品管理</view>
+        <image src="/static/images/right-arr1.png" />
     </view>
-</view>
+</navigator>
+
+<navigator url="../orderManagement/orderManagement">
+    <view class="v-bot">
+        <view class="vb-name">订单管理</view>
+        <view class="v-right">
+            <text>有{{toBeShippedNUM}}笔订单待处理</text>
+        <image src="/static/images/right-arr1.png" />
+        </view>
+    </view>
+</navigator>
 
 <view class="v-bot" style="margin-top:20rpx">
     <view class="vb-name">分享我的店铺</view>

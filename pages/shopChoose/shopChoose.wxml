@@ -1,0 +1,100 @@
+<!-- 搜索框 -->
+<view class="v-top">
+  <view class="home-top">
+    <view class="home-span" bindtap="showPopup1">
+      <view>全城</view>
+      <image src="/static/images/sel.png" />
+    </view>
+
+     <view class="home-span" bindtap="showPopup2">
+        <view>{{industryName}}</view>
+        <image src="/static/images/sel.png" />
+      </view>
+
+    <!-- <view class="home-span">
+      <view>行业</view>
+      <image src="/static/images/sel.png" />
+    </view> -->
+
+    <view class="search-box">
+      <view class="search-left">
+        <image src="/static/images/serch.png" background-size="cover" style="margin-left:20rpx;margin-right:10rpx" />
+        <input value="" placeholder="请输入联系人或联系电话" placeholder-class="ip" bindinput="contactsOrTelephoneInput" bindtap="onSearch" focus="true" />
+      </view>
+      <image src="/static/images/err.png" background-size="cover" style="margin-right:15rpx;" bindtap="onClear" v-if="flag==1" />
+    </view>
+    <view class="home-btn" bindtap="search">搜索</view>
+  </view>
+</view>
+
+<view class="v-box">
+  <van-checkbox-group value="{{ result }}" bind:change="onChange">
+
+    <block wx:for="{{Grouplist}}" wx:for-index="index" wx:key="GroupID">
+      <view class="v-block">
+        <view class="v-left">
+          <image src="/static/images/swp.png" />
+          <view class="v-mid">
+            <view class="v-t">{{item.GroupName}}</view>
+            <view class="v-b">{{item.Introduction}}</view>
+          </view>
+        </view>
+        <van-checkbox name="{{index}}" checked-color="#E85819"></van-checkbox>
+      </view>
+    </block>
+
+  </van-checkbox-group>
+</view>
+
+
+
+<view class="mask" wx:if="{{showMask}}" >
+  <view class="mask-b" bindtap="downMask">
+    
+  </view>
+  <view class="mask-bot">
+        <view class="m-span">
+            <view class="m-title">选择商户预览</view>
+            <view class="m-right">
+                <image  src="/static/images/del.png"/>
+                <view class="m-txt">清空选择</view>
+            </view>
+        </view>
+        <view class="m-box">
+            <view class="m-block">
+                <view class="mb-right">
+                    <image src="/static/images/swp.png" />
+                    <view class="mb-txt">钵钵当道（石锅饭）钵钵当道（石锅</view>
+                </view>
+                <image src="/static/images/cha2.png" class="m-cha"/>
+            </view>
+        </view>
+    </view>
+    
+</view>
+
+
+<view class="v-bot-btn">
+<view class="v-btn">
+  <view class="vb-left" bindtap="shoptap">
+    <image src="/static/images/ok.png" />
+    <view class="vb-txt">已选择
+      <text>{{number}}</text>个店铺</view>
+  </view>
+  <view class="vb-right" bindtap="isChoice">确认选择</view>
+</view>
+</view>
+
+
+   <!-- 券类型 -->
+    <van-popup
+      show="{{show2}}"
+      bind:close="onClose"
+      position="bottom"
+      close-on-click-overlay
+      overlay
+      safe-area-inset-bottom
+    >
+      <van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+    </van-popup>
+<!-- <view bindtap="dianji">dianwo</view> -->

@@ -1,0 +1,252 @@
+page {
+    background-color: #EDEDED;
+}
+
+.v-box {
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.v-top {
+    width: 100%;
+    height: 280rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 8rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.v-title {
+    width: calc(100% - 80rpx);
+    color: #000000;
+    text-align: left;
+    font-size: 32rpx;
+    font-weight: 600;
+    margin-bottom: 40rpx;
+}
+
+.v-rule {
+    width: calc(100% - 80rpx);
+    color: #999999;
+    text-align: left;
+    font-size: 28rpx;
+}
+
+.v-rule text {
+    color: #E30000
+}
+
+.mes-block {
+    width: 100%;
+    height: auto;
+}
+
+.ticket-box {
+    width: 100%;
+    height: auto;
+    background-color: #ffffff;
+}
+
+.ticket-block {
+    margin: 0px auto;
+    width: calc(100% - 80rpx);
+    height: auto;
+    padding-top: 40rpx;
+    padding-bottom: 10rpx;
+    border-bottom: 1px solid #EDEDED;
+}
+
+.ticket-blocks {
+    margin: 0px auto;
+    width: calc(100% - 80rpx);
+    height: auto;
+    padding-top: 20rpx;
+    border-bottom: 1px solid #EDEDED;
+}
+
+.ticket-name {
+    color: #666666;
+    font-size: 28rpx;
+    font-weight: 600;
+    margin-bottom: 10rpx;
+}
+
+.textarea {
+    font-size: 28rpx;
+    height: 100rpx;
+    /* margin: 10%; */
+    /* background-color: lightgray;
+    width: 80%; */
+    /* height: 100px; */
+}
+
+.placeholder {
+    font-size: 28rpx;
+    color: gray;
+}
+
+.addImg {
+    margin: 20rpx auto;
+    width: calc(100% - 80rpx);
+    height: auto;
+    border-bottom: 1px solid #EDEDED;
+    background-color: #ffffff;
+    padding-top: 10rpx;
+    padding-bottom: 20rpx;
+}
+
+.addImg-name {
+    color: #000000;
+    font-size: 16px;
+    text-indent: 40rpx;
+}
+
+.addImg-box {
+    margin-top: 25rpx;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.addImg-box image {
+    width: 128rpx;
+    height: 128rpx;
+}
+
+.playBtn {
+    width: 670rpx;
+    height: 98rpx;
+    background: rgba(232, 88, 25, 1);
+    text-align: center;
+    line-height: 98rpx;
+    border-radius: 20rpx;
+    margin: 40rpx auto;
+    color: #ffffff;
+    font-size: 32rpx;
+}
+
+.ticket-flex {
+    /* margin-top: 10rpx; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tf-name {
+    color: #000000;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+
+.ticket-flex image {
+    width: 10rpx;
+    height: 18rpx;
+}
+
+.t-botbox {
+    width: 100%;
+    height: auto;
+}
+
+.t-bblock {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80rpx;
+    justify-content: space-between;
+}
+
+.t-bbname {
+    font-size: 28rpx;
+    color: #666666;
+    text-indent: 40rpx;
+}
+
+.t-bblock image {
+    width: 32rpx;
+    height: 32rpx;
+    display: block;
+}
+
+.input-box {
+    width: 100%;
+    height: auto;
+}
+
+.input-block {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: #999999;
+    font-size: 28rpx;
+    border-bottom: 1px solid #EDEDED;
+}
+
+.input-block input {
+    font-size: 28rpx;
+    color: #333333;
+    margin-left: 40rpx;
+}
+
+.ip {
+    color: #CCCCCC;
+    font-size: 24rpx;
+}
+
+.tf-name text {
+    color: #CCCCCC;
+    font-size: 24rpx;
+    font-weight: 600;
+}
+
+.playBtn {
+    width: 670rpx;
+    height: 98rpx;
+    background: rgba(232, 88, 25, 1);
+    text-align: center;
+    line-height: 98rpx;
+    border-radius: 20rpx;
+    margin: 40rpx auto;
+    color: #ffffff;
+    font-size: 32rpx;
+}
+
+.ticket-blocks {
+  margin: 0px auto;
+  width: 100%;
+  height: auto;
+  padding-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  /* border-bottom: 1px solid #EDEDED; */
+}
+.bot-boxs {
+  width: calc(100% - 80rpx);
+  margin: 0px auto;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.bot-span {
+  color: #666;
+  font-size: 28rpx;
+  margin-left: 40rpx;
+}

@@ -2,6 +2,7 @@
 var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1;
+var quick = 0;
 Page({
 
   /**
@@ -19,6 +20,7 @@ Page({
         id: 2
       }
     ],
+    qData: null
   },
   GetData: function() {
     let that = this;
@@ -33,9 +35,9 @@ Page({
     data.pLatitudeX = app.globalData.latitudeX;
     data.pLongitudeY = app.globalData.longitudeY;
     data.pQueryKey = that.data.searchValue;
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/QueryCouponInfo", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/QueryCouponInfo", "POST", data, app.globalData.appkeyid, this.GetQueryCouponBack)
   },
-  GetDataBack: function(json) {
+  GetQueryCouponBack: function(json) {
     console.log(json);
     var json = json.data.Data;
     //隐藏 加载中的提示
@@ -58,9 +60,7 @@ Page({
         });
       }
 
-    }
-    else
-    {
+    } else {
       wx.showToast({
         title: '没有找到相关数据!',
         icon: 'none',
@@ -75,8 +75,30 @@ Page({
   onLoad: function(options) {
     let that = this;
     page = 1;
-    that.GetData(page);
+    if (options.quick == 0) {
+
+      that.GetData(page);
+    } else {
+      quick = options.quick;
+      var data = JSON.parse(options.data);
+      that.setData({
+        qData: data
+      })
+      that.QuickQueryCoupon(page);
+    }
   },
+  QuickQueryCoupon: function(page) {
+    let that = this;
+    var data = that.data.qData;    
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pPageIndex = page;
+    data.pPageSize = 30;
+    data.pLatitudeX = app.globalData.latitudeX;
+    data.pLongitudeY = app.globalData.longitudeY;
+    data.pQueryKey = that.data.searchValue;
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/QuickQueryCouponInfo", "POST", data, app.globalData.appkeyid, that.GetQueryCouponBack)
+  },
+
   onbindblur: function(e) {
     this.setData({
       searchValue: e.detail.value
@@ -85,9 +107,13 @@ Page({
   onSearch: function(event) {
     let that = this;
     page = 1;
-    that.GetData(page);
+    if (quick == 0) {
+      that.GetData(page);
+    } else {
+      that.QuickQueryCoupon(page);
+    }
   },
-  onBindReceiveTap: function (event) {
+  onBindReceiveTap: function(event) {
     wx.navigateTo({
       url: '../ticketMes/ticketMes?CouponID=' + event.currentTarget.dataset.couponid + '&ReleaseID=' + event.currentTarget.dataset.releaseid,
     })
