@@ -197,3 +197,121 @@ page {
 .vb-txt text {
     color: #E85819
 }
+
+.v-bot-btn {
+    width: 100%;
+    height: 180rpx;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    background-color: #ffffff;
+}
+
+.mask {
+    width: 100%;
+    height: calc(100% - 180rpx);
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 300;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* align-items: flex-end; */
+}
+
+.mask-bot {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 20rpx 20rpx 0 0;
+    height: auto;
+    max-height: 452rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    z-index: 1000;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    /* justify-content: center; */
+}
+
+.m-span {
+    margin-top: 40rpx;
+    width: calc(100% - 80rpx);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.m-title {
+    font-size: 32rpx;
+    color: #333333;
+}
+
+.m-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: #CCCCCC;
+    font-size: 22rpx;
+}
+
+.m-right image {
+    width: 28rpx;
+    height: 34rpx;
+    margin-right: 10rpx;
+}
+
+.m-box {
+    margin-top: 30rpx;
+    width: calc(100% - 80rpx);
+    height: auto;
+    overflow: auto;
+}
+
+.m-block {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30rpx;
+}
+
+.mb-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mb-right image {
+    width: 76rpx;
+    height: 76rpx;
+    margin-right: 40rpx;
+    border-radius: 10rpx;
+}
+
+.mb-txt {
+    width: 252rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #000000;
+    font-size: 28rpx;
+}
+
+.m-cha {
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.mask-b {
+    width: 100%;
+    /* max-height: calc(100% - 452rpx); */
+    height: calc(100% - 109rpx);
+}

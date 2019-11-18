@@ -45,6 +45,36 @@
 
   </van-checkbox-group>
 </view>
+
+
+
+<view class="mask" wx:if="{{showMask}}" >
+  <view class="mask-b" bindtap="downMask">
+    
+  </view>
+  <view class="mask-bot">
+        <view class="m-span">
+            <view class="m-title">选择商户预览</view>
+            <view class="m-right">
+                <image  src="/static/images/del.png"/>
+                <view class="m-txt">清空选择</view>
+            </view>
+        </view>
+        <view class="m-box">
+            <view class="m-block">
+                <view class="mb-right">
+                    <image src="/static/images/swp.png" />
+                    <view class="mb-txt">钵钵当道（石锅饭）钵钵当道（石锅</view>
+                </view>
+                <image src="/static/images/cha2.png" class="m-cha"/>
+            </view>
+        </view>
+    </view>
+    
+</view>
+
+
+<view class="v-bot-btn">
 <view class="v-btn">
   <view class="vb-left" bindtap="shoptap">
     <image src="/static/images/ok.png" />
@@ -52,6 +82,8 @@
       <text>{{number}}</text>个店铺</view>
   </view>
   <view class="vb-right" bindtap="isChoice">确认选择</view>
+</view>
+</view>
 
 
    <!-- 券类型 -->
@@ -65,5 +97,4 @@
     >
       <van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" />
     </van-popup>
-</view>
 <!-- <view bindtap="dianji">dianwo</view> -->
