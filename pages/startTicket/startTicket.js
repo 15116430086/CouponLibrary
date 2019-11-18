@@ -7,7 +7,13 @@ Page({
      * 页面的初始数据
      */
     data: {
-        contents: [{
+        contents: [
+          {
+            id: '',
+            title: '全部商户',
+            isSel: false
+          },
+          {
                 id: '001',
                 title: '自营店铺',
                 isSel: false
@@ -28,7 +34,7 @@ Page({
         Commission: 0, //佣金比列
         IndustryCodes: ["10001"], //最终行业ID
         Industryvalue: "餐饮，休闲/自选", //最终选择行业名称
-        GroupIDList: [10001], //最终选择的集团ID
+        GroupIDList: [], //最终选择的集团ID
         Limited: 0, //单商户限量
         pic_array: [], //行业列表
         pCoupon_Info: {},
@@ -42,6 +48,7 @@ Page({
     onLoad: function(options) {
         console.log(options);
          wx.setStorageSync("Groupkey","");
+         wx.setStorageSync("resultkey","");
         this.setData({ pCoupon_Info: JSON.parse(options.pCoupon_Info) });
         utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", {}, app.globalData.appkeyid, this.GetCouponIndustry);
 
@@ -49,13 +56,7 @@ Page({
     selChoose(e) {
         let that = this;
         let id = e.currentTarget.dataset.id;
-      if (this.data.idx == "001" && this.data.idx==id){//说明之前选泽过自营选项
-          that.setData({
-            idx: "",
-            sign:1,
-            shareshow2: true,
-          })
-      }else{
+      
           that.setData({
               idx: id
           })
@@ -64,10 +65,12 @@ Page({
               wx.navigateTo({
                   url: "../shopChoose/shopChoose"
               })
-          }else{
+          } else if (id == "001"){
             that.setData({ shareshow2: false, sign: 2});//选择自营 就隐藏行业 地区
+          } else{
+            that.setData({ shareshow2: true, sign: 1 });//全部
           }
-      }
+      
     },
     showHide(e) {
         let that = this;
@@ -140,6 +143,13 @@ Page({
             }
 
 
+        }else{
+          this.setData({
+            GroupIDList:[],
+            regionID: [], 
+            IndustryCodes:[]
+
+          });
         }
 
         var Coupon_Release = {

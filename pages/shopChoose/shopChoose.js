@@ -67,6 +67,12 @@ Page({
           lastpage: json.pageCount //你的总页数   
         });
       }
+
+      var checkdeList = wx.getStorageSync("resultkey")
+      that.setData({
+        result: checkdeList        
+      });
+
     } else {
       wx.showToast({
         title: '没有找到相关数据!',
@@ -150,9 +156,10 @@ Page({
       })
     }
     wx.setStorageSync("Groupkey", that.data.huanlist);
-  
+    wx.setStorageSync("resultkey", that.data.result);
+  wx.navigateBackMiniProgram();
     console.log(that.data.huanlist);
-    wx.navigateBack({ ur:"../startTicket/startTicket/"})
+    wx.navigateBack();
   },
 
   /**
@@ -160,8 +167,14 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
-    that.GetData();
     that.GetCouponIndustry();
+    page=1;
+    that.GetData();
+    var checkdeList = wx.getStorageSync("resultkey");
+    this.setData({
+      number: checkdeList.length
+    });
+
   },
 
   shoptap:function(e){
@@ -173,6 +186,8 @@ Page({
        })
      }
     wx.setStorageSync("Groupkey", that.data.huanlist);
+    wx.setStorageSync("resultkey", that.data.result);
+    
   },
 
   onChange(event) {
