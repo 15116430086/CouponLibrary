@@ -16,7 +16,8 @@
             <view class="ticket-block"  bindtap="clickRule2">
                 <view class="ticket-name">指定商户</view>
                 <view class="ticket-flex">
-                    <view class="tf-name">默认不限/点击自选</view>
+                    <view class="tf-name" wx:if="{{GroupIDList.length>0}}">已选{{GroupIDList.length}}个商家</view>
+                     <view class="tf-name" wx:else>默认不限/点击自选</view>
                     <image src="/static/images/right-arr1.png" />
                 </view>
                 <!-- <input type="text" value="20元现金抵用券" /> -->

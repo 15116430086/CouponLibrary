@@ -15,7 +15,7 @@ Page({
       Commission:0,//佣金比列
       IndustryCodes: ["10001"],//最终行业ID
       Industryvalue:"餐饮，休闲/自选",//最终选择行业名称
-      GroupIDList:[10001],//最终选择的集团ID
+      GroupIDList:[],//最终选择的集团ID
       Limited:0,//单商户限量
       pic_array: [],//行业列表
       pCoupon_Info:{}
@@ -38,6 +38,14 @@ Page({
       chat.setData({pic_array:json.data});
     
   },
+
+  clickRule2:function(){
+
+    wx.navigateTo({
+      url: '../shopChoose/shopChoose',
+    })
+  },
+
   Commissionratio:function(event){//数量失去焦点计算托管佣金
      var number= event.detail.value
      this.setData({ 
@@ -123,5 +131,19 @@ Page({
   },
   AgainCouponRelease:function(res){
       console.log(res);
-  }
+  },
+  /**
+     * 生命周期函数--监听页面显示
+     */
+  onShow: function () {
+    var grouplist = wx.getStorageSync("Groupkey");
+    if (grouplist.length>0){
+       var groupid=[];
+      for (var s in grouplist){
+        groupid.push(grouplist[s].GroupID);
+      }
+      this.setData({ GroupIDList: groupid}); 
+    }
+    console.log(this.data.GroupIDList);
+  },
 })
