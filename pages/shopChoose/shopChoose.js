@@ -9,7 +9,7 @@ Page({
    */
   data: {
     result: [],
-    Grouplist: [],
+    Grouplist: [],//集团数组对象
     huanlist:[],
     lastpage: 0,
     number: 0,
@@ -146,10 +146,13 @@ Page({
     for (let i in that.data.result) {
       that.setData({
         huanlist: that.data.huanlist.concat(that.data.Grouplist[that.data.result[i]])
+       
       })
     }
     wx.setStorageSync("Groupkey", that.data.huanlist);
+  
     console.log(that.data.huanlist);
+    wx.navigateBack({ ur:"../startTicket/startTicket/"})
   },
 
   /**

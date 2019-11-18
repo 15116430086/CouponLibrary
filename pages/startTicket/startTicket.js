@@ -155,5 +155,19 @@ Page({
     },
     AgainCouponRelease: function(res) {
         console.log(res);
-    }
+    },
+    /**
+     * 生命周期函数--监听页面显示
+     */
+    onShow: function() {
+        var grouplist = wx.getStorageSync("Groupkey");
+        if (grouplist.length > 0) {
+            var groupid = [];
+            for (var s in grouplist) {
+                groupid.push(grouplist[s].GroupID);
+            }
+            this.setData({ GroupIDList: groupid });
+        }
+        console.log(this.data.GroupIDList);
+    },
 })
