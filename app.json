@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/login/login",
+    "pages/goodsEditor/goodsEditor",
     "pages/shopChoose/shopChoose",
     "pages/industryChoose/industryChoose",
     "pages/staffChoose/staffChoose",
@@ -9,7 +11,6 @@
     "pages/provincialChoose/provincialChoose",
     "pages/home/home",
     "pages/test/test",
-    "pages/goodsEditor/goodsEditor",
     "pages/fastGet/fastGet",
     "pages/staffLoginReg/staffLoginReg",
     "pages/chooseBuyGoods/chooseBuyGoods",
@@ -30,7 +31,6 @@
     "pages/merchantReg/merchantReg",
     "pages/banlanceMes/banlanceMes",
     "pages/phoneLogin/phoneLogin",
-    "pages/login/login",
     "pages/configLook/configLook",
     "pages/quanKu/quanKu",
     "pages/onlySeeMe/onlySeeMe",
