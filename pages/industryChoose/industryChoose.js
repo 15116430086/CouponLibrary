@@ -43,9 +43,9 @@ Page({
     },
     showHide(e) {
         let that = this;
-        let id = e.currentTarget.dataset.changeid;
-        console.log(id)
-        let item = that.data.content[id];
+        let index = e.currentTarget.dataset.index;
+        console.log(index)
+        let item = that.data.content[index];
         item.shows = !item.shows;
         that.setData({
             content: that.data.content
