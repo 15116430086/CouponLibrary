@@ -44,7 +44,11 @@
       </view>
     </view>
     <!-- 通知栏上下轮播 -->
-    <view class="dyn-botmes">A商家领用了100张【10元现金抵用券】</view>
+    <swiper class="dyn-botmes" interval="3000" autoplay="true" vertical='true' circular='true'>
+      <block wx:for="{{CouponCount.ReceiveCouponList}}" wx:key="{{index}}" >
+      <swiper-item><view>{{item.GroupName}}领取了{{item.ReceiveNUM}}张【{{item.CouponName}}】</view></swiper-item>
+      </block>
+    </swiper>
   </view>
   <!-- 导航栏 -->
   <view class="home-nav">

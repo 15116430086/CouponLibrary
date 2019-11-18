@@ -9,7 +9,13 @@ Page({
    */
   data: {
     CouponCount: null,
-    lastpage: 0
+    lastpage: 0,
+    noticeList:[
+      {title:"A商家领用了100张【10元现金券】"},
+      { title: "B商家领用了100张【10元现金券】" },
+      { title: "C商家领用了100张【10元现金券】" },
+
+    ]
   },
   onWxScanCode: function () {
     wx.navigateTo({

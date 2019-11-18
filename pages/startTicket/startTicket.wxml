@@ -15,9 +15,15 @@
             </view>
             <view class="ticket-block">
                 <view class="ticket-name">指定商户</view>
-                <view class="ticket-flex">
+                <view class="ticket-flex" bindtap="showHide">
                     <view class="tf-name">不限(自选)</view>
                     <image src="/static/images/right-arr1.png" />
+                </view>
+                <view class="t-botbox" wx:if="{{shows}}">
+                    <view class="t-bblock" wx:for="{{contents}}" data-id="{{item.id}}" data-index="{{index}}" wx:key="index" bindtap="selChoose">
+                        <view class="t-bbname">{{item.title}}</view>
+                        <image src="{{idx==item.id?'/static/images/ok.png':'/static/images/okk.png'}}" />
+                    </view>
                 </view>
                 <!-- <input type="text" value="20元现金抵用券" /> -->
             </view>
