@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/fastGet/fastGet",
     "pages/shopChoose/shopChoose",
+    "pages/index/index",
+    "pages/fastGet/fastGet",
     "pages/sendTicketMes/sendTicketMes",
     "pages/goodsEditor/goodsEditor",
-    "pages/index/index",
     "pages/shopCli/shopCli",
     "pages/myMoney/myMoney",
     "pages/banlanceMes/banlanceMes",
