@@ -90,13 +90,14 @@
         <image src="{{idd==001?'/static/images/ok.png':'/static/images/okk.png'}}" class="bot-ok" />
       </view>
     </view>
-    <picker name="picker_hx" class="cybm_pic_1" value="{{value}}" data-selecthx="{{pic_array[hx_index].name}}" range="{{pic_array}}" range-key="{{'name'}}"  bindchange="bindPickerChange_hx"  >
-     <view class="ticket-blocks">
+       
+    <picker name="picker_hx" class="cybm_pic_1" value="{{df_value}}" data-selecthx="{{pic_array[hx_index].name}}" range="{{pic_array}}" range-key="{{'name'}}"  bindchange="bindPickerChange_hx"  >
+    <view class="ticket-blocks">
       <view class="bot-boxs" bindtap="clickTrue2" data-id="002">
-        <view class="bot-span">指定时间</view>
+        <view class="bot-span">指定天数</view>
         <image src="{{idd==002?'/static/images/ok.png':'/static/images/okk.png'}}" class="bot-ok" />
       </view>
-    </view>
+     </view>
     </picker>
   </block>
 

@@ -64,24 +64,40 @@ Page({
       }
     ],
     pic_array: [{
-        id: 13,
+        id: 7,
         name: '7天'
       },
       {
-        id: 14,
+        id: 15,
         name: '15天'
       },
       {
-        id: 15,
+        id: 30,
         name: '一个月'
       },
       {
-        id: 16,
+        id: 60,
         name: '两个月'
       },
       {
-        id: 17,
+        id: 90,
         name: '三个月'
+      },
+      {
+        id: 180,
+        name: '半年'
+      },
+      {
+        id: 365,
+        name: '一年'
+      },
+      {
+        id: 730,
+        name: '2年'
+      },
+      {
+        id: 10000,
+        name: '不限'
       }
     ],
     idd: "",
@@ -118,15 +134,15 @@ Page({
     imageOne: "",
     imageTwo: "",
     imageTre: "",
-    idm: ""
+    idm: "",
+    df_value:2
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
-
+   
   },
 
   bindPickerChange_hx: function(e) {
@@ -137,6 +153,7 @@ Page({
 
     that.setData({ //给变量赋值
       hx_index: e.detail.value,
+      df_index:0,
       date: pic_array[e.detail.value].name //每次选择了下拉列表的内容同时修改下标然后修改显示的内容，显示的内容和选择的内容一致
     });
     pCoupon_Info.ExpiredType = 1;
