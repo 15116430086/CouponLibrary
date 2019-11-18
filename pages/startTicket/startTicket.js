@@ -29,16 +29,17 @@ Page({
         shareshow2: true, //判断是否指定商户 默认不是 
         df_value: 1, //行业索引
         regionvalue: "", //最终选择地区值
-        regionID: ["110105"], //最终选择地区ID
+        regionID: [], //最终选择地区ID
         Number: 0, //券数量
         Commission: 0, //佣金比列
-        IndustryCodes: ["10001"], //最终行业ID
+        IndustryCodes: [], //最终行业ID
         Industryvalue: "餐饮，休闲/自选", //最终选择行业名称
         GroupIDList: [], //最终选择的集团ID
         Limited: 0, //单商户限量
         pic_array: [], //行业列表
         pCoupon_Info: {},
         sign:1,//全部，2自营，3自选
+        Doyoupay:true//是否要支付佣金 默认支付
 
     },
 
@@ -49,26 +50,35 @@ Page({
         console.log(options);
          wx.setStorageSync("Groupkey","");
          wx.setStorageSync("resultkey","");
+      wx.setStorageSync("industryKey", "");
         this.setData({ pCoupon_Info: JSON.parse(options.pCoupon_Info) });
-        utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", {}, app.globalData.appkeyid, this.GetCouponIndustry);
+       // utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", {}, app.globalData.appkeyid, this.GetCouponIndustry);
 
     },
     selChoose(e) {
         let that = this;
         let id = e.currentTarget.dataset.id;
-      
           that.setData({
               idx: id
           })
           if (id == "002") {
-            that.setData({ shareshow2: true, sign:3 });
+            that.setData({ 
+              shareshow2: false, sign: 3,
+              Doyoupay: true,
+              Commission: (this.data.pCoupon_Info.CouponMoney * 0.1 * parseInt(this.data.Number))
+             });
               wx.navigateTo({
                   url: "../shopChoose/shopChoose"
               })
           } else if (id == "001"){
-            that.setData({ shareshow2: false, sign: 2});//选择自营 就隐藏行业 地区
+            that.setData({ shareshow2: false, sign: 2, Doyoupay: false, Commission:0});//选择自营 就隐藏行业 地区
           } else{
-            that.setData({ shareshow2: true, sign: 1 });//全部
+            that.setData({ 
+              shareshow2: false, 
+              sign: 1, 
+              Doyoupay: true,
+              Commission: (this.data.pCoupon_Info.CouponMoney * 0.1 * parseInt(this.data.Number))
+               });//全部
           }
       
     },
@@ -79,11 +89,10 @@ Page({
         })
 
     },
-    GetCouponIndustry: function(res) {
-        var chat = this;
-        var json = res.data.Data;
-
-        chat.setData({ pic_array: json.data });
+    Selectindustry: function(event) {//选择行业
+        wx.navigateTo({
+          url: '../industryChoose/industryChoose',
+        })
 
     },
     Commissionratio: function(event) { //数量失去焦点计算托管佣金
@@ -144,12 +153,24 @@ Page({
 
 
         }else{
-          this.setData({
-            GroupIDList:[],
-            regionID: [], 
-            IndustryCodes:[]
+          if (this.data.sign==1){//说明是全部商户
 
-          });
+            this.setData({
+              GroupIDList: app.globalData.AppGroupInfo.GroupID,
+              regionID: [],
+              IndustryCodes: [],
+              Doyoupay: true,//说明要支付
+            });
+          }else{//说明自营商户
+            this.setData({
+              GroupIDList: [],
+              regionID: [],
+              IndustryCodes: [],
+              Doyoupay: false,//说明不要支付
+            });
+
+          }
+        
         }
 
         var Coupon_Release = {
@@ -168,22 +189,65 @@ Page({
             Coupon_Release: utils.syJsonSafe(Coupon_Release),
             pArrIndustryCode: utils.syJsonSafe(this.data.IndustryCodes),
             pArrRegionID: utils.syJsonSafe(this.data.regionID),
-            pArrGroupID: utils.syJsonSafe(this.data.GroupIDList)
-
+            pArrGroupID: utils.syJsonSafe(this.data.GroupIDList),
+            StaffID: app.AppStaffInfo.StaffID
 
         }
-
+      wx.showLoading({
+        title: "数据提交中...",
+        mask: true
+      });
         utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/AgainCouponRelease", "POST", datas, app.globalData.appkeyid, this.AgainCouponRelease);
 
     },
     AgainCouponRelease: function(res) {
-        console.log(res);
+      wx.hideLoading();
+        var json=res.data.Data;
+        if(json.flag){
+          if (json.ispay){//说明要支付拥金
+            var oJsApiParam = JSON.parse(json.paydata);
+            wx.requestPayment({
+              'timeStamp': oJsApiParam.timeStamp,
+              'nonceStr': oJsApiParam.nonceStr,
+              'package': oJsApiParam.package,
+              'signType': 'MD5',
+              'paySign': oJsApiParam.paySign,
+              success(res) {
+                console.log(res);
+                if (res.errMsg == "requestPayment:ok") { }
+                wx.redirectTo({ url: '../sendTicketOne/sendTicketOne' });
+              },
+              fail(res) {
+                if (res.errMsg == "requestPayment:fail cancel") {
+                  wx.showToast({
+                    title: "您取消了支付",
+                    icon: "none"
+                  });
+                }
+              }
+            })
+          }else{
+            wx.showToast({
+              title: json.msg,
+              icon: 'none',
+              duration: 2000
+            })
+            wx.redirectTo({ url: '../sendTicketOne/sendTicketOne' });
+          }
+        }else{
+          wx.showToast({
+            title: json.msg,
+            icon: 'none',
+            duration: 2000
+          })
+        }
     },
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
         var grouplist = wx.getStorageSync("Groupkey");
+      var industryList = wx.getStorageSync("industryKey");
         if (grouplist.length > 0) {
             var groupid = [];
             for (var s in grouplist) {
@@ -191,6 +255,19 @@ Page({
             }
             this.setData({ GroupIDList: groupid });
         }
+      if (industryList.length>0){
+          this.setData({
+            IndustryCodes: industryList,
+            Industryvalue: industryList.length
+          });
+
+      }else{
+        this.setData({
+          IndustryCodes: [],
+          Industryvalue: "餐饮，休闲/自选"
+        });
+      }
+
         console.log(this.data.GroupIDList);
     },
 })

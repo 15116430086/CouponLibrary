@@ -155,9 +155,18 @@ Page({
        
       })
     }
+
+    if (that.data.huanlist.length==0){
+      wx.showToast({
+        title: '请选择商户!',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
     wx.setStorageSync("Groupkey", that.data.huanlist);
     wx.setStorageSync("resultkey", that.data.result);
-  wx.navigateBackMiniProgram();
+    wx.navigateBackMiniProgram();
     console.log(that.data.huanlist);
     wx.navigateBack();
   },

@@ -40,10 +40,11 @@
             </view>
 
         
-            <view class="ticket-block"  wx:if="{{shareshow2}}">
+            <view class="ticket-block" bindtap="Selectindustry"  wx:if="{{shareshow2}}">
                 <view class="ticket-name">指定行业</view>
                 <view class="ticket-flex">
-                    <view class="tf-name">{{Industryvalue}}</view>
+                    <view class="tf-name" wx:if="{{IndustryCodes.length>0}}">已选{{Industryvalue}}个行业</view>
+                    <view class="tf-name" wx:else>{{Industryvalue}}</view>
                     <image src="/static/images/right-arr1.png" />
                 </view>
                 <!-- <input type="text" value="20元现金抵用券" /> -->
@@ -67,6 +68,7 @@
         </view>
     </view>
 </view>
- <view class="playBtn" bindtap="pay">支付佣金</view>
+ <view class="playBtn" bindtap="pay" wx:if="{{Doyoupay}}">支付佣金</view>
+ <view class="playBtn" bindtap="pay" wx:else>确认发布</view>
 <!-- <view class="v-box" bindtap="imgbtn">点我</view>
 <image src="{{imageUrl}}" /> -->
