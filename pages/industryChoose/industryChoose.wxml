@@ -1,11 +1,11 @@
 <view class='v-box'>
   <block wx:for="{{content}}" wx:key="idx">
     <view class="v-top">
-      <view class="v-block" bindtap="showHide" data-changeid="{{item.id}}" data-index="{{index}}">
-        <view class="v-title">{{item.title}}</view>
-        <view class="v-mes">{{item.mes}}</view>
+      <view class="v-block" bindtap="showHide" data-changeid="{{item.IndustryCode}}" data-index="{{index}}">
+        <view class="v-title">{{item.IndustryName}}</view>
+        <view class="v-mes">{{item.IndustryLabel}}</view>
       </view>
-      <image src="/static/images/gou2.png" wx:if="{{item.shows}}" />
+      <image src="/static/images/gou2.png" wx:if="{{item.shows=='true'}}" />
     </view>
     <!-- <view class="v-bot" wx:if="{{item.shows}}">
       <block wx:for="{{item.contents}}" wx:key="idx">

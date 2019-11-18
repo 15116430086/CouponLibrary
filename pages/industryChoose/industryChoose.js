@@ -1,125 +1,97 @@
+var utils = require("../../utils/util.js")
+const app = getApp();
 Page({
-    data: {
-        idx: "",
-        content: [{
-                id: '01',
-                title: '金融业',
-                contents: [{
-                        id: '001',
-                        title: '银行',
-                        isSel: false
-                    },
-                    {
-                        id: '002',
-                        title: '证券',
-                        isSel: false
-                    }
-                ],
-                mes: "银行 l 证券 l 保险 l 基金 l 股权投资",
-                shows: false
-            },
-            {
-                id: '02',
-                title: 'IT/互联网',
-                contents: [{
-                        id: '011',
-                        title: '企业级软件内',
-                        isSel: false
-                    },
-                    {
-                        id: '034',
-                        title: '游戏开发/运营',
-                        isSel: false
-                    }
-                ],
-                mes: "互联网 l IT l 游戏 l 软件",
+  data: {
+    idx: "",
+    content: []
+  },
+  onLoad() {
 
-                shows: false
-            }
-        ]
-    },
-    onLoad() {
-        console.log(this.data.content[0].contents)
-    },
-    showHide(e) {
-        let that = this;
-        let index = e.currentTarget.dataset.index;
-        console.log(index)
-        let item = that.data.content[index];
-        item.shows = !item.shows;
-        that.setData({
-            content: that.data.content
-        })
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetListIndustry", "POST", {}, app.globalData.appkeyid, this.GetCouponIndustry);
 
-        // for (var i = 0; i < contentFor.length; i++) {　　
-        //     if (e.currentTarget.dataset.changeid == contentFor[i].id) {　　　　
-        //         var printPrice = "content[" + i + "].shows";　　　　
-        //         if (contentFor[i].shows) {　　　　　　
-        //             that.setData({　　　　　　　　
-        //                 [printPrice]: false　　　　　　
-        //             });　　　　
-        //         } else {　　　　　　
-        //             that.setData({　　　　　　　　
-        //                 [printPrice]: true　　　　　　
-        //             });　　　　
-        //         }　　
-        //     } else {　　　　　　
-        //         var printPrice1 = "content[" + i + "].shows";　　　　　　
-        //         this.setData({　　　　　　　　
-        //             [printPrice1]: false　　　　　　
-        //         });　　　　
-        //     }　　
-        // }
-    },
+  },
+  GetCouponIndustry: function(res) {
+    var json = res.data.Data;
+    var chta = this;
+    var industryList = wx.getStorageSync("industryKey");
+    if (industryList) {
+      for (var i in industryList) {
+        for (var s in json.data) {
+           console.log(s);
+          if (json.data[s].IndustryCode == industryList[i]) {
+            json.data[s].shows = "true";
+            break;
+          }
+        }
 
-    clickTrue(e) {
-        let that = this;
-        var contentFor = that.data.content;
-        let selId = e.currentTarget.dataset.id;
-        let index = e.currentTarget.dataset.index;
-        let contents = contentFor[index].contents;
-        console.log(selId)
-        that.setData({
-            idx: selId
-        })
+      }
+    }
+    chta.setData({
+      content: json.data
+    });
+    console.log(chta.data.content);
+  },
+  showHide(e) {
+    let that = this;
+    let index = e.currentTarget.dataset.index;
+    console.log(index)
+    let item = that.data.content[index];
+    //item.shows = !item.shows;
+    if (item.shows == "true") {
+      item.shows = "false"
+    } else {
+      item.shows = "true"
+    }
+    that.setData({
+      content: that.data.content
+    })
 
+    // for (var i = 0; i < contentFor.length; i++) {　　
+    //     if (e.currentTarget.dataset.changeid == contentFor[i].id) {　　　　
+    //         var printPrice = "content[" + i + "].shows";　　　　
+    //         if (contentFor[i].shows) {　　　　　　
+    //             that.setData({　　　　　　　　
+    //                 [printPrice]: false　　　　　　
+    //             });　　　　
+    //         } else {　　　　　　
+    //             that.setData({　　　　　　　　
+    //                 [printPrice]: true　　　　　　
+    //             });　　　　
+    //         }　　
+    //     } else {　　　　　　
+    //         var printPrice1 = "content[" + i + "].shows";　　　　　　
+    //         this.setData({　　　　　　　　
+    //             [printPrice1]: false　　　　　　
+    //         });　　　　
+    //     }　　
+    // }
+  },
 
+  clickTrue(e) {
+    let that = this;
+    var contentFor = that.data.content;
+    let selId = e.currentTarget.dataset.id;
+    let index = e.currentTarget.dataset.index;
+    let contents = contentFor[index].contents;
+    console.log(selId)
+    that.setData({
+      idx: selId
+    })
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function() {
+    var industryList = [];
+    var contentlist = this.data.content;
+    for (var i in contentlist) {
+      if (contentlist[i].shows == "true") {
+        industryList.push(contentlist[i].IndustryCode);
+      }
 
     }
+    wx.setStorageSync("industryKey", industryList);
+  },
 })
-
-// Page({
-//     data: {
-
-//         list01: [
-//             { item_id: 1 }, { item_id: 11 }, { item_id: 11 },
-//         ],
-//         list02: [
-
-//         ],
-//         list03: [
-//             { item_id: 11 }, { item_id: 11 }
-//         ],
-//         list04: [
-//             { item_id: 11 }, { item_id: 11 }, { item_id: 11 }
-//         ],
-
-//         // 展开折叠
-//         selectedFlag: [false, false, false, false],
-
-//     },
-//     // 展开折叠选择 
-//     changeToggle: function(e) {
-//         var index = e.currentTarget.dataset.index;
-//         if (this.data.selectedFlag[index]) {
-//             this.data.selectedFlag[index] = false;
-//         } else {
-//             this.data.selectedFlag[index] = true;
-//         }
-
-//         this.setData({
-//             selectedFlag: this.data.selectedFlag
-//         })
-//     },
-
-// })

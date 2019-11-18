@@ -30,7 +30,7 @@
         </view>
         <view class="tb-bot">
             <view style="margin-left:50rpx"  bindtap="jumpOk" data-index="{{index}}" data-CouponID="{{item.CouponID}}">继续发券</view>
-            <view style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" bindtap="Details">查看明细</view>
+            <view style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" bindtap="Details">发券明细</view>
         </view>
     </view>
 </block>
