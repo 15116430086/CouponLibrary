@@ -13,10 +13,12 @@
                 <view class="ticket-name">发布代金券数量</view>
                 <input type="number" bindblur="Commissionratio" value="" />
             </view>
-            <view class="ticket-block"  bindtap="clickRule2">
+            <view class="ticket-block">
                 <view class="ticket-name">指定商户</view>
                 <view class="ticket-flex" bindtap="showHide">
-                    <view class="tf-name">不限(自选)</view>
+                    <view class="tf-name" wx:if="{{sign==1}}">不限(自选)</view>
+                        <view class="tf-name" wx:elif="{{sign==2}}">自营店铺</view>
+                            <view class="tf-name" wx:elif="{{sign==3}}">已选{{GroupIDList.length}}个商户</view>
                     <image src="/static/images/right-arr1.png" />
                 </view>
                 <view class="t-botbox" wx:if="{{shows}}">
@@ -28,7 +30,7 @@
                 <!-- <input type="text" value="20元现金抵用券" /> -->
             </view>
 
-           <view class="ticket-block">
+           <view class="ticket-block" wx:if="{{shareshow2}}">
                 <view class="ticket-name">指定地区</view>
                 <view class="ticket-flex">
                     <view class="tf-name">湖南 丨长沙</view>
@@ -37,9 +39,8 @@
                 <!-- <input type="text" value="20元现金抵用券" /> -->
             </view>
 
-        <picker name="picker_hx" class="cybm_pic_1" value="{{df_value}}" data-selecthx="{{pic_array[hx_index].IndustryName}}" 
-        range="{{pic_array}}" range-key="{{'IndustryName'}}"  bindchange="bindPickerChange_hx"  >
-            <view class="ticket-block">
+        
+            <view class="ticket-block"  wx:if="{{shareshow2}}">
                 <view class="ticket-name">指定行业</view>
                 <view class="ticket-flex">
                     <view class="tf-name">{{Industryvalue}}</view>
@@ -47,7 +48,7 @@
                 </view>
                 <!-- <input type="text" value="20元现金抵用券" /> -->
             </view>
-          </picker>
+
 
             <view class="ticket-block">
                 <view class="ticket-name">单商户领取限制</view>
