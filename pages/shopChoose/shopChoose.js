@@ -9,7 +9,7 @@ Page({
    */
   data: {
     result: [],
-    Grouplist: [],
+    Grouplist: [],//集团数组对象
     huanlist:[],
     lastpage: 0,
     number: 0,
@@ -67,6 +67,12 @@ Page({
           lastpage: json.pageCount //你的总页数   
         });
       }
+
+      var checkdeList = wx.getStorageSync("resultkey")
+      that.setData({
+        result: checkdeList        
+      });
+
     } else {
       wx.showToast({
         title: '没有找到相关数据!',
@@ -146,10 +152,14 @@ Page({
     for (let i in that.data.result) {
       that.setData({
         huanlist: that.data.huanlist.concat(that.data.Grouplist[that.data.result[i]])
+       
       })
     }
     wx.setStorageSync("Groupkey", that.data.huanlist);
+    wx.setStorageSync("resultkey", that.data.result);
+  wx.navigateBackMiniProgram();
     console.log(that.data.huanlist);
+    wx.navigateBack();
   },
 
   /**
@@ -157,8 +167,14 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
-    that.GetData();
     that.GetCouponIndustry();
+    page=1;
+    that.GetData();
+    var checkdeList = wx.getStorageSync("resultkey");
+    this.setData({
+      number: checkdeList.length
+    });
+
   },
 
   shoptap:function(e){
@@ -170,6 +186,8 @@ Page({
        })
      }
     wx.setStorageSync("Groupkey", that.data.huanlist);
+    wx.setStorageSync("resultkey", that.data.result);
+    
   },
 
   onChange(event) {

@@ -1,0 +1,132 @@
+page {
+    background-color: #EDEDED;
+}
+
+.v-box {
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+}
+
+.v-top {
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100rpx;
+}
+
+.v-block {
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #EDEDED;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.v-top image {
+    width: 30rpx;
+    height: 20rpx;
+}
+
+.v-title {
+    color: #000000;
+    font-size: 32rpx;
+    margin-right: 20rpx;
+    font-weight: 600;
+}
+
+.v-mes {
+    color: #666666;
+    font-size: 28rpx;
+}
+
+.v-bot {
+    width: 100%;
+    height: auto;
+    background-color: #EDEDED;
+}
+
+.v-span {
+    width: calc(100% - 80rpx);
+    height: 100rpx;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-span image {
+    width: 30rpx;
+    height: 20rpx;
+}
+
+.v-name {
+    color: #333;
+    font-size: 28rpx;
+    margin-left: 40rpx;
+}
+
+
+/* .item-li .item-title {
+    width: 100%;
+    height: 50rpx;
+    padding-left: 38rpx;
+    box-sizing: border-box;
+}
+
+.item-li .item-content {
+    padding: 35rpx 50rpx;
+    box-sizing: border-box;
+    border-top: 1rpx solid #f0f0f0;
+    color: #000000;
+    font-size: 26rpx;
+}
+
+.item-li .item-content view {
+    color: #4e4e4e;
+    font-size: 26rpx;
+}
+
+.item-li .item-title view {
+    color: #000;
+    line-height: 100rpx;
+    font-size: 28rpx;
+} */
+
+
+/* .li {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    font-size: 34rpx;
+    width: 92%;
+    padding: 0 4%;
+    height: 100rpx;
+    line-height: 100rpx;
+    border-bottom: 1rpx solid #f1f1f1;
+}
+
+.bg-gray {
+    background-color: #ccc!important;
+    border-bottom: 1rpx solid #fff!important;
+}
+
+.li .icon-xiala,
+.icon-shangjiantou {
+    color: #999;
+    font-size: 28rpx;
+}
+
+.gray {
+    color: #8e8e8e;
+}
+
+.red {
+    color: #fe2e2e;
+} */

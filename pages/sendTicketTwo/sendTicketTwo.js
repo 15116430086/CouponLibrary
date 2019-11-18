@@ -16,6 +16,7 @@ Page({
       name: '团购券',
       typeId: '2'
     }],
+    value:3,
     "placeholder": "请输入文本",
     "maxlength": -1, // 最大输入长度，设置为 -1 的时候不限制最大长度
     "focus": true,

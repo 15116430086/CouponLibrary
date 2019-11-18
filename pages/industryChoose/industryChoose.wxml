@@ -1,0 +1,19 @@
+<view class='v-box'>
+  <block wx:for="{{content}}" wx:key="idx">
+    <view class="v-top">
+      <view class="v-block" bindtap="showHide" data-changeid="{{item.id}}" data-index="{{index}}">
+        <view class="v-title">{{item.title}}</view>
+        <view class="v-mes">{{item.mes}}</view>
+      </view>
+      <image src="/static/images/gou2.png" wx:if="{{item.shows}}" />
+    </view>
+    <!-- <view class="v-bot" wx:if="{{item.shows}}">
+      <block wx:for="{{item.contents}}" wx:key="idx">
+        <view class="v-span" data-id="{{item.id}}" data-index="{{index}}" bindtap="clickTrue">
+          <view class="v-name">{{item.title}}</view>
+          <image src="/static/images/gou2.png" wx:if="{{idx==item.id}}" />
+        </view>
+      </block>
+    </view> -->
+  </block>
+</view>

@@ -86,7 +86,7 @@ Page({
 
   getTicketList: function() {
     wx.navigateTo({
-      url: '../getTicketList/getTicketList',
+      url: '../getTicketList/getTicketList?quick=0&data=""',
     })
   },
   onBindReceiveTap: function (event) {

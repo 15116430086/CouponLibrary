@@ -152,6 +152,32 @@ page {
     height: 18rpx;
 }
 
+.t-botbox {
+    width: 100%;
+    height: auto;
+}
+
+.t-bblock {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 80rpx;
+    justify-content: space-between;
+}
+
+.t-bbname {
+    font-size: 28rpx;
+    color: #666666;
+    text-indent: 40rpx;
+}
+
+.t-bblock image {
+    width: 32rpx;
+    height: 32rpx;
+    display: block;
+}
+
 .input-box {
     width: 100%;
     height: auto;
