@@ -1,7 +1,9 @@
 {
       "pages": [
         "pages/login/login",
+        "pages/sysNotice/sysNotice",
         "pages/home/home",
+        "pages/shopChoose/shopChoose",
         "pages/chooseBuyGoods/chooseBuyGoods",
         "pages/index/index",
         "pages/logs/logs",

@@ -42,6 +42,20 @@ Page({
     }
   },
 
+Jumptap:function(){
+   wx.navigateTo({
+     url: '../getTicketList/getTicketList',
+   })
+},
+
+  noticetap:function(){
+    wx.navigateTo({
+      url: '../sysNotice/sysNotice',
+    })
+  },
+
+
+
   /**
    * 生命周期函数--监听页面加载
    */
