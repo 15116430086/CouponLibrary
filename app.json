@@ -1,15 +1,16 @@
 {
   "pages": [
+    "pages/goodsEditor/goodsEditor",
+    "pages/home/home",
     "pages/login/login",
+    "pages/test/test",
     "pages/merchantReg/merchantReg",
     "pages/phoneLogin/phoneLogin",
-    "pages/home/home",
     "pages/index/index",
     "pages/myMoney/myMoney",
     "pages/banlanceMes/banlanceMes",
     "pages/moneyDetail/moneyDetail",
     "pages/management/management",
-    "pages/goodsEditor/goodsEditor",
     "pages/goodsType/goodsType",
     "pages/yewuDescribe/yewuDescribe",
     "pages/goodsNotice/goodsNotice",

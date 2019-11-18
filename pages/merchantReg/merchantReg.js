@@ -16,8 +16,7 @@ Page({
       typeId: '2'
     }],
     "placeholder": "请输入文本",
-    "maxlength": -1, // 最大输入长度，设置为 -1 的时候不限制最大长度
-    "focus": true,
+    "maxlength": -1, // 最大输入长度，设置为 -1 的时候不限制最大长度   
     "auto-height": true, // 是否自动增高，设置auto-height时，style.height不生效
     "adjust-position": true, // 键盘弹起时，是否自动上推页面
     show2: false,
@@ -25,7 +24,70 @@ Page({
     industryName: "",
     industryCode: "",
     enterpriseLicensing: "http://test.miboon.com/file/image/20191025215104232.jpg",
-    flag:false
+    flag: false,
+    regAddress: "湖南长沙五一大道59号", 
+    multiArray: [ ],
+    multiIndex: [0, 0, 0],
+    regionData: []
+  },
+  onRegAddressTap: function() {
+    let that = this;
+    // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userLocation']) {
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success(res) {
+              that.getLocation();
+            }
+          })
+        } else {
+          that.getLocation();
+        }
+      }
+    })
+  },
+  getLocation: function() {
+    //显示 加载中的提示
+    wx.showLoading({
+      title: '正在获取你的地理位置...',
+    })
+    let that = this;
+    wx.getLocation({
+      type: 'gcj02',
+      altitude: true,
+      isHighAccuracy: true,
+      success(res) {
+        console.log(JSON.stringify(res));
+        app.globalData.latitudeX = res.latitude
+        app.globalData.longitudeY = res.longitude
+
+        wx.chooseLocation({
+          latitude: res.latitude,
+          longitude: res.longitude,
+          success(res) {
+            console.log(JSON.stringify(res));
+            if (res.address)
+              that.setData({
+                regAddress: res.address
+              })
+          }
+        })
+      },
+      complete(res) {
+        //隐藏 加载中的提示
+        wx.hideLoading();
+      }
+    })
+  },
+  onPreviewImageTap:function()
+  {
+    let that=this;
+
+    wx.previewImage({
+      urls:[that.data.enterpriseLicensing],      
+    })
   },
   onUpFileImg: function() {
     let that = this;
@@ -49,7 +111,7 @@ Page({
         icon: "none",
         duration: 2000
       })
-    }   
+    }
   },
   GetData: function() {
     let that = this;
@@ -137,6 +199,18 @@ Page({
 
       return;
     }
+
+    data.LegalPerson = e.detail.value.RegAddress
+    if (data.LegalPerson == '') {
+      wx.showToast({
+        title: "注册地址不能为空",
+        icon: "none",
+        duration: 1500
+      })
+
+      return;
+    }
+
     data.LegalPerson = e.detail.value.LegalPerson
     if (data.LegalPerson == '') {
       wx.showToast({
@@ -253,6 +327,7 @@ Page({
   onLoad: function(options) {
     let that = this;
     that.GetData();
+    that.GetRegionData();
   },
   //点击每个导航的点击事件
   handleTap: function(e) {
@@ -310,5 +385,62 @@ Page({
    */
   onShareAppMessage: function() {
 
+  }, GetRegionData: function () {
+    let that = this;
+    var data = {};
+    data.pStartLevel = 2
+    data.pQueryLevel = 3
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponRegionView/GetCouponRegionlevel", "POST", data, app.globalData.appkeyid, that.RegionDataBack)
+  },
+
+  RegionDataBack: function (json) {
+    console.log(json);
+    var json = json.data.Data;
+    if (json) {
+      console.log(json.msg);
+      var mArray = [];
+      mArray.push(json.data)
+      mArray.push(json.data[0].LevelCoupon_Region)
+      mArray.push(json.data[0].LevelCoupon_Region[0].LevelCoupon_Region)
+      if (json.flag) {
+        this.setData({
+          regionData: json.data,
+          multiArray: mArray
+        });
+      }
+    }
+  },
+  bindMultiPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      multiIndex: e.detail.value
+    })
+  },
+  bindMultiPickerColumnChange: function (e) {
+    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+    var data = {
+      multiArray: this.data.multiArray,
+      multiIndex: this.data.multiIndex
+    };
+    data.multiIndex[e.detail.column] = e.detail.value;
+    switch (e.detail.column) {
+      case 0:
+        data.multiArray[1] = this.data.regionData[data.multiIndex[0]].LevelCoupon_Region;
+        data.multiArray[2] = this.data.regionData[data.multiIndex[0]].LevelCoupon_Region[0].LevelCoupon_Region
+
+        data.multiIndex[1] = 0;
+        data.multiIndex[2] = 0;
+        break;
+      case 1:
+        data.multiArray[2] = this.data.regionData[data.multiIndex[0]].LevelCoupon_Region[data.multiIndex[1]].LevelCoupon_Region
+
+        data.multiIndex[2] = 0;
+        break;
+    }
+    console.log(data.multiIndex);
+    this.setData({
+      multiArray: data.multiArray,
+      multiIndex: data.multiIndex
+    });
   }
 })

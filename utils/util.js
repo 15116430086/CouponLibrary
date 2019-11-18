@@ -17,7 +17,7 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-function AjaxRequest(pUrl, pType, pData, pAppKeyId, pCallBack,p) {
+function AjaxRequest(pUrl, pType, pData, pAppKeyId, pCallBack) {
   wx.request({
     url: pUrl, //仅为示例，并非真实的接口地址
     data: pData,
@@ -27,7 +27,7 @@ function AjaxRequest(pUrl, pType, pData, pAppKeyId, pCallBack,p) {
     },
     method: pType,
     success(res) {
-      pCallBack(res, p);
+      pCallBack(res);
     },
     fail(res) {
       wx.showToast({
@@ -122,7 +122,7 @@ function syJsonSafe(obj) {
 }
 
 
-function UploadImg(count, pAppKeyId, pCallBack) {
+function UploadImg(count, pAppKeyId, pCallBack, pOther) {
   wx.chooseImage({
     count: count,
     sizeType: ['original', 'compressed'],
@@ -150,7 +150,7 @@ function UploadImg(count, pAppKeyId, pCallBack) {
             imgs.push(json.Data);
             if (imgs.length == tempFilePaths.length) {
               wx.hideLoading();
-              pCallBack(imgs);
+              pCallBack(imgs, pOther);
             }
           },
           fail: function(res) {}
