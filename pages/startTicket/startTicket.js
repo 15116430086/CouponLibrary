@@ -39,7 +39,6 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
         console.log(options);
         this.setData({ pCoupon_Info: JSON.parse(options.pCoupon_Info) });
         utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", {}, app.globalData.appkeyid, this.GetCouponIndustry);
@@ -128,9 +127,7 @@ Page({
             }
 
 
-        } >>>
-        >>>
-        > d0cbd68cc5deb24f5e760a2a959572941fa1f7fd
+        }
 
         var Coupon_Release = {
             ReceiveNUM: 0,
