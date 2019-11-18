@@ -1,0 +1,46 @@
+/* pages/sysNotice/sysNotice.wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.v-block {
+    width: 100%;
+    height: auto;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    /* padding-bottom: 20rpx; */
+}
+
+.v-top {
+  margin: 20rpx auto;
+    width: calc(100% - 80rpx);
+    color: #000000;
+    font-weight: 600;
+    font-size: 28rpx;
+    /* margin-left: 40rpx; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-blue {
+    color: #016FB4
+}
+
+.v-time {
+    width: calc(100% - 80rpx);
+    overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+    color: #666666;
+    font-size: 24rpx;
+    margin: 8rpx auto;
+    /* margin-left: 40rpx; */
+}

@@ -2,6 +2,8 @@
     "pages": [
         "pages/login/login",
         "pages/industryChoose/industryChoose",
+        "pages/sysNotice/sysNotice",
+        "pages/shopChoose/shopChoose",
         "pages/startTicket/startTicket",
         "pages/chooseBuyGoods/chooseBuyGoods",
         "pages/home/home",

@@ -7,7 +7,13 @@ Page({
      * 页面的初始数据
      */
     data: {
-        contents: [{
+        contents: [
+          {
+            id: '',
+            title: '全部商户',
+            isSel: false
+          },
+          {
                 id: '001',
                 title: '自营店铺',
                 isSel: false
@@ -20,7 +26,7 @@ Page({
         ],
         idx: "",
         shows: false,
-        shareshow2: false, //判断是否指定商户 默认不是 
+        shareshow2: true, //判断是否指定商户 默认不是 
         df_value: 1, //行业索引
         regionvalue: "", //最终选择地区值
         regionID: ["110105"], //最终选择地区ID
@@ -28,10 +34,11 @@ Page({
         Commission: 0, //佣金比列
         IndustryCodes: ["10001"], //最终行业ID
         Industryvalue: "餐饮，休闲/自选", //最终选择行业名称
-        GroupIDList: [10001], //最终选择的集团ID
+        GroupIDList: [], //最终选择的集团ID
         Limited: 0, //单商户限量
         pic_array: [], //行业列表
-        pCoupon_Info: {}
+        pCoupon_Info: {},
+        sign:1,//全部，2自营，3自选
 
     },
 
@@ -40,6 +47,8 @@ Page({
      */
     onLoad: function(options) {
         console.log(options);
+         wx.setStorageSync("Groupkey","");
+         wx.setStorageSync("resultkey","");
         this.setData({ pCoupon_Info: JSON.parse(options.pCoupon_Info) });
         utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", {}, app.globalData.appkeyid, this.GetCouponIndustry);
 
@@ -47,14 +56,21 @@ Page({
     selChoose(e) {
         let that = this;
         let id = e.currentTarget.dataset.id;
-        that.setData({
-            idx: id
-        })
-        if (id == "002") {
-            wx.navigateTo({
-                url: "../shopChoose/shopChoose"
-            })
-        }
+      
+          that.setData({
+              idx: id
+          })
+          if (id == "002") {
+            that.setData({ shareshow2: true, sign:3 });
+              wx.navigateTo({
+                  url: "../shopChoose/shopChoose"
+              })
+          } else if (id == "001"){
+            that.setData({ shareshow2: false, sign: 2});//选择自营 就隐藏行业 地区
+          } else{
+            that.setData({ shareshow2: true, sign: 1 });//全部
+          }
+      
     },
     showHide(e) {
         let that = this;
@@ -127,6 +143,13 @@ Page({
             }
 
 
+        }else{
+          this.setData({
+            GroupIDList:[],
+            regionID: [], 
+            IndustryCodes:[]
+
+          });
         }
 
         var Coupon_Release = {

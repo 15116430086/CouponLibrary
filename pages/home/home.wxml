@@ -4,11 +4,11 @@
   <view class="home-top">
     <view class="homeTop-name">湖南基数科技</view>
     <view class="homeTop-left">
-      <view class="search-box" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" >
+      <view class="search-box" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" bindtap="Jumptap" >
         <image src="/static/images/serch.png" background-size="cover"></image>
         <view>搜索领券</view>
       </view>
-      <view class="mes-box">
+      <view class="mes-box" bindtap="noticetap">
         <view>{{CouponCount.countNewMsg}}</view>
         <image src="/static/images/talk.png" background-size="cover" style="width:23.45px;height:23.64px"></image>
       </view>
