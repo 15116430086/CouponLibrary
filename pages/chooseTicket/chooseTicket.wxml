@@ -17,7 +17,7 @@
       <view>搜索领券</view>
     
     </view>
-    <view class="mes-box">快速领券</view>
+    <view class="mes-box" bindtap="onQuickTap" >快速领券</view>
   </view>
   <!-- 轮播图 -->
   <view class="swiper">

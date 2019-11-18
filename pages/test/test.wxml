@@ -1,0 +1,7 @@
+<template name="RegionSelector">
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
+    <view class="picker">
+      当前选择：{{multiArray[0][multiIndex[0]].RegionName}}，{{multiArray[1][multiIndex[1]].RegionName}}，{{multiArray[2][multiIndex[2]].RegionName}}
+    </view>
+  </picker>
+</template>

@@ -67,6 +67,12 @@
 					"pathName": "pages/chooseBuyGoods/chooseBuyGoods",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/home/home",
+					"pathName": "pages/shopChoose/shopChoose",
+					"scene": null
 				}
 			]
 		}

@@ -83,7 +83,12 @@ Page({
     ],
 
   },
-
+  onQuickTap:function()
+  {
+    wx.navigateTo({
+      url: '../fastGet/fastGet',
+    })
+  },
   getTicketList: function() {
     wx.navigateTo({
       url: '../getTicketList/getTicketList?quick=0&data=""',
