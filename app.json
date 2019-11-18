@@ -1,7 +1,7 @@
 {
     "pages": [
-        "pages/industryChoose/industryChoose",
         "pages/login/login",
+        "pages/industryChoose/industryChoose",
         "pages/startTicket/startTicket",
         "pages/chooseBuyGoods/chooseBuyGoods",
         "pages/home/home",
