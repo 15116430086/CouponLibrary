@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/provincialChoose/provincialChoose",
     "pages/goodsEditor/goodsEditor",
-    "pages/login/login",
     "pages/shopChoose/shopChoose",
     "pages/industryChoose/industryChoose",
     "pages/staffChoose/staffChoose",
