@@ -1,2 +1,27 @@
-<!--pages/provincialChoose/provincialChoose.wxml-->
-<text>pages/provincialChoose/provincialChoose.wxml</text>
+<view class='v-box'>
+    <block wx:for="{{content}}" wx:for-index="mindex" wx:key="idx">
+        <view class="v-top">
+            <view class="v-block" data-changeid="{{item.id}}" data-index="{{index}}" bindtap="showMask">
+                <view class="v-title">{{item.title}}</view>
+                <view class="v-mes">{{item.mes}}</view>
+            </view>
+            <image src="{{item.isSel?'/static/images/f2.png':'/static/images/f1.png'}}"  bindtap="showHide" data-mindex="{{mindex}}"/>
+        </view>
+        <view class="v-bot" wx:if="{{item.shows}}">
+            <block wx:for="{{item.contents}}" wx:for-index="sindex" wx:key="idx" >
+                <view class="v-span" data-id="{{item.id}}"   data-mindex="{{mindex}}"  data-sindex="{{sindex}}"  bindtap="showMaskChild">
+                    <view class="v-name">{{item.title}}</view>
+                    <image src="{{item.isSel?'/static/images/f2.png':'/static/images/f1.png'}}" bindtap="clickTrue"   data-mindex="{{mindex}}" data-sindex="{{sindex}}"/>
+                </view>
+                <view class="v-bot" wx:if="{{item.shows}}">
+                    <block wx:for="{{item.list}}" wx:for-index="cindex" wx:key="idb">
+                        <view class="v-span" data-id="{{item.id}}"  >
+                            <view class="v-name" style="text-indent:40rpx;">{{item.title}}</view>
+                            <image src="{{item.isSel?'/static/images/f2.png':'/static/images/f1.png'}}" bindtap="clickTwo"  data-mindex="{{mindex}}" data-sindex="{{sindex}}"  data-cindex="{{cindex}}"  />
+                        </view>
+                    </block>
+                </view>
+            </block>
+        </view>
+    </block>
+</view>

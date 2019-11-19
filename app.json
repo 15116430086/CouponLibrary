@@ -1,14 +1,13 @@
 {
   "pages": [
-    "pages/login/login",
+    "pages/provincialChoose/provincialChoose",
     "pages/goodsEditor/goodsEditor",
+    "pages/login/login",
     "pages/shopChoose/shopChoose",
     "pages/industryChoose/industryChoose",
     "pages/staffChoose/staffChoose",
     "pages/startTicket/startTicket",
-    
     "pages/sysNotice/sysNotice",
-    "pages/provincialChoose/provincialChoose",
     "pages/home/home",
     "pages/test/test",
     "pages/fastGet/fastGet",
