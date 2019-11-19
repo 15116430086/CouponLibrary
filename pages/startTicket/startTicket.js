@@ -39,7 +39,19 @@ Page({
         pic_array: [], //行业列表
         pCoupon_Info: {},
         sign:1,//全部，2自营，3自选
-        Doyoupay:true//是否要支付佣金 默认支付
+        Doyoupay:true,//是否要支付佣金 默认支付
+        date: "日期",
+        currentDate: new Date().getTime(),
+        minDate: new Date().getTime(),
+        formatter(type, value) {
+        if (type === 'year') {
+          return `${value}年`;
+        } else if (type === 'month') {
+          return `${value}月`;
+        }
+        return value;
+      },
+      show: false,
 
     },
 
@@ -105,7 +117,41 @@ Page({
     Limit: function(event) { //单商户限制
         this.setData({ Limited: event.detail.value });
     },
-    bindPickerChange_hx: function(e) {
+
+  showDate:function(event){//领取期限
+    this.setData({
+      show: true
+    });
+
+  },
+  onClose() {
+    this.setData({
+      show: false
+    });
+  },
+  onCancel(e) {
+    this.setData({
+      show: false
+    });
+  },
+  onInput(event) {
+    this.setData({
+      currentDate: event.detail
+    });
+  },
+  confirmDate(e) {
+    console.log(e.detail);
+    let that = this;
+    let timer = e.detail;
+    
+    timer = utils.formatTime(timer);
+    console.log(timer)
+    that.setData({
+      date: timer,
+      show: false
+    })
+  },
+ bindPickerChange_hx: function(e) {
         let that = this;
         let pic_array = that.data.pic_array;
         // let pCoupon_Info = that.data.pCoupon_Info;
@@ -134,6 +180,15 @@ Page({
             return;
         }
 
+      if (!this.data.date=="日期") {
+        wx.showToast({
+          title: "请选择领取期限",
+          icon: "none"
+        });
+        return;
+      }
+
+
         if (this.data.shareshow2) { //如果是指定商户 就判断地区行业
             if (!this.data.regionID) {
                 wx.showToast({
@@ -156,14 +211,14 @@ Page({
           if (this.data.sign==1){//说明是全部商户
 
             this.setData({
-              GroupIDList: app.globalData.AppGroupInfo.GroupID,
+              GroupIDList: [],
               regionID: [],
               IndustryCodes: [],
               Doyoupay: true,//说明要支付
             });
           }else{//说明自营商户
+            this.data.GroupIDList.push(app.globalData.AppGroupInfo.GroupID);
             this.setData({
-              GroupIDList: [],
               regionID: [],
               IndustryCodes: [],
               Doyoupay: false,//说明不要支付
@@ -180,17 +235,17 @@ Page({
             ReceiveUpperLimit: this.data.pCoupon_Info.ReceiveUpperLimit,
             ReleaseCommission: this.data.Commission,
             GroupID: app.globalData.AppGroupInfo.GroupID,
-            ReceiveTerm: "2019-10-23"
+            ReceiveTerm:this.data.date
         }
-
+       
         var datas = {
             GroupID: app.globalData.AppGroupInfo.GroupID,
             CouponID: this.data.pCoupon_Info.CouponID,
             Coupon_Release: utils.syJsonSafe(Coupon_Release),
-            pArrIndustryCode: utils.syJsonSafe(this.data.IndustryCodes),
-            pArrRegionID: utils.syJsonSafe(this.data.regionID),
-            pArrGroupID: utils.syJsonSafe(this.data.GroupIDList),
-            StaffID: app.AppStaffInfo.StaffID
+          pArrIndustryCode: utils.syJsonSafe(this.data.IndustryCodes),
+          pArrRegionID: utils.syJsonSafe(this.data.regionID),
+          pArrGroupID: utils.syJsonSafe(this.data.GroupIDList),
+          StaffID: 11223 //app.AppStaffInfo.StaffID
 
         }
       wx.showLoading({
@@ -214,8 +269,9 @@ Page({
               'paySign': oJsApiParam.paySign,
               success(res) {
                 console.log(res);
-                if (res.errMsg == "requestPayment:ok") { }
-                wx.redirectTo({ url: '../sendTicketOne/sendTicketOne' });
+                if (res.errMsg == "requestPayment:ok") { 
+                  wx.redirectTo({ url: '../sendTicketOne/sendTicketOne' });
+                }
               },
               fail(res) {
                 if (res.errMsg == "requestPayment:fail cancel") {
