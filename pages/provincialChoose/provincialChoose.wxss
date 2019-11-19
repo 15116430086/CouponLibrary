@@ -1,1 +1,73 @@
-/* pages/provincialChoose/provincialChoose.wxss */
+page {
+    background-color: #EDEDED;
+}
+
+.v-box {
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+}
+
+.v-top {
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100rpx;
+}
+
+.v-block {
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #EDEDED;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.v-top image {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.v-title {
+    color: #000000;
+    font-size: 32rpx;
+    margin-right: 20rpx;
+    font-weight: 600;
+}
+
+.v-mes {
+    color: #666666;
+    font-size: 28rpx;
+}
+
+.v-bot {
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+}
+
+.v-span {
+    width: calc(100% - 80rpx);
+    height: 100rpx;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-span image {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.v-name {
+    color: #333;
+    font-size: 28rpx;
+    margin-left: 40rpx;
+}
