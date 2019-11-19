@@ -113,25 +113,6 @@ Page({
       })
     }
   },
-  GetData: function() {
-    let that = this;
-    var data = {};
-    data.State = 0
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", data, app.globalData.appkeyid, that.CouponIndustryBack)
-  },
-
-  CouponIndustryBack: function(json) {
-    console.log(json);
-    var json = json.data.Data;
-    if (json) {
-      console.log(json.msg);
-      if (json.flag) {
-        this.setData({
-          columns: json.data
-        });
-      }
-    }
-  },
 
   showPopup() {
     let that = this;
@@ -326,8 +307,7 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
-    that.GetData();
-    that.GetRegionData();
+    that.GetRegionIndustry();
   },
   //点击每个导航的点击事件
   handleTap: function(e) {
@@ -385,26 +365,34 @@ Page({
    */
   onShareAppMessage: function() {
 
-  }, GetRegionData: function () {
+  }, 
+
+  GetRegionIndustry: function () {
     let that = this;
+    wx.showLoading({
+      title: '数据加载中...',
+    })
     var data = {};
     data.pStartLevel = 2
     data.pQueryLevel = 3
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponRegionView/GetCouponRegionlevel", "POST", data, app.globalData.appkeyid, that.RegionDataBack)
+    data.State = 0
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", data, app.globalData.appkeyid, that.GetRegionIndustryBack)
   },
 
-  RegionDataBack: function (json) {
+  GetRegionIndustryBack: function (json) {
     console.log(json);
+    wx.hideLoading();
     var json = json.data.Data;
     if (json) {
       console.log(json.msg);
       var mArray = [];
-      mArray.push(json.data)
-      mArray.push(json.data[0].LevelCoupon_Region)
-      mArray.push(json.data[0].LevelCoupon_Region[0].LevelCoupon_Region)
+      mArray.push(json.dataRegion)
+      mArray.push(json.dataRegion[0].LevelCoupon_Region)
+      mArray.push(json.dataRegion[0].LevelCoupon_Region[0].LevelCoupon_Region)
       if (json.flag) {
         this.setData({
-          regionData: json.data,
+          columns: json.dataIndustry,
+          regionData: json.dataRegion,
           multiArray: mArray
         });
       }
