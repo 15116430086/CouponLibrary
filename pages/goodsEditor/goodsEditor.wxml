@@ -29,7 +29,7 @@
         <block wx:for="{{mainImage}}" wx:for-index="index" wx:key="*this">
           <view class="addbox-left">
             <image src="/static/images/cha.png" class="abox-cha" />
-            <image data-index="{{index}}" bindtap="onUpImageTap" src="/static/images/img.png" class="addImg-box-image" />
+            <image data-index="{{index}}" bindtap="onUpImageTap" src="{{item}}" class="addImg-box-image" />
           </view>
         </block>
         <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left:40rpx" />
@@ -55,7 +55,7 @@
             <input type="digit" data-index="{{index}}"  bindinput="CourierNumberInput" value="{{item.StockNum}}" placeholder="(请输入)" placeholder-class="ip" />
           </view>
           <block wx:for="{{item.Attrivute}}" wx:for-index="cindex" wx:key="cindex">
-            <view class="input-block" style="{{cindex==0 && item.Attrivute.length>1?'border:none;':''}} margin-top:10rpx;">
+            <view class="input-block" style="{{cindex==0 && item.Attrivute.length>0?'border:none;':''}} margin-top:10rpx;">
             {{item.AttributeName}}
             <input type="text" data-index="{{index}}" data-cindex="{{cindex}}"  bindinput="AttributeInput" value="{{item.AttrivuteValue}}" placeholder="(请输入)" placeholder-class="ip" />
           </view>

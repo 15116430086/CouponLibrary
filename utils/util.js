@@ -134,7 +134,7 @@ function UploadImg(count, pAppKeyId, pCallBack, pOther) {
       var imgs = [];
       for (var s in tempFilePaths) {
         const uploadTask = wx.uploadFile({
-          url: "http://test.miboon.com/LibraryAPI/CouponView/UploadImageView/UploadImgs", //开发者服务器的 url
+          url: "http://wx.wap.meiguwen.com/LibraryAPI/CouponView/UploadImageView/UploadImgs", //开发者服务器的 url
           filePath: tempFilePaths[s], // 要上传文件资源的路径 String类型！！！
           name: 'fileUp', // 文件对应的 key ,(后台接口规定的关于图片的请求参数)
           formData: {
