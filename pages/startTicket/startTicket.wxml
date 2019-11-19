@@ -51,7 +51,7 @@
             </view>
 
 
-            <view class="ticket-block">
+            <view class="ticket-block" wx:if="{{sign!=2}}">
                 <view class="ticket-name">单商户领取限制</view>
                 <input type="number" bindblur="Limit" value="" />
             </view>
