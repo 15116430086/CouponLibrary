@@ -5,7 +5,7 @@
       <view>全城</view>
       <image src="/static/images/sel.png" />
     </view>
-
+<!-- <view bindtap="dianwo">dianwo</view> -->
      <view class="home-span" bindtap="showPopup2">
         <view>{{industryName}}</view>
         <image src="/static/images/sel.png" />
@@ -28,8 +28,7 @@
 </view>
 
 <view class="v-box">
-  <van-checkbox-group value="{{ result }}" bind:change="onChange">
-
+  <van-checkbox-group value="{{ result }}" bind:change="onChange" >
     <block wx:for="{{Grouplist}}" wx:for-index="index" wx:key="GroupID">
       <view class="v-block">
         <view class="v-left">
@@ -42,13 +41,12 @@
         <van-checkbox name="{{index}}" checked-color="#E85819"></van-checkbox>
       </view>
     </block>
-
   </van-checkbox-group>
 </view>
 
 
 
-<view class="mask" wx:if="{{showMask}}" >
+<view class="mask" wx:if="{{showMask}}" catchtouchmove="true">
   <view class="mask-b" bindtap="downMask">
     
   </view>
@@ -57,17 +55,19 @@
             <view class="m-title">选择商户预览</view>
             <view class="m-right">
                 <image  src="/static/images/del.png"/>
-                <view class="m-txt">清空选择</view>
+                <view class="m-txt" bindtap="emptytap">清空选择</view>
             </view>
         </view>
         <view class="m-box">
-            <view class="m-block">
-                <view class="mb-right">
-                    <image src="/static/images/swp.png" />
-                    <view class="mb-txt">钵钵当道（石锅饭）钵钵当道（石锅</view>
+           <block wx:for="{{huanlist}}" wx:for-index="index">
+                <view class="m-block">
+                    <view class="mb-right">
+                        <image src="/static/images/swp.png" />
+                        <view class="mb-txt">{{item.GroupName}}</view>
+                    </view>
+                    <image src="/static/images/cha2.png" data-index="{{index}}" bindtap="deletetap" class="m-cha"/>
                 </view>
-                <image src="/static/images/cha2.png" class="m-cha"/>
-            </view>
+           </block>
         </view>
     </view>
     
@@ -79,7 +79,7 @@
   <view class="vb-left" bindtap="shoptap">
     <image src="/static/images/ok.png" />
     <view class="vb-txt">已选择
-      <text>{{number}}</text>个店铺</view>
+      <text>{{result.length}}</text>个店铺</view>
   </view>
   <view class="vb-right" bindtap="isChoice">确认选择</view>
 </view>
@@ -97,4 +97,3 @@
     >
       <van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" />
     </van-popup>
-<!-- <view bindtap="dianji">dianwo</view> -->

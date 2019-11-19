@@ -22,6 +22,38 @@ Page({
         showMask: false
     },
 
+
+  deletetap:function(e){
+  let that = this;
+  console.log(e.currentTarget.dataset.index);
+  var index = e.currentTarget.dataset.index
+  var del = that.data.huanlist[index]
+  var oindex = that.data.Grouplist.indexOf(del); 
+  if (oindex>-1)
+  {
+    that.data.result.splice(index, 1);
+    console.log(oindex);
+  }
+  that.data.huanlist.splice(index, 1);
+  console.log(that.data.huanlist);
+  that.setData({
+    result: that.data.result,
+    number:that.data.huanlist.length,
+    huanlist: that.data.huanlist
+  })
+},
+
+  emptytap:function(){
+    let that = this;
+    that.setData({
+      result:[],
+      huanlist:[],
+    })
+  },
+
+
+
+
     //商品名称ProductName
     contactsOrTelephoneInput: function(e) {
         this.setData({
@@ -146,6 +178,41 @@ Page({
         })
     },
 
+
+    isChoice: function(e) {
+        let that = this;
+        if(!that.data.result.length>0){
+          wx.showToast({
+            title: '请选择店铺!',
+            icon: 'none',
+            duration: 2000
+          })
+          return;
+        }
+        console.log(that.data.result);
+        that.data.huanlist = [];
+        for (let i in that.data.result) {
+            that.setData({
+                huanlist: that.data.huanlist.concat(that.data.Grouplist[that.data.result[i]])
+            })
+        }
+        console.log(that.data.huanlist);
+        //wx.removeStorageSync("resultkey");
+
+
+
+        // that.data.huanlist = [];
+        // for (let i in that.data.result) {
+        //     that.setData({
+        //         huanlist: that.data.huanlist.concat(that.data.Grouplist[that.data.result[i]])
+        //     })
+        // }
+        // wx.setStorageSync("Groupkey", that.data.huanlist);
+        // wx.setStorageSync("resultkey", that.data.result);
+        // wx.navigateBackMiniProgram();
+        // console.log(that.data.huanlist);
+        // wx.navigateBack();
+    },
 
     /**
      * 生命周期函数--监听页面加载

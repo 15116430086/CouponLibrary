@@ -74,7 +74,7 @@ Page({
             that.setData({ shareshow2: false, sign: 2, Doyoupay: false, Commission:0});//选择自营 就隐藏行业 地区
           } else{
             that.setData({ 
-              shareshow2: false, 
+              shareshow2: true, 
               sign: 1, 
               Doyoupay: true,
               Commission: (this.data.pCoupon_Info.CouponMoney * 0.1 * parseInt(this.data.Number))
