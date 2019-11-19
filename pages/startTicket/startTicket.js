@@ -62,8 +62,10 @@ Page({
     wx.setStorageSync("Groupkey", "");
     wx.setStorageSync("resultkey", "");
     wx.setStorageSync("industryKey", "");
+    var oCoupon_Info = JSON.parse(options.pCoupon_Info);
+    oCoupon_Info.CouponID = options.CouponID
     this.setData({
-      pCoupon_Info: JSON.parse(options.pCoupon_Info)
+      pCoupon_Info: oCoupon_Info
     });
     // utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", {}, app.globalData.appkeyid, this.GetCouponIndustry);
 
@@ -173,7 +175,7 @@ Page({
       });
       return;
     }
-    if (!this.data.Limited || this.data.Limited <= 0) {
+    if ((!this.data.Limited || this.data.Limited <= 0) && this.data.sign == 1) {
       wx.showToast({
         title: "单商户领取限制异常",
         icon: "none"
@@ -202,7 +204,7 @@ Page({
       this.data.GroupIDList.push(app.globalData.AppGroupInfo.GroupID);
       this.setData({
         regionID: [],
-        Limited:0,
+        Limited: 0,
         IndustryCodes: [],
         Doyoupay: false, //说明不要支付
 

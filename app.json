@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/startTicket/startTicket",
     "pages/home/home",
     "pages/sendTicketTwo/sendTicketTwo",
-    "pages/login/login",
     "pages/index/index",
     "pages/merchantReg/merchantReg",
     "pages/phoneLogin/phoneLogin",
