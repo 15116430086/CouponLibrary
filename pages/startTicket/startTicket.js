@@ -77,7 +77,7 @@ Page({
             that.setData({ 
               shareshow2: false, sign: 3,
               Doyoupay: true,
-              Commission: (this.data.pCoupon_Info.CouponMoney * 0.1 * parseInt(this.data.Number))
+              Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * 0.1 * parseInt(this.data.Number))).toFixed(2)
              });
               wx.navigateTo({
                   url: "../shopChoose/shopChoose"
@@ -89,7 +89,7 @@ Page({
               shareshow2: true, 
               sign: 1, 
               Doyoupay: true,
-              Commission: (this.data.pCoupon_Info.CouponMoney * 0.1 * parseInt(this.data.Number))
+              Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * 0.1 * parseInt(this.data.Number))).toFixed(2)
                });//全部
           }
       
@@ -110,7 +110,7 @@ Page({
     Commissionratio: function(event) { //数量失去焦点计算托管佣金
         var number = event.detail.value
         this.setData({
-            Commission: (this.data.pCoupon_Info.CouponMoney * 0.1 * number),
+          Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * 0.1 * number)).toFixed(2) ,
             Number: number
         });
     },
@@ -151,19 +151,11 @@ Page({
       show: false
     })
   },
- bindPickerChange_hx: function(e) {
-        let that = this;
-        let pic_array = that.data.pic_array;
-        // let pCoupon_Info = that.data.pCoupon_Info;
-
-        that.setData({ //给变量赋值
-            df_index: 0,
-            IndustryCodes: pic_array[e.detail.value].IndustryCode,
-            Industryvalue: pic_array[e.detail.value].IndustryName //每次选择了下拉列表的内容同时修改下标然后修改显示的内容，显示的内容和选择的内容一致
-        });
-        //pCoupon_Info.ExpiredType = 1;
-        // pCoupon_Info.ExpirationDate = pic_array[e.detail.value].name;
-    },
+  Regionselection:function(event){//选择区域
+    wx.navigateTo({
+      url: '../provincialChoose/provincialChoose',
+    })
+  },
     pay: function(event) {
         if (!this.data.Number || this.data.Number <= 0) {
             wx.showToast({
@@ -189,25 +181,6 @@ Page({
       }
 
 
-        if (this.data.shareshow2) { //如果是指定商户 就判断地区行业
-            if (!this.data.regionID) {
-                wx.showToast({
-                    title: "请选择地区",
-                    icon: "none"
-                });
-                return;
-            }
-
-            if (!this.data.IndustryCodes) {
-                wx.showToast({
-                    title: "请选择行业",
-                    icon: "none"
-                });
-                return;
-            }
-
-
-        }else{
           if (this.data.sign==1){//说明是全部商户
 
             this.setData({
@@ -226,7 +199,7 @@ Page({
 
           }
         
-        }
+        
 
         var Coupon_Release = {
             ReceiveNUM: 0,
@@ -245,7 +218,7 @@ Page({
           pArrIndustryCode: utils.syJsonSafe(this.data.IndustryCodes),
           pArrRegionID: utils.syJsonSafe(this.data.regionID),
           pArrGroupID: utils.syJsonSafe(this.data.GroupIDList),
-          StaffID: 11223 //app.AppStaffInfo.StaffID
+          StaffID: app.globalData.AppStaffInfo.StaffID
 
         }
       wx.showLoading({
