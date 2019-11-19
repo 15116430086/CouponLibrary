@@ -1,12 +1,12 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/merchantReg/merchantReg",
     "pages/goodsEditor/goodsEditor",
     "pages/shopChoose/shopChoose",
     "pages/industryChoose/industryChoose",
     "pages/staffChoose/staffChoose",
-    "pages/startTicket/startTicket",
-    
+    "pages/startTicket/startTicket",    
     "pages/sysNotice/sysNotice",
     "pages/provincialChoose/provincialChoose",
     "pages/home/home",
@@ -28,7 +28,6 @@
     "pages/doorScan/doorScan",
     "pages/watchMes/watchMes",
     "pages/readTicketInfo/readTicketInfo",
-    "pages/merchantReg/merchantReg",
     "pages/banlanceMes/banlanceMes",
     "pages/phoneLogin/phoneLogin",
     "pages/configLook/configLook",

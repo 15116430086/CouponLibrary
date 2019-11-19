@@ -20,10 +20,10 @@ Page({
     "auto-height": true, // 是否自动增高，设置auto-height时，style.height不生效
     "adjust-position": true, // 键盘弹起时，是否自动上推页面
     show2: false,
-    columns: ["现金券", "团购券"],
+    columns: [],
     industryName: "",
     industryCode: "",
-    enterpriseLicensing: "http://test.miboon.com/file/image/20191025215104232.jpg",
+    enterpriseLicensing: "",
     flag: false,
     regAddress: "湖南长沙五一大道59号", 
     multiArray: [ ],
