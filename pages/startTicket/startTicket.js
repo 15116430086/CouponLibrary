@@ -39,7 +39,19 @@ Page({
         pic_array: [], //行业列表
         pCoupon_Info: {},
         sign:1,//全部，2自营，3自选
-        Doyoupay:true//是否要支付佣金 默认支付
+        Doyoupay:true,//是否要支付佣金 默认支付
+        date: "日期",
+        currentDate: new Date().getTime(),
+        minDate: new Date().getTime(),
+        formatter(type, value) {
+        if (type === 'year') {
+          return `${value}年`;
+        } else if (type === 'month') {
+          return `${value}月`;
+        }
+        return value;
+      },
+      show: false,
 
     },
 
@@ -65,7 +77,7 @@ Page({
             that.setData({ 
               shareshow2: false, sign: 3,
               Doyoupay: true,
-              Commission: (this.data.pCoupon_Info.CouponMoney * 0.1 * parseInt(this.data.Number))
+              Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * 0.1 * parseInt(this.data.Number))).toFixed(2)
              });
               wx.navigateTo({
                   url: "../shopChoose/shopChoose"
@@ -77,7 +89,7 @@ Page({
               shareshow2: true, 
               sign: 1, 
               Doyoupay: true,
-              Commission: (this.data.pCoupon_Info.CouponMoney * 0.1 * parseInt(this.data.Number))
+              Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * 0.1 * parseInt(this.data.Number))).toFixed(2)
                });//全部
           }
       
@@ -98,26 +110,52 @@ Page({
     Commissionratio: function(event) { //数量失去焦点计算托管佣金
         var number = event.detail.value
         this.setData({
-            Commission: (this.data.pCoupon_Info.CouponMoney * 0.1 * number),
+          Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * 0.1 * number)).toFixed(2) ,
             Number: number
         });
     },
     Limit: function(event) { //单商户限制
         this.setData({ Limited: event.detail.value });
     },
-    bindPickerChange_hx: function(e) {
-        let that = this;
-        let pic_array = that.data.pic_array;
-        // let pCoupon_Info = that.data.pCoupon_Info;
 
-        that.setData({ //给变量赋值
-            df_index: 0,
-            IndustryCodes: pic_array[e.detail.value].IndustryCode,
-            Industryvalue: pic_array[e.detail.value].IndustryName //每次选择了下拉列表的内容同时修改下标然后修改显示的内容，显示的内容和选择的内容一致
-        });
-        //pCoupon_Info.ExpiredType = 1;
-        // pCoupon_Info.ExpirationDate = pic_array[e.detail.value].name;
-    },
+  showDate:function(event){//领取期限
+    this.setData({
+      show: true
+    });
+
+  },
+  onClose() {
+    this.setData({
+      show: false
+    });
+  },
+  onCancel(e) {
+    this.setData({
+      show: false
+    });
+  },
+  onInput(event) {
+    this.setData({
+      currentDate: event.detail
+    });
+  },
+  confirmDate(e) {
+    console.log(e.detail);
+    let that = this;
+    let timer = e.detail;
+    
+    timer = utils.formatTime(timer);
+    console.log(timer)
+    that.setData({
+      date: timer,
+      show: false
+    })
+  },
+  Regionselection:function(event){//选择区域
+    wx.navigateTo({
+      url: '../provincialChoose/provincialChoose',
+    })
+  },
     pay: function(event) {
         if (!this.data.Number || this.data.Number <= 0) {
             wx.showToast({
@@ -134,36 +172,26 @@ Page({
             return;
         }
 
-        if (this.data.shareshow2) { //如果是指定商户 就判断地区行业
-            if (!this.data.regionID) {
-                wx.showToast({
-                    title: "请选择地区",
-                    icon: "none"
-                });
-                return;
-            }
-
-            if (!this.data.IndustryCodes) {
-                wx.showToast({
-                    title: "请选择行业",
-                    icon: "none"
-                });
-                return;
-            }
+      if (!this.data.date=="日期") {
+        wx.showToast({
+          title: "请选择领取期限",
+          icon: "none"
+        });
+        return;
+      }
 
 
-        }else{
           if (this.data.sign==1){//说明是全部商户
 
             this.setData({
-              GroupIDList: app.globalData.AppGroupInfo.GroupID,
+              GroupIDList: [],
               regionID: [],
               IndustryCodes: [],
               Doyoupay: true,//说明要支付
             });
           }else{//说明自营商户
+            this.data.GroupIDList.push(app.globalData.AppGroupInfo.GroupID);
             this.setData({
-              GroupIDList: [],
               regionID: [],
               IndustryCodes: [],
               Doyoupay: false,//说明不要支付
@@ -171,7 +199,7 @@ Page({
 
           }
         
-        }
+        
 
         var Coupon_Release = {
             ReceiveNUM: 0,
@@ -180,17 +208,17 @@ Page({
             ReceiveUpperLimit: this.data.pCoupon_Info.ReceiveUpperLimit,
             ReleaseCommission: this.data.Commission,
             GroupID: app.globalData.AppGroupInfo.GroupID,
-            ReceiveTerm: "2019-10-23"
+            ReceiveTerm:this.data.date
         }
-
+       
         var datas = {
             GroupID: app.globalData.AppGroupInfo.GroupID,
             CouponID: this.data.pCoupon_Info.CouponID,
             Coupon_Release: utils.syJsonSafe(Coupon_Release),
-            pArrIndustryCode: utils.syJsonSafe(this.data.IndustryCodes),
-            pArrRegionID: utils.syJsonSafe(this.data.regionID),
-            pArrGroupID: utils.syJsonSafe(this.data.GroupIDList),
-            StaffID: app.AppStaffInfo.StaffID
+          pArrIndustryCode: utils.syJsonSafe(this.data.IndustryCodes),
+          pArrRegionID: utils.syJsonSafe(this.data.regionID),
+          pArrGroupID: utils.syJsonSafe(this.data.GroupIDList),
+          StaffID: app.globalData.AppStaffInfo.StaffID
 
         }
       wx.showLoading({
@@ -214,8 +242,9 @@ Page({
               'paySign': oJsApiParam.paySign,
               success(res) {
                 console.log(res);
-                if (res.errMsg == "requestPayment:ok") { }
-                wx.redirectTo({ url: '../sendTicketOne/sendTicketOne' });
+                if (res.errMsg == "requestPayment:ok") { 
+                  wx.redirectTo({ url: '../sendTicketOne/sendTicketOne' });
+                }
               },
               fail(res) {
                 if (res.errMsg == "requestPayment:fail cancel") {

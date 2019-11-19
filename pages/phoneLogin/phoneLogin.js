@@ -7,9 +7,81 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    phone: "",
+    code: "",
+    phonelength: 0,
+    codelength: 0
   },
 
+  //手机号码
+  phoneinput: function(e) {
+    let that = this;
+    that.setData({
+      phone: e.detail.value,
+      phonelength: e.detail.value.length
+    })
+  },
+  //验证码
+  codeinput: function(e) {
+    let that = this;
+    that.setData({
+      code: e.detail.value,
+      codelength: e.detail.value.length
+    })
+  },
+
+  isConfirmLogin: function() {
+    let that = this;
+    if (that.data.phone == "") {
+      wx.showToast({
+        title: '请输入手机号码!',
+        icon: "none",
+        duration: 2000
+      })
+      return;
+    }
+    if (that.data.phonelength != 11) {
+      wx.showToast({
+        title: '请输入11位数的手机号码!',
+        icon: "none",
+        duration: 2000
+      })
+      return;
+    }
+    if (that.data.code == "") {
+      wx.showToast({
+        title: '请输入验证码!',
+        icon: "none",
+        duration: 2000
+      })
+      return;
+    }
+    if (that.data.codelength != 11) {
+      wx.showToast({
+        title: '请输入4位数的验证码!',
+        icon: "none",
+        duration: 2000
+      })
+      return;
+    }
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    wx.login({
+      success: res => {
+        let that = this;
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId      
+        app.globalData.logincode = res.code;
+        var data = {};
+        data.Text = detail.encryptedData;
+        data.AesIV = detail.iv;
+        data.code = res.code;
+        data.pHoneNumber = that.data.phone;
+        data.pCheckCode = that.data.code;
+        utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetWxLoginAuth", "POST", data, app.globalData.appkeyid, that.GetPhoneNumbeLoginBack)
+      }
+    })
+  },
 
   onPhoneLoginTap: function(res) {
     // 登录
@@ -28,11 +100,11 @@ Page({
           utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetWxPhoneNumbeLogin", "POST", data, app.globalData.appkeyid, that.GetPhoneNumbeLoginBack)
         }
       })
-
     }
   },
   GetPhoneNumbeLoginBack: function(json) {
     console.log(json);
+    wx.hideLoading();
     var json = json.data.Data;
     if (json) {
       console.log(json.msg);
@@ -53,7 +125,7 @@ Page({
         if (json.state == 3) {
           wx.showModal({
             title: '登录失败',
-            content: json.msg ,            
+            content: json.msg,
             success: function(res) {
               if (res.confirm) {
                 console.log('用户点击确定')
@@ -66,11 +138,11 @@ Page({
         } else {
           wx.showModal({
             title: '登录失败',
-            showCancel:false,
-            content: json.msg ,
+            showCancel: false,
+            content: json.msg,
             success: function(res) {
               if (res.confirm) {
-                console.log('用户点击确定')               
+                console.log('用户点击确定')
               }
             }
           })

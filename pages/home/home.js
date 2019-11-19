@@ -10,11 +10,11 @@ Page({
   data: {
     CouponCount: null,
     lastpage: 0,
+    GroupName:"",
     noticeList:[
       {title:"A商家领用了100张【10元现金券】"},
       { title: "B商家领用了100张【10元现金券】" },
       { title: "C商家领用了100张【10元现金券】" },
-
     ]
   },
   onWxScanCode: function () {
@@ -74,6 +74,9 @@ Jumptap:function(){
    */
   onLoad: function (options) {
     let that = this;
+    that.setData({
+      GroupName:app.globalData.AppGroupInfo.GroupName
+    })
     that.GetData();
   },
 
