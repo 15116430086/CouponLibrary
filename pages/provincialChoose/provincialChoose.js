@@ -178,30 +178,13 @@ Page({
     let content = that.data.content;
     let mindex = e.currentTarget.dataset.mindex;
     let sindex = e.currentTarget.dataset.sindex;
-    let contents = content[mindex].contents;
-    let id = e.currentTarget.dataset.id;
-    console.log(contents)
-    for (let i in contents){
-      console.log(contents[i])
-      if (contents[i].id == id){
-        var printPrice = "contents[" + i + "].shows";
-        if (contents[i].shows) {
-          this.setData({
-            [printPrice]: false
-          });
-        } else {
-          this.setData({
-            [printPrice]: true
-          });
-        }
-      } else {
-        var printPrice1 = "contents[" + i + "].shows";
-        this.setData({
-          [printPrice1]: false
-        });
-      }
-      }
-    
+    console.log(mindex);
+    let contents = content[mindex].contents[sindex];
+    contents.shows = !contents.shows
+    that.setData({
+      content:content
+    })
+
   },
 
 
