@@ -9,6 +9,8 @@ Page({
   data: {
     userlist: [],
     lastpage: 0,
+    TodayUserNUM:0,
+    HistoryUserUNM:0
   },
 
   GetData: function () {

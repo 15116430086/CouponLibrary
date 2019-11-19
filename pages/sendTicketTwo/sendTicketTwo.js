@@ -123,7 +123,7 @@ Page({
       ExpirationDate: '',
       ExpiredType: 10,
       CouponDetails: "",
-      ReleaseNUM: "", //发布数量
+      // ReleaseNUM: "", //发布数量
       ReceiveUpperLimit: 0,
       UsageRule: "",
       ImageOne: "",
@@ -173,7 +173,7 @@ Page({
     pCoupon_Info.GroupID = app.globalData.AppGroupInfo.GroupID;
     pCoupon_Info.CouponName = val.CouponName; //券名称
     pCoupon_Info.CouponMoney = val.CouponMoney; //券面值
-    pCoupon_Info.ReleaseNUM = val.ReleaseNUM; //券数量
+    // pCoupon_Info.ReleaseNUM = val.ReleaseNUM; //券数量
     pCoupon_Info.ReceiveUpperLimit = val.ReceiveUpperLimit; //领取上限
     pCoupon_Info.SalePrice = val.SalePrice; //
     data.pCoupon_Info = utils.syJsonSafe(that.data.pCoupon_Info);
@@ -201,14 +201,14 @@ Page({
       });
       return
     }
-    if (pCoupon_Info.ReleaseNUM == '') {
-      wx.showToast({
-        title: "请输入发布数量!",
-        icon: "none",
-        duration: 1500
-      });
-      return
-    }
+    // if (pCoupon_Info.ReleaseNUM == '') {
+    //   wx.showToast({
+    //     title: "请输入发布数量!",
+    //     icon: "none",
+    //     duration: 1500
+    //   });
+    //   return
+    // }
     if (pCoupon_Info.ReceiveUpperLimit == '') {
       wx.showToast({
         title: "请输入领取上限!",
