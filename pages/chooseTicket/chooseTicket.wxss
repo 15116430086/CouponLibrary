@@ -38,7 +38,7 @@
 .homeTop-name {
     width: 100rpx;
     height: 60rpx;
-    font-size: 16px;
+    font-size: 32rpx;
     font-weight: 600;
     color: #666666;
     display: flex;

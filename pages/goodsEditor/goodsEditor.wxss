@@ -1,220 +1,337 @@
 /* pages/sendTicketTwo/sendTicketTwo.wxss */
 
 page {
-    background-color: #EDEDED;
+  background-color: #ededed;
+}
+
+.v-boxs {
+  width: calc(100% - 80rpx);
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.v-block image {
+  width: 34rpx;
+  height: 34rpx;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+
+.v-block {
+  margin-right: 20rpx;
+  color: #333;
+  font-size: 28rpx;
+  background-color: rgb(223, 217, 217);
+  border-radius: 20rpx;
+  padding: 20rpx 50rpx 20rpx 50rpx;
+  position: relative;
+}
+
+.selected {
+  background-color: #fff0de;
+  color: #e85819;
 }
 
 .top_nav {
-    /* border-bottom: 1px solid #e6d9af; */
-    width: 100%;
-    height: 110rpx;
-    background-color: #ffffff;
-    padding-left: 40rpx;
+  /* border-bottom: 1px solid #e6d9af; */
+  width: 100%;
+  height: 110rpx;
+  background-color: #fff;
+  padding-left: 40rpx;
 }
 
 .nav-name {
-    display: inline-block;
-    color: #999999;
-    width: 120rpx;
-    height: 102rpx;
-    line-height: 102rpx;
-    text-align: left;
-    font-size: 32rpx;
-    margin-right: 54rpx;
+  display: inline-block;
+  color: #999;
+  width: 120rpx;
+  height: 102rpx;
+  line-height: 102rpx;
+  text-align: left;
+  font-size: 32rpx;
+  margin-right: 54rpx;
 }
 
 .nav-hover {
-    color: #E85819;
-    font-size: 32rpx;
-    border-bottom: 8rpx solid #E85819;
+  color: #e85819;
+  font-size: 32rpx;
+  border-bottom: 8rpx solid #e85819;
 }
 
 .mes-block {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .ticket-box {
-    width: 100%;
-    height: auto;
-    background-color: #ffffff;
+  width: 100%;
+  height: auto;
+  background-color: #fff;
 }
 
 .ticket-block {
-    margin: 0px auto;
-    width: calc(100% - 80rpx);
-    height: auto;
-    padding-top: 40rpx;
-    padding-bottom: 10rpx;
-    border-bottom: 1px solid #EDEDED;
+  margin: 0px auto;
+  width: calc(100% - 80rpx);
+  height: auto;
+  padding-top: 40rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid #ededed;
 }
 
 .ticket-blocks {
-    margin: 0px auto;
-    width: calc(100% - 80rpx);
-    height: auto;
-    padding-top: 20rpx;
-    border-bottom: 1px solid #EDEDED;
+  margin: 0px auto;
+  width: calc(100% - 80rpx);
+  height: auto;
+  padding-top: 20rpx;
+  border-bottom: 1px solid #ededed;
 }
 
 .ticket-name {
-    color: #666666;
-    font-size: 28rpx;
-    font-weight: 600;
-    margin-bottom: 10rpx;
+  color: #666;
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-bottom: 10rpx;
 }
 
 .textarea {
-    font-size: 28rpx;
-    height: 100rpx;
-    /* margin: 10%; */
-    /* background-color: lightgray;
-    width: 80%; */
-    /* height: 100px; */
+  font-size: 28rpx;
+  height: 100rpx;
+  /* margin: 10%; *//* background-color: lightgray;
+    width: 80%; *//* height: 100px; */
 }
 
 .placeholder {
-    font-size: 28rpx;
-    color: gray;
+  font-size: 28rpx;
+  color: gray;
 }
 
 .addImg {
-    margin: 20rpx auto;
-    width: calc(100% - 80rpx);
-    height: auto;
-    border-bottom: 1px solid #EDEDED;
-    background-color: #ffffff;
-    padding-top: 10rpx;
-    padding-bottom: 20rpx;
+  margin: 20rpx auto;
+  width: calc(100% - 80rpx);
+  height: auto;
+  border-bottom: 1px solid #ededed;
+  background-color: #fff;
+  padding-top: 10rpx;
+  padding-bottom: 20rpx;
 }
 
 .addImg-name {
-    color: #000000;
-    font-size: 16px;
-    text-indent: 40rpx;
+  color: #000;
+  font-size: 16px;
+  text-indent: 40rpx;
 }
 
 .addImg-box {
-    margin-top: 25rpx;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  margin-top: 25rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
-.addImg-box image {
-    width: 128rpx;
-    height: 128rpx;
+.addbox-left {
+  width: auto;
+  height: auto;
+  position: relative;
+}
+
+.abox-cha {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  bottom: 11rpx;
+  right: 14rpx;
+}
+
+.abox-chaa {
+  width: 35rpx;
+  height: 35rpx;
+  display: block;
+  flex-shrink: 1;
+  position: absolute;
+  top: 0px;
+  left: -35rpx;
+}
+
+.tf-left {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.addImg-box-image {
+  width: 128rpx;
+  height: 128rpx;
+  margin-right: 15rpx;
 }
 
 .playBtn {
-    width: 670rpx;
-    height: 98rpx;
-    background: rgba(232, 88, 25, 1);
-    text-align: center;
-    line-height: 98rpx;
-    border-radius: 20rpx;
-    margin: 40rpx auto;
-    color: #ffffff;
-    font-size: 32rpx;
+  width: 670rpx;
+  height: 98rpx;
+  background: rgba(232, 88, 25, 1);
+  text-align: center;
+  line-height: 98rpx;
+  border-radius: 20rpx;
+  margin: 40rpx auto;
+  color: #fff;
+  font-size: 32rpx;
 }
 
 .ticket-flex {
-    /* margin-top: 10rpx; */
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  /* margin-top: 10rpx; */
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .tf-name {
-    color: #000000;
-    font-size: 32rpx;
-    font-weight: 600;
+  color: #000;
+  font-size: 32rpx;
+  font-weight: 600;
 }
 
-.ticket-flex image {
+.ticket-flex image{
     width: 10rpx;
-    height: 18rpx;
+  height: 18rpx;
+}
+
+.ticket-flex-image {
+  width: 10rpx;
+  height: 18rpx;
 }
 
 .input-box {
-    width: 100%;
-    height: auto;
+  width: 100%;
+  height: auto;
 }
 
 .input-block {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    color: #999999;
-    font-size: 28rpx;
-    border-bottom: 1px solid #EDEDED;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  color: #999;
+  font-size: 28rpx;
+  border-bottom: 1px solid #ededed;
 }
 
 .input-block input {
-    font-size: 28rpx;
-    color: #333333;
-    margin-left: 40rpx;
+  font-size: 28rpx;
+  color: #333;
+  margin-left: 40rpx;
 }
 
 .ip {
-    color: #CCCCCC;
-    font-size: 24rpx;
+  color: #ccc;
+  font-size: 24rpx;
 }
 
 .mask-box {
-    margin: 40rpx auto;
-    width: calc(100% - 80rpx);
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  margin: 40rpx auto;
+  width: calc(100% - 80rpx);
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .mb-title {
-    color: #333333;
-    font-weight: 600;
-    font-size: 32rpx;
+  color: #333;
+  font-weight: 600;
+  font-size: 32rpx;
 }
 
 .mb-title text {
-    color: #CCC;
+  color: #ccc;
 }
 
 .mb-down {
-    color: #016FB4;
-    font-size: 28rpx;
+  color: #016fb4;
+  font-size: 28rpx;
 }
 
 .mask {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 300;
-    background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 300;
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .mask-page {
-    height: 482rpx;
-    width: 100%;
-    background-color: #ffffff;
-    position: absolute;
-    z-index: 800;
-    bottom: 0px;
-    left: 0px;
-    border-radius: 20rpx 20rpx 0 0;
+  height: 482rpx;
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+  z-index: 800;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 20rpx 20rpx 0 0;
 }
 
 .tf-name text {
-    color: #CCCCCC;
-    font-size: 24rpx;
-    font-weight: 600;
+  color: #ccc;
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.v-flex {
+  width: calc(100% - 80rpx);
+  margin: 0px auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.vb-span {
+  width: 30.3%;
+  height: 88rpx;
+  text-align: center;
+  line-height: 88rpx;
+  border-radius: 20rpx;
+  background-color: #ededed;
+  font-size: 32rpx;
+  color: #999;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.vb-span:first-child {
+  background-color: #e85819;
+  opacity: 0.5;
+  color: #fff;
+}
+
+.vb-span:nth-child(2) {
+  background-color: #e85819;
+  opacity: 0.5;
+  color: #fff;
+}
+
+.tb-topp {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.vb-Checked {
+  background-color: #e85819;
+  opacity: 0.7;
+  color: #fff;
 }

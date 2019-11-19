@@ -37,8 +37,8 @@ Page({
     if (json) {
       console.log(json.msg);
       if (json.flag) {
-        wx.setStorageSync('appkeyid', json.data)
-        var appkeyid = wx.getStorageSync('appkeyid');
+        wx.setStorageSync('miniappkeyid', json.data)
+        var appkeyid = wx.getStorageSync('miniappkeyid');
         if (appkeyid) {
           app.globalData.appkeyid = appkeyid.FSessionKey;
           var loginInfo = JSON.parse(appkeyid.FContent);
