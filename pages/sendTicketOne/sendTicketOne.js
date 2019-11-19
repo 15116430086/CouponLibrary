@@ -69,6 +69,7 @@ Page({
           pageIndex:parseInt(chat.data.pageIndex + 1)
         });
       }else{
+        chat.setData({ Paging: false });//不能再分页
         wx.showToast({
           title: json.msg,
           icon: "none"
