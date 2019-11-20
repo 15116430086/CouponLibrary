@@ -6,7 +6,7 @@
           <image wx:else src="/static/images/swp.png" />
           <view class="goodsmes-mes-ul-one">
             <view>{{datalist[0].CouponName}}</view>
-            <view style="font-size: 13px;color: #666666;">{{datalist[0].CouponDetails}}</view>
+            <!-- <view style="font-size: 13px;color: #666666;">{{datalist[0].CouponDetails}}</view> -->
           </view>
         </view>
 
