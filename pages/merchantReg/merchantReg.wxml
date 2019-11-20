@@ -68,7 +68,7 @@
       <view class="ticket-name">联系人</view>
       <input name="Contacts" type="text" value="张碧磊" placeholder="请填写联系人" placeholder-class="ip" />
     </view>
-    <view class="ticket-block">
+    <view class="ticket-block" style="border:none">
       <view class="ticket-name">手机号码</view>
       <input name="Telephone" value="15116430086" class="textarea" type="number" placeholder="手机号码将成为登录凭证" placeholder-class="ip" maxlength="{{maxlength}}" auto-height="{{auto-height}}" show-confirm-bar="{{show-confirm-bar}}"></input>
     </view>

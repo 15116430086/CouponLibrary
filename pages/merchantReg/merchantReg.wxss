@@ -4,7 +4,10 @@
 /* pages/sendTicketTwo/sendTicketTwo.wxss */
 
 page {
+  width: 100%;
     background-color: #EDEDED;
+    height: auto;
+     padding-bottom: 180rpx;
 }
 
 .top_nav {
@@ -164,5 +167,5 @@ form{
   display: block;
   width: 100%;
   height: auto;
-  margin-bottom: 180rpx;
+ 
 }
