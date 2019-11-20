@@ -1,97 +1,28 @@
+let app = getApp();
+let utils = require("../../utils/util.js")
 Page({
   data: {
     idx: "",
     idb: "",
     index: 0,
-    content: [{
-        id: '01',
-        title: '金融业',
-        contents: [{
-            id: '001',
-            title: '银行',
-            isSel: false,
-            shows: false,
-            list: [{
-                id: '021',
-                title: '基金',
-                isSel: false
-              },
-              {
-                id: '003',
-                title: '股权投资',
-                isSel: false
-              }
-            ]
-          },
-          {
-            id: '002',
-            title: '长沙',
-            isSel: false,
-            shows: false,
-            list: [{
-                id: '038',
-                title: '雨花区',
-                isSel: false
-              },
-              {
-                id: '049',
-                title: '芙蓉区',
-                isSel: false
-              }
-            ]
-          }
-        ],
-        mes: "银行 l 证券 l 保险 l 基金 l 股权投资",
-        shows: false
-      },
-      {
-        id: '02',
-        title: 'IT/互联网',
-        contents: [{
-            id: '011',
-            title: '企业级软件内',
-            isSel: false,
-            shows: false,
-            list: [{
-                id: '145',
-                title: 'IT',
-                isSel: false
-              },
-              {
-                id: '156',
-                title: '硬件设置',
-                isSel: false
-              }
-            ]
-          },
-          {
-            id: '034',
-            title: '游戏开发/运营',
-            isSel: false,
-            shows: false,
-            list: [{
-                id: '028',
-                title: '软件',
-                isSel: false
-              },
-              {
-                id: '149',
-                title: '职业',
-                isSel: false
-              }
-            ]
-          }
-        ],
-        mes: "互联网 l IT l 游戏 l 软件",
-
-        shows: false
-      }
-    ]
+    content:[],
+    content2:[],
+    content3:[]
   },
-  onLoad() {
-    console.log(this.data.content[0].contents)
-  },
+  onLoad: function (options) {
+    
+    var datas={
+      pStartLevel:2,
+      pQueryLevel:3
+    };
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponRegionView/GetCouponRegionlevel", "POST", datas, app.globalData.appkeyid, this.GetCouponRegionlevel);
 
+  },
+  GetCouponRegionlevel:function(res){
+    var json=res.data.Data;
+    var chat=this;
+    chat.setData({ content: json.data});
+  },
   // 省
   showHide(e) {
     let that = this;
@@ -117,29 +48,41 @@ Page({
 
 
   },
-  showMask(e) {
+  showMasks:function(event){//点击省
     var contentFor = this.data.content;
-
-    for (var i = 0; i < contentFor.length; i++) {　　
-      if (e.currentTarget.dataset.changeid == contentFor[i].id) {　　　　
-        var printPrice = "content[" + i + "].shows";　　　　
-        if (this.data.content[i].shows) {　　　　　　
-          this.setData({　　　　　　　　
-            [printPrice]: false　　　　　　
-          });　　　　
-        } else {　　　　　　
-          this.setData({　　　　　　　　
-            [printPrice]: true　　　　　　
-          });　　　　
-        }　　
-      } else {　　　　　　
-        var printPrice1 = "content[" + i + "].shows";　　　　　　
-        this.setData({　　　　　　　　
-          [printPrice1]: false　　　　　　
-        });　　　　
-      }　　
+    var RegionID= event.currentTarget.dataset.changeid;
+    for (var i in contentFor){
+      if (RegionID== contentFor[i].RegionID) {
+        contentFor[i].shows = !contentFor[i].shows;
+          break;
+      　}
     }
+    this.setData({ content: contentFor, index: event.currentTarget.dataset.index});
   },
+
+  //showMask(e) {
+    //var contentFor = this.data.content;
+
+    //for (var i = 0; i < contentFor.length; i++) {　　
+     // if (e.currentTarget.dataset.changeid == contentFor[i].RegionID) {　　　　
+      //  var printPrice = "content[" + i + "].shows";　　　　
+        //if (this.data.content[i].shows) {　　　　　　
+       //   this.setData({　　　　　　　　
+         //   [printPrice]: false　　　　　　
+         // });　　　　
+        //} else {　　　　　　
+        //  this.setData({　　　　　　　　
+       //     [printPrice]: true　　　　　　
+       //   });　　　　
+       // }　　
+     // } else {　　　　　　
+      //  var printPrice1 = "content[" + i + "].shows";　　　　　　
+       // this.setData({　　　　　　　　
+        //  [printPrice1]: false　　　　　　
+        //});　　　　
+     // }　　
+    //}
+  //},
 
 
   // 市
@@ -173,19 +116,26 @@ Page({
     })
   },
 
-  showMaskChild(e){
-    let that = this;
-    let content = that.data.content;
-    let mindex = e.currentTarget.dataset.mindex;
-    let sindex = e.currentTarget.dataset.sindex;
-    console.log(mindex);
-    let contents = content[mindex].contents[sindex];
-    contents.shows = !contents.shows
-    that.setData({
-      content:content
-    })
+  showMaskChilds:function(event){//点击市
+    var inx=this.data.index;
+    var contentFor = this.data.content[inx];
 
   },
+
+
+  //showMaskChild(e){
+    //let that = this;
+    //let content = that.data.content;
+    //let mindex = e.currentTarget.dataset.mindex;
+    //let sindex = e.currentTarget.dataset.sindex;
+    //console.log(mindex);
+    //let contents = content[mindex].contents[sindex];
+    //contents.shows = !contents.shows
+    //that.setData({
+     // content:content
+    //})
+
+  //},
 
 
 
