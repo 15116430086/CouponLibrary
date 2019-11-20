@@ -27,7 +27,7 @@ Page({
     flag: false,
     regAddress: "湖南长沙五一大道59号", 
     multiArray: [ ],
-    multiIndex: [0, 0, 0],
+    multiIndex: [17, 0, 2],
     regionData: []
   },
   onRegAddressTap: function() {
