@@ -1,0 +1,29 @@
+<!--pages/banlanceMes/banlanceMes.wxml-->
+<view class="v-top">
+    <view class="v-title">张三纸包鱼步行街核销20</view>
+    <view class="v-box">
+        <view class="v-money">佣金金额:</view>
+        <view class="v-price"><text>￥</text>9000</view>
+    </view>
+    <view class="v-mes">
+        总托管佣金退还¥3000 l 已发¥1000 l 已退¥1000
+    </view>
+</view>
+
+<view class="v-all">
+    <view class="m-block">
+        <view class="m-left">
+            <image src="/static/images/swp.png" />
+            <view class="m-mid">
+                <view class="m-title">张三纸包鱼步行街核销20元现金券张三纸包鱼步行街核销20元现金券</view>
+                <view class="m-mes">
+                    <view class="m-time">2019-09-19</view>
+                </view>
+            </view>
+        </view>
+        <view class="m-right">
+            <view class="m-num">200</view> 
+        </view>
+    </view>
+    
+</view>

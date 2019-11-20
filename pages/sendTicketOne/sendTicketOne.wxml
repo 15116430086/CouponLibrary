@@ -1,6 +1,6 @@
 <!-- pages/sendTicketOne/sendTicketOne.wxml -->
 <!-- 我要发券明细页面 -->
-<view class="top-box">
+<view class="top-box" bindtap="JumpCommissionMestap">
     <view class="tb-left">
         <view>托管佣金 : ￥{{ReleaseCommission}}</view>
         <view>已发 : ￥{{Comission}} | 已退 : ￥{{BackCommission}}</view>
