@@ -8,7 +8,7 @@
   <!-- 头部 -->
   <view class="home-top">
     <view class="homeTop-name">
-      长沙
+      <view>长沙</view>
       <image src="/static/images/botarr.png"></image>
     </view>
     <view class="search-box" bindtap="getTicketList" >
