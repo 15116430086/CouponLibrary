@@ -338,11 +338,28 @@ page {
     justify-content: space-between;
 }
 
+
+.vb-pspan {
+    width: 30.3%;
+    height: 88rpx;
+    text-align: center;
+    line-height: 88rpx;
+    border-radius: 20rpx;
+    background-color: #ededed;
+    font-size: 32rpx;
+    color: #999;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+}
+
 .vb-Checked {
     background-color: #e85819;
     opacity: 0.7;
     color: #fff;
 }
+
+
+
 
 .input-top {
     margin-top: 10rpx;

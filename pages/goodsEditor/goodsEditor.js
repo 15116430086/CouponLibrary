@@ -19,6 +19,7 @@ Page({
     productid: '',
     productName: '',
     show: false,
+    pshow: false,
     threeList: [{
         Item_id: "0",
         Item_Name: "普通商品",
@@ -30,20 +31,35 @@ Page({
         isSelect: false
       }
     ],
-    mainImage: ["/static/images/img.png", "/static/images/img.png", "/static/images/img.png"],
+    mainimgNUM: 0,
+    mainImage: [{
+      url: "/static/images/img.png",
+      state: 0
+    }, {
+      url: "/static/images/img.png",
+      state: 0
+    }, {
+      url: "/static/images/img.png",
+      state: 0
+    }],
     categoryName: "",
     categoryID: "",
     SpecificationsAttribute: [],
     countNUM: 0,
+    attributeNUM: 0,
     ProductSpecifications: [{
       CostPrice: "",
       SalePrice: "",
       StockNum: "",
       Postage: "",
       Attrivute: []
-    }]
+    }],
+    ProductDetails: [{
+      url: "/static/images/img.png",
+      state: 0
+    }],
+    upimgnum: 0
   },
-
 
   selectThree(e) {
     let id = e.target.dataset.id
@@ -60,23 +76,105 @@ Page({
       ProductName: e.detail.value
     })
   },
-  //商品主图
-  onUpImageTap:function(e)
-  {
+  onDelImageTap: function(e) {
     let that = this;
     const {
       index
     } = e.currentTarget.dataset;
-    utils.UploadImg(1, app.globalData.appkeyid, that.UpFileImgBak,index)
+    var mainImage = that.data.mainImage
+    mainImage[index].url = "/static/images/img.png";
+    mainImage[index].state = 0;
+
+    var mainimgNUM = --that.data.mainimgNUM;
+    that.setData({
+      mainImage: mainImage,
+      mainimgNUM: mainimgNUM
+    })
   },
-  UpFileImgBak: function (img, index) {
+  //商品主图
+  onUpImageTap: function(e) {
+    let that = this;
+    const {
+      index
+    } = e.currentTarget.dataset;
+    var mainImage = that.data.mainImage
+    if (mainImage[index].state == 0) {
+      utils.UploadImg(1, app.globalData.appkeyid, that.UpFileImgBak, index)
+    } else {
+      wx.previewImage({
+        urls: [mainImage[index].url]
+      })
+    }
+
+  },
+  UpFileImgBak: function(img, index) {
     let that = this;
     var mainImage = that.data.mainImage
-    mainImage[index]=img[0];
+    mainImage[index].url = img[0];
+    mainImage[index].state = 1;
+    var mainimgNUM = ++that.data.mainimgNUM;
     if (img.length > 0) {
       that.setData({
         mainImage: mainImage,
-        flag: true
+        mainimgNUM: mainimgNUM
+      })
+      wx.showToast({
+        title: "上传成功!",
+        icon: "none",
+        duration: 1000
+      })
+    } else {
+      wx.showToast({
+        title: "上传失败!",
+        icon: "none",
+        duration: 1000
+      })
+    }
+  },
+  onDelDetailsTap: function(e) {
+    let that = this;
+    const {
+      index
+    } = e.currentTarget.dataset;
+    var ProductDetails = that.data.ProductDetails
+    ProductDetails[index].url = "/static/images/img.png";
+    ProductDetails[index].state = 0;
+    var upimgnum = --that.data.upimgnum;
+    that.setData({
+      ProductDetails: ProductDetails,
+      upimgnum: upimgnum
+    })
+  },
+  onAddDelDetailsTap: function(e) {
+    let that = this;
+    const {
+      index
+    } = e.currentTarget.dataset;
+    var ProductDetails = that.data.ProductDetails
+    if (ProductDetails[index].state == 0) {
+      utils.UploadImg(1, app.globalData.appkeyid, that.UpDetailsImgBak, index)
+    } else {
+      wx.previewImage({
+        urls: [ProductDetails[index].url]
+      })
+    }
+  },
+  UpDetailsImgBak: function(img, index) {
+    let that = this;
+    var ProductDetails = that.data.ProductDetails
+    ProductDetails[index].url = img[0];
+    ProductDetails[index].state = 1;
+    var upimgnum = ++that.data.upimgnum;
+    if (ProductDetails.length < 5 && upimgnum == ProductDetails.length)
+      ProductDetails.push({
+        url: "/static/images/img.png",
+        state: 0
+      })
+
+    if (img.length > 0) {
+      that.setData({
+        ProductDetails: ProductDetails,
+        upimgnum: upimgnum
       })
       wx.showToast({
         title: "上传成功!",
@@ -96,21 +194,21 @@ Page({
     const {
       index
     } = e.currentTarget.dataset;
-    this.data.ProductSpecifications[index].SalePrice = e.detail.value;   
+    this.data.ProductSpecifications[index].SalePrice = e.detail.value;
   },
   //库存StockNum
   StockNumInput: function(e) {
     const {
       index
     } = e.currentTarget.dataset;
-    this.data.ProductSpecifications[index].StockNum = e.detail.value; 
+    this.data.ProductSpecifications[index].StockNum = e.detail.value;
   },
-  AttributeInput:function(e){
+  AttributeInput: function(e) {
     const {
       index,
       cindex
     } = e.currentTarget.dataset;
-    this.data.ProductSpecifications[index].Attrivute[cindex].AttrivuteValue = e.detail.value; 
+    this.data.ProductSpecifications[index].Attrivute[cindex].AttrivuteValue = e.detail.value;
   },
   //分组Grouping
   GroupingInput: function(e) {
@@ -142,7 +240,10 @@ Page({
 
   //点击发布按钮
   ReleaseProduct: function(event) {
-    if (!this.data.ProductName) {
+    let that = this;
+    var oCoupon_Product = {};
+    oCoupon_Product.ProductName = that.data.productName;
+    if (oCoupon_Product.ProductName == "") {
       wx.showToast({
         title: '请输入商品名称!',
         icon: "none",
@@ -151,43 +252,123 @@ Page({
       return;
     }
 
-    if (this.data.type == 0) {
-      if (!this.data.SalePrice) {
+    oCoupon_Product.CategoryID = that.data.categoryID;
+    if (oCoupon_Product.CategoryID == "") {
+      wx.showToast({
+        title: '请选择商品所属栏目!',
+        icon: "none",
+        duration: 2000
+      })
+      return;
+    }
+
+    var ProductSpecifications = that.data.ProductSpecifications
+    for (let i in ProductSpecifications) {
+      if (ProductSpecifications[i].CostPrice == "") {
         wx.showToast({
-          title: '请输入价格!',
+          title: '请输入商品规格【' + i + '】价格！',
           icon: "none",
           duration: 2000
         })
         return;
       }
-      if (!this.data.StockNum) {
+
+      if (ProductSpecifications[i].StockNum == "") {
         wx.showToast({
-          title: '请输入库存!',
+          title: '请输入商品规格【' + i + '】库存！',
           icon: "none",
           duration: 2000
         })
         return;
       }
-    } else if (this.data.type == 1) {
-      if (!this.data.Businesscharge) {
-        wx.showToast({
-          title: '请输入业务收费!',
-          icon: "none",
-          duration: 2000
-        })
-        return;
+
+      var Attrivute = ProductSpecifications[i].Attrivute
+      for (let j in Attrivute) {
+        if (Attrivute[j].AttrivuteValue == "") {
+          wx.showToast({
+            title: '请输入商品规格【' + i + '】' + Attrivute[j].AttributeName + '！',
+            icon: "none",
+            duration: 2000
+          })
+          return;
+        }
+      }
+
+      ProductSpecifications.AttrivuteValue = JSON.stringify(ProductSpecifications[i].Attrivute);
+      if (i == 0) {
+        oCoupon_Product.SalePrice = ProductSpecifications[i].CostPrice
+        oCoupon_Product.StockNum = ProductSpecifications[i].StockNum
       }
     }
+
+    if (that.data.mainimgNUM == 0) {
+      wx.showToast({
+        title: '请最少一张商品主图！',
+        icon: "none",
+        duration: 2000
+      })
+      return;
+    }
+
+    var mainImage = that.data.mainImage
+    for (let i in mainImage) {
+      if (i == 0 && mainImage[i].state == 1) {
+        oCoupon_Product.ImageOne = mainImage[i].url;
+      }
+      if (i == 1 && mainImage[i].state == 1) {
+        oCoupon_Product.ImageTwo = mainImage[i].url;
+      }
+      if (i == 2 && mainImage[i].state == 1) {
+        oCoupon_Product.ImageThree = mainImage[i].url;
+      }
+    }
+
+    if (that.data.upimgnum == 0) {
+      wx.showToast({
+        title: '请最少一张商品描述图片！',
+        icon: "none",
+        duration: 2000
+      })
+      return;
+    }
+    var ProductDetails = that.data.ProductDetails
+    var oCoupon_Picture = [];
+    for (let i in ProductDetails) {
+      if (ProductDetails[i].state == 1) {
+        if (i == 0) {
+          oCoupon_Product.ProductDetails = ProductDetails[i].url;
+        } else {
+          oCoupon_Picture.push({
+            ImageType: 1,
+            ImageURL: ProductDetails[i].url,
+            SortIndex: i
+          })
+        }
+      }
+    }
+    var ProductAttribute = that.data.ProductAttribute
+    var CustomAttribute = [];
+    for (let i in ProductAttribute) {
+      if (ProductAttribute[i].IsChecked == 1) {
+        CustomAttribute.push({
+          AttributeID: ProductAttribute[i].AttributeID,
+          name: ProductAttribute[i].AttributeName,
+          value: ProductAttribute[i].AttributeValue,
+          type: ProductAttribute[i].AttnibuteType
+        })
+      }
+    }
+    oCoupon_Product.CustomAttribute = JSON.stringify(CustomAttribute);
+    oCoupon_Product.GroupID = app.globalData.AppGroupInfo.GroupID;
+
     wx.showLoading({
       title: '数据加载中...',
     })
     var data = {};
-    data.pWriteOffOrderID = this.data.orderid;
-    data.pState = 3;
-    data.pCourierCompany = this.data.CourierCompany;
-    data.pCourierNumber = this.data.CourierNumber;
-    data.pExpressTel = this.data.ExpressTel
-
+    data.pGroupID = this.data.orderid;
+    data.pCoupon_Product = utils.syJsonSafe(oCoupon_Product);
+    data.pLsitPicture = utils.syJsonSafe(oCoupon_Picture);
+    data.pCoupon_ProductSpecifications = utils.syJsonSafe(ProductSpecifications);
   },
 
 
@@ -260,7 +441,16 @@ Page({
       show: false
     });
   },
-
+  showpPopup() {
+    this.setData({
+      pshow: true
+    });
+  },
+  onpClose() {
+    this.setData({
+      pshow: false
+    });
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -365,6 +555,17 @@ Page({
     })
 
   },
+  delProductSpecificationsTap: function(e) {
+    let that = this;
+    const {
+      index
+    } = e.currentTarget.dataset;
+    var pSpecifications = that.data.ProductSpecifications;
+    pSpecifications.splice(index, 1);
+    that.setData({
+      ProductSpecifications: pSpecifications
+    })
+  },
   onAddSpecificationsTap: function() {
     let that = this;
     var pSpecifications = that.data.ProductSpecifications;
@@ -373,7 +574,7 @@ Page({
       ProductSpecifications: pSpecifications
     })
   },
-  onChecldeTap: function(e) {
+  onCheckdeTap: function(e) {
     let that = this;
     var oCountNUM = that.data.countNUM;
     var isChecked = that.data.SpecificationsAttribute[e.target.dataset.id].IsChecked;
@@ -409,9 +610,31 @@ Page({
       console.log(json.msg);
       if (json.flag) {
         this.setData({
-          SpecificationsAttribute: json.data
+          SpecificationsAttribute: json.sdata,
+          ProductAttribute: json.pdata
         });
       }
     }
-  }
+  },
+  onpEnter: function() {
+    let that = this;
+    that.setData({
+      pshow: false
+    })
+  },
+  onpCheckedTap: function(e) {
+    let that = this;
+    var attributeNUM = that.data.attributeNUM;
+    var isChecked = that.data.ProductAttribute[e.target.dataset.id].IsChecked;
+    if (isChecked == 1) {
+      attributeNUM--
+    } else {
+      attributeNUM++
+    }
+    that.data.ProductAttribute[e.target.dataset.id].IsChecked = Math.abs(isChecked - 1)
+    that.setData({
+      attributeNUM: attributeNUM,
+      ProductAttribute: that.data.ProductAttribute
+    })
+  },
 })
