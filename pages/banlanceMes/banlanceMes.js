@@ -10,6 +10,10 @@ Page({
   data: {
     Settlementdetailslist: [],
     lastpage: 0,
+    sumBalanceMoney:0,
+    sumDrawbackMoney:0,
+    sumCommissionMoney:0,
+    sumCollectionMoney:0
   },
 
   GetData: function () {

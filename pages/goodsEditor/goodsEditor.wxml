@@ -51,7 +51,7 @@
         </view>
         <block wx:for="{{ProductSpecifications}}" wx:for-index="index" wx:key="index">
           <view class="input-top">
-            <view class="ip-title">添加规格1</view>
+            <view class="ip-title">添加规格{{index+1}}</view>
             <image src="/static/images/del.png" />
           </view>
           <view class="input-box">

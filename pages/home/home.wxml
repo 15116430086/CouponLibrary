@@ -2,7 +2,7 @@
 <view class="home-box">
   <!-- 头部 -->
   <view class="home-top">
-    <view class="homeTop-name">湖南基数科技</view>
+    <view class="homeTop-name">{{GroupName}}</view>
     <view class="homeTop-left">
       <view class="search-box" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" bindtap="Jumptap" >
         <image src="/static/images/serch.png" background-size="cover"></image>
