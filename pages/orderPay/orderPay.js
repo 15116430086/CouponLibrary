@@ -103,8 +103,9 @@ Page({
           'paySign': oJsApiParam.paySign,
           success(res) {
             console.log(res);
-            if (res.errMsg == "requestPayment:ok") { }
-            wx.redirectTo({ url: '../pages/paySuccess/paySuccess' });
+            if (res.errMsg == "requestPayment:ok") { 
+              wx.redirectTo({ url: '../pages/paySuccess/paySuccess' });
+            }
           },
           fail(res) {
             if (res.errMsg == "requestPayment:fail cancel") {
