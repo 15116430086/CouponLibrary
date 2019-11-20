@@ -25,8 +25,8 @@ Page({
     industryCode: "",
     enterpriseLicensing: "",
     flag: false,
-    regAddress: "湖南长沙五一大道59号", 
-    multiArray: [ ],
+    regAddress: "湖南长沙五一大道59号",
+    multiArray: [],
     multiIndex: [17, 0, 2],
     regionData: []
   },
@@ -81,12 +81,11 @@ Page({
       }
     })
   },
-  onPreviewImageTap:function()
-  {
-    let that=this;
+  onPreviewImageTap: function() {
+    let that = this;
 
     wx.previewImage({
-      urls:[that.data.enterpriseLicensing],      
+      urls: [that.data.enterpriseLicensing],
     })
   },
   onUpFileImg: function() {
@@ -181,8 +180,8 @@ Page({
       return;
     }
 
-    data.LegalPerson = e.detail.value.RegAddress
-    if (data.LegalPerson == '') {
+    data.RegisteredAddress = e.detail.value.RegAddress
+    if (data.RegisteredAddress == '') {
       wx.showToast({
         title: "注册地址不能为空",
         icon: "none",
@@ -236,10 +235,13 @@ Page({
   },
 
   RegCouponGroup: function(data) {
+    let that = this;
+    var multiArray = that.data.multiArray;
+    var multiIndex = that.data.multiIndex;
     // 登录
     wx.login({
       success: res => {
-        let that = this;
+
         // 发送 res.code 到后台换取 openId, sessionKey, unionId      
         app.globalData.logincode = res.code;
 
@@ -251,7 +253,7 @@ Page({
               app.globalData.userInfo = res.userInfo
               data.LatitudeX = app.globalData.latitudeX.toString()
               data.LongitudeY = app.globalData.longitudeY.toString()
-              data.RegionID = "430102";
+              data.RegionID = multiArray[2][multiIndex[2]].RegionID;
               data = {
                 pCoupon_Group: utils.syJsonSafe(data),
                 Text: res.encryptedData,
@@ -365,9 +367,9 @@ Page({
    */
   onShareAppMessage: function() {
 
-  }, 
+  },
 
-  GetRegionIndustry: function () {
+  GetRegionIndustry: function() {
     let that = this;
     wx.showLoading({
       title: '数据加载中...',
@@ -379,7 +381,7 @@ Page({
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", data, app.globalData.appkeyid, that.GetRegionIndustryBack)
   },
 
-  GetRegionIndustryBack: function (json) {
+  GetRegionIndustryBack: function(json) {
     console.log(json);
     wx.hideLoading();
     var json = json.data.Data;
@@ -398,13 +400,13 @@ Page({
       }
     }
   },
-  bindMultiPickerChange: function (e) {
+  bindMultiPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       multiIndex: e.detail.value
     })
   },
-  bindMultiPickerColumnChange: function (e) {
+  bindMultiPickerColumnChange: function(e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     var data = {
       multiArray: this.data.multiArray,

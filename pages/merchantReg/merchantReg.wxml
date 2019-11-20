@@ -48,13 +48,10 @@
     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
       <view class="ticket-block">
         <view class="ticket-name">选择地区</view>
-        <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
-          <view class="picker">
-            已选：{{multiArray[0][multiIndex[0]].RegionName}}{{multiArray[1][multiIndex[1]].RegionName}}{{multiArray[2][multiIndex[2]].RegionName}}
-          </view>
-        </picker>
+        <view class="picker">
+          已选：{{multiArray[0][multiIndex[0]].RegionName}}{{multiArray[1][multiIndex[1]].RegionName}}{{multiArray[2][multiIndex[2]].RegionName}}
+        </view>
       </view>
-
     </picker>
     <view class="ticket-block">
       <view class="ticket-name">注册地址</view>
