@@ -29,7 +29,7 @@ Page({
   onShowDs: function() {
     let that = this;
     that.setData({
-      flag: true
+      flag: !that.data.flag
     })
     wx.pageScrollTo({
       scrollTop: this.data.scrollTop + 300

@@ -9,13 +9,13 @@
     </view>
 </view>
 <view class="v-bot">
-    <view class="ticket-flex">
+    <!-- <view class="ticket-flex">
         <view class="tf-left">
             <image src="/static/images/ewm3.png" class="tf-left-image"/>
             <view class="tf-name">普通商品</view>
         </view>
         <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
-    </view>
+    </view> -->
     <view class="ticket-flex">
         <view class="tf-left">
             <image src="/static/images/man.png" class="tf-left-image"/>
@@ -26,13 +26,23 @@
             <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
         </view>
     </view>
-    <view class="ticket-flex">
+    <!-- <view class="ticket-flex">
         <view class="tf-left">
             <image src="/static/images/shop.png" class="tf-left-image"/>
             <view class="tf-name">普通商品</view>
         </view>
         <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
+    </view> -->
+
+    <view class="ticket-flex" bindtap="perfecttap">
+        <view class="tf-left">
+            <image src="/static/images/shop.png" class="tf-left-image"/>
+            <view class="tf-name">分享我的店铺</view>
+        </view>
+        <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
     </view>
+
+
 </view>
 <view class="mask" hidden="{{Popup}}" bindtap="coles">
     <view class="v-mask"  catchtap="nocoles" >

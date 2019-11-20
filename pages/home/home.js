@@ -68,6 +68,13 @@ Jumptap:function(){
     })
   },
 
+  perfecttap: function () {
+    wx.showToast({
+      title: '功能正在完善中...敬请期待!',
+      icon: 'none',
+      duration: 2000
+    })
+  },
   
   /**
    * 生命周期函数--监听页面加载

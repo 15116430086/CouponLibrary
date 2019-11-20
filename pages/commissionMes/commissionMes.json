@@ -2,6 +2,6 @@
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "light",
   "navigationBarBackgroundColor": "#fff",
-  "navigationBarTitleText": "平台选券",
+  "navigationBarTitleText": "托管佣金明细",
   "navigationBarTextStyle": "black"
 }

@@ -29,16 +29,16 @@
 
 .mes-box {
     margin-top: 128rpx;
-    margin-bottom: 140rpx;
+    margin-bottom: 160rpx;
     width: 100%;
-    height: calc(100% - 268rpx);
+    height: calc(100% - 288rpx);
     overflow: scroll;
 }
 
 .ticket-box {
     margin: 10px auto;
     width: calc(100% - 40rpx);
-    height: 448rpx;
+    height: auto;
     border-radius: 20rpx;
     background-color: #FFF;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.16);
@@ -55,7 +55,7 @@
     color: #000000;
     font-size: 16px;
     font-weight: 600;
-    width: calc(100% - 70rpx);
+    width: calc(100% - 200rpx);
     margin-top: 40rpx;
     margin-bottom: 20rpx;
 }
@@ -72,10 +72,15 @@
     justify-content: space-between;
     color: #333333;
     font-size: 14px;
-    width: calc(100% - 70rpx);
+    width: calc(100% - 200rpx);
     margin-bottom: 10rpx;
 }
-
+/* .tb-mes view:first-child{
+  margin-left: 80rpx;
+}
+.tb-mes view:nth-child(2){
+  margin-right: 80rpx;
+} */
 .tb-bot {
     margin-top: 20rpx;
     width: calc(100% - 70rpx);
@@ -87,6 +92,10 @@
     align-items: center;
     justify-content: space-between;
     font-size: 14px;
+}
+.tb-bot view{
+  flex: 1;
+  text-align: center;
 }
 
 .box-bot {

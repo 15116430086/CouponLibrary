@@ -17,7 +17,7 @@ Page({
     show2: false,
     industryName: "全部行业",
     industryCode: "",
-    contactsOrTelephone: "",
+    GroupName: "",
     columns: [],
     regionId: "",
     showMask: false,
@@ -69,9 +69,9 @@ Page({
   },
 
   //商品名称ProductName
-  contactsOrTelephoneInput: function(e) {
+  GroupNameInput: function(e) {
     this.setData({
-      contactsOrTelephone: e.detail.value
+      GroupName: e.detail.value
     })
   },
 
@@ -92,7 +92,8 @@ Page({
     data.pageSize = 10;
     data.regionId = that.data.regionId,
     data.industryCode = that.data.industryCode;
-    data.contactsOrTelephone = that.data.contactsOrTelephone;
+    data.pGroupName = that.data.GroupName;
+    data.pGid = app.globalData.AppGroupInfo.GroupID;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GetManagerGroupPage", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {

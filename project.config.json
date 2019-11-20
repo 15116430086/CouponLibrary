@@ -72,7 +72,15 @@
 					"id": -1,
 					"name": "pages/home/home",
 					"pathName": "pages/shopChoose/shopChoose",
+					"query": "",
 					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "pages/staffLoginReg/staffLoginReg",
+					"pathName": "pages/staffLoginReg/staffLoginReg",
+					"query": "ShopID=100001",
+					"scene": 1047
 				}
 			]
 		}
