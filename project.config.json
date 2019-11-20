@@ -76,17 +76,11 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/goodsEditor/goodsEditor",
-					"pathName": "pages/goodsEditor/goodsEditor",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/sendTicketTwo/sendTicketTwo",
-					"pathName": "pages/sendTicketTwo/sendTicketTwo",
-					"scene": null
+					"id": 3,
+					"name": "pages/staffLoginReg/staffLoginReg",
+					"pathName": "pages/staffLoginReg/staffLoginReg",
+					"query": "ShopID=100001",
+					"scene": 1047
 				}
 			]
 		}
