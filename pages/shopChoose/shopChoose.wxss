@@ -63,6 +63,7 @@ page {
     height: 32rpx;
     display: block;
     flex-shrink: 1;
+    
 }
 
 .search-box input {
@@ -172,20 +173,25 @@ page {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
     color: #666666;
     font-size: 28rpx;
     background-color: #F4F4F4;
     border-radius: 20rpx;
     height: 60rpx;
+    position: relative;
 }
-
+.home-span view{
+  margin-left: 20rpx
+}
 .home-span image {
     display: block;
     flex-shrink: 1;
     width: 14rpx;
     height: 10rpx;
     margin-left: 20rpx;
+    position: absolute;
+    right: 10rpx;
+    top: 30rpx;
 }
 
 .vb-right {

@@ -6,7 +6,6 @@
         <view>已发 : ￥{{Comission}} | 已退 : ￥{{BackCommission}}</view>
     </view>
     <image src="/static/images/right-arr2.png" />
-</view>
 <view class="mes-box">
  <view class="ticket-box"  wx:if="{{!datalist}}">暂无发券记录 </view>
 <block wx:for="{{datalist}}" wx:key="index" wx:for-index="index">
@@ -33,8 +32,8 @@
             <view style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" bindtap="Details">发券明细</view>
         </view>
     </view>
-</block>
+  </block>
 </view>
 <view class="box-bot">
-        <view class="sendBtn" bindtap="Issuing">我要发券</view>
-    </view>
+  <view class="sendBtn" bindtap="Issuing">我要发券</view>
+</view>
