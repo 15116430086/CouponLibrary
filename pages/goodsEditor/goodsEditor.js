@@ -1,13 +1,6 @@
 // pages/goodsEditor/goodsEditor.js
 var utils = require("../../utils/util.js")
 const app = getApp();
-var Specifications = {
-  CostPrice: "",
-  SalePrice: "",
-  StockNum: "",
-  Postage: "",
-  Attrivute: []
-}
 Page({
 
   /**
@@ -48,10 +41,10 @@ Page({
     countNUM: 0,
     attributeNUM: 0,
     ProductSpecifications: [{
-      CostPrice: "",
-      SalePrice: "",
-      StockNum: "",
-      Postage: "",
+      CostPrice: 0,
+      SalePrice: 0,
+      StockNum: 0,
+      Postage: 0,
       Attrivute: []
     }],
     ProductDetails: [{
@@ -191,12 +184,12 @@ Page({
   },
   //价格SalePrice
   SalePriceInput: function(e) {
-    var index = e.currentTarget.dataset.index;  
+    var index = e.currentTarget.dataset.index;
     this.data.ProductSpecifications[index].SalePrice = e.detail.value;
   },
   //库存StockNum
   StockNumInput: function(e) {
-    var index = e.currentTarget.dataset.index;   
+    var index = e.currentTarget.dataset.index;
     this.data.ProductSpecifications[index].StockNum = e.detail.value;
   },
   AttributeInput: function(e) {
@@ -265,19 +258,6 @@ Page({
       return;
     }
 
-    var mainImage = that.data.mainImage
-    for (var i in mainImage) {
-      if (i == 0 && mainImage[i].state == 1) {
-        oCoupon_Product.ImageOne = mainImage[i].url;
-      }
-      if (i == 1 && mainImage[i].state == 1) {
-        oCoupon_Product.ImageTwo = mainImage[i].url;
-      }
-      if (i == 2 && mainImage[i].state == 1) {
-        oCoupon_Product.ImageThree = mainImage[i].url;
-      }
-    }
-
     var ProductSpecifications = that.data.ProductSpecifications
     for (var i in ProductSpecifications) {
       if (ProductSpecifications[i].SalePrice == "") {
@@ -308,7 +288,26 @@ Page({
           })
           return;
         }
-      }    
+      }
+      ProductSpecifications[i].Postage = that.data.Postage;
+      ProductSpecifications[i].AttrivuteValue = JSON.stringify(ProductSpecifications[i].Attrivute)
+      if (i == 0) {
+        oCoupon_Product.SalePrice = ProductSpecifications[i].SalePrice
+        oCoupon_Product.StockNum = ProductSpecifications[i].StockNum
+      }
+    }
+
+    var mainImage = that.data.mainImage
+    for (var i in mainImage) {
+      if (i == 0 && mainImage[i].state == 1) {
+        oCoupon_Product.ImageOne = mainImage[i].url;
+      }
+      if (i == 1 && mainImage[i].state == 1) {
+        oCoupon_Product.ImageTwo = mainImage[i].url;
+      }
+      if (i == 2 && mainImage[i].state == 1) {
+        oCoupon_Product.ImageThree = mainImage[i].url;
+      }
     }
 
     if (that.data.upimgnum == 0) {
@@ -334,16 +333,19 @@ Page({
         }
       }
     }
-    var ProductAttribute = that.data.ProductAttribute
-    var CustomAttribute = [];
-    for (let i in ProductAttribute) {
-      if (ProductAttribute[i].IsChecked == 1) {
-        CustomAttribute.push({
-          AttributeID: ProductAttribute[i].AttributeID,
-          name: ProductAttribute[i].AttributeName,
-          value: ProductAttribute[i].AttributeValue,
-          type: ProductAttribute[i].AttnibuteType
-        })
+    oCoupon_Product.ProductType = that.data.type;
+    if (oCoupon_Product.ProductType == 1) {
+      var ProductAttribute = that.data.ProductAttribute
+      var CustomAttribute = [];
+      for (let i in ProductAttribute) {
+        if (ProductAttribute[i].IsChecked == 1) {
+          CustomAttribute.push({
+            AttributeID: ProductAttribute[i].AttributeID,
+            name: ProductAttribute[i].AttributeName,
+            value: ProductAttribute[i].AttributeValue,
+            type: ProductAttribute[i].AttnibuteType
+          })
+        }
       }
     }
     oCoupon_Product.CustomAttribute = JSON.stringify(CustomAttribute);
@@ -353,13 +355,31 @@ Page({
       title: '数据加载中...',
     })
     var data = {};
-    data.pGroupID = this.data.orderid;
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pCoupon_Product = utils.syJsonSafe(oCoupon_Product);
     data.pLsitPicture = utils.syJsonSafe(oCoupon_Picture);
     data.pCoupon_ProductSpecifications = utils.syJsonSafe(ProductSpecifications);
+
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/AddOrEditCouponProduct", "POST", data, app.globalData.appkeyid, this.AddCouponProductBack)
   },
 
-
+  AddCouponProductBack: function (json) {
+    let that = this;
+    var json = json.data.Data;
+    wx.hideLoading();
+    if (json.flag) {
+      wx.showToast({
+        title: '商品新增成功!',
+        icon: "none",
+        duration: 2000
+      })
+      setTimeout(function() {
+        wx.redirectTo({
+          url: '../goodsManager/goodsManager'
+        })
+      }, 2000);
+    }
+  },
 
   GetData: function() {
     let that = this;
@@ -524,19 +544,26 @@ Page({
   },
   onEnter: function() {
     let that = this;
-    var Attrivute = [];
+
+    var Specifications = {
+      CostPrice: 0,
+      SalePrice: 0,
+      StockNum: 0,
+      Postage: 0,
+      Attrivute: []
+    }
+
     var SpecificationsAttribute = that.data.SpecificationsAttribute
     for (let i in SpecificationsAttribute) {
       if (SpecificationsAttribute[i].IsChecked == 1) {
-        Attrivute.push(
+        Specifications.Attrivute.push(
           SpecificationsAttribute[i]
         )
       }
 
     }
-    Specifications.Attrivute = Attrivute;
-    var ProductSpecifications = []
-    ProductSpecifications.push(Specifications);
+    var ProductSpecifications = [Specifications];
+
     that.setData({
       ProductSpecifications: ProductSpecifications,
       show: false,
@@ -556,10 +583,25 @@ Page({
   },
   onAddSpecificationsTap: function() {
     let that = this;
-    var pSpecifications = that.data.ProductSpecifications;
-    pSpecifications = pSpecifications.concat(Specifications);
+    var productSpecifications = that.data.ProductSpecifications;
+    var specifications = {
+      CostPrice: 0,
+      SalePrice: 0,
+      StockNum: 0,
+      Postage: 0,
+      Attrivute: []
+    }
+    var specificationsAttribute = that.data.SpecificationsAttribute
+    for (let i in specificationsAttribute) {
+      if (specificationsAttribute[i].IsChecked == 1) {
+        specifications.Attrivute.push(
+          specificationsAttribute[i]
+        )
+      }
+    }
+    productSpecifications.push(specifications);
     that.setData({
-      ProductSpecifications: pSpecifications
+      ProductSpecifications: productSpecifications
     })
   },
   onCheckdeTap: function(e) {
