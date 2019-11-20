@@ -168,6 +168,11 @@ Page({
     })
   },
   pay: function(event) {
+    if (this.data.date=="日期"){
+      this.setData({
+          date: "2199-12-31"
+      })
+    }
     if (!this.data.Number || this.data.Number <= 0) {
       wx.showToast({
         title: "发布数量异常",
