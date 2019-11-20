@@ -12,7 +12,7 @@
     </view>
     <view class="v-block">
         <image src="/static/images/key.png" />
-        <input class="v-input1" bindtap="codeinput" type="number" maxlength="6" placeholder-class="ip" placeholder="输入验证码"/>
+        <input class="v-input1" bindinput="codeinput" type="number" maxlength="6" placeholder-class="ip" placeholder="输入验证码"/>
         <view class="v-btn">发送验证码</view>        
     </view>
     <button class="v-true" bindtap="isConfirmLogin">确认登录</button>

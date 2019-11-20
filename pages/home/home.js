@@ -70,7 +70,8 @@ Jumptap:function(){
 
   perfecttap: function () {
     wx.showToast({
-      title: '功能正在完善中...敬请期待!',
+      image:'/static/images/dp.png',
+      title: '功能正在完善中',
       icon: 'none',
       duration: 2000
     })
