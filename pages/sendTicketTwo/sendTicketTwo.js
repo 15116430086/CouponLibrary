@@ -131,7 +131,7 @@ Page({
       ImageOne: "",
       ReceiveRule: 0, //领取规则
       WriteOffType: 0, //核销方式
-      SalePrice: "", //领购售价
+      SalePrice: 0, //领购售价
     },
     imageOne: "",
     imageTwo: "",

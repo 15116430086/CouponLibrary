@@ -282,7 +282,7 @@ Page({
       if (json.flag) {
         wx.setStorageSync('miniappkeyid', json.data)
         var appkeyid = wx.getStorageSync('miniappkeyid');
-        if (appkeyid) {
+        if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
           app.globalData.appkeyid = appkeyid.FSessionKey;
           var loginInfo = JSON.parse(appkeyid.FContent);
           app.globalData.AppWxUserInfo = loginInfo.AppWxUserInfo;
@@ -387,8 +387,8 @@ Page({
       console.log(json.msg);
       var mArray = [];
       mArray.push(json.dataRegion)
-      mArray.push(json.dataRegion[0].LevelCoupon_Region)
-      mArray.push(json.dataRegion[0].LevelCoupon_Region[0].LevelCoupon_Region)
+      mArray.push(json.dataRegion[17].LevelCoupon_Region)
+      mArray.push(json.dataRegion[17].LevelCoupon_Region[0].LevelCoupon_Region)
       if (json.flag) {
         this.setData({
           columns: json.dataIndustry,
