@@ -114,8 +114,8 @@
 
   </view>
   <view class="home-bot">
-    <view>券库讲堂</view>
-    <view>在线客服</view>
-    <view>投诉建议</view>
+    <view bindtap="perfecttap">券库讲堂</view>
+    <view bindtap="perfecttap">在线客服</view>
+    <view bindtap="perfecttap">投诉建议</view>
   </view>
 </view>

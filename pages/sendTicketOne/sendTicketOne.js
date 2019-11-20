@@ -31,6 +31,13 @@ Page({
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponReleaseList", "POST", datas, app.globalData.appkeyid, this.GetCouponReleaseList);
   },
 
+//托管佣金明细页跳转
+  JumpCommissionMestap:function(){
+    wx.navigateTo({
+      url: '../commissionMes/commissionMes',
+    })
+  },
+
   jumpOk(e){
     let index = e.currentTarget.dataset.index;
     let CouponID = e.currentTarget.dataset.couponid;

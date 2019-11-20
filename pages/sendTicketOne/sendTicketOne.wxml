@@ -1,12 +1,11 @@
 <!-- pages/sendTicketOne/sendTicketOne.wxml -->
 <!-- 我要发券明细页面 -->
-<view class="top-box">
-  <view class="tb-left">
-    <view>托管佣金 : ￥{{ReleaseCommission}}</view>
-    <view>已发 : ￥{{Comission}} | 已退 : ￥{{BackCommission}}</view>
-  </view>
-  <image src="/static/images/right-arr2.png" />
-</view>
+<view class="top-box" bindtap="JumpCommissionMestap">
+    <view class="tb-left">
+        <view>托管佣金 : ￥{{ReleaseCommission}}</view>
+        <view>已发 : ￥{{Comission}} | 已退 : ￥{{BackCommission}}</view>
+    </view>
+    <image src="/static/images/right-arr2.png" />
 <view class="mes-box">
  <view class="ticket-box"  wx:if="{{!datalist}}">暂无发券记录 </view>
 <block wx:for="{{datalist}}" wx:key="index" wx:for-index="index">
