@@ -69,7 +69,7 @@ Page({
   seve:function(event){
     var chta=this;
     if (chta.data.repeat){
-      chat.setData({repeat:false});
+      chta.setData({repeat:false});
       wx.showLoading({
         title:"数据提交中...",
         mask:true
@@ -89,6 +89,7 @@ Page({
     }
   },
   CouponReceive:function(res){
+    var chta = this;
     var json=res.data.Data;
     wx.hideLoading({});
     if(json.flag){
