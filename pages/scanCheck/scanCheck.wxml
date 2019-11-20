@@ -9,19 +9,19 @@
 <view class="sc-top">
   <view class="sct-left">
     <view class="sl-one">{{couponiteminfo.CouponName}}
-      <text wx:if="{{couponiteminfo.State==0}}" >待核销</text>
+      <text wx:if="{{couponiteminfo.State==0}}">待核销</text>
       <text wx:else>已核销</text>
     </view>
     <view class="sl-two">会员：{{userInfo.UserName}} | 有效期：{{couponiteminfo.ExpirationDate}}</view>
   </view>
-  <view class="sc-btn" wx:if="{{couponiteminfo.State==0}}" data-couponCode="{{couponiteminfo.CouponCode}}" data-userID="{{couponiteminfo.UserID}}" bindtap="onCouponWriteOffTap" >核销此券</view>
+  <view class="sc-btn" wx:if="{{couponiteminfo.State==0}}" data-couponCode="{{couponiteminfo.CouponCode}}" data-userID="{{couponiteminfo.UserID}}" bindtap="onCouponWriteOffTap">核销此券</view>
 </view>
 <view class="ruleBox">
   <image wx:if="{{couponiteminfo.ReceiveRule!=''}}" src="{{couponiteminfo.ReceiveRule}}" />
   <image wx:else src="/static/images/rule1.png" />
   <view class="seeBtn" bindtap="onShowDs">
     查看详细
-    <image src="/static/images/botarr.png" />
+    <image src="{{flag?'/static/images/toparr.png':'/static/images/botarr.png'}}" />
   </view>
 </view>
 <view class="imageBox" wx:if="{{couponiteminfo.CouponDetails!='' && flag}}">

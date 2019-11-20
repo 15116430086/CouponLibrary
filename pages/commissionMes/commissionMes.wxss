@@ -1,0 +1,189 @@
+/* pages/banlanceMes/banlanceMes.wxss */
+
+page {
+    background-color: #EDEDED;
+}
+
+.v-top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 254rpx;
+    background-color: #FFFF;
+    margin-bottom: 20rpx;
+}
+
+.v-box {
+    width: calc(100% - 80rpx);
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 30rpx;
+    justify-content: flex-start;
+}
+
+.v-money {
+    color: #333333;
+    font-size: 32rpx;
+    font-weight: 600;
+}
+
+.v-price {
+    margin-left: 20rpx;
+    width: 202rpx;
+    border-bottom: 1px solid #EDEDED;
+    height: 66rpx;
+    font-size: 48rpx;
+    font-weight: 600;
+    color: #E85819
+}
+
+.v-price text {
+    font-size: 28rpx;
+}
+
+.v-mes {
+    width: calc(100% - 80rpx);
+    height: auto;
+    color: #333333;
+    font-size: 26rpx;
+}
+
+.v-mid {
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.v-block {
+    width: calc(100% - 80rpx);
+    height: 120rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.v-left {
+    width: 508rpx;
+    height: auto;
+}
+
+.v-right {
+    width: 88rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    text-align: center;
+    font-size: 22rpx;
+    margin-left: 40rpx;
+}
+
+.v-title {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #000000;
+    font-size: 32rpx;
+    font-weight: 600;
+    text-indent: 40rpx;
+    margin-bottom: 10rpx;
+}
+
+.v-span {
+    color: #999;
+    font-size: 24rpx;
+}
+
+
+
+.v-all {
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+}
+
+.m-block {
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
+    height: 120rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.m-left {
+    width: calc(100% - 138rpx);
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.m-left image {
+    width: 76rpx;
+    height: 76rpx;
+    margin-right: 20rpx;
+    border-radius: 10rpx;
+}
+
+.m-mid {
+    width: 426rpx;
+    height: 76rpx;
+}
+
+.m-right {
+    width: 108rpx;
+    height: auto;
+    text-align: right;
+}
+
+.m-title {
+    width: 100%;
+    color: #000;
+    font-size: 28rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.m-mes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.m-time {
+    color: #666666;
+    font-size: 24rpx;
+    margin-right: 20rpx;
+}
+
+.m-span {
+    width: 36rpx;
+    height: 36rpx;
+    border-radius: 6rpx;
+    font-size: 22rpx;
+    line-height: 36rpx;
+    text-align: center;
+}
+
+.m-num {
+    color: #429859;
+    font-size: 24rpx;
+}
+
+.m-txt {
+    color: #E85819;
+    font-size: 20rpx;
+    white-space: nowrap;
+}

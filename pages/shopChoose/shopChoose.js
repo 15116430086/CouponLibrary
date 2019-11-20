@@ -93,6 +93,7 @@ Page({
     data.regionId = that.data.regionId,
     data.industryCode = that.data.industryCode;
     data.pGroupName = that.data.GroupName;
+    data.pGid = app.globalData.AppGroupInfo.GroupID;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GetManagerGroupPage", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {

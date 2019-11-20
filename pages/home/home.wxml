@@ -10,7 +10,7 @@
       </view>
       <view class="mes-box" bindtap="noticetap">
         <view>{{CouponCount.countNewMsg}}</view>
-        <image src="/static/images/talk.png" background-size="cover" style="width:23.45px;height:23.64px"></image>
+        <image src="/static/images/home/news.png" background-size="cover" style="width:60rpx;height:60rpx"></image>
       </view>
     </view>
   </view>
@@ -54,57 +54,68 @@
   <view class="home-nav">
     <navigator url="../sendTicketOne/sendTicketOne" hover-class="none">
       <image src="/static/images/home/1.png"></image>
+      <view>我要发券</view>
 
     </navigator>
     <navigator url="../chooseTicket/chooseTicket" hover-class="none">
       <image src="/static/images/home/2.png"></image>
-
+      <view>平台选券</view>
     </navigator>
     <navigator url="../scanSend/scanSend" hover-class="none">
       <image src="/static/images/home/3.png"></image>
+      <view>扫码送券</view>
        
     </navigator>
     <navigator url="../sendTicket/main" bindtap="onWxScanCode" hover-class="none">
       <image src="/static/images/home/4.png"></image>
+      <view>扫码核券</view>
       
     </navigator>
     <navigator url="../management/management" hover-class="none">
       <image src="/static/images/home/5.png"></image>
+      <view>会员管理</view>
        
     </navigator>
     <navigator url="../doorContor/doorContor" hover-class="none">
       <image src="/static/images/home/6.png"></image>
+      <view>门店管理</view>
       
     </navigator>
     <navigator url="../orderManagement/orderManagement" hover-class="none">
       <image src="/static/images/home/7.png"></image>
+      <view>收单记录</view>
       
     </navigator>
     <navigator url="../myMoney/myMoney" hover-class="none">
       <image src="/static/images/home/8.png"></image>
+      <view>我的资金</view>
   
     </navigator>
     <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
       <image src="/static/images/home/9.png"></image>
-   
+      <view>营业管理</view>
+
     </navigator>
     <navigator url="../shopCli/shopCli" hover-class="none">
       <image src="/static/images/home/10.png"></image>
+      <view>商家货架</view>
        
     </navigator>
     <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
       <image src="/static/images/home/11.png"></image>
+      <view>配置管理</view>
       
     </navigator>
     <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
       <image src="/static/images/home/12.png"></image>
+      <view>联名促销</view>
        
     </navigator>
 
   </view>
   <view class="home-bot">
-    <view>券库讲堂</view>
-    <view>在线客服</view>
-    <view>投诉建议</view>
+    <view bindtap="perfecttap">券库讲堂</view>
+    <view bindtap="perfecttap">在线客服</view>
+    <view bindtap="perfecttap">投诉建议</view>
   </view>
 </view>
