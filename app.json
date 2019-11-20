@@ -1,27 +1,18 @@
 {
   "pages": [
     "pages/login/login",
-<<<<<<< HEAD
-    "pages/home/home",
-    "pages/provincialChoose/provincialChoose",
-    "pages/goodsEditor/goodsEditor",
-=======
     "pages/startTicket/startTicket",
     "pages/home/home",
     "pages/sendTicketTwo/sendTicketTwo",
     "pages/index/index",
     "pages/merchantReg/merchantReg",
     "pages/phoneLogin/phoneLogin",
->>>>>>> cf23337e446739acd9d60fb0e18ba62f93a134db
     "pages/shopChoose/shopChoose",
     "pages/goodsEditor/goodsEditor",
     "pages/industryChoose/industryChoose",
     "pages/staffChoose/staffChoose",
     "pages/sysNotice/sysNotice",
-<<<<<<< HEAD
-=======
     "pages/provincialChoose/provincialChoose",
->>>>>>> cf23337e446739acd9d60fb0e18ba62f93a134db
     "pages/test/test",
     "pages/fastGet/fastGet",
     "pages/staffLoginReg/staffLoginReg",
