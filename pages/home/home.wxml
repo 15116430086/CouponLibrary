@@ -84,7 +84,7 @@
       <image src="/static/images/home/8.png"></image>
   
     </navigator>
-    <navigator url="../sendTicket/main" hover-class="none">
+    <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
       <image src="/static/images/home/9.png"></image>
    
     </navigator>
@@ -92,11 +92,11 @@
       <image src="/static/images/home/10.png"></image>
        
     </navigator>
-    <navigator url="../sendTicket/main" hover-class="none">
+    <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
       <image src="/static/images/home/11.png"></image>
       
     </navigator>
-    <navigator url="../sendTicket/main" hover-class="none">
+    <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
       <image src="/static/images/home/12.png"></image>
        
     </navigator>

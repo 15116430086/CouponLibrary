@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/startTicket/startTicket",
     "pages/home/home",
+    "pages/doorManager/doorManager",
+    "pages/startTicket/startTicket",
     "pages/sendTicketTwo/sendTicketTwo",
     "pages/login/login",
     "pages/index/index",
@@ -21,7 +22,6 @@
     "pages/blockChoose/blockChoose",
     "pages/goodsType/goodsType",
     "pages/addressChoose/addressChoose",
-    "pages/doorManager/doorManager",
     "pages/thronesManagers/thronesManagers",
     "pages/doorContor/doorContor",
     "pages/bossMes/bossMes",
