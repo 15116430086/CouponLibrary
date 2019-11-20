@@ -1,10 +1,10 @@
 {
     "pages": [
+        "pages/login/login",
         "pages/home/home",
         "pages/commissionMes/commissionMes",
         "pages/goodsManager/goodsManager",
         "pages/shopChoose/shopChoose",
-        "pages/login/login",
         "pages/doorManager/doorManager",
         "pages/sendTicketTwo/sendTicketTwo",
         "pages/index/index",

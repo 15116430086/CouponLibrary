@@ -73,8 +73,8 @@
       <input name="Telephone" value="15116430086" class="textarea" type="number" placeholder="手机号码将成为登录凭证" placeholder-class="ip" maxlength="{{maxlength}}" auto-height="{{auto-height}}" show-confirm-bar="{{show-confirm-bar}}"></input>
     </view>
   </view>
-  <view class="playBtn">
-    <button formType="submit">确认注册</button>
+  <view class="app-bot">
+    <button formType="submit" class="playBtn">确认注册</button>
   </view>
 </form>
 <!-- 券类型 -->
