@@ -28,10 +28,10 @@
     <view class="ticket-name">券面值</view>
     <input type="number" placeholder="输入券面值" name="CouponMoney" placeholder-class="pclass" />
   </view>
-  <view class="ticket-block">
+  <!-- <view class="ticket-block">
     <view class="ticket-name">发布数量</view>
-    <input type="number" placeholder="设置发布数量" name="ReleaseNUM" placeholder-class="pclass" />
-  </view>
+    <input type="number" placeholder="100" name="ReleaseNUM" />
+  </view> -->
   <view class="ticket-block">
     <view class="ticket-name">领取上限</view>
     <input type="number" placeholder="设置领取上限" name="ReceiveUpperLimit" placeholder-class="pclass" />

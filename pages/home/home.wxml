@@ -91,7 +91,7 @@
       <view>我的资金</view>
   
     </navigator>
-    <navigator url="../sendTicket/main" hover-class="none">
+    <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
       <image src="/static/images/home/9.png"></image>
       <view>营业管理</view>
 
@@ -101,12 +101,12 @@
       <view>商家货架</view>
        
     </navigator>
-    <navigator url="../sendTicket/main" hover-class="none">
+    <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
       <image src="/static/images/home/11.png"></image>
       <view>配置管理</view>
       
     </navigator>
-    <navigator url="../sendTicket/main" hover-class="none">
+    <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
       <image src="/static/images/home/12.png"></image>
       <view>联名促销</view>
        

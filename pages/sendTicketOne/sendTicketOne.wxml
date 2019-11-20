@@ -8,30 +8,30 @@
   <image src="/static/images/right-arr2.png" />
 </view>
 <view class="mes-box">
-  <view class="ticket-box" wx:if="{{!datalist}}">暂无发券记录 </view>
-  <block wx:for="{{datalist}}" wx:key="index" wx:for-index="index">
-    <view class="ticket-box">
-      <view class="tb-title">
-        <view>{{item.CouponName}}</view>
-        <image src="/static/images/wrt.png" />
-      </view>
-      <view class="tb-mes" style="color:#000;margin-bottom:30rpx;text-index:40rpx;">已发券 :{{item.ReleaseNUM}}</view>
-      <view class="tb-mes">
-        <view>领用商家 :{{item.ReceiveShopNUM}} </view>
-        <view>领取数量 :{{item.ReceiveNUM}}</view>
-      </view>
-      <view class="tb-mes">
-        <view>会员领取 :{{item.GiveNUM}}</view>
-        <view>使用数量 : {{item.ConsumeNUM}}</view>
-      </view>
-      <view class="tb-mes">
-        <view>待用数量 :{{(item.ReleaseNUM-item.ReceiveNUM) + (item.GiveNUM-item.ConsumeNUM-item.ExpireNUM)}}</view>
-        <view>过期数量 :{{item.ExpireNUM}} </view>
-      </view>
-      <view class="tb-bot">
-        <view  bindtap="jumpOk" data-index="{{index}}" data-CouponID="{{item.CouponID}}">继续发券</view>
-        <view  data-CouponID="{{item.CouponID}}" bindtap="Details">发券明细</view>
-      </view>
+ <view class="ticket-box"  wx:if="{{!datalist}}">暂无发券记录 </view>
+<block wx:for="{{datalist}}" wx:key="index" wx:for-index="index">
+  <view class="ticket-box">
+        <view class="tb-title">
+            <view>{{item.CouponName}}</view>
+            <image src="/static/images/wrt.png" />
+        </view>
+        <view class="tb-mes" style="color:#000;margin-bottom:30rpx;">已发券：{{item.ReleaseNUM}}</view>
+        <view class="tb-mes">
+            <view>领用商家：{{item.ReceiveShopNUM}} </view>
+            <view>领取数量：{{item.ReceiveNUM}}</view>
+        </view>
+        <view class="tb-mes">
+            <view>会员领取：{{item.GiveNUM}}</view>
+            <view>使用数量：{{item.ConsumeNUM}}</view>
+        </view>
+        <view class="tb-mes">
+            <view>待用数量：{{(item.ReleaseNUM-item.ReceiveNUM) + (item.GiveNUM-item.ConsumeNUM-item.ExpireNUM)}}</view>
+            <view>过期数量：{{item.ExpireNUM}}  </view>
+        </view>
+        <view class="tb-bot">
+            <view style="margin-left:50rpx"  bindtap="jumpOk" data-index="{{index}}" data-CouponID="{{item.CouponID}}">继续发券</view>
+            <view style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" bindtap="Details">发券明细</view>
+        </view>
     </view>
   </block>
 </view>
