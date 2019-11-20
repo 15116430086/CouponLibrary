@@ -6,7 +6,6 @@
     "pages/shopChoose/shopChoose",
     "pages/login/login",
     "pages/doorManager/doorManager",
-    "pages/startTicket/startTicket",
     "pages/sendTicketTwo/sendTicketTwo",
     "pages/index/index",
     "pages/merchantReg/merchantReg",
