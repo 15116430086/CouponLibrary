@@ -3,5 +3,5 @@
   <image src="/static/images/dp.png"></image>
   <view class="v-tip">您好！您正通过 扫码注册员工账号，请授权绑定账号</view>
 
-  <button bindtap="authorization">点击授权绑定账号</button>
+  <button  open-type="getUserInfo" bindgetuserinfo="authorization">点击授权绑定账号</button>
 </view>
