@@ -44,7 +44,7 @@
 
 
 
-<view class="mask" wx:if="{{showMask}}" catchtouchmove="true">
+<view class="mask" wx:if="{{showMask}}">
   <view class="mask-b" bindtap="downMask">
 
   </view>
