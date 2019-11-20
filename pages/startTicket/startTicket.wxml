@@ -11,7 +11,7 @@
         <view class="ticket-box">
              <view class="ticket-block">
                 <view class="ticket-name">发布代金券数量</view>
-                <input type="number" bindblur="Commissionratio" value="" />
+                <input type="number" bindblur="Commissionratio" value="" placeholder="设置数量" placeholder-class="pclass"/>
             </view>
             <view class="ticket-block">
                 <view class="ticket-name">指定商户</view>
@@ -53,7 +53,7 @@
 
             <view class="ticket-block">
                 <view class="ticket-name">单商户领取限制</view>
-                <input type="number" bindblur="Limit" value="" />
+                <input type="number" bindblur="Limit" value="" placeholder="设置数量" placeholder-class="pclass"/>
             </view>
             
              <view class="ticket-block">

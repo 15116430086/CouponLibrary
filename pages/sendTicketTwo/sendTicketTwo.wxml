@@ -22,29 +22,30 @@
 <form class="ticket-box" bindsubmit="formSubmit">
   <view class="ticket-block">
     <view class="ticket-name">券名称</view>
-    <input type="text" placeholder="20元现金抵用券" name="CouponName" />
+    <input type="text" placeholder="输入券名称" name="CouponName" placeholder-class="pclass" />
   </view>
   <view class="ticket-block">
     <view class="ticket-name">券面值</view>
-    <input type="number" placeholder="20" name="CouponMoney" />
+    <input type="number" placeholder="输入券面值" name="CouponMoney" placeholder-class="pclass" />
   </view>
   <view class="ticket-block">
     <view class="ticket-name">发布数量</view>
-    <input type="number" placeholder="100" name="ReleaseNUM" />
+    <input type="number" placeholder="设置发布数量" name="ReleaseNUM" placeholder-class="pclass" />
   </view>
   <view class="ticket-block">
     <view class="ticket-name">领取上限</view>
-    <input type="number" placeholder="1000" name="ReceiveUpperLimit" />
+    <input type="number" placeholder="设置领取上限" name="ReceiveUpperLimit" placeholder-class="pclass" />
   </view>
   <view class="ticket-block">
     <view class="ticket-name">领购售价</view>
-    <input type="number" placeholder="15" name="SalePrice" />
+    <input type="number" placeholder="设置领购售价" name="SalePrice" placeholder-class="pclass" />
   </view>
   <!-- 领购规则 -->
   <view class="ticket-block" bindtap="clickRule">
     <view class="ticket-name">领购规则</view>
     <view class="bot-box">
-      <view class="bot-left">可重复领取</view>
+      <view class="{{idx?'bot-left':'pclass'}}">{{getRule}}</view>
+
       <image src="/static/images/botarr.png" class="bot-box-image" />
     </view>
   </view>
@@ -61,7 +62,8 @@
     <view class="ticket-name">核销方式</view>
     <view class="bot-box">
       <view class="bot-left">
-        线上受理
+        <view class="{{idb?'':'pclass'}}">{{hexiao}}</view>
+
         <text wx:if="{{idb=='001'}}" bindtap="jumpChoose">(请选择受理商品/业务)</text>
       </view>
       <image src="/static/images/botarr.png" class="bot-box-image" />
@@ -79,35 +81,36 @@
   <view class="ticket-block" bindtap="clickRule2">
     <view class="ticket-name">券有效期</view>
     <view class="bot-box">
-      <view class="bot-left">{{date}}</view>
+
+      <view class="{{idd?'bot-left':'pclass'}}">{{date}}</view>
       <image src="/static/images/botarr.png" class="bot-box-image" />
     </view>
   </view>
   <block wx:if="{{shareshow2}}">
     <view class="ticket-blocks">
-      <view class="bot-boxs"  bindtap="clickTrue2" data-id="001">
+      <view class="bot-boxs" bindtap="clickTrue2" data-id="001">
         <view class="bot-span">指定日期</view>
         <image src="{{idd==001?'/static/images/ok.png':'/static/images/okk.png'}}" class="bot-ok" />
       </view>
     </view>
-       
-    <picker name="picker_hx" class="cybm_pic_1" value="{{df_value}}" data-selecthx="{{pic_array[hx_index].name}}" range="{{pic_array}}" range-key="{{'name'}}"  bindchange="bindPickerChange_hx"  >
-    <view class="ticket-blocks">
-      <view class="bot-boxs" bindtap="clickTrue2" data-id="002">
-        <view class="bot-span">指定天数</view>
-        <image src="{{idd==002?'/static/images/ok.png':'/static/images/okk.png'}}" class="bot-ok" />
+
+    <picker name="picker_hx" class="cybm_pic_1" value="{{df_value}}" data-selecthx="{{pic_array[hx_index].name}}" range="{{pic_array}}" range-key="{{'name'}}" bindchange="bindPickerChange_hx">
+      <view class="ticket-blocks">
+        <view class="bot-boxs" bindtap="clickTrue2" data-id="002">
+          <view class="bot-span">指定天数</view>
+          <image src="{{idd==002?'/static/images/ok.png':'/static/images/okk.png'}}" class="bot-ok" />
+        </view>
       </view>
-     </view>
     </picker>
   </block>
 
 
   <van-popup show="{{ show }}" position="bottom" z-index="300" bind:close="onClose" safe-area-inset-bottom>
-    <van-datetime-picker type="date" value="{{ currentDate }}" bind:cancel="onCancel"    bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+    <van-datetime-picker type="date" value="{{ currentDate }}" bind:cancel="onCancel" toolbar-class="toolbar-class" bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
   </van-popup>
 
   <!-- <van-popup show="{{ show1 }}" position="bottom" z-index="300" bind:close="onClose1" safe-area-inset-bottom> -->
-    <!-- <van-picker  value="{{columns.text}}" bind:cancel="onCancel1"    bind:confirm="onConfirm"  /> -->
+  <!-- <van-picker  value="{{columns.text}}" bind:cancel="onCancel1"    bind:confirm="onConfirm"  /> -->
   <!-- </van-popup> -->
 
   <!-- 添加图片 -->
@@ -138,5 +141,7 @@
       <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left: 40rpx;" />
     </view>
   </view>
-  <button class="playBtn" formType="submit">开始发券</button>
+  <view class="app-bot">
+    <button class="playBtn" formType="submit">开始发券</button>
+  </view>
 </form>

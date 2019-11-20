@@ -28,7 +28,7 @@ page {
     margin-right: 20rpx;
     color: #333;
     font-size: 28rpx;
-    background-color: rgb(223, 217, 217);
+    background-color: #efefef;
     border-radius: 20rpx;
     padding: 20rpx 50rpx 20rpx 50rpx;
     position: relative;
@@ -147,11 +147,11 @@ page {
 }
 
 .abox-cha {
-    width: 40rpx;
-    height: 40rpx;
+    width: 30rpx;
+    height: 30rpx;
     position: absolute;
-    bottom: 11rpx;
-    right: 14rpx;
+    bottom: 16rpx;
+    right: 22rpx;
 }
 
 .abox-chaa {
@@ -340,7 +340,6 @@ page {
 
 .vb-Checked {
     background-color: #e85819;
-    opacity: 0.7;
     color: #fff;
 }
 

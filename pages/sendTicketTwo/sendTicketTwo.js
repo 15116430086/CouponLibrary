@@ -102,7 +102,9 @@ Page({
     ],
     idd: "",
     shareshow2: false,
-    date: "日期",
+    date: "请选择",
+    hexiao:"请选择",
+    getRule:"请选择",
     currentDate: new Date().getTime(),
     minDate: new Date().getTime(),
     formatter(type, value) {
@@ -316,9 +318,18 @@ Page({
     let type = e.currentTarget.dataset.type;
     pCoupon_Info.ReceiveRule = type;
     console.log(type)
-    that.setData({
-      idx: id
-    })
+    
+    if(type ==0){
+      that.setData({
+        getRule:"仅首次领取",
+        idx: id
+      });
+    }else{
+      that.setData({
+        getRule: "可重复领取",
+        idx: id
+      });
+    }
   },
 
 
@@ -337,10 +348,18 @@ Page({
     let pCoupon_Info = that.data.pCoupon_Info;
     let type = e.currentTarget.dataset.type;
     pCoupon_Info.WriteOffType = type;
-
-    that.setData({
-      idb: id
-    })
+    if(type ==0){
+      that.setData({
+        hexiao:"线上受理",
+        idb: id
+      })
+    }else{
+      that.setData({
+        hexiao: "线下消费",
+        idb: id
+      })
+    }
+    
   },
 
 
