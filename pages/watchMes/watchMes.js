@@ -77,5 +77,11 @@ Page({
    wx.navigateTo({
      url: '../watchMesOne/watchMesOne?releaseid=' + releaseid,
    })
+  },
+  jumpOk:function(event){//继续发券
+    var CouponID = event.currentTarget.dataset.couponid;
+    wx.navigateTo({
+      url: '../startTicket/startTicket?pCoupon_Info=' + this.data.CouponInfo + "&CouponID=" + CouponID,
+    })
   }
 })
