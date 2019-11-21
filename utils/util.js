@@ -1,3 +1,5 @@
+const app = getApp();
+
 const formatTime = date => {
   var date = new Date(date);
   const year = date.getFullYear()
@@ -173,6 +175,59 @@ function UploadImg(count, pAppKeyId, pCallBack, pOther) {
 
 }
 
+function GetRegionIndustry(pUrl, pType, pAppKeyId, pCallBack) {
+  let that = this;
+  wx.showLoading({
+    title: '数据加载中...',
+  })
+  var pData = {};
+  pData.pStartLevel = 2
+  pData.pQueryLevel = 3
+  pData.State = 0
+
+  wx.request({
+    url: pUrl, //仅为示例，并非真实的接口地址
+    data: pData,
+    header: {
+      'content-type': 'application/x-www-form-urlencoded', // 默认值
+      "appKeyId": pAppKeyId
+    },
+    method: pType,
+    success(res) {
+      GetRegionIndustryBack(res, pCallBack);
+    },
+    fail(res) {
+      wx.showToast({
+        title: res.errMsg //'请求失败',
+      })
+    }
+  })
+}
+
+function GetRegionIndustryBack(json, pCallBack) {
+  console.log(json);
+  wx.hideLoading();
+  var json = json.data.Data;
+  if (json.flag) {
+    console.log(json.msg);
+    var mArray = [];
+    mArray.push(json.dataRegion)
+    mArray.push(json.dataRegion[17].LevelCoupon_Region)
+    mArray.push(json.dataRegion[17].LevelCoupon_Region[0].LevelCoupon_Region)
+    var industrylist = [{
+      text: "全行业",
+      industryName: "全行业",
+      industryCode: ""
+    }];
+    industrylist = industrylist.concat(json.dataIndustry)
+    wx.setStorageSync('Industry', industrylist);
+    wx.setStorageSync('Region', json.dataRegion);
+    wx.setStorageSync('multiArray', mArray);
+    if (pCallBack)
+      pCallBack();
+  }
+}
+
 
 module.exports = {
   formatTime: formatTime,
@@ -181,5 +236,6 @@ module.exports = {
   syFormatMoney: syFormatMoney,
   syJsonSafe: syJsonSafe,
   Console: consoleLog,
-  UploadImg: UploadImg
+  UploadImg: UploadImg,
+  GetRegionIndustry: GetRegionIndustry
 }

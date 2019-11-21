@@ -4,7 +4,7 @@
   <view class="home-top">
     <view class="homeTop-name">{{GroupName}}</view>
     <view class="homeTop-left">
-      <view class="search-box" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" bindtap="Jumptap" >
+      <view class="search-box" bindtap="Jumptap" >
         <image src="/static/images/serch.png" background-size="cover"></image>
         <view>搜索领券</view>
       </view>

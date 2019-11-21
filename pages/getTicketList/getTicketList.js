@@ -3,6 +3,7 @@ var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1;
 var quick = 0;
+var regionData = [];
 Page({
 
   /**
@@ -20,10 +21,92 @@ Page({
         id: 2
       }
     ],
-    qData: null
+    qData: null,
+    industryName: "全行业",
+    industryCode: "",
+    multiArray: [],
+    multiIndex: [17, 0, 2],
+    coupontype: ["全部券", "现金券", "团购券"],
+     typeName: "全部券",
+    show2: false,
+    tshow: false,
+    couponType: -1,
+  },
+
+  showtPopup() {
+
+    let that = this;
+    that.setData({
+      show2: true
+    })
+  },
+
+  //券类型选择
+  ontConfirm(event) {
+    const {
+      picker,
+      value,
+      index
+    } = event.detail;
+    console.log(`当前值：${value}, 当前索引：${index}`);
+
+    let that = this;
+    that.setData({
+      tshow: false,
+      couponType: index - 1,
+      typeName: value
+    })
+    
+  },
+  ontCancel(e) {
+    let that = this;
+    that.setData({
+      tshow: false
+    })
+  },
+  ontClose(e) {
+
+    let that = this;
+    that.setData({
+      tshow: false
+    })
+  },
+
+
+  showPopup() {
+    let that = this;
+    that.setData({
+      show2: true
+    })
+  },
+
+  //行业选择
+  onConfirm(event) {
+    const {
+      picker,
+      value,
+      index
+    } = event.detail;
+    console.log(`当前值：${value}, 当前索引：${index}`);
+
+    let that = this;
+    that.setData({
+      show2: false,
+      industryName: value.IndustryName,
+      industryCode: value.IndustryCode
+    })
+  },
+  onCancel(e) {
+
+    let that = this;
+    that.setData({
+      show2: false
+    })
   },
   GetData: function() {
     let that = this;
+    var multiArray = that.data.multiArray;
+    var multiIndex = that.data.multiIndex;
     //显示 加载中的提示
     wx.showLoading({
       title: '数据加载中...',
@@ -35,6 +118,9 @@ Page({
     data.pLatitudeX = app.globalData.latitudeX;
     data.pLongitudeY = app.globalData.longitudeY;
     data.pQueryKey = that.data.searchValue;
+    //data.pRegionID = multiArray[2][multiIndex[2]].RegionID;
+    data.pIndustryCode = that.data.industryCode;
+    data.pCouponType = that.data.couponType;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/QueryCouponInfo", "POST", data, app.globalData.appkeyid, this.GetQueryCouponBack)
   },
   GetQueryCouponBack: function(json) {
@@ -74,6 +160,7 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
+    that.GetRegionIndustry();
     page = 1;
     if (options.quick == 0) {
 
@@ -89,13 +176,17 @@ Page({
   },
   QuickQueryCoupon: function(page) {
     let that = this;
-    var data = that.data.qData;    
+    var multiArray = that.data.multiArray;
+    var multiIndex = that.data.multiIndex;
+    var data = that.data.qData;
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pPageIndex = page;
     data.pPageSize = 30;
     data.pLatitudeX = app.globalData.latitudeX;
     data.pLongitudeY = app.globalData.longitudeY;
     data.pQueryKey = that.data.searchValue;
+    data.pRegionID = multiArray[2][multiIndex[2]].RegionID;
+    data.pIndustryCode = that.data.industryCode;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/QuickQueryCouponInfo", "POST", data, app.globalData.appkeyid, that.GetQueryCouponBack)
   },
 
@@ -179,5 +270,57 @@ Page({
    */
   onShareAppMessage: function() {
 
+  },
+
+  GetRegionIndustry: function() {
+    let that = this;
+
+    regionData = wx.getStorageSync('Region');
+    var industrylist = wx.getStorageSync('Industry');
+    var multiArray = wx.getStorageSync('multiArray');
+    if (regionData && industrylist) {
+      this.setData({
+        columns: industrylist,
+        multiArray: multiArray
+      });
+
+      return;
+    }
+    utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
+  },
+
+
+  bindMultiPickerChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      multiIndex: e.detail.value
+    })
+  },
+  bindMultiPickerColumnChange: function(e) {
+    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+    var data = {
+      multiArray: this.data.multiArray,
+      multiIndex: this.data.multiIndex
+    };
+    data.multiIndex[e.detail.column] = e.detail.value;
+    switch (e.detail.column) {
+      case 0:
+        data.multiArray[1] = regionData[data.multiIndex[0]].LevelCoupon_Region;
+        data.multiArray[2] = regionData[data.multiIndex[0]].LevelCoupon_Region[0].LevelCoupon_Region
+
+        data.multiIndex[1] = 0;
+        data.multiIndex[2] = 0;
+        break;
+      case 1:
+        data.multiArray[2] = regionData[data.multiIndex[0]].LevelCoupon_Region[data.multiIndex[1]].LevelCoupon_Region
+
+        data.multiIndex[2] = 0;
+        break;
+    }
+    console.log(data.multiIndex);
+    this.setData({
+      multiArray: data.multiArray,
+      multiIndex: data.multiIndex
+    });
   }
 })

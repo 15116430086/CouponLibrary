@@ -1,6 +1,7 @@
 // pages/merchantReg/merchantReg.js
 var utils = require("../../utils/util.js")
 const app = getApp();
+var regionData = [];
 Page({
 
   /**
@@ -27,8 +28,7 @@ Page({
     flag: false,
     regAddress: "湖南长沙五一大道59号",
     multiArray: [],
-    multiIndex: [17, 0, 2],
-    regionData: []
+    multiIndex: [17, 0, 2]  
   },
   onRegAddressTap: function() {
     let that = this;
@@ -369,36 +369,21 @@ Page({
 
   },
 
-  GetRegionIndustry: function() {
+  GetRegionIndustry: function () {
     let that = this;
-    wx.showLoading({
-      title: '数据加载中...',
-    })
-    var data = {};
-    data.pStartLevel = 2
-    data.pQueryLevel = 3
-    data.State = 0
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", data, app.globalData.appkeyid, that.GetRegionIndustryBack)
-  },
 
-  GetRegionIndustryBack: function(json) {
-    console.log(json);
-    wx.hideLoading();
-    var json = json.data.Data;
-    if (json) {
-      console.log(json.msg);
-      var mArray = [];
-      mArray.push(json.dataRegion)
-      mArray.push(json.dataRegion[17].LevelCoupon_Region)
-      mArray.push(json.dataRegion[17].LevelCoupon_Region[0].LevelCoupon_Region)
-      if (json.flag) {
-        this.setData({
-          columns: json.dataIndustry,
-          regionData: json.dataRegion,
-          multiArray: mArray
-        });
-      }
+    regionData = wx.getStorageSync('Region');
+    var industrylist = wx.getStorageSync('Industry');
+    var multiArray = wx.getStorageSync('multiArray');
+    if (regionData && industrylist) {
+      this.setData({
+        columns: industrylist,
+        multiArray: multiArray
+      });
+
+      return;
     }
+    utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
   bindMultiPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -415,14 +400,14 @@ Page({
     data.multiIndex[e.detail.column] = e.detail.value;
     switch (e.detail.column) {
       case 0:
-        data.multiArray[1] = this.data.regionData[data.multiIndex[0]].LevelCoupon_Region;
-        data.multiArray[2] = this.data.regionData[data.multiIndex[0]].LevelCoupon_Region[0].LevelCoupon_Region
+        data.multiArray[1] = regionData[data.multiIndex[0]].LevelCoupon_Region;
+        data.multiArray[2] = regionData[data.multiIndex[0]].LevelCoupon_Region[0].LevelCoupon_Region
 
         data.multiIndex[1] = 0;
         data.multiIndex[2] = 0;
         break;
       case 1:
-        data.multiArray[2] = this.data.regionData[data.multiIndex[0]].LevelCoupon_Region[data.multiIndex[1]].LevelCoupon_Region
+        data.multiArray[2] = regionData[data.multiIndex[0]].LevelCoupon_Region[data.multiIndex[1]].LevelCoupon_Region
 
         data.multiIndex[2] = 0;
         break;

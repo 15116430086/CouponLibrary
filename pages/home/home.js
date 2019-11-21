@@ -50,7 +50,7 @@ Page({
 
 Jumptap:function(){
    wx.navigateTo({
-     url: '../getTicketList/getTicketList',
+     url: '../getTicketList/getTicketList?quick=0',
    })
 },
 
