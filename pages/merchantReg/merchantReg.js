@@ -1,6 +1,7 @@
 // pages/merchantReg/merchantReg.js
 var utils = require("../../utils/util.js")
 const app = getApp();
+var regionData = [];
 Page({
 
   /**
@@ -25,10 +26,9 @@ Page({
     industryCode: "",
     enterpriseLicensing: "",
     flag: false,
-    regAddress: "湖南长沙五一大道59号", 
-    multiArray: [ ],
-    multiIndex: [17, 0, 2],
-    regionData: []
+    regAddress: "湖南长沙五一大道59号",
+    multiArray: [],
+    multiIndex: [17, 0, 2]  
   },
   onRegAddressTap: function() {
     let that = this;
@@ -81,12 +81,11 @@ Page({
       }
     })
   },
-  onPreviewImageTap:function()
-  {
-    let that=this;
+  onPreviewImageTap: function() {
+    let that = this;
 
     wx.previewImage({
-      urls:[that.data.enterpriseLicensing],      
+      urls: [that.data.enterpriseLicensing],
     })
   },
   onUpFileImg: function() {
@@ -181,8 +180,8 @@ Page({
       return;
     }
 
-    data.LegalPerson = e.detail.value.RegAddress
-    if (data.LegalPerson == '') {
+    data.RegisteredAddress = e.detail.value.RegAddress
+    if (data.RegisteredAddress == '') {
       wx.showToast({
         title: "注册地址不能为空",
         icon: "none",
@@ -236,10 +235,13 @@ Page({
   },
 
   RegCouponGroup: function(data) {
+    let that = this;
+    var multiArray = that.data.multiArray;
+    var multiIndex = that.data.multiIndex;
     // 登录
     wx.login({
       success: res => {
-        let that = this;
+
         // 发送 res.code 到后台换取 openId, sessionKey, unionId      
         app.globalData.logincode = res.code;
 
@@ -251,7 +253,7 @@ Page({
               app.globalData.userInfo = res.userInfo
               data.LatitudeX = app.globalData.latitudeX.toString()
               data.LongitudeY = app.globalData.longitudeY.toString()
-              data.RegionID = "430102";
+              data.RegionID = multiArray[2][multiIndex[2]].RegionID;
               data = {
                 pCoupon_Group: utils.syJsonSafe(data),
                 Text: res.encryptedData,
@@ -282,7 +284,7 @@ Page({
       if (json.flag) {
         wx.setStorageSync('miniappkeyid', json.data)
         var appkeyid = wx.getStorageSync('miniappkeyid');
-        if (appkeyid) {
+        if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
           app.globalData.appkeyid = appkeyid.FSessionKey;
           var loginInfo = JSON.parse(appkeyid.FContent);
           app.globalData.AppWxUserInfo = loginInfo.AppWxUserInfo;
@@ -365,46 +367,31 @@ Page({
    */
   onShareAppMessage: function() {
 
-  }, 
+  },
 
   GetRegionIndustry: function () {
     let that = this;
-    wx.showLoading({
-      title: '数据加载中...',
-    })
-    var data = {};
-    data.pStartLevel = 2
-    data.pQueryLevel = 3
-    data.State = 0
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", data, app.globalData.appkeyid, that.GetRegionIndustryBack)
-  },
 
-  GetRegionIndustryBack: function (json) {
-    console.log(json);
-    wx.hideLoading();
-    var json = json.data.Data;
-    if (json) {
-      console.log(json.msg);
-      var mArray = [];
-      mArray.push(json.dataRegion)
-      mArray.push(json.dataRegion[0].LevelCoupon_Region)
-      mArray.push(json.dataRegion[0].LevelCoupon_Region[0].LevelCoupon_Region)
-      if (json.flag) {
-        this.setData({
-          columns: json.dataIndustry,
-          regionData: json.dataRegion,
-          multiArray: mArray
-        });
-      }
+    regionData = wx.getStorageSync('Region');
+    var industrylist = wx.getStorageSync('Industry');
+    var multiArray = wx.getStorageSync('multiArray');
+    if (regionData && industrylist) {
+      this.setData({
+        columns: industrylist,
+        multiArray: multiArray
+      });
+
+      return;
     }
+    utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
-  bindMultiPickerChange: function (e) {
+  bindMultiPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       multiIndex: e.detail.value
     })
   },
-  bindMultiPickerColumnChange: function (e) {
+  bindMultiPickerColumnChange: function(e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     var data = {
       multiArray: this.data.multiArray,
@@ -413,14 +400,14 @@ Page({
     data.multiIndex[e.detail.column] = e.detail.value;
     switch (e.detail.column) {
       case 0:
-        data.multiArray[1] = this.data.regionData[data.multiIndex[0]].LevelCoupon_Region;
-        data.multiArray[2] = this.data.regionData[data.multiIndex[0]].LevelCoupon_Region[0].LevelCoupon_Region
+        data.multiArray[1] = regionData[data.multiIndex[0]].LevelCoupon_Region;
+        data.multiArray[2] = regionData[data.multiIndex[0]].LevelCoupon_Region[0].LevelCoupon_Region
 
         data.multiIndex[1] = 0;
         data.multiIndex[2] = 0;
         break;
       case 1:
-        data.multiArray[2] = this.data.regionData[data.multiIndex[0]].LevelCoupon_Region[data.multiIndex[1]].LevelCoupon_Region
+        data.multiArray[2] = regionData[data.multiIndex[0]].LevelCoupon_Region[data.multiIndex[1]].LevelCoupon_Region
 
         data.multiIndex[2] = 0;
         break;

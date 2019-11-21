@@ -1,13 +1,6 @@
 // pages/goodsEditor/goodsEditor.js
 var utils = require("../../utils/util.js")
 const app = getApp();
-var Specifications = {
-  CostPrice: "",
-  SalePrice: "",
-  StockNum: "",
-  Postage: "",
-  Attrivute: []
-}
 Page({
 
   /**
@@ -48,10 +41,10 @@ Page({
     countNUM: 0,
     attributeNUM: 0,
     ProductSpecifications: [{
-      CostPrice: "",
-      SalePrice: "",
-      StockNum: "",
-      Postage: "",
+      CostPrice: 0,
+      SalePrice: 0,
+      StockNum: 0,
+      Postage: 0,
       Attrivute: []
     }],
     ProductDetails: [{
@@ -73,7 +66,7 @@ Page({
   //商品名称ProductName
   ProductNameInput: function(e) {
     this.setData({
-      ProductName: e.detail.value
+      productName: e.detail.value
     })
   },
   onDelImageTap: function(e) {
@@ -191,23 +184,17 @@ Page({
   },
   //价格SalePrice
   SalePriceInput: function(e) {
-    const {
-      index
-    } = e.currentTarget.dataset;
+    var index = e.currentTarget.dataset.index;
     this.data.ProductSpecifications[index].SalePrice = e.detail.value;
   },
   //库存StockNum
   StockNumInput: function(e) {
-    const {
-      index
-    } = e.currentTarget.dataset;
+    var index = e.currentTarget.dataset.index;
     this.data.ProductSpecifications[index].StockNum = e.detail.value;
   },
   AttributeInput: function(e) {
-    const {
-      index,
-      cindex
-    } = e.currentTarget.dataset;
+    var index = e.currentTarget.dataset.index;
+    var cindex = e.currentTarget.dataset.cindex;
     this.data.ProductSpecifications[index].Attrivute[cindex].AttrivuteValue = e.detail.value;
   },
   //分组Grouping
@@ -262,45 +249,6 @@ Page({
       return;
     }
 
-    var ProductSpecifications = that.data.ProductSpecifications
-    for (let i in ProductSpecifications) {
-      if (ProductSpecifications[i].CostPrice == "") {
-        wx.showToast({
-          title: '请输入商品规格【' + i + '】价格！',
-          icon: "none",
-          duration: 2000
-        })
-        return;
-      }
-
-      if (ProductSpecifications[i].StockNum == "") {
-        wx.showToast({
-          title: '请输入商品规格【' + i + '】库存！',
-          icon: "none",
-          duration: 2000
-        })
-        return;
-      }
-
-      var Attrivute = ProductSpecifications[i].Attrivute
-      for (let j in Attrivute) {
-        if (Attrivute[j].AttrivuteValue == "") {
-          wx.showToast({
-            title: '请输入商品规格【' + i + '】' + Attrivute[j].AttributeName + '！',
-            icon: "none",
-            duration: 2000
-          })
-          return;
-        }
-      }
-
-      ProductSpecifications.AttrivuteValue = JSON.stringify(ProductSpecifications[i].Attrivute);
-      if (i == 0) {
-        oCoupon_Product.SalePrice = ProductSpecifications[i].CostPrice
-        oCoupon_Product.StockNum = ProductSpecifications[i].StockNum
-      }
-    }
-
     if (that.data.mainimgNUM == 0) {
       wx.showToast({
         title: '请最少一张商品主图！',
@@ -310,8 +258,47 @@ Page({
       return;
     }
 
+    var ProductSpecifications = that.data.ProductSpecifications
+    for (var i in ProductSpecifications) {
+      if (ProductSpecifications[i].SalePrice == "") {
+        wx.showToast({
+          title: '请输入商品规格' + (parseInt(i) + 1) + '价格！',
+          icon: "none",
+          duration: 2000
+        })
+        return;
+      }
+
+      if (ProductSpecifications[i].StockNum == "") {
+        wx.showToast({
+          title: '请输入商品规格' + (parseInt(i) + 1) + '库存！',
+          icon: "none",
+          duration: 2000
+        })
+        return;
+      }
+
+      var Attrivute = ProductSpecifications[i].Attrivute
+      for (var j in Attrivute) {
+        if (Attrivute[j].AttrivuteValue == "") {
+          wx.showToast({
+            title: '请输入商品规格【' + (parseInt(i) + 1) + '】' + Attrivute[j].AttributeName + '！',
+            icon: "none",
+            duration: 2000
+          })
+          return;
+        }
+      }
+      ProductSpecifications[i].Postage = that.data.Postage;
+      ProductSpecifications[i].AttrivuteValue = JSON.stringify(ProductSpecifications[i].Attrivute)
+      if (i == 0) {
+        oCoupon_Product.SalePrice = ProductSpecifications[i].SalePrice
+        oCoupon_Product.StockNum = ProductSpecifications[i].StockNum
+      }
+    }
+
     var mainImage = that.data.mainImage
-    for (let i in mainImage) {
+    for (var i in mainImage) {
       if (i == 0 && mainImage[i].state == 1) {
         oCoupon_Product.ImageOne = mainImage[i].url;
       }
@@ -346,16 +333,19 @@ Page({
         }
       }
     }
-    var ProductAttribute = that.data.ProductAttribute
-    var CustomAttribute = [];
-    for (let i in ProductAttribute) {
-      if (ProductAttribute[i].IsChecked == 1) {
-        CustomAttribute.push({
-          AttributeID: ProductAttribute[i].AttributeID,
-          name: ProductAttribute[i].AttributeName,
-          value: ProductAttribute[i].AttributeValue,
-          type: ProductAttribute[i].AttnibuteType
-        })
+    oCoupon_Product.ProductType = that.data.type;
+    if (oCoupon_Product.ProductType == 1) {
+      var ProductAttribute = that.data.ProductAttribute
+      var CustomAttribute = [];
+      for (let i in ProductAttribute) {
+        if (ProductAttribute[i].IsChecked == 1) {
+          CustomAttribute.push({
+            AttributeID: ProductAttribute[i].AttributeID,
+            name: ProductAttribute[i].AttributeName,
+            value: ProductAttribute[i].AttributeValue,
+            type: ProductAttribute[i].AttnibuteType
+          })
+        }
       }
     }
     oCoupon_Product.CustomAttribute = JSON.stringify(CustomAttribute);
@@ -365,13 +355,31 @@ Page({
       title: '数据加载中...',
     })
     var data = {};
-    data.pGroupID = this.data.orderid;
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pCoupon_Product = utils.syJsonSafe(oCoupon_Product);
     data.pLsitPicture = utils.syJsonSafe(oCoupon_Picture);
     data.pCoupon_ProductSpecifications = utils.syJsonSafe(ProductSpecifications);
+
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/AddOrEditCouponProduct", "POST", data, app.globalData.appkeyid, this.AddCouponProductBack)
   },
 
-
+  AddCouponProductBack: function (json) {
+    let that = this;
+    var json = json.data.Data;
+    wx.hideLoading();
+    if (json.flag) {
+      wx.showToast({
+        title: '商品新增成功!',
+        icon: "none",
+        duration: 2000
+      })
+      setTimeout(function() {
+        wx.redirectTo({
+          url: '../goodsManager/goodsManager'
+        })
+      }, 2000);
+    }
+  },
 
   GetData: function() {
     let that = this;
@@ -536,19 +544,26 @@ Page({
   },
   onEnter: function() {
     let that = this;
-    var Attrivute = [];
+
+    var Specifications = {
+      CostPrice: 0,
+      SalePrice: 0,
+      StockNum: 0,
+      Postage: 0,
+      Attrivute: []
+    }
+
     var SpecificationsAttribute = that.data.SpecificationsAttribute
     for (let i in SpecificationsAttribute) {
       if (SpecificationsAttribute[i].IsChecked == 1) {
-        Attrivute.push(
+        Specifications.Attrivute.push(
           SpecificationsAttribute[i]
         )
       }
 
     }
-    Specifications.Attrivute = Attrivute;
-    var ProductSpecifications = []
-    ProductSpecifications.push(Specifications);
+    var ProductSpecifications = [Specifications];
+
     that.setData({
       ProductSpecifications: ProductSpecifications,
       show: false,
@@ -568,10 +583,25 @@ Page({
   },
   onAddSpecificationsTap: function() {
     let that = this;
-    var pSpecifications = that.data.ProductSpecifications;
-    pSpecifications = pSpecifications.concat(Specifications);
+    var productSpecifications = that.data.ProductSpecifications;
+    var specifications = {
+      CostPrice: 0,
+      SalePrice: 0,
+      StockNum: 0,
+      Postage: 0,
+      Attrivute: []
+    }
+    var specificationsAttribute = that.data.SpecificationsAttribute
+    for (let i in specificationsAttribute) {
+      if (specificationsAttribute[i].IsChecked == 1) {
+        specifications.Attrivute.push(
+          specificationsAttribute[i]
+        )
+      }
+    }
+    productSpecifications.push(specifications);
     that.setData({
-      ProductSpecifications: pSpecifications
+      ProductSpecifications: productSpecifications
     })
   },
   onCheckdeTap: function(e) {

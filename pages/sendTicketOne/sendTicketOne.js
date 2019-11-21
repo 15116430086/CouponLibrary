@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-     datalist:null,
+     datalist:[],
      pageIndex:1,
      ReleaseCommission:0,//托管金
      Comission:0,//已用

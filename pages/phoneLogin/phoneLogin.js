@@ -72,13 +72,22 @@ Page({
         let that = this;
         // 发送 res.code 到后台换取 openId, sessionKey, unionId      
         app.globalData.logincode = res.code;
-        var data = {};
-        data.Text = detail.encryptedData;
-        data.AesIV = detail.iv;
-        data.code = res.code;
-        data.pHoneNumber = that.data.phone;
-        data.pCheckCode = that.data.code;
-        utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetWxLoginAuth", "POST", data, app.globalData.appkeyid, that.GetPhoneNumbeLoginBack)
+        wx.getUserInfo({
+          success: res => {
+            // 登录
+            var detail = res;
+            if (detail.errMsg == "getUserInfo:ok") {
+              app.globalData.userInfo = res.userInfo
+              var data = {};
+              data.Text = detail.encryptedData;
+              data.AesIV = detail.iv;
+              data.code = app.globalData.logincode;
+              data.pHoneNumber = that.data.phone;
+              data.pCheckCode = that.data.code;
+              utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetWxLoginAuth", "POST", data, app.globalData.appkeyid, that.GetPhoneNumbeLoginBack)
+            }
+          }
+        })
       }
     })
   },
@@ -111,7 +120,7 @@ Page({
       if (json.flag) {
         wx.setStorageSync('miniappkeyid', json.data)
         var appkeyid = wx.getStorageSync('miniappkeyid');
-        if (appkeyid) {
+        if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
           app.globalData.appkeyid = appkeyid.FSessionKey;
           var loginInfo = JSON.parse(appkeyid.FContent);
           app.globalData.AppWxUserInfo = loginInfo.AppWxUserInfo;
