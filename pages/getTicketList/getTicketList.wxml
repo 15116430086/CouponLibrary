@@ -14,12 +14,12 @@
   </view>
   <!-- 下拉框 -->
   <view class="home-sel">
-      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
-    <view class="home-span">
-      <view>{{multiArray[2][multiIndex[2]].RegionName}}</view>
-      <image src="/static/images/sel.png" />
-    </view>
-        </picker>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
+      <view class="home-span">
+        <view>{{multiArray[2][multiIndex[2]].RegionName}}</view>
+        <image src="/static/images/sel.png" />
+      </view>
+    </picker>
     <view class="home-span">
       <view bindtap="showPopup">{{industryName}}</view>
       <image src="/static/images/sel.png" />
@@ -40,14 +40,7 @@
   <van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" />
 </van-popup>
 
-    <!-- 券类型 -->
-    <van-popup
-      show="{{tshow}}"
-      bind:close="ontClose"
-      position="bottom"
-      close-on-click-overlay
-      overlay
-      safe-area-inset-bottom
-    >
-      <van-picker show-toolbar columns="{{coupontype}}" bind:cancel="ontCancel" bind:confirm="ontConfirm" />
-    </van-popup>
+<!-- 券类型 -->
+<van-popup show="{{tshow}}" bind:close="ontClose" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
+  <van-picker show-toolbar columns="{{coupontype}}" bind:cancel="ontCancel" bind:confirm="ontConfirm" />
+</van-popup>

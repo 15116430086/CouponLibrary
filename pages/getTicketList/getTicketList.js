@@ -37,7 +37,7 @@ Page({
 
     let that = this;
     that.setData({
-      show2: true
+      tshow: true
     })
   },
 
