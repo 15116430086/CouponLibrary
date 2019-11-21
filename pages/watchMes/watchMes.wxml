@@ -3,7 +3,7 @@
 <view class="v-box">
   <view class="v-top">
     <view class="v-title">{{CouponInfo.CouponName}}</view>
-    <view class="v-go">继续发券</view>
+    <view class="v-go" data-CouponID="{{CouponInfo.CouponID}}" bindtap="jumpOk">继续发券</view>
   </view>
   <view class="v-mid">已发券:{{CouponInfo.ReleaseNUM}}</view>
   <view class="v-block">
@@ -25,7 +25,7 @@
 <view class="v-bot">
 <!-- 已通过 -->
  <block wx:for="{{datalist}}">
-  <view class="v-class">
+  <view class="v-class" bindtap="See" data-releaseid="{{item.ReleaseID}}">
     <view class="v-left">
       <view class="v-name">
         <view>已发布：{{item.ReleaseNUM}}张</view>

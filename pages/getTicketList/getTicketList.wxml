@@ -20,12 +20,12 @@
         <image src="/static/images/sel.png" />
       </view>
     </picker>
-    <view class="home-span">
-      <view bindtap="showPopup">{{industryName}}</view>
+    <view class="home-span" bindtap="showPopup">
+      <view >{{industryName}}</view>
       <image src="/static/images/sel.png" />
     </view>
-    <view class="home-span">
-      <view bindtap="showtPopup">{{typeName}}</view>
+    <view class="home-span" bindtap="showtPopup">
+      <view >{{typeName}}</view>
       <image src="/static/images/sel.png" />
     </view>
   </view>

@@ -154,9 +154,9 @@ Page({
         });
 
         that.setData({
-          images: json.data,
-          imgUrls: json.data,
-          shopArrays: json.data,
+          images: banner,
+          imgUrls: popular,
+          shopArrays: extension,
           hotTicketBox: json.data,
           lastpage: json.pageCount //你的总页数
         });
