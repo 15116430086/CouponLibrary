@@ -10,6 +10,7 @@ Page({
   data: {
     CouponMsgList:[],
     lastpage: 0,
+    Time:"",
   },
 
   GetData: function () {
