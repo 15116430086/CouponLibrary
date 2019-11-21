@@ -30,7 +30,7 @@
     <block wx:for="{{Grouplist}}" wx:for-index="index" wx:key="GroupID">
       <view class="v-block">
         <view class="v-left">
-          <image src="/static/images/swp.png" />
+          <image src="{{item.ImageOne==''?'/static/images/swp.png':item.ImageOne}}" />
           <view class="v-mid">
             <view class="v-t">{{item.GroupName}}</view>
             <view class="v-b">{{item.Introduction}}</view>
