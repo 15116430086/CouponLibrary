@@ -16,7 +16,15 @@
     align-items: center;
     justify-content: space-between;
 }
-
+.swp-view{
+  width: calc(100% - 40rpx);
+  margin: 0px auto;
+  text-align: center;
+  overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+  
+}
 .homeTop-name {
     width: 330rpx;
     height: 60rpx;

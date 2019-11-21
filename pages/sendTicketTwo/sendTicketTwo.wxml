@@ -1,24 +1,26 @@
 <!-- 导航 -->
-<view class='top_nav'>
-  <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.typeId}}' catchtap='handleTap'>
-    {{item.name}}
+<view class="top-block">
+
+  <view class='top_nav'>
+    <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.typeId}}' catchtap='handleTap'>
+      {{item.name}}
+    </view>
   </view>
-</view>
-<!-- 代金券 -->
-<view hidden='{{currentId!=1}}' class="mes-block">
-  <view class="mes-top">
-    <view class="top-mes">
-      现金抵用券，将券发布至指定商户或券平台，商户
-      <text>免费领券</text> 赠送给其会员为您引流并赚取佣金。
+  <!-- 代金券 -->
+  <view hidden='{{currentId!=1}}' class="mes-block">
+    <view class="mes-top">
+      <view class="top-mes">
+        现金抵用券，将券发布至指定商户或券平台，商户
+        <text>免费领券</text> 赠送给其会员为您引流并赚取佣金。
+      </view>
+    </view>
+  </view>
+  <view hidden='{{currentId!=2}}' class="mes-block">
+    <view class="mes-top">
+      <view class="top-mes">联盟商户购买商品团购券后，销售或赠送给消费者，消费者可使用团购券在线下或线上兑换商品。</view>
     </view>
   </view>
 </view>
-<view hidden='{{currentId!=2}}' class="mes-block">
-  <view class="mes-top">
-    <view class="top-mes">联盟商户购买商品团购券后，销售或赠送给消费者，消费者可使用团购券在线下或线上兑换商品。</view>
-  </view>
-</view>
-
 <form class="ticket-box" bindsubmit="formSubmit">
   <view class="ticket-block">
     <view class="ticket-name">券名称</view>
@@ -106,7 +108,7 @@
 
 
   <van-popup show="{{ show }}" position="bottom" z-index="300" bind:close="onClose" safe-area-inset-bottom>
-    <van-datetime-picker type="date" value="{{ currentDate }}" bind:cancel="onCancel" toolbar-class="toolbar-class" bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+    <van-datetime-picker type="date" value="{{ currentDate }}" bind:cancel="onCancel" toolbar-class="toolbar-class" active-class="active-class"   bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" custom-class="custom-class"/>
   </van-popup>
 
   <!-- <van-popup show="{{ show1 }}" position="bottom" z-index="300" bind:close="onClose1" safe-area-inset-bottom> -->

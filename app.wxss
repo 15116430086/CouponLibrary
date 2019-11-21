@@ -1,5 +1,7 @@
 /**app.wxss**/
-
+page{
+  font-family:PingFang SC;
+}
 .container {
     height: 100%;
     display: flex;
@@ -22,7 +24,7 @@ button::after{
 
 .app-bot{
   width: 100%;
-  height: 160rpx;
+  height: 128rpx;
   background-color: #FFF;
   position: fixed;
   bottom: 0px;
