@@ -14,16 +14,18 @@
   </view>
   <!-- 下拉框 -->
   <view class="home-sel">
-    <view class="home-span">
-      <view>全城</view>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
+      <view class="home-span">
+        <view>{{multiArray[2][multiIndex[2]].RegionName}}</view>
+        <image src="/static/images/sel.png" />
+      </view>
+    </picker>
+    <view class="home-span" bindtap="showPopup">
+      <view >{{industryName}}</view>
       <image src="/static/images/sel.png" />
     </view>
-    <view class="home-span">
-      <view>行业</view>
-      <image src="/static/images/sel.png" />
-    </view>
-    <view class="home-span">
-      <view>券类型</view>
+    <view class="home-span" bindtap="showtPopup">
+      <view >{{typeName}}</view>
       <image src="/static/images/sel.png" />
     </view>
   </view>
@@ -33,3 +35,12 @@
     </block>
   </view>
 </view>
+<!-- 行业选择 -->
+<van-popup show="{{show2}}" bind:close="onClose" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
+  <van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-popup>
+
+<!-- 券类型 -->
+<van-popup show="{{tshow}}" bind:close="ontClose" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
+  <van-picker show-toolbar columns="{{coupontype}}" bind:cancel="ontCancel" bind:confirm="ontConfirm" />
+</van-popup>

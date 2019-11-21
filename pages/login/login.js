@@ -65,8 +65,7 @@ Page({
               that.getLocation();
             }
           })
-        }
-        else {
+        } else {
           that.getLocation();
         }
       }
@@ -84,9 +83,14 @@ Page({
         url: '../home/home',
       })
     }
+    var industry = wx.getStorageSync('Industry');
+    var region = wx.getStorageSync('Region');
+    if (!region || !industry) {
+      utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid)
+    }
   },
 
-  getLocation: function () {
+  getLocation: function() {
     //显示 加载中的提示
     wx.showLoading({
       title: '正在获取你的地理位置...',
@@ -99,7 +103,7 @@ Page({
       success(res) {
         console.log(JSON.stringify(res));
         app.globalData.latitudeX = res.latitude
-        app.globalData.longitudeY = res.longitude       
+        app.globalData.longitudeY = res.longitude
       },
       complete(res) {
         //隐藏 加载中的提示
@@ -107,7 +111,6 @@ Page({
       }
     })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

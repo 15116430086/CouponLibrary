@@ -15,7 +15,7 @@
         <input class="v-input1" bindinput="codeinput" type="number" maxlength="6" placeholder-class="ip" placeholder="输入验证码"/>
         <view class="v-btn">发送验证码</view>        
     </view>
-    <button class="v-true" bindtap="isConfirmLogin">确认登录</button>
+    <button class="v-true" open-type="getUserInfo" bindgetuserinfo="isConfirmLogin">确认登录</button>
      <button class="v-wxtel" style="color:#016FB4;" open-type="getPhoneNumber" bindgetphonenumber="onPhoneLoginTap">授权微信手机号登录</button>
     <view class="v-mes"><text style="color:#E85819">*</text>点击确认既为同意<text style="color:#016FB4">“用户协议”</text></view>
 </view>

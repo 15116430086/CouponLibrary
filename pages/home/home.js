@@ -18,17 +18,17 @@ Page({
     ]
   },
   onWxScanCode: function () {
-    wx.navigateTo({
-      url: '../scanCheck/scanCheck?CouponCode=CIF1911121931000002'
-    }); 
-    /*wx.scanCode({
+    // wx.navigateTo({
+    //   url: '../scanCheck/scanCheck?CouponCode=CIF1911121931000002'
+    // }); 
+    wx.scanCode({
       success(res) {
         console.log(res)
         wx.navigateTo({
           url: '../scanCheck/scanCheck?CouponCode='+res.result
         });                        
       }
-    })*/
+    })
   },
   GetData: function () {
     let that = this;
@@ -50,7 +50,7 @@ Page({
 
 Jumptap:function(){
    wx.navigateTo({
-     url: '../getTicketList/getTicketList',
+     url: '../getTicketList/getTicketList?quick=0',
    })
 },
 

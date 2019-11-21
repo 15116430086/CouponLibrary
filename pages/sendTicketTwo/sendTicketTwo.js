@@ -131,7 +131,7 @@ Page({
       ImageOne: "",
       ReceiveRule: 0, //领取规则
       WriteOffType: 0, //核销方式
-      SalePrice: "", //领购售价
+      SalePrice: 0, //领购售价
     },
     imageOne: "",
     imageTwo: "",
@@ -159,7 +159,7 @@ Page({
       date: pic_array[e.detail.value].name //每次选择了下拉列表的内容同时修改下标然后修改显示的内容，显示的内容和选择的内容一致
     });
     pCoupon_Info.ExpiredType = 1;
-    pCoupon_Info.ExpirationDate = pic_array[e.detail.value].name;
+    pCoupon_Info.ExpirationDate = pic_array[e.detail.value].id.toString();
   },
 
 

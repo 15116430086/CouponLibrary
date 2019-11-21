@@ -25,7 +25,7 @@
     <view class="addImg">
       <view class="ticket-flex">
         <view class="ticket-name">商品主图</view>
-        <view class="ticket-name">1/3</view>
+        <view class="ticket-name">{{mainimgNUM}}/3</view>
       </view>
       <view class="addImg-box">
         <block wx:for="{{mainImage}}" wx:for-index="index" wx:key="*this">
@@ -57,16 +57,16 @@
           <view class="input-box">
             <view class="input-block" style="border:none;margin-top:10rpx;">
               <view>价格</view>
-              <input type="digit" data-index="{{index}}" bindinput="SalePriceInput" value="{{item.SalePrice}}" placeholder="(请输入)" placeholder-class="ip" />
+              <input type="digit" data-index="{{index}}" bindblur="SalePriceInput" value="{{item.SalePrice}}" placeholder="(请输入)" placeholder-class="ip" />
             </view>
             <view class="input-block" style=" margin-top:10rpx;">
               <view>库存</view>
-              <input type="digit" data-index="{{index}}" bindinput="StockNumInput" value="{{item.StockNum}}" placeholder="(请输入)" placeholder-class="ip" />
+              <input type="digit" data-index="{{index}}" bindblur="StockNumInput" value="{{item.StockNum}}" placeholder="(请输入)" placeholder-class="ip" />
             </view>
             <block wx:for="{{item.Attrivute}}" wx:for-index="cindex" wx:key="cindex">
               <view class="input-block" style="margin-top:10rpx;">
                 <view>{{item.AttributeName}}</view>
-                <input type="text" data-index="{{index}}" data-cindex="{{cindex}}" bindinput="AttributeInput" value="{{item.AttrivuteValue}}" placeholder="(请输入)" placeholder-class="ip" />
+                <input type="text" data-index="{{index}}" data-cindex="{{cindex}}" bindblur="AttributeInput" value="{{item.AttrivuteValue}}" placeholder="(请输入)" placeholder-class="ip" />
               </view>
             </block>
           </view>
@@ -74,7 +74,7 @@
       </view>
       <view class="ticket-block">
         <view class="ticket-name">运费(选填)</view>
-        <input type="text" bindinput="PostageInput" name="Postage" value="{{postage}}" placeholder="快递费" />
+        <input type="text" bindblur="PostageInput" name="Postage" value="{{postage}}" placeholder="快递费" />
       </view>
       <!-- 添加券面图片 -->
       <view class="addImg">
