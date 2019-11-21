@@ -14,7 +14,7 @@
   <block wx:for="{{Settlementdetailslist}}" wx:for-index="index" wx:key="WithdrawalID">
       <view class="v-block">
           <view class="v-left">
-              <view class="v-title">¥{{item.WithdrawalMoney}}【{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss")}}】</view>
+              <view class="v-title">¥{{item.WithdrawalMoney}}【{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}】</view>
               <view class="v-span">佣金退还¥{{item.oCoupon_CapitalItemInfo.sumDrawbackMoney}} l 佣金收入¥{{item.oCoupon_CapitalItemInfo.sumCommissionMoney}} l 代收资金¥{{item.oCoupon_CapitalItemInfo.sumCollectionMoney}}</view>
           </view>
           <view class="v-right" wx:if="{{item.State==0}}" style="color:#F08002;border:1px solid #F08002">结算中</view>
