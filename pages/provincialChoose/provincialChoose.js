@@ -10,19 +10,24 @@ Page({
     content3:[]
   },
   onLoad: function (options) {
-    
-    var datas={
-      pStartLevel:2,
-      pQueryLevel:3
-    };
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponRegionView/GetCouponRegionlevel", "POST", datas, app.globalData.appkeyid, this.GetCouponRegionlevel);
+   this. GetRegionIndustry();
+  },
+  GetRegionIndustry: function () {
+    let that = this;
 
+    var  regionData = wx.getStorageSync('Region');
+    if (regionData ) {
+      this.setData({
+        content: regionData
+      });
+      console.log(regionData);
+      return;
+    }
+    utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
-  GetCouponRegionlevel:function(res){
-    var json=res.data.Data;
-    var chat=this;
-    chat.setData({ content: json.data});
-  },
+
+
+
   // 省
   showHide(e) {
     let that = this;
@@ -54,8 +59,9 @@ Page({
     for (var i in contentFor){
       if (RegionID== contentFor[i].RegionID) {
         contentFor[i].shows = !contentFor[i].shows;
-          break;
-      　}
+      　}else{
+        contentFor[i].shows=false;
+      }
     }
     this.setData({ content: contentFor, index: event.currentTarget.dataset.index});
   },
@@ -118,8 +124,16 @@ Page({
 
   showMaskChilds:function(event){//点击市
     var inx=this.data.index;
-    var contentFor = this.data.content[inx];
-
+    var RegionID = event.currentTarget.dataset.id;
+    var mindex =event.currentTarget.dataset.mindex
+    var contentFor = this.data.content;//得到整个对象
+    for (var i in contentFor[i].LevelCoupon_Region){//循环省下面的市
+      if (contentFor[i].LevelCoupon_Region.RegionID == RegionID){
+        contentFor[i].LevelCoupon_Region.shows = !contentFor[i].LevelCoupon_Region.shows
+      }else{
+        contentFor[i].LevelCoupon_Region.shows =false;
+      }
+    }
   },
 
 

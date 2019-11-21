@@ -8,7 +8,7 @@
         </view>
         <view class="v-bot" wx:if="{{item.shows}}">
             <block wx:for="{{item.LevelCoupon_Region}}" wx:for-index="sindex" wx:key="idx" >
-                <view class="v-span" data-id="{{item.RegionID}}"   data-mindex="{{mindex}}"  data-sindex="{{sindex}}"  catchtap="showMaskChild">
+                <view class="v-span" data-id="{{item.RegionID}}"   data-mindex="{{mindex}}"  data-sindex="{{sindex}}"  catchtap="showMaskChilds">
                     <view class="v-name" style="font-weight:600">{{item.RegionName}}</view>
                     <image src="{{item.isSel?'/static/images/f2.png':'/static/images/f1.png'}}" bindtap="clickTrue"   data-mindex="{{mindex}}" data-sindex="{{sindex}}"/>
                 </view>
