@@ -1,5 +1,6 @@
 {
     "pages": [
+        "pages/moreShop/moreShop",
         "pages/login/login",
         "pages/home/home",
         "pages/commissionMes/commissionMes",
@@ -71,7 +72,6 @@
         "pages/paySuccess/paySuccess",
         "pages/orderPay/orderPay",
         "pages/myTicket/myTicket",
-        "pages/moreShop/moreShop",
         "pages/logs/logs",
         "template/swiper/swiper",
         "template/ScrollView/ScrollView",

@@ -16,6 +16,9 @@
     color: transparent;
 }
 
+button::after{
+  border: none !important;
+}
 
 .app-bot{
   width: 100%;

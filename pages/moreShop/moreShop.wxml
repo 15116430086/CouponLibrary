@@ -1,7 +1,7 @@
 <import src="/template/ShopMes/ShopMes" />
 
-<div class="home-box">
+<view class="home-box">
    <block wx:for="{{shopArrays}}">
       <template is="ShopMes" data="{{...item}}"></template>
     </block>
-  </div>
+  </view>
