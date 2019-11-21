@@ -19,6 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   
         wx.showLoading({
           title: "数据加载中...",
           mask: true
@@ -100,6 +101,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    console.log("我在这")
     if (this.data.Paging){//说明可以分页
       wx.showLoading({
         title: "数据加载中...",

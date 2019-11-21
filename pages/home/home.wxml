@@ -4,7 +4,7 @@
   <view class="home-top">
     <view class="homeTop-name">{{GroupName}}</view>
     <view class="homeTop-left">
-      <view class="search-box" bindtap="Jumptap" >
+      <view class="search-box" bindtap="Jumptap">
         <image src="/static/images/serch.png" background-size="cover"></image>
         <view>搜索领券</view>
       </view>
@@ -45,8 +45,10 @@
     </view>
     <!-- 通知栏上下轮播 -->
     <swiper class="dyn-botmes" interval="3000" autoplay="true" vertical='true' circular='true'>
-      <block wx:for="{{CouponCount.ReceiveCouponList}}" wx:key="{{index}}" >
-      <swiper-item><view bindtap="JumpwatchMesOne" data-id="{{item.ReleaseID}}" >{{item.GroupName}}领取了{{item.ReceiveNUM}}张【{{item.CouponName}}】</view></swiper-item>
+      <block wx:for="{{CouponCount.ReceiveCouponList}}" wx:key="{{index}}">
+        <swiper-item>
+          <view bindtap="JumpwatchMesOne" data-id="{{item.ReleaseID}}" class="swp-view">{{item.GroupName}}领取了{{item.ReceiveNUM}}张【{{item.CouponName}}】</view>
+        </swiper-item>
       </block>
     </swiper>
   </view>
@@ -64,32 +66,32 @@
     <navigator url="../scanSend/scanSend" hover-class="none">
       <image src="/static/images/home/3.png"></image>
       <view>扫码送券</view>
-       
+
     </navigator>
     <navigator url="../sendTicket/main" bindtap="onWxScanCode" hover-class="none">
       <image src="/static/images/home/4.png"></image>
       <view>扫码核券</view>
-      
+
     </navigator>
     <navigator url="../management/management" hover-class="none">
       <image src="/static/images/home/5.png"></image>
       <view>会员管理</view>
-       
+
     </navigator>
     <navigator url="../doorContor/doorContor" hover-class="none">
       <image src="/static/images/home/6.png"></image>
       <view>门店管理</view>
-      
+
     </navigator>
     <navigator url="../orderManagement/orderManagement" hover-class="none">
       <image src="/static/images/home/7.png"></image>
       <view>收单记录</view>
-      
+
     </navigator>
     <navigator url="../myMoney/myMoney" hover-class="none">
       <image src="/static/images/home/8.png"></image>
       <view>我的资金</view>
-  
+
     </navigator>
     <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
       <image src="/static/images/home/9.png"></image>
@@ -99,17 +101,17 @@
     <navigator url="../shopCli/shopCli" hover-class="none">
       <image src="/static/images/home/10.png"></image>
       <view>商家货架</view>
-       
+
     </navigator>
     <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
       <image src="/static/images/home/11.png"></image>
       <view>配置管理</view>
-      
+
     </navigator>
     <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
       <image src="/static/images/home/12.png"></image>
       <view>联名促销</view>
-       
+
     </navigator>
 
   </view>

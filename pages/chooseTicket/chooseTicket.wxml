@@ -50,7 +50,7 @@
   <view class="near-shop">
     <view class="ns-title">
       <view>推广商户</view>
-      <navigator class="ns-title-div" url="../moreShop/main?uid=1" hover-class="none">
+      <navigator class="ns-title-div" url="../moreShop/moreShop" hover-class="none">
         查看更多
         <image src="/static/images/right-arr.png"></image>
       </navigator>
