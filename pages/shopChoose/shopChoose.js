@@ -2,6 +2,7 @@
 var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1;
+var regionData=[];
 Page({
 
   /**
@@ -22,8 +23,7 @@ Page({
     regionId: "",
     showMask: false,
     multiArray: [],
-    multiIndex: [0, 0, 0],
-    regionData: [],
+    multiIndex: [17, 0, 2],  
   },
 
   /**
@@ -31,14 +31,30 @@ Page({
      */
   onLoad: function (options) {
     let that = this;
-    that.GetRegionData();
-    that.GetCouponIndustry();
+    that.GetRegionIndustry(); 
     page = 1;
     that.GetData();
     var checkdeList = wx.getStorageSync("resultkey");
     this.setData({
       number: checkdeList.length
     });
+  },
+
+  GetRegionIndustry: function () {
+    let that = this;
+
+    regionData = wx.getStorageSync('Region');
+    var industrylist = wx.getStorageSync('Industry');
+    var multiArray = wx.getStorageSync('multiArray');
+    if (regionData && industrylist) {
+      this.setData({
+        columns: industrylist,
+        multiArray: multiArray
+      });
+
+      return;
+    }
+    utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
 
   deletetap: function(e) {
@@ -127,32 +143,6 @@ Page({
         icon: 'none',
         duration: 2000
       })
-    }
-  },
-
-  GetCouponIndustry: function() {
-    let that = this;
-    var data = {};
-    data.State = 0
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", data, app.globalData.appkeyid, that.CouponIndustryBack)
-  },
-
-  CouponIndustryBack: function(json) {
-    console.log(json);
-    var json = json.data.Data;
-    if (json) {
-      console.log(json.msg);
-      if (json.flag) {
-        var columns = [{
-          text: "全部行业",
-          IndustryName: "全部行业",
-          IndustryCode: ""
-        }];
-        columns = columns.concat(json.data)
-        this.setData({
-          columns: columns
-        });
-      }
     }
   },
 
@@ -279,32 +269,6 @@ Page({
     wx.navigateBackMiniProgram();
     console.log(that.data.huanlist);
     wx.navigateBack();
-  },
-
-  GetRegionData: function() {
-    let that = this;
-    var data = {};
-    data.pStartLevel = 2
-    data.pQueryLevel = 3
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponRegionView/GetCouponRegionlevel", "POST", data, app.globalData.appkeyid, that.RegionDataBack)
-  },
-
-  RegionDataBack: function(json) {
-    console.log(json);
-    var json = json.data.Data;
-    if (json) {
-      console.log(json.msg);
-      var mArray = [];
-      mArray.push(json.data)
-      mArray.push(json.data[0].LevelCoupon_Region)
-      mArray.push(json.data[0].LevelCoupon_Region[0].LevelCoupon_Region)
-      if (json.flag) {
-        this.setData({
-          regionData: json.data,
-          multiArray: mArray
-        });
-      }
-    }
   },
 
   bindMultiPickerChange: function(e) {

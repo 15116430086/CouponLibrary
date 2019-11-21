@@ -64,7 +64,7 @@
   align-items: flex-end;
   border-bottom: 1rpx solid #ededed;
   justify-content: flex-start;
-  margin-top: 20rpx;
+  /* margin-top: 20rpx; */
 }
 
 .v-block image {
@@ -124,11 +124,13 @@
 .v-wxtel {
   font-size: 30rpx;
   color: #016fb4;
-  margin-bottom: 40rpx;
+  /* margin-bottom: 40rpx; */
   text-decoration: underline;
   background: none;
   border: none;
-  height: 60rpx;
+  /* margin-top: 10rpx; */
+  height: 110rpx;
+  line-height: 110rpx;
 }
 
 .v-wxtel::after {

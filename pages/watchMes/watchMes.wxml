@@ -31,7 +31,7 @@
         <view>已发布：{{item.ReleaseNUM}}张</view>
         <view>已领：{{item.ReceiveNUM}}张</view>
       </view>
-      <view class="v-time">{{common.sysFormatDate(item.ReleaseDate,"yyyy-MM-dd hh:mm")}}</view>
+      <view class="v-time">{{common.sysFormatDate(item.ReleaseDate,"yyyy-MM-dd hh:mm",true)}}</view>
     </view>
     <view class="v-right">
       <view wx:if="{{item.State==2}}" class="v-span" style="color:#429859;border:1px solid #429859">已通过</view>

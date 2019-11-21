@@ -8,7 +8,7 @@
  
       <view class="stm-bot">
         <view>已领：{{item.ReceiveNUM}}张</view>
-        <view>{{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd hh:mm")}}</view>
+        <view>{{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd hh:mm",true)}}</view>
       </view>
     </view>
   </view>
