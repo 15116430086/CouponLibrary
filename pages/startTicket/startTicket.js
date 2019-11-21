@@ -51,7 +51,7 @@ Page({
       return value;
     },
     show: false,
-
+    ReleaseID:""
   },
 
   /**
@@ -236,8 +236,8 @@ Page({
       pArrIndustryCode: utils.syJsonSafe(this.data.IndustryCodes),
       pArrRegionID: utils.syJsonSafe(this.data.regionID),
       pArrGroupID: utils.syJsonSafe(this.data.GroupIDList),
-      StaffID: app.globalData.AppStaffInfo.StaffID
-
+      StaffID: app.globalData.AppStaffInfo.StaffID,
+      ReleaseID: this.data.ReleaseID
     }
     wx.showLoading({
       title: "数据提交中...",
@@ -247,9 +247,11 @@ Page({
 
   },
   AgainCouponRelease: function(res) {
+    var chat=this;
     wx.hideLoading();
     var json = res.data.Data;
     if (json.flag) {
+      chat.setData({ ReleaseID: json.ReleaseID});
       if (json.ispay) { //说明要支付拥金
         var oJsApiParam = JSON.parse(json.paydata);
         wx.requestPayment({

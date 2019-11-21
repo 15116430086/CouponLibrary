@@ -79,9 +79,67 @@ Page({
    })
   },
   jumpOk:function(event){//继续发券
-    var CouponID = event.currentTarget.dataset.couponid;
+    
     wx.navigateTo({
-      url: '../startTicket/startTicket?pCoupon_Info=' + this.data.CouponInfo + "&CouponID=" + CouponID,
+      url: '../startTicket/startTicket?pCoupon_Info=' + this.data.CouponInfo + "&CouponID=" + this.data.CouponInfo.CouponID,
     })
+  },
+  pay:function(event){
+    var monery = event.currentTarget.dataset.monery;
+    var ReleaseID = event.currentTarget.dataset.releaseid;
+    var chat=this;
+    wx.showModal({
+      title: "提示",
+      content: "确认支付佣金" + monery+"元",
+      showCancel:true,
+      cancelText:"取消",
+      confirmText:"确认支付",
+      success:function(res){
+        if (res.confirm) {
+          var data={
+            monery: monery,
+            ReleaseID: ReleaseID,
+            StaffID: app.globalData.AppStaffInfo.StaffID,
+            GroupID: app.globalData.AppGroupInfo.GroupID,
+            pCouponID: chat.data.pCouponID
+          }
+          utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/Pay", "POST", datas, app.globalData.appkeyid, chat.Pay);
+        }
+      }
+    });
+  },Pay:function(res){
+    var chat=this;
+    var json=res.data.Data;
+    if(json.flag){
+      if (json.ispay) { //说明要支付拥金
+        var oJsApiParam = JSON.parse(json.paydata);
+        wx.requestPayment({
+          'timeStamp': oJsApiParam.timeStamp,
+          'nonceStr': oJsApiParam.nonceStr,
+          'package': oJsApiParam.package,
+          'signType': 'MD5',
+          'paySign': oJsApiParam.paySign,
+          success(res) {
+            console.log(res);
+            if (res.errMsg == "requestPayment:ok") {
+              var datas = {
+                pCouponID: chat.data.CouponID,
+                pPageIndex: 1,
+                pPageSize: 5
+              }
+              utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponReleaseInfo", "POST", datas, app.globalData.appkeyid, chat.GetCouponReleaseInfo);
+            }
+          },
+          fail(res) {
+            if (res.errMsg == "requestPayment:fail cancel") {
+              wx.showToast({
+                title: "您取消了支付",
+                icon: "none"
+              });
+            }
+          }
+        })
+    }
+  }
   }
 })
