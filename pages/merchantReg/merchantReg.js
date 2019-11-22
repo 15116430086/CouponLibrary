@@ -282,18 +282,33 @@ Page({
     if (json) {
       console.log(json.msg);
       if (json.flag) {
-        wx.setStorageSync('miniappkeyid', json.data)
-        var appkeyid = wx.getStorageSync('miniappkeyid');
-        if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
-          app.globalData.appkeyid = appkeyid.FSessionKey;
-          var loginInfo = JSON.parse(appkeyid.FContent);
-          app.globalData.AppWxUserInfo = loginInfo.AppWxUserInfo;
-          app.globalData.AppStaffInfo = loginInfo.AppStaffInfo;
-          app.globalData.AppGroupInfo = loginInfo.AppGroupInfo;
-          wx.reLaunch({
-            url: '../home/home',
-          })
-        }
+
+        wx.showToast({
+          title: json.msg,
+          icon: "success",
+          duration: 2000
+        })
+
+        setTimeout(
+          function () {
+            wx.reLaunch({
+              url: '../login/login',
+            })
+          }, 2000
+        )
+
+        // wx.setStorageSync('miniappkeyid', json.data)
+        // var appkeyid = wx.getStorageSync('miniappkeyid');
+        // if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
+        //   app.globalData.appkeyid = appkeyid.FSessionKey;
+        //   var loginInfo = JSON.parse(appkeyid.FContent);
+        //   app.globalData.AppWxUserInfo = loginInfo.AppWxUserInfo;
+        //   app.globalData.AppStaffInfo = loginInfo.AppStaffInfo;
+        //   app.globalData.AppGroupInfo = loginInfo.AppGroupInfo;
+        //   wx.reLaunch({
+        //     url: '../home/home',
+        //   })
+        // }
       } else {
         wx.showToast({
           title: json.msg,
