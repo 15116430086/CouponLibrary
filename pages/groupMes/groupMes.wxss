@@ -29,19 +29,21 @@ page {
 }
 
 .home-groupName {
-    width: calc(100% - 40px);
-    height: 22px;
+    width: calc(100% - 80rpx);
+    height: 44rpx;
+    margin-top: 20rpx;
     color: #000000;
-    font-size: 16px;
-    line-height: 22px;
-    margin-bottom: 12px;
+    font-size: 28rpx;
+    line-height: 44rpx;
+    margin-bottom: 24rpx;
 }
 
 .home-groupMes {
-    width: calc(100% - 40px);
-    height: 247px;
+  margin-top: 20rpx;
+    width: calc(100% - 80rpx);
+    height: auto;
     color: #666666;
-    font-size: 14px;
+    font-size: 28rpx;
     position: relative;
 }
 
@@ -52,45 +54,44 @@ page {
 
 .home-groupMask {
     width: 100%;
-    height: 44px;
-    line-height: 44px;
+    height: 88rpx;
+    line-height: 88rpx;
     text-align: center;
     color: #666666;
-    font-size: 14px;
-    position: absolute;
+    font-size: 28rpx;
+    /* position: absolute;
     bottom: 0px;
-    left: 0px;
+    left: 0px; */
     border-top: 1px solid #ededed;
 }
 
 .home-ticket,
 .home-store {
-    margin-top: 10px;
+    margin-top: 20rpx;
     width: 100%;
     background-color: #ffffff;
 }
 
 .home-ticketName {
-    text-indent: 20px;
-    height: 49px;
+    text-indent: 40rpx;
+    height: 98rpx;
     color: #000000;
-    font-size: 16px;
-    line-height: 49px;
+    font-size: 28rpx;
+    line-height: 98rpx;
     border-bottom: 1px solid #ededed;
     background-color: #ffffff;
 }
 
 .home-tbox {
-    width: calc(100% - 40px);
-    margin: 0px auto;
+    width: 100%;
 }
 
 .home-storeName {
-    text-indent: 20px;
-    height: 40px;
+    text-indent: 40rpx;
+    height: 80rpx;
     color: #000000;
-    font-size: 14px;
-    line-height: 50px;
-    margin-top: 10px;
+    font-size: 28rpx;
+    line-height: 100rpx;
+    margin-top: 20rpx;
     background-color: #ffffff;
 }

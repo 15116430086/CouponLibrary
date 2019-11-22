@@ -121,7 +121,7 @@ Page({
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pPageIndex = page;
-    data.pPageSize = 1;
+    data.pPageSize = 5;
     data.pLatitudeX = app.globalData.latitudeX;
     data.pLongitudeY = app.globalData.longitudeY;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/QueryCouponInfo", "POST", data, app.globalData.appkeyid, this.GetDataBack)
@@ -154,9 +154,9 @@ Page({
         });
 
         that.setData({
-          images: banner,
-          imgUrls: popular,
-          shopArrays: extension,
+          images: json.data,
+          imgUrls: json.data,
+          shopArrays: json.data,
           hotTicketBox: json.data,
           lastpage: json.pageCount //你的总页数
         });

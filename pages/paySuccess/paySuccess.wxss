@@ -17,26 +17,26 @@ page {
 
 .content image {
     display: block;
-    width: 50px;
-    height: 50px;
+    width: 100rpx;
+    height: 100rpx;
 }
 
 .content-p {
     color: #000000;
-    font-size: 20px;
-    margin-top: 16px;
+    font-size: 40rpx;
+    margin-top: 32rpx;
     font-weight: 600;
-    margin-bottom: 66px;
+    margin-bottom: 132rpx;
 }
 
 .content-div {
-    width: 335px;
-    height: 49px;
-    border-radius: 10px;
-    font-size: 16px;
-    line-height: 49px;
+    width: 670rpx;
+    height: 98rpx;
+    border-radius: 20rpx;
+    font-size: 32rpx;
+    line-height: 98rpx;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40rpx;
 }
 
 .one {

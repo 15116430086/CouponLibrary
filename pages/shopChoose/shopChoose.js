@@ -69,11 +69,22 @@ Page({
     }
     that.data.huanlist.splice(index, 1);
     console.log(that.data.huanlist);
-    that.setData({
-      result: that.data.result,
-      number: that.data.huanlist.length,
-      huanlist: that.data.huanlist
-    })
+    if (that.data.huanlist.length==0){
+      that.setData({
+        result: that.data.result,
+        number: that.data.huanlist.length,
+        huanlist: that.data.huanlist,
+        showMask:false
+      })
+    }else{
+      that.setData({
+        result: that.data.result,
+        number: that.data.huanlist.length,
+        huanlist: that.data.huanlist
+      })
+    }
+    
+    
   },
 
   emptytap: function() {
@@ -81,6 +92,7 @@ Page({
     that.setData({
       result: [],
       huanlist: [],
+      showMask: false
     })
   },
 
@@ -200,6 +212,7 @@ Page({
   },
 
   shoptap: function(e) {
+    
     let that = this;
     that.data.huanlist = [];
     for (let i in that.data.result) {
@@ -209,9 +222,15 @@ Page({
     }
     wx.setStorageSync("Groupkey", that.data.huanlist);
     wx.setStorageSync("resultkey", that.data.result);
+    console.log(that.data.huanlist);
+    if(that.data.huanlist.length>0){
+
     that.setData({
       showMask: (!that.data.showMask)
     })
+    }else{
+      return
+    }
   },
   downMask(e) {
     let that = this;

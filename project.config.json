@@ -81,6 +81,12 @@
 					"pathName": "pages/staffLoginReg/staffLoginReg",
 					"query": "ShopID=100001",
 					"scene": 1047
+				},
+				{
+					"id": -1,
+					"name": "pages/sendTicketConfig/sendTicketConfig",
+					"pathName": "pages/sendTicketConfig/sendTicketConfig",
+					"scene": null
 				}
 			]
 		}

@@ -15,46 +15,47 @@
 }
 
 .ticket-box {
-    width: calc(100% - 100px);
-    height: 84px;
+    width: calc(100% - 200rpx);
+    height: 168rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 .ticket-img {
-    width: 84px;
-    height: 84px;
-    margin-left: 20px;
+    width: 168rpx;
+    height: 168rpx;
+    margin-left: 40rpx;
 }
 
 .ticket-mes {
-    height: 84px;
+    height: 168rpx;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 15px;
+    margin-left: 30rpx;
     flex-shrink: 1;
 }
 
 .ticket-mesmes {
-    color: #333333;
-    font-size: 14px;
+    color: #999;
+    font-size: 28rpx;
+    font-weight: 500;
 }
 
 .ticket-sec {
-    font-size: 12px;
+    font-size: 24rpx;
     font-weight: 500;
-    line-height: 17px;
+    line-height: 34rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 .ticket-ul-p {
-    font-size: 16px;
+    font-size: 32rpx;
     font-weight: 600;
-    line-height: 22px;
+    line-height: 44rpx;
     color: rgba(51, 51, 51, 1);
 }
 
@@ -64,31 +65,31 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    font-size: 12px;
+    font-size: 24rpx;
     font-weight: 600;
-    line-height: 17px;
+    line-height: 34rpx;
     color: rgba(153, 153, 153, 1);
 }
 
 .one {
     color: #e85819;
-    margin-right: 3px;
+    margin-right: 6rpx;
 }
 
 .two {
     color: #999999;
-    margin-left: 3px;
+    margin-left: 6rpx;
 }
 
 .hotbtn {
     width: 180rpx;
     height: 60rpx;
     background: rgba(255, 240, 222, 1);
-    font-size: 12px;
+    font-size: 24rpx;
     font-weight: 600;
     line-height: 60rpx;
     color: rgba(232, 88, 25, 1);
-    border-radius: 15px;
+    border-radius: 30rpx;
     text-align: center;
     margin-right: 40rpx;
     margin-bottom: 15rpx;

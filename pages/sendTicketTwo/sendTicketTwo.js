@@ -392,7 +392,10 @@ Page({
   },
 
   onCancel(e) {
-    console.log(e)
+    console.log(e);
+    this.setData({
+      show: false
+    });
   },
   onInput(event) {
     this.setData({
@@ -414,7 +417,9 @@ Page({
   },
 
   onChance() {
-
+    this.setData({
+      show: false
+    });
   },
 
 

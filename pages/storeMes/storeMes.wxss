@@ -11,7 +11,7 @@ page {
 
 .home-mes {
     width: 100%;
-    height: 78px;
+    height: 156rpx;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,11 +32,11 @@ page {
 
 .homeg-box {
     position: absolute;
-    right: 10px;
-    width: calc(100% - 20px);
-    top: -50px;
-    height: 138px;
-    border-radius: 5px;
+    right: 20rpx;
+    width: calc(100% - 40rpx);
+    top: -100rpx;
+    height: 276rpx;
+    border-radius: 10rpx;
     background: rgba(255, 255, 255, 1);
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.16);
     display: flex;
@@ -45,59 +45,59 @@ page {
 }
 
 .hb-left {
-    width: calc(100% - 93px);
+    width: calc(100% - 186rpx);
     height: 100%;
-    margin-left: 20px;
+    margin-left: 40rpx;
     display: flex;
     flex-direction: column;
     /* justify-content: space-around; */
 }
 
 .hbleft-title {
-    margin-top: 17px;
+    margin-top: 34rpx;
     color: #333333;
-    font-size: 16px;
+    font-size: 32rpx;
 }
 
 .hbmes-box {
-    margin-top: 12px;
+    margin-top: 24rpx;
 }
 
 .hbleft-mes {
-    margin-bottom: 6px;
+    margin-bottom: 12rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
     color: #666666;
-    font-size: 12px;
+    font-size: 24rpx;
 }
 
 .hbleft-mes image {
-    width: 12px;
-    height: 12px;
+    width: 24rpx;
+    height: 24rpx;
     flex-shrink: 1;
     display: block;
 }
 
 .hbleft-mes view {
-    margin-left: 8px;
+    margin-left: 16rpx;
 }
 
 .hb-right {
-    width: 93px;
-    height: 55px;
+    width: 186rpx;
+    height: 110rpx;
     text-align: center;
-    line-height: 55px;
+    line-height: 110rpx;
     color: #016fb4;
-    font-size: 12px;
+    font-size: 24rpx;
     border-left: 1px solid rgba(237, 237, 237, 1);
 }
 
 .home-groupMes {
-    width: calc(100% - 40px);
-    height: 247px;
+    width: calc(100% - 80rpx);
+    height: 494rpx;
     color: #666666;
-    font-size: 14px;
+    font-size: 28rpx;
     position: relative;
 }
 
@@ -108,11 +108,11 @@ page {
 
 .home-groupMask {
     width: 100%;
-    height: 44px;
-    line-height: 44px;
+    height: 88rpx;
+    line-height: 88rpx;
     text-align: center;
     color: #666666;
-    font-size: 14px;
+    font-size: 28rpx;
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -121,32 +121,32 @@ page {
 
 .home-ticket,
 .home-store {
-    margin-top: 10px;
+    margin-top: 20rpx;
     width: 100%;
     background-color: #ffffff;
 }
 
 .home-ticketName {
     text-indent: 20px;
-    height: 49px;
+    height: 98rpx;
     color: #000000;
-    font-size: 16px;
-    line-height: 49px;
+    font-size: 32rpx;
+    line-height: 98rpx;
     border-bottom: 1px solid #ededed;
     background-color: #ffffff;
 }
 
 .home-tbox {
-    width: calc(100% - 40px);
+    width: calc(100% - 80rpx);
     margin: 0px auto;
 }
 
 .home-storeName {
-    text-indent: 20px;
-    height: 40px;
+    text-indent: 40rpx;
+    height: 80rpx;
     color: #000000;
-    font-size: 14px;
-    line-height: 50px;
-    margin-top: 10px;
+    font-size: 28rpx;
+    line-height: 100rpx;
+    margin-top: 20rpx;
     background-color: #ffffff;
 }

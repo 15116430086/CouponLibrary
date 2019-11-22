@@ -30,19 +30,19 @@ page {
 
 .sl-one {
     color: #000000;
-    font-size: 16px;
+    font-size: 32rpx;
     font-weight: 600;
     margin-bottom: 10rpx;
 }
 
 .sl-one text
 {
-font-size: 12px; font-weight: 500; line-height: 17px; color: rgba(153, 153, 153, 1);
+font-size: 24rpx; font-weight: 500; line-height: 34rpx; color: rgba(153, 153, 153, 1);
 }
 
 .sl-two {
     color: #E85819;
-    font-size: 14px;
+    font-size: 28rpx;
 }
 
 .sc-btn {
@@ -155,7 +155,7 @@ font-size: 12px; font-weight: 500; line-height: 17px; color: rgba(153, 153, 153,
 }
 
 .ticket-sec span {
-    width: calc(100% - 10px);
+    width: calc(100% - 20rpx);
     overflow: hidden;
     text-overflow: ellipsis;
     /*禁止换行显示*/
@@ -163,10 +163,10 @@ font-size: 12px; font-weight: 500; line-height: 17px; color: rgba(153, 153, 153,
 }
 
 .ticket-mes-p {
-    margin-bottom: 5px;
-    font-size: 16px;
+    margin-bottom: 10rpx;
+    font-size: 32rpx;
     font-weight: 600;
-    line-height: 22px;
+    line-height: 44rpx;
     color: rgba(51, 51, 51, 1);
 }
 
@@ -176,7 +176,7 @@ font-size: 12px; font-weight: 500; line-height: 17px; color: rgba(153, 153, 153,
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    font-size: 12px;
+    font-size: 24rpx;
     font-weight: 500;
     line-height: 17px;
     color: rgba(153, 153, 153, 1);
@@ -185,17 +185,17 @@ font-size: 12px; font-weight: 500; line-height: 17px; color: rgba(153, 153, 153,
 .tm-li-right {
     width: auto;
     color: #016FB4;
-    font-size: 12px;
+    font-size: 24rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 .tm-li-right image {
-    width: 5px;
-    height: 9px;
+    width: 10rpx;
+    height: 18rpx;
     display: block;
-    margin-left: 5px;
+    margin-left: 10rpx;
 }
 
 .tmbox {

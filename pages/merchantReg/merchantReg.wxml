@@ -1,24 +1,26 @@
 <!-- 导航 -->
-<view class='top_nav'>
-  <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.typeId}}' catchtap='handleTap'>
-    {{item.name}}
-  </view>
-</view>
-<!-- 连锁商户 -->
-<view hidden='{{currentId!=1}}' class="mes-block">
-  <view class="mes-top">
-    <view class="top-mes">
-      *注:
-      <text>拥有两家及以上</text>实体连锁门店；如您是多品牌，请每个品牌申请独立账号。
+<view class="top-block">
+  <view class='top_nav'>
+    <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.typeId}}' catchtap='handleTap'>
+      {{item.name}}
     </view>
   </view>
-</view>
-<!-- 个体商户 -->
-<view hidden='{{currentId!=2}}' class="mes-block">
-  <view class="mes-top">
-    <view class="top-mes">
-      *注:
-      <text>单个实体</text>门店商户；门店管理中自动生成门店信息，后期不能再新增门店。
+  <!-- 连锁商户 -->
+  <view hidden='{{currentId!=1}}' class="mes-block">
+    <view class="mes-top">
+      <view class="top-mes">
+        *注:
+        <text>拥有两家及以上</text>实体连锁门店；如您是多品牌，请每个品牌申请独立账号。
+      </view>
+    </view>
+  </view>
+  <!-- 个体商户 -->
+  <view hidden='{{currentId!=2}}' class="mes-block">
+    <view class="mes-top">
+      <view class="top-mes">
+        *注:
+        <text>单个实体</text>门店商户；门店管理中自动生成门店信息，后期不能再新增门店。
+      </view>
     </view>
   </view>
 </view>
@@ -49,7 +51,7 @@
       <view class="ticket-block">
         <view class="ticket-name">选择地区</view>
         <view class="picker">
-          已选：{{multiArray[0][multiIndex[0]].RegionName}}{{multiArray[1][multiIndex[1]].RegionName}}{{multiArray[2][multiIndex[2]].RegionName}}
+         <view>已选：</view><view>{{multiArray[0][multiIndex[0]].RegionName}}{{multiArray[1][multiIndex[1]].RegionName}}{{multiArray[2][multiIndex[2]].RegionName}}</view>
         </view>
       </view>
     </picker>

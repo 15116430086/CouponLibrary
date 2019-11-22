@@ -26,7 +26,7 @@
 </view>
 
 <view class="v-box">
-  <van-checkbox-group value="{{ result }}" bind:change="onChange">
+  <van-checkbox-group value="{{ result }}" catch:change="onChange">
     <block wx:for="{{Grouplist}}" wx:for-index="index" wx:key="GroupID">
       <view class="v-block">
         <view class="v-left">
@@ -44,32 +44,30 @@
 
 
 
-<view class="mask" wx:if="{{showMask}}">
-  <view class="mask-b" bindtap="downMask">
-
-  </view>
-  <view class="mask-bot">
+<!-- <view class="mask" wx:if="{{showMask}}" catchtap="downMask">
+  
+  <view class="mask-bot"  wx:if="{{showMask}}" catchtouchmove="true">
     <view class="m-span">
       <view class="m-title">选择商户预览</view>
       <view class="m-right">
         <image src="/static/images/del.png" />
-        <view class="m-txt" bindtap="emptytap">清空选择</view>
+        <view class="m-txt" catchtap="emptytap">清空选择</view>
       </view>
     </view>
-    <view class="m-box">
+    <view class="m-box" >
       <block wx:for="{{huanlist}}" wx:for-index="index">
         <view class="m-block">
           <view class="mb-right">
             <image src="/static/images/swp.png" />
             <view class="mb-txt">{{item.GroupName}}</view>
           </view>
-          <image src="/static/images/cha2.png" data-index="{{index}}" bindtap="deletetap" class="m-cha" />
+          <image src="/static/images/cha2.png" data-index="{{index}}" catchtap="deletetap" class="m-cha" />
         </view>
       </block>
     </view>
   </view>
 
-</view>
+</view> -->
 
 
 <view class="v-bot-btn">
@@ -86,6 +84,30 @@
 
 
 <!-- 券类型 -->
-<van-popup show="{{show2}}" bind:close="onClose" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
+<van-popup show="{{show2}}" bind:close="onClose" round z-index="999" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
   <van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-popup>
+
+
+<van-popup show="{{showMask}}" bind:close="downMask"  position="bottom" round close-on-click-overlay overlay safe-area-inset-bottom="true" safe-area-inset-top="true">
+    <view class="mask-bot"  wx:if="{{showMask}}">
+    <view class="m-span">
+      <view class="m-title">选择商户预览</view>
+      <view class="m-right">
+        <image src="/static/images/del.png" />
+        <view class="m-txt" catchtap="emptytap">清空选择</view>
+      </view>
+    </view>
+    <view class="m-box" >
+      <block wx:for="{{huanlist}}" wx:for-index="index">
+        <view class="m-block">
+          <view class="mb-right">
+            <image src="/static/images/swp.png" />
+            <view class="mb-txt">{{item.GroupName}}</view>
+          </view>
+          <image src="/static/images/cha2.png" data-index="{{index}}" catchtap="deletetap" class="m-cha" />
+        </view>
+      </block>
+    </view>
+  </view>
 </van-popup>
