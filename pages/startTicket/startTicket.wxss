@@ -61,6 +61,11 @@ page {
     padding-bottom: 10rpx;
     border-bottom: 1px solid #EDEDED;
 }
+.ticket-block input{
+  color:#000;
+  font-size: 32rpx;
+  font-weight: 600;
+}
 
 .ticket-blocks {
     margin: 0px auto;

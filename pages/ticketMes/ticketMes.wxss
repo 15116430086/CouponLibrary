@@ -58,17 +58,17 @@ page {
 }
 
 .home-groupMes {
-    margin-top: 10px;
+    margin-top: 20rpx;
     width: 100%;
     height: auto;
     color: #666666;
-    font-size: 14px;
+    font-size: 28rpx;
     background-color: #ffffff;
 }
 
 .home-groupMes image {
-    width: 100%;
-    height: 373px;
+    width: 750rpx;
+    height: auto;
 }
 
 .home-box {
@@ -78,11 +78,11 @@ page {
 
 .home-groupMask {
     width: 100%;
-    height: 44px;
-    line-height: 44px;
+    height: 88rpx;
+    line-height: 88rpx;
     text-align: center;
     color: #e85819;
-    font-size: 14px;
+    font-size: 28rpx;
     border-top: 1px solid #ededed;
     display: flex;
     flex-direction: row;
@@ -92,40 +92,41 @@ page {
 }
 
 .home-groupMask image {
-    width: 9px;
-    height: 5px;
-    margin-left: 5px;
+    width: 18rpx;
+    height: 10rpx;
+    margin-left: 10rpx;
 }
 
 .home-ticket,
 .home-store {
-    margin-top: 10px;
+    margin-top: 20rpx;
     width: 100%;
     background-color: #ffffff;
 }
 
 .home-ticketName {
-    text-indent: 20px;
-    height: 49px;
+    text-indent: 40rpx;
+    height: 98rpx;
     color: #000000;
-    font-size: 16px;
-    line-height: 49px;
+    font-size: 32rpx;
+    line-height: 98rpx;
     border-bottom: 1px solid #ededed;
     background-color: #ffffff;
 }
 
 .home-tbox {
-    width: calc(100% - 40px);
+    width: calc(100% - 80rpx);
     margin: 0px auto;
 }
 
 .home-storeName {
-    text-indent: 20px;
-    height: 40px;
+    text-indent: 40rpx;
+    height: 80rpx;
     color: #000000;
-    font-size: 14px;
-    line-height: 50px;
-    margin-top: 10px;
+    font-size: 28rpx;
+    line-height: 100rpx;
+    margin-top: 20rpx;
+    font-weight: 600;
     background-color: #ffffff;
 }
 
@@ -134,7 +135,7 @@ page {
     bottom: 0px;
     left: 0px;
     width: 100%;
-    height: 60px;
+    height: 120rpx;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -147,38 +148,38 @@ page {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    height: 47px;
-    margin-left: 20px;
+    height: 94rpx;
+    margin-left: 40rpx;
 }
 
 .goodsbot-left-view {
-    font-size: 12px;
+    font-size: 24rpx;
     height: 100%;
 }
 
 .goods-ticket {
-    width: 55px;
-    height: 19px;
-    line-height: 19px;
-    border-radius: 9px;
-    font-size: 11px;
+    width: 110rpx;
+    height: 38rpx;
+    line-height: 38rpx;
+    border-radius: 18rpx;
+    font-size: 22rpx;
     color: #E24500;
     background-color: #FCEDE7;
     text-align: center;
     position: relative;
-    top: 5px;
-    left: -10px;
+    top: 10rpx;
+    left: -20rpx;
 }
 
 .goods-btn {
-    width: 88px;
-    height: 32px;
+    width: 176rpx;
+    height: 64rpx;
     background: radial-gradient(circle, rgba(255, 112, 49, 1) 0%, rgba(244, 75, 0, 1) 100%);
-    border-radius: 16px;
+    border-radius: 32rpx;
     color: #ffffff;
-    font-size: 14px;
+    font-size: 28rpx;
     /* font-weight: 600; */
     text-align: center;
-    line-height: 32px;
-    margin-right: 10px;
+    line-height: 64rpx;
+    margin-right: 20rpx;
 }

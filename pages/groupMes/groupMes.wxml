@@ -15,8 +15,8 @@
     <view class="home-groupMes">
       {{groupInfo.Introduction}}       
       <!-- 查看更多 有接口了再写 -->
-      <view class="home-groupMask">查看更多</view>
     </view>
+      <view class="home-groupMask">查看更多</view>
   </view>
   <!-- 领券介绍 -->
   <view class="home-ticket">

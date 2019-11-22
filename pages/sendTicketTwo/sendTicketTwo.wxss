@@ -95,6 +95,7 @@ page {
   border-bottom: 1px solid #ededed;
   font-weight: 600;
   font-size: 32rpx;
+  height: 58rpx;
 }
 
 .ticket-blocks {
@@ -189,7 +190,7 @@ page {
   color: #000;
   font-size: 32rpx;
   font-weight: 600;
-  margin-bottom: 20rpx;
+  /* margin-bottom: 20rpx; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -234,11 +235,11 @@ page {
 }
 
 .active-class{
-  font-size: 44rpx !important;
+  font-size: 32rpx !important;
   font-weight: 500;
   font-family:PingFang SC !important;
 }
 .custom-class{
-  font-size: 40rpx !important;
+  font-size: 30rpx !important;
   font-family:PingFang SC !important;
 }

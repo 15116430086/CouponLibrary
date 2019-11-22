@@ -23,7 +23,7 @@
           <image src="/static/images/home/fq.png"></image>
           <view>发券动态</view>
         </view>
-        <view class="dynblock-mes">
+        <view class="dynblock-mes" style="text-align:left">
           <view>发券数量: {{CouponCount.sumReleaseNUM}}</view>
           <view>领券商家: {{CouponCount.groupNUM}}</view>
           <view>商家领取: {{CouponCount.sumReceiveNUM}}</view>
@@ -36,7 +36,7 @@
 
           <view>推券动态</view>
         </view>
-        <view class="dynblock-mes">
+        <view class="dynblock-mes"  style="text-align:right">
           <view>会员领券: {{CouponCount.CouponNUM}}</view>
           <view>会员核销: {{CouponCount.WriteOffNUM}}</view>
           <view>推券佣金: {{CouponCount.sumIncomeMoney}}</view>
@@ -115,6 +115,10 @@
     </navigator>
 
   </view>
+
+
+
+  <!-- 辅助页 还没开发 -->
   <view class="home-bot">
     <view bindtap="perfecttap">券库讲堂</view>
     <view bindtap="perfecttap">在线客服</view>
