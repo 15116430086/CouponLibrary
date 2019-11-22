@@ -10,7 +10,7 @@
 
 .ticket-box {
     width: 100%;
-    height: 100px;
+    height: 230rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -18,43 +18,47 @@
 }
 
 .ticket-img {
-    width: 84px;
-    height: 84px;
-    margin-left: 20px;
+    width: 168rpx;
+    height: 168rpx;
+    margin-left: 40rpx;
+    border-radius: 10rpx;
 }
 
 .ticket-mes {
-    height: 84px;
+    height: 168rpx;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 15px;
+    margin-left: 30rpx;
     flex-shrink: 1;
 }
 
 .ticket-sec {
-    font-size: 12px;
+    font-size: 24rpx;
     font-weight: 500;
-    line-height: 17px;
+    line-height: 34rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
 .ticket-secimg {
-    margin-right: 8px;
+    margin-right: 16rpx;
     width: 18rpx;
     height: 24rpx;
 }
 
 .ticket-sec text {
-    width: 214px;
+    width: 428rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .ticket-mes-p {
-    font-size: 16px;
+    font-size: 32rpx;
     font-weight: 600;
-    line-height: 22px;
+    line-height: 44rpx;
     color: rgba(51, 51, 51, 1);
 }
 
@@ -64,47 +68,51 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    font-size: 12px;
+    font-size: 24rpx;
     font-weight: 500;
-    line-height: 17px;
+    line-height: 34rpx;
     color: rgba(153, 153, 153, 1);
 }
 
 .ticket-shop {
     width: 100%;
-    height: 64px;
+    height: 128rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
+    border-top: 1px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
 }
 
 .ticketShop-one {
     text-align: center;
-    font-size: 12px;
+    font-size: 24rpx;
     font-weight: 500;
-    line-height: 17px;
+    line-height: 34rpx;
     color: rgba(153, 153, 153, 1);
-    margin-left: 20px;
+    margin-left: 40rpx;
 }
 
 .tsone-one {
-    font-size: 14px;
+    font-size: 28rpx;
     font-weight: 600;
-    line-height: 20px;
+    line-height: 40rpx;
     color: rgba(226, 69, 0, 1);
+    margin-bottom: 10rpx;
 }
 
 .ticketShop-two {
-    margin-left: 40px;
-    font-size: 12px;
+    margin-left: 70rpx;
+    font-size: 24rpx;
     font-weight: 500;
-    line-height: 17px;
+    line-height: 34rpx;
     color: rgba(153, 153, 153, 1);
 }
 
 .tstwo-one {
-    font-size: 14px;
+    font-size: 28rpx;
     font-weight: 600;
-    line-height: 20px;
+    line-height: 40rpx;
     color: rgba(51, 51, 51, 1);
+    margin-bottom: 10rpx;
 }

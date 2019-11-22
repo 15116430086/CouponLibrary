@@ -1,60 +1,56 @@
-
 <import src="/template/payStore/payStore" />
 
 <view class="home-box">
-    <view class="swiper">
-      
-          
-               <image wx:if="{{datalist[0].ImageOne}}" src='{{datalist[0].ImageOne}}' class='u-img-slide' mode='aspectFill'/>
-               <image wx:else src='/static/images/swp.png' class='u-img-slide' mode='aspectFill'/>
+  <view class="swiper">
+    <image wx:if="{{datalist[0].ImageOne}}" src='{{datalist[0].ImageOne}}' class='u-img-slide' mode='aspectFill' />
+    <image wx:else src='/static/images/swp.png' class='u-img-slide' mode='aspectFill' />
+  </view>
+  <view class="home-mes">
+    <view class="home-groupName">{{datalist[0].CouponName}}</view>
+    <view class="home-tishi">
+      <view class="ht-left">到店专享 | 无条件使用</view>
+      <view class="ht-right">已销量 {{datalist[0].ReceiveNUM}}</view>
+    </view>
+  </view>
+  <view class="home-groupMes">
+    <image wx:if="{{datalist[0].UsageRule}}" src="{{datalist[0].UsageRule}}" mode="widthFix"/>
+    <image wx:else src="/static/images/rule.png" />
+    <!-- 查看更多 有接口了再写 -->
+    <view class="home-groupMask" wx:if="{{images}}">
+      查看图文
+      <block wx:for="{{images}}">
+        <image src="{{item}}" />
+      </block>
+    </view>
+
+
 
   </view>
-    <view class="home-mes">
-      <view class="home-groupName">{{datalist[0].CouponName}}</view>
-      <view class="home-tishi">
-        <view class="ht-left">到店专享 | 无条件使用</view>
-        <view class="ht-right">已销量 {{datalist[0].ReceiveNUM}}</view>
-      </view>
-    </view>
-    <view class="home-groupMes">
-      <image wx:if="{{datalist[0].UsageRule}}" src="{{datalist[0].UsageRule}}" />
-       <image wx:else src="/static/images/rule.png" />
-      <!-- 查看更多 有接口了再写 -->
-      <view class="home-groupMask" wx:if="{{images}}">
-        查看图文
-        <block wx:for="{{images}}">
-          <image src="{{item}}" />
-        </block>
-      </view>
-        
 
+  <!-- 消费门店 -->
+  <view class="home-storeName">消费门店</view>
 
-    </view>
-
-    <!-- 消费门店 -->
-    <view class="home-storeName">消费门店</view>
-
-    <view style="margin-bottom:70px;">
-      <block wx:for="{{shoplist}}">
-    <template is="payStore" data="{{...item}}"></template>
-</block>
-    </view>
-    <!-- 底部盒子 -->
-    <view class="goods-bottom">
-      <view class="goodsbot-left">
-        <view class="goodsbot-left-view">
-          <view style="color: #E24500;font-weight: 600;">
-            ￥
-            <text style="font-size: 15px;">{{datalist[0].SalePrice }}</text>
-          </view>
-          <view style="color: #666666;">
-            券面值:￥
-            <text>{{datalist[0].CouponMoney}}</text>
-          </view>
+  <view style="margin-bottom:70px;">
+    <block wx:for="{{shoplist}}">
+      <template is="payStore" data="{{...item}}"></template>
+    </block>
+  </view>
+  <!-- 底部盒子 -->
+  <view class="goods-bottom">
+    <view class="goodsbot-left">
+      <view class="goodsbot-left-view">
+        <view style="color: #E24500;font-weight: 600;">
+          ￥
+          <text style="font-size: 15px;">{{datalist[0].SalePrice }}</text>
         </view>
-        <view class="goods-ticket">限时优惠</view>
+        <view style="color: #666666;">
+          券面值:￥
+          <text>{{datalist[0].CouponMoney}}</text>
+        </view>
       </view>
-      <view class="goods-btn"  bindtap="payBtn" wx:if="{{datalist[0].SalePrice==0}}">立即领取</view>
-      <view class="goods-btn"  bindtap="payBtn" wx:else>立即抢购</view>
+      <view class="goods-ticket">限时优惠</view>
     </view>
+    <view class="goods-btn" bindtap="payBtn" wx:if="{{datalist[0].SalePrice==0}}">立即领取</view>
+    <view class="goods-btn" bindtap="payBtn" wx:else>立即抢购</view>
   </view>
+</view>

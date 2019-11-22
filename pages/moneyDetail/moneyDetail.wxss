@@ -2,6 +2,8 @@
 
 page {
     background-color: #EDEDED;
+    width: 100%;
+    height: auto;
 }
 
 .m-top {
@@ -80,12 +82,13 @@ page {
 .nav-name {
     display: inline-block;
     color: #999999;
-    width: 128rpx;
+    width: auto;
     height: 102rpx;
     line-height: 102rpx;
     text-align: left;
     font-size: 32rpx;
     margin-right: 54rpx;
+    white-space: nowrap;
 }
 
 .nav-hover {

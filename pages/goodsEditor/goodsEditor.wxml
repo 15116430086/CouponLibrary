@@ -15,11 +15,11 @@
   <view class="ticket-box">
     <view class="ticket-block">
       <view class="ticket-name">所属栏目(必填)</view>
-      <input type="text" value="{{categoryName}}" disabled="true" placeholder="选择所属栏目" bindtap="showPopup2" />
+      <input type="text" value="{{categoryName}}" disabled="true" placeholder="选择所属栏目" bindtap="showPopup2" placeholder-class="ip"/>
     </view>
     <view class="ticket-block">
       <view class="ticket-name">商品名称</view>
-      <input type="text" bindinput="ProductNameInput" value="{{productName}}" placeholder="请输入商品名称" />
+      <input type="text" bindinput="ProductNameInput" value="{{productName}}" placeholder="请输入商品名称" placeholder-class="ip"/>
     </view>
     <!-- 添加券面图片 -->
     <view class="addImg">
@@ -74,7 +74,7 @@
       </view>
       <view class="ticket-block">
         <view class="ticket-name">运费(选填)</view>
-        <input type="text" bindblur="PostageInput" name="Postage" value="{{postage}}" placeholder="快递费" />
+        <input type="text" bindblur="PostageInput" name="Postage" value="{{postage}}" placeholder="快递费" placeholder-class="ip" />
       </view>
       <!-- 添加券面图片 -->
       <view class="addImg">

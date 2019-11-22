@@ -13,7 +13,7 @@
               <text wx:else>(团购券)</text>
             </view>
             <view class="sS-mes">
-              <text>领券日期：{{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd")}}</text>
+              <text>领券日期：{{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd",true)}}</text>
             </view>
           </view>
           <view class="sS-bot">
