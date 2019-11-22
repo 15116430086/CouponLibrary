@@ -13,14 +13,14 @@
     </view>
   </view>
   <view class="home-groupMes">
-    <image wx:if="{{datalist[0].UsageRule}}" src="{{datalist[0].UsageRule}}" mode="widthFix"/>
-    <image wx:else src="/static/images/rule.png" />
+    <image wx:if="{{datalist[0].UsageRule}}" src="{{datalist[0].UsageRule}}" mode="widthFix" />
+    <image wx:else src="/static/images/rule.png"  mode="widthFix"/>
+    <block wx:for="{{images}}" wx:key="PictureID">
+      <image wx:if="{{isShow}}" src="{{item.ImageURL}}" mode="widthFix" />
+    </block>
     <!-- 查看更多 有接口了再写 -->
-    <view class="home-groupMask" wx:if="{{images}}">
+    <view class="home-groupMask" bindtap="onShowCouponDetailsTap" wx:if="{{!isShow}}">
       查看图文
-      <block wx:for="{{images}}">
-        <image src="{{item}}" />
-      </block>
     </view>
 
 
@@ -31,7 +31,7 @@
   <view class="home-storeName">消费门店</view>
 
   <view style="margin-bottom:70px;">
-    <block wx:for="{{shoplist}}">
+    <block wx:for="{{shoplist}}" wx:key="*this" >
       <template is="payStore" data="{{...item}}"></template>
     </block>
   </view>

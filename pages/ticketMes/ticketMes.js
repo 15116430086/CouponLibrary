@@ -61,6 +61,11 @@ Page({
     }
 
   },
+  onShowCouponDetailsTap: function() {
+    this.setData({
+      isShow: true
+    })
+  },
   payBtn: function(event) {
     wx.navigateTo({
       url: '../orderPay/orderPay?CouponID=' + this.data.CouponID + '&ReceiveID=' + this.data.ReceiveID
