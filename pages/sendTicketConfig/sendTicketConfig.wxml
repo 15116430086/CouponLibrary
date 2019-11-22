@@ -1,8 +1,18 @@
- <view class="home-box">
-    <view class="home-img">
-      <image src="/static/images/rule2.png" />
+<view class="home-box">
+  <view class="home-img">
+    <view class="home-v">
+      <view class="home-view">
+        <text style="color:#e30000;">*</text>默认规则：</view>
+      <view>现金券会员可自领，员工可赠送；团购券仅员工可赠送</view>
     </view>
-    <block wx:for="{{couponList}}" wx:key="CouponID"  wx:for-index="index">
+    <view class="home-v">
+      <view class="home-view">
+        <text style="color:#e30000">*</text>新增规则中配置的券，将自动从默认规则中移除删除规则后自
+动退回默认规则</view>
+    </view>
+  </view>
+
+  <block wx:for="{{couponList}}" wx:key="CouponID" wx:for-index="index">
     <navigator class="home-block" url="../sendTicketConfigChild/sendTicketConfigChild?CouponID={{item.CouponID}}">
       <view class="home-name">
         <view>{{item.CouponName}}</view>
@@ -15,5 +25,5 @@
       </view>
       <image src="/static/images/right-arr1.png" />
     </navigator>
-    </block>
-  </view>
+  </block>
+</view>
