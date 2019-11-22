@@ -22,7 +22,7 @@
                             <image wx:else src="{{item.UserAvatar}}" class="mbot-img" />
                             <view class="mbb-left">
                                 <view class="mbot-name">{{item.UserName}}</view>
-                                <view class="mbot-bot">注册日期 : {{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss")}}</view>
+                                <view class="mbot-bot">注册日期 : {{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
                             </view>
                         </view>
                         <image src="/static/images/right-arr1.png" class="mbot-arr" />
