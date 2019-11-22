@@ -1,7 +1,7 @@
 {
     "pages": [
-        "pages/moreShop/moreShop",
         "pages/login/login",
+        "pages/moreShop/moreShop",
         "pages/home/home",
         "pages/commissionMes/commissionMes",
         "pages/goodsManager/goodsManager",
