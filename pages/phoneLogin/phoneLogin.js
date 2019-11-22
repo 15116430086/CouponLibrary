@@ -144,18 +144,7 @@ Page({
               }
             }
           })
-        } else {
-          wx.showModal({
-            title: '登录失败',
-            showCancel: false,
-            content: json.msg,
-            success: function(res) {
-              if (res.confirm) {
-                console.log('用户点击确定')
-              }
-            }
-          })
-        }
+        } 
       }
     }
   },
