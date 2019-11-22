@@ -6,17 +6,22 @@ page {
 
 .sS-All {
     width: 100%;
-    padding-top: 10px;
+    /* padding-top: 20rpx; */
     height: auto;
     background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .sS-box {
-    margin: 10px auto;
+    /* margin: 10px auto; */
     width: calc(100% - 80rpx);
     height: 228rpx;
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -32,6 +37,7 @@ page {
     width: 168rpx;
     display: block;
     height: 168rpx;
+    border-radius: 10rpx;
 }
 
 .sS-mesbox {
@@ -73,15 +79,16 @@ page {
 }
 
 .sS-right {
-    width: 60rpx;
+    width: auto;
     height: 168rpx;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     color: #E85819;
     font-size: 32rpx;
     font-weight: 600;
     justify-content: space-between;
+   
 }
 
 .sS-right image {

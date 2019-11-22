@@ -5,6 +5,7 @@ Page({
     idx: "",
     idb: "",
     index: 0,
+    xzindex:0,
     content:[],
     content2:[],
     content3:[]
@@ -27,45 +28,76 @@ Page({
   },
 
 
+  showHide2:function(event){//点击省选择框  如果是选中 那当前省下面的市区都选中  取消择都取消
+    var contentFor = this.data.content;
+    var RegionID = event.currentTarget.dataset.id;
+    for (var i in contentFor) {
+      if (RegionID == contentFor[i].RegionID) {
+        contentFor[i].isSel = !contentFor[i].isSel;
+        for (var s in contentFor[i].LevelCoupon_Region){
+             contentFor[i].LevelCoupon_Region[s].isSel = !contentFor[i].LevelCoupon_Region[s].isSel
+          for (var j in contentFor[i].LevelCoupon_Region[s].LevelCoupon_Region){
+            contentFor[i].LevelCoupon_Region[s].LevelCoupon_Region[j].isSel = !contentFor[i].LevelCoupon_Region[s].LevelCoupon_Region[j].isSel
+          }
 
-  // 省
-  showHide(e) {
-    let that = this;
-    let mindex = e.currentTarget.dataset.mindex;
-
-    let content = that.data.content;
-    let item = content[mindex];
-    item.isSel = !item.isSel;
-
-    let contents = item.contents
-    for (let i in contents) {
-      contents[i].isSel = item.isSel;
-      let list = contents[i].list;
-      for (let j in list) {
-        list[j].isSel = item.isSel
-      }
+        }
+        break;
+      } 
     }
-
-    that.setData({
-      content: content
-
-    })
-
-
+    this.setData({ content: contentFor });
   },
+  // 省
+  // showHide(e) {
+  //   let that = this;
+  //   let mindex = e.currentTarget.dataset.mindex;
+
+  //   let content = that.data.content;
+  //   let item = content[mindex];
+  //   item.isSel = !item.isSel;
+
+  //   let contents = item.contents
+  //   for (let i in contents) {
+  //     contents[i].isSel = item.isSel;
+  //     let list = contents[i].list;
+  //     for (let j in list) {
+  //       list[j].isSel = item.isSel
+  //     }
+  //   }
+
+  //   that.setData({
+  //     content: content
+
+  //   })
+
+
+  // },
   showMasks:function(event){//点击省
     var contentFor = this.data.content;
     var RegionID= event.currentTarget.dataset.changeid;
     for (var i in contentFor){
       if (RegionID== contentFor[i].RegionID) {
         contentFor[i].shows = !contentFor[i].shows;
+        this.data.index=i;
       　}else{
         contentFor[i].shows=false;
       }
     }
-    this.setData({ content: contentFor, index: event.currentTarget.dataset.index});
+    this.setData({ content: contentFor});
   },
-
+  showMaskChilds: function (event) {//点击市
+    var inx = this.data.index;
+    var RegionID = event.currentTarget.dataset.id;
+    var mindex = event.currentTarget.dataset.mindex
+    var contentFor = this.data.content;//得到整个对象
+    for (var i in contentFor[inx].LevelCoupon_Region) {//循环省下面的市
+      if (contentFor[inx].LevelCoupon_Region[i].RegionID == RegionID) {
+        contentFor[inx].LevelCoupon_Region[i].shows = !contentFor[inx].LevelCoupon_Region[i].shows
+      } else {
+        contentFor[inx].LevelCoupon_Region[i].shows = false;
+      }
+    }
+    this.setData({ content: contentFor });
+  },
   //showMask(e) {
     //var contentFor = this.data.content;
 
@@ -122,19 +154,7 @@ Page({
     })
   },
 
-  showMaskChilds:function(event){//点击市
-    var inx=this.data.index;
-    var RegionID = event.currentTarget.dataset.id;
-    var mindex =event.currentTarget.dataset.mindex
-    var contentFor = this.data.content;//得到整个对象
-    for (var i in contentFor[i].LevelCoupon_Region){//循环省下面的市
-      if (contentFor[i].LevelCoupon_Region.RegionID == RegionID){
-        contentFor[i].LevelCoupon_Region.shows = !contentFor[i].LevelCoupon_Region.shows
-      }else{
-        contentFor[i].LevelCoupon_Region.shows =false;
-      }
-    }
-  },
+  
 
 
   //showMaskChild(e){

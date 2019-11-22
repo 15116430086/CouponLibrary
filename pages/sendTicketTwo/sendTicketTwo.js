@@ -417,7 +417,9 @@ Page({
   },
 
   onChance() {
-
+    this.setData({
+      show: false
+    });
   },
 
 
