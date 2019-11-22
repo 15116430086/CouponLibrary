@@ -13,7 +13,7 @@
     </view>
   </view>
   <view class="home-groupMes">
-    <image wx:if="{{datalist[0].UsageRule}}" src="{{datalist[0].UsageRule}}" mode="widthFix"/>
+    <image wx:if="{{datalist[0].UsageRule}}" src="{{datalist[0].UsageRule}}" mode="widthFix" />
     <image wx:else src="/static/images/rule.png" />
     <!-- 查看更多 有接口了再写 -->
     <view class="home-groupMask" wx:if="{{images}}">
@@ -30,7 +30,7 @@
   <!-- 消费门店 -->
   <view class="home-storeName">消费门店</view>
 
-  <view style="margin-bottom:70px;">
+  <view style="margin-bottom:140rpx;">
     <block wx:for="{{shoplist}}">
       <template is="payStore" data="{{...item}}"></template>
     </block>
@@ -41,7 +41,7 @@
       <view class="goodsbot-left-view">
         <view style="color: #E24500;font-weight: 600;">
           ￥
-          <text style="font-size: 15px;">{{datalist[0].SalePrice }}</text>
+          <text style="font-size: 30rpx;">{{datalist[0].SalePrice }}</text>
         </view>
         <view style="color: #666666;">
           券面值:￥

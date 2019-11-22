@@ -10,12 +10,12 @@ page {
     width: 100%;
     height: auto;
     background-color: #ffffff;
-    padding-bottom: 10px;
+    padding-bottom: 20rpx;
 }
 
 .home-sel {
-    width: calc(100% - 40px);
-    height: 60px;
+    width: calc(100% - 80rpx);
+    height: 120rpx;
     margin: 0px auto;
     display: flex;
     flex-direction: row;
@@ -34,7 +34,7 @@ page {
     color: #666666;
     font-size: 28rpx;
     background-color: #f4f4f4;
-    border-radius: 10px;
+    border-radius: 20rpx;
     height: 60rpx;
 }
 
@@ -44,20 +44,20 @@ page {
     width: 14rpx;
     height: 10rpx;
     margin-left: 40rpx;
-    border-radius: 5px;
+    border-radius: 10rpx;
 }
 
 .stm-mes {
     color: #333333;
-    width: calc(100% - 40px);
+    width: calc(100% - 80rpx);
     text-align: left;
-    font-size: 14px;
-    margin: 10px auto;
+    font-size: 28rpx;
+    margin: 20rpx auto;
     font-weight: 600;
 }
 
 .stm-block {
-    margin-top: 20px;
+    margin-top: 40rpx;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -65,25 +65,25 @@ page {
 }
 
 .stm-block image {
-    margin-left: 20px;
-    width: 38px;
-    height: 38px;
+    margin-left: 40rpx;
+    width: 76rpx;
+    height: 76rpx;
     flex-shrink: 1;
-    border-radius: 5px;
+    border-radius: 10rpx;
 }
 
 .stmb-left {
-    margin-left: 10px;
+    margin-left: 20rpx;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    height: 38px;
+    height: 76rpx;
 }
 
 .stm-top {
     color: #333333;
-    font-size: 14px;
+    font-size: 28rpx;
 }
 
 .stm-bot {
@@ -91,9 +91,9 @@ page {
     flex-direction: row;
     align-items: center;
     color: #666666;
-    font-size: 13px;
+    font-size: 26rpx;
 }
 
 .stm-bot view {
-    margin-right: 15px;
+    margin-right: 30rpx;
 }
