@@ -26,9 +26,9 @@ Page({
     industryCode: "",
     enterpriseLicensing: "",
     flag: false,
-    regAddress: "湖南长沙五一大道59号",
+    regAddress: "",
     multiArray: [],
-    multiIndex: [17, 0, 2]  
+    multiIndex: [17, 0, 2]
   },
   onRegAddressTap: function() {
     let that = this;
@@ -170,6 +170,9 @@ Page({
       return;
     }
     data.EnterpriseLicensing = this.data.enterpriseLicensing
+    data.ImageOne = this.data.enterpriseLicensing;
+    data.ImageTwo = this.data.enterpriseLicensing;
+    data.LogoImage = this.data.enterpriseLicensing;
     if (data.EnterpriseLicensing == '') {
       wx.showToast({
         title: "请上转营业执照！",
@@ -282,18 +285,40 @@ Page({
     if (json) {
       console.log(json.msg);
       if (json.flag) {
-        wx.setStorageSync('miniappkeyid', json.data)
-        var appkeyid = wx.getStorageSync('miniappkeyid');
-        if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
-          app.globalData.appkeyid = appkeyid.FSessionKey;
-          var loginInfo = JSON.parse(appkeyid.FContent);
-          app.globalData.AppWxUserInfo = loginInfo.AppWxUserInfo;
-          app.globalData.AppStaffInfo = loginInfo.AppStaffInfo;
-          app.globalData.AppGroupInfo = loginInfo.AppGroupInfo;
-          wx.reLaunch({
-            url: '../home/home',
-          })
-        }
+
+        wx.showModal({
+          title: '券库商户注册',
+          content: json.msg,
+          showCancel: false,
+          success(res) {
+            if (res.confirm) {
+              wx.reLaunch({
+                url: '../login/login',
+              })
+            } 
+          }
+        })
+
+        // setTimeout(
+        //   function () {
+        //     wx.reLaunch({
+        //       url: '../login/login',
+        //     })
+        //   }, 2000
+        // )
+
+        // wx.setStorageSync('miniappkeyid', json.data)
+        // var appkeyid = wx.getStorageSync('miniappkeyid');
+        // if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
+        //   app.globalData.appkeyid = appkeyid.FSessionKey;
+        //   var loginInfo = JSON.parse(appkeyid.FContent);
+        //   app.globalData.AppWxUserInfo = loginInfo.AppWxUserInfo;
+        //   app.globalData.AppStaffInfo = loginInfo.AppStaffInfo;
+        //   app.globalData.AppGroupInfo = loginInfo.AppGroupInfo;
+        //   wx.reLaunch({
+        //     url: '../home/home',
+        //   })
+        // }
       } else {
         wx.showToast({
           title: json.msg,
@@ -369,7 +394,7 @@ Page({
 
   },
 
-  GetRegionIndustry: function () {
+  GetRegionIndustry: function() {
     let that = this;
 
     regionData = wx.getStorageSync('Region');

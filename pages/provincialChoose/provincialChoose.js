@@ -5,19 +5,19 @@ Page({
     idx: "",
     idb: "",
     index: 0,
-    xzindex:0,
-    content:[],
-    content2:[],
-    content3:[]
+    xzindex: 0,
+    content: [],
+    RegionIDList: []
+
   },
-  onLoad: function (options) {
-   this. GetRegionIndustry();
+  onLoad: function(options) {
+    this.GetRegionIndustry();
   },
-  GetRegionIndustry: function () {
+  GetRegionIndustry: function() {
     let that = this;
 
-    var  regionData = wx.getStorageSync('Region');
-    if (regionData ) {
+    var regionData = wx.getStorageSync('Region');
+    if (regionData) {
       this.setData({
         content: regionData
       });
@@ -26,193 +26,108 @@ Page({
     }
     utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
+  isHasElement: function(value) {
+    var arr = this.data.RegionIDList;
+    var index = arr.indexOf(value);
+    if (index >-1) {      
+      arr.splice(index, 1);
+      this.setData({
+        RegionIDList: arr
+      });
+    } 
+  },
 
-
-  showHide2:function(event){//点击省选择框  如果是选中 那当前省下面的市区都选中  取消择都取消
+  showHide2: function(event) { //点击省选择框  如果是选中 那当前省下面的市区都选中  取消择都取消
     var contentFor = this.data.content;
     var RegionID = event.currentTarget.dataset.id;
+    var arr = [];
     for (var i in contentFor) {
       if (RegionID == contentFor[i].RegionID) {
         contentFor[i].isSel = !contentFor[i].isSel;
-        for (var s in contentFor[i].LevelCoupon_Region){
-             contentFor[i].LevelCoupon_Region[s].isSel = !contentFor[i].LevelCoupon_Region[s].isSel
-          for (var j in contentFor[i].LevelCoupon_Region[s].LevelCoupon_Region){
-            contentFor[i].LevelCoupon_Region[s].LevelCoupon_Region[j].isSel = !contentFor[i].LevelCoupon_Region[s].LevelCoupon_Region[j].isSel
+        for (var s in contentFor[i].LevelCoupon_Region) {
+          contentFor[i].LevelCoupon_Region[s].isSel = !contentFor[i].LevelCoupon_Region[s].isSel
+          for (var j in contentFor[i].LevelCoupon_Region[s].LevelCoupon_Region) {
+            contentFor[i].LevelCoupon_Region[s].LevelCoupon_Region[j].isSel = !contentFor[i].LevelCoupon_Region[s].LevelCoupon_Region[j].isSel;
+            if (contentFor[i].LevelCoupon_Region[s].LevelCoupon_Region[j].isSel) {
+              arr.push(contentFor[i].LevelCoupon_Region[s].LevelCoupon_Region[j].RegionID); //保存区的编号
+            } else { //移除编号
+
+             this.isHasElement(contentFor[i].LevelCoupon_Region[s].LevelCoupon_Region[j].RegionID)
+            }
           }
 
         }
         break;
-      } 
-    }
-    this.setData({ content: contentFor });
-  },
-  // 省
-  // showHide(e) {
-  //   let that = this;
-  //   let mindex = e.currentTarget.dataset.mindex;
-
-  //   let content = that.data.content;
-  //   let item = content[mindex];
-  //   item.isSel = !item.isSel;
-
-  //   let contents = item.contents
-  //   for (let i in contents) {
-  //     contents[i].isSel = item.isSel;
-  //     let list = contents[i].list;
-  //     for (let j in list) {
-  //       list[j].isSel = item.isSel
-  //     }
-  //   }
-
-  //   that.setData({
-  //     content: content
-
-  //   })
-
-
-  // },
-  showMasks:function(event){//点击省
-    var contentFor = this.data.content;
-    var RegionID= event.currentTarget.dataset.changeid;
-    for (var i in contentFor){
-      if (RegionID== contentFor[i].RegionID) {
-        contentFor[i].shows = !contentFor[i].shows;
-        this.data.index=i;
-      　}else{
-        contentFor[i].shows=false;
       }
     }
-    this.setData({ content: contentFor});
+    this.setData({
+      content: contentFor,
+      RegionIDList: arr
+    });
   },
-  showMaskChilds: function (event) {//点击市
+
+  showMasks: function(event) { //点击省
+    var contentFor = this.data.content;
+    var RegionID = event.currentTarget.dataset.changeid;
+    var index = event.currentTarget.dataset.index;
+    if (index != this.data.index) {
+      contentFor[this.data.index].shows = false;
+    }
+    contentFor[index].shows = !contentFor[index].shows;
+    this.setData({
+      content: contentFor,
+      index: index
+    });
+  },
+  showMaskChilds: function(event) { //点击市
     var inx = this.data.index;
     var RegionID = event.currentTarget.dataset.id;
-    var mindex = event.currentTarget.dataset.mindex
-    var contentFor = this.data.content;//得到整个对象
-    for (var i in contentFor[inx].LevelCoupon_Region) {//循环省下面的市
-      if (contentFor[inx].LevelCoupon_Region[i].RegionID == RegionID) {
-        contentFor[inx].LevelCoupon_Region[i].shows = !contentFor[inx].LevelCoupon_Region[i].shows
-      } else {
-        contentFor[inx].LevelCoupon_Region[i].shows = false;
-      }
-    }
-    this.setData({ content: contentFor });
+    var mindex = event.currentTarget.dataset.sindex
+    var contentFor = this.data.content; //得到整个对象
+    contentFor[inx].LevelCoupon_Region[mindex].shows = !contentFor[inx].LevelCoupon_Region[mindex].shows
+    this.setData({
+      content: contentFor, xzindex: mindex
+    });
   },
-  //showMask(e) {
-    //var contentFor = this.data.content;
-
-    //for (var i = 0; i < contentFor.length; i++) {　　
-     // if (e.currentTarget.dataset.changeid == contentFor[i].RegionID) {　　　　
-      //  var printPrice = "content[" + i + "].shows";　　　　
-        //if (this.data.content[i].shows) {　　　　　　
-       //   this.setData({　　　　　　　　
-         //   [printPrice]: false　　　　　　
-         // });　　　　
-        //} else {　　　　　　
-        //  this.setData({　　　　　　　　
-       //     [printPrice]: true　　　　　　
-       //   });　　　　
-       // }　　
-     // } else {　　　　　　
-      //  var printPrice1 = "content[" + i + "].shows";　　　　　　
-       // this.setData({　　　　　　　　
-        //  [printPrice1]: false　　　　　　
-        //});　　　　
-     // }　　
-    //}
-  //},
-
-
-  // 市
-  clickTrue(e) {
-    let that = this;
-    let content = that.data.content;
-    let mindex = e.currentTarget.dataset.mindex;
-    let sindex = e.currentTarget.dataset.sindex;
-    console.log(mindex);
-    let contents = content[mindex].contents[sindex];
-    contents.isSel = !contents.isSel
-    let list = contents.list;
-    for (let i in list) {
-      list[i].isSel = contents.isSel
-    }
-
-    let ocontents = content[mindex].contents
-    let count = 0
-    for (let i in ocontents) {
-      if (!ocontents[i].isSel) {
-        count++;
+  clickTrue2:function(event){//选择市勾选框 那么省 当前市 区都勾选上
+     var arr = [];
+     var content = this.data.content;
+     var inx = this.data.index;
+    var sindex = event.currentTarget.dataset.mindex;
+     var RegionID = event.currentTarget.dataset.id;
+    content[inx].isSel = !content[inx].isSel;
+    content[inx].LevelCoupon_Region[sindex].isSel = !content[inx].LevelCoupon_Region[sindex].isSel;
+    for (var i in content[inx].LevelCoupon_Region[sindex].LevelCoupon_Region){
+      content[inx].LevelCoupon_Region[sindex].LevelCoupon_Region[i].isSel = !content[inx].LevelCoupon_Region[sindex].LevelCoupon_Region[i].isSel;
+      if (content[inx].LevelCoupon_Region[sindex].LevelCoupon_Region[i].isSel){
+        arr.push(content[inx].LevelCoupon_Region[sindex].LevelCoupon_Region[i].RegionID); //保存区的编号
+      }else{
+        this.isHasElement(content[inx].LevelCoupon_Region[sindex].LevelCoupon_Region[i].RegionID)
       }
-    }
-
-    content[mindex].isSel = true
-    if (count == ocontents.length)
-      content[mindex].isSel = false
-
-    that.setData({
-      content: content
-    })
+     }
+    this.setData({
+      content: content,
+      RegionIDList: arr
+    });
   },
-
-  
-
-
-  //showMaskChild(e){
-    //let that = this;
-    //let content = that.data.content;
-    //let mindex = e.currentTarget.dataset.mindex;
-    //let sindex = e.currentTarget.dataset.sindex;
-    //console.log(mindex);
-    //let contents = content[mindex].contents[sindex];
-    //contents.shows = !contents.shows
-    //that.setData({
-     // content:content
-    //})
-
-  //},
-
-
-
-  // 区
-  clickTwo(e) {
-    let that = this;
-    console.log(e);
-    let content = that.data.content;
-    let mindex = e.currentTarget.dataset.mindex;
-    let sindex = e.currentTarget.dataset.sindex;
-    let cindex = e.currentTarget.dataset.cindex;
-    let list = content[mindex].contents[sindex].list[cindex];
-    list.isSel = !list.isSel;
-
-    let olist = content[mindex].contents[sindex].list
-    let count = 0
-    for (let i in olist) {
-      if (!olist[i].isSel) {
-        count++
-      }
+  clickTwo:function(event){
+    var arr = [];
+    var content = this.data.content;
+    var cindex = event.currentTarget.dataset.cindex;
+    var inx = this.data.index;
+    var xzindex = this.data.xzindex;
+    content[inx].LevelCoupon_Region[xzindex].LevelCoupon_Region[cindex].isSel = !content[inx].LevelCoupon_Region[xzindex].LevelCoupon_Region[cindex].isSel;
+    //content[inx].LevelCoupon_Region[xzindex].isSel = !content[inx].LevelCoupon_Region[xzindex].isSel
+    //content[inx].isSel = !content[inx].isSel;
+    if (content[inx].LevelCoupon_Region[xzindex].LevelCoupon_Region[cindex].isSel){
+      arr.push(content[inx].LevelCoupon_Region[xzindex].LevelCoupon_Region[cindex].RegionID);
+    }else{
+      this.isHasElement(content[inx].LevelCoupon_Region[xzindex].LevelCoupon_Region[cindex].RegionID)
     }
-
-    content[mindex].contents[sindex].isSel = true
-    if (count == olist.length) {
-      content[mindex].contents[sindex].isSel = false
-    }
-
-
-    let ocontents = content[mindex].contents
-    let ccount = 0
-    for (let i in ocontents) {
-      if (!ocontents[i].isSel) {
-        ccount++
-      }
-    }
-    content[mindex].isSel = true
-    if (ccount == ocontents.length) {
-      content[mindex].isSel = false
-    }
-
-    that.setData({
-      content: content
-    })
-
+    this.setData({
+      content: content,
+      RegionIDList: arr
+    });
   }
+
 })
