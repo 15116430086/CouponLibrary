@@ -11,6 +11,10 @@ Page({
 
   },
   onLoad: function(options) {
+    wx.showLoading({
+      title: "数据加载中...",
+      mask: true
+    });
     this.GetRegionIndustry();
   },
   GetRegionIndustry: function() {
@@ -21,6 +25,7 @@ Page({
       this.setData({
         content: regionData
       });
+      wx.hideLoading();
       console.log(regionData);
       return;
     }
@@ -124,10 +129,19 @@ Page({
     }else{
       this.isHasElement(content[inx].LevelCoupon_Region[xzindex].LevelCoupon_Region[cindex].RegionID)
     }
+    var list = this.data.RegionIDList;
+    list.push(arr);
     this.setData({
       content: content,
-      RegionIDList: arr
+      RegionIDList: list
     });
-  }
+  },
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+   
+    wx.setStorageSync("regionList", this.data.RegionIDList);
+  },
 
 })
