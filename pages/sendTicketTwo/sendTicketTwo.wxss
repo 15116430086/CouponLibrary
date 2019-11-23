@@ -158,12 +158,16 @@ page {
   align-items: center;
 }
 
-.addImg-box image {
+.addImg-box-image {
   width: 180rpx;
   height: 180rpx;
   /* margin-left: 40rpx; */
 }
-
+.add-img{
+  width: 180rpx;
+  height: 180rpx;
+  position: relative;
+}
 .playBtn {
   width: 670rpx;
   height: 98rpx;
@@ -242,4 +246,12 @@ page {
 .custom-class{
   font-size: 30rpx !important;
   font-family:PingFang SC !important;
+}
+
+.cha4{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 15rpx;
+  bottom: 15rpx;
 }

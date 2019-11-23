@@ -108,7 +108,8 @@
 
 
   <van-popup show="{{ show }}" position="bottom" z-index="300" bind:close="onClose" safe-area-inset-bottom>
-    <van-datetime-picker type="date" value="{{ currentDate }}" bind:cancel="onCancel" toolbar-class="toolbar-class" active-class="active-class"   bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" custom-class="custom-class"/>
+    <van-datetime-picker type="date" value="{{ currentDate }}" bind:cancel="onCancel" toolbar-class="toolbar-class" active-class="active-class" bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" custom-class="custom-class"
+    />
   </van-popup>
 
   <!-- <van-popup show="{{ show1 }}" position="bottom" z-index="300" bind:close="onClose1" safe-area-inset-bottom> -->
@@ -119,8 +120,12 @@
   <view class="addImg">
     <view class="ticket-name">添加图片</view>
     <view class="addImg-box">
-      <image src="{{imageOne}}" wx:if="{{imageOne}}" />
-      <image src="/static/images/img.png" bindtap="imgadd" wx:else></image>
+      <view class="add-img" wx:if="{{imageOne}}">
+        <image src="{{imageOne}}" class="addImg-box-image" bindtap="preImg" />
+        <image src="/static/images/cha4.png" class="cha4" bindtap="delImg"></image>
+      </view>
+
+      <image src="/static/images/img.png" bindtap="imgadd" class="addImg-box-image" wx:else></image>
       <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left: 40rpx;" />
     </view>
   </view>
@@ -129,8 +134,11 @@
   <view class="addImg">
     <view class="ticket-name">使用规则</view>
     <view class="addImg-box">
-      <image src="{{imageTwo}}" wx:if="{{imageTwo}}" />
-      <image src="/static/images/img.png" bindtap="imgadd2" wx:else />
+      <view class="add-img" wx:if="{{imageTwo}}">
+        <image src="{{imageTwo}}" class="addImg-box-image" bindtap="preImg2" />
+        <image src="/static/images/cha4.png" class="cha4" bindtap="delImg2"></image>
+      </view>
+      <image src="/static/images/img.png" bindtap="imgadd2" class="addImg-box-image" wx:else />
       <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left: 40rpx;" />
     </view>
   </view>
@@ -138,8 +146,11 @@
   <view class="addImg">
     <view class="ticket-name">券详情</view>
     <view class="addImg-box">
-      <image src="{{imageTre}}" wx:if="{{imageTre}}" />
-      <image src="/static/images/img.png" bindtap="imgadd3" wx:else />
+      <view class="add-img" wx:if="{{imageTre}}">
+        <image src="{{imageTre}}" class="addImg-box-image" bindtap="preImg3" />
+        <image src="/static/images/cha4.png" class="cha4" bindtap="delImg3"></image>
+      </view>
+      <image src="/static/images/img.png" bindtap="imgadd3" class="addImg-box-image" wx:else />
       <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left: 40rpx;" />
     </view>
   </view>
