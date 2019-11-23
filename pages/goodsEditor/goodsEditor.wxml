@@ -30,7 +30,7 @@
       <view class="addImg-box">
         <block wx:for="{{mainImage}}" wx:for-index="index" wx:key="*this">
           <view class="addbox-left">
-            <image src="/static/images/cha.png" wx:if="{{item.state==1}}" class="abox-cha" data-index="{{index}}" bindtap="onDelImageTap" />
+            <image src="/static/images/cha4.png" wx:if="{{item.state==1}}" class="abox-cha" data-index="{{index}}" bindtap="onDelImageTap" />
             <image data-index="{{index}}" bindtap="onUpImageTap" src="{{item.url}}" class="addImg-box-image" />
           </view>
         </block>
@@ -85,7 +85,7 @@
         <block wx:for="{{ProductDetails}}" wx:for-index="index" wx:key="index">
           <view class="addImg-box">
             <view class="addbox-left">
-              <image src="/static/images/cha.png" wx:if="{{item.state==1}}" data-index="{{index}}" bindtap="onDelDetailsTap" class="abox-cha" />
+              <image src="/static/images/cha4.png" wx:if="{{item.state==1}}" data-index="{{index}}" bindtap="onDelDetailsTap" class="abox-cha" />
               <image src="{{item.url}}" class="addImg-box-image" data-index="{{index}}" bindtap="onAddDelDetailsTap" />
             </view>
             <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left:40rpx" />

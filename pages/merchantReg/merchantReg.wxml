@@ -42,7 +42,7 @@
       </view>
       <view class="t-bot" wx:if="{{flag}}">
         <view class="t-down">已上传
-          <text bindtap="onUpFileImg">点击重新上传</text>
+          <text bindtap="onUpFileImg" class="seeMes">点击重新上传</text>
         </view>
         <view class="seeMes" bindtap="onPreviewImageTap">查看预览</view>
       </view>
