@@ -79,7 +79,7 @@ Page({
   onUpFileImg: function (e) {
     var typeid = e.currentTarget.dataset.type;
     let that = this;
-    utils.UploadImg(1, app.globalData.appkeyid, that.UpFileImgBak, typeid)
+    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, typeid)
   },
   UpFileImgBak: function (img, type) {
     let that = this;
