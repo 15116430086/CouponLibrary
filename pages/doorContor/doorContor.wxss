@@ -93,12 +93,13 @@ page {
 
 .v-mid {
     width: 476rpx;
-    height: 88rpx;
+    height: 100rpx;
     background-color: #EDEDED;
     border-radius: 20rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-top: 20rpx;
 }
 
 .v-mid input {
