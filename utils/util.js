@@ -1,4 +1,9 @@
-const app = getApp();
+// 引入SDK核心类
+var QQMapWX = require('qqmap-wx-jssdk.js');
+// 实例化API核心类
+var qqmapsdk = new QQMapWX({
+  key: 'AFXBZ-HPG64-DE7UB-DOPGT-5NEG7-TDFZS' // 必填
+});
 
 const formatTime = date => {
   var date = new Date(date);
@@ -228,6 +233,76 @@ function GetRegionIndustryBack(json, pCallBack) {
   }
 }
 
+function reverseGeocoder(pCallBack) {       
+  qqmapsdk.reverseGeocoder({    
+    // location: {
+    //   latitude: latitude,
+    //   longitude: longitude
+    // },
+    sig: 'KkXF9nGuNrp3LWqyWPrbvTtbHSgC2eu',
+    success: function(res) { //成功后的回调
+              
+      console.log(res);        
+      var res = res.result;        
+      var mks = [];        
+      mks.push({ // 获取返回结果，放到mks数组中
+                  
+        title: res.address,
+                  id: 0,
+                  latitude: res.location.lat,
+                  longitude: res.location.lng,
+                  iconPath: './resources/placeholder.png', //图标路径
+                  width: 20,
+                  height: 20,
+                  callout: { //在markers上展示地址名称，根据需求是否需要
+                      
+          content: res.address,
+                      color: '#000',
+                      display: 'ALWAYS'          
+        },
+        ad_info: res.ad_info
+      });
+      if (pCallBack)
+        pCallBack(mks);      
+    },
+          fail: function(error) {        
+      console.error(error);      
+    },
+          complete: function(res) {        
+      console.log(res);      
+    }    
+  })
+
+}
+
+function getGeocoder(address, region,pCallBack) {
+  //调用地址解析接口
+  qqmapsdk.geocoder({
+    //获取表单传入地址
+    address: address, //地址参数，例：固定地址，address: '北京市海淀区彩和坊路海淀西大街74号'
+    region: region,
+    sig: 'KkXF9nGuNrp3LWqyWPrbvTtbHSgC2eu',
+    success: function(res) { //成功后的回调
+      console.log(res);
+      var res = res.result;
+      var newres = {
+        latitude: res.location.lat,
+        longitude: res.location.lng,
+        province: res.address_components.province,
+        city: res.address_components.city,
+        district: res.address_components.district
+      }
+      if (pCallBack)
+        pCallBack(newres);    
+    },
+    fail: function(error) {
+      console.error(error);
+    },
+    complete: function(res) {
+      console.log(res);
+    }
+  })
+}
 
 module.exports = {
   formatTime: formatTime,
@@ -237,5 +312,7 @@ module.exports = {
   syJsonSafe: syJsonSafe,
   Console: consoleLog,
   UploadImg: UploadImg,
-  GetRegionIndustry: GetRegionIndustry
+  GetRegionIndustry: GetRegionIndustry,
+  reverseGeocoder: reverseGeocoder,
+  getGeocoder: getGeocoder
 }

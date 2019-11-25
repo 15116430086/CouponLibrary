@@ -10,7 +10,7 @@ Page({
   data: {
     currentId: '1',
     section: [{
-      name: '集团商户',
+      name: '连锁商户',
       typeId: '1'
     }, {
       name: '个体商户',
@@ -24,81 +24,82 @@ Page({
     columns: [],
     industryName: "",
     industryCode: "",
-    enterpriseLicensing: "",
-    flag: false,
+    enterpriseLicensing: "", //营业执照
+    mastergraphimg: "", //形象主图
+    companyLOGimg: "", //公司LOG
+    flag0: false,
+    flag1: false,
+    flag2: false,
     regAddress: "",
     multiArray: [],
-    multiIndex: [17, 0, 2]
+    multiIndex: [17, 0, 2],
+    Geocoder:[]
   },
-  onRegAddressTap: function() {
+  onRegAddressTap: function () {
     let that = this;
-    // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
-    wx.getSetting({
+    wx.chooseLocation({
+      latitude: app.globalData.latitudeX,
+      longitude: app.globalData.longitudeY,
       success(res) {
-        if (!res.authSetting['scope.userLocation']) {
-          wx.authorize({
-            scope: 'scope.userLocation',
-            success(res) {
-              that.getLocation();
-            }
+        console.log(JSON.stringify(res));
+        if (res.address)
+        {
+          that.setData({
+            regAddress: res.address
           })
-        } else {
-          that.getLocation();
+
+          utils.getGeocoder(res.address, app.globalData.regionName, that.getGeocoderBack)
         }
       }
     })
+  },  
+  getGeocoderBack: function (res)
+  {
+    this.setData({ Geocoder: res});
   },
-  getLocation: function() {
-    //显示 加载中的提示
-    wx.showLoading({
-      title: '正在获取你的地理位置...',
-    })
+  onPreviewImageTap: function (e) {
+    var imgtypeid = e.currentTarget.dataset.type;
     let that = this;
-    wx.getLocation({
-      type: 'gcj02',
-      altitude: true,
-      isHighAccuracy: true,
-      success(res) {
-        console.log(JSON.stringify(res));
-        app.globalData.latitudeX = res.latitude
-        app.globalData.longitudeY = res.longitude
-
-        wx.chooseLocation({
-          latitude: res.latitude,
-          longitude: res.longitude,
-          success(res) {
-            console.log(JSON.stringify(res));
-            if (res.address)
-              that.setData({
-                regAddress: res.address
-              })
-          }
-        })
-      },
-      complete(res) {
-        //隐藏 加载中的提示
-        wx.hideLoading();
-      }
-    })
+    if (imgtypeid == 0) {
+      wx.previewImage({
+        urls: [that.data.enterpriseLicensing],
+      })
+    }
+    if (imgtypeid == 1) {
+      wx.previewImage({
+        urls: [that.data.mastergraphimg],
+      })
+    }
+    if (imgtypeid == 2) {
+      wx.previewImage({
+        urls: [that.data.companyLOGimg],
+      })
+    }
   },
-  onPreviewImageTap: function() {
+  onUpFileImg: function (e) {
+    var typeid = e.currentTarget.dataset.type;
     let that = this;
-
-    wx.previewImage({
-      urls: [that.data.enterpriseLicensing],
-    })
+    utils.UploadImg(1, app.globalData.appkeyid, that.UpFileImgBak, typeid)
   },
-  onUpFileImg: function() {
-    let that = this;
-    utils.UploadImg(1, app.globalData.appkeyid, that.UpFileImgBak)
-  },
-  UpFileImgBak: function(img) {
+  UpFileImgBak: function (img, type) {
     let that = this;
     if (img.length > 0) {
-      that.setData({
-        enterpriseLicensing: img[0],
-        flag: true
-      })
+      if (type == 0) {
+        that.setData({
+          enterpriseLicensing: img[0], //营业执照
+          flag0: true,
+        })
+      } else if (type == 1) {
+        that.setData({
+          mastergraphimg: img[0], //形象主图
+          flag1: true,
+        })
+      } else if (type == 2) {
+        that.setData({
+          companyLOGimg: img[0], //公司LOG
+          flag2: true,
+        })
+      }
       wx.showToast({
         title: "上传成功!",
         icon: "none",
@@ -143,45 +144,77 @@ Page({
       show2: false
     })
   },
-  onFormSubmit: function(e) {
+  onFormSubmit: function (e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     let that = this;
-    var typename = that.data.currentId == "1" ? "【集团商户】" : "【个体商户】"
+    var typename = that.data.currentId == "1" ? "【连锁商户】" : "【个体商户】"
     var data = {};
     data.GroupType = that.data.currentId == "1" ? 0 : 1
     data.IndustryCode = that.data.industryCode
     if (data.IndustryCode == '') {
       wx.showToast({
-        title: "请选择据属行业！",
+        title: "请选择所属行业！",
         icon: "none",
         duration: 1500
       })
-
       return;
     }
     data.GroupName = e.detail.value.GroupName
     if (data.GroupName == '') {
       wx.showToast({
-        title: "请输公司全称！",
+        title: "请输入公司全称！",
         icon: "none",
         duration: 1500
       })
-
+      return;
+    }
+    data.AccountName = e.detail.value.BankUserName
+    if (data.AccountName == '') {
+      wx.showToast({
+        title: "请输入银行用户名！",
+        icon: "none",
+        duration: 1500
+      })
+      return;
+    }
+    data.BankCardNumber = e.detail.value.CorporateBankAccount
+    if (data.BankCardNumber == '') {
+      wx.showToast({
+        title: "请输入对公银行账号！",
+        icon: "none",
+        duration: 1500
+      })
+      return;
+    }
+    data.OpeningBank = e.detail.value.OpeningBank
+    if (data.OpeningBank == '') {
+      wx.showToast({
+        title: "请输入开户行！",
+        icon: "none",
+        duration: 1500
+      })
       return;
     }
     data.EnterpriseLicensing = this.data.enterpriseLicensing
-    data.ImageOne = this.data.enterpriseLicensing;
-    data.ImageTwo = this.data.enterpriseLicensing;
-    data.LogoImage = this.data.enterpriseLicensing;
+    data.ImageOne = this.data.mastergraphimg;
+    data.LogoImage = this.data.companyLOGimg;
     if (data.EnterpriseLicensing == '') {
       wx.showToast({
-        title: "请上转营业执照！",
+        title: "请上传营业执照！",
         icon: "none",
         duration: 1500
       })
-
       return;
     }
+    if (data.ImageOne == '') {
+      wx.showToast({
+        title: "请上传形象主图！",
+        icon: "none",
+        duration: 1500
+      })
+      return;
+    }
+
 
     data.RegisteredAddress = e.detail.value.RegAddress
     if (data.RegisteredAddress == '') {
@@ -190,7 +223,6 @@ Page({
         icon: "none",
         duration: 1500
       })
-
       return;
     }
 
@@ -201,7 +233,6 @@ Page({
         icon: "none",
         duration: 1500
       })
-
       return;
     }
     data.Contacts = e.detail.value.Contacts
@@ -211,7 +242,6 @@ Page({
         icon: "none",
         duration: 1500
       })
-
       return;
     }
     data.Telephone = e.detail.value.Telephone
@@ -221,14 +251,13 @@ Page({
         icon: "none",
         duration: 1500
       })
-
       return;
     }
 
     wx.showModal({
       title: '券库商户注册',
       content: '您确定注册成' + typename,
-      success: function(res) {
+      success: function (res) {
         if (res.confirm) {
           console.log('用户点击确定')
           that.RegCouponGroup(data)
@@ -237,7 +266,7 @@ Page({
     })
   },
 
-  RegCouponGroup: function(data) {
+  RegCouponGroup: function (data) {
     let that = this;
     var multiArray = that.data.multiArray;
     var multiIndex = that.data.multiIndex;
@@ -256,7 +285,7 @@ Page({
               app.globalData.userInfo = res.userInfo
               data.LatitudeX = app.globalData.latitudeX.toString()
               data.LongitudeY = app.globalData.longitudeY.toString()
-              data.RegionID = multiArray[2][multiIndex[2]].RegionID;
+              data.RegionID = that.data.RegionName;
               data = {
                 pCoupon_Group: utils.syJsonSafe(data),
                 Text: res.encryptedData,
@@ -279,7 +308,7 @@ Page({
 
   },
 
-  RegCouponGroupBack: function(json) {
+  RegCouponGroupBack: function (json) {
     console.log(json);
     var json = json.data.Data;
     if (json) {
@@ -295,7 +324,7 @@ Page({
               wx.reLaunch({
                 url: '../login/login',
               })
-            } 
+            }
           }
         })
 
@@ -332,12 +361,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     let that = this;
     that.GetRegionIndustry();
   },
   //点击每个导航的点击事件
-  handleTap: function(e) {
+  handleTap: function (e) {
     let id = e.currentTarget.id;
     if (id) {
       this.setData({
@@ -348,53 +377,53 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 
-  GetRegionIndustry: function() {
+  GetRegionIndustry: function () {
     let that = this;
 
     regionData = wx.getStorageSync('Region');
@@ -410,13 +439,13 @@ Page({
     }
     utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
-  bindMultiPickerChange: function(e) {
+  bindMultiPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       multiIndex: e.detail.value
     })
   },
-  bindMultiPickerColumnChange: function(e) {
+  bindMultiPickerColumnChange: function (e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     var data = {
       multiArray: this.data.multiArray,
@@ -440,7 +469,8 @@ Page({
     console.log(data.multiIndex);
     this.setData({
       multiArray: data.multiArray,
-      multiIndex: data.multiIndex
+      multiIndex: data.multiIndex,
+      RegionName: multiArray[2][multiIndex[2]].RegionName
     });
   }
 })

@@ -24,8 +24,8 @@ Page({
     qData: null,
     industryName: "全行业",
     industryCode: "",
-    multiArray: [],
-    multiIndex: [17, 0, 2],
+    multiArray: [],    
+    multiIndex:[17,0,0],
     coupontype: ["全部券", "现金券", "团购券"],
      typeName: "全部券",
     show2: false,
@@ -118,7 +118,7 @@ Page({
     data.pLatitudeX = app.globalData.latitudeX;
     data.pLongitudeY = app.globalData.longitudeY;
     data.pQueryKey = that.data.searchValue;
-    //data.pRegionID = multiArray[2][multiIndex[2]].RegionID;
+    data.pRegionID = that.data.RegionName != '' ? that.data.RegionName : app.globalData.regionName;
     data.pIndustryCode = that.data.industryCode;
     data.pCouponType = that.data.couponType;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/QueryCouponInfo", "POST", data, app.globalData.appkeyid, this.GetQueryCouponBack)
@@ -160,6 +160,9 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
+    that.setData({
+      RegionName: app.globalData.regionName
+    })
     that.GetRegionIndustry();
     page = 1;
     if (options.quick == 0) {
@@ -185,7 +188,7 @@ Page({
     data.pLatitudeX = app.globalData.latitudeX;
     data.pLongitudeY = app.globalData.longitudeY;
     data.pQueryKey = that.data.searchValue;
-    data.pRegionID = multiArray[2][multiIndex[2]].RegionID;
+    data.pRegionID = that.data.RegionName != '' ? that.data.RegionName : app.globalData.regionName;
     data.pIndustryCode = that.data.industryCode;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/QuickQueryCouponInfo", "POST", data, app.globalData.appkeyid, that.GetQueryCouponBack)
   },
@@ -320,7 +323,8 @@ Page({
     console.log(data.multiIndex);
     this.setData({
       multiArray: data.multiArray,
-      multiIndex: data.multiIndex
+      multiIndex: data.multiIndex,
+      RegionName: multiArray[2][multiIndex[2]].RegionName
     });
   }
 })

@@ -83,7 +83,7 @@
     ],
     "permission": {
         "scope.userLocation": {
-            "desc": "地理定位将用作商户注册默认位置"
+            "desc": "地理定位将用作小程序默认位置"
         }
     },
     "window": {

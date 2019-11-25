@@ -2,19 +2,17 @@
 var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1; //初始化页数
+var regionData = [];
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    images: [{
-        url: "/static/images/swp.png"
-      },
-      {
-        url: "/static/images/swp.png"
-      }
+    images: [
     ],
+    multiArray: [],
+    multiIndex: [17, 0, 0],
     lastpage: 0,
     indicatorDots: true,
     autoplay: true,
@@ -22,39 +20,9 @@ Page({
     duration: 500,
     color: "#FFF0DE",
     activeColor: "#E85819",
-    imgUrls: [{
-        url: "/static/images/swp.png",
-        title: "AA"
-      },
-      {
-        url: "/static/images/swp.png",
-        title: "BB"
-      },
-      {
-        url: "/static/images/swp.png",
-        title: "CC"
-      },
-      {
-        url: "/static/images/swp.png",
-        title: "DD"
-      },
-      {
-        url: "/static/images/swp.png",
-        title: "EE"
-      },
-      {
-        url: "/static/images/swp.png",
-        title: "GG"
-      }
+    imgUrls: [
     ],
-    hotTicketBox: [{
-        url: "/static/images/swp.png",
-        id: 1
-      },
-      {
-        url: "/static/images/swp.png",
-        id: 2
-      }
+    hotTicketBox: [
     ],
     currentID: "1",
     BotOne: [{
@@ -70,21 +38,11 @@ Page({
         id: 2
       }
     ],
-    shopArrays: [{
-        url: "/static/images/swp.png",
-        address: "芙蓉区五一大道人瑞潇湘国际一楼213号",
-        name: "123"
-      },
-      {
-        url: "/static/images/swp.png",
-        address: "芙蓉区五一大道人瑞潇湘国际一楼213号",
-        name: "123"
-      }
+    shopArrays: [
     ],
 
   },
-  onQuickTap:function()
-  {
+  onQuickTap: function() {
     wx.navigateTo({
       url: '../fastGet/fastGet',
     })
@@ -94,18 +52,17 @@ Page({
       url: '../getTicketList/getTicketList?quick=0&data=""',
     })
   },
-  onBindReceiveTap: function (event) {
+  onBindReceiveTap: function(event) {
     wx.navigateTo({
       url: '../ticketMes/ticketMes?CouponID=' + event.currentTarget.dataset.couponid + '&ReleaseID=' + event.currentTarget.dataset.releaseid,
     })
   },
-  onGroupDetailsTap: function (event)
-  {
+  onGroupDetailsTap: function(event) {
     wx.navigateTo({
       url: '../groupMes/groupMes?GroupID=' + event.currentTarget.dataset.groupid
     })
   },
-  onBindBotOneTap: function (event) {
+  onBindBotOneTap: function(event) {
     let that = this;
     if (event.target.id != that.data.currentID)
       wx.navigateTo({
@@ -124,6 +81,7 @@ Page({
     data.pPageSize = 5;
     data.pLatitudeX = app.globalData.latitudeX;
     data.pLongitudeY = app.globalData.longitudeY;
+    data.pRegionID = app.globalData.regionName;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/QueryCouponInfo", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {
@@ -154,9 +112,9 @@ Page({
         });
 
         that.setData({
-          images: json.data,
-          imgUrls: json.data,
-          shopArrays: json.data,
+          images: banner,
+          imgUrls: popular,
+          shopArrays: extension,
           hotTicketBox: json.data,
           lastpage: json.pageCount //你的总页数
         });
@@ -181,45 +139,79 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
-    // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
-    wx.getSetting({
-      success(res) {
-        if (!res.authSetting['scope.userLocation']) {
-          wx.authorize({
-            scope: 'scope.userLocation',
-            success(res) {
-              that.getLocation();
-            },
-            fail(res)
-            {
-              page = 1;
-              that.GetData(page);
-            }
-          })
-        } 
-        else
-        {
-          that.getLocation();
-        }        
-      }
+    that.setData({
+      RegionName: app.globalData.regionName
     })
+
+    page = 1;
+    that.GetData(page);
+    that.GetRegionIndustry();
+  },
+  GetRegionIndustry: function () {
+    let that = this;
+
+    regionData = wx.getStorageSync('Region');
+    var industrylist = wx.getStorageSync('Industry');
+    var multiArray = wx.getStorageSync('multiArray');
+    if (regionData && industrylist) {
+      this.setData({
+        columns: industrylist,
+        multiArray: multiArray
+      });
+
+      return;
+    }
+    utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
 
+  bindMultiPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      multiIndex: e.detail.value
+    })
+  },
+  bindMultiPickerColumnChange: function (e) {
+    console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
+    var data = {
+      multiArray: this.data.multiArray,
+      multiIndex: this.data.multiIndex
+    };
+    data.multiIndex[e.detail.column] = e.detail.value;
+    switch (e.detail.column) {
+      case 0:
+        data.multiArray[1] = regionData[data.multiIndex[0]].LevelCoupon_Region;
+        data.multiArray[2] = regionData[data.multiIndex[0]].LevelCoupon_Region[0].LevelCoupon_Region
+
+        data.multiIndex[1] = 0;
+        data.multiIndex[2] = 0;
+        break;
+      case 1:
+        data.multiArray[2] = regionData[data.multiIndex[0]].LevelCoupon_Region[data.multiIndex[1]].LevelCoupon_Region
+
+        data.multiIndex[2] = 0;
+        break;
+    }
+    console.log(data.multiIndex);
+    this.setData({
+      multiArray: data.multiArray,
+      multiIndex: data.multiIndex,
+      RegionName: multiArray[2][multiIndex[2]].RegionName
+    });
+  },
   getLocation: function() {
     //显示 加载中的提示
     wx.showLoading({
       title: '正在获取你的地理位置...',
     })
-    let that=this;
+    let that = this;
     wx.getLocation({
       type: 'gcj02',
-      altitude:true,
-      isHighAccuracy:true,
+      altitude: true,
+      isHighAccuracy: true,
       success(res) {
         console.log(JSON.stringify(res));
         app.globalData.latitudeX = res.latitude
         app.globalData.longitudeY = res.longitude
-
         /*wx.chooseLocation({
           latitude,
           longitude,
