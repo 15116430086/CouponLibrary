@@ -33,7 +33,7 @@
            <view class="ticket-block" wx:if="{{shareshow2}}">
                 <view class="ticket-name">指定地区</view>
                 <view class="ticket-flex" bindtap="Regionselection">
-                    <view class="tf-name">湖南 丨长沙</view>
+                    <view class="tf-name">{{regionvalue}}</view>
                     <image src="/static/images/right-arr1.png" />
                 </view>
                 <!-- <input type="text" value="20元现金抵用券" /> -->

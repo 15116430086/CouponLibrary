@@ -27,7 +27,7 @@ Page({
     shows: false,
     shareshow2: true, //判断是否指定商户 默认不是 
     df_value: 1, //行业索引
-    regionvalue: "", //最终选择地区值
+    regionvalue: "地区选择", //最终选择地区值
     regionID: [], //最终选择地区ID
     Number: 0, //券数量
     Commission: 0, //佣金比列
@@ -62,6 +62,7 @@ Page({
     wx.setStorageSync("Groupkey", "");
     wx.setStorageSync("resultkey", "");
     wx.setStorageSync("industryKey", "");
+    wx.setStorageSync("regionList", "");
     var oCoupon_Info = JSON.parse(options.pCoupon_Info);
     oCoupon_Info.CouponID = options.CouponID
     this.setData({
@@ -301,6 +302,7 @@ Page({
   onShow: function() {
     var grouplist = wx.getStorageSync("Groupkey");
     var industryList = wx.getStorageSync("industryKey");
+    var regionList= wx.getStorageSync("regionList");
     if (grouplist.length > 0) {
       var groupid = [];
       for (var s in grouplist) {
@@ -320,6 +322,13 @@ Page({
       this.setData({
         IndustryCodes: [],
         Industryvalue: "餐饮，休闲/自选"
+      });
+    }
+
+    if (regionList.length>0){
+      this.setData({
+        regionID: regionList,
+        regionvalue: "已选" + regionList.length+"个地区"
       });
     }
 

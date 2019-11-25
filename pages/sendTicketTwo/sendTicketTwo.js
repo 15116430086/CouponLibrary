@@ -449,6 +449,21 @@ Page({
     }
   },
 
+  preImg(e){
+    let that = this;
+    let srcImg = that.data.imageOne;
+    let srcArr = [];
+    srcArr.push(srcImg);
+    wx.previewImage({
+      current: srcImg, // 当前显示图片的http链接  
+      urls:srcArr
+    })
+  },
+  delImg(e){
+    this.setData({
+      imageOne:""
+    })
+  },
 
   //添加图片
   imgadd2(e) {
@@ -474,6 +489,22 @@ Page({
     }
   },
 
+  preImg2(e) {
+    let that = this;
+    let srcImg = that.data.imageTwo;
+    let srcArr = [];
+    srcArr.push(srcImg);
+    wx.previewImage({
+      current: srcImg, // 当前显示图片的http链接  
+      urls: srcArr
+    })
+  },
+  delImg2(e) {
+    this.setData({
+      imageTwo: ""
+    })
+  },
+
 
   imgadd3(e) {
     let that = this;
@@ -497,7 +528,21 @@ Page({
       })
     }
   },
-
+  preImg3(e) {
+    let that = this;
+    let srcImg = that.data.imageTre;
+    let srcArr = [];
+    srcArr.push(srcImg);
+    wx.previewImage({
+      current: srcImg, // 当前显示图片的http链接  
+      urls: srcArr
+    })
+  },
+  delImg3(e) {
+    this.setData({
+      imageTre: ""
+    })
+  },
 
 
 
