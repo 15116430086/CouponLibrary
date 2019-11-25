@@ -66,7 +66,7 @@
     </view>
 
     <view class="ticket-block">
-      <view class="ticket-name">形象主图<text style="color:red">*</text></view>
+      <view class="ticket-name">公司主图<text style="color:red">*</text></view>
       <view class="t-bot" data-type="1" bindtap="onUpFileImg" wx:if="{{!flag1}}">
         <view class="ip">点击上传或拍照</view>
         <image src="/static/images/zxj.png" />

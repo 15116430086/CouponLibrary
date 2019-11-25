@@ -129,7 +129,7 @@ function syJsonSafe(obj) {
 }
 
 
-function UploadImg(count, pAppKeyId, pCallBack, pOther) {
+function UploadImg(count,pGroupID, pAppKeyId, pCallBack, pOther) {
   wx.chooseImage({
     count: count,
     sizeType: ['original', 'compressed'],
@@ -141,11 +141,11 @@ function UploadImg(count, pAppKeyId, pCallBack, pOther) {
       var imgs = [];
       for (var s in tempFilePaths) {
         const uploadTask = wx.uploadFile({
-          url: "https://wx.wap.meiguwen.com/LibraryAPI/CouponView/UploadImageView/UploadImgs", //开发者服务器的 url
+          url: "http://test.miboon.com/LibraryAPI/CouponView/UploadImageView/UploadImgs", //开发者服务器的 url
           filePath: tempFilePaths[s], // 要上传文件资源的路径 String类型！！！
           name: 'fileUp', // 文件对应的 key ,(后台接口规定的关于图片的请求参数)
           formData: {
-            data: {}
+            pGroupID: pGroupID
           },
           header: {
             'content-type': 'multipart/form-data', // 默认值
