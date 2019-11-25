@@ -32,6 +32,7 @@
             <image src="/static/images/phone1.png" />
             <input type="text" placeholder="请输入联系方式" value="" bindblur="blurs" placeholder-class="p-class"/>
         </view>
+        
         <view class="v-bot" bindtap="shopAdd">确认添加</view>
     </view>
 </view>

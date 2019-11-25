@@ -90,17 +90,19 @@ page {
     font-size: 32rpx;
     color: #333333;
 }
-.vmask-title{
-  font-size: 32rpx;
+
+.vmask-title {
+    font-size: 32rpx;
     color: #333333;
     margin-top: 80rpx;
     margin-bottom: 80rpx;
 }
+
 .v-mid {
     width: 476rpx;
     height: 88rpx;
     background-color: #ffffff;
-    border-bottom:1px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -119,7 +121,6 @@ page {
     width: 40rpx;
     height: 40rpx;
     display: block;
-    
 }
 
 .p-class {
@@ -138,19 +139,18 @@ page {
     margin-top: 30rpx;
 }
 
-
-.inputOne{
-  width: calc(100% - 222rpx) !important;
-  
+.inputOne {
+    width: calc(100% - 222rpx) !important;
 }
-.blue{
-  width: 146rpx;
-  height: 44rpx;
-  border-left: 1px solid #ededed;
-  color:#016FB4;
-  font-size: 32rpx;
-  text-indent: 40rpx;
-  line-height: 44rpx;
-  white-space: nowrap;
-  margin-left: 10rpx;
+
+.blue {
+    width: 146rpx;
+    height: 44rpx;
+    border-left: 1px solid #ededed;
+    color: #016FB4;
+    font-size: 32rpx;
+    text-indent: 40rpx;
+    line-height: 44rpx;
+    white-space: nowrap;
+    margin-left: 10rpx;
 }

@@ -55,21 +55,36 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
-    // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
-    wx.getSetting({
-      success(res) {
-        if (!res.authSetting['scope.userLocation']) {
-          wx.authorize({
-            scope: 'scope.userLocation',
-            success(res) {
-              that.getLocation();
-            }
-          })
-        } else {
-          that.getLocation();
-        }
-      }
-    })
+    // // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
+    // wx.getSetting({
+    //   success(res) {
+    //     if (!res.authSetting['scope.userLocation']) {
+    //       wx.authorize({
+    //         scope: 'scope.userLocation',
+    //         success(res) {
+    //           that.getLocation();
+    //         }
+    //       })
+    //     } else {
+    //       that.getLocation();
+    //     }
+    //   }
+    // })
+
+    var industry = wx.getStorageSync('Industry');
+    var region = wx.getStorageSync('Region');
+    if (!region || !industry) {
+      utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid)
+    }
+  
+    utils.reverseGeocoder(that.GetGeocoderBack)
+  },
+
+  GetGeocoderBack: function(res)
+  {
+    app.globalData.regionName = res[0].ad_info.district  
+    app.globalData.latitudeX = res[0].latitude
+    app.globalData.longitudeY = res[0].longitude
 
     var appkeyid = wx.getStorageSync('miniappkeyid');
     if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
@@ -83,11 +98,7 @@ Page({
         url: '../home/home',
       })
     }
-    var industry = wx.getStorageSync('Industry');
-    var region = wx.getStorageSync('Region');
-    if (!region || !industry) {
-      utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid)
-    }
+    console.log(JSON.stringify(res));
   },
 
   getLocation: function() {
@@ -104,6 +115,8 @@ Page({
         console.log(JSON.stringify(res));
         app.globalData.latitudeX = res.latitude
         app.globalData.longitudeY = res.longitude
+
+        utils.reverseGeocoder(res.latitude, res.longitude,that.GetGeocoderBack)
       },
       complete(res) {
         //隐藏 加载中的提示
