@@ -339,8 +339,9 @@ Page({
   //点击每个导航的点击事件
   handleTap: function(e) {
     let id = e.currentTarget.id;
+    let that = this;
     if (id) {
-      this.setData({
+      that.setData({
         currentId: id
       })
     }

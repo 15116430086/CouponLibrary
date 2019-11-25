@@ -20,8 +20,8 @@
         </view>
       </navigator>
       <!-- 店券 -->
-      <view class="ticket-shop">
         <block wx:for="{{ListCoupon_ReleaseQuery}}" wx:key="ReleaseID">
+      <view class="ticket-shop">
           <view class="ticketShop-one" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">
             <view class="tsone-one">￥{{item.SalePrice}}</view>
             <view>券面值:￥{{item.CouponMoney}}</view>
@@ -30,8 +30,8 @@
             <view class="tstwo-one">{{item.CouponName}}</view>
             <view>已领取:{{item.ReceiveNUM}}</view>
           </view>
-        </block>
       </view>
+        </block>
     </view>
   </block>
 </template>

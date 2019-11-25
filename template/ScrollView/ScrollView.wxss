@@ -26,11 +26,15 @@
 }
 
 .swiper-div {
+  width: 160rpx;
     margin-top: 14rpx;
     font-weight: 600;
     color: #333333;
-    font-size: 14px;
+    font-size: 28rpx;
     text-align: center;
+    overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
 }
 
 .item-box {

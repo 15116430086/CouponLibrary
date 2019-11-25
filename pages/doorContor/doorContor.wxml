@@ -16,8 +16,21 @@
     <view class="v-mask"  catchtap="nocoles" >
         <view class="vmask-title">添加店铺</view>
         <view class="v-mid">
+            <image src="/static/images/bianxie1.png" />
             <input type="text" placeholder="请输入店铺名称" value="" bindblur="blurs" placeholder-class="p-class"/>
-            <image src="/static/images/wrt2.png" />
+        </view>
+        <view class="v-mid">
+            <image src="/static/images/shop1.png" />
+            <input type="text" placeholder="请输入店铺地址" value="" bindblur="blurs" placeholder-class="p-class" class="inputOne"/>
+            <view class="blue">开启定位</view>
+        </view>
+        <view class="v-mid">
+            <image src="/static/images/txl1.png" />
+            <input type="text" placeholder="请输入店铺联系人" value="" bindblur="blurs" placeholder-class="p-class"/>
+        </view>
+        <view class="v-mid">
+            <image src="/static/images/phone1.png" />
+            <input type="text" placeholder="请输入联系方式" value="" bindblur="blurs" placeholder-class="p-class"/>
         </view>
         <view class="v-bot" bindtap="shopAdd">确认添加</view>
     </view>

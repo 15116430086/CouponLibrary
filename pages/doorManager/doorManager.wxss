@@ -19,7 +19,7 @@ page {
 }
 
 .v-title {
-    width: auto;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: row;
@@ -27,19 +27,30 @@ page {
     align-items: center;
     margin-bottom: 20rpx;
 }
-
+ 
 .v-txt {
     color: #000000;
     font-size: 36rpx;
     font-weight: 600;
 }
 
-.v-title image {
+.v-title-image {
     width: 26rpx;
     height: 26rpx;
     margin-left: 20rpx;
+    flex-shrink: 0
+}
+.v-txt1{
+  color:#666;
+  font-size: 24rpx;
 }
 
+.v-title-image1{
+  width: 36rpx;
+  height: 32rpx;
+  margin-right: 12rpx;
+  flex-shrink: 0
+}
 .v-mes {
     width: 154rpx;
     height: 50rpx;

@@ -3,9 +3,12 @@
     <view class="v-block">
         <view class="v-title">
             <view class="v-txt">{{datalist[0].ShopName}}</view>
-            <image bindtap="updateshop" src="/static/images/wrt3.png" />
+            <image bindtap="updateshop" src="/static/images/wrt3.png" class="v-title-image"/>
         </view>
-       <image src="/static/images/pen1.png" class="v-mes-image"/>
+      <view class="v-title">
+            <image bindtap="updateshop" src="/static/images/shop2.png" class="v-title-image1"/>
+            <view class="v-txt1">长沙芙蓉区五一大道人瑞潇湘国际大厦26楼2621</view>
+        </view>
     </view>
 </view>
 <view class="v-bot">
