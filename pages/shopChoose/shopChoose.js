@@ -23,7 +23,7 @@ Page({
     regionId: "",
     showMask: false,
     multiArray: [],
-    multiIndex: [17, 0, 2],  
+    multiIndex: [17, 0, 0],  
   },
 
   /**
@@ -31,6 +31,9 @@ Page({
      */
   onLoad: function (options) {
     let that = this;
+    that.setData({
+      RegionName: app.globalData.regionName
+    })
     that.GetRegionIndustry(); 
     page = 1;
     that.GetData();
@@ -116,13 +119,13 @@ Page({
       title: '数据加载中...',
     })
     var data = {};
-    data.pageIndex = page;
-    data.pageSize = 10;
-    data.regionId = that.data.regionId,
-    data.industryCode = that.data.industryCode;
-    data.pGroupName = that.data.GroupName;
-    data.pGid = app.globalData.AppGroupInfo.GroupID;
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GetManagerGroupPage", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pPageIndex  = page;
+    data.pPageSize = 20;
+    data.pRegionName = that.data.RegionName != '' ? that.data.RegionName : app.globalData.regionName;
+    data.pIndustryCode = that.data.industryCode;
+    data.pQueryKey = that.data.GroupName;  
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GetPageCouponGroup", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {
     let that = this;
@@ -320,7 +323,8 @@ Page({
     console.log(data.multiIndex);
     this.setData({
       multiArray: data.multiArray,
-      multiIndex: data.multiIndex
+      multiIndex: data.multiIndex,
+      RegionName: multiArray[2][multiIndex[2]].RegionName
     });
   }
 })

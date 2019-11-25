@@ -1,13 +1,12 @@
 <!-- 搜索框 -->
 <view class="v-top">
   <view class="home-top">
-    <view class="home-span">
-      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
-        <view>{{multiArray[2][multiIndex[2]].RegionName}}</view>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
+      <view class="home-span">
+        <view>{{RegionName}}</view>
         <image src="/static/images/sel.png" />
-      </picker>
-    </view>
-
+      </view>
+    </picker>
 
     <view class="home-span" bindtap="showPopup2">
       <view>{{industryName}}</view>
@@ -17,7 +16,7 @@
     <view class="search-box">
       <view class="search-left">
         <image src="/static/images/serch.png" background-size="cover" style="margin-left:20rpx;margin-right:10rpx" />
-        <input value="" placeholder="请输入商户名称" placeholder-class="ip" bindinput="GroupNameInput" bindtap="onSearch"/>
+        <input value="" placeholder="请输入商户名称" placeholder-class="ip" bindinput="GroupNameInput" bindtap="onSearch" />
       </view>
       <image src="/static/images/err.png" background-size="cover" style="margin-right:15rpx;" bindtap="onClear" v-if="flag==1" />
     </view>
@@ -89,8 +88,8 @@
 </van-popup>
 
 
-<van-popup show="{{showMask}}" bind:close="downMask"  position="bottom" round close-on-click-overlay overlay safe-area-inset-bottom="true" safe-area-inset-top="true">
-    <view class="mask-bot"  wx:if="{{showMask}}">
+<van-popup show="{{showMask}}" bind:close="downMask" position="bottom" round close-on-click-overlay overlay safe-area-inset-bottom="true" safe-area-inset-top="true">
+  <view class="mask-bot" wx:if="{{showMask}}">
     <view class="m-span">
       <view class="m-title">选择商户预览</view>
       <view class="m-right">
@@ -98,7 +97,7 @@
         <view class="m-txt" catchtap="emptytap">清空选择</view>
       </view>
     </view>
-    <view class="m-box" >
+    <view class="m-box">
       <block wx:for="{{huanlist}}" wx:for-index="index">
         <view class="m-block">
           <view class="mb-right">
