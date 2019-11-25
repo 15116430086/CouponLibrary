@@ -10,7 +10,7 @@ Page({
   data: {
     currentId: '1',
     section: [{
-      name: '集团商户',
+      name: '连锁商户',
       typeId: '1'
     }, {
       name: '个体商户',
@@ -24,8 +24,12 @@ Page({
     columns: [],
     industryName: "",
     industryCode: "",
-    enterpriseLicensing: "",
-    flag: false,
+    enterpriseLicensing: "", //营业执照
+    mastergraphimg: "", //形象主图
+    companyLOGimg: "", //公司LOG
+    flag0: false,
+    flag1: false,
+    flag2: false,
     regAddress: "",
     multiArray: [],
     multiIndex: [17, 0, 2]
@@ -81,24 +85,49 @@ Page({
       }
     })
   },
-  onPreviewImageTap: function() {
+  onPreviewImageTap: function(e) {
+    var imgtypeid = e.currentTarget.dataset.type;
     let that = this;
-
-    wx.previewImage({
-      urls: [that.data.enterpriseLicensing],
-    })
+    if (imgtypeid == 0) {
+      wx.previewImage({
+        urls: [that.data.enterpriseLicensing],
+      })
+    }
+    if (imgtypeid == 1) {
+      wx.previewImage({
+        urls: [that.data.mastergraphimg],
+      })
+    }
+    if (imgtypeid == 2) {
+      wx.previewImage({
+        urls: [that.data.companyLOGimg],
+      })
+    }
   },
-  onUpFileImg: function() {
+  onUpFileImg: function(e) {
+    var typeid = e.currentTarget.dataset.type;
     let that = this;
-    utils.UploadImg(1, app.globalData.appkeyid, that.UpFileImgBak)
+    utils.UploadImg(1, app.globalData.appkeyid, that.UpFileImgBak, typeid)
   },
-  UpFileImgBak: function(img) {
+  UpFileImgBak: function(img, type) {
     let that = this;
     if (img.length > 0) {
-      that.setData({
-        enterpriseLicensing: img[0],
-        flag: true
-      })
+      if (type == 0) {
+        that.setData({
+          enterpriseLicensing: img[0], //营业执照
+          flag0: true,
+        })
+      } else if (type == 1) {
+        that.setData({
+          mastergraphimg: img[0], //形象主图
+          flag1: true,
+        })
+      } else if (type == 2) {
+        that.setData({
+          companyLOGimg: img[0], //公司LOG
+          flag2: true,
+        })
+      }
       wx.showToast({
         title: "上传成功!",
         icon: "none",
@@ -146,42 +175,74 @@ Page({
   onFormSubmit: function(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     let that = this;
-    var typename = that.data.currentId == "1" ? "【集团商户】" : "【个体商户】"
+    var typename = that.data.currentId == "1" ? "【连锁商户】" : "【个体商户】"
     var data = {};
     data.GroupType = that.data.currentId == "1" ? 0 : 1
     data.IndustryCode = that.data.industryCode
     if (data.IndustryCode == '') {
       wx.showToast({
-        title: "请选择据属行业！",
+        title: "请选择所属行业！",
         icon: "none",
         duration: 1500
       })
-
       return;
     }
     data.GroupName = e.detail.value.GroupName
     if (data.GroupName == '') {
       wx.showToast({
-        title: "请输公司全称！",
+        title: "请输入公司全称！",
         icon: "none",
         duration: 1500
       })
-
+      return;
+    }
+    data.AccountName = e.detail.value.BankUserName
+    if (data.AccountName == '') {
+      wx.showToast({
+        title: "请输入银行用户名！",
+        icon: "none",
+        duration: 1500
+      })
+      return;
+    }
+    data.BankCardNumber = e.detail.value.CorporateBankAccount
+    if (data.BankCardNumber == '') {
+      wx.showToast({
+        title: "请输入对公银行账号！",
+        icon: "none",
+        duration: 1500
+      })
+      return;
+    }
+    data.OpeningBank = e.detail.value.OpeningBank
+    if (data.OpeningBank == '') {
+      wx.showToast({
+        title: "请输入开户行！",
+        icon: "none",
+        duration: 1500
+      })
       return;
     }
     data.EnterpriseLicensing = this.data.enterpriseLicensing
-    data.ImageOne = this.data.enterpriseLicensing;
-    data.ImageTwo = this.data.enterpriseLicensing;
-    data.LogoImage = this.data.enterpriseLicensing;
+    data.ImageOne = this.data.mastergraphimg;
+    data.LogoImage = this.data.companyLOGimg;
     if (data.EnterpriseLicensing == '') {
       wx.showToast({
-        title: "请上转营业执照！",
+        title: "请上传营业执照！",
         icon: "none",
         duration: 1500
       })
-
       return;
     }
+    if (data.ImageOne == '') {
+      wx.showToast({
+        title: "请上传形象主图！",
+        icon: "none",
+        duration: 1500
+      })
+      return;
+    }
+
 
     data.RegisteredAddress = e.detail.value.RegAddress
     if (data.RegisteredAddress == '') {
@@ -190,7 +251,6 @@ Page({
         icon: "none",
         duration: 1500
       })
-
       return;
     }
 
@@ -201,7 +261,6 @@ Page({
         icon: "none",
         duration: 1500
       })
-
       return;
     }
     data.Contacts = e.detail.value.Contacts
@@ -211,7 +270,6 @@ Page({
         icon: "none",
         duration: 1500
       })
-
       return;
     }
     data.Telephone = e.detail.value.Telephone
@@ -221,7 +279,6 @@ Page({
         icon: "none",
         duration: 1500
       })
-
       return;
     }
 
@@ -295,7 +352,7 @@ Page({
               wx.reLaunch({
                 url: '../login/login',
               })
-            } 
+            }
           }
         })
 

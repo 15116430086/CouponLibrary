@@ -27,48 +27,99 @@
 <form bindsubmit="onFormSubmit" bindreset="formReset">
   <view class="ticket-box">
     <view class="ticket-block">
-      <view class="ticket-name">所属行业</view>
+      <view class="ticket-name">所属行业<text style="color:red">*</text></view>
       <input type="text" name="IndustryCode" bindtap="showPopup" disabled="true" value="{{industryName}}" placeholder="选择所属行业" placeholder-class="ip" />
     </view>
     <view class="ticket-block">
-      <view class="ticket-name">公司全称</view>
+      <view class="ticket-name">公司全称<text style="color:red">*</text></view>
       <input type="text" name="GroupName" value="" placeholder="营业执照上公司名称" placeholder-class="ip" />
     </view>
+
+<view class="ticket-block">
+      <view class="ticket-name">银行用户名<text style="color:red">*</text></view>
+      <input type="text" name="BankUserName" value="" placeholder="请输入银行用户名" placeholder-class="ip" />
+    </view>
+
+<view class="ticket-block">
+      <view class="ticket-name">对公银行账号<text style="color:red">*</text></view>
+      <input type="text" name="CorporateBankAccount" value="" placeholder="请输入对公银行账号" placeholder-class="ip" />
+    </view>
+
+<view class="ticket-block">
+      <view class="ticket-name">开户行<text style="color:red">*</text></view>
+      <input type="text" name="OpeningBank" value="" placeholder="请输入开户行" placeholder-class="ip" />
+    </view>
+
+
     <view class="ticket-block">
-      <view class="ticket-name">营业执照</view>
-      <view class="t-bot" bindtap="onUpFileImg" wx:if="{{!flag}}">
+      <view class="ticket-name">营业执照<text style="color:red">*</text></view>
+      <view class="t-bot"  data-type="0" bindtap="onUpFileImg" wx:if="{{!flag0}}">
         <view class="ip">点击上传或拍照</view>
         <image src="/static/images/zxj.png" />
       </view>
-      <view class="t-bot" wx:if="{{flag}}">
+      <view class="t-bot" wx:if="{{flag0}}">
         <view class="t-down">已上传
-          <text bindtap="onUpFileImg">点击重新上传</text>
+          <text data-type="0" bindtap="onUpFileImg">点击重新上传</text>
         </view>
-        <view class="seeMes" bindtap="onPreviewImageTap">查看预览</view>
+        <view class="seeMes" data-type="0" bindtap="onPreviewImageTap">查看预览</view>
       </view>
     </view>
+
+    <view class="ticket-block">
+      <view class="ticket-name">形象主图<text style="color:red">*</text></view>
+      <view class="t-bot" data-type="1" bindtap="onUpFileImg" wx:if="{{!flag1}}">
+        <view class="ip">点击上传或拍照</view>
+        <image src="/static/images/zxj.png" />
+      </view>
+      <view class="t-bot" wx:if="{{flag1}}">
+        <view class="t-down">已上传
+          <text data-type="1" bindtap="onUpFileImg">点击重新上传</text>
+        </view>
+        <view class="seeMes" data-type="1" bindtap="onPreviewImageTap">查看预览</view>
+      </view>
+    </view>
+
+    <view class="ticket-block">
+      <view class="ticket-name">公司LOG</view>
+      <view class="t-bot" data-type="2" bindtap="onUpFileImg" wx:if="{{!flag2}}">
+        <view class="ip">点击上传或拍照</view>
+        <image src="/static/images/zxj.png" />
+      </view>
+      <view class="t-bot" wx:if="{{flag2}}">
+        <view class="t-down">已上传
+          <text data-type="2" bindtap="onUpFileImg">点击重新上传</text>
+        </view>
+        <view class="seeMes" data-type="2" bindtap="onPreviewImageTap">查看预览</view>
+      </view>
+    </view>
+
+
+
+
+    <view class="ticket-block">
+      <view class="ticket-name">注册地址<text style="color:red">*</text></view>
+      <input name="RegAddress" type="text" value="{{regAddress}}" bindtap="onRegAddressTap" disabled="true" placeholder="选取注册地址" placeholder-class="ip" />
+    </view>
+    
     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
       <view class="ticket-block">
-        <view class="ticket-name">选择地区</view>
+        <view class="ticket-name">选择地区<text style="color:red">*</text></view>
         <view class="picker">
          <view>已选：</view><view>{{multiArray[0][multiIndex[0]].RegionName}}{{multiArray[1][multiIndex[1]].RegionName}}{{multiArray[2][multiIndex[2]].RegionName}}</view>
         </view>
       </view>
     </picker>
+    
     <view class="ticket-block">
-      <view class="ticket-name">注册地址</view>
-      <input name="RegAddress" type="text" value="{{regAddress}}" bindtap="onRegAddressTap" disabled="true" placeholder="选取注册地址" placeholder-class="ip" />
-    </view>
-    <view class="ticket-block">
-      <view class="ticket-name">法人</view>
+      <view class="ticket-name">法人<text style="color:red">*</text></view>
       <input name="LegalPerson" type="text" value="" placeholder="法人姓名" placeholder-class="ip" />
     </view>
     <view class="ticket-block">
-      <view class="ticket-name">联系人</view>
+      <view class="ticket-name">联系人<text style="color:red">*</text></view>
       <input name="Contacts" type="text" value="" placeholder="请填写联系人" placeholder-class="ip" />
     </view>
     <view class="ticket-block" style="border:none">
-      <view class="ticket-name">手机号码</view>
+      <view class="ticket-name">手机号码<text style="color:red">*</text></view>
       <input name="Telephone" value="" class="textarea" type="number" placeholder="手机号码将成为登录凭证" placeholder-class="ip" maxlength="{{maxlength}}" auto-height="{{auto-height}}" show-confirm-bar="{{show-confirm-bar}}"></input>
     </view>
   </view>
