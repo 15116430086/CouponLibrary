@@ -19,22 +19,7 @@
             <input type="text" placeholder="请输入店铺名称" value="" bindblur="blurs" placeholder-class="p-class"/>
             <image src="/static/images/wrt2.png" />
         </view>
-        <view class="v-mid">
-            <input type="text" placeholder="请输入联系人" value="" bindblur="blurs" placeholder-class="p-class"/>
-            <image src="/static/images/wrt2.png" />
-        </view>
-         <view class="v-mid">
-            <input type="text" placeholder="请输入联系电话" value="" bindblur="blurs" placeholder-class="p-class"/>
-            <image src="/static/images/wrt2.png" />
-        </view>
-        <view class="v-mid">
-            <input type="text" placeholder="请输入店铺地址" value="" bindblur="blurs" placeholder-class="p-class"/>
-            <image src="/static/images/wrt2.png" />
-        </view>
-         <view class="v-mid">
-            <input type="text" placeholder="请设置店铺坐标" value="" bindblur="blurs" placeholder-class="p-class"/>
-            <image src="/static/images/wrt2.png" />
-        </view>
+        
         <view class="v-bot" bindtap="shopAdd">确认添加</view>
     </view>
 </view>
