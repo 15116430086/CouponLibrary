@@ -92,7 +92,7 @@ Page({
     } = e.currentTarget.dataset;
     var mainImage = that.data.mainImage
     if (mainImage[index].state == 0) {
-      utils.UploadImg(1, app.globalData.appkeyid, that.UpFileImgBak, index)
+      utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, index)
     } else {
       wx.previewImage({
         urls: [mainImage[index].url]
