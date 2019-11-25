@@ -108,8 +108,7 @@ Page({
     console.log(json);
     var json = json.data.Data;
     if (json.flag) {
-      var shoplist = [{
-        text: "全部店铺",
+      var shoplist = [{       
         ShopName: "全部店铺",
         ShopID: -1
       }];
