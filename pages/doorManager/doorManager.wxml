@@ -7,7 +7,7 @@
         </view>
       <view class="v-title">
             <image bindtap="updateshop" src="/static/images/shop2.png" class="v-title-image1"/>
-            <view class="v-txt1">长沙芙蓉区五一大道人瑞潇湘国际大厦26楼2621</view>
+            <view class="v-txt1">{{datalist[0].ShopAddress}}</view>
         </view>
     </view>
 </view>
