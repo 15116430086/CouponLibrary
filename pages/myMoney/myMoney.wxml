@@ -42,7 +42,7 @@
 
 </view>
 
-<!-- hidden="{{Popup}}" -->
+<!-- hidden="{{Popup}}" 这个加判断---->
 <view class="mask"  bindtap="coles">
     <view class="vm-mask"  catchtap="nocoles" >
         <view class="vmask-title">添加个人结算账号</view>
@@ -51,6 +51,10 @@
         <view class="vm-mid">
             <image src="/static/images/hh1.png" />
             <input type="text" placeholder="请输入开户银行" value="" bindblur="blurs" placeholder-class="pm-class" />
+        </view>
+         <view class="vm-mid">
+            <image src="/static/images/xmxm.png" />
+            <input type="text" placeholder="请输入开户姓名" value="" bindblur="blurs" placeholder-class="pm-class"/>
         </view>
         <view class="vm-mid">
             <image src="/static/images/card1.png" />

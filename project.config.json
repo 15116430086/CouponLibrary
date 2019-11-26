@@ -88,12 +88,6 @@
 					"pathName": "pages/sendTicketConfig/sendTicketConfig",
 					"query": "",
 					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/myMoney/myMoney",
-					"pathName": "pages/myMoney/myMoney",
-					"scene": null
 				}
 			]
 		}

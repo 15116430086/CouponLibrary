@@ -180,7 +180,7 @@ page {
 
 .vm-mask {
     width: calc(100% - 80rpx);
-    height: 712rpx;
+    height: 822rpx;
     background-color: #ffffff;
     border-radius: 20rpx;
     display: flex;
