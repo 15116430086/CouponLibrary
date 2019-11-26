@@ -6,11 +6,11 @@
     <view class="homeTop-mid">
       <view class="htm-div">
         <image src="/static/images/tclass.png" />
-        <view>券类型 : {{couponNUM}}</view>
+        <view>领券类型 : {{couponNUM}}</view>
       </view>
       <view class="htm-div">
         <image src="/static/images/tnum.png" />
-        <view>券数量 : {{receiveNUM}}</view>
+        <view>领券总数 : {{receiveNUM}}</view>
       </view>
     </view>
     <view class="homeTop-mid">
@@ -22,11 +22,14 @@
     <block wx:for="{{receiveList}}" wx:index="index" wx:key="ReceiveID">
       <view class="home-card">
         <view class="home-one one">
-          <view style="font-size:32rpx;font-weight:600" class="home-oneB">{{item.CouponName}}</view>
+          <view class="home-sec">
+            <view style="font-size:32rpx;font-weight:600" class="home-oneB">{{item.CouponName}}</view>
+            <view class="home-oc">【{{item.GroupID==item.SendGroupID?'自营券':'商家券'}}】</view>        
+          </view>
           <view style="color:#E85819;" data-ReleaseID='{{item.ReleaseID}}' data-CouponID='{{item.CouponID}}' bindtap="onBindReceiveTap">继续领券</view>
         </view>
         <view class="home-one two">
-          <view style="color:#000000;font-weight:600">领券数 : {{item.ReceiveNUM}}</view>
+          <view style="color:#000000;font-weight:600">领券数量 : {{item.ReceiveNUM}}</view>
         </view>
 
         <view class="home-one three" wx:if="{{item.UnitMoney>0 || item.ReceiveMoney>0 }}">

@@ -88,6 +88,14 @@
   justify-content: space-between;
 }
 
+.home-sec{
+ width: calc(100% - 150rpx);
+ height: 92rpx;
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+}
+
 .home-oneB {
   width: calc(100% - 120rpx);
   height: 92rpx;
@@ -103,6 +111,19 @@
   height: 92rpx;
   line-height: 92rpx;
 }
+.home-oc{
+  width: 120rpx;
+  height: 92rpx;
+  font-weight: 500;
+   white-space: nowrap;
+   text-align: left;
+   line-height: 92rpx;
+   color:#e85819;
+   position: relative;
+   left: -20rpx;
+}
+
+
 
 .two {
   margin-bottom: 32rpx;

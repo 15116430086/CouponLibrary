@@ -220,8 +220,8 @@ function GetRegionIndustryBack(json, pCallBack) {
     mArray.push(json.dataRegion[17].LevelCoupon_Region)
     mArray.push(json.dataRegion[17].LevelCoupon_Region[0].LevelCoupon_Region)
     var industrylist = [{
-      text: "全行业",
-      industryName: "全行业",
+      text: "选择行业",
+      industryName: "选择行业",
       industryCode: ""
     }];
     industrylist = industrylist.concat(json.dataIndustry)
