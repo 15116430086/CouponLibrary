@@ -37,10 +37,10 @@
 </view>
 <!-- 行业选择 -->
 <van-popup show="{{show2}}" bind:close="onClose" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
-  <van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+  <van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" confirm-button-text="确认"/>
 </van-popup>
 
 <!-- 券类型 -->
 <van-popup show="{{tshow}}" bind:close="ontClose" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
-  <van-picker show-toolbar columns="{{coupontype}}" bind:cancel="ontCancel" bind:confirm="ontConfirm" />
+  <van-picker show-toolbar columns="{{coupontype}}" bind:cancel="ontCancel" bind:confirm="ontConfirm" confirm-button-text="确认"/>
 </van-popup>
