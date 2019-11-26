@@ -18,9 +18,9 @@ Page({
     ]
   },
   onWxScanCode: function () {
-    // wx.navigateTo({
-    //   url: '../scanCheck/scanCheck?CouponCode=CIF1911121931000002'
-    // }); 
+    wx.navigateTo({
+      url: '../scanCheck/scanCheck?CouponCode=100701'
+    }); 
     wx.scanCode({
       success(res) {
         console.log(res)

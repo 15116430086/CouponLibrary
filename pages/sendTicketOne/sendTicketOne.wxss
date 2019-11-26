@@ -163,3 +163,12 @@ page {
   color: #fff;
   margin: 20rpx auto;
 }
+
+
+.dynblock-mes{
+  margin-top: 10rpx;
+}
+.dynblock-mes view {
+    margin-bottom: 14rpx;
+    white-space: nowrap;
+}
