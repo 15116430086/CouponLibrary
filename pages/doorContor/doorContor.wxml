@@ -21,16 +21,16 @@
         </view>
         <view class="v-mid">
             <image src="/static/images/shop1.png" />
-            <input type="text" placeholder="请输入店铺地址" value="" bindblur="blurs" placeholder-class="p-class" class="inputOne"/>
-            <view class="blue">开启定位</view>
+            <input type="text" placeholder="请输入店铺地址" value="{{address}}"  placeholder-class="p-class" class="inputOne"/>
+            <view class="blue" bindtap="addressblurs">开启定位</view>
         </view>
         <view class="v-mid">
             <image src="/static/images/txl1.png" />
-            <input type="text" placeholder="请输入店铺联系人" value="" bindblur="blurs" placeholder-class="p-class"/>
+            <input type="text" placeholder="请输入店铺联系人" value="" bindblur="Contactsblurs" placeholder-class="p-class"/>
         </view>
         <view class="v-mid">
             <image src="/static/images/phone1.png" />
-            <input type="text" placeholder="请输入联系方式" value="" bindblur="blurs" placeholder-class="p-class"/>
+            <input type="text" placeholder="请输入联系电话" value="" bindblur="Telephoneblurs" placeholder-class="p-class"/>
         </view>
         
         <view class="v-bot" bindtap="shopAdd">确认添加</view>

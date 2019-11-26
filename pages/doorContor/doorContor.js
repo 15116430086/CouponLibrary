@@ -11,8 +11,12 @@ Page({
     repeat: true,
     Popup: true,
     Repeat: true,
-    shopname:""
-
+    shopname:"",
+    address:"",
+    Contacts:"",
+    Telephone:"",
+    latitudeX:0,
+    longitudeY:0
   },
 
   /**
@@ -38,10 +42,47 @@ Page({
       Popup: false
     });
   },
-  blurs: function(event) {
+  blurs: function(event) {//店铺名称
       this.setData({
         shopname: event.detail.value
       });
+  },
+  addressblurs: function (event){//店铺地址
+   var chat=this;
+    wx.chooseLocation({
+      latitude: app.globalData.latitudeX,
+      longitude: app.globalData.longitudeY,
+      success(res) {
+        console.log(JSON.stringify(res));
+        if (res.address) {
+          chat.setData({
+            address: res.address
+          })
+
+          utils.getGeocoder(res.address, app.globalData.regionName, chat.getGeocoderBack)
+        }
+      }
+    })
+  },
+  getGeocoderBack:function(res){
+    var chat=this;
+    chat.setData({
+      latitudeX: res.latitude,
+      longitudeY:res.longitude
+    });
+
+  },
+
+  Contactsblurs: function (event) {//店铺联系人
+
+    this.setData({
+      Contacts: event.detail.value
+    });
+  },
+  Telephoneblurs: function (event) {//联系方式
+    this.setData({
+      Telephone: event.detail.value
+    });
   },
   coles: function () { 
     this.setData({
@@ -64,6 +105,30 @@ Page({
       });
       return;
     }
+    if (this.data.address == "") {
+      wx.showToast({
+        title: "店铺地区不能为空",
+        icon: "none"
+      });
+      return;
+    }
+    if (this.data.Contacts == "") {
+      wx.showToast({
+        title: "联系人不能为空",
+        icon: "none"
+      });
+      return;
+    }
+    if (this.data.Telephone == "") {
+      wx.showToast({
+        title: "联系方式不能为空",
+        icon: "none"
+      });
+      return;
+    }
+
+
+
     if (this.data.Repeat) {
       this.setData({ repeat: false });
       wx.showLoading({
@@ -73,7 +138,12 @@ Page({
      
       var datas = {
         pGroupID: app.globalData.AppGroupInfo.GroupID,
-        ShopName: this.data.shopname
+        ShopName: this.data.shopname,
+        address: this.data.address,
+        Contacts: this.data.Contacts,
+        Telephone: this.data.Telephone,
+        latitudeX: this.data.latitudeX,
+        longitudeY: this.data.longitudeY
       };
       utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/Addshop", "POST", datas, app.globalData.appkeyid, this.Addshop);
     } else {
