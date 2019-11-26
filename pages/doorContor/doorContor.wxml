@@ -30,7 +30,7 @@
         </view>
         <view class="v-mid">
             <image src="/static/images/phone1.png" />
-            <input type="text" placeholder="请输入联系方式" value="" bindblur="Telephoneblurs" placeholder-class="p-class"/>
+            <input type="text" placeholder="请输入联系电话" value="" bindblur="Telephoneblurs" placeholder-class="p-class"/>
         </view>
         
         <view class="v-bot" bindtap="shopAdd">确认添加</view>

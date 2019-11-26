@@ -79,7 +79,7 @@ Page({
       Contacts: event.detail.value
     });
   },
-  Telephoneblurs: function () {//联系方式
+  Telephoneblurs: function (event) {//联系方式
     this.setData({
       Telephone: event.detail.value
     });
