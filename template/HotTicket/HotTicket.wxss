@@ -28,6 +28,7 @@
   height: 168rpx;
   margin-left: 40rpx;
   flex-shrink: 0;
+  border-radius: 10rpx;
 }
 
 .ticket-mesH {

@@ -18,10 +18,10 @@ page {
 
 .home-box {
     width: 100%;
-    height: 100%;
+    height: auto;
     background-color: #efefef;
     font-family: PingFang SC;
-    margin-bottom: 110rpx;
+    padding-bottom: 110rpx;
 }
 
 .home-top {
@@ -156,18 +156,6 @@ page {
     height: auto;
 }
 
-.choose-bot {
-    width: 100%;
-    height: 98rpx;
-    background-color: #fff;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-}
 
 .cb-box,
 .cb-box1 {
@@ -195,7 +183,7 @@ page {
     /* margin-right: 78px; */
 }
 
-.cbot {}
+
 
 .choose-bot {
     width: 100%;

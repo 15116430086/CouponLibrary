@@ -36,6 +36,3 @@
     color: #999999;
 }
 
-.cbot {
-    margin-bottom: 110rpx !important;
-}
