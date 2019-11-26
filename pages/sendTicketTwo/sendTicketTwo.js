@@ -306,7 +306,7 @@ Page({
     //   });
     //   return
     // }
-    if (pCoupon_Info.ReceiveUpperLimit == '') {
+    if (pCoupon_Info.ReceiveUpperLimit == '' || pCoupon_Info.ReceiveUpperLimit==0) {
       wx.showToast({
         title: "请输入领取上限!",
         icon: "none",
