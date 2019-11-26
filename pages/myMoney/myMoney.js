@@ -13,7 +13,11 @@ Page({
     sumBalanceMoney:0,
     sumDrawbackMoney:0,
     sumCommissionMoney:0,
-    sumCollectionMoney:0
+    sumCollectionMoney:0,
+    dAccountName: "",
+    dBankCardNumber: "",
+    dOpeningBank: "",
+    showView:false,
   },
 
   GetData: function () {
@@ -41,6 +45,9 @@ Page({
           sumCollectionMoney: json.CapitalTypeSun.sumCollectionMoney,   //平台代收资金
           sumCommissionMoney:json.CapitalTypeSun.sumCommissionMoney,    //佣金收入
           sumDrawbackMoney:json.CapitalTypeSun.sumDrawbackMoney,        //佣金回退
+          dAccountName: json.dataGroup[0].AccountName,
+          dBankCardNumber: json.dataGroup[0].BankCardNumber,
+          dOpeningBank: json.dataGroup[0].OpeningBank,
           Capitaldetailslist: json.data,
           lastpage: json.pageCount //你的总页数   
         });
@@ -64,7 +71,7 @@ Page({
 
   startSettlement: function (event){
     let that = this;
-    if (that.data.sumBalanceMoney<=0){
+    if (that.data.sumBalanceMoney>0){
       wx.showToast({
         title: '没有要结算的资金',
         icon: "none",
@@ -72,22 +79,47 @@ Page({
       })
       return;
     }
-    wx.showModal({
-      title: '提示',
-      content: '确定结算资金￥' + that.data.sumBalanceMoney,
-      success: function (res) {
-        if (res.confirm) {
-          var data = {}
-          data.pGroupID = app.globalData.AppGroupInfo.GroupID;
-          utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponCapitalView/AddCapitalWithdrawal", "POST", data, app.globalData.appkeyid, that.startSettlementBack),
-            console.log('弹框后点确认')
-        } else {
-          console.log('弹框后点取消')
-        }
-      }
-    })
+    else
+    {
+      that.setData({
+        showView:true
+      })
+    }
   },
 
+  isAdd:function(e){
+    let that = this;
+    if (e.detail.value.dOpeningBank==""){
+      wx.showToast({
+        title: "请输入开户银行！",
+        icon: "none",
+        duration: 1500
+      })
+      return;
+    }
+    if (e.detail.value.dAccountName == ""){
+      wx.showToast({
+        title: "请输入开户姓名！",
+        icon: "none",
+        duration: 1500
+      })
+      return;
+    }
+    if (e.detail.value.dBankCardNumber == ""){
+      wx.showToast({
+        title: "请输入银行卡号！",
+        icon: "none",
+        duration: 1500
+      })
+      return;
+    }
+    var data = {}
+      data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+      data.pAccountName = e.detail.value.dAccountName,
+      data.pBankCardNumber = e.detail.value.dBankCardNumber,
+      data.pOpeningBank = e.detail.value.dOpeningBank
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponCapitalView/AddCapitalWithdrawal", "POST", data, app.globalData.appkeyid, that.startSettlementBack)
+  },
   startSettlementBack: function (json) {
     let that = this;
     var json = json.data.Data;
@@ -108,10 +140,16 @@ Page({
         duration: 2000
       })
     }
-    that.GetData();
+    //that.GetData();
   },
   
-
+  coles(e) {
+    let that = this;
+    let showView = that.data.showView;
+    that.setData({
+      showView: false
+    })
+  },
 
 
 
@@ -130,7 +168,7 @@ Page({
   onReady: function () {
 
   },
-
+  
   /**
    * 生命周期函数--监听页面显示
    */
