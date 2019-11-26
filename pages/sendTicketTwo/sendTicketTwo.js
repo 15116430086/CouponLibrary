@@ -132,19 +132,87 @@ Page({
       ReceiveRule: 0, //领取规则
       WriteOffType: 0, //核销方式
       SalePrice: 0, //领购售价
+      CouponID:""
     },
     imageOne: "",
     imageTwo: "",
     imageTre: "",
     idm: "",
-    df_value:2
+    df_value:2,
+    types:0//默认类型为添加
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-   
+    console.log(options.pCoupon_Info);
+    if (options.pCoupon_Info){//说明是修改
+      var Info = JSON.parse(options.pCoupon_Info) ;
+      var Coupon_Info=this.data.pCoupon_Info;
+      Coupon_Info.CouponName = Info.CouponName;
+      Coupon_Info.CouponType = Info.CouponType;
+      Coupon_Info.ImageOne = Info.ImageOne;
+      Coupon_Info.CouponMoney = Info.CouponMoney;
+      Coupon_Info.ExpirationDate = Info.ExpirationDate;
+      Coupon_Info.ExpiredType = Info.ExpiredType;
+      Coupon_Info.CouponDetails = Info.CouponDetails;
+      Coupon_Info.ReceiveUpperLimit = Info.ReceiveUpperLimit;
+      Coupon_Info.UsageRule = Info.UsageRule;
+      Coupon_Info.ImageOne = Info.ImageOne;
+      Coupon_Info.ReceiveRule = Info.ReceiveRule;
+      Coupon_Info.WriteOffType = Info.WriteOffType;
+      Coupon_Info.SalePrice = Info.SalePrice;
+      Coupon_Info.CouponID = Info.CouponID;
+      if (Info.ReceiveRule == 0) {
+        this.setData({
+          getRule: "仅首次领取",
+          idx: "001"
+        });
+      } else {
+        this.setData({
+          getRule: "可重复领取",
+          idx: "002"
+        });
+      }
+      if (Info.WriteOffType == 0) {
+        this.setData({
+          hexiao: "线上受理",
+          idb: "001"
+        })
+      } else {
+        this.setData({
+          hexiao: "线下消费",
+          idb: "002"
+        })
+      }
+
+      if (Info.ExpiredType == 0) {
+        this.setData({
+          //show: true,
+          idd: "001"
+        });
+      } else {
+        this.setData({
+          //show1: true,
+          idd: "002"
+        });
+      }
+      
+        this.setData({
+          types:1,
+          pCoupon_Info: Coupon_Info,
+          date: Info.ExpirationDate,
+          imageOne: Info.ImageOne,
+          imageTwo: Info.UsageRule,
+          imageTre: Info.CouponDetails,
+          shareshow1:true,
+          shareshow2:true,
+          shareshow:true
+        });
+    }
+    console.log(this.data.pCoupon_Info);
   },
 
   bindPickerChange_hx: function(e) {
@@ -558,7 +626,7 @@ Page({
    */
   onShow: function() {
     let that = this;
-    console.log(that.data.pArrProductID)
+    
     // that.data.pCoupon_Info.pArrProductID = that.data.pArrProductID;
     // console.log(that.data.pCoupon_Info)
   },

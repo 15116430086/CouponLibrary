@@ -74,7 +74,14 @@ Page({
       url: '../startTicket/startTicket?pCoupon_Info=' + data + "&CouponID=" + CouponID,
     })
   },
-
+  edit:function(event){
+    let index = event.currentTarget.dataset.indexs;
+    let datalist = this.data.datalist[index];
+    let data = JSON.stringify(datalist);
+    wx.navigateTo({
+      url: '../sendTicketTwo/sendTicketTwo?pCoupon_Info=' + data
+    })
+  },
   GetCouponReleaseList:function(res){
     wx.hideLoading({});
     var chat=this;

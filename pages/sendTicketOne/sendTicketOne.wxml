@@ -17,7 +17,7 @@
           <view>{{item.CouponName}}</view>
 
 
-          <image wx:if="{{!item.ReleaseIDs}}" src="/static/images/wrt.png" />
+          <image wx:if="{{!item.ReleaseIDs}}" data-indexs="{{index}}" bindtap="edit" src="/static/images/wrt.png" />
         </view>
         <view class="tb-mes" style="color:#000;margin-bottom:30rpx;">已发券：{{item.ReleaseNUM}}</view>
         <view class="tb-mes">
