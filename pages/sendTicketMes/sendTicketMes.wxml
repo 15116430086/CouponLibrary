@@ -23,8 +23,8 @@
     <view class="stm-block">
       <image src="{{item.UserAvatar}}" />
       <view class="stmb-left">
-        <view class="stm-top" wx:if="{{item.ShopID==0}}">{{item.CouponName}}【平台自领】</view>
-        <view wx:else>{{item.CouponName}}【{{item.ShopName}}赠送】</view>
+        <view class="stm-top" wx:if="{{item.ShopID==0}}">{{item.CouponName}}【会员平台自领】</view>
+        <view class="stm-top" wx:else>{{item.CouponName}}【员工：{{item.StaffName}}赠】</view>
         <view class="stm-bot">
           <view>会员：{{item.UserName}}</view>         
           <view>{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
@@ -41,7 +41,7 @@
       overlay
       safe-area-inset-bottom
     >
-      <van-picker show-toolbar columns="{{shoplist}}" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
+      <van-picker show-toolbar columns="{{shoplist}}" valueKey="ShopName" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
     </van-popup>
 
     <!-- 券类型 -->

@@ -51,7 +51,7 @@ Page({
       return value;
     },
     show: false,
-    ReleaseID:""
+    ReleaseID: ""
   },
 
   /**
@@ -169,9 +169,9 @@ Page({
     })
   },
   pay: function(event) {
-    if (this.data.date=="日期"){
+    if (this.data.date == "日期") {
       this.setData({
-          date: "2199-12-31"
+        date: "2199-12-31"
       })
     }
     if (!this.data.Number || this.data.Number <= 0) {
@@ -206,14 +206,21 @@ Page({
         IndustryCodes: [],
         Doyoupay: true, //说明要支付
       });
-    } else { //说明自营商户
-      this.data.GroupIDList.push(app.globalData.AppGroupInfo.GroupID);
+    }
+    if (this.data.sign == 2) { //说明自营商户
+      this.data.GroupIDList = [app.globalData.AppGroupInfo.GroupID];
       this.setData({
         regionID: [],
         Limited: 0,
         IndustryCodes: [],
         Doyoupay: false, //说明不要支付
-
+      });
+    }
+    if (this.data.sign == 3) { //说明指定商户      
+      this.setData({
+        regionID: [],
+        IndustryCodes: [],
+        Doyoupay: true, //说明不要支付
       });
 
     }
@@ -248,11 +255,13 @@ Page({
 
   },
   AgainCouponRelease: function(res) {
-    var chat=this;
+    var chat = this;
     wx.hideLoading();
     var json = res.data.Data;
     if (json.flag) {
-      chat.setData({ ReleaseID: json.ReleaseID});
+      chat.setData({
+        ReleaseID: json.ReleaseID
+      });
       if (json.ispay) { //说明要支付拥金
         var oJsApiParam = JSON.parse(json.paydata);
         wx.requestPayment({
@@ -302,7 +311,7 @@ Page({
   onShow: function() {
     var grouplist = wx.getStorageSync("Groupkey");
     var industryList = wx.getStorageSync("industryKey");
-    var regionList= wx.getStorageSync("regionList");
+    var regionList = wx.getStorageSync("regionList");
     if (grouplist.length > 0) {
       var groupid = [];
       for (var s in grouplist) {
@@ -325,10 +334,10 @@ Page({
       });
     }
 
-    if (regionList.length>0){
+    if (regionList.length > 0) {
       this.setData({
         regionID: regionList,
-        regionvalue: "已选" + regionList.length+"个地区"
+        regionvalue: "已选" + regionList.length + "个地区"
       });
     }
 
