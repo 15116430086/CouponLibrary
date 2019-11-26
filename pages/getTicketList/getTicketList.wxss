@@ -91,3 +91,9 @@
     width: 100%;
     height: 200rpx;
 }
+
+
+.toolbar-class{
+  color:#49B642 !important;
+  font-size: 32rpx;
+}

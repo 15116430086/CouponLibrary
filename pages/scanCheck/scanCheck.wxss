@@ -1,107 +1,113 @@
 /* pages/scanCheck/scanCheck.wxss */
 
 page {
-    background-color: #EDEDED;
+  background-color: #ededed;
 }
 
 .swiper {
-    width: 100%;
-    height: 440rpx;
+  width: 100%;
+  height: 440rpx;
 }
 
 .swiper image {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 .sc-top {
-    width: 100%;
-    height: 156rpx;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  height: 156rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .sct-left {
-    margin-left: 40rpx;
+width: calc(100% - 80rpx);
 }
 
 .sl-one {
-    color: #000000;
-    font-size: 32rpx;
-    font-weight: 600;
-    margin-bottom: 10rpx;
+  color: #000;
+  font-size: 32rpx;
+  font-weight: 600;
+
+  width: 100%;
 }
 
-.sl-one text
-{
-font-size: 24rpx; font-weight: 500; line-height: 34rpx; color: rgba(153, 153, 153, 1);
+.sl-one text {
+  font-size: 24rpx;
+  font-weight: 500;
+  line-height: 34rpx;
+  color: rgba(153, 153, 153, 1);
 }
 
 .sl-two {
-    color: #E85819;
-    font-size: 28rpx;
+  color: #e85819;
+  width: 100%;
+  font-size: 28rpx;
+  margin-top: 30rpx;
 }
 
 .sc-btn {
-    width: 156rpx;
-    height: 60rpx;
-    margin-right: 40rpx;
-    background: rgba(255, 240, 222, 1);
-    border-radius: 15px;
-    color: #E85819;
-    line-height: 60rpx;
-    font-size: 24rpx;
-    text-align: center;
+  width: 156rpx;
+  height: 60rpx;
+  margin-right: 40rpx;
+  background: rgba(255, 240, 222, 1);
+  border-radius: 15px;
+  color: #e85819;
+  line-height: 60rpx;
+  font-size: 24rpx;
+  text-align: center;
+  position: absolute;
+  right: 0px;
+  top: 20rpx;
 }
 
-.ruleBox,
-.imageBox {
-    margin-top: 20rpx;
-    width: 100%;
-    background-color: #ffffff;
-    height: auto;
+.ruleBox, .imageBox {
+  margin-top: 20rpx;
+  width: 100%;
+  background-color: #fff;
+  height: auto;
 }
 
-.ruleBox image,
-.imageBox image {
-    width: 100%;
-    height: 746rpx;
+.ruleBox image, .imageBox image {
+  width: 100%;
+  height: 746rpx;
 }
 
 .seeBtn {
-    width: 100%;
-    height: 88rpx;
-    background-color: #ffffff;
-    color: #E85819;
-    font-size: 28rpx;
-    text-align: center;
-    line-height: 88rpx;
-    border-top: 1px solid #EDEDED;
+  width: 100%;
+  height: 88rpx;
+  background-color: #fff;
+  color: #e85819;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 88rpx;
+  border-top: 1px solid #ededed;
 }
 
 .seeBtn image {
-    width: 18rpx;
-    height: 10rpx;
+  width: 18rpx;
+  height: 10rpx;
 }
 
 .payStoreBox {
-    width: 100%;
-    margin-top: 20rpx;
+  width: 100%;
+  margin-top: 20rpx;
 }
 
 .ps-name {
-    width: 100%;
-    height: 80rpx;
-    line-height: 80rpx;
-    text-indent: 40rpx;
-    color: #333333;
-    font-size: 28rpx;
-    background-color: #ffffff;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-indent: 40rpx;
+  color: #333;
+  font-size: 28rpx;
+  background-color: #fff;
 }
-
 
 /* .ticket-all {
     width: 100%;
@@ -111,94 +117,94 @@ font-size: 24rpx; font-weight: 500; line-height: 34rpx; color: rgba(153, 153, 15
 } */
 
 .ticket-box {
-    width: 100%;
-    height: 220rpx;
-    margin-bottom: 20rpx;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #fff;
-    /* border-bottom: 0.3px solid #EFEFEF; */
+  width: 100%;
+  height: 220rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #fff;
+  /* border-bottom: 0.3px solid #EFEFEF; */
 }
 
 .ticket-img {
-    width: 168rpx;
-    height: 168rpx;
-    margin-left: 40rpx;
+  width: 168rpx;
+  height: 168rpx;
+  margin-left: 40rpx;
 }
 
 .ticket-mes {
-    width: calc(100% - 140px);
-    height: 168rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-left: 30rpx;
-    flex-shrink: 1;
+  width: calc(100% - 140px);
+  height: 168rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 30rpx;
+  flex-shrink: 1;
 }
 
 .ticket-sec {
-    width: 99%;
-    font-size: 24rpx;
-    font-weight: 500;
-    line-height: 34rpx;
-    height: 34rpx;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  width: 99%;
+  font-size: 24rpx;
+  font-weight: 500;
+  line-height: 34rpx;
+  height: 34rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .ticket-secimg {
-    margin-right: 16rpx;
-    width: 18rpx;
-    height: 24rpx;
+  margin-right: 16rpx;
+  width: 18rpx;
+  height: 24rpx;
 }
 
 .ticket-sec span {
-    width: calc(100% - 20rpx);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /*禁止换行显示*/
-    white-space: nowrap;
+  width: calc(100% - 20rpx);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /*禁止换行显示*/
+  white-space: nowrap;
 }
 
 .ticket-mes-p {
-    margin-bottom: 10rpx;
-    font-size: 32rpx;
-    font-weight: 600;
-    line-height: 44rpx;
-    color: rgba(51, 51, 51, 1);
+  margin-bottom: 10rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  line-height: 44rpx;
+  color: rgba(51, 51, 51, 1);
 }
 
 .ticket-mes-ul {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 24rpx;
-    font-weight: 500;
-    line-height: 17px;
-    color: rgba(153, 153, 153, 1);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24rpx;
+  font-weight: 500;
+  line-height: 17px;
+  color: rgba(153, 153, 153, 1);
 }
 
 .tm-li-right {
-    width: auto;
-    color: #016FB4;
-    font-size: 24rpx;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  width: auto;
+  color: #016fb4;
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .tm-li-right image {
-    width: 10rpx;
-    height: 18rpx;
-    display: block;
-    margin-left: 10rpx;
+  width: 10rpx;
+  height: 18rpx;
+  display: block;
+  margin-left: 10rpx;
 }
 
 .tmbox {
-    width: auto;
-    height: auto;
+  width: auto;
+  height: auto;
 }

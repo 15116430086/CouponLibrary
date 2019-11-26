@@ -65,7 +65,7 @@ Page({
         duration: 2000
       })
       setTimeout(function () {
-        wx.redirectTo({
+        wx.reLaunch({
           url: '../home/home',
         })},2000);  
     } else {

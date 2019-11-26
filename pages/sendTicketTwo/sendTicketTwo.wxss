@@ -21,7 +21,7 @@ page {
   /* padding-left: 40rpx; */
 }
 .toolbar-class{
-  color:green !important;
+  color:#49B642 !important;
   font-size: 32rpx;
 }
 .nav-name {
@@ -239,13 +239,13 @@ page {
 }
 
 .active-class{
-  font-size: 32rpx !important;
+  font-size: 32rpx ;
   font-weight: 500;
-  font-family:PingFang SC !important;
+  font-family:PingFang SC;
 }
 .custom-class{
-  font-size: 30rpx !important;
-  font-family:PingFang SC !important;
+  font-size: 30rpx ;
+  font-family:PingFang SC;
 }
 
 .cha4{

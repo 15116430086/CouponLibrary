@@ -38,7 +38,7 @@ function AjaxRequest(pUrl, pType, pData, pAppKeyId, pCallBack) {
     },
     fail(res) {
       wx.showToast({
-        title: res.errMsg //'请求失败',
+        title:'服务器连接失败' //'请求失败',
       })
     }
   })
