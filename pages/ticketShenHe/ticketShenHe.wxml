@@ -1,0 +1,12 @@
+<view class="content">
+  <image src="/static/images/nos.png" />
+  <view class="content-p">
+    <view>该券正在审核</view>
+    <view>请审核通过后重新发券</view>
+
+  </view>
+  <navigator class="content-div one" url="">返回</navigator>
+  <!-- <navigator class="content-div two" url="../chooseTicket/chooseTicket" open-type="reLaunch">
+    继续领券
+  </navigator> -->
+</view>

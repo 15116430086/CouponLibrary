@@ -57,3 +57,33 @@
         <view class="v-bot" bindtap="shopUpdate">确认修改</view>
     </view>
 </view>
+
+
+
+<!-- hidden="{{Popup}}"   这个加判断-->
+<view class="mask"  bindtap="coles">
+    <view class="vm-mask"  catchtap="nocoles" >
+        <view class="vmask-title">添加店铺</view>
+      
+
+        <view class="vm-mid">
+            <image src="/static/images/hh1.png" />
+            <input type="text" placeholder="请输入店铺名称" value="" bindblur="blurs" placeholder-class="pm-class" />
+        </view>
+         <view class="vm-mid">
+            <image src="/static/images/xmxm.png" />
+            <input type="text" placeholder="请输入店铺地址" value="" bindblur="blurs" placeholder-class="pm-class" class="inputOne"/>
+            <view class="blue">开启定位</view>
+        </view>
+        <view class="vm-mid">
+            <image src="/static/images/card1.png" />
+            <input type="number" placeholder="请输入店铺联系人" value="" bindblur="blurs" placeholder-class="pm-class"/>
+        </view>
+       <view class="vm-mid">
+            <image src="/static/images/card1.png" />
+            <input type="number" placeholder="请输入联系方式" value="" bindblur="blurs" placeholder-class="pm-class"/>
+        </view>
+        
+        <view class="vm-bot" bindtap="shopAdd">确认添加</view>
+    </view>
+</view>

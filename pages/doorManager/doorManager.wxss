@@ -131,6 +131,10 @@ page {
     justify-content: center;
 }
 
+
+
+
+
 .v-mask {
     width: calc(100% - 80rpx);
     height: 382rpx;
@@ -176,4 +180,86 @@ page {
 .v-bot {
     color: #E85819;
     font-weight: 600;
+}
+
+
+
+
+
+.vm-mask {
+    width: calc(100% - 80rpx);
+    height: 912rpx;
+    background-color: #ffffff;
+    border-radius: 20rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-around; */
+    font-size: 32rpx;
+    color: #333333;
+}
+
+.vmask-title {
+    font-size: 32rpx;
+    color: #333333;
+    margin-top: 80rpx;
+        margin-bottom: 80rpx;
+
+}
+
+.vm-mid {
+    width: 476rpx;
+    height: 88rpx;
+    background-color: #ffffff;
+    border-bottom: 1px solid #EDEDED;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 40rpx;
+}
+
+.vm-mid input {
+    width: calc(100% - 66rpx);
+    height: 100%;
+    text-indent: 20rpx;
+    text-align: left;
+    margin-left: 5rpx;
+}
+
+.vm-mid image {
+    width: 40rpx;
+    height: 40rpx;
+    display: block;
+}
+
+.pm-class {
+    color: #E0E0E0;
+}
+
+.vm-bot {
+    color: #ffffff;
+    width: 498rpx;
+    height: 98rpx;
+    background-color: #E85819;
+    text-align: center;
+    line-height: 98rpx;
+    font-size: 32rpx;
+    border-radius: 20rpx;
+    margin-top: 30rpx;
+}
+
+.inputOne {
+    width: calc(100% - 222rpx) !important;
+}
+
+.blue {
+    width: 146rpx;
+    height: 44rpx;
+    border-left: 1px solid #ededed;
+    color: #E85819;
+    font-size: 32rpx;
+    text-indent: 40rpx;
+    line-height: 44rpx;
+    white-space: nowrap;
+    margin-left: 10rpx;
 }

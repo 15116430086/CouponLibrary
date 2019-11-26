@@ -32,7 +32,11 @@
         </view>
         <view class="tb-bot">
           <view style="margin-left:50rpx" bindtap="jumpOk" data-index="{{index}}" data-CouponID="{{item.CouponID}}">继续发券</view>
+          
+          <!-- 是哪个状态就用哪个颜色 -->
           <view style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" bindtap="Details">发券明细</view>
+          <!-- <view style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" style="color:#F08002">待审核券</view>
+          <view style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" style="color:#016FB4">支付佣金</view> -->
         </view>
       </view>
     </block>

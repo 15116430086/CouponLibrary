@@ -1,10 +1,10 @@
 <!-- pages/scanSend/scanSend.wxml -->
 <wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="sS-All">
-  <block wx:for="{{receiveList}}"  wx:for-index="index" wx:key="ReceiveID">
+  <block wx:for="{{receiveList}}" wx:for-index="index" wx:key="ReceiveID">
     <view class="sS-box">
       <view class="sS-block">
-        <image src="{{item.ImageOne}}"  />
+        <image src="{{item.ImageOne}}" />
         <view class="sS-mesbox">
           <view class="sS-top">
             <view class="sS-name">{{item.CouponName}}</view>
@@ -30,7 +30,7 @@
     </view>
   </block>
 </view>
-<view class="mask" hidden="{{showQrCode}}" bindtap="onCloseQrCodeTap" >
+<view class="mask" hidden="{{showQrCode}}" bindtap="onCloseQrCodeTap">
   <view class="mask-box" catchtap="onQrCodeTap">
     <view class="mask-t">{{shopData.CouponName}}</view>
     <view class="mask-m">{{shopData.GroupName}}</view>

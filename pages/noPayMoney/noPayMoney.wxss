@@ -1,0 +1,53 @@
+/* pages/ticketShenHe/ticketShenHe.wxss */
+/* pages/paySuccess/paySuccess.wxss */
+
+page {
+    width: 100%;
+    height: 100%;
+    background-color: #ededed;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content image {
+    display: block;
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.content-p {
+    color: #333333;
+    font-size: 32rpx;
+    margin-top: 32rpx;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 132rpx;
+}
+
+.content-div {
+    width: 670rpx;
+    height: 98rpx;
+    border-radius: 20rpx;
+    font-size: 32rpx;
+    line-height: 98rpx;
+    text-align: center;
+    margin-bottom: 40rpx;
+}
+
+.one {
+    background-color: #e85819;
+    color: #ffffff;
+}
+
+.two {
+    background-color: #ffffff;
+    color: #333333;
+    font-weight: 600;
+}
