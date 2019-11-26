@@ -71,7 +71,7 @@ Page({
 
   startSettlement: function (event){
     let that = this;
-    if (that.data.sumBalanceMoney>0){
+    if (that.data.sumBalanceMoney<=0){
       wx.showToast({
         title: '没有要结算的资金',
         icon: "none",
@@ -91,7 +91,7 @@ Page({
     let that = this;
     if (e.detail.value.dOpeningBank==""){
       wx.showToast({
-        title: "请输入开户银行！",
+        title: "请输入开户行！",
         icon: "none",
         duration: 1500
       })
@@ -99,7 +99,7 @@ Page({
     }
     if (e.detail.value.dAccountName == ""){
       wx.showToast({
-        title: "请输入开户姓名！",
+        title: "请输入银行用户名！",
         icon: "none",
         duration: 1500
       })
