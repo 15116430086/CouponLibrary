@@ -94,6 +94,30 @@ white-space:nowrap;
   color: rgba(232, 88, 25, 1);
   border-radius: 30rpx;
   text-align: center;
-  margin-right: 40rpx;
+
   /* margin-bottom: 15rpx; */
+}
+
+
+
+.left-block{
+  width: 160rpx;
+  height: 168rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+    margin-right: 40rpx;
+  /* align-items: flex-end; */
+}
+
+
+
+
+.left-money{
+  width: 160rpx;
+  text-align: right;
+  color:#E85819;
+  font-size: 32rpx;
+
+
 }

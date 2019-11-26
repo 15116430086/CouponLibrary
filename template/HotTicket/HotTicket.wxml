@@ -16,8 +16,18 @@
             </view>
           </view>
         </view>
-        <view wx:if="{{item.SalePrice>0}}" class="hotbtnH" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">立即领取</view>
-        <view wx:else class="hotbtnH" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">免费领取</view>    
+
+        <view class="left-block" wx:if="{{item.SalePrice>0}}">
+          <view class="left-money">￥{{item.SalePrice}}</view>
+          <view class="hotbtnH" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">立即领取</view>
+        </view>
+
+
+        <view wx:else class="left-block">
+          <view class="left-money"></view>
+
+          <view class="hotbtnH" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">免费领取</view>
+        </view>
       </view>
     </view>
   </block>
