@@ -1,146 +1,153 @@
 /* pages/scanSend/scanSend.wxss */
 
 page {
-    background-color: #EDEDED;
+  background-color: #ededed;
 }
 
 .sS-All {
-    width: 100%;
-    /* padding-top: 20rpx; */
-    height: auto;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  /* padding-top: 20rpx; */
+  height: auto;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .sS-box {
-    /* margin: 10px auto; */
-    width: calc(100% - 80rpx);
-    height: 228rpx;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  /* margin: 10px auto; */
+  width: calc(100% - 80rpx);
+  height: 228rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .sS-block {
-    width: calc(100% - 100rpx);
-    height: 168rpx;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  width: calc(100% - 100rpx);
+  height: 168rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .sS-block image {
-    width: 168rpx;
-    display: block;
-    height: 168rpx;
-    border-radius: 10rpx;
+  width: 168rpx;
+  display: block;
+  height: 168rpx;
+  border-radius: 10rpx;
+  flex-shrink: 0;
 }
 
 .sS-mesbox {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-left: 40rpx;
+  width: calc(100% - 200rpx);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-left: 40rpx;
 }
-
+.sS-top{
+  width: 100%;
+}
 .sS-name {
-    color: #000000;
-    font-size: 32rpx;
-    font-weight: 600;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #000;
+  font-size: 32rpx;
+  font-weight: 600;
 }
 
 .sS-mes {
-    color: #333333;
-    font-size: 28rpx;
+  color: #333;
+  font-size: 28rpx;
 }
 
 .sS-mes text {
-    color: #999999;
-    font-size: 22rpx;
+  color: #999;
+  font-size: 22rpx;
 }
 
 .sS-bot {
-    font-size: 24rpx;
-    color: #E85819;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  font-size: 24rpx;
+  color: #e85819;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .ssb-one {
-    color: #999999;
-    margin-right: 10rpx;
+  color: #999;
+  margin-right: 10rpx;
 }
 
 .sS-right {
-    width: auto;
-    height: 168rpx;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    color: #E85819;
-    font-size: 32rpx;
-    font-weight: 600;
-    justify-content: space-between;
-   
+  width: auto;
+  height: 168rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  color: #e85819;
+  font-size: 32rpx;
+  font-weight: 600;
+  justify-content: space-between;
 }
 
 .sS-right image {
-    width: 44rpx;
-    height: 44rpx;
-    display: block;
+  width: 44rpx;
+  height: 44rpx;
+  display: block;
 }
 
 .mask {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .mask-box {
-    width: calc(100% - 216rpx);
-    height: 698rpx;
-    background-color: #FFF;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 20rpx;
+  width: calc(100% - 216rpx);
+  height: 698rpx;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
 }
 
 .mask-t {
-    color: #000;
-    font-size: 32rpx;
-    font-weight: 600;
+  color: #000;
+  font-size: 32rpx;
+  font-weight: 600;
 }
 
 .mask-m {
-    color: #333;
-    font-size: 28rpx;
-    margin-top: 10rpx;
-    margin-bottom: 20rpx;
+  color: #333;
+  font-size: 28rpx;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
 }
 
 .mask-b {
-    color: #E85819;
-    font-size: 32rpx;
+  color: #e85819;
+  font-size: 32rpx;
 }
 
 .mask-box image {
-    width: 354rpx;
-    height: 354rpx;
-    margin-bottom: 20rpx;
+  width: 354rpx;
+  height: 354rpx;
+  margin-bottom: 20rpx;
 }

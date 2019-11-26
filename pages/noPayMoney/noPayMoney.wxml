@@ -1,0 +1,12 @@
+<view class="content">
+  <image src="/static/images/nom.png" />
+  <view class="content-p">
+    <view>该券未支付佣金</view>
+    <view>重新发券将不保存已编辑数据</view>
+
+  </view>
+  <navigator class="content-div one" url="">支付佣金</navigator>
+  <navigator class="content-div two" url="" open-type="reLaunch">
+    重新发券
+  </navigator>
+</view>

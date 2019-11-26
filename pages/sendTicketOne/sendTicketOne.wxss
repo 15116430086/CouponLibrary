@@ -65,16 +65,22 @@ page{
     align-items: center;
     justify-content: space-between;
     color: #000000;
-    font-size: 16px;
+    font-size: 32rpx;
     font-weight: 600;
     width: calc(100% - 200rpx);
     margin-top: 40rpx;
     margin-bottom: 20rpx;
 }
-
+.tb-title view{
+  width: calc(100% - 60rpx);
+  overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+}
 .tb-title image {
     width: 34rpx;
     height: 34rpx;
+    flex-shrink: 0;
 }
 
 .tb-mes {
@@ -83,7 +89,7 @@ page{
     align-items: center;
     justify-content: space-between;
     color: #333333;
-    font-size: 14px;
+    font-size: 28rpx;
     width: calc(100% - 200rpx);
     margin-bottom: 10rpx;
 }
@@ -103,7 +109,7 @@ page{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 28rpx;
 }
 .tb-bot view{
   flex: 1;
@@ -129,5 +135,5 @@ page{
     text-align: center;
     line-height: 98rpx;
     color: #FFF;
-    margin: 10px auto;
+    margin: 20rpx auto;
 }

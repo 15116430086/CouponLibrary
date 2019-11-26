@@ -1,26 +1,27 @@
 /* pages/chooseTicket/chooseTicket.wxss */
 
-@import"/template/ScrollView/ScrollView.wxss";
-@import"/template/HotTicket/HotTicket.wxss";
-@import"/template/ShopMes/ShopMes.wxss";
-@import"/template/BotOne/BotOne.wxss";
+@import "/template/ScrollView/ScrollView.wxss";
+@import "/template/HotTicket/HotTicket.wxss";
+@import "/template/ShopMes/ShopMes.wxss";
+@import "/template/BotOne/BotOne.wxss";
 ::-webkit-scrollbar {
     width: 0px;
     height: 0;
     color: transparent;
 }
-page{
-  width: 100%;
-  height: 100%;
-  background-color: #ededed;
-    padding-bottom: 240rpx;
 
+page {
+    width: 100%;
+    height: 100%;
+    background-color: #ededed;
 }
+
 .home-box {
     width: 100%;
     height: 100%;
     background-color: #efefef;
     font-family: PingFang SC;
+    margin-bottom: 110rpx;
 }
 
 .home-top {
@@ -30,30 +31,35 @@ page{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: #ffffff;
-     position: fixed;
+    background-color: #fff;
+    position: fixed;
     top: 0px;
     left: 0px;
     z-index: 100;
+}
+
+.h-name {
+    white-space: nowrap;
 }
 
 .homeTop-name image {
     display: block;
     width: 24rpx;
     height: 14rpx;
-    flex-shrink: 1;
+    flex-shrink: 0;
     margin-left: 10rpx;
 }
 
-.homeTop-name {    
+.homeTop-name {
+    width: 100rpx;
     height: 60rpx;
     font-size: 32rpx;
     font-weight: 600;
-    color: #666666;
+    color: #666;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: 23rpx;
+    margin-left: 40rpx;
 }
 
 .search-box {
@@ -68,7 +74,8 @@ page{
     justify-content: center;
     font-weight: 500;
     line-height: 34rpx;
-    color: #cccccc;
+    color: #ccc;
+    margin-left: 20rpx;
 }
 
 .search-box image {
@@ -92,7 +99,7 @@ page{
 }
 
 .swiper {
-  margin-top: 100rpx;
+    margin-top: 100rpx;
     width: 100%;
     height: 295rpx;
 }
@@ -106,12 +113,12 @@ page{
     width: 100%;
     height: auto;
     margin-bottom: 20rpx;
-    background-color: #ffffff;
+    background-color: #fff;
 }
 
 .ns-title {
     width: 100%;
-    background-color: #ffffff;
+    background-color: #fff;
     height: 100rpx;
     display: flex;
     flex-direction: row;
@@ -138,7 +145,7 @@ page{
 
 .ns-title-div image {
     display: block;
-    flex-shrink: 1;
+    flex-shrink: 0;
     width: 14rpx;
     height: 24rpx;
     margin-left: 10rpx;
@@ -152,7 +159,7 @@ page{
 .choose-bot {
     width: 100%;
     height: 98rpx;
-    background-color: #ffffff;
+    background-color: #fff;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -179,23 +186,21 @@ page{
 }
 
 .cb-box {
-    color: #E85819;
+    color: #e85819;
     /* margin-left: 78px; */
 }
 
 .cb-box1 {
-    color: #999999;
+    color: #999;
     /* margin-right: 78px; */
 }
 
-.cbot {
-    
-}
+.cbot {}
 
 .choose-bot {
     width: 100%;
     height: 98rpx;
-    background-color: #ffffff;
+    background-color: #fff;
     display: flex;
     flex-direction: row;
     align-items: center;

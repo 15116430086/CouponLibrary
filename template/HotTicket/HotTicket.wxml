@@ -1,23 +1,23 @@
 <template name="hotTicketBox">
   <block wx:for="{{ListCoupon_ReleaseQuery}}" wx:key="ReleaseID">
-    <view class="hotbox">
-      <view class="hotblock">
-        <view class="ticket-box">
-          <image class="ticket-img" src="{{ImageOne}}" />
-          <view class="ticket-mes">
-            <view class="ticket-ul-p">
-              <view class="ticket-mes-p">{{item.CouponName}}</view>
-              <view class="ticket-mesmes">{{GroupName}}</view>
+    <view class="hotboxH">
+      <view class="hotblockH">
+        <view class="ticket-boxH">
+          <image class="ticket-imgH" src="{{ImageOne}}" />
+          <view class="ticket-mesH">
+            <view class="ticket-ul-pH">
+              <view class="ticket-mes-pH">{{item.CouponName}}啦啦啦啦</view>
+              <view class="ticket-mesmesH ">{{GroupName}}</view>
             </view>
 
-            <view class="ticket-mes-ul">
+            <view class="ticket-mes-ulH">
               <view class="one">限量{{item.ReleaseNUM}}份</view>|
               <view class="two">{{item.ReceiveNUM}}已领</view>
             </view>
           </view>
         </view>
-        <view wx:if="{{item.SalePrice>0}}" class="hotbtn" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">立即领取</view>
-        <view wx:else class="hotbtn" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">免费领取</view>
+        <view wx:if="{{item.SalePrice>0}}" class="hotbtnH" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">立即领取</view>
+        <view wx:else class="hotbtnH" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">免费领取</view>    
       </view>
     </view>
   </block>

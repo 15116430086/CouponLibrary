@@ -9,7 +9,8 @@
 }
 
 .ticket-box {
-    width: 100%;
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
     height: 230rpx;
     display: flex;
     flex-direction: row;
@@ -20,18 +21,19 @@
 .ticket-img {
     width: 168rpx;
     height: 168rpx;
-    margin-left: 40rpx;
+    /* margin-left: 40rpx; */
     border-radius: 10rpx;
     flex-shrink: 0
 }
 
 .ticket-mes {
+    width: calc(100% - 200rpx);
     height: 168rpx;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin-left: 30rpx;
-    flex-shrink: 1;
+    
 }
 
 .ticket-sec {
@@ -57,10 +59,14 @@
 }
 
 .ticket-mes-p {
+  width: 100%;
     font-size: 32rpx;
     font-weight: 600;
     line-height: 44rpx;
     color: rgba(51, 51, 51, 1);
+    overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
 }
 
 .ticket-mes-ul {

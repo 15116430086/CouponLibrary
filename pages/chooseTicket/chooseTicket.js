@@ -65,7 +65,7 @@ Page({
   onBindBotOneTap: function(event) {
     let that = this;
     if (event.target.id != that.data.currentID)
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../myTicket/myTicket'
       })
   },

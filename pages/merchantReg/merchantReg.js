@@ -33,17 +33,16 @@ Page({
     regAddress: "",
     multiArray: [],
     multiIndex: [17, 0, 2],
-    Geocoder:[]
+    Geocoder: []
   },
-  onRegAddressTap: function () {
+  onRegAddressTap: function() {
     let that = this;
     wx.chooseLocation({
       latitude: app.globalData.latitudeX,
       longitude: app.globalData.longitudeY,
       success(res) {
         console.log(JSON.stringify(res));
-        if (res.address)
-        {
+        if (res.address) {
           that.setData({
             regAddress: res.address
           })
@@ -52,12 +51,13 @@ Page({
         }
       }
     })
-  },  
-  getGeocoderBack: function (res)
-  {
-    this.setData({ Geocoder: res});
   },
-  onPreviewImageTap: function (e) {
+  getGeocoderBack: function(res) {
+    this.setData({
+      Geocoder: res
+    });
+  },
+  onPreviewImageTap: function(e) {
     var imgtypeid = e.currentTarget.dataset.type;
     let that = this;
     if (imgtypeid == 0) {
@@ -76,12 +76,12 @@ Page({
       })
     }
   },
-  onUpFileImg: function (e) {
+  onUpFileImg: function(e) {
     var typeid = e.currentTarget.dataset.type;
     let that = this;
     utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, typeid)
   },
-  UpFileImgBak: function (img, type) {
+  UpFileImgBak: function(img, type) {
     let that = this;
     if (img.length > 0) {
       if (type == 0) {
@@ -144,7 +144,38 @@ Page({
       show2: false
     })
   },
-  onFormSubmit: function (e) {
+
+  showPopup() {
+    let that = this;
+    that.setData({
+      show2: true
+    })
+  },
+
+  //券类型选择
+  onConfirm(event) {
+    const {
+      picker,
+      value,
+      index
+    } = event.detail;
+    console.log(`当前值：${value}, 当前索引：${index}`);
+
+    let that = this;
+    that.setData({
+      show2: false,
+      industryName: value.IndustryName,
+      industryCode: value.IndustryCode
+    })
+  },
+  onCancel(e) {
+
+    let that = this;
+    that.setData({
+      show2: false
+    })
+  },
+  onFormSubmit: function(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     let that = this;
     var typename = that.data.currentId == "1" ? "【连锁商户】" : "【个体商户】"
@@ -257,7 +288,7 @@ Page({
     wx.showModal({
       title: '券库商户注册',
       content: '您确定注册成' + typename,
-      success: function (res) {
+      success: function(res) {
         if (res.confirm) {
           console.log('用户点击确定')
           that.RegCouponGroup(data)
@@ -266,7 +297,7 @@ Page({
     })
   },
 
-  RegCouponGroup: function (data) {
+  RegCouponGroup: function(data) {
     let that = this;
     var multiArray = that.data.multiArray;
     var multiIndex = that.data.multiIndex;
@@ -308,7 +339,7 @@ Page({
 
   },
 
-  RegCouponGroupBack: function (json) {
+  RegCouponGroupBack: function(json) {
     console.log(json);
     var json = json.data.Data;
     if (json) {
@@ -361,12 +392,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let that = this;
     that.GetRegionIndustry();
   },
   //点击每个导航的点击事件
-  handleTap: function (e) {
+  handleTap: function(e) {
     let id = e.currentTarget.id;
     let that = this;
     if (id) {
@@ -378,53 +409,53 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 
-  GetRegionIndustry: function () {
+  GetRegionIndustry: function() {
     let that = this;
 
     regionData = wx.getStorageSync('Region');
@@ -440,13 +471,13 @@ Page({
     }
     utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
-  bindMultiPickerChange: function (e) {
+  bindMultiPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       multiIndex: e.detail.value
     })
   },
-  bindMultiPickerColumnChange: function (e) {
+  bindMultiPickerColumnChange: function(e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     var data = {
       multiArray: this.data.multiArray,
