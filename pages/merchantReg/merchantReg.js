@@ -285,7 +285,7 @@ Page({
               app.globalData.userInfo = res.userInfo
               data.LatitudeX = app.globalData.latitudeX.toString()
               data.LongitudeY = app.globalData.longitudeY.toString()
-              data.RegionID = that.data.RegionName;
+              data.RegionID = that.data.Geocoder.district;
               data = {
                 pCoupon_Group: utils.syJsonSafe(data),
                 Text: res.encryptedData,
