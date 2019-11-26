@@ -24,11 +24,11 @@
 <form class="ticket-box" bindsubmit="formSubmit">
   <view class="ticket-block">
     <view class="ticket-name">券名称</view>
-    <input type="text" placeholder="输入券名称(限定12字以内)" name="CouponName" placeholder-class="pclass" maxlength="12"/>
+    <input type="text" value="{{pCoupon_Info.CouponName}}" placeholder="输入券名称(限定12字以内)" name="CouponName" placeholder-class="pclass" maxlength="12"/>
   </view>
   <view class="ticket-block">
     <view class="ticket-name">券面值</view>
-    <input type="number" placeholder="输入券面值" name="CouponMoney" placeholder-class="pclass" />
+    <input type="number" value="{{pCoupon_Info.CouponMoney}}" placeholder="输入券面值" name="CouponMoney" placeholder-class="pclass" />
   </view>
   <!-- <view class="ticket-block">
     <view class="ticket-name">发布数量</view>
@@ -36,11 +36,11 @@
   </view> -->
   <view class="ticket-block">
     <view class="ticket-name">领取上限</view>
-    <input type="number" placeholder="设置领取上限" name="ReceiveUpperLimit" placeholder-class="pclass" />
+    <input type="number" value="{{pCoupon_Info.ReceiveUpperLimit}}" placeholder="设置领取上限" name="ReceiveUpperLimit" placeholder-class="pclass" />
   </view>
   <view class="ticket-block">
     <view class="ticket-name">领购售价</view>
-    <input type="number" placeholder="设置领购售价" name="SalePrice" placeholder-class="pclass" />
+    <input type="number" value="{{pCoupon_Info.SalePrice}}" placeholder="设置领购售价" name="SalePrice" placeholder-class="pclass" />
   </view>
   <!-- 领购规则 -->
   <view class="ticket-block" bindtap="clickRule">
