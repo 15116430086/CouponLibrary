@@ -22,7 +22,7 @@
 
           <image wx:if="{{!item.ReleaseIDs}}" data-indexs="{{index}}" bindtap="edit" src="/static/images/wrt.png" />
         </view>
-        <view class="tb-mes" style="color:#000;margin-bottom:30rpx;">已发券：{{item.ReleaseNUM}}</view>
+        <view class="tb-mes" style="color:#000;margin-bottom:30rpx;">发券数量：{{item.ReleaseNUM}}｜托管金额：￥{{item.ReleaseCommission}}</view>
         <view class="tb-mes">
           <view class="dynblock-mes" style="text-align:left">
             <view>领用商家：{{item.ReceiveShopNUM}}</view>
