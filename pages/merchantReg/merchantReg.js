@@ -168,15 +168,15 @@ Page({
       })
       return;
     }
-    data.AccountName = e.detail.value.BankUserName
-    if (data.AccountName == '') {
-      wx.showToast({
-        title: "请输入银行用户名！",
-        icon: "none",
-        duration: 1500
-      })
-      return;
-    }
+    data.AccountName = data.GroupName
+    // if (data.AccountName == '') {
+    //   wx.showToast({
+    //     title: "请输入银行用户名！",
+    //     icon: "none",
+    //     duration: 1500
+    //   })
+    //   return;
+    // }
     data.BankCardNumber = e.detail.value.CorporateBankAccount
     if (data.BankCardNumber == '') {
       wx.showToast({
@@ -189,7 +189,7 @@ Page({
     data.OpeningBank = e.detail.value.OpeningBank
     if (data.OpeningBank == '') {
       wx.showToast({
-        title: "请输入开户行！",
+        title: "请输入开户银行！",
         icon: "none",
         duration: 1500
       })
@@ -208,7 +208,7 @@ Page({
     }
     if (data.ImageOne == '') {
       wx.showToast({
-        title: "请上传形象主图！",
+        title: "请上传公司形象照！",
         icon: "none",
         duration: 1500
       })

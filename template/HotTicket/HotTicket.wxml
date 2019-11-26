@@ -16,7 +16,8 @@
             </view>
           </view>
         </view>
-        <view class="hotbtn" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">立即领取</view>
+        <view wx:if="{{item.SalePrice>0}}" class="hotbtn" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">立即领取</view>
+        <view wx:else class="hotbtn" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">免费领取</view>
       </view>
     </view>
   </block>

@@ -22,7 +22,7 @@
     <block wx:for="{{receiveList}}" wx:index="index" wx:key="ReceiveID">
       <view class="home-card">
         <view class="home-one one">
-          <view style="font-size:16px;font-weight:600">{{item.CouponName}}</view>
+          <view style="font-size:16px;font-weight:600">{{item.CouponName}}【{{item.GroupID==item.SendGroupID?'自营券':'商家券'}}】</view>
           <view style="color:#E85819;" data-ReleaseID='{{item.ReleaseID}}' data-CouponID='{{item.CouponID}}' bindtap="onBindReceiveTap">继续领券</view>
         </view>
         <view class="home-one two">
