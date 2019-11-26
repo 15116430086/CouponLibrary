@@ -51,11 +51,11 @@
 
         <view class="vm-mid">
             <image src="/static/images/hh1.png" />
-            <input type="text" placeholder="请输入开户银行" name="dOpeningBank" value="{{dOpeningBank}}" bindblur="blurs" placeholder-class="pm-class" />
+            <input type="text" placeholder="请输入开户行" name="dOpeningBank" value="{{dOpeningBank}}" bindblur="blurs" placeholder-class="pm-class" />
         </view>
          <view class="vm-mid">
             <image src="/static/images/xmxm.png" />
-            <input type="text" placeholder="请输入开户姓名" name="dAccountName" value="{{dAccountName}}" bindblur="blurs" placeholder-class="pm-class"/>
+            <input type="text" placeholder="请输入银行用户名" name="dAccountName" value="{{dAccountName}}" bindblur="blurs" placeholder-class="pm-class"/>
         </view>
         <view class="vm-mid">
             <image src="/static/images/card1.png" />
