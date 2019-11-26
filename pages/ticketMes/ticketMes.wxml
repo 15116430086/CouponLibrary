@@ -14,24 +14,23 @@
   </view>
   <view class="home-groupMes">
     <image wx:if="{{datalist[0].UsageRule}}" src="{{datalist[0].UsageRule}}" mode="widthFix" />
-    <image wx:else src="/static/images/rule.png"  mode="widthFix"  />
+    <image wx:else src="/static/images/rule.png" mode="widthFix" />
     <block wx:for="{{images}}" wx:key="PictureID">
-       <image  wx:if="{{isShow}}" src="{{item.ImageURL}}"  mode="widthFix"  />
+      <image wx:if="{{isShow}}" src="{{item.ImageURL}}" mode="widthFix" />
     </block>
     <!-- 查看更多 有接口了再写 -->
-    <view class="home-groupMask" bindtap="onShowCouponDetailsTap" wx:if="{{!isShow}}">
+    <view class="home-groupMask" bindtap="onShowCouponDetailsTap">
       查看图文
+      <image src="{{isShow==true?'/static/images/toparr.png':'/static/images/botarr.png'}}"></image>
     </view>
   </view>
 
   <!-- 消费门店 -->
   <view class="home-storeName">消费门店</view>
-
-  <view style="margin-bottom:140rpx;">
-    <block wx:for="{{shoplist}}"wx:key="*this">
-      <template is="payStore" data="{{...item}}"></template>
-    </block>
-  </view>
+  <block wx:for="{{shoplist}}" wx:key="*this">
+    <template is="payStore" data="{{...item}}"></template>
+  </block>
+</view>
   <!-- 底部盒子 -->
   <view class="goods-bottom">
     <view class="goodsbot-left">
@@ -50,4 +49,3 @@
     <view class="goods-btn" bindtap="payBtn" wx:if="{{datalist[0].SalePrice==0}}">立即领取</view>
     <view class="goods-btn" bindtap="payBtn" wx:else>立即抢购</view>
   </view>
-</view>

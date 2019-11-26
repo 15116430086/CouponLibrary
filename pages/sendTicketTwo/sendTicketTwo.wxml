@@ -24,7 +24,7 @@
 <form class="ticket-box" bindsubmit="formSubmit">
   <view class="ticket-block">
     <view class="ticket-name">券名称</view>
-    <input type="text" placeholder="输入券名称" name="CouponName" placeholder-class="pclass" />
+    <input type="text" placeholder="输入券名称(限定12字以内)" name="CouponName" placeholder-class="pclass" maxlength="12"/>
   </view>
   <view class="ticket-block">
     <view class="ticket-name">券面值</view>

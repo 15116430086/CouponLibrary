@@ -22,9 +22,11 @@
             </view>
         </view>
         <view class="m-right">
-            <view class="m-num">{{item.IncomeMoney}}</view> 
+            <view class="m-num">{{item.IncomeMoney}}</view>
+            <!-- <view class="m-num"  style="color:#E30000">{{item.IncomeMoney}}</view>   -->
         </view>
     </view>
     
 </view>
 </block>
+

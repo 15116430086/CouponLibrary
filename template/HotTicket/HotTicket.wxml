@@ -6,7 +6,7 @@
           <image class="ticket-imgH" src="{{ImageOne}}" />
           <view class="ticket-mesH">
             <view class="ticket-ul-pH">
-              <view class="ticket-mes-pH">{{item.CouponName}}啦啦啦啦</view>
+              <view class="ticket-mes-pH">{{item.CouponName}}</view>
               <view class="ticket-mesmesH ">{{GroupName}}</view>
             </view>
 
