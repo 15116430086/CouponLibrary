@@ -127,9 +127,9 @@ Page({
       }else{//不用调用支付接口 
         wx.showToast({
           title: json.msg,
-          icon: "none"
+          icon: "success"
         });
-        wx.redirectTo({ url: '../pages/myTicket/myTicket' });
+        wx.reLaunch({ url: '../myTicket/myTicket' });
       }
     }else{//领取失败
       wx.showToast({
