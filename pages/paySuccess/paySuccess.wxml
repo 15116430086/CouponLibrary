@@ -1,8 +1,8 @@
 <view class="content">
   <image src="/static/images/ok.png" />
   <view class="content-p">恭喜您! 领券成功</view>
-  <navigator class="content-div one" url="../myTicket/myTicket">我的券</navigator>
-  <navigator class="content-div two" url="../chooseTicket/chooseTicket" open-type="reLaunch">
+  <navigator open-type='reLaunch' class="content-div one" url="../myTicket/myTicket">我的券</navigator>
+  <navigator open-type='reLaunch' class="content-div two" url="../chooseTicket/chooseTicket" open-type="reLaunch">
     继续领券
   </navigator>
 </view>

@@ -6,11 +6,11 @@
     <view class="homeTop-mid">
       <view class="htm-div">
         <image src="/static/images/tclass.png" />
-        <view>券类型 : {{couponNUM}}</view>
+        <view>领券类型 : {{couponNUM}}</view>
       </view>
       <view class="htm-div">
         <image src="/static/images/tnum.png" />
-        <view>券数量 : {{receiveNUM}}</view>
+        <view>领券总数 : {{receiveNUM}}</view>
       </view>
     </view>
     <view class="homeTop-mid">
