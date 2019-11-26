@@ -268,7 +268,7 @@ Page({
     let pCoupon_Info = JSON.stringify(that.data.pCoupon_Info);
     if (json.flag) {
       console.log(json.msg);
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../startTicket/startTicket?pCoupon_Info=' + pCoupon_Info + "&CouponID=" + json.CouponID,
       })
     }

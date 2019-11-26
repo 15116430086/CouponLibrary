@@ -81,11 +81,7 @@ Jumptap:function(){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this;
-    that.setData({
-      GroupName:app.globalData.AppGroupInfo.GroupName
-    })
-    that.GetData();
+
   },
 
   /**
@@ -99,7 +95,11 @@ Jumptap:function(){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that = this;
+    that.setData({
+      GroupName: app.globalData.AppGroupInfo.GroupName
+    })
+    that.GetData();
   },
 
   /**

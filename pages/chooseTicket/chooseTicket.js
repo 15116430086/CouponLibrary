@@ -42,6 +42,12 @@ Page({
     ],
 
   },
+  bindcancel:function()
+  {
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+  },
   onQuickTap: function() {
     wx.navigateTo({
       url: '../fastGet/fastGet',
@@ -88,6 +94,8 @@ Page({
     let that = this;
     console.log(json);
     var json = json.data.Data;
+    //隐藏 加载中的提示
+    wx.hideLoading();
     if (json.flag) {
       console.log(json.msg);
       if (page == 1) {
@@ -129,9 +137,15 @@ Page({
         });
       }
     }
-
-    //隐藏 加载中的提示
-    wx.hideLoading();
+    else
+    {
+      wx.showToast({
+        title: '没有找到相关数据!',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+   
   },
 
   /**
@@ -198,6 +212,9 @@ Page({
       multiIndex: data.multiIndex,
       RegionName: data.multiArray[2][data.multiIndex[2]].RegionName
     });
+
+    page = 1;
+    this.GetData(page);
   },
   getLocation: function() {
     //显示 加载中的提示
