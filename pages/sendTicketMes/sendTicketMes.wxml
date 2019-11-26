@@ -26,8 +26,8 @@
         <view class="stm-top" wx:if="{{item.ShopID==0}}">{{item.CouponName}}【会员平台自领】</view>
         <view class="stm-top" wx:else>{{item.CouponName}}【员工：{{item.StaffName}}赠】</view>
         <view class="stm-bot">
-          <view>会员：{{item.UserName}}</view>         
-          <view>{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
+          <view class="stm-nnn">会员：{{item.UserName}}</view>         
+          <view class="stm-time">{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
         </view>
       </view>
     </view>
