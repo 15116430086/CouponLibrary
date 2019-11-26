@@ -9,8 +9,11 @@
     <image src="/static/images/right-arr2.png" />
   </view>
 
-  <view class="mes-box" >
-    <view class="ticket-box" wx:if="{{!datalist}}">暂无发券记录 </view>
+  <view class="mes-box">
+    <view class="null-box" wx:if="{{datalist.length==0}}">
+      <image src="/static/images/send1.png"></image>
+      <view>您还没有发券，请发券！</view>
+    </view>
     <block wx:for="{{datalist}}" wx:key="index" wx:for-index="index">
       <view class="ticket-box">
         <view class="tb-title">
@@ -33,12 +36,12 @@
           <view>过期数量：{{item.ExpireNUM}} </view>
         </view>
         <view class="tb-bot">
-          <view style="margin-left:50rpx" bindtap="jumpOk" data-index="{{index}}" data-Couponstatus="{{item.Couponstatus}}" data-ReleaseIDs="{{item.ReleaseIDs}}" data-CouponID="{{item.CouponID}}">继续发券</view>
-          
+          <view  bindtap="jumpOk" data-index="{{index}}" data-Couponstatus="{{item.Couponstatus}}" data-ReleaseIDs="{{item.ReleaseIDs}}" data-CouponID="{{item.CouponID}}">继续发券</view>
+
           <!-- 是哪个状态就用哪个颜色 -->
- <view wx:if="{{item.ReleaseIDs && item.Couponstatus==1}}" style="margin-right:50rpx;color:#F08002" data-CouponID="{{item.CouponID}}" bindtap="Details">待审核</view>
- <view wx:elif="{{item.ReleaseIDs && item.Couponstatus==0}}"  style="margin-right:50rpx;color:#016FB4" data-CouponID="{{item.CouponID}}" bindtap="Details">待支付</view>
- <view wx:else style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" bindtap="Details">发券详情</view>
+          <view wx:if="{{item.ReleaseIDs && item.Couponstatus==1}}" style=" color:#F08002" data-CouponID="{{item.CouponID}}" bindtap="Details">待审核</view>
+          <view wx:elif="{{item.ReleaseIDs && item.Couponstatus==0}}" style=" color:#016FB4" data-CouponID="{{item.CouponID}}" bindtap="Details">待支付</view>
+          <view wx:else  data-CouponID="{{item.CouponID}}" bindtap="Details">发券详情</view>
           <!-- <view style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" style="color:#F08002">待审核券</view>
           <view style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" style="color:#016FB4">支付佣金</view> -->
         </view>
