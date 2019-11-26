@@ -22,17 +22,17 @@ Page({
   data: {
     stayorderlist: [],
     alreadyorderlist: [],
-    currentId: '0',
+    currentId: 0,
     section: [{
       name: '上架中',
-      typeId: '0'
+      typeId: 0
     }, {
       name: '已下架',
-      typeId: '1'
+      typeId: 1
     }]
   },
 
-  GetData: function () {
+  GetData: function() {
     let that = this;
     //显示 加载中的提示
     wx.showLoading({
@@ -48,7 +48,7 @@ Page({
     data.pState = state
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/GetPageCouponProduct", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
-  GetDataBack: function (json) {
+  GetDataBack: function(json) {
     let that = this;
     var json = json.data.Data;
     if (json.flag) {
@@ -103,13 +103,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let that = this;
     that.GetData();
   },
 
   //点击每个导航的点击事件
-  handleTap: function (e) {
+  handleTap: function(e) {
     let that = this;
     let id = e.currentTarget.id;
     if (id) {
@@ -124,19 +124,19 @@ Page({
   },
 
 
-  Lowershelf: function (event){
+  Lowershelf: function(event) {
     let that = this;
     console.log(event.currentTarget.dataset.productid);
     wx.showModal({
       title: '提示',
-      content: '是否下架' + event.currentTarget.dataset.productname,
-      success: function (res) {
+      content: '是否' + (that.data.currentId == 0 ? '下' : '上') + '架【' + event.currentTarget.dataset.productname+'】',
+      success: function(res) {
         if (res.confirm) {
-          var data={}
-          data.pProductId= event.currentTarget.dataset.productid,
-          data.pState=1
+          var data = {}
+          data.pProductId = event.currentTarget.dataset.productid,
+            data.pState = (1 - that.data.currentId);
           utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/ProductUpperShelfOrLowerShelf", "POST", data, app.globalData.appkeyid, that.LowershelfBack),
-          console.log('弹框后点确认')
+            console.log('弹框后点确认')
         } else {
           console.log('弹框后点取消')
         }
@@ -144,23 +144,36 @@ Page({
     })
   },
 
-  LowershelfBack:function (json) {
-    let that = this;
+  LowershelfBack: function(json) {
+    let that = this;   
     var json = json.data.Data;
     if (json.flag) {
+      var title = '该商品' + (that.data.currentId == 0 ? '下' : '上') + '架成功'
       wx.showToast({
-        title: '该商品下架成功!',
+        title: title,
         icon: "none",
         duration: 2000
       })
-      pageM[1].iscleck=true;
-    }
-    else
-    {
+      pageM[1 - that.data.currentId].iscleck = true;
+    } else {
+      var title = '该商品' + (that.data.currentId == 0 ? '下' : '上') + '架失败'
       wx.showToast({
-        title: '该商品下架失败!',
+        title: title,
         icon: "none",
         duration: 2000
+      })
+    }
+    if (that.data.stayorderlist.length == 1 && that.data.currentId == 0)
+    {
+      that.data.stayorderlist=[];
+      that.setData({
+        stayorderlist: []
+      })
+    }
+    if (that.data.alreadyorderlist.length == 1 && that.data.currentId == 1) {
+      that.data.alreadyorderlist = [];
+      that.setData({
+        alreadyorderlist: []
       })
     }
     that.GetData();
@@ -173,60 +186,60 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     let that = this;
     if (pageM[that.data.currentId].lastpage > pageM[that.data.currentId].page) {
       pageM[that.data.currentId].page++;
       that.GetData();
     } else if (pageM[that.data.currentId].lastpage == pageM[that.data.currentId].page) {
       pageM[that.data.currentId].page++
-      wx.showToast({
-        title: '没有更多数据!',
-        icon: 'none',
-        duration: 2000
-      })
+        wx.showToast({
+          title: '没有更多数据!',
+          icon: 'none',
+          duration: 2000
+        })
     }
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
