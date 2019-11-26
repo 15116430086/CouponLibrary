@@ -7,7 +7,12 @@ Page({
      * 页面的初始数据
      */
     data: {
-        itemsList: []
+        itemsList: [],
+      todaySumMoney:0,
+      todayOrderNUM:0,
+      totalOrderNUM:0,
+      totalSumMoney:0,
+      toBeShippedNUM:0
     },
 
   GetData: function () {
