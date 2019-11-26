@@ -7,7 +7,7 @@
         </view>
       <view class="v-title">
             <image bindtap="updateshop" src="/static/images/shop2.png" class="v-title-image1"/>
-            <view class="v-txt1">长沙芙蓉区五一大道人瑞潇湘国际大厦26楼2621</view>
+            <view class="v-txt1">{{datalist[0].ShopAddress}}</view>
         </view>
     </view>
 </view>
@@ -47,43 +47,32 @@
 
 
 </view>
-<view class="mask" hidden="{{Popup}}" bindtap="coles">
-    <view class="v-mask"  catchtap="nocoles" >
-        <view class="vmask-title">修改店铺名称</view>
-        <view class="v-mid">
-            <input type="text" placeholder="请输入店铺名称" value=""  bindblur="blurs" placeholder-class="p-class"/>
-            <image src="/static/images/wrt2.png" />
-        </view>
-        <view class="v-bot" bindtap="shopUpdate">确认修改</view>
-    </view>
-</view>
-
 
 
 <!-- hidden="{{Popup}}"   这个加判断-->
-<view class="mask" hidden="{{Popup}}"  bindtap="coles">
+<view class="mask" hidden="{{Popup}}"   bindtap="coles">
     <view class="vm-mask"  catchtap="nocoles" >
         <view class="vmask-title">添加店铺</view>
       
 
         <view class="vm-mid">
             <image src="/static/images/hh1.png" />
-            <input type="text" placeholder="请输入店铺名称" value="" bindblur="blurs" placeholder-class="pm-class" />
+            <input type="text" placeholder="请输入店铺名称" value="{{datalist[0].ShopName}}" bindblur="blurs" placeholder-class="pm-class" />
         </view>
          <view class="vm-mid">
             <image src="/static/images/xmxm.png" />
-            <input type="text" placeholder="请输入店铺地址" value="" bindblur="blurs" placeholder-class="pm-class" class="inputOne"/>
-            <view class="blue">开启定位</view>
+            <input type="text" placeholder="请输入店铺地址" disabled="true" value="{{datalist[0].ShopAddress}}" bindblur="blurs" placeholder-class="pm-class" class="inputOne"/>
+            <view class="blue" bindtap="addressblurs">开启定位</view>
         </view>
         <view class="vm-mid">
             <image src="/static/images/card1.png" />
-            <input type="number" placeholder="请输入店铺联系人" value="" bindblur="blurs" placeholder-class="pm-class"/>
+            <input type="number" placeholder="请输入店铺联系人" value="{{datalist[0].Contacts}}" bindblur="blurs" placeholder-class="pm-class"/>
         </view>
        <view class="vm-mid">
             <image src="/static/images/card1.png" />
-            <input type="number" placeholder="请输入联系方式" value="" bindblur="blurs" placeholder-class="pm-class"/>
+            <input type="number" placeholder="请输入联系方式" value="{{datalist[0].Telephone}}" bindblur="blurs" placeholder-class="pm-class"/>
         </view>
         
-        <view class="vm-bot" bindtap="shopAdd">确认添加</view>
+        <view class="vm-bot" bindtap="shopUpdate">确认添加</view>
     </view>
 </view>

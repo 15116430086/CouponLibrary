@@ -10,7 +10,9 @@ Page({
      shopid:"",
      datalist:{},
     Popup:true,
-    shopname:""
+    shopname:"",
+    latitudeX:0,
+    longitudeY:0
   },
 
   /**
@@ -30,6 +32,8 @@ Page({
     var chat=this;
     var json = res.data.Data;
     if(json.flag){
+      chat.data.latitudeX = json.data[0].LatitudeX;
+      chat.data.longitudeY = json.data[0].LongitudeY;
       chat.setData({
         datalist:json.data
       });
@@ -80,7 +84,12 @@ Page({
 
     var datas = {
       shopId: this.data.shopid,
-      ShopName: this.data.shopname
+      ShopName: this.data.shopname,
+      ShopAddress: this.data.datalist[0].ShopAddress,
+      Contacts: this.data.datalist[0].Contacts,
+      Telephone: this.data.datalist[0].Telephone,
+      latitudeX: this.data.latitudeX,
+      longitudeY: this.data.longitudeY
     };
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/UpdateShopName", "POST", datas, app.globalData.appkeyid, this.updateStaff);
   },
@@ -106,5 +115,44 @@ Page({
         icon: "none"
       });
     }
-  }
+  },
+  addressblurs: function (event) {//店铺地址
+    var chat = this;
+    wx.chooseLocation({
+      latitude: app.globalData.latitudeX,
+      longitude: app.globalData.longitudeY,
+      success(res) {
+        console.log(JSON.stringify(res));
+        if (res.address) {
+          chat.data.datalist[0].ShopAddress = res.address
+          // chat.setData({
+          //   address: res.address
+          // })
+
+          utils.getGeocoder(res.address, app.globalData.regionName, chat.getGeocoderBack)
+        }
+      }
+    })
+  },
+  getGeocoderBack: function (res) {
+    var chat = this;
+    chat.setData({
+      latitudeX: res.latitude,
+      longitudeY: res.longitude
+    });
+
+  },
+  Contactsblurs: function (event) {//店铺联系人
+
+    this.data.datalist[0].Contacts = event.detail.value;
+    // this.setData({
+    //   Contacts: event.detail.value
+    // });
+  },
+  Telephoneblurs: function (event) {//联系方式
+    this.data.datalist[0].Telephone = event.detail.value;
+    // this.setData({
+    //   Telephone: event.detail.value
+    // });
+  },
 })

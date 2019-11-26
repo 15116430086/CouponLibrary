@@ -103,7 +103,7 @@ Page({
             GroupID: app.globalData.AppGroupInfo.GroupID,
             pCouponID: chat.data.pCouponID
           }
-          utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/Pay", "POST", datas, app.globalData.appkeyid, chat.Pay);
+          utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/Pay", "POST", data, app.globalData.appkeyid, chat.Pay);
         }
       }
     });

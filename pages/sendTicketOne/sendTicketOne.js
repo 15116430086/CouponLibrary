@@ -42,6 +42,31 @@ Page({
   jumpOk(e){
     let index = e.currentTarget.dataset.index;
     let CouponID = e.currentTarget.dataset.couponid;
+    var Couponstatus = e.currentTarget.dataset.couponstatus;//发券状态
+    var ReleaseIDs = e.currentTarget.dataset.releaseids;//发券编号
+    if (ReleaseIDs){
+        
+      if (Couponstatus==1){
+        wx.showToast({
+          title: "存在待审核的发布券",
+          icon: "none",
+          duration: 1500
+        });
+        return
+      }
+
+      if (Couponstatus == 0){
+        wx.showToast({
+          title: "存在待支付的发布券",
+          icon: "none",
+          duration: 1500
+        });
+        return
+      }
+
+    }
+
+
     let datalist = this.data.datalist;
     let data = JSON.stringify(datalist[index]);
     console.log(data)
