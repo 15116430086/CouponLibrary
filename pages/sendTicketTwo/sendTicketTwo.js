@@ -655,9 +655,12 @@ Page({
   onShow: function() {
     
     var productList = wx.getStorageSync("pArrProductKey");
-    this.setData({
-      pArrProductID: productList
-    });
+    if (productList.length>0){
+      this.setData({
+        pArrProductID: productList
+      });
+    }
+    
     // that.data.pCoupon_Info.pArrProductID = that.data.pArrProductID;
     // console.log(that.data.pCoupon_Info)
   },
