@@ -145,7 +145,7 @@ Page({
     } = e.currentTarget.dataset;
     var ProductDetails = that.data.ProductDetails
     if (ProductDetails[index].state == 0) {
-      utils.UploadImg(1, app.globalData.appkeyid, that.UpDetailsImgBak, index)
+      utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpDetailsImgBak, index)
     } else {
       wx.previewImage({
         urls: [ProductDetails[index].url]

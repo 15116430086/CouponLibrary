@@ -61,7 +61,7 @@
 
 
 <!-- hidden="{{Popup}}"   这个加判断-->
-<view class="mask"  bindtap="coles">
+<view class="mask" hidden="{{Popup}}"  bindtap="coles">
     <view class="vm-mask"  catchtap="nocoles" >
         <view class="vmask-title">添加店铺</view>
       
