@@ -64,12 +64,12 @@
       <view>平台选券</view>
     </navigator>
     <navigator url="../scanSend/scanSend" hover-class="none">
-      <image src="/static/images/home/3.png"></image>
-      <view>扫码送券</view>
+      <image src="/static/images/home/4.png"></image>
+      <view>扫码赠券</view>
 
     </navigator>
     <navigator url="../sendTicket/main" bindtap="onWxScanCode" hover-class="none">
-      <image src="/static/images/home/4.png"></image>
+      <image src="/static/images/home/3.png"></image>
       <view>扫码核券</view>
 
     </navigator>

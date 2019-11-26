@@ -44,7 +44,7 @@ Page({
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pPageIndex = pageindex;
-    data.pPageSize = 4;
+    data.pPageSize = 20;
     data.pState = state
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/GetPageCouponProduct", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
@@ -104,8 +104,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let that = this;
-    that.GetData();
+  
   },
 
   //点击每个导航的点击事件
@@ -194,7 +193,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    let that = this;
+    pageM[0].iscleck = true;
+    that.data.stayorderlist = [];
+    that.setData({
+      stayorderlist: []
+    })
+    that.GetData();
   },
 
   /**

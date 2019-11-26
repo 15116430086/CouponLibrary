@@ -56,6 +56,10 @@ Page({
           lastpage: json.pageCount //你的总页数   
         });
       }
+      that.setData({
+        result: wx.getStorageSync("pArrProductKey")
+      });
+      
     } else {
       wx.showToast({
         title: '没有找到相关数据!',
@@ -86,6 +90,9 @@ Page({
       parPage.setData({
         pArrProductID: result
       })
+
+      wx.setStorageSync("pArrProductKey", result);
+
       wx.navigateBack({
         delta: 1
       })

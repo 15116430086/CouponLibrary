@@ -121,18 +121,20 @@ Page({
     pCoupon_Info: {
       CouponType: 0,
       CouponName: "",
-      CouponMoney: 100,
+      CouponMoney: 1,
       ExpirationDate: '',
       ExpiredType: 10,
       CouponDetails: "",
       // ReleaseNUM: "", //发布数量
-      ReceiveUpperLimit: 0,
+      ReceiveUpperLimit: 1,
       UsageRule: "",
       ImageOne: "",
       ReceiveRule: 0, //领取规则
       WriteOffType: 0, //核销方式
-      SalePrice: 0, //领购售价
-      CouponID:""
+      SalePrice: 1, //领购售价
+      CouponID:"",
+      IsAppointProduct:0
+
     },
     imageOne: "",
     imageTwo: "",
@@ -147,6 +149,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.setStorageSync("pArrProductKey", "");
     console.log(options.pCoupon_Info);
     if (options.pCoupon_Info){//说明是修改
       var Info = JSON.parse(options.pCoupon_Info) ;
@@ -165,6 +168,16 @@ Page({
       Coupon_Info.WriteOffType = Info.WriteOffType;
       Coupon_Info.SalePrice = Info.SalePrice;
       Coupon_Info.CouponID = Info.CouponID;
+      Coupon_Info.IsAppointProduct = Info.IsAppointProduct
+      if (Info.WriteOffType == 0 && Info.IsAppointProduct==1){
+        var data={
+          CouponID: Info.CouponID
+        }
+        utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/Getproductlist", "POST", data, app.globalData.appkeyid, this.Getproductlist)
+      }
+     
+
+
       if (Info.ReceiveRule == 0) {
         this.setData({
           getRule: "仅首次领取",
@@ -214,7 +227,16 @@ Page({
     }
     console.log(this.data.pCoupon_Info);
   },
-
+  Getproductlist:function(res){
+    var chat=this;
+    var json=res.data.Data;
+    var list=[];
+    for (var i in json.data){
+      list.push(json.data[i].ProductID);
+    }
+    wx.setStorageSync("pArrProductKey", list);
+    chat.setData({ pArrProductID: list});
+  },
   bindPickerChange_hx: function(e) {
     let that = this;
     console.log('picker发送选择改变，携带值为', e);
@@ -238,6 +260,9 @@ Page({
     let data = {};
 
     let pCoupon_Info = that.data.pCoupon_Info;
+    if (that.data.pArrProductID.length>0){
+      pCoupon_Info.IsAppointProduct=1;//指定商品
+    }
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pArrProductID = utils.syJsonSafe(that.data.pArrProductID);
     pCoupon_Info.GroupID = app.globalData.AppGroupInfo.GroupID;
@@ -271,6 +296,8 @@ Page({
       });
       return
     }
+
+
     // if (pCoupon_Info.ReleaseNUM == '') {
     //   wx.showToast({
     //     title: "请输入发布数量!",
@@ -279,7 +306,7 @@ Page({
     //   });
     //   return
     // }
-    if (pCoupon_Info.ReceiveUpperLimit == '') {
+    if (pCoupon_Info.ReceiveUpperLimit == '' || pCoupon_Info.ReceiveUpperLimit==0) {
       wx.showToast({
         title: "请输入领取上限!",
         icon: "none",
@@ -424,7 +451,8 @@ Page({
     }else{
       that.setData({
         hexiao: "线下消费",
-        idb: id
+        idb: id,
+        pArrProductID:[]
       })
     }
     
@@ -625,7 +653,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    let that = this;
+    
+    var productList = wx.getStorageSync("pArrProductKey");
+    if (productList.length>0){
+      this.setData({
+        pArrProductID: productList
+      });
+    }
     
     // that.data.pCoupon_Info.pArrProductID = that.data.pArrProductID;
     // console.log(that.data.pCoupon_Info)
