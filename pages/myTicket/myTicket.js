@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    motto: app.globalData.AppGroupInfo.GroupName,
+    motto: "",
     currentID: "2",
     receiveList: [],
     lastpage: 0,
@@ -93,9 +93,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let that = this;
-    page = 1;
-    that.GetData(page);
+
   },
 
   /**
@@ -109,7 +107,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    let that = this;   
+    that.setData({
+      GroupName: app.globalData.AppGroupInfo.GroupName
+    })
+    page = 1;
+    that.GetData(page);
   },
 
   /**
