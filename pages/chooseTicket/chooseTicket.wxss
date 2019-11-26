@@ -45,8 +45,7 @@ page{
     margin-left: 10rpx;
 }
 
-.homeTop-name {
-    width: 100rpx;
+.homeTop-name {    
     height: 60rpx;
     font-size: 32rpx;
     font-weight: 600;
@@ -54,7 +53,7 @@ page{
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: 40rpx;
+    margin-left: 23rpx;
 }
 
 .search-box {

@@ -81,7 +81,7 @@ Page({
     data.pPageSize = 5;
     data.pLatitudeX = app.globalData.latitudeX;
     data.pLongitudeY = app.globalData.longitudeY;
-    data.pRegionID = app.globalData.regionName;
+    data.pRegionID = that.data.RegionName != '' ? that.data.RegionName : app.globalData.regionName;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/QueryCouponInfo", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {
@@ -139,6 +139,7 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
+    console.log(app.globalData.regionName);
     that.setData({
       RegionName: app.globalData.regionName
     })
@@ -195,7 +196,7 @@ Page({
     this.setData({
       multiArray: data.multiArray,
       multiIndex: data.multiIndex,
-      RegionName: multiArray[2][multiIndex[2]].RegionName
+      RegionName: data.multiArray[2][data.multiIndex[2]].RegionName
     });
   },
   getLocation: function() {

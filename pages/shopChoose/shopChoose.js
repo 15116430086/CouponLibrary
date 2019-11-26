@@ -324,7 +324,7 @@ Page({
     this.setData({
       multiArray: data.multiArray,
       multiIndex: data.multiIndex,
-      RegionName: multiArray[2][multiIndex[2]].RegionName
+      RegionName: data.multiArray[2][data.multiIndex[2]].RegionName
     });
   }
 })

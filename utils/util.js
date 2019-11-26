@@ -233,12 +233,12 @@ function GetRegionIndustryBack(json, pCallBack) {
   }
 }
 
-function reverseGeocoder(pCallBack) {       
+function reverseGeocoder(latitude, longitude,pCallBack) {       
   qqmapsdk.reverseGeocoder({    
-    // location: {
-    //   latitude: latitude,
-    //   longitude: longitude
-    // },
+    location: {
+      latitude: latitude,
+      longitude: longitude
+    },
     sig: 'KkXF9nGuNrp3LWqyWPrbvTtbHSgC2eu',
     success: function(res) { //成功后的回调
               
