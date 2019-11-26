@@ -1,64 +1,77 @@
 /* pages/watchMes/watchMes.wxss */
-page{
-  background-color: #EDEDED;
+
+page {
+  background-color: #ededed;
 }
-.v-box,.v-bot{
+
+.v-box, .v-bot {
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #FFF;
+  background-color: #fff;
   margin-bottom: 20rpx;
 }
-.v-top{
+
+.v-top {
   margin-top: 40rpx;
   margin-bottom: 20rpx;
-  width: calc(100% - 80rpx);
+  width: calc(100% - 160rpx);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  
 }
-.v-title{
-  color:#000000;
+
+.v-title {
+  width: calc(100% - 200rpx);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #000;
   font-size: 32rpx;
   font-weight: 600;
 }
-.v-go{
-  border:1px solid #E85819;
-  color:#E85819;
-  width: 184rpx;height: 64rpx;
+
+.v-go {
+  border: 1px solid #e85819;
+  color: #e85819;
+  width: 184rpx;
+  height: 64rpx;
   border-radius: 32rpx;
-  background-color: #FFF0DE;
+  background-color: #fff0de;
   text-align: center;
   line-height: 64rpx;
+  font-size: 28rpx;
 }
-.v-mid{
-  width: calc(100% - 80rpx);
+
+.v-mid {
+  width: calc(100% - 160rpx);
   text-align: left;
-  color:#333333;
+  color: #333;
   margin-bottom: 40rpx;
   font-size: 28rpx;
 }
 
-.v-block{
-  width: calc(100% - 272rpx);
-  color:#333333;
+.v-block {
+  width: calc(100% - 160rpx);
+  color: #333;
   margin-bottom: 40rpx;
   font-size: 28rpx;
 }
-.v-c{
+
+.v-c {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between
+  justify-content: space-between;
+  margin-bottom: 10rpx;
 }
 
-.v-class{
+.v-class {
   width: calc(100% - 80rpx);
   height: 128rpx;
   display: flex;
@@ -67,35 +80,38 @@ page{
   justify-content: space-between;
 }
 
-.v-left{
+.v-left {
   width: calc(100% - 240rpx);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.v-name{
+
+.v-name {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  color:#000000;
+  color: #000;
   font-size: 28rpx;
   margin-bottom: 10rpx;
 }
-.v-time{
-  color:#666666;
+
+.v-time {
+  color: #666;
   font-size: 24rpx;
 }
 
-.v-right{
+.v-right {
   width: 180rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
-.v-span{
+
+.v-span {
   width: 88rpx;
   height: 32rpx;
   line-height: 32rpx;
@@ -103,6 +119,8 @@ page{
   font-size: 22rpx;
   margin-right: 80rpx;
 }
-.v-right image{
-  width: 14rpx;height: 22rpx;
+
+.v-right image {
+  width: 14rpx;
+  height: 22rpx;
 }
