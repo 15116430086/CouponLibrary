@@ -3,32 +3,12 @@
 <view class="home-box">
   <view class="m-top">
     <view class="ticket-block">
-<<<<<<< HEAD
-      <view class="ticket-name">商品名称</view>
-      <input type="text" bindblur="ProductNameInput" value="{{productName}}" placeholder="请输入商品名称" placeholder-class="ip"/>
-    </view>
-    <!-- 添加券面图片 -->
-    <view class="addImg">
-      <view class="ticket-flex">
-        <view class="ticket-name">商品主图</view>
-        <view class="ticket-name">{{mainimgNUM}}/3</view>
-      </view>
-      <view class="addImg-box">
-        <block wx:for="{{mainImage}}" wx:for-index="index" wx:key="*this">
-          <view class="addbox-left">
-            <image src="/static/images/cha4.png" wx:if="{{item.state==1}}" class="abox-cha" data-index="{{index}}" bindtap="onDelImageTap" />
-            <image data-index="{{index}}" bindtap="onUpImageTap" src="{{item.url}}" class="addImg-box-image" />
-          </view>
-        </block>
-        <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left:40rpx" />
-=======
       <view class="ticket-name">商品类别</view>
       <view class="v-boxs">
         <view class="v-block {{idb==item.Item_id?'selected':''}}" wx:for="{{threeList}}" wx:key="" bindtap='selectThree' data-id="{{item.Item_id}}">
           {{item.Item_Name}}
           <image src="/static/images/cha.png" wx:if="{{idb==item.Item_id}}" />
         </view>
->>>>>>> c4fc576da042e1e49bf2364303f9179d7c22c148
       </view>
       <!-- <input type="text" value="20元现金抵用券" /> -->
     </view>
@@ -118,7 +98,6 @@
             <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left:40rpx" />
           </view> -->
         </view>
-      </view>
       <view class="ticket-block" wx:if="{{ type==1 }}">
         <view class="ticket-name">附加信息</view>
         <view class="ticket-flex" bindtap="showpPopup">
@@ -134,6 +113,7 @@
           <image src="/static/images/right-arr1.png" class="ticket-flex-image" />
         </view>
         <!-- <input type="text" value="20元现金抵用券" /> -->
+      </view>
       </view>
  
 
