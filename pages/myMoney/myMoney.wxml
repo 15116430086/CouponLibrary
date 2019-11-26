@@ -43,25 +43,25 @@
 </view>
 
 <!-- hidden="{{Popup}}" 这个加判断---->
-<view class="mask"  bindtap="coles">
+<form bindsubmit="isAdd">
+<view class="mask" bindtap="coles" wx:if="{{showView}}">
     <view class="vm-mask"  catchtap="nocoles" >
-        <view class="vmask-title">添加个人结算账号</view>
+        <view class="vmask-title">请确认个人结算账号</view>
         <view class="vmask-title1">(<text style="color:#E30000">注*</text>下次结算将选择此账号结算)</view>
 
         <view class="vm-mid">
             <image src="/static/images/hh1.png" />
-            <input type="text" placeholder="请输入开户银行" value="" bindblur="blurs" placeholder-class="pm-class" />
+            <input type="text" placeholder="请输入开户银行" name="dOpeningBank" value="{{dOpeningBank}}" bindblur="blurs" placeholder-class="pm-class" />
         </view>
          <view class="vm-mid">
             <image src="/static/images/xmxm.png" />
-            <input type="text" placeholder="请输入开户姓名" value="" bindblur="blurs" placeholder-class="pm-class"/>
+            <input type="text" placeholder="请输入开户姓名" name="dAccountName" value="{{dAccountName}}" bindblur="blurs" placeholder-class="pm-class"/>
         </view>
         <view class="vm-mid">
             <image src="/static/images/card1.png" />
-            <input type="number" placeholder="请输入银行卡号" value="" bindblur="blurs" placeholder-class="pm-class"/>
+            <input type="number" placeholder="请输入银行卡号" name="dBankCardNumber" value="{{dBankCardNumber}}" bindblur="blurs" placeholder-class="pm-class"/>
         </view>
-       
-        
-        <view class="vm-bot" bindtap="shopAdd">确认添加</view>
+        <button formType="submit" class="vm-bot">确认结算</button>
     </view>
 </view>
+</form>

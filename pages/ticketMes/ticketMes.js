@@ -11,8 +11,8 @@ Page({
     CouponID: "", //"100110",
     ReceiveID: "", //"12345454",
     datalist: null,
-    shoplist: null
-
+    shoplist: null,
+    isShow:false
   },
 
   /**
@@ -62,8 +62,11 @@ Page({
 
   },
   onShowCouponDetailsTap: function() {
-    this.setData({
-      isShow: true
+    let that = this;
+    let isShow = that.data.isShow;
+
+    that.setData({
+      isShow: !isShow
     })
   },
   payBtn: function(event) {
