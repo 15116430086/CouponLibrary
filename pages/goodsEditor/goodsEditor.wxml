@@ -19,7 +19,7 @@
     </view>
     <view class="ticket-block">
       <view class="ticket-name">商品名称</view>
-      <input type="text" bindinput="ProductNameInput" value="{{productName}}" placeholder="请输入商品名称" placeholder-class="ip"/>
+      <input type="text" bindblur="ProductNameInput" value="{{productName}}" placeholder="请输入商品名称" placeholder-class="ip"/>
     </view>
     <!-- 添加券面图片 -->
     <view class="addImg">

@@ -556,9 +556,13 @@ Page({
     var SpecificationsAttribute = that.data.SpecificationsAttribute
     for (let i in SpecificationsAttribute) {
       if (SpecificationsAttribute[i].IsChecked == 1) {
-        Specifications.Attrivute.push(
-          SpecificationsAttribute[i]
-        )
+        Specifications.Attrivute.push({
+          AttributeID: SpecificationsAttribute[i].AttributeID,
+          AttributeName: SpecificationsAttribute[i].AttributeName,
+          AttrivuteValue: SpecificationsAttribute[i].AttrivuteValue,
+          IsChecked: SpecificationsAttribute[i].IsChecked,
+          State: SpecificationsAttribute[i].State
+        })
       }
 
     }
