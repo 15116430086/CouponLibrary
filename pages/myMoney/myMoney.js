@@ -71,7 +71,7 @@ Page({
 
   startSettlement: function (event){
     let that = this;
-    if (that.data.sumBalanceMoney>0){
+    if (that.data.sumBalanceMoney<=0){
       wx.showToast({
         title: '没有要结算的资金',
         icon: "none",
