@@ -66,7 +66,9 @@
       <view class="bot-left">
         <view class="{{idb?'':'pclass'}}">{{hexiao}}</view>
 
-        <text wx:if="{{idb=='001'}}" bindtap="jumpChoose">(请选择受理商品/业务)</text>
+        <text wx:if="{{pArrProductID.length>0}}" bindtap="jumpChoose">已选{{pArrProductID.length}}个商品</text>
+        <text wx:elif="{{idb=='001'}}" bindtap="jumpChoose">(请选择受理商品/业务)</text>
+      
       </view>
       <image src="/static/images/botarr.png" class="bot-box-image" />
     </view>
