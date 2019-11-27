@@ -2,22 +2,7 @@
 var utils = require("../../utils/util.js")
 const app = getApp();
 
-var pageM = [{
-  page : 1,
-  lastpage: 0,
-  state: 2,
-  iscleck:true
-}, {
-  page :1,
-  lastpage: 0,
-    state: 3,
-    iscleck: true
-}, {
-  page : 1,
-  lastpage: 0,
-    state: 4,
-    iscleck: true
-}];
+var pageM = [];
 
 Page({
 
@@ -28,7 +13,7 @@ Page({
     stayorderlist: [],
     alreadyorderlist: [],
     completedorderlist: [],
-    currentId: '0',
+    currentId: 0,
     section: [{
       name: '待发货/受理',
       typeId: '0'
@@ -136,8 +121,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let that = this;
-    that.GetData();
+
   },
 
 
@@ -168,7 +152,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    pageM = [{
+      page: 1,
+      lastpage: 0,
+      state: 2,
+      iscleck: true
+    }, {
+      page: 1,
+      lastpage: 0,
+      state: 3,
+      iscleck: true
+    }, {
+      page: 1,
+      lastpage: 0,
+      state: 4,
+      iscleck: true
+    }];
+    let that = this;
+    that.GetData();
   },
 
   /**

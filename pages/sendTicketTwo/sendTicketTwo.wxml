@@ -35,16 +35,16 @@
     <input type="number" placeholder="100" name="ReleaseNUM" />
   </view> -->
   <view class="ticket-block">
-    <view class="ticket-name">领取上限</view>
+    <view class="ticket-name">会员领取上限</view>
     <input type="number" value="{{pCoupon_Info.ReceiveUpperLimit}}" placeholder="设置领取上限" name="ReceiveUpperLimit" placeholder-class="pclass" />
   </view>
-  <view class="ticket-block">
-    <view class="ticket-name">领购售价</view>
+  <view class="ticket-block" wx:if="{{currentId==1}}">
+    <view class="ticket-name">团购价</view>
     <input type="number" value="{{pCoupon_Info.SalePrice}}" placeholder="设置领购售价" name="SalePrice" placeholder-class="pclass" />
   </view>
   <!-- 领购规则 -->
   <view class="ticket-block" bindtap="clickRule">
-    <view class="ticket-name">领购规则</view>
+    <view class="ticket-name">会员领取规则</view>
     <view class="bot-box">
       <view class="{{idx?'bot-left':'pclass'}}">{{getRule}}</view>
 

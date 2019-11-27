@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentId: '1',
+    currentId: 1,
     section: [{
       name: '代金券',
       typeId: '1'
@@ -131,7 +131,7 @@ Page({
       ImageOne: "",
       ReceiveRule: 0, //领取规则
       WriteOffType: 0, //核销方式
-      SalePrice: 1, //领购售价
+      SalePrice: 0, //领购售价
       CouponID:"",
       IsAppointProduct:0
 
@@ -263,11 +263,13 @@ Page({
     if (that.data.pArrProductID.length>0){
       pCoupon_Info.IsAppointProduct=1;//指定商品
     }
+    
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pArrProductID = utils.syJsonSafe(that.data.pArrProductID);
     pCoupon_Info.GroupID = app.globalData.AppGroupInfo.GroupID;
     pCoupon_Info.CouponName = val.CouponName; //券名称
     pCoupon_Info.CouponMoney = val.CouponMoney; //券面值
+    pCoupon_Info.CouponType = that.data.currentId;
     // pCoupon_Info.ReleaseNUM = val.ReleaseNUM; //券数量
     pCoupon_Info.ReceiveUpperLimit = val.ReceiveUpperLimit; //领取上限
     pCoupon_Info.SalePrice = val.SalePrice; //

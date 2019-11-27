@@ -21,7 +21,7 @@
         <view class="home-rule" wx:elif="{{item.MemberCollar==1 && item.AppointStaff==0}}">会员自领</view>
         <view class="home-rule" wx:elif="{{item.MemberCollar==0 && item.AppointStaff==1}}">全部员工可增送</view>
         <view class="home-rule" wx:elif="{{item.MemberCollar==0 && item.AppointStaff==2}}">部分员工可增送</view>
-        <view class="home-rule" wx:else>黑认赠送规则</view>
+        <view class="home-rule" wx:else>默认赠送规则</view>
       </view>
       <image src="/static/images/right-arr1.png" />
     </navigator>
