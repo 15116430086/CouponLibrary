@@ -7,7 +7,7 @@
     </view>
   </view>
   <!-- 代金券 -->
-  <view hidden='{{currentId!=1}}' class="mes-block">
+  <view hidden='{{currentId!=0}}' class="mes-block">
     <view class="mes-top">
       <view class="top-mes">
         现金抵用券，将券发布至指定商户或券平台，商户
@@ -15,7 +15,7 @@
       </view>
     </view>
   </view>
-  <view hidden='{{currentId!=2}}' class="mes-block">
+  <view hidden='{{currentId!=1}}' class="mes-block">
     <view class="mes-top">
       <view class="top-mes">联盟商户购买商品团购券后，销售或赠送给消费者，消费者可使用团购券在线下或线上兑换商品。</view>
     </view>
