@@ -17,7 +17,7 @@
   <view class="sc-btn" wx:if="{{couponiteminfo.State==0}}" data-couponCode="{{couponiteminfo.CouponCode}}" data-userID="{{couponiteminfo.UserID}}" bindtap="onCouponWriteOffTap">核销此券</view>
 </view>
 <view class="ruleBox">
-  <image wx:if="{{couponiteminfo.ReceiveRule!=''}}" src="{{couponiteminfo.ReceiveRule}}" />
+  <image wx:if="{{couponiteminfo.UsageRule!=''}}" src="{{couponiteminfo.UsageRule}}" />
   <image wx:else src="/static/images/rule1.png" />
   <view class="seeBtn" bindtap="onShowDs">
     查看详细
