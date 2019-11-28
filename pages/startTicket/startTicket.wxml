@@ -10,7 +10,7 @@
     <view class="mes-block">
         <view class="ticket-box">
              <view class="ticket-block">
-                <view class="ticket-name">发布代金券数量</view>
+                <view class="ticket-name">发布数量</view>
                 <input type="number" bindblur="Commissionratio" value="" placeholder="设置数量" placeholder-class="pclass"/>
             </view>
             <view class="ticket-block">
