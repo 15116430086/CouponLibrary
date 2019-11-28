@@ -142,13 +142,16 @@
       <input name="Telephone" value="" class="textarea" type="number" placeholder="手机号码将成为登录凭证" placeholder-class="ip" maxlength="{{maxlength}}" auto-height="{{auto-height}}" show-confirm-bar="{{show-confirm-bar}}"></input>
     </view>
   </view>
-
-
-
+<view class="v-check">
     <view class="bm-bot">
-        <text style="color:#E30000;margin-left:40rpx;">*</text>注册即表示同意<view>《注册协议》</view>和
-      <view>《隐私权政策》</view>
+    <image src="{{checked==true?'/static/images/f1.png':'/static/images/f2.png'}}" bindtap="onChange"></image>
+        注册即表示同意<navigator url="../regPlane/regPlane">《注册协议》</navigator>和
+      <navigator url="">《隐私权政策》</navigator>
     </view>
+ 
+</view>
+
+    
 
 
 

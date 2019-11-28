@@ -95,6 +95,12 @@
 					"pathName": "pages/merchantReg/merchantReg",
 					"query": "",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/regPlane/regPlane",
+					"pathName": "pages/regPlane/regPlane",
+					"scene": null
 				}
 			]
 		}

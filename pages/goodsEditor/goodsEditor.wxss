@@ -160,8 +160,8 @@ page {
 }
 
 .abox-cha {
-    width: 38rpx;
-    height: 38rpx;
+    width: 40rpx;
+    height: 40rpx;
     position: absolute;
     bottom: 16rpx;
     right: 22rpx;

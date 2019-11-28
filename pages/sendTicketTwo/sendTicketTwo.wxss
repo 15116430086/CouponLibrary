@@ -249,8 +249,8 @@ page {
 }
 
 .cha4{
-  width: 30rpx;
-  height: 30rpx;
+  width: 40rpx;
+  height: 40rpx;
   position: absolute;
   right: 15rpx;
   bottom: 15rpx;

@@ -81,7 +81,8 @@
     "template/TicketBox/TicketBox",
     "template/payStore/payStore",
     "pages/ticketShenHe/ticketShenHe",
-    "pages/noPayMoney/noPayMoney"
+    "pages/noPayMoney/noPayMoney",
+    "pages/regPlane/regPlane"
   ],
   "permission": {
     "scope.userLocation": {

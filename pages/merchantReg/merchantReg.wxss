@@ -201,8 +201,8 @@ form {
 
 
 .bm-bot {
-  width: 100%;
-  height: 80rpx;
+  width: calc(100% - 70rpx);
+  height: 140rpx;
  background-color: #fff;
   font-size: 30rpx;
   color: #999;
@@ -211,7 +211,25 @@ form {
   align-items: center;
 }
 
-.bm-bot view {
+.bm-bot navigator {
   color: #016fb4;
   margin-left: 10rpx;
+}
+
+
+
+.v-check{
+  width: 100%;
+  height: auto;
+  background-color: #FFF;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.bm-bot image{
+  width: 40rpx;
+  height: 40rpx;
+  flex-shrink: 0;
+  margin-right: 20rpx;
 }
