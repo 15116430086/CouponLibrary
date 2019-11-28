@@ -81,7 +81,7 @@ page {
 }
 
 .v-left {
-  width: calc(100% - 240rpx);
+  width: calc(100% - 300rpx);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -104,7 +104,7 @@ page {
 }
 
 .v-right {
-  width: 180rpx;
+  width: 240rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -112,12 +112,16 @@ page {
 }
 
 .v-span {
-  width: 88rpx;
+  width: auto;
+  padding-left: 5rpx;
+  padding-right: 5rpx;
   height: 32rpx;
   line-height: 32rpx;
   text-align: center;
   font-size: 22rpx;
   margin-right: 80rpx;
+  white-space: nowrap;
+  border-radius: 5rpx;
 }
 
 .v-right image {
