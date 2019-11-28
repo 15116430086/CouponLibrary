@@ -8,15 +8,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentId: '1',
+    currentId: 0,
     section: [{
       name: '代金券',
-      typeId: '1'
+      typeId: 0
     }, {
       name: '团购券',
-      typeId: '2'
+      typeId: 1
     }],
-    value:3,
+    value: 3,
     "placeholder": "请输入文本",
     "maxlength": -1, // 最大输入长度，设置为 -1 的时候不限制最大长度
     "focus": true,
@@ -103,8 +103,8 @@ Page({
     idd: "",
     shareshow2: false,
     date: "请选择",
-    hexiao:"请选择",
-    getRule:"请选择",
+    hexiao: "请选择",
+    getRule: "请选择",
     currentDate: new Date().getTime(),
     minDate: new Date().getTime(),
     formatter(type, value) {
@@ -131,17 +131,17 @@ Page({
       ImageOne: "",
       ReceiveRule: 0, //领取规则
       WriteOffType: 0, //核销方式
-      SalePrice: 1, //领购售价
-      CouponID:"",
-      IsAppointProduct:0
+      SalePrice: 0, //领购售价
+      CouponID: "",
+      IsAppointProduct: 0
 
     },
     imageOne: "",
     imageTwo: "",
     imageTre: "",
     idm: "",
-    df_value:2,
-    types:0//默认类型为添加
+    df_value: 2,
+    types: 0 //默认类型为添加
 
   },
 
@@ -151,9 +151,9 @@ Page({
   onLoad: function(options) {
     wx.setStorageSync("pArrProductKey", "");
     console.log(options.pCoupon_Info);
-    if (options.pCoupon_Info){//说明是修改
-      var Info = JSON.parse(options.pCoupon_Info) ;
-      var Coupon_Info=this.data.pCoupon_Info;
+    if (options.pCoupon_Info) { //说明是修改
+      var Info = JSON.parse(options.pCoupon_Info);
+      var Coupon_Info = this.data.pCoupon_Info;
       Coupon_Info.CouponName = Info.CouponName;
       Coupon_Info.CouponType = Info.CouponType;
       Coupon_Info.ImageOne = Info.ImageOne;
@@ -169,13 +169,13 @@ Page({
       Coupon_Info.SalePrice = Info.SalePrice;
       Coupon_Info.CouponID = Info.CouponID;
       Coupon_Info.IsAppointProduct = Info.IsAppointProduct
-      if (Info.WriteOffType == 0 && Info.IsAppointProduct==1){
-        var data={
+      if (Info.WriteOffType == 0 && Info.IsAppointProduct == 1) {
+        var data = {
           CouponID: Info.CouponID
         }
         utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/Getproductlist", "POST", data, app.globalData.appkeyid, this.Getproductlist)
       }
-     
+
 
 
       if (Info.ReceiveRule == 0) {
@@ -212,30 +212,32 @@ Page({
           idd: "002"
         });
       }
-      
-        this.setData({
-          types:1,
-          pCoupon_Info: Coupon_Info,
-          date: Info.ExpirationDate,
-          imageOne: Info.ImageOne,
-          imageTwo: Info.UsageRule,
-          imageTre: Info.CouponDetails,
-          shareshow1:true,
-          shareshow2:true,
-          shareshow:true
-        });
+
+      this.setData({
+        types: 1,
+        pCoupon_Info: Coupon_Info,
+        date: Info.ExpirationDate,
+        imageOne: Info.ImageOne,
+        imageTwo: Info.UsageRule,
+        imageTre: Info.CouponDetails,
+        shareshow1: true,
+        shareshow2: true,
+        shareshow: true
+      });
     }
     console.log(this.data.pCoupon_Info);
   },
-  Getproductlist:function(res){
-    var chat=this;
-    var json=res.data.Data;
-    var list=[];
-    for (var i in json.data){
+  Getproductlist: function(res) {
+    var chat = this;
+    var json = res.data.Data;
+    var list = [];
+    for (var i in json.data) {
       list.push(json.data[i].ProductID);
     }
     wx.setStorageSync("pArrProductKey", list);
-    chat.setData({ pArrProductID: list});
+    chat.setData({
+      pArrProductID: list
+    });
   },
   bindPickerChange_hx: function(e) {
     let that = this;
@@ -245,7 +247,7 @@ Page({
 
     that.setData({ //给变量赋值
       hx_index: e.detail.value,
-      df_index:0,
+      df_index: 0,
       date: pic_array[e.detail.value].name //每次选择了下拉列表的内容同时修改下标然后修改显示的内容，显示的内容和选择的内容一致
     });
     pCoupon_Info.ExpiredType = 1;
@@ -260,17 +262,20 @@ Page({
     let data = {};
 
     let pCoupon_Info = that.data.pCoupon_Info;
-    if (that.data.pArrProductID.length>0){
-      pCoupon_Info.IsAppointProduct=1;//指定商品
+    if (that.data.pArrProductID.length > 0) {
+      pCoupon_Info.IsAppointProduct = 1; //指定商品
     }
+
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pArrProductID = utils.syJsonSafe(that.data.pArrProductID);
     pCoupon_Info.GroupID = app.globalData.AppGroupInfo.GroupID;
     pCoupon_Info.CouponName = val.CouponName; //券名称
     pCoupon_Info.CouponMoney = val.CouponMoney; //券面值
+    pCoupon_Info.CouponType = that.data.currentId;
     // pCoupon_Info.ReleaseNUM = val.ReleaseNUM; //券数量
     pCoupon_Info.ReceiveUpperLimit = val.ReceiveUpperLimit; //领取上限
-    pCoupon_Info.SalePrice = val.SalePrice; //
+    if (that.data.currentId == 1)
+      pCoupon_Info.SalePrice = val.SalePrice;
     data.pCoupon_Info = utils.syJsonSafe(that.data.pCoupon_Info);
     if (pCoupon_Info.CouponName == '') {
       wx.showToast({
@@ -306,7 +311,7 @@ Page({
     //   });
     //   return
     // }
-    if (pCoupon_Info.ReceiveUpperLimit == '' || pCoupon_Info.ReceiveUpperLimit==0) {
+    if (pCoupon_Info.ReceiveUpperLimit == '' || pCoupon_Info.ReceiveUpperLimit == 0) {
       wx.showToast({
         title: "请输入领取上限!",
         icon: "none",
@@ -314,9 +319,9 @@ Page({
       });
       return
     }
-    if (pCoupon_Info.SalePrice == '') {
+    if (pCoupon_Info.SalePrice == '' && that.data.currentId == 1) {
       wx.showToast({
-        title: "请输入领购售价!",
+        title: "请输入团购价!",
         icon: "none",
         duration: 1500
       });
@@ -366,9 +371,7 @@ Page({
       wx.redirectTo({
         url: '../startTicket/startTicket?pCoupon_Info=' + pCoupon_Info + "&CouponID=" + json.CouponID,
       })
-    }
-    else
-    {
+    } else {
       console.log(json.msg);
     }
   },
@@ -413,13 +416,13 @@ Page({
     let type = e.currentTarget.dataset.type;
     pCoupon_Info.ReceiveRule = type;
     console.log(type)
-    
-    if(type ==0){
+
+    if (type == 0) {
       that.setData({
-        getRule:"仅首次领取",
+        getRule: "仅首次领取",
         idx: id
       });
-    }else{
+    } else {
       that.setData({
         getRule: "可重复领取",
         idx: id
@@ -443,19 +446,19 @@ Page({
     let pCoupon_Info = that.data.pCoupon_Info;
     let type = e.currentTarget.dataset.type;
     pCoupon_Info.WriteOffType = type;
-    if(type ==0){
+    if (type == 0) {
       that.setData({
-        hexiao:"线上受理",
+        hexiao: "线上受理",
         idb: id
       })
-    }else{
+    } else {
       that.setData({
         hexiao: "线下消费",
         idb: id,
-        pArrProductID:[]
+        pArrProductID: []
       })
     }
-    
+
   },
 
 
@@ -525,7 +528,7 @@ Page({
     let id = e.currentTarget.dataset.id;
     console.log(id);
     let pAppKeyId = app.globalData.appkeyid
-    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID,pAppKeyId, that.pCallBack, id)
+    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack, id)
 
   },
   pCallBack(e, id) {
@@ -545,19 +548,19 @@ Page({
     }
   },
 
-  preImg(e){
+  preImg(e) {
     let that = this;
     let srcImg = that.data.imageOne;
     let srcArr = [];
     srcArr.push(srcImg);
     wx.previewImage({
       current: srcImg, // 当前显示图片的http链接  
-      urls:srcArr
+      urls: srcArr
     })
   },
-  delImg(e){
+  delImg(e) {
     this.setData({
-      imageOne:""
+      imageOne: ""
     })
   },
 
@@ -566,7 +569,7 @@ Page({
     let that = this;
     let id = e.currentTarget.dataset.id;
     let pAppKeyId = app.globalData.appkeyid
-    utils.UploadImg(1,app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack2)
+    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack2)
 
   },
   pCallBack2(e) {
@@ -607,7 +610,7 @@ Page({
     let id = e.currentTarget.dataset.id;
     console.log(id);
     let pAppKeyId = app.globalData.appkeyid
-    utils.UploadImg(1,app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack3)
+    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack3)
 
   },
   pCallBack3(e) {
@@ -653,14 +656,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    
+
     var productList = wx.getStorageSync("pArrProductKey");
-    if (productList.length>0){
+    if (productList.length > 0) {
       this.setData({
         pArrProductID: productList
       });
     }
-    
+
     // that.data.pCoupon_Info.pArrProductID = that.data.pArrProductID;
     // console.log(that.data.pCoupon_Info)
   },

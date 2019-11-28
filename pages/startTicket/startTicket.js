@@ -273,7 +273,7 @@ Page({
           success(res) {
             console.log(res);
             if (res.errMsg == "requestPayment:ok") {
-              wx.reLaunch({
+              wx.navigateBack({
                 url: '../sendTicketOne/sendTicketOne'
               });
             }
@@ -293,7 +293,7 @@ Page({
           icon: 'none',
           duration: 2000
         })
-        wx.reLaunch({
+        wx.navigateBack({
           url: '../sendTicketOne/sendTicketOne'
         });
       }

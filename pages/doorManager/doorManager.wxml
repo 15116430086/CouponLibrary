@@ -73,6 +73,6 @@
             <input type="number" placeholder="请输入联系方式" value="{{datalist[0].Telephone}}" bindblur="blurs" placeholder-class="pm-class"/>
         </view>
         
-        <view class="vm-bot" bindtap="shopUpdate">确认添加</view>
+        <view class="vm-bot" bindtap="shopUpdate">确认修改</view>
     </view>
 </view>
