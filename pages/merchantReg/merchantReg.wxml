@@ -132,7 +132,7 @@
   <view class="v-check">
     <view class="bm-bot">
     <image src="{{checked==true?'/static/images/f1.png':'/static/images/f2.png'}}" bindtap="onChange"></image>
-       <view class="bm-view"><text>注册表示同意</text><navigator url="../regPlane/regPlane">《注册协议》</navigator>和
+       <view class="bm-view"><text>注册即表示同意</text><navigator url="../regPlane/regPlane">《注册协议》</navigator>和
       <navigator url="../secretBook/secretBook">《隐私权政策》</navigator></view>
     </view>
   </view>

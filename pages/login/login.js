@@ -21,7 +21,7 @@ Page({
       {
         image: "/static/images/3.png",
         title: "提升会员权益",
-        span: "引入联盟商资源提升本店会员权限"
+        span: "引入联盟商资源提升本店会员权益"
       },
       {
         image: "/static/images/4.png",
