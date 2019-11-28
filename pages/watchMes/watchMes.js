@@ -81,7 +81,7 @@ Page({
   jumpOk:function(event){//继续发券
     
     wx.navigateTo({
-      url: '../startTicket/startTicket?pCoupon_Info=' + this.data.CouponInfo + "&CouponID=" + this.data.CouponInfo.CouponID,
+      url: '../startTicket/startTicket?pCoupon_Info=' + JSON.stringify(this.data.CouponInfo) + "&CouponID=" + this.data.CouponInfo.CouponID,
     })
   },
   pay:function(event){
