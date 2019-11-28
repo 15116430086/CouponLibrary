@@ -24,7 +24,7 @@
         </view>
       </view>
       <view class="sS-right">
-        <image src="/static/images/ewm.png" data-index="{{index}}" id="{{item.ReceiveID}}" bindtap="onShowQrCodeTap" />
+        <image src="/static/images/ewm3.png" data-index="{{index}}" id="{{item.ReceiveID}}" bindtap="onShowQrCodeTap" />
         <view class="sS-price">￥{{item.CouponMoney}}</view>
       </view>
     </view>

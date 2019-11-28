@@ -34,13 +34,16 @@ Page({
     regAddress: "",
     multiArray: [],
     multiIndex: [17, 0, 2],
-    Geocoder: []
+    Geocoder: [],
+    disabled:true
   },
   onChange(event) {
     let that = this;
     let checked = that.data.checked;
+    let disabled = that.data.disabled;
     that.setData({
-      checked:!checked
+      checked:!checked,
+      disabled: !disabled
     })
   },
   onRegAddressTap: function() {

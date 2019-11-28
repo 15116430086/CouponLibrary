@@ -198,12 +198,10 @@ form {
   margin-top: 246rpx;
 }
 
-
-
 .bm-bot {
   width: calc(100% - 70rpx);
   height: 140rpx;
- background-color: #fff;
+  background-color: #fff;
   font-size: 30rpx;
   color: #999;
   display: flex;
@@ -214,22 +212,32 @@ form {
 .bm-bot navigator {
   color: #016fb4;
   margin-left: 10rpx;
+  white-space: nowrap;
 }
-
-
-
-.v-check{
+.bm-bot view{
+  width: calc(100% - 70rpx);
+  display: flex;
+  flex-grow: row;
+  align-items: center;
+}
+.v-check {
   width: 100%;
   height: auto;
-  background-color: #FFF;
+  background-color: #fff;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-.bm-bot image{
+
+.bm-bot image {
   width: 40rpx;
   height: 40rpx;
   flex-shrink: 0;
   margin-right: 20rpx;
+}
+
+
+.bm-view text,.bm-view navigator{
+  display: block;
 }
