@@ -130,9 +130,9 @@ function syJsonSafe(obj) {
 
 
 function UploadImg(count, pGroupID, type, pAppKeyId, pCallBack, pOther) {
-  var url = "http://test.miboon.com/LibraryAPI/CouponView/UploadImageView/UploadImgs";
+  var url = "https://wx.wap.meiguwen.com/LibraryAPI/CouponView/UploadImageView/UploadImgs";
   if (type == 1) {
-    url = "http://test.miboon.com/LibraryAPI/CouponView/UploadImageView/UploadBusinesslicense";
+    url = "https://wx.wap.meiguwen.com/LibraryAPI/CouponView/UploadImageView/UploadBusinesslicense";
   }
   wx.chooseImage({
     count: count,
@@ -160,14 +160,15 @@ function UploadImg(count, pGroupID, type, pAppKeyId, pCallBack, pOther) {
             if (type == 1) { //说明是营业执照
               imgs.push(json.Data.imgurl);
               imgs.push(json.Data.data);
+              wx.hideLoading();
+              pCallBack(imgs, pOther);
             } else {
               json.Data = json.Data.replace("true|", "");
               imgs.push(json.Data);
-            }
-            if (imgs.length == tempFilePaths.length) {
-              wx.hideLoading();
-
-              pCallBack(imgs, pOther);
+              if (imgs.length == tempFilePaths.length) {
+                wx.hideLoading();
+                pCallBack(imgs, pOther);
+              }
             }
 
           },
