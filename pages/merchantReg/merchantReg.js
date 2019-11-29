@@ -255,23 +255,23 @@ Page({
     data.AccountName = data.GroupName
     data.EnterpriseCode = that.data.CreditCode
     data.BankCardNumber = e.detail.value.CorporateBankAccount
-    if (data.BankCardNumber == '') {
-      wx.showToast({
-        title: "请输入对公银行账号！",
-        icon: "none",
-        duration: 1500
-      })
-      return;
-    }
+    // if (data.BankCardNumber == '') {
+    //   wx.showToast({
+    //     title: "请输入对公银行账号！",
+    //     icon: "none",
+    //     duration: 1500
+    //   })
+    //   return;
+    // }
     data.OpeningBank = e.detail.value.OpeningBank
-    if (data.OpeningBank == '') {
-      wx.showToast({
-        title: "请输入开户银行！",
-        icon: "none",
-        duration: 1500
-      })
-      return;
-    }
+    // if (data.OpeningBank == '') {
+    //   wx.showToast({
+    //     title: "请输入开户银行！",
+    //     icon: "none",
+    //     duration: 1500
+    //   })
+    //   return;
+    // }
     data.EnterpriseLicensing = this.data.enterpriseLicensing
     data.ImageOne = this.data.mastergraphimg;
     data.LogoImage = this.data.companyLOGimg;
@@ -302,7 +302,7 @@ Page({
       })
       return;
     }
-    data.regAddress = e.detail.value.RegAddress
+    var regAddress = e.detail.value.RegAddress
     if (regAddress == '') {
       wx.showToast({
         title: "详细地址不能为空",
