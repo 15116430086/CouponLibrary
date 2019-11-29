@@ -112,13 +112,7 @@ Page({
 
         var words_result=JSON.parse(img[1]);
         console.log(words_result);
-        if (words_result.words_result.单位名称.words=="无"){
-          wx.showToast({
-            title: "营业执照不符合请重新上传!",
-            icon: "none",
-            duration: 2000
-          })
-        }
+       
         that.setData({
           GroupName: words_result.words_result.单位名称.words,
           RegisteredAddress: words_result.words_result.地址.words,
@@ -137,6 +131,19 @@ Page({
           flag2: true,
         })
       }
+
+
+      if(type==0){
+        if (words_result.words_result.单位名称.words == "无") {
+          wx.showToast({
+            title: "营业执照不符合请重新上传!",
+            icon: "none",
+            duration: 2000
+          })
+        }
+        return;
+      }
+
       wx.showToast({
         title: "上传成功!",
         icon: "none",
