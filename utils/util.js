@@ -129,7 +129,7 @@ function syJsonSafe(obj) {
 }
 
 
-function UploadImg(count, pGroupID, type, pAppKeyId, pCallBack, pOther) {
+function UploadImg(count, pGroupID, pAppKeyId, pCallBack, pOther,type) {
   var url = "https://wx.wap.meiguwen.com/LibraryAPI/CouponView/UploadImageView/UploadImgs";
   if (type == 1) {
     url = "https://wx.wap.meiguwen.com/LibraryAPI/CouponView/UploadImageView/UploadBusinesslicense";
