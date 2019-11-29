@@ -378,7 +378,7 @@ Page({
     wx.hideLoading();
     if (json.flag) {
       wx.showToast({
-        title: '商品新增成功!',
+        title: '商品发布成功!',
         icon: "none",
         duration: 2000
       })
@@ -498,10 +498,10 @@ Page({
 
       //业务商品附加属性
       var attributeNUM = 0;
+      var ProductAttribute = that.data.ProductAttribute;
       if (productInfo.CustomAttribute != '') {
         var CustomAttribute = JSON.parse(productInfo.CustomAttribute);
-        attributeNUM = CustomAttribute.length
-        var ProductAttribute = that.data.ProductAttribute;
+        attributeNUM = CustomAttribute.length       
         for (let i in ProductAttribute) {
           for (let j in CustomAttribute) {
             if (CustomAttribute[j].AttributeID == ProductAttribute[i].AttributeID) {
@@ -516,8 +516,8 @@ Page({
 
       //商品规格
       var ProductSpecifications = [];
-      if (json.Coupon_ProductSpecifications) {
-        var SpecificationsAttribute = that.data.SpecificationsAttribute
+      var SpecificationsAttribute = that.data.SpecificationsAttribute
+      if (json.Coupon_ProductSpecifications) {       
         var Coupon_ProductSpecifications = json.Coupon_ProductSpecifications
         for (let i in Coupon_ProductSpecifications) {
           var Specifications = {
