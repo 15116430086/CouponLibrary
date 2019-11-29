@@ -197,7 +197,7 @@ Page({
       return;
     }
 
-    if (this.data.Limited==0) {
+    if (this.data.sign != 2 && this.data.Limited<=0) {
       wx.showToast({
         title: "请选设置领取限制",
         icon: "none"
