@@ -309,7 +309,7 @@ function getGeocoder(address, pCallBack) {
         pCallBack(newres);    
     },
     fail: function(error) {
-      console.error(error);
+      console.log(error);
     },
     complete: function(res) {
       console.log(res);
