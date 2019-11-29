@@ -35,7 +35,12 @@ Page({
     multiArray: [],
     multiIndex: [17, 0, 2],
     Geocoder: [],
-    disabled:true
+    disabled:true,
+    GroupName:"",//公司名称
+    RegisteredAddress:"",//注册地址
+    Contacts:"",//联系人
+    LegalPerson:"",//法人
+
   },
   onChange(event) {
     let that = this;
@@ -88,9 +93,13 @@ Page({
     }
   },
   onUpFileImg: function(e) {
+    var type=0;
     var typeid = e.currentTarget.dataset.type;
+    if (typeid==0){//说明是上传营业执照
+      type=1;
+    }
     let that = this;
-    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, typeid)
+    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, typeid,type)
   },
   UpFileImgBak: function(img, type) {
     let that = this;
@@ -100,6 +109,23 @@ Page({
           enterpriseLicensing: img[0], //营业执照
           flag0: true,
         })
+
+        var words_result=JSON.parse(img[1]);
+        console.log(words_result);
+        if (words_result.words_result.单位名称.words=="无"){
+          wx.showToast({
+            title: "营业执照不符合请重新上传!",
+            icon: "none",
+            duration: 2000
+          })
+        }
+        that.setData({
+          GroupName: words_result.words_result.单位名称.words,
+          RegisteredAddress: words_result.words_result.地址.words,
+          LegalPerson: words_result.words_result.法人.words,
+          Contacts: words_result.words_result.法人.words,
+          regAddress: words_result.words_result.地址.words
+        });
       } else if (type == 1) {
         that.setData({
           mastergraphimg: img[0], //形象主图

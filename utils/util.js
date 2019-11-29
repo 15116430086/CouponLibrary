@@ -38,7 +38,7 @@ function AjaxRequest(pUrl, pType, pData, pAppKeyId, pCallBack) {
     },
     fail(res) {
       wx.showToast({
-        title:'服务器连接失败' //'请求失败',
+        title: '服务器连接失败' //'请求失败',
       })
     }
   })
@@ -129,10 +129,10 @@ function syJsonSafe(obj) {
 }
 
 
-function UploadImg(count,pGroupID,type, pAppKeyId, pCallBack, pOther) {
-  var url ="http://test.miboon.com/LibraryAPI/CouponView/UploadImageView/UploadImgs";
-  if(type==1){
-    url = "http://test.miboon.com/LibraryAPI/CouponView/UploadImageView/UploadBusinesslicense";
+function UploadImg(count, pGroupID, pAppKeyId, pCallBack, pOther,type) {
+  var url = "https://wx.wap.meiguwen.com/LibraryAPI/CouponView/UploadImageView/UploadImgs";
+  if (type == 1) {
+    url = "https://wx.wap.meiguwen.com/LibraryAPI/CouponView/UploadImageView/UploadBusinesslicense";
   }
   wx.chooseImage({
     count: count,
@@ -157,18 +157,20 @@ function UploadImg(count,pGroupID,type, pAppKeyId, pCallBack, pOther) {
           }, // HTTP 请求中其他额外的参数
           success: function(res) {
             var json = JSON.parse(res.data);
-            if (type == 1) {//说明是营业执照
+            if (type == 1) { //说明是营业执照
               imgs.push(json.Data.imgurl);
               imgs.push(json.Data.data);
-            }else{
-            json.Data = json.Data.replace("true|", "");
-            imgs.push(json.Data);
-            if (imgs.length == tempFilePaths.length) {
               wx.hideLoading();
-           
               pCallBack(imgs, pOther);
+            } else {
+              json.Data = json.Data.replace("true|", "");
+              imgs.push(json.Data);
+              if (imgs.length == tempFilePaths.length) {
+                wx.hideLoading();
+                pCallBack(imgs, pOther);
+              }
             }
-          }
+
           },
           fail: function(res) {}
         });
@@ -245,7 +247,7 @@ function GetRegionIndustryBack(json, pCallBack) {
   }
 }
 
-function reverseGeocoder(latitude, longitude,pCallBack) {       
+function reverseGeocoder(latitude, longitude, pCallBack) {       
   qqmapsdk.reverseGeocoder({    
     location: {
       latitude: latitude,
@@ -287,7 +289,7 @@ function reverseGeocoder(latitude, longitude,pCallBack) {       
 
 }
 
-function getGeocoder(address, region,pCallBack) {
+function getGeocoder(address, region, pCallBack) {
   //调用地址解析接口
   qqmapsdk.geocoder({
     //获取表单传入地址

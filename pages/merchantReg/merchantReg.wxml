@@ -51,7 +51,7 @@
       <view class="ticket-name">公司全称
         <text style="color:red">*</text>
       </view>
-      <input type="text" name="GroupName" value="" placeholder="营业执照公司名称" placeholder-class="ip" />
+      <input type="text" name="GroupName" value="{{GroupName}}" placeholder="营业执照公司名称" placeholder-class="ip" />
     </view>
     <!-- <view class="ticket-block">
       <view class="ticket-name">银行用户名<text style="color:red">*</text></view>
@@ -61,7 +61,7 @@
       <view class="ticket-name">法定代表人
         <text style="color:red">*</text>
       </view>
-      <input name="LegalPerson" type="text" value="" placeholder="法定代表人姓名" placeholder-class="ip" />
+      <input name="LegalPerson" type="text" value="{{LegalPerson}}" placeholder="法定代表人姓名" placeholder-class="ip" />
     </view>
     <view class="ticket-block">
       <view class="ticket-name">经营地址
@@ -120,7 +120,7 @@
       <view class="ticket-name">联系人
         <text style="color:red">*</text>
       </view>
-      <input name="Contacts" type="text" value="" placeholder="请填写联系人" placeholder-class="ip" />
+      <input name="Contacts" type="text" value="{{Contacts}}" placeholder="请填写联系人" placeholder-class="ip" />
     </view>
     <view class="ticket-block">
       <view class="ticket-name">手机号码
