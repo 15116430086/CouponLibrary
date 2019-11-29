@@ -121,14 +121,26 @@ Page({
         var words_result=JSON.parse(img[1]);
         console.log(words_result);
         var RegisteredAddress = words_result.words_result.地址.words;
+
+        var reg = /.+?(省|市|自治区|自治州|县|区)/g;
+        var region= RegisteredAddress.match(reg);
+        var regionName = "";
+        var regAddress = "";
+        if (region)       
+        {
+        regionName = region.join("");
+        regAddress = RegisteredAddress.replace(regionName, '')
+        }
         that.setData({
           GroupName: words_result.words_result.单位名称.words,      
           RegisteredAddress: RegisteredAddress,
+          regionName: regionName,
+          regAddress: regAddress,
           LegalPerson: words_result.words_result.法人.words,
           Contacts: words_result.words_result.法人.words,         
           CreditCode: words_result.words_result.社会信用代码.words
         });
-        utils.getGeocoder(RegisteredAddress, that.getGeocoderBack)
+        
       } else if (type == 1) {
         that.setData({
           mastergraphimg: img[0], //形象主图

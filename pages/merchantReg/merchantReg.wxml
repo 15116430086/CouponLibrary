@@ -74,7 +74,7 @@
         <text style="color:red">*</text>
       </view>      
         <view class="t-bot">
-        <view ><input name="RegAddress" type="text" value="{{regAddress}}"  placeholder="请输入详细地址" placeholder-class="ip" /></view>
+        <view style="width: 100%;" ><input name="RegAddress" type="text" value="{{regAddress}}"  placeholder="请输入详细地址" placeholder-class="ip" /></view>
         <image bindtap="onRegAddressTap" src="/static/images/address.png" />      
        </view>
     </view>
