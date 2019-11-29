@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    checked: true,
     currentId: '1',
     section: [{
       name: '连锁商户',
@@ -33,7 +34,17 @@ Page({
     regAddress: "",
     multiArray: [],
     multiIndex: [17, 0, 2],
-    Geocoder: []
+    Geocoder: [],
+    disabled:true
+  },
+  onChange(event) {
+    let that = this;
+    let checked = that.data.checked;
+    let disabled = that.data.disabled;
+    that.setData({
+      checked:!checked,
+      disabled: !disabled
+    })
   },
   onRegAddressTap: function() {
     let that = this;

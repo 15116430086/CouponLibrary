@@ -184,9 +184,9 @@ white-space:nowrap;
 .home-nav image {
     display: block;
     /* width: 100%; */
-    width: 60rpx;
-    height: 60rpx;
-    flex-shrink: 1;
+    width: 100rpx;
+    height: 100rpx;
+    flex-shrink: 0;
     margin-bottom: 10rpx;
 }
 

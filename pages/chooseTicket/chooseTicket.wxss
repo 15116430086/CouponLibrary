@@ -162,16 +162,12 @@ page {
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 24rpx;
-    font-weight: 600;
+    font-size: 32rpx;
+    white-space: nowrap;
+    /* font-weight: 600; */
 }
 
-.choose-bot image {
-    width: 48rpx;
-    height: 48rpx;
-    display: block;
-    margin-right: 20rpx;
-}
+ 
 
 .cb-box {
     color: #e85819;

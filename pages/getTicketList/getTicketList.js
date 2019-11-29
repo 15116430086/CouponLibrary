@@ -118,7 +118,7 @@ Page({
     data.pLatitudeX = app.globalData.latitudeX;
     data.pLongitudeY = app.globalData.longitudeY;
     data.pQueryKey = that.data.searchValue;
-    data.pRegionID = that.data.RegionName != '' ? that.data.RegionName : app.globalData.regionName;
+    data.pRegionID = that.data.RegionName != '' ? that.data.RegionName : "";
     data.pIndustryCode = that.data.industryCode;
     data.pCouponType = that.data.couponType;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/QueryCouponInfo", "POST", data, app.globalData.appkeyid, this.GetQueryCouponBack)
@@ -161,7 +161,7 @@ Page({
   onLoad: function(options) {
     let that = this;
     that.setData({
-      RegionName: app.globalData.regionName
+      RegionName: "所有地区"
     })
     that.GetRegionIndustry();
     page = 1;
@@ -292,11 +292,23 @@ Page({
     utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
 
-
+  bindMultiPickerCancel:function()
+  {
+    //console.log('picker发送取消，携带值为', e.detail.value)
+    this.setData({
+      RegionName:"所有地区"
+    })    
+  },
   bindMultiPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
+    var data = {
+      multiArray: this.data.multiArray,
       multiIndex: e.detail.value
+    };
+   
+    this.setData({
+      multiIndex: data.multiIndex,
+      RegionName: data.multiArray[2][data.multiIndex[2]].RegionName
     })
   },
   bindMultiPickerColumnChange: function(e) {
@@ -322,9 +334,9 @@ Page({
     }
     console.log(data.multiIndex);
     this.setData({
-      multiArray: data.multiArray,
-      multiIndex: data.multiIndex,
-      RegionName: data.multiArray[2][data.multiIndex[2]].RegionName
+      multiArray: data.multiArray
+      //multiIndex: data.multiIndex,
+      //RegionName: data.multiArray[2][data.multiIndex[2]].RegionName
     });
   }
 })
