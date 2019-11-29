@@ -32,14 +32,15 @@ Page({
     flag1: false,
     flag2: false,
     regAddress: "",
+    regionName:"",
     multiArray: [],
     multiIndex: [17, 0, 2],
     Geocoder: [],
     disabled:true,
-    GroupName:"",//公司名称
-    RegisteredAddress:"",//注册地址
+    GroupName:"",//公司名称   
     Contacts:"",//联系人
     LegalPerson:"",//法人
+    CreditCode: ""//社会信用代码
 
   },
   onChange(event) {
@@ -60,17 +61,23 @@ Page({
         console.log(JSON.stringify(res));
         if (res.address) {
           that.setData({
-            regAddress: res.address
+            RegisteredAddress: res.address
           })
 
-          utils.getGeocoder(res.address, app.globalData.regionName, that.getGeocoderBack)
+          utils.getGeocoder(res.address, that.getGeocoderBack)
         }
       }
     })
   },
   getGeocoderBack: function(res) {
+    let that=this;
+    var regionName = res.province + res.city + res.district
+    var regAddress = that.data.RegisteredAddress.replace(regionName,'')
     this.setData({
+      regionName: regionName,
+      regAddress: regAddress,
       Geocoder: res
+
     });
   },
   onPreviewImageTap: function(e) {
@@ -92,6 +99,7 @@ Page({
       })
     }
   },
+
   onUpFileImg: function(e) {
     var type=0;
     var typeid = e.currentTarget.dataset.type;
@@ -112,14 +120,15 @@ Page({
 
         var words_result=JSON.parse(img[1]);
         console.log(words_result);
-       
+        var RegisteredAddress = words_result.words_result.地址.words;
         that.setData({
-          GroupName: words_result.words_result.单位名称.words,
-          RegisteredAddress: words_result.words_result.地址.words,
+          GroupName: words_result.words_result.单位名称.words,      
+          RegisteredAddress: RegisteredAddress,
           LegalPerson: words_result.words_result.法人.words,
-          Contacts: words_result.words_result.法人.words,
-          regAddress: words_result.words_result.地址.words
+          Contacts: words_result.words_result.法人.words,         
+          CreditCode: words_result.words_result.社会信用代码.words
         });
+        utils.getGeocoder(RegisteredAddress, that.getGeocoderBack)
       } else if (type == 1) {
         that.setData({
           mastergraphimg: img[0], //形象主图
@@ -244,14 +253,7 @@ Page({
       return;
     }
     data.AccountName = data.GroupName
-    // if (data.AccountName == '') {
-    //   wx.showToast({
-    //     title: "请输入银行用户名！",
-    //     icon: "none",
-    //     duration: 1500
-    //   })
-    //   return;
-    // }
+    data.EnterpriseCode = that.data.CreditCode
     data.BankCardNumber = e.detail.value.CorporateBankAccount
     if (data.BankCardNumber == '') {
       wx.showToast({
@@ -290,17 +292,27 @@ Page({
       return;
     }
 
-
-    data.RegisteredAddress = e.detail.value.RegAddress
-    if (data.RegisteredAddress == '') {
+    var regionName = e.detail.value.RegionName
+    if (regionName=='')
+    {
       wx.showToast({
-        title: "注册地址不能为空",
+        title: "注册地区不能为空",
         icon: "none",
         duration: 1500
       })
       return;
     }
-
+    data.regAddress = e.detail.value.RegAddress
+    if (regAddress == '') {
+      wx.showToast({
+        title: "详细地址不能为空",
+        icon: "none",
+        duration: 1500
+      })
+      return;
+    }
+    data.RegisteredAddress = e.detail.value.RegionName + e.detail.value.RegAddress
+    
     data.LegalPerson = e.detail.value.LegalPerson
     if (data.LegalPerson == '') {
       wx.showToast({

@@ -289,12 +289,11 @@ function reverseGeocoder(latitude, longitude, pCallBack) {       
 
 }
 
-function getGeocoder(address, region, pCallBack) {
+function getGeocoder(address, pCallBack) {
   //调用地址解析接口
   qqmapsdk.geocoder({
     //获取表单传入地址
-    address: address, //地址参数，例：固定地址，address: '北京市海淀区彩和坊路海淀西大街74号'
-    region: region,
+    address: address, //地址参数，例：固定地址，address: '北京市海淀区彩和坊路海淀西大街74号'  
     sig: 'KkXF9nGuNrp3LWqyWPrbvTtbHSgC2eu',
     success: function(res) { //成功后的回调
       console.log(res);
