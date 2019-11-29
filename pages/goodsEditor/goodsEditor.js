@@ -259,6 +259,15 @@ Page({
     }
 
     var ProductSpecifications = that.data.ProductSpecifications
+    if (ProductSpecifications.length<=0)
+    {
+      wx.showToast({
+        title: '请最少输入一种规格类型！',
+        icon: "none",
+        duration: 2000
+      })
+      return;
+    }
     for (var i in ProductSpecifications) {
       if (ProductSpecifications[i].SalePrice == "") {
         wx.showToast({
@@ -350,7 +359,7 @@ Page({
     }
     oCoupon_Product.CustomAttribute = JSON.stringify(CustomAttribute);
     oCoupon_Product.GroupID = app.globalData.AppGroupInfo.GroupID;
-
+    oCoupon_Product.ProductID = that.data.productid;
     wx.showLoading({
       title: '数据加载中...',
     })
@@ -363,7 +372,7 @@ Page({
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/AddOrEditCouponProduct", "POST", data, app.globalData.appkeyid, this.AddCouponProductBack)
   },
 
-  AddCouponProductBack: function (json) {
+  AddCouponProductBack: function(json) {
     let that = this;
     var json = json.data.Data;
     wx.hideLoading();
@@ -374,19 +383,10 @@ Page({
         duration: 2000
       })
       setTimeout(function() {
-        wx.redirectTo({
-          url: '../goodsManager/goodsManager'
-        })
+        wx.navigateBack()
       }, 2000);
     }
   },
-
-  
-
-
-
-
-
 
   /**
    * 生命周期函数--监听页面加载
@@ -398,7 +398,7 @@ Page({
         productid: options.productid,
         type: options.type
       })
-      
+
     }
     that.GetProductCategory()
     that.GetSpecificationsAttribute()
@@ -408,23 +408,21 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    if (this.data.productid) { //说明是修改
+      console.log(this.data.productid);
+      this.GetData();
+    }
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    if (this.data.productid){//说明是修改
-      console.log(this.data.productid);
-      this.GetData();
 
-
-    }
   },
 
-  GetData: function () {
-    
+  GetData: function() {
+
     //显示 加载中的提示
     wx.showLoading({
       title: '数据加载中...',
@@ -433,12 +431,140 @@ Page({
     data.productid = this.data.productid;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/GetEditingproducts", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
-  GetDataBack: function (json) {
+  GetDataBack: function(json) {
     let that = this;
     var json = json.data.Data;
     wx.hideLoading();
     if (json.flag) {
-      
+      var productInfo = json.Product
+      var productName = productInfo.ProductName
+
+      //商品主图
+      var mainimgNUM = that.data.mainimgNUM
+      var mainImage = that.data.mainImage
+      if (productInfo.ImageOne != "") {
+        mainimgNUM++;
+        mainImage[0].url = productInfo.ImageOne;
+        mainImage[0].state = 1;
+      }
+      if (productInfo.ImageTwo != "") {
+        mainimgNUM++;
+        mainImage[1].url = productInfo.ImageTwo
+        mainImage[1].state = 1;
+      }
+      if (productInfo.ImageThree != "") {
+        mainimgNUM++;
+        mainImage[2].url = productInfo.ImageTwo
+        mainImage[2].state = 1;
+      }
+      var idb = productInfo.ProductType
+      var type = productInfo.ProductType
+      var categoryID = productInfo.CategoryID
+      var categoryName = that.data.categoryName
+      var columns = that.data.columns;
+      for (let i in columns) {
+        if (columns[i].CategoryID == categoryID) {
+          categoryName = columns[i].CategoryName
+        }
+      }
+      var postage = productInfo.Postage
+
+      //商品描述
+      var ProductDetails = []
+      var upimgnum = 0
+      if (productInfo.ProductDetails != '') {
+        upimgnum++;
+        ProductDetails.push({
+          url: productInfo.ProductDetails,
+          state: 1
+        })
+      }
+      var Picture = json.Picture
+      if (Picture) {
+        upimgnum += Picture.length
+        for (let i in Picture) {
+          ProductDetails.push({
+            url: Picture[i].ImageURL,
+            state: 1
+          })
+        }
+      }
+      if (upimgnum < 5) {
+        ProductDetails.push({
+          url: "/static/images/img.png",
+          state: 0
+        });
+      }
+
+      //业务商品附加属性
+      var attributeNUM = 0;
+      if (productInfo.CustomAttribute != '') {
+        var CustomAttribute = JSON.parse(productInfo.CustomAttribute);
+        attributeNUM = CustomAttribute.length
+        var ProductAttribute = that.data.ProductAttribute;
+        for (let i in ProductAttribute) {
+          for (let j in CustomAttribute) {
+            if (CustomAttribute[j].AttributeID == ProductAttribute[i].AttributeID) {
+              ProductAttribute[i].IsChecked = 1;
+              ProductAttribute[i].AttributeName = CustomAttribute[j].name;
+              ProductAttribute[i].AttributeValue = CustomAttribute[j].value;
+              ProductAttribute[i].AttnibuteType = CustomAttribute[j].type;
+            }
+          }
+        }
+      }
+
+      //商品规格
+      var ProductSpecifications = [];
+      if (json.Coupon_ProductSpecifications) {
+        var SpecificationsAttribute = that.data.SpecificationsAttribute
+        var Coupon_ProductSpecifications = json.Coupon_ProductSpecifications
+        for (let i in Coupon_ProductSpecifications) {
+          var Specifications = {
+            CostPrice: Coupon_ProductSpecifications[i].CostPrice,
+            SalePrice: Coupon_ProductSpecifications[i].SalePrice,
+            StockNum: Coupon_ProductSpecifications[i].StockNum,
+            Postage: Coupon_ProductSpecifications[i].Postage,
+            Attrivute: []
+          }
+
+          var Attrivute = JSON.parse(Coupon_ProductSpecifications[i].AttrivuteValue)
+          for (let j in Attrivute) {
+            Specifications.Attrivute.push({
+              AttributeID: Attrivute[j].AttributeID,
+              AttributeName: Attrivute[j].AttributeName,
+              AttrivuteValue: Attrivute[j].AttrivuteValue,
+              IsChecked: Attrivute[j].IsChecked,
+              State: Attrivute[j].State
+            })
+
+            for (let x in SpecificationsAttribute) {
+              if (SpecificationsAttribute[x].AttributeID == Attrivute[j].AttributeID) {
+                SpecificationsAttribute[x].IsChecked = 1;
+              }
+            }
+          }
+          ProductSpecifications.push(Specifications)
+        }
+      }
+
+      that.setData({
+        idb: idb,
+        type: type,
+        categoryID: categoryID,
+        categoryName: categoryName,
+        postage: postage,
+        productName: productName,
+        mainimgNUM: mainimgNUM,
+        upimgnum: upimgnum,
+        mainImage: mainImage,
+        ProductDetails: ProductDetails,
+        SpecificationsAttribute: SpecificationsAttribute,
+        ProductSpecifications: ProductSpecifications,
+        ProductAttribute: ProductAttribute,
+        attributeNUM: attributeNUM
+      })
+
     }
   },
 
