@@ -67,7 +67,9 @@
       <view class="ticket-name">注册地区
         <text style="color:red">*</text>
       </view>
-      <input name="RegionName" type="text" value="{{regionName}}"   placeholder="请输入注册地区" placeholder-class="ip" />
+          <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
+      <input name="RegionName" type="text" value="{{regionName}}" disabled="true"   placeholder="请选择注册地区" placeholder-class="ip" />
+       </picker>
     </view>
     <view class="ticket-block">
       <view class="ticket-name">详细地址

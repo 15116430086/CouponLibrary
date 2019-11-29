@@ -32,15 +32,15 @@ Page({
     flag1: false,
     flag2: false,
     regAddress: "",
-    regionName:"",
+    regionName: "",
     multiArray: [],
     multiIndex: [17, 0, 2],
     Geocoder: [],
-    disabled:true,
-    GroupName:"",//公司名称   
-    Contacts:"",//联系人
-    LegalPerson:"",//法人
-    CreditCode: ""//社会信用代码
+    disabled: true,
+    GroupName: "", //公司名称   
+    Contacts: "", //联系人
+    LegalPerson: "", //法人
+    CreditCode: "" //社会信用代码
 
   },
   onChange(event) {
@@ -48,7 +48,7 @@ Page({
     let checked = that.data.checked;
     let disabled = that.data.disabled;
     that.setData({
-      checked:!checked,
+      checked: !checked,
       disabled: !disabled
     })
   },
@@ -70,9 +70,9 @@ Page({
     })
   },
   getGeocoderBack: function(res) {
-    let that=this;
+    let that = this;
     var regionName = res.province + res.city + res.district
-    var regAddress = that.data.RegisteredAddress.replace(regionName,'')
+    var regAddress = that.data.RegisteredAddress.replace(regionName, '')
     this.setData({
       regionName: regionName,
       regAddress: regAddress,
@@ -101,13 +101,13 @@ Page({
   },
 
   onUpFileImg: function(e) {
-    var type=0;
+    var type = 0;
     var typeid = e.currentTarget.dataset.type;
-    if (typeid==0){//说明是上传营业执照
-      type=1;
+    if (typeid == 0) { //说明是上传营业执照
+      type = 1;
     }
     let that = this;
-    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, typeid,type)
+    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, typeid, type)
   },
   UpFileImgBak: function(img, type) {
     let that = this;
@@ -118,29 +118,30 @@ Page({
           flag0: true,
         })
 
-        var words_result=JSON.parse(img[1]);
+        var words_result = JSON.parse(img[1]);
         console.log(words_result);
         var RegisteredAddress = words_result.words_result.地址.words;
 
         var reg = /.+?(省|市|自治区|自治州|县|区)/g;
-        var region= RegisteredAddress.match(reg);
+        var region = RegisteredAddress.match(reg);
         var regionName = "";
         var regAddress = "";
-        if (region)       
-        {
-        regionName = region.join("");
-        regAddress = RegisteredAddress.replace(regionName, '')
+        if (region) {
+          regionName = region.join("");
+          regAddress = RegisteredAddress.replace(regionName, '')
         }
         that.setData({
-          GroupName: words_result.words_result.单位名称.words,      
+          GroupName: words_result.words_result.单位名称.words,
           RegisteredAddress: RegisteredAddress,
           regionName: regionName,
           regAddress: regAddress,
           LegalPerson: words_result.words_result.法人.words,
-          Contacts: words_result.words_result.法人.words,         
+          Contacts: words_result.words_result.法人.words,
           CreditCode: words_result.words_result.社会信用代码.words
         });
-        
+
+        utils.getGeocoder(regionName, that.getGeocoderBack)
+
       } else if (type == 1) {
         that.setData({
           mastergraphimg: img[0], //形象主图
@@ -154,7 +155,7 @@ Page({
       }
 
 
-      if(type==0){
+      if (type == 0) {
         if (words_result.words_result.单位名称.words == "无") {
           wx.showToast({
             title: "营业执照不符合请重新上传!",
@@ -305,8 +306,7 @@ Page({
     }
 
     var regionName = e.detail.value.RegionName
-    if (regionName=='')
-    {
+    if (regionName == '') {
       wx.showToast({
         title: "注册地区不能为空",
         icon: "none",
@@ -323,8 +323,14 @@ Page({
       })
       return;
     }
+    data.RegionID = that.data.Geocoder.district
     data.RegisteredAddress = e.detail.value.RegionName + e.detail.value.RegAddress
-    
+
+    // var reg = /.+?(省|市|自治区|自治州|县|区)/g;
+    // var region = data.RegisteredAddress.match(reg);
+    // if (region.length > 0) {
+    //   data.RegionID = region[region.length - 1];
+    // }
     data.LegalPerson = e.detail.value.LegalPerson
     if (data.LegalPerson == '') {
       wx.showToast({
@@ -384,7 +390,6 @@ Page({
               app.globalData.userInfo = res.userInfo
               data.LatitudeX = that.data.Geocoder.latitude.toString()
               data.LongitudeY = that.data.Geocoder.longitude.toString()
-              data.RegionID = that.data.Geocoder.district;
               data = {
                 pCoupon_Group: utils.syJsonSafe(data),
                 Text: res.encryptedData,
@@ -525,7 +530,6 @@ Page({
 
   GetRegionIndustry: function() {
     let that = this;
-
     regionData = wx.getStorageSync('Region');
     var industrylist = wx.getStorageSync('Industry');
     var multiArray = wx.getStorageSync('multiArray');
@@ -539,11 +543,28 @@ Page({
     }
     utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
+
+  getGeocoderRegionBack: function(res) {
+    let that = this;
+    that.setData({
+      Geocoder: res
+    });
+  },
   bindMultiPickerChange: function(e) {
+    let that = this;
     console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
+    var data = {
+      multiArray: this.data.multiArray,
       multiIndex: e.detail.value
+    };
+    var regionName = data.multiArray[0][data.multiIndex[0]].RegionName + data.multiArray[1][data.multiIndex[1]].RegionName + data.multiArray[2][data.multiIndex[2]].RegionName
+    that.setData({
+      multiIndex: data.multiIndex,
+      regionName: regionName
     })
+
+    utils.getGeocoder(regionName, that.getGeocoderRegionBack)
+
   },
   bindMultiPickerColumnChange: function(e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
@@ -568,9 +589,7 @@ Page({
     }
     console.log(data.multiIndex);
     this.setData({
-      multiArray: data.multiArray,
-      multiIndex: data.multiIndex,
-      RegionName: data.multiArray[2][data.multiIndex[2]].RegionName
+      multiArray: data.multiArray
     });
   }
 })
