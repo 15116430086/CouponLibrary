@@ -381,28 +381,7 @@ Page({
     }
   },
 
-  GetData: function() {
-    let that = this;
-    //显示 加载中的提示
-    wx.showLoading({
-      title: '数据加载中...',
-    })
-    var data = {};
-    data.pProductID = that.data.productid;
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/GetCouponProductInfo", "POST", data, app.globalData.appkeyid, this.GetDataBack)
-  },
-  GetDataBack: function(json) {
-    let that = this;
-    var json = json.data.Data;
-    wx.hideLoading();
-    if (json.flag) {
-      that.setData({
-        productName: json.data[0].ProductName,
-        salePrice: json.data[0].SalePrice,
-        stockNum: json.data[0].StockNum
-      })
-    }
-  },
+  
 
 
 
@@ -419,7 +398,7 @@ Page({
         productid: options.productid,
         type: options.type
       })
-      that.GetData();
+      
     }
     that.GetProductCategory()
     that.GetSpecificationsAttribute()
@@ -436,8 +415,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    if (this.data.productid){//说明是修改
+      console.log(this.data.productid);
+      this.GetData();
 
+
+    }
   },
+
+  GetData: function () {
+    
+    //显示 加载中的提示
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    var data = {};
+    data.productid = this.data.productid;
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/GetEditingproducts", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+  },
+  GetDataBack: function (json) {
+    let that = this;
+    var json = json.data.Data;
+    wx.hideLoading();
+    if (json.flag) {
+      
+    }
+  },
+
   showPopup() {
     this.setData({
       show: true
