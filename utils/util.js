@@ -129,7 +129,11 @@ function syJsonSafe(obj) {
 }
 
 
-function UploadImg(count,pGroupID, pAppKeyId, pCallBack, pOther) {
+function UploadImg(count,pGroupID,type, pAppKeyId, pCallBack, pOther) {
+  var url ="http://test.miboon.com/LibraryAPI/CouponView/UploadImageView/UploadImgs";
+  if(type==1){
+    url = "http://test.miboon.com/LibraryAPI/CouponView/UploadImageView/UploadBusinesslicense";
+  }
   wx.chooseImage({
     count: count,
     sizeType: ['original', 'compressed'],
@@ -141,7 +145,7 @@ function UploadImg(count,pGroupID, pAppKeyId, pCallBack, pOther) {
       var imgs = [];
       for (var s in tempFilePaths) {
         const uploadTask = wx.uploadFile({
-          url: "https://wx.wap.meiguwen.com/LibraryAPI/CouponView/UploadImageView/UploadImgs", //开发者服务器的 url
+          url: url, //开发者服务器的 url
           filePath: tempFilePaths[s], // 要上传文件资源的路径 String类型！！！
           name: 'fileUp', // 文件对应的 key ,(后台接口规定的关于图片的请求参数)
           formData: {
@@ -153,12 +157,18 @@ function UploadImg(count,pGroupID, pAppKeyId, pCallBack, pOther) {
           }, // HTTP 请求中其他额外的参数
           success: function(res) {
             var json = JSON.parse(res.data);
+            if (type == 1) {//说明是营业执照
+              imgs.push(json.Data.imgurl);
+              imgs.push(json.Data.data);
+            }else{
             json.Data = json.Data.replace("true|", "");
             imgs.push(json.Data);
             if (imgs.length == tempFilePaths.length) {
               wx.hideLoading();
+           
               pCallBack(imgs, pOther);
             }
+          }
           },
           fail: function(res) {}
         });
@@ -177,8 +187,10 @@ function UploadImg(count,pGroupID, pAppKeyId, pCallBack, pOther) {
       }
     }
   });
-
 }
+
+
+
 
 function GetRegionIndustry(pUrl, pType, pAppKeyId, pCallBack) {
   let that = this;
