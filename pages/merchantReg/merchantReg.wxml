@@ -67,18 +67,20 @@
       <view class="ticket-name">注册地区
         <text style="color:red">*</text>
       </view>
-          <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
-      <input name="RegionName" type="text" value="{{regionName}}" disabled="true"   placeholder="请选择注册地区" placeholder-class="ip" />
-       </picker>
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
+        <input name="RegionName" type="text" value="{{regionName}}" disabled="true" placeholder="请选择注册地区" placeholder-class="ip" />
+      </picker>
     </view>
     <view class="ticket-block">
       <view class="ticket-name">详细地址
         <text style="color:red">*</text>
-      </view>      
-        <view class="t-bot">
-        <view style="width: 100%;" ><input name="RegAddress" type="text" value="{{regAddress}}"  placeholder="请输入详细地址" placeholder-class="ip" /></view>
-        <image bindtap="onRegAddressTap" src="/static/images/address.png" />      
-       </view>
+      </view>
+      <view class="t-bot">
+        <view style="width: 100%;">
+          <input name="RegAddress" type="text" value="{{regAddress}}" placeholder="请输入详细地址" placeholder-class="ip" />
+        </view>
+        <image bindtap="onRegAddressTap" src="/static/images/address.png" />
+      </view>
     </view>
 
     <view class="ticket-block">
@@ -143,11 +145,16 @@
   </view>
   <view class="v-check">
     <view class="bm-bot">
-    <image src="{{checked==true?'/static/images/f1.png':'/static/images/f2.png'}}" bindtap="onChange"></image>
-       <view class="bm-view"><text>注册即表示同意</text><navigator url="../regPlane/regPlane">《注册协议》</navigator>和
-      <navigator url="../secretBook/secretBook">《隐私权政策》</navigator></view>
+      <image src="{{checked==true?'/static/images/f1.png':'/static/images/f2.png'}}" bindtap="onChange"></image>
+      <view class="bm-view">
+        <view>注册即表示同意</view>
+        <navigator url="../regPlane/regPlane">《注册协议》</navigator>
+        <view>和</view>
+        <navigator url="../secretBook/secretBook">《隐私权政策》</navigator>
+      </view>
     </view>
   </view>
+
   <view class="app-bot">
     <button formType="submit" class="playBtn" disabled="{{disabled}}">确认注册</button>
   </view>

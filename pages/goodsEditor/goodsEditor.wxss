@@ -168,8 +168,8 @@ page {
 }
 
 .abox-chaa {
-    width: 35rpx;
-    height: 35rpx;
+    width: 40rpx;
+    height: 40rpx;
     margin-right: 20rpx;
     display: block;
     flex-shrink: 1;

@@ -7,7 +7,7 @@
       <view class="v-boxs">
         <view class="v-block {{idb==item.Item_id?'selected':''}}" wx:for="{{threeList}}" wx:key="" bindtap='selectThree' data-id="{{item.Item_id}}">
           {{item.Item_Name}}
-          <image src="/static/images/cha.png" wx:if="{{idb==item.Item_id}}" />
+          <!-- <image src="/static/images/cha.png" wx:if="{{idb==item.Item_id}}" /> -->
         </view>
       </view>
       <!-- <input type="text" value="20元现金抵用券" /> -->
@@ -47,7 +47,7 @@
           <view class="ticket-name" style="margin-bottom:0px">规格类型</view>
         </view>
         <view class="ticket-flex" bindtap="showPopup">
-          <view class="ticket-name" style="color:#CCC;font-weight:500">规格配置</view>
+          <view class="ticket-name" style="color:#CCC;font-weight:500;margin-bottom:0px">规格配置</view>
           <image src="/static/images/right-arr1.png" class="ticket-flex-image" />
         </view>
       </view>

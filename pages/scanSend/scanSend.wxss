@@ -62,8 +62,29 @@ page {
   font-size: 32rpx;
   font-weight: 600;
 }
-
+.sS-n{
+  width: 100%;
+   color: #333;
+  font-size: 28rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.sSn-one{
+  width: calc(100% - 90rpx);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.sSn-two{
+  width: 80rpx;
+   color: #999;
+  font-size: 22rpx;
+  white-space: nowrap;
+}
 .sS-mes {
+  width: 100%;
+  margin-top: 10rpx;
   color: #333;
   font-size: 28rpx;
 }
@@ -74,7 +95,7 @@ page {
 }
 
 .sS-bot {
-  font-size: 24rpx;
+  font-size: 22rpx;
   color: #e85819;
   display: flex;
   flex-direction: row;

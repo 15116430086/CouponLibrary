@@ -15,8 +15,8 @@
 
     <view class="search-box">
       <view class="search-left">
-        <image src="/static/images/serch.png" background-size="cover" style="margin-left:20rpx;margin-right:10rpx" />
-        <input value="" placeholder="请输入商户名称" placeholder-class="ip" bindinput="GroupNameInput" bindtap="onSearch" />
+        <image src="/static/images/serch.png" background-size="cover" style="margin-left:14rpx;margin-right:10rpx" />
+        <input value="" placeholder="输入商户" placeholder-class="ip" bindinput="GroupNameInput" bindtap="onSearch" />
       </view>
       <image src="/static/images/err.png" background-size="cover" style="margin-right:15rpx;" bindtap="onClear" v-if="flag==1" />
     </view>

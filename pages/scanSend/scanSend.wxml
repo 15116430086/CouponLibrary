@@ -8,9 +8,13 @@
         <view class="sS-mesbox">
           <view class="sS-top">
             <view class="sS-name">{{item.CouponName}}</view>
-            <view class="sS-mes">{{item.GroupName}}
-              <text wx:if="{{item.CouponType==0}}">(现金券)</text>
-              <text wx:else>(团购券)</text>
+            <!-- <view class="sS-mes">{{item.GroupName}}
+             
+            </view> -->
+            <view class="sS-n">
+              <view class="sSn-one">{{item.GroupName}}</view>
+               <view wx:if="{{item.CouponType==0}}" class="sSn-two">(现金券)</view>
+              <view wx:else class="sSn-two">(团购券)</view>
             </view>
             <view class="sS-mes">
               <text>领券日期：{{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd",true)}}</text>

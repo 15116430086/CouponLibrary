@@ -202,7 +202,7 @@ form {
   width: calc(100% - 70rpx);
   height: 140rpx;
   background-color: #fff;
-  font-size: 30rpx;
+  font-size: 28rpx;
   color: #999;
   display: flex;
   flex-grow: row;
@@ -231,13 +231,14 @@ form {
 }
 
 .bm-bot image {
-  width: 40rpx;
-  height: 40rpx;
+  width: 38rpx;
+  height: 38rpx;
   flex-shrink: 0;
   margin-right: 20rpx;
 }
 
 
-.bm-view text,.bm-view navigator{
+.bm-view view,.bm-view navigator{
   display: block;
+  white-space: nowrap;
 }

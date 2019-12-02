@@ -27,7 +27,7 @@ white-space:nowrap;
   
 }
 .homeTop-name {
-    width: 330rpx;
+    width: calc(100% - 160rpx);
     height: 60rpx;
     font-size: 44rpx;
     font-weight: 600;
@@ -70,7 +70,8 @@ white-space:nowrap;
     width: 60rpx;
     height: 50rpx;
     position: relative;
-    margin-left: 40rpx;
+    margin-left: 20rpx;
+    top: -3rpx;
 }
 
 .mes-box view {

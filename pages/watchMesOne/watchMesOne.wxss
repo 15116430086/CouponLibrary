@@ -28,11 +28,12 @@ page {
     margin-left: 40rpx;
     width: 76rpx;
     height: 76rpx;
-    flex-shrink: 1;
+    flex-shrink: 0;
     border-radius: 10rpx;
 }
 
 .stmb-left {
+    width: 530rpx;
     margin-left: 20rpx;
     display: flex;
     flex-direction: column;
@@ -42,13 +43,18 @@ page {
 }
 
 .stm-top {
+  width: 100%;
     color: #333333;
     font-size: 28rpx;
     font-weight: 600;
-    margin-bottom: 10rpx
+    /* margin-bottom: 10rpx; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .stm-bot {
+  width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;

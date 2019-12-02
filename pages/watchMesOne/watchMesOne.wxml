@@ -4,7 +4,7 @@
   <view class="stm-block">
     <image src="{{item.ImageOne}}" />
     <view class="stmb-left">
-      <view class="stm-top">{{item.CouponName}}<text style="color:red">({{item.GroupName}})</text></view>
+      <view class="stm-top">{{item.CouponName}}<text style="color:#E85819">({{item.GroupName}})</text></view>
  
       <view class="stm-bot">
         <view>已领：{{item.ReceiveNUM}}张</view>

@@ -122,6 +122,7 @@ page {
     height: 40rpx;
     display: block;
 }
+ 
 
 .p-class {
     color: #E0E0E0;
@@ -140,7 +141,7 @@ page {
 }
 
 .inputOne {
-    width: calc(100% - 222rpx) !important;
+    width: calc(100% - 182rpx) !important;
 }
 
 .blue {

@@ -4,10 +4,10 @@
   <view class="home-top">
     <view class="homeTop-name">{{GroupName}}</view>
     <view class="homeTop-left">
-      <view class="search-box" bindtap="Jumptap">
-        <image src="/static/images/serch.png" background-size="cover"></image>
-        <view>搜索领券</view>
-      </view>
+      <!-- <view class="search-box" bindtap="Jumptap"> -->
+        <image src="/static/images/serch1.png" background-size="cover" style="width:60rpx;height:60rpx" bindtap="Jumptap"></image>
+        <!-- <view>搜索领券</view>
+      </view> -->
       <view class="mes-box" bindtap="noticetap">
         <view>{{CouponCount.countNewMsg}}</view>
         <image src="/static/images/home/news.png" background-size="cover" style="width:60rpx;height:60rpx"></image>
