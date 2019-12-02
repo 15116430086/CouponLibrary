@@ -67,11 +67,11 @@ page {
     height: 60rpx;
     background: rgba(239, 239, 239, 1);
     border-radius: 20rpx;
-    font-size: 24rpx;
+    font-size: 28rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     font-weight: 500;
     line-height: 34rpx;
     color: #ccc;
@@ -79,9 +79,11 @@ page {
 }
 
 .search-box image {
+  margin-left: 35rpx;
     width: 32rpx;
     height: 32rpx;
     margin-right: 24rpx;
+    position: relative;
 }
 
 .mes-box {
