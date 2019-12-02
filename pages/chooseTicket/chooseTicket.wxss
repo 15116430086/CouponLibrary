@@ -80,8 +80,8 @@ page {
 
 .search-box image {
   margin-left: 35rpx;
-    width: 32rpx;
-    height: 32rpx;
+    width: 36rpx;
+    height: 36rpx;
     margin-right: 24rpx;
     position: relative;
 }
@@ -95,8 +95,8 @@ page {
     border-radius: 32rpx;
     text-align: center;
     line-height: 60rpx;
-    font-size: 24rpx;
-    font-weight: 600;
+    font-size: 28rpx;
+    /* font-weight: 600; */
     margin-right: 40rpx;
 }
 

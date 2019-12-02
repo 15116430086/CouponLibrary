@@ -13,7 +13,8 @@
   <view class="v-block">
     <image src="/static/images/key.png" />
     <input class="v-input1" bindblur="codeinput" type="number" maxlength="6" placeholder-class="ip" placeholder="输入验证码" />
-    <view class="v-btn">发送验证码</view>
+    <view class="v-btn" bindtap="sendCode" wx:if="{{isCode}}">{{sendMes}}</view>
+    <view class="v-btn" style="color:#CCCCCC;font-weight:500" wx:else>{{time + "s"}}</view>
   </view>
   <button class="v-true" open-type="getUserInfo" bindgetuserinfo="isConfirmLogin">确认登录</button>
   <button class="v-wxtel" style="color:#016FB4;" open-type="getPhoneNumber" bindgetphonenumber="onPhoneLoginTap">授权微信手机号登录</button>

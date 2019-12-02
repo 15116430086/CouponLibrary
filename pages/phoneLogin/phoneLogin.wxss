@@ -98,7 +98,7 @@
   height: 44rpx;
   color: #e85819;
   font-weight: 600;
-  text-align: right;
+  text-align: center;
   line-height: 44rpx;
   font-size: 32rpx;
   margin-bottom: 20rpx;

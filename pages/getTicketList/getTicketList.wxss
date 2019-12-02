@@ -25,8 +25,8 @@
 }
 
 .search-box image {
-    width: 32rpx;
-    height: 32rpx;
+    width: 36rpx;
+    height: 36rpx;
     display: block;
     flex-shrink: 1;
 }

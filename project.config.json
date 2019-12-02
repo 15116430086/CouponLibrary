@@ -107,6 +107,13 @@
 					"id": -1,
 					"name": "pages/secretBook/secretBook",
 					"pathName": "pages/secretBook/secretBook",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/phoneLogin/phoneLogin",
+					"pathName": "pages/phoneLogin/phoneLogin",
 					"scene": null
 				}
 			]

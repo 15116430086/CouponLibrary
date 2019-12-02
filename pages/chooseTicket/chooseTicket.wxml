@@ -15,7 +15,7 @@
     </picker>
     <view class="search-box" bindtap="getTicketList">
 
-      <image src="/static/images/serch.png" background-size="cover"></image>
+      <image src="/static/images/serch2.png" background-size="cover"></image>
       <view>搜索领券</view>
 
     </view>
@@ -54,7 +54,7 @@
       <view>推广商户</view>
       <navigator class="ns-title-div" url="../moreShop/moreShop" hover-class="none">
         查看更多
-        <image src="/static/images/right-arr.png"></image>
+        <image src="/static/images/bluearr.png"></image>
       </navigator>
     </view>
     <!-- <ShopMes :shopArrays="shopArrays" /> -->

@@ -10,7 +10,10 @@ Page({
     phone: "",
     code: "",
     phonelength: 0,
-    codelength: 0
+    codelength: 0,
+    time:60,
+    isCode:true,
+    sendMes:"发送验证码"
   },
 
   //手机号码
@@ -29,7 +32,31 @@ Page({
       codelength: e.detail.value.length
     })
   },
-
+  //发送验证码
+  sendCode(e){
+    let promise = new Promise((resolve, reject) => {
+      let setTimer = setInterval(
+        () => {
+          this.setData({
+            isCode:false,
+            time: this.data.time - 1
+          })
+          if (this.data.time <= 0) {
+            this.setData({
+              time: 60,
+              isCode: true,
+              sendMes:"重新发送"
+            })
+            resolve(setTimer)
+          }
+        }
+        , 1000)
+    })
+    promise.then((setTimer) => {
+      clearInterval(setTimer)
+    })
+  },
+  
   isConfirmLogin: function() {
     let that = this;
     if (that.data.phone == "") {
