@@ -104,7 +104,7 @@ Page({
           success(res) {
             console.log(res);
             if (res.errMsg == "requestPayment:ok") { 
-              wx.redirectTo({ url: '../paySuccess/paySuccess' });
+              wx.redirectTo({ url: '../paySuccess/paySuccess?couponID=' + json.data.CouponID });
             }
           },
           fail(res) {
