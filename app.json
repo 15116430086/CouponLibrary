@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/paySuccess/paySuccess",
     "pages/moreShop/moreShop",
     "pages/home/home",
     "pages/commissionMes/commissionMes",
@@ -69,7 +70,6 @@
     "pages/scanCheck/scanCheck",
     "pages/sendTicketOne/sendTicketOne",
     "pages/sendTicket/sendTicket",
-    "pages/paySuccess/paySuccess",
     "pages/orderPay/orderPay",
     "pages/myTicket/myTicket",
     "pages/logs/logs",

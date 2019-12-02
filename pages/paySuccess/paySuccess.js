@@ -12,7 +12,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.showModal({
+      title: '提示',
+      content: '请配置赠券规则',
+      cancelText: '以后再说',
+      confirmText: '去配置',
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '../sendTicketConfigChild/sendTicketConfigChild?CouponID=' + options.couponID,
+          })
+        }
+      }
+    })
   },
 
   /**
