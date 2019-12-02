@@ -44,8 +44,8 @@ page {
 }
 
 .selected {
-    background-color: #fff0de;
-    color: #e85819;
+    background-color: #e85819;
+    color: #ffffff;
 }
 
 .top_nav {
