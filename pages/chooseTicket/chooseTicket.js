@@ -155,7 +155,7 @@ Page({
     let that = this;
     console.log(app.globalData.regionName);
     that.setData({
-      RegionName: app.globalData.regionName
+      RegionName: "所有地区"
     })
 
     page = 1;
@@ -179,11 +179,29 @@ Page({
     utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
 
+  bindMultiPickerCancel: function () {
+    //console.log('picker发送取消，携带值为', e.detail.value)
+    this.setData({
+      RegionName: "所有地区"
+    })
+
+    page = 1;
+    this.GetData(page);
+  },
   bindMultiPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
+    var data = {
+      multiArray: this.data.multiArray,
       multiIndex: e.detail.value
+    };
+
+    this.setData({
+      multiIndex: data.multiIndex,
+      RegionName: data.multiArray[2][data.multiIndex[2]].RegionName
     })
+
+    page = 1;
+    this.GetData(page);
   },
   bindMultiPickerColumnChange: function (e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
@@ -208,13 +226,10 @@ Page({
     }
     console.log(data.multiIndex);
     this.setData({
-      multiArray: data.multiArray,
-      multiIndex: data.multiIndex,
-      RegionName: data.multiArray[2][data.multiIndex[2]].RegionName
+      multiArray: data.multiArray
+      //multiIndex: data.multiIndex,
+      //RegionName: data.multiArray[2][data.multiIndex[2]].RegionName
     });
-
-    page = 1;
-    this.GetData(page);
   },
   getLocation: function() {
     //显示 加载中的提示

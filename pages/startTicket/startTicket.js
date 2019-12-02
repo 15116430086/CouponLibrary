@@ -32,7 +32,7 @@ Page({
     Number: 0, //券数量
     Commission: 0, //佣金比列
     IndustryCodes: [], //最终行业ID
-    Industryvalue: "餐饮，休闲/自选", //最终选择行业名称
+    Industryvalue: "请选择行业", //最终选择行业名称
     GroupIDList: [], //最终选择的集团ID
     Limited: 0, //单商户限量
     pic_array: [], //行业列表
@@ -196,6 +196,15 @@ Page({
       });
       return;
     }
+
+    if (this.data.sign != 2 && this.data.Limited<=0) {
+      wx.showToast({
+        title: "请选设置领取限制",
+        icon: "none"
+      });
+      return;
+    }
+
 
 
     if (this.data.sign == 1) { //说明是全部商户

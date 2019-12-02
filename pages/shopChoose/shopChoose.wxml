@@ -1,7 +1,7 @@
 <!-- 搜索框 -->
 <view class="v-top">
   <view class="home-top">
-    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcancel="bindMultiPickerCancel" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
       <view class="home-span">
         <view>{{RegionName}}</view>
         <image src="/static/images/sel.png" />

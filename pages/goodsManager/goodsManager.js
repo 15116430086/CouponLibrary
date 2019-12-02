@@ -194,10 +194,20 @@ Page({
    */
   onShow: function() {
     let that = this;
-    pageM[0].iscleck = true;
-    that.data.stayorderlist = [];
+    pageM = [{
+      page: 1,
+      lastpage: 0,
+      state: 0,
+      iscleck: true
+    }, {
+      page: 1,
+      lastpage: 0,
+      state: 1,
+      iscleck: true
+    }];   
     that.setData({
-      stayorderlist: []
+      stayorderlist: [],
+      alreadyorderlist: []
     })
     that.GetData();
   },

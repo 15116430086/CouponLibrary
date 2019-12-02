@@ -38,7 +38,7 @@ function AjaxRequest(pUrl, pType, pData, pAppKeyId, pCallBack) {
     },
     fail(res) {
       wx.showToast({
-        title:'服务器连接失败' //'请求失败',
+        title: '服务器连接失败' //'请求失败',
       })
     }
   })
@@ -129,7 +129,11 @@ function syJsonSafe(obj) {
 }
 
 
-function UploadImg(count,pGroupID, pAppKeyId, pCallBack, pOther) {
+function UploadImg(count, pGroupID, pAppKeyId, pCallBack, pOther,type) {
+  var url = "https://wx.wap.meiguwen.com/LibraryAPI/CouponView/UploadImageView/UploadImgs";
+  if (type == 1) {
+    url = "https://wx.wap.meiguwen.com/LibraryAPI/CouponView/UploadImageView/UploadBusinesslicense";
+  }
   wx.chooseImage({
     count: count,
     sizeType: ['original', 'compressed'],
@@ -141,7 +145,7 @@ function UploadImg(count,pGroupID, pAppKeyId, pCallBack, pOther) {
       var imgs = [];
       for (var s in tempFilePaths) {
         const uploadTask = wx.uploadFile({
-          url: "https://wx.wap.meiguwen.com/LibraryAPI/CouponView/UploadImageView/UploadImgs", //开发者服务器的 url
+          url: url, //开发者服务器的 url
           filePath: tempFilePaths[s], // 要上传文件资源的路径 String类型！！！
           name: 'fileUp', // 文件对应的 key ,(后台接口规定的关于图片的请求参数)
           formData: {
@@ -153,12 +157,20 @@ function UploadImg(count,pGroupID, pAppKeyId, pCallBack, pOther) {
           }, // HTTP 请求中其他额外的参数
           success: function(res) {
             var json = JSON.parse(res.data);
-            json.Data = json.Data.replace("true|", "");
-            imgs.push(json.Data);
-            if (imgs.length == tempFilePaths.length) {
+            if (type == 1) { //说明是营业执照
+              imgs.push(json.Data.imgurl);
+              imgs.push(json.Data.data);
               wx.hideLoading();
               pCallBack(imgs, pOther);
+            } else {
+              json.Data = json.Data.replace("true|", "");
+              imgs.push(json.Data);
+              if (imgs.length == tempFilePaths.length) {
+                wx.hideLoading();
+                pCallBack(imgs, pOther);
+              }
             }
+
           },
           fail: function(res) {}
         });
@@ -177,8 +189,10 @@ function UploadImg(count,pGroupID, pAppKeyId, pCallBack, pOther) {
       }
     }
   });
-
 }
+
+
+
 
 function GetRegionIndustry(pUrl, pType, pAppKeyId, pCallBack) {
   let that = this;
@@ -233,7 +247,7 @@ function GetRegionIndustryBack(json, pCallBack) {
   }
 }
 
-function reverseGeocoder(latitude, longitude,pCallBack) {       
+function reverseGeocoder(latitude, longitude, pCallBack) {       
   qqmapsdk.reverseGeocoder({    
     location: {
       latitude: latitude,
@@ -275,12 +289,11 @@ function reverseGeocoder(latitude, longitude,pCallBack) {       
 
 }
 
-function getGeocoder(address, region,pCallBack) {
+function getGeocoder(address, pCallBack) {
   //调用地址解析接口
   qqmapsdk.geocoder({
     //获取表单传入地址
-    address: address, //地址参数，例：固定地址，address: '北京市海淀区彩和坊路海淀西大街74号'
-    region: region,
+    address: address, //地址参数，例：固定地址，address: '北京市海淀区彩和坊路海淀西大街74号'  
     sig: 'KkXF9nGuNrp3LWqyWPrbvTtbHSgC2eu',
     success: function(res) { //成功后的回调
       console.log(res);
@@ -296,7 +309,7 @@ function getGeocoder(address, region,pCallBack) {
         pCallBack(newres);    
     },
     fail: function(error) {
-      console.error(error);
+      console.log(error);
     },
     complete: function(res) {
       console.log(res);
