@@ -3,7 +3,7 @@
     
         <image src="/static/images/logo.png" class="logo"/>
         <view class="v-topTitle">欢迎进入券库</view>
-        <view class="v-topMes">券库是致力于提升商家会员权益的资源整合平台,是实体商户之间互推互赚、合作共赢的桥梁</view>
+        <view class="v-topMes">券库是服务于商家的异业资源整合平台，帮助商家拓展销售渠道，整合会员权益，提升客户终身价值。</view>
         <button class="loginBtn" open-type="getUserInfo" bindgetuserinfo="onMerchantRegTap" >立即注册</button>
         <button class="phoneBtn" style="margin-bottom:40rpx;border:none" bindtap="onPhoneLoginTap" >登录已有账号</button>
 
