@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+      img:""
   },
 
   /**
@@ -15,19 +15,15 @@ Page({
    */
   onLoad: function (options) {
     var datas={
-      shopID: options.shopid,
-      pAppId:"wx8beb26cb65805e7a",
-      pSecret:"c64a2a407262e0f6f289c2fc186071b0"
+      ShopID: options.shopid,
+      // pAppId:"wx8beb26cb65805e7a",
+      // pSecret:"c64a2a407262e0f6f289c2fc186071b0"
     }
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/AccessToken", "POST", datas, app.globalData.appkeyid, this.CouponShopView);
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/StoreQRcode", "POST", datas, app.globalData.appkeyid, this.CouponShopView);
   },
   CouponShopView:function(res){
    var json=res.data.Data;
-    console.log(json);
-  },
-  addStaff:function(event){
-    wx.navigateTo({
-      url: '../staffLoginReg/staffLoginReg',
-    })
-  },
+   var chat=this;
+    chat.setData({ img:json.QRCodeImg});
+  }
 })
