@@ -19,7 +19,7 @@ Page({
       confirmText: '去配置',
       success: function (res) {
         if (res.confirm) {
-          wx.navigateTo({
+          wx.redirectTo({
             url: '../sendTicketConfigChild/sendTicketConfigChild?CouponID=' + options.couponID,
           })
         }
