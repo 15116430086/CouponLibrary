@@ -268,6 +268,9 @@ Page({
     wx.hideLoading();
     var json = res.data.Data;
     if (json.flag) {
+      var pages = getCurrentPages();
+      var prevPage = pages[pages.length - 2];//上一个页面
+      prevPage.setData({ isRefresh:true});
       chat.setData({
         ReleaseID: json.ReleaseID
       });

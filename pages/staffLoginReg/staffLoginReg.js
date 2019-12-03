@@ -15,7 +15,7 @@ Page({
    */
   onLoad: function(options) {
     wx.showToast({
-      title: JSON.stringify(options),
+      title: decodeURIComponent(option.q),
       icon: 'none',
       duration: 5000
     })
