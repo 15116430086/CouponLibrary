@@ -15,7 +15,7 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      ShopID: options.ShopID
+      ShopID: options.shopid
     });
   },
   authorization: function(enent) {
