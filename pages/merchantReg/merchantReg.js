@@ -41,7 +41,6 @@ Page({
     Contacts: "", //联系人
     LegalPerson: "", //法人
     CreditCode: "", //社会信用代码
-    detail:false,
     txtShow:false
   },
   onChange(event) {
@@ -214,12 +213,6 @@ Page({
       show2: true,
 
     });
-    setTimeout(function () {
-      console.log("123")
-      that.setData({
-        txtShow: true
-      })
-    }, 100)
   },
 
   //券类型选择
@@ -237,26 +230,12 @@ Page({
       industryName: value.IndustryName,
       industryCode: value.IndustryCode
     });
-    setTimeout(function () {
-      console.log("123")
-      that.setData({
-        txtShow: false
-      })
-    }, 50)
   },
   onCancel(e) {
     let that = this;
     that.setData({
       show2: false
-    });
-    console.log("111")
-    setTimeout(function () {
-      console.log("123")
-      that.setData({
-        txtShow:false
-      })
-    }, 50)
-
+    }); 
   },
   onFormSubmit: function(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
@@ -485,17 +464,6 @@ Page({
   onLoad: function(options) {
     let that = this;
     that.GetRegionIndustry();
-    let phone = wx.getSystemInfoSync();
-    console.log(phone.platform)
-    if(phone.platform == 'ios'){
-      that.setData({
-        detail:true
-      })
-    } else if (phone.platform == 'android'){
-      that.setData({
-        detail: false
-      })
-    }
   },
   //点击每个导航的点击事件
   handleTap: function(e) {
