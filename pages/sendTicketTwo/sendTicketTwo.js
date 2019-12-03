@@ -367,6 +367,9 @@ Page({
     var json = json.data.Data;
     let pCoupon_Info = JSON.stringify(that.data.pCoupon_Info);
     if (json.flag) {
+      var pages = getCurrentPages();
+      var prevPage = pages[pages.length - 2];//上一个页面
+      prevPage.setData({ isRefresh: true });
       console.log(json.msg);
       wx.redirectTo({
         url: '../startTicket/startTicket?pCoupon_Info=' + pCoupon_Info + "&CouponID=" + json.CouponID,

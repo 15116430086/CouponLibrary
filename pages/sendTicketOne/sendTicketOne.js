@@ -10,24 +10,31 @@ Page({
   data: {
     datalist: [],
     lastpage: 0,
+    isRefresh: true,
     ReleaseCommission: 0, //托管金
     Comission: 0, //已用
-    BackCommission: 0, //已退,
-    Paging: true //是否可以加载下一页
+    BackCommission: 0, //已退   
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    page = 1;
-    this.GetData();
+    var isRefresh = this.data.isRefresh
+    if (isRefresh) {
+      page = 1;
+      this.GetData();
+      wx.pageScrollTo({
+        scrollTop: 0
+      })
+    }
+    this.setData({ isRefresh:false});
   },
 
   //托管佣金明细页跳转
@@ -90,7 +97,7 @@ Page({
     var datas = {
       pGroupID: app.globalData.AppGroupInfo.GroupID,
       pPageIndex: page,
-      pPageSize: 5
+      pPageSize: 15
     }
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponReleaseList", "POST", datas, app.globalData.appkeyid, this.GetCouponReleaseList);
   },
@@ -127,7 +134,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-    
+
   },
 
   /**
@@ -154,6 +161,7 @@ Page({
     })
   },
   Details: function(event) {
+    isRefresh = false;
     var CouponIDs = event.currentTarget.dataset.couponid
     wx.navigateTo({
       url: '../watchMes/watchMes?CouponID=' + CouponIDs,
