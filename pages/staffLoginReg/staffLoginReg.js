@@ -14,8 +14,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.showToast({
+      title: JSON.stringify(options),
+      icon: 'none',
+      duration: 5000
+    })
+    var shopid = decodeURIComponent(option.q);
     this.setData({
-      ShopID: options.shopid
+      ShopID: shopid
     });
   },
   authorization: function(enent) {
