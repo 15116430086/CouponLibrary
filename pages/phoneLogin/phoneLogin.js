@@ -34,29 +34,65 @@ Page({
   },
   //发送验证码
   sendCode(e){
-    let promise = new Promise((resolve, reject) => {
-      let setTimer = setInterval(
-        () => {
-          this.setData({
-            isCode:false,
-            time: this.data.time - 1
-          })
-          if (this.data.time <= 0) {
-            this.setData({
-              time: 60,
-              isCode: true,
-              sendMes:"重新发送"
-            })
-            resolve(setTimer)
-          }
-        }
-        , 1000)
-    })
-    promise.then((setTimer) => {
-      clearInterval(setTimer)
-    })
+    if (this.data.phone == "") {
+      wx.showToast({
+        title: '请输入手机号码!',
+        icon: "none",
+        duration: 2000
+      })
+      return;
+    }
+    if (this.data.phonelength != 11) {
+      wx.showToast({
+        title: '请输入11位数的手机号码!',
+        icon: "none",
+        duration: 2000
+      })
+      return;
+    }
+    var Phones = this.data.phone;
+    var data={
+      Phone: Phones
+    }
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/Getverificationcode", "POST", data, app.globalData.appkeyid, this.Getverificationcode)
   },
   
+  Getverificationcode:function(res){
+    var chat=this;
+    var json = res.data.Data;
+      if(json.flag){
+        let promise = new Promise((resolve, reject) => {
+          let setTimer = setInterval(
+            () => {
+              chat.setData({
+                isCode: false,
+                time: chat.data.time - 1
+              })
+              if (chat.data.time <= 0) {
+                chat.setData({
+                  time: 60,
+                  isCode: true,
+                  sendMes: "重新发送"
+                })
+                resolve(setTimer)
+              }
+            }
+            , 1000)
+        })
+        promise.then((setTimer) => {
+          clearInterval(setTimer)
+        })
+
+      }else{
+        wx.showToast({
+          title: json.msg,
+          icon: "none",
+          duration: 3000
+        })
+
+      }
+  },
+
   isConfirmLogin: function() {
     let that = this;
     if (that.data.phone == "") {
@@ -111,7 +147,7 @@ Page({
               data.code = app.globalData.logincode;
               data.pHoneNumber = that.data.phone;
               data.pCheckCode = that.data.code;
-              utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetWxLoginAuth", "POST", data, app.globalData.appkeyid, that.GetPhoneNumbeLoginBack)
+              utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetWxPhoneNumbeLogin", "POST", data, app.globalData.appkeyid, that.GetPhoneNumbeLoginBack)
             }
           }
         })
@@ -133,7 +169,7 @@ Page({
           data.Text = detail.encryptedData;
           data.AesIV = detail.iv;
           data.code = res.code
-          utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetWxPhoneNumbeLogin", "POST", data, app.globalData.appkeyid, that.GetPhoneNumbeLoginBack)
+          utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetWxLoginAuth", "POST", data, app.globalData.appkeyid, that.GetPhoneNumbeLoginBack)
         }
       })
     }
