@@ -40,8 +40,9 @@ Page({
     GroupName: "", //公司名称   
     Contacts: "", //联系人
     LegalPerson: "", //法人
-    CreditCode: "" //社会信用代码
-
+    CreditCode: "", //社会信用代码
+    detail:false,
+    txtShow:false
   },
   onChange(event) {
     let that = this;
@@ -76,7 +77,8 @@ Page({
     this.setData({
       regionName: regionName,
       regAddress: regAddress,
-      Geocoder: res
+      Geocoder: res,
+      txtShow:true
 
     });
   },
@@ -180,12 +182,7 @@ Page({
     }
   },
 
-  showPopup() {
-    let that = this;
-    that.setData({
-      show2: true
-    })
-  },
+
 
   //券类型选择
   onConfirm(event) {
@@ -214,8 +211,15 @@ Page({
   showPopup() {
     let that = this;
     that.setData({
-      show2: true
-    })
+      show2: true,
+
+    });
+    setTimeout(function () {
+      console.log("123")
+      that.setData({
+        txtShow: true
+      })
+    }, 100)
   },
 
   //券类型选择
@@ -232,14 +236,27 @@ Page({
       show2: false,
       industryName: value.IndustryName,
       industryCode: value.IndustryCode
-    })
+    });
+    setTimeout(function () {
+      console.log("123")
+      that.setData({
+        txtShow: false
+      })
+    }, 50)
   },
   onCancel(e) {
-
     let that = this;
     that.setData({
       show2: false
-    })
+    });
+    console.log("111")
+    setTimeout(function () {
+      console.log("123")
+      that.setData({
+        txtShow:false
+      })
+    }, 50)
+
   },
   onFormSubmit: function(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
@@ -468,6 +485,17 @@ Page({
   onLoad: function(options) {
     let that = this;
     that.GetRegionIndustry();
+    let phone = wx.getSystemInfoSync();
+    console.log(phone.platform)
+    if(phone.platform == 'ios'){
+      that.setData({
+        detail:true
+      })
+    } else if (phone.platform == 'android'){
+      that.setData({
+        detail: false
+      })
+    }
   },
   //点击每个导航的点击事件
   handleTap: function(e) {
@@ -533,6 +561,7 @@ Page({
     regionData = wx.getStorageSync('Region');
     var industrylist = wx.getStorageSync('Industry');
     var multiArray = wx.getStorageSync('multiArray');
+    console.log(industrylist)
     if (regionData && industrylist) {
       this.setData({
         columns: industrylist,

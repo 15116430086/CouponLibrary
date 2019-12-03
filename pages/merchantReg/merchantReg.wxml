@@ -49,6 +49,7 @@
     </view>
     <view class="ticket-block">
       <view class="ticket-name">公司全称
+        <text wx:if="{{txtShow == true}}" style="color:#e85819">(请核对)</text>
         <text style="color:red">*</text>
       </view>
       <input type="text" name="GroupName" value="{{GroupName}}" placeholder="营业执照公司名称" placeholder-class="ip" />
@@ -59,12 +60,14 @@
     </view> -->
     <view class="ticket-block">
       <view class="ticket-name">法定代表人
+        <text wx:if="{{txtShow == true}}" style="color:#e85819">(请核对)</text>
         <text style="color:red">*</text>
       </view>
       <input name="LegalPerson" type="text" value="{{LegalPerson}}" placeholder="法定代表人姓名" placeholder-class="ip" />
     </view>
     <view class="ticket-block">
       <view class="ticket-name">注册地区
+        <text wx:if="{{txtShow == true}}" style="color:#e85819">(请核对)</text>
         <text style="color:red">*</text>
       </view>
       <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
@@ -73,13 +76,14 @@
     </view>
     <view class="ticket-block">
       <view class="ticket-name">详细地址
+        <text wx:if="{{txtShow == true}}" style="color:#e85819">(请核对)</text>
         <text style="color:red">*</text>
       </view>
       <view class="t-bot">
         <view style="width: 100%;">
           <input name="RegAddress" type="text" value="{{regAddress}}" placeholder="请输入详细地址" placeholder-class="ip" />
         </view>
-        <image bindtap="onRegAddressTap" src="/static/images/address.png" />
+        <image bindtap="onRegAddressTap" src="/static/images/address1.png"  style="width:46rpx;height:50rpx"/>
       </view>
     </view>
 
