@@ -1,7 +1,7 @@
 <!-- pages/doorManager/doorManager.wxml -->
 <view class="v-box">
     <view class="v-block">
-        <view class="v-title">
+        <view class="v-title" style="align-items:center">
             <view class="v-txt">{{datalist[0].ShopName}}</view>
             <image bindtap="updateshop" src="/static/images/wrt3.png" class="v-title-image"/>
         </view>
@@ -56,20 +56,22 @@
       
 
         <view class="vm-mid">
-            <image src="/static/images/hh1.png" />
+            <image src="/static/images/bianxie1.png" />
             <input type="text" placeholder="请输入店铺名称" value="{{datalist[0].ShopName}}" bindblur="blurs" placeholder-class="pm-class" />
         </view>
          <view class="vm-mid">
-            <image src="/static/images/xmxm.png" />
+            <image src="/static/images/shop1.png" />
             <input type="text" placeholder="请输入店铺地址" disabled="true" value="{{datalist[0].ShopAddress}}" bindblur="blurs" placeholder-class="pm-class" class="inputOne"/>
-            <view class="blue" bindtap="addressblurs">开启定位</view>
+            <view class="blue" bindtap="addressblurs">
+              <image src="/static/images/address1.png" style="width:45rpx;height:45rpx;position:relative;left:40rpx"></image>
+            </view>
         </view>
         <view class="vm-mid">
-            <image src="/static/images/card1.png" />
+            <image src="/static/images/txl1.png" />
             <input type="number" placeholder="请输入店铺联系人" value="{{datalist[0].Contacts}}" bindblur="blurs" placeholder-class="pm-class"/>
         </view>
        <view class="vm-mid">
-            <image src="/static/images/card1.png" />
+            <image src="/static/images/phone1.png" />
             <input type="number" placeholder="请输入联系方式" value="{{datalist[0].Telephone}}" bindblur="blurs" placeholder-class="pm-class"/>
         </view>
         

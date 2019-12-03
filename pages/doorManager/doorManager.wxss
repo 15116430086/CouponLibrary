@@ -24,8 +24,8 @@ page {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 20rpx;
+    align-items: flex-start;
+    margin-bottom: 10rpx;
 }
  
 .v-txt {
@@ -248,15 +248,16 @@ page {
     margin-top: 30rpx;
 }
 
+
 .inputOne {
-    width: calc(100% - 222rpx) !important;
+    width: calc(100% - 182rpx) !important;
 }
 
 .blue {
     width: 146rpx;
     height: 44rpx;
     border-left: 1px solid #ededed;
-    color: #E85819;
+    color: #016FB4;
     font-size: 32rpx;
     text-indent: 40rpx;
     line-height: 44rpx;
