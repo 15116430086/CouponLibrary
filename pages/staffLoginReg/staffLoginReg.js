@@ -14,12 +14,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wx.showToast({
-      title: decodeURIComponent(option.q),
-      icon: 'none',
-      duration: 5000
+    wx.showModal({
+      title: "二维码参数",
+      content: decodeURIComponent(options.q)
     })
-    var shopid = decodeURIComponent(option.q);
+    var shopid = decodeURIComponent(options.q);
     this.setData({
       ShopID: shopid
     });
