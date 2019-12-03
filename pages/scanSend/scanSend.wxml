@@ -34,7 +34,7 @@
     </view>
   </block>
 </view>
-<view class="mask" hidden="{{showQrCode}}" bindtap="onCloseQrCodeTap">
+<view class="mask" hidden="{{showQrCode}}" catchtap="onCloseQrCodeTap" catchtouchmove="true">
   <view class="mask-box" catchtap="onQrCodeTap">
     <view class="mask-t">{{shopData.CouponName}}</view>
     <view class="mask-m">{{shopData.GroupName}}</view>
