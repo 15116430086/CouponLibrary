@@ -14,14 +14,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    wx.showModal({
-      title: "二维码参数",
-      content: decodeURIComponent(options.q)
-    })
-    var shopid = decodeURIComponent(options.q);
-    this.setData({
-      ShopID: shopid
-    });
+    var data = decodeURIComponent(options.q).split('=');
+    if (data.length==2)
+    {
+      var shopID = data[1];
+      this.setData({
+        ShopID: shopID
+      });
+    }
+    else
+    {
+      wx.reLaunch({
+        url: '../login/login',
+      })
+    }
   },
   authorization: function(enent) {
     var chat = this;
