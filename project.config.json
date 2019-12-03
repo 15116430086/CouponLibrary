@@ -21,7 +21,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.3",
+	"libVersion": "2.9.4",
 	"appid": "wx8beb26cb65805e7a",
 	"projectname": "Qku-miniapp",
 	"debugOptions": {

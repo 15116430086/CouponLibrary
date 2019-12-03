@@ -66,6 +66,9 @@ page {
     color: #666666;
     font-size: 28rpx;
     background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .home-groupMes image {

@@ -45,6 +45,22 @@ page {
   font-family: PingFang SC;
 }
 
+.ticket-block  textarea{
+  width: 100%;
+  font-size: 32rpx;
+  font-weight: 600;
+  font-family: PingFang SC;
+  color: #000;
+  text-indent: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.iostextarea{
+  position: relative;
+  left: -10rpx;
+  padding: 0px
+}
 .ip {
   color: #ccc;
   font-size: 28rpx;
@@ -149,6 +165,7 @@ page {
 .t-bot image {
   width: 42rpx;
   height: 34rpx;
+  flex-shrink: 0;
 }
 
 .addImg {
