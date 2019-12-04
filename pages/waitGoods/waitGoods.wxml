@@ -1,2 +1,58 @@
-<!--pages/waitGoods/waitGoods.wxml-->
-<text>pages/waitGoods/waitGoods.wxml</text>
+<!-- pages/waitGoods/waitGoods.wxml -->
+<view class="v-box">
+    <view class="v-top">
+        <view class="v-title">待发货</view>
+        <view class="v-btn">填写货单</view>
+    </view>
+    <view class="v-mid">
+        <view class="v-name">收货人</view>
+        <input placeholder="请输入收货人姓名" class="v-mes" placeholder-class="ip"/>
+    </view>
+    <view class="v-mid">
+        <view class="v-name">收货人地址</view>
+        <input placeholder="请输入收货地址" class="v-mes" placeholder-class="ip"/>
+    </view>
+    <view class="v-mid" style="border:none">
+        <view class="v-name">联系电话</view>
+        <input placeholder="请输入联系电话" class="v-mes" placeholder-class="ip"/>
+    </view>
+</view>
+<view class="v-bot">
+    <view class="v-span">
+        <view class="v-text">收款总额</view>
+        <view>￥0.1</view>
+    </view>
+    <view class="v-span">
+        <view class="v-text">商品总价</view>
+        <view>￥0.1</view>
+    </view>
+    <view class="v-span">
+        <view class="v-text">运费</view>
+        <view>￥0.1</view>
+    </view>
+    <view class="v-span">
+        <view class="v-text">购买总数</view>
+        <view>1</view>
+    </view>
+    <view class="v-span">
+        <view class="v-text">订单号</view>
+        <view>1569403063GJ7AJZZ3</view>
+    </view>
+    <view class="v-span">
+        <view class="v-text">创建时间</view>
+        <view>2019-09-25 17:17:43</view>
+    </view>
+    <view class="v-block">
+        <image src="/static/images/swp.png" />
+        <view class="v-left">
+            <view class="v-card-one">
+                <view class="v-bq" style="text-align:left;">黄果罐头黄果罐头黄果罐头黄果罐头黄果罐头黄果罐头黄果罐头黄果罐头黄果罐头黄果罐头</view>
+                <view class="v-bb" style="text-align:left">AAA水果店铺AAA水果店铺AAA水果店铺AAA水果店铺AA水果店铺AAA水果店铺AAA水果店铺AAA水果店铺</view>
+            </view>
+            <view class="v-card">
+                <view class="v-bd" style="text-align:right">X1</view>
+                <view class="v-bc" style="text-align:right">￥0.1</view>
+            </view>
+        </view>
+    </view>
+</view>
