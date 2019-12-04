@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "待发货",
+    "navigationBarTextStyle": "black"
 }

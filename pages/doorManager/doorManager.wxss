@@ -250,11 +250,11 @@ page {
 
 
 .inputOne {
-    width: calc(100% - 182rpx) !important;
+    width: calc(100% - 62rpx) !important;
 }
 
 .blue {
-    width: 146rpx;
+    width: 62rpx;
     height: 44rpx;
     border-left: 1px solid #ededed;
     color: #016FB4;
