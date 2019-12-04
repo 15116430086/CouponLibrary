@@ -160,8 +160,7 @@ Page({
       url: '../sendTicketTwo/sendTicketTwo',
     })
   },
-  Details: function(event) {
-    isRefresh = false;
+  Details: function(event) {  
     var CouponIDs = event.currentTarget.dataset.couponid
     wx.navigateTo({
       url: '../watchMes/watchMes?CouponID=' + CouponIDs,

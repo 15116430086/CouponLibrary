@@ -375,6 +375,11 @@ Page({
         url: '../startTicket/startTicket?pCoupon_Info=' + pCoupon_Info + "&CouponID=" + json.CouponID,
       })
     } else {
+      wx.showToast({
+        title: json.msg,
+        icon:"none",
+        duration:2000
+      })
       console.log(json.msg);
     }
   },
