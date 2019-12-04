@@ -44,11 +44,11 @@
     </view>
     <view class="v-span">
         <view class="v-text">创建时间</view>
-        
         <view>{{common.sysFormatDate(CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
     </view>
     <view class="v-block">
-        <image src="/static/images/swp.png" />
+        <image wx:if="{{ImageOne==''}}" src="/static/images/swp.png" />
+        <image wx:else src="{{ImageOne}}" />
         <view class="v-left">
             <view class="v-card-one">
                 <view class="v-bq" style="text-align:left;">{{ProductName}}</view>

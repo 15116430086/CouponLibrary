@@ -25,6 +25,7 @@ Page({
     ProductName:"",//商品名称
     SalePrice:"",//单价
     GroupName:"",//集团名称
+    ImageOne:"",//图片
   },
 
   GetData: function () {
@@ -57,6 +58,7 @@ Page({
         ProductName: json.data[0].ProductName,//商品名称
         SalePrice: json.data[0].SalePrice,//单价
         GroupName:app.globalData.AppGroupInfo.GroupName,//集团名称
+        ImageOne: json.data[0].ImageOne,//图片
       })
     }
   },
