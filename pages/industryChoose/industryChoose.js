@@ -81,9 +81,9 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面卸载
+   * 确认点击
    */
-  onUnload: function() {
+  goBack: function() {
     var industryList = [];
     var contentlist = this.data.content;
     for (var i in contentlist) {
@@ -93,5 +93,8 @@ Page({
 
     }
     wx.setStorageSync("industryKey", industryList);
+    wx.navigateBack({
+      detail:1
+    })
   },
 })

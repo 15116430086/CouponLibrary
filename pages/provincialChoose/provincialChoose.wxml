@@ -23,4 +23,8 @@
             </block>
         </view>
     </block>
+
+     <view class="app-bot">
+    <view class="v-btn" bindtap="goBack">确认选择</view>
+  </view>
 </view>

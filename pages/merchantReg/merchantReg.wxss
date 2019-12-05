@@ -228,7 +228,7 @@ form {
 
 .bm-bot navigator {
   color: #016fb4;
-  margin-left: 10rpx;
+  /* margin-left: 10rpx; */
   white-space: nowrap;
 }
 .bm-bot view{
