@@ -2,26 +2,45 @@
 <view class="v-all">
 
     <view class="v-box" wx:if="{{type==0}}">
-          <view class="v-title">填写发货单</view>
+          <view wx:if="{{orderstate==2}}" class="v-title">填写发货单</view>
+          <view wx:elif="{{orderstate==3 || orderstate==4}}" class="v-title">发货单</view>
     </view>
     <view class="v-box" wx:if="{{type==1}}">
-          <view class="v-title">中国联通宽带业务在线受理中</view>
-          <view class="v-wait">请等待…</view>
+
+          <view class="v-title">{{GroupName}}</view>
+          <view wx:if="{{orderstate==2}}" class="v-wait">待办理</view>
+          <view wx:if="{{orderstate==3}}" class="v-wait">办理中…</view>
+          <view wx:if="{{orderstate==4}}" class="v-wait">已办理</view>
+          <!-- 已受理，等待业务人员上门 -->
     </view>
     <view class="v-bot">
-        <view class="v-block">
+        <view wx:if="{{type==0}}" class="v-block">
             <view class="v-name">快递单号</view>
             <input type="text" bindinput ="CourierNumberInput" value="{{CourierNumber}}" class="v-mes" placeholder="请输入快递单号" placeholder-class="ip" disabled='{{isDisabled}}'></input>
         </view>
-        <view class="v-block">
+        <view wx:if="{{type==1}}" class="v-block">
+            <view class="v-name">受理单号</view>
+            <input type="text" bindinput ="CourierNumberInput" value="{{CourierNumber}}" class="v-mes" placeholder="请输入受理单号" placeholder-class="ip" disabled='{{isDisabled}}'></input>
+        </view>
+
+        <view wx:if="{{type==0}}" class="v-block">
             <view class="v-name">快递公司</view>
             <input type="text" bindinput ="CourierCompanyInput" value="{{CourierCompany}}" class="v-mes" placeholder="请输入快递公司" placeholder-class="ip" disabled='{{isDisabled}}'></input>
         </view>
-        <view class="v-block" style="border:none">
+        <view wx:if="{{type==1}}" class="v-block">
+            <view class="v-name">业务员工</view>
+            <input type="text" bindinput ="CourierCompanyInput" value="{{CourierCompany}}" class="v-mes" placeholder="请输入业务员工" placeholder-class="ip" disabled='{{isDisabled}}'></input>
+        </view>
+
+        <view wx:if="{{type==0}}" class="v-block" style="border:none">
             <view class="v-name">快递客服</view>
             <input type="text" bindinput ="ExpressTelInput" value="{{ExpressTel}}" class="v-mes" placeholder="请输入客服电话" placeholder-class="ip" disabled='{{isDisabled}}'></input>
+        </view>
+        <view wx:if="{{type==1}}" class="v-block" style="border:none">
+            <view class="v-name">联系电话</view>
+            <input type="text" bindinput ="ExpressTelInput" value="{{ExpressTel}}" class="v-mes" placeholder="请输入联系电话" placeholder-class="ip" disabled='{{isDisabled}}'></input>
         </view>
     </view>
 </view>
 <view wx:if="{{orderstate==2}}" class="v-btn" bindtap="isDeliver">确认发货/办理</view>
-<view wx:if="{{orderstate==3}}" class="v-btn" bindtap="NotifyBuyers">通知买家</view>
+<!-- <view wx:if="{{orderstate==3}}" class="v-btn" bindtap="NotifyBuyers">通知买家</view> -->
