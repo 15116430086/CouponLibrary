@@ -53,8 +53,8 @@
     </block>
   </view>
   <view class="homebot">
-    <view style="color:#E85819">*默认会员赠送规则描述</view>
-    <view>免费券会员可自主领用，团购券全部员工可扫码赠券</view>
+    <view style="color:#E85819">*默认赠送规则</view>
+    <view>现金券会员可自领，员工可赠送；团购券仅员工可赠送</view>
   </view>
   <!-- 底部栏 -->
   <view class="choose-bot">
