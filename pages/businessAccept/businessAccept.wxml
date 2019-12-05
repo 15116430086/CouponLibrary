@@ -2,7 +2,8 @@
 <view class="v-all">
 
     <view class="v-box" wx:if="{{type==0}}">
-          <view class="v-title">填写发货单</view>
+          <view wx:if="{{orderstate==2}}" class="v-title">填写发货单</view>
+          <view wx:elif="{{orderstate==3 || orderstate==4}}" class="v-title">发货单</view>
     </view>
     <view class="v-box" wx:if="{{type==1}}">
           <view class="v-title">中国联通宽带业务在线受理中</view>
@@ -24,4 +25,4 @@
     </view>
 </view>
 <view wx:if="{{orderstate==2}}" class="v-btn" bindtap="isDeliver">确认发货/办理</view>
-<view wx:if="{{orderstate==3}}" class="v-btn" bindtap="NotifyBuyers">通知买家</view>
+<!-- <view wx:if="{{orderstate==3}}" class="v-btn" bindtap="NotifyBuyers">通知买家</view> -->
