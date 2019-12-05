@@ -2,10 +2,12 @@
 <wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="v-box">
     <view class="v-top">
-        <view class="v-title">待发货</view>
+        <view wx:if="{{orderstate==2}}" class="v-title">待发货/受理</view>
+        <view wx:elif="{{orderstate==3}}" class="v-title">已发货/已受理</view>
+        <view wx:elif="{{orderstate==4}}" class="v-title">已完成</view>
         <navigator url="../businessAccept/businessAccept?type={{type}}&orderid={{orderid}}&orderstate={{orderstate}}">
         <view class="v-btn" wx:if="{{orderstate==2}}">填写货单</view>
-        <view class="v-btn" wx:if="{{orderstate==3 || orderstate==4}}">查看货单</view>
+        <view class="v-btn" wx:elif="{{orderstate==3 || orderstate==4}}">查看货单</view>
         </navigator>
     </view>
     <view class="v-mid">
