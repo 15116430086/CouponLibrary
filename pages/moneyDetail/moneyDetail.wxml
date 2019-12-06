@@ -2,9 +2,9 @@
 <wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="m-top">
     <view class="mD-top">
-        <image src="/static/images/swp.png" />
-        <view class="mDt-name">欧阳默默</view>
-        <view class="mDt-price">￥0.12</view>
+        <image src="{{userInfo.UserAvatar}}" />
+        <view class="mDt-name">{{userInfo.UserName}}</view>
+        <!-- <view class="mDt-price">￥0.12</view> -->
     </view>
     <view class="mD-bot">
         <view class="mDb-block">

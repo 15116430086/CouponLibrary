@@ -6,6 +6,7 @@ page {
     width: 100%;
     height: auto;
     background-color: #FFF;
+    padding-bottom: 128rpx;
 }
 
 .v-top {
@@ -70,4 +71,17 @@ page {
     color: #333;
     font-size: 28rpx;
     margin-left: 40rpx;
+}
+
+
+.v-btn {
+  width: 670rpx;
+  height: 98rpx;
+  background: rgba(232, 88, 25, 1);
+  border-radius: 20rpx;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 98rpx;
+  color: #fff;
+  margin: 20rpx auto;
 }

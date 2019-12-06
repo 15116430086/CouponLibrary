@@ -8,13 +8,14 @@ Page({
    */
   data: {
     isDisabled: false,  //表示页面加载完成时disabled为启用状态
-    type:0,      //0普通购物，1业务办理
+    type:1,      //0普通购物，1业务办理
     orderid:'',   //订单编号
     titleName:'', //业务名
     orderstate:0,     //订单状态
     CourierNumber:'',
     CourierCompany:'',
-    ExpressTel:''
+    ExpressTel:'',
+    GroupName: app.globalData.AppGroupInfo.GroupName,//集团名称
   },
   //快递单号
   CourierNumberInput: function (e) {
@@ -38,20 +39,48 @@ Page({
   //点击确认发货按钮
   isDeliver: function(event) {
     if (!this.data.CourierCompany){
-      wx.showToast({
-        title: '请输入快递单号!',
-        icon: "none",
-        duration: 2000
-      })
+      if(this.data.type==0){
+        wx.showToast({
+          title: '请输入快递单号!',
+          icon: "none",
+          duration: 2000
+        })
+      }
+      else if (this.data.type == 1){
+        wx.showToast({
+          title: '请输入受理单号!',
+          icon: "none",
+          duration: 2000
+        })
+      }
       return;
     }
     if (!this.data.CourierCompany) {
-      wx.showToast({
-        title: '请输入快递公司!',
-        icon: "none",
-        duration: 2000
-      })
+      if (this.data.type == 0) {
+        wx.showToast({
+          title: '请输入快递公司!',
+          icon: "none",
+          duration: 2000
+        })
+      }
+      else if (this.data.type == 1) {
+        wx.showToast({
+          title: '请输入业务员工!',
+          icon: "none",
+          duration: 2000
+        })
+      }
       return;
+    }
+    if (!this.data.ExpressTel) {
+      if (this.data.type == 1) {
+        wx.showToast({
+          title: '请输入联系电话!',
+          icon: "none",
+          duration: 2000
+        })
+        return;
+      }
     }
     wx.showLoading({
       title: '数据加载中...',
@@ -88,7 +117,7 @@ Page({
     that.setData({
       orderstate: options.orderstate,
       orderid: options.orderid,
-      type: options.type
+      //type: options.type
     })
     that.GetData();
   },

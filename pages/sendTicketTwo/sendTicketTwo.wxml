@@ -123,7 +123,7 @@
     <view class="ticket-name">添加图片</view>
     <view class="addImg-box">
       <view class="add-img" wx:if="{{imageOne}}">
-        <image src="{{imageOne}}" class="addImg-box-image" bindtap="preImg" />
+        <image src="{{imageOne}}" class="addImg-box-image" bindtap="preImg" mode='aspectFill'/>
         <image src="/static/images/cha4.png" class="cha4" bindtap="delImg"></image>
       </view>
 
@@ -137,7 +137,7 @@
     <view class="ticket-name">使用规则</view>
     <view class="addImg-box">
       <view class="add-img" wx:if="{{imageTwo}}">
-        <image src="{{imageTwo}}" class="addImg-box-image" bindtap="preImg2" />
+        <image src="{{imageTwo}}" class="addImg-box-image" bindtap="preImg2" mode='aspectFill'/>
         <image src="/static/images/cha4.png" class="cha4" bindtap="delImg2"></image>
       </view>
       <image src="/static/images/img.png" bindtap="imgadd2" class="addImg-box-image" wx:else />
@@ -146,10 +146,10 @@
   </view>
   <!-- 券详情 -->
   <view class="addImg">
-    <view class="ticket-name">券详情</view>
+    <view class="ticket-name">图文详情</view>
     <view class="addImg-box">
       <view class="add-img" wx:if="{{imageTre}}">
-        <image src="{{imageTre}}" class="addImg-box-image" bindtap="preImg3" />
+        <image src="{{imageTre}}" class="addImg-box-image" bindtap="preImg3" mode='aspectFill'/>
         <image src="/static/images/cha4.png" class="cha4" bindtap="delImg3"></image>
       </view>
       <image src="/static/images/img.png" bindtap="imgadd3" class="addImg-box-image" wx:else />

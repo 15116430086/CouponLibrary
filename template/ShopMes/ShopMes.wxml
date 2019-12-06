@@ -7,12 +7,12 @@
         <view class="ticket-mes">
           <view class="ticket-mes-p">{{GroupName}}</view>
           <view class="ticket-sec">
-            <image src="/static/images/add.png" class="ticket-secimg" />
+            <image src="/static/images/address1.png" class="ticket-secimg" />
             <text>{{RegisteredAddress}}</text>
           </view>
           <view class="ticket-mes-ul">
-            <view>{{IndustryName}}-{{IndustryLabel}}</view>
-            <view>
+            <view class="tmu-one">{{IndustryName}}-{{IndustryLabel}}</view>
+            <view class="tmu-two">
               {{RegionName}}
               <text>{{Distance}}</text>km
             </view>

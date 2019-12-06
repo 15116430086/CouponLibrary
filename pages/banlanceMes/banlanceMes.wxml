@@ -14,8 +14,9 @@
   <block wx:for="{{Settlementdetailslist}}" wx:for-index="index" wx:key="WithdrawalID">
       <view class="v-block">
           <view class="v-left">
-              <view class="v-title">¥{{item.WithdrawalMoney}}【{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}】</view>
-              <view class="v-span">佣金退还¥{{item.oCoupon_CapitalItemInfo.sumDrawbackMoney}} l 佣金收入¥{{item.oCoupon_CapitalItemInfo.sumCommissionMoney}} l 代收资金¥{{item.oCoupon_CapitalItemInfo.sumCollectionMoney}}</view>
+              <view class="v-title">【{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}】</view>
+              <view class="v-span" style="margin-bottom:10rpx;">应结算¥{{item.WithdrawalMoney}} l 手续费¥{{item.WxServiceFee}} l 实结算¥{{item.TrueMoney}}</view>
+               <view class="v-span">佣金退还¥{{item.oCoupon_CapitalItemInfo.sumDrawbackMoney}} l 佣金收入¥{{item.oCoupon_CapitalItemInfo.sumCommissionMoney}} l 代收资金¥{{item.oCoupon_CapitalItemInfo.sumCollectionMoney}}</view>
           </view>
           <view class="v-right" wx:if="{{item.State==0}}" style="color:#F08002;border:1px solid #F08002">结算中</view>
           <view class="v-right" wx:elif="{{item.State==1}}" style="color:#429859;border:1px solid #429859">已结算</view>

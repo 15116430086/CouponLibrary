@@ -31,13 +31,16 @@
     line-height: 34rpx;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .ticket-secimg {
     margin-right: 16rpx;
-    width: 18rpx;
-    height: 24rpx;
+    width: 31rpx;
+    height: 31rpx;
+     position: relative;
+    /* top: 5rpx; */
+    left: 5rpx;
 }
 
 .ticket-sec text {

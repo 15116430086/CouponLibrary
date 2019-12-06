@@ -3,7 +3,7 @@
     <view class="hotboxH">
       <view class="hotblockH">
         <view class="ticket-boxH">
-          <image class="ticket-imgH" src="{{ImageOne}}" />
+          <image class="ticket-imgH" src="{{ImageOne}}" mode='aspectFill'/>
           <view class="ticket-mesH">
             <view class="ticket-ul-pH">
               <view class="ticket-mes-pH">{{item.CouponName}}</view>

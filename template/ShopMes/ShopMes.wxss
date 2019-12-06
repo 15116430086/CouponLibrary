@@ -6,6 +6,7 @@
     background-color: #fff;
     font-weight: 600;
     margin-bottom: 20rpx;
+    border-bottom: 1px  solid #EDEDED;
 }
 
 .ticket-box {
@@ -15,7 +16,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* border-bottom: 0.3px solid #EFEFEF; */
+    
 }
 
 .ticket-img {
@@ -42,20 +43,24 @@
     line-height: 34rpx;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
+   
 }
 
 .ticket-secimg {
     margin-right: 16rpx;
-    width: 18rpx;
-    height: 24rpx;
+    width: 31rpx;
+    height: 31rpx;
+     position: relative;
+    /* top: 5rpx; */
+    left: 5rpx;
 }
 
 .ticket-sec text {
     width: 428rpx;
-    overflow: hidden;
+    /* overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: nowrap; */
 }
 
 .ticket-mes-p {
@@ -88,7 +93,7 @@ white-space:nowrap;
     flex-direction: row;
     align-items: center;
     border-top: 1px solid #EDEDED;
-    border-bottom: 1px solid #EDEDED;
+    /* border-bottom: 1px solid #EDEDED; */
 }
 
 .ticketShop-one {
@@ -122,4 +127,17 @@ white-space:nowrap;
     line-height: 40rpx;
     color: rgba(51, 51, 51, 1);
     margin-bottom: 10rpx;
+}
+
+.tmu-one,.tmu-two{
+  white-space: nowrap;
+}
+
+.tmu-one{
+  width: calc(100% - 190rpx);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tmu-two{
+  width: 180rpx;
 }

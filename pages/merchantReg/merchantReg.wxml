@@ -151,9 +151,9 @@
     <view class="bm-bot">
       <image src="{{checked==true?'/static/images/f1.png':'/static/images/f2.png'}}" bindtap="onChange"></image>
       <view class="bm-view">
-        <view>注册即表示同意</view>
+        <view style="width:auto">注册即表示同意</view>
         <navigator url="../regPlane/regPlane">《注册协议》</navigator>
-        <view>和</view>
+        <view style="width:auto">和</view>
         <navigator url="../secretBook/secretBook">《隐私权政策》</navigator>
       </view>
     </view>
@@ -167,3 +167,4 @@
 <van-popup show="{{show2}}" bind:close="onClose" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
   <van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" />
 </van-popup>
+

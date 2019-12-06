@@ -64,11 +64,11 @@ page {
 
 .v-block {
     width: calc(100% - 80rpx);
-    height: 120rpx;
+    height: 168rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
 }
 
 .v-left {
@@ -83,6 +83,8 @@ page {
     text-align: center;
     font-size: 22rpx;
     margin-left: 40rpx;
+    position: relative;
+    top: -37rpx;
 }
 
 .v-title {
@@ -94,9 +96,12 @@ page {
     font-size: 28rpx;
     font-weight: 600;
     margin-bottom: 10rpx;
+    position: relative;
+    left: -15rpx;
 }
 
 .v-span {
     color: #999;
     font-size: 24rpx;
+    
 }

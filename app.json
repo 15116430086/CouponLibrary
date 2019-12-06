@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/image-cropper/image-cropper",
     "pages/paySuccess/paySuccess",
     "pages/moreShop/moreShop",
     "pages/home/home",
