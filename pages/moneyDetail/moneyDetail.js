@@ -17,6 +17,7 @@ Page({
    */
   data: {
     userid: '',
+    userInfo:{},
     showOrder: { 
       PayDate:'无',
       WriteOffOrderID:'无',
@@ -43,6 +44,23 @@ Page({
     that.setData({
       userid: options.userid
     })
+    
+  },
+
+  /**
+ * 生命周期函数--监听页面显示
+ */
+  onShow: function () {
+    pageM = [{
+      page: 1,
+      lastpage: 0,
+      iscleck: true
+    }, {
+      page: 1,
+      lastpage: 0,
+      iscleck: true
+    }];
+    let that = this;
     that.GetData();
   },
 
@@ -83,6 +101,7 @@ Page({
     })
     var pageindex = pageM[that.data.currentId].page;
     var data = {};
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pUserID = that.data.userid;
     data.pPageIndex = pageindex;
     data.pPageSize = 5;
@@ -101,7 +120,8 @@ Page({
         pageM[that.data.currentId].iscleck = false;
         if (pageM[that.data.currentId].page == 1) {
           that.setData({
-            hecoupon: json.CouponConsume
+            hecoupon: json.CouponConsume,
+             userInfo: json.uuserinfo
           })
           if (json.CouponConsume.length > 0)
             that.showOrderDetails(0)
@@ -112,7 +132,8 @@ Page({
         pageM[that.data.currentId].iscleck = false;
         if (pageM[that.data.currentId].page == 1) {
           that.setData({
-            lingcoupon: json.CouponItem
+            lingcoupon: json.CouponItem,
+            userInfo: json.uuserinfo
           })
         }
       }
@@ -132,6 +153,7 @@ Page({
     let that = this;
     var pageindex = pageM[that.data.currentId].page;
     var data = {}
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pUserID = that.data.userid;
     data.pPageIndex = pageindex;
     data.pPageSize = 5;
@@ -161,6 +183,7 @@ Page({
     let that = this;
     var pageindex = pageM[that.data.currentId].page;
     var data = {}
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pUserID = that.data.userid;
     data.pPageIndex = pageindex;
     data.pPageSize = 5;
@@ -225,13 +248,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
 
   },
 
