@@ -19,12 +19,12 @@
 <view class="ruleBox">
   <image wx:if="{{couponiteminfo.UsageRule!=''}}" src="{{couponiteminfo.UsageRule}}" />
   <image wx:else src="/static/images/rule1.png" />
-  <view class="imageBox" wx:if="{{couponiteminfo.CouponDetails!='' && flag}}">
-    <image src="{{couponiteminfo.CouponDetails}}" />
-  </view>
-  <view class="imageBox" wx:for="{{pictures}}" wx:key="PictureID" wx:if="{{flag}}">
-    <image src="{{item.ImageURL}}" />
-  </view>
+  <block wx:if="{{couponiteminfo.CouponDetails!='' && flag}}">
+    <image src="{{couponiteminfo.CouponDetails}}" mode="widthFix"/>
+    <block wx:for="{{pictures}}" wx:key="PictureID" wx:if="{{flag}}">
+      <image src="{{item.ImageURL}}"  mode="widthFix"/>
+    </block>
+  </block>
   <view class="seeBtn" bindtap="onShowDs">
     查看详细
     <image src="{{flag?'/static/images/toparr.png':'/static/images/botarr.png'}}" />
