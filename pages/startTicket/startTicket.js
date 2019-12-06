@@ -342,7 +342,7 @@ Page({
     } else {
       this.setData({
         IndustryCodes: [],
-        Industryvalue: "餐饮，休闲/自选"
+        Industryvalue: "选择行业"
       });
     }
 
