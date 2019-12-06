@@ -234,9 +234,9 @@ function GetRegionIndustryBack(json, pCallBack) {
     mArray.push(json.dataRegion[17].LevelCoupon_Region)
     mArray.push(json.dataRegion[17].LevelCoupon_Region[0].LevelCoupon_Region)
     var industrylist = [{
-      text: "选择行业",
-      industryName: "选择行业",
-      industryCode: ""
+      text: "全部行业",
+      IndustryName: "全部行业",
+      IndustryCode: ""
     }];
     industrylist = industrylist.concat(json.dataIndustry)
     wx.setStorageSync('Industry', industrylist);
