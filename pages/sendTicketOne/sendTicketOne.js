@@ -97,7 +97,7 @@ Page({
     var datas = {
       pGroupID: app.globalData.AppGroupInfo.GroupID,
       pPageIndex: page,
-      pPageSize: 15
+      pPageSize: 20
     }
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponReleaseList", "POST", datas, app.globalData.appkeyid, this.GetCouponReleaseList);
   },

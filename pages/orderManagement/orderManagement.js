@@ -38,7 +38,7 @@ Page({
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pPageIndex = pageindex;
-    data.pPageSize = 4;
+    data.pPageSize = 20;
     data.pState = state
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GetCouponWriteOffOrderPage", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },

@@ -25,7 +25,7 @@ Page({
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pPageIndex = page;
-    data.pPageSize = 10;
+    data.pPageSize = 20;
     data.pDateMonth = '';
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponCapitalView/GetSettlementCapitalInfo", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },

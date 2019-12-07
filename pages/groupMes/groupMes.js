@@ -55,7 +55,7 @@ Page({
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pPageIndex = page;
-    data.pPageSize = 1;
+    data.pPageSize = 20;
     data.pLatitudeX = app.globalData.latitudeX;
     data.pLongitudeY = app.globalData.longitudeY;
     data.pSendGroupID = mSendGroupID;

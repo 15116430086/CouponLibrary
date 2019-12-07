@@ -69,7 +69,7 @@ Page({
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pStaffID = app.globalData.AppStaffInfo.StaffID
     data.pPageIndex = page;
-    data.pPageSize = 15;
+    data.pPageSize = 20;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponStaffGivePage", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {

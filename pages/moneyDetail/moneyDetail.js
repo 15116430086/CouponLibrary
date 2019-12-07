@@ -104,7 +104,7 @@ Page({
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pUserID = that.data.userid;
     data.pPageIndex = pageindex;
-    data.pPageSize = 5;
+    data.pPageSize = 20;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserView/GetCouponUserReceiveAndConsume", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {
@@ -156,7 +156,7 @@ Page({
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pUserID = that.data.userid;
     data.pPageIndex = pageindex;
-    data.pPageSize = 5;
+    data.pPageSize = 20;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserView/GetCouponUserConsume", "POST", data, app.globalData.appkeyid, this.gethecouponBack)
   },
   gethecouponBack: function(json) {
@@ -186,7 +186,7 @@ Page({
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pUserID = that.data.userid;
     data.pPageIndex = pageindex;
-    data.pPageSize = 5;
+    data.pPageSize = 20;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserView/GetCouponUserReceive", "POST", data, app.globalData.appkeyid, this.getlingcouponBack)
   },
   getlingcouponBack: function(json) {

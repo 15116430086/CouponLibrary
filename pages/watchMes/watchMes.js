@@ -185,7 +185,7 @@ Page({
               var datas = {
                 pCouponID: chat.data.pCouponID,
                 pPageIndex: 1,
-                pPageSize: 5
+                pPageSize: 20
               }
               utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponReleaseInfo", "POST", datas, app.globalData.appkeyid, chat.GetCouponReleaseInfo);
             }

@@ -49,7 +49,7 @@ Page({
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pPageIndex = page;
-    data.pPageSize = 15;
+    data.pPageSize = 20;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetListReceiveInfo", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {
