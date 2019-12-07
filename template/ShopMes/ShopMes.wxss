@@ -103,7 +103,7 @@ white-space:nowrap;
     line-height: 34rpx;
     color: rgba(153, 153, 153, 1);
     margin-left: 40rpx;
-    width: 160rpx;
+    width: 168rpx;
 }
 
 .tsone-one {
@@ -116,6 +116,7 @@ white-space:nowrap;
 
 .ticketShop-two {
     margin-left: 70rpx;
+    width: calc(100% - 240rpx);
     font-size: 24rpx;
     font-weight: 500;
     line-height: 34rpx;
@@ -123,6 +124,10 @@ white-space:nowrap;
 }
 
 .tstwo-one {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-size: 28rpx;
     font-weight: 600;
     line-height: 40rpx;
