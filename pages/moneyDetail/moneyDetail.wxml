@@ -42,9 +42,10 @@
         <block wx:for="{{hecoupon}}" wx:for-index="index" wx:key="UserID">
             <view class="m-mesBlock" bindtap="onOrderTap" data-index="{{index}}" id='{{item.WriteOffOrderID}}'>
                 <view class="mbb-left">
-                    <view class="mbot-name"> ({{item.CouponName}}) 已核销</view>
-        
-                    <view class="mbot-bot"><text >{{item.ShopName==null?'':item.ShopName}}</text> <text >{{common.sysFormatDate(item.PayDate,"yyyy-MM-dd hh:mm:ss",true)}}</text></view>
+                
+                    <view class="mbot-name"> 【{{item.CouponName}}】 已核销</view>
+        <view class="mbot-bot"><text >{{common.sysFormatDate(item.PayDate,"yyyy-MM-dd hh:mm:ss",true)}}</text></view>
+                    <view class="mbot-bot"><text >{{item.ShopName==null?'':item.ShopName}}</text> </view>
                 </view>
                 <view class="m-right">￥{{item.CouponMoney}}</view>
             </view>
@@ -54,8 +55,9 @@
           <block wx:for="{{lingcoupon}}" wx:for-index="index" wx:key="UserID">
             <view class="m-mesBlock">
                 <view class="mbb-left">
-                    <view class="mbot-name"> ({{item.CouponName}}) 已领取</view>
-                    <view class="mbot-bot"><text >{{item.ShopName==null?'':item.ShopName}}</text> <text >{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</text></view>
+                    <view class="mbot-name"> 【{{item.CouponName}}】 已领取</view>
+                    <view class="mbot-bot"><text >{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</text></view>
+                    <view class="mbot-bot"><text >{{item.ShopName==null?'':item.ShopName}}</text> </view>
                 </view>
             </view>
         </block>
