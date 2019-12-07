@@ -84,7 +84,7 @@ Page({
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pPageIndex = page;
-    data.pPageSize = 5;
+    data.pPageSize = 20;
     data.pLatitudeX = app.globalData.latitudeX;
     data.pLongitudeY = app.globalData.longitudeY;
     data.pRegionID = that.data.RegionName != '' ? that.data.RegionName : app.globalData.regionName;
@@ -92,18 +92,18 @@ Page({
   },
   GetDataBack: function(json) {
     let that = this;
-    console.log(json);
+    //console.log(json);
     var json = json.data.Data;
     //隐藏 加载中的提示
     wx.hideLoading();
     if (json.flag) {
-      console.log(json.msg);
+      //console.log(json.msg);
       if (page == 1) {
         var banner = [];
         var popular = [];
         var extension = [];
         json.data.forEach(item => {
-          console.log(JSON.stringify(item));
+          //console.log(JSON.stringify(item));
           if (item.Attribute == 3) {
             banner.push(item);
           }
