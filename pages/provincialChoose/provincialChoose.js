@@ -130,7 +130,7 @@ Page({
       this.isHasElement(content[inx].LevelCoupon_Region[xzindex].LevelCoupon_Region[cindex].RegionID)
     }
     var list = this.data.RegionIDList;
-    list.push(arr);
+    list= list.concat(arr);
     this.setData({
       content: content,
       RegionIDList: list

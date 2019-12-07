@@ -88,7 +88,7 @@ Page({
     var contentlist = this.data.content;
     for (var i in contentlist) {
       if (contentlist[i].shows == "true") {
-        industryList.push(contentlist[i].IndustryCode);
+        industryList= industryList.concat(contentlist[i].IndustryCode);
       }
 
     }
