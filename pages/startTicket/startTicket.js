@@ -210,9 +210,7 @@ Page({
     if (this.data.sign == 1) { //说明是全部商户
 
       this.setData({
-        GroupIDList: [],
-        regionID: [],
-        IndustryCodes: [],
+       
         Doyoupay: true, //说明要支付
       });
     }
