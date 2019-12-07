@@ -8,16 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shopArrays: [{
-      url: "/static/images/swp.png",
-      address: "芙蓉区五一大道人瑞潇湘国际一楼213号"
-    }, {
-      url: "/static/images/swp.png",
-      address: "芙蓉区五一大道人瑞潇湘国际一楼213号"
-    }, {
-      url: "/static/images/swp.png",
-      address: "芙蓉区五一大道人瑞潇湘国际一楼213号"
-    }, ]
+    shopArrays: []
   },
   onBindReceiveTap: function(event) {
     wx.navigateTo({
