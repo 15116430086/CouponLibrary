@@ -1,6 +1,14 @@
 /* pages/getTicketList/getTicketList.wxss */
 
 @import"/template/HotTicket/HotTicket.wxss";
+.home-box{
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  background-color: #FFFFFF;
+}
 .search-box {
     width: 554rpx;
     height: 72rpx;
@@ -96,6 +104,7 @@
 
 .ticketBox {
     width: 100%;
+    margin-top: 220rpx;
 }
 
 .botTk {
