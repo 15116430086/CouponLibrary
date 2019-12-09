@@ -14,11 +14,11 @@
       </view>
       <view class="v-mid-block">
         <view class="v-title">佣金收入  (元)</view>
-        <view class="vmb-money">{{sumDrawbackMoney}}</view>
+        <view class="vmb-money">{{sumCommissionMoney}}</view>
       </view>
       <view class="v-mid-block" style="border:none">
         <view class="v-title">售券  (元)</view>
-        <view class="vmb-money">{{sumDrawbackMoney}}</view>
+        <view class="vmb-money">{{sumCollectionMoney}}</view>
       </view>
     </view>
   </view>
