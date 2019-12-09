@@ -1,16 +1,16 @@
 <wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="home-box">
-<block wx:for="{{datalist}}">
-  <view class="stm-block">
-    <image src="{{item.ImageOne}}" />
-    <view class="stmb-left">
-      <view class="stm-top">{{item.CouponName}}<text style="color:#E85819">({{item.GroupName}})</text></view>
- 
-      <view class="stm-bot">
-        <view>已领：{{item.ReceiveNUM}}张</view>
-        <view>{{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd hh:mm",true)}}</view>
+  <block wx:for="{{datalist}}">
+    <view class="stm-block">
+      <image src="{{item.ImageOne}}" />
+      <view class="stmb-left">
+        <view class="stm-top">{{item.CouponName}}</view>
+        <view style="color:#333;font-size:26rpx">({{item.GroupName}})</view>
+        <view class="stm-bot">
+          <view>已领：{{item.ReceiveNUM}}张</view>
+          <view>{{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd hh:mm",true)}}</view>
+        </view>
       </view>
     </view>
-  </view>
   </block>
 </view>
