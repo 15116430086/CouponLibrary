@@ -124,7 +124,7 @@ Page({
       CouponMoney: 1,
       ExpirationDate: '',
       ExpiredType: 10,
-      CouponDetails: "",
+      CouponDetails: [],
       // ReleaseNUM: "", //发布数量
       ReceiveUpperLimit: 1,
       UsageRule: "",
@@ -138,7 +138,7 @@ Page({
     },
     imageOne: "",
     imageTwo: "",
-    imageTre: "",
+    imageTre: [],
     idm: "",
     df_value: 2,
     types: 0 //默认类型为添加
@@ -149,6 +149,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(this.data.imageTre);
     wx.setStorageSync("pArrProductKey", "");
     console.log(options.pCoupon_Info);
     if (options.pCoupon_Info) { //说明是修改
@@ -618,15 +619,14 @@ Page({
     let id = e.currentTarget.dataset.id;
     console.log(id);
     let pAppKeyId = app.globalData.appkeyid
-    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack3)
+    utils.UploadImg(5, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack3)
 
   },
   pCallBack3(e) {
     console.log(e)
-    console.log(img)
     let that = this;
     let pCoupon_Info = that.data.pCoupon_Info;
-    let img = e[0];
+    let img = e;
 
     if (img.length > 0) {
       pCoupon_Info.CouponDetails = img;
@@ -638,16 +638,21 @@ Page({
   preImg3(e) {
     let that = this;
     let srcImg = that.data.imageTre;
-    let srcArr = [];
-    srcArr.push(srcImg);
+ 
+    let id = e.currentTarget.dataset.index;
+   
     wx.previewImage({
-      current: srcImg, // 当前显示图片的http链接  
-      urls: srcArr
+      current: srcImg[id],
+      urls: srcImg
     })
   },
   delImg3(e) {
-    this.setData({
-      imageTre: ""
+    let that = this;
+    let imageTre = that.data.imageTre;
+    let itemIndex = e.currentTarget.dataset.index;
+    imageTre.splice(itemIndex,1);
+    that.setData({
+      imageTre: imageTre
     })
   },
 
