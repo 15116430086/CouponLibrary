@@ -5,7 +5,7 @@
       <image src="{{item.ImageOne}}" />
       <view class="stmb-left">
         <view class="stm-top">{{item.CouponName}}</view>
-        <view style="color:#333;font-size:26rpx">({{item.GroupName}})</view>
+        <view style="color:#333;font-size:26rpx">{{item.GroupName}}</view>
         <view class="stm-bot">
           <view>已领：{{item.ReceiveNUM}}张</view>
           <view>{{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd hh:mm",true)}}</view>
