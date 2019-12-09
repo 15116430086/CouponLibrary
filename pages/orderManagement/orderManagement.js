@@ -1,7 +1,7 @@
 // pages/orderManagement/orderManagement.js
 var utils = require("../../utils/util.js")
 const app = getApp();
-
+var ordertype = 0;
 var pageM = [];
 
 Page({
@@ -40,6 +40,7 @@ Page({
     data.pPageIndex = pageindex;
     data.pPageSize = 20;
     data.pState = state
+    data.pOrderType = ordertype
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GetCouponWriteOffOrderPage", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {
@@ -49,7 +50,7 @@ Page({
       pageM[that.data.currentId].lastpage = json.pageCount
       if (this.data.currentId == 0) {
 
-        pageM[that.data.currentId].iscleck=false;
+        pageM[that.data.currentId].iscleck = false;
 
         if (pageM[that.data.currentId].page == 1) {
           that.setData({
@@ -115,41 +116,41 @@ Page({
     wx.hideLoading();
   },
 
-  JumpwaitGoods:function(e){
-  var type = e.currentTarget.dataset.type;
-  var orderid = e.currentTarget.dataset.orderid;
-  var orderstate = e.currentTarget.dataset.orderstate;
-  var writeofftype = e.currentTarget.dataset.writeofftype;
-  if (writeofftype==0){
-    wx.navigateTo({
-      url: '../waitGoods/waitGoods?type=' + type + '&orderid=' + orderid + '&orderstate=' + orderstate,
-    })
-  }
-},
+  JumpwaitGoods: function(e) {
+    var type = e.currentTarget.dataset.type;
+    var orderid = e.currentTarget.dataset.orderid;
+    var orderstate = e.currentTarget.dataset.orderstate;
+    var writeofftype = e.currentTarget.dataset.writeofftype;
+    if (writeofftype == 0) {
+      wx.navigateTo({
+        url: '../waitGoods/waitGoods?type=' + type + '&orderid=' + orderid + '&orderstate=' + orderstate,
+      })
+    }
+  },
 
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    ordertype = options.ordertype;
   },
 
 
   //点击每个导航的点击事件
   handleTap: function(e) {
-    let that=this;
+    let that = this;
     let id = e.currentTarget.id;
     if (id) {
       this.setData({
         currentId: id,
-      })     
+      })
 
       if (pageM[id].iscleck) {
         that.GetData();
       }
     }
- 
+
   },
 
   /**
@@ -214,11 +215,11 @@ Page({
       that.GetData();
     } else if (pageM[that.data.currentId].lastpage == pageM[that.data.currentId].page) {
       pageM[that.data.currentId].page++
-      wx.showToast({
-        title: '没有更多数据!',
-        icon: 'none',
-        duration: 2000
-      })
+        wx.showToast({
+          title: '没有更多数据!',
+          icon: 'none',
+          duration: 2000
+        })
 
     }
   },

@@ -32,9 +32,9 @@ Page({
     if (json.flag) {
       that.setData({
         totalOrderNUM: json.totalOrderNUM,                        //totalOrderNUM 总订单量
-        totalSumMoney: utils.syFormatMoney(json.totalSumMoney),   //totalSumMoney 总金额
+        totalSumMoney: utils.syFormatMoney(json.totalPayMoney),   //totalSumMoney 总金额
         todayOrderNUM:json.todayOrderNUM,                         //todayOrderNUM 今日订单量
-        todaySumMoney: utils.syFormatMoney(json.todaySumMoney),   //todaySumMoney 今日成交金额
+        todaySumMoney: utils.syFormatMoney(json.todayPayMoney),   //todaySumMoney 今日成交金额
         toBeShippedNUM:json.toBeShippedNUM,                       //toBeShippedNUM 待处理订单数量
       })
     }

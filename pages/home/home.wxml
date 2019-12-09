@@ -83,7 +83,7 @@
       <view>门店管理</view>
 
     </navigator>
-    <navigator url="../orderManagement/orderManagement" hover-class="none">
+    <navigator url="../orderManagement/orderManagement?ordertype=1" hover-class="none">
       <image src="/static/images/home/7.png"></image>
       <view>收单记录</view>
 
