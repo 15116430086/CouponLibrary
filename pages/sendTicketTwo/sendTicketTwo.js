@@ -630,7 +630,6 @@ Page({
 
     if (img.length > 0) {
       pCoupon_Info.CouponDetails = img;
-      console.log(pCoupon_Info.CouponDetails);
       that.setData({
         imageTre: img
       })
@@ -641,7 +640,6 @@ Page({
     let srcImg = that.data.imageTre;
  
     let id = e.currentTarget.dataset.index;
-    console.log(srcImg[id])
    
     wx.previewImage({
       current: srcImg[id],
