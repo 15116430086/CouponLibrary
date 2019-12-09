@@ -13,7 +13,7 @@ Page({
       name: '代金券',
       typeId: 0
     }, {
-      name: '团购券',
+      name: '礼物券',
       typeId: 1
     }],
     value: 3,

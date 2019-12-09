@@ -118,7 +118,7 @@
 
 
   <view class="bt-box">
-    <view class="playBtn" bindtap="ReleaseProduct">发布商品</view>
+    <view class="playBtn" hidden="{{edit==0}}"  bindtap="ReleaseProduct">发布商品</view>
   </view>
 </view>
 <!-- 商品类目 -->
