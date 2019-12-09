@@ -1,7 +1,7 @@
 <!--pages/doorContor/doorContor.wxml-->
 <view class="v-box">
     <!-- <view class="v-mes"><text>*</text>门店可区分收款流水，各门店收款将汇总到你的结算账户，进入门店详情后可下载获取收款码图片</view> -->
-    <view class="v-block" bindtap="add">
+    <view class="v-block" hidden="{{groupType==1}}" bindtap="add">
         <image src="/static/images/img.png" />
         添加新的门店
     </view>
