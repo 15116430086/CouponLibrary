@@ -24,7 +24,7 @@
 <form class="ticket-box" bindsubmit="formSubmit">
   <view class="ticket-block">
     <view class="ticket-name">券名称</view>
-    <input type="text" value="{{pCoupon_Info.CouponName}}" placeholder="输入券名称(限定12字以内)" name="CouponName" placeholder-class="pclass" maxlength="12"/>
+    <input type="text" value="{{pCoupon_Info.CouponName}}" placeholder="输入券名称(限定12字以内)" name="CouponName" placeholder-class="pclass" maxlength="12" />
   </view>
   <view class="ticket-block">
     <view class="ticket-name">券面值</view>
@@ -68,7 +68,7 @@
 
         <text wx:if="{{pArrProductID.length>0}}" bindtap="jumpChoose">已选{{pArrProductID.length}}个商品</text>
         <text wx:elif="{{idb=='001'}}" bindtap="jumpChoose">(请选择受理商品/业务)</text>
-      
+
       </view>
       <image src="/static/images/botarr.png" class="bot-box-image" />
     </view>
@@ -123,7 +123,7 @@
     <view class="ticket-name">添加图片</view>
     <view class="addImg-box">
       <view class="add-img" wx:if="{{imageOne}}">
-        <image src="{{imageOne}}" class="addImg-box-image" bindtap="preImg" mode='aspectFill'/>
+        <image src="{{imageOne}}" class="addImg-box-image" bindtap="preImg" mode='aspectFill' />
         <image src="/static/images/cha4.png" class="cha4" bindtap="delImg"></image>
       </view>
 
@@ -137,7 +137,7 @@
     <view class="ticket-name">使用规则</view>
     <view class="addImg-box">
       <view class="add-img" wx:if="{{imageTwo}}">
-        <image src="{{imageTwo}}" class="addImg-box-image" bindtap="preImg2" mode='aspectFill'/>
+        <image src="{{imageTwo}}" class="addImg-box-image" bindtap="preImg2" mode='aspectFill' />
         <image src="/static/images/cha4.png" class="cha4" bindtap="delImg2"></image>
       </view>
       <image src="/static/images/img.png" bindtap="imgadd2" class="addImg-box-image" wx:else />
@@ -145,15 +145,17 @@
     </view>
   </view>
   <!-- 券详情 -->
-  <view class="addImg">
+  <view class="addImg" style="margin-bottom:0px">
     <view class="ticket-name">图文详情</view>
-    <view class="addImg-box">
-      <view class="add-img" wx:if="{{imageTre}}">
-        <image src="{{imageTre}}" class="addImg-box-image" bindtap="preImg3" mode='aspectFill'/>
-        <image src="/static/images/cha4.png" class="cha4" bindtap="delImg3"></image>
-      </view>
+    <view class="addImg-boxs" >
+      <block  wx:if="{{imageTre.length>0}}">
+        <view class="add-img" wx:for="{{imageTre}}" wx:for-item="item" style="margin-bottom:40rpx">
+          <image src="{{item}}" class="addImg-box-image" bindtap="preImg3" data-index="{{index}}" mode='aspectFill' />
+          <image src="/static/images/cha4.png" class="cha4" bindtap="delImg3" data-index="{{index}}"></image>
+        </view>
+      </block>
       <image src="/static/images/img.png" bindtap="imgadd3" class="addImg-box-image" wx:else />
-      <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left: 40rpx;" />
+      <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;" class="img-tips" wx:if="{{imageTre.length==0}}"/>
     </view>
   </view>
   <view class="app-bot">
