@@ -36,27 +36,16 @@
             <view>过期数量：{{item.ExpireNUM}}</view>
           </view>
         </view>
-        <!-- <view class="tb-mes">
-          <view> </view>
-          <view></view>
-        </view>
-        <view class="tb-mes">
-          <view></view>
-          <view></view>
-        </view>
-        <view class="tb-mes">
-          <view></view>
-          <view></view>
-        </view> -->
+
         <view class="tb-bot">
           <view bindtap="jumpOk" data-index="{{index}}" data-Couponstatus="{{item.Couponstatus}}" data-ReleaseIDs="{{item.ReleaseIDs}}" data-CouponID="{{item.CouponID}}">继续发券</view>
 
           <!-- 是哪个状态就用哪个颜色 -->
           <view wx:if="{{item.ReleaseIDs && item.Couponstatus==1}}" style=" color:#F08002" data-CouponID="{{item.CouponID}}" bindtap="Details">待审核</view>
           <view wx:elif="{{item.ReleaseIDs && item.Couponstatus==0}}" style=" color:#016FB4" data-CouponID="{{item.CouponID}}" bindtap="Details">待支付</view>
-          <view wx:else data-CouponID="{{item.CouponID}}" bindtap="Details">发券详情</view>
-          <!-- <view style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" style="color:#F08002">待审核券</view>
-          <view style="margin-right:50rpx" data-CouponID="{{item.CouponID}}" style="color:#016FB4">支付佣金</view> -->
+          <view wx:elif="{{item.ReleaseIDs && item.Couponstatus==2}}" data-CouponID="{{item.CouponID}}" bindtap="Details">待支付</view>
+          <view wx:else data-CouponID="{{item.CouponID}}" bindtap="delCoupon">删除此券</view>
+
         </view>
       </view>
     </block>
