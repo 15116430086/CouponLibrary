@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/notifyBuyers/notifyBuyers",
+    "pages/writeNote/writeNote",
+    "pages/businessAccept/businessAccept",
     "pages/wuliuMes/wuliuMes",
     "pages/image-cropper/image-cropper",
     "pages/paySuccess/paySuccess",
@@ -58,7 +61,6 @@
     "pages/goodsNoticeTwo/goodsNoticeTwo",
     "pages/sendTicketConfig/sendTicketConfig",
     "pages/waitGoods/waitGoods",
-    "pages/businessAccept/businessAccept",
     "pages/searchPage/searchPage",
     "pages/getTicketList/getTicketList",
     "pages/shopIntroduction/shopIntroduction",
@@ -86,7 +88,6 @@
     "pages/noPayMoney/noPayMoney",
     "pages/regPlane/regPlane",
     "pages/secretBook/secretBook"
-   
   ],
   "permission": {
     "scope.userLocation": {
