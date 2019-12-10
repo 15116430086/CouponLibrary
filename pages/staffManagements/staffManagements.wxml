@@ -25,9 +25,8 @@
         </view>
     </view>
        <block wx:for="{{AdministratorsList}}">
-        <view class="v-block">
-       
-           <view class="v-left">
+        <view class="v-block" bindtap="Jurisdiction" data-staffid="{{item.StaffID}}">
+           <view class="v-left" >
                   <image wx:if="{{item.StaffAvatar!=''}}" src="{{item.StaffAvatar}}" />
                   <image wx:else src="/static/images/swp.png" />
                 <view class="v-name">{{item.StaffName}}</view>

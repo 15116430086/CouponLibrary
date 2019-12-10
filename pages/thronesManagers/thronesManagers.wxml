@@ -1,13 +1,13 @@
 <!--pages/thronesManager /thronesManager.wxml-->
 <view class="v-box">
     <view class="v-top">
-        <image src="/static/images/swp.png" class="v-img"/>
+        <image src="{{groupinfo.ImageOne}}" class="v-img"/>
         <view class="v-title">
-            <view class="v-txt">湖南券库网络科技</view>
-            <image src="/static/images/wrt3.png" />
+            <view class="v-txt">{{groupinfo.GroupName}}</view>
+            <!-- <image src="/static/images/wrt3.png" /> -->
         </view>
          <view class="v-title">
-            <view class="v-tname">湖南券库网络科技</view>
+            <view class="v-tname">{{shopinfo.ShopName}}</view>
             <view class="v-span">店长</view>
         </view>
     </view>
@@ -16,14 +16,16 @@
     </view>
 
     <view class="v-bot">
+    <block wx:for="{{datalist}}">
         <view class="v-block">
             <view class="v-left">
-                <view class="v-t">退款权限</view>
-                <view class="v-m">将异常订单退款给用户</view>
+                <view class="v-t">{{item.Name}}</view>
+                <view class="v-m">{{item.Describe}}</view>
             </view>
-             <van-switch checked="{{ checked1 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange" data-index="1" />
+  <van-switch checked="{{ item.checked==1 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange" data-index="{{index}}" />
         </view>
-         <view class="v-block">
+    </block>
+         <!-- <view class="v-block">
             <view class="v-left">
                 <view class="v-t">查看打款记录权限</view>
                 <view class="v-m">查看结算资金每日打款记录</view>
@@ -50,8 +52,8 @@
                 <view class="v-m">增加/删减店员和管理权限</view>
             </view>
              <van-switch checked="{{ checked5 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange5" data-index="5" />
-        </view>
+        </view> -->
     </view>
 </view>
 
-<view class="v-btn">确认</view>
+<view class="v-btn" bindtap="confirm">确认</view>
