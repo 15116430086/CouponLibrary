@@ -159,7 +159,7 @@
       </view>
     </view>
   </view>
-  <view class="app-bot">
-    <button class="playBtn" formType="submit">开始发券</button>
+  <view class="app-bot" wx:if="{{edit=='1'}}">
+    <button class="playBtn" disabled="{{edit=='0'}}"  formType="submit">开始发券</button>
   </view>
 </form>

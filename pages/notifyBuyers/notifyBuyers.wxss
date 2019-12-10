@@ -1,0 +1,192 @@
+/* pages/waitGoods/waitGoods.wxss */
+
+page {
+    background-color: #ededed;
+}
+
+.v-box {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20rpx;
+}
+
+.v-top {
+    width: 100%;
+    height: 128rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-blue {
+    width: 100%;
+    height: 80rpx;
+    line-height: 40rpx;
+    text-indent: 40rpx;
+    color: #016FB4;
+    font-size: 32rpx;
+    box-shadow: 0px 8rpx 10rpx rgba(0, 0, 0, 0.02);
+}
+
+.v-title {
+    color: #000;
+    font-size: 32rpx;
+    font-weight: 600;
+    margin-left: 40rpx;
+}
+
+.v-btn {
+    background-color: #fff0de;
+    color: #e85819;
+    width: 208rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    font-size: 28rpx;
+    border-radius: 30rpx;
+    margin-right: 40rpx;
+    border: 1px solid #e85819;
+}
+
+.v-mid {
+    width: calc(100% - 80rpx);
+    height: 144rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #ededed;
+}
+
+.v-name {
+    width: 100%;
+    color: #666;
+    font-size: 28rpx;
+    margin-top: 20rpx;
+    margin-bottom: 10rpx;
+}
+
+.v-mes {
+    color: #000;
+    font-weight: 500;
+    width: 100%;
+    font-size: 32rpx;
+}
+
+.v-bot {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+}
+
+.v-span {
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
+    color: #999;
+    font-size: 28rpx;
+    text-align: left;
+    height: 60rpx;
+    /* line-height: 60rpx; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.v-text {
+    width: 150rpx;
+    margin-right: 40rpx;
+}
+
+.ip {
+    color: #ccc;
+}
+
+.v-block {
+    margin: 40rpx auto;
+    width: calc(100% - 80rpx);
+    height: 160rpx;
+    background-color: #f7f7f7;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-block image {
+    width: 120rpx;
+    height: 120rpx;
+    margin-right: 20rpx;
+    display: block;
+    border-radius: 10rpx;
+    flex-shrink: 0;
+    margin-left: 20rpx;
+}
+
+.v-left {
+    width: calc(100% - 160rpx);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-card-one {
+    width: calc(100% - 140rpx);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.v-card {
+    width: 100rpx;
+    height: auto;
+    margin-right: 20rpx;
+}
+
+.v-bq {
+    width: 100%;
+    color: #666;
+    font-size: 28rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+    margin-bottom: 10rpx;
+}
+
+.v-bb {
+    width: 100%;
+    color: #999;
+    font-size: 24rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    /* overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap */
+}
+
+.v-bd {
+    width: 100%;
+    color: #666;
+    font-size: 28rpx;
+    margin-bottom: 10rpx;
+}
+
+.v-bc {
+    width: 100%;
+    color: #999;
+    font-size: 24rpx;
+}

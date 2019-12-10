@@ -19,12 +19,12 @@
         </view>
         <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
     </view> -->
-    <view class="ticket-flex">
+    <view class="ticket-flex" bindtap="Jump">
         <view class="tf-left">
             <image src="/static/images/man.png" class="tf-left-image"/>
             <view class="tf-name">店员管理</view>
         </view>
-        <view class="tf-left" bindtap="Jump">
+        <view class="tf-left" >
             <view class="tft-txt">{{datalist[0].Staffcount}}人</view>
             <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
         </view>

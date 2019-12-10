@@ -1,0 +1,43 @@
+<!--pages/writeNote/writeNote.wxml-->
+<form  class="v-all">
+    <view class="v-block">
+        填写发货单
+    </view>
+    <view class="v-box">
+        <view class="v-title">快递单号</view>
+        <view class="v-input">
+            <input type="number" placeholder="请输入快递单号" placeholder-class="ip"/>
+            <image src="/static/images/saoma.png" />
+        </view>
+    </view>
+    <view class="v-box">
+        <view class="v-title">快递公司</view>
+        <view class="v-input" bindtap="showPop">
+            <input type="text" placeholder="请输入快递公司" value="{{company}}" placeholder-class="ip" disabled="false"/>
+            <image src="/static/images/botarr.png" style="width:22rpx;height:14rpx"/>
+        </view>
+    </view>
+    <view class="v-box" style="border:none">
+        <view class="v-title">快递客服</view>
+        <view class="v-input">
+            <input type="number" placeholder="请输入客服电话" placeholder-class="ip"/>
+        </view>
+    </view>
+
+    <button class="v-btn">确认发货</button>
+</form>
+
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  round
+  close-on-click-overlay = "true"
+  safe-area-inset-bottom
+
+  custom-style="height: auto;"
+  bind:close="onClose"
+>
+<van-picker columns="{{ columns }}"  show-toolbar
+ confirm-button-text="完成" bind:cancel="onCancel"
+  bind:confirm="onConfirm" toolbar-class="toolbar-class"/>
+</van-popup>
