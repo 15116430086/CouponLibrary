@@ -147,15 +147,16 @@
   <!-- 券详情 -->
   <view class="addImg" style="margin-bottom:0px">
     <view class="ticket-name">图文详情</view>
-    <view class="addImg-boxs" >
-      <block  wx:if="{{imageTre.length>0}}">
-        <view class="add-img" wx:for="{{imageTre}}" wx:for-item="item" style="margin-bottom:40rpx">
-          <image src="{{item}}" class="addImg-box-image" bindtap="preImg3" data-index="{{index}}" mode='aspectFill' />
-          <image src="/static/images/cha4.png" class="cha4" bindtap="delImg3" data-index="{{index}}"></image>
-        </view>
-      </block>
-      <image src="/static/images/img.png" bindtap="imgadd3" class="addImg-box-image" wx:else />
-      <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;" class="img-tips" wx:if="{{imageTre.length==0}}"/>
+    <view class="addImg-boxs">
+      <view class="add-img" wx:for="{{imageTre}}" wx:for-item="item" style="margin-bottom:40rpx">
+        <image src="{{item}}" class="addImg-box-image" bindtap="preImg3" data-index="{{index}}" mode='aspectFill' />
+        <image src="/static/images/cha4.png" class="cha4" bindtap="delImg3" data-index="{{index}}"></image>
+        <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;" class="img-tips" />
+      </view>
+      <view class="add-img" style="margin-bottom:40rpx" wx:if="{{imageTre.length<5}}">
+        <image src="/static/images/img.png" bindtap="imgadd3" class="addImg-box-image" />
+        <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;" class="img-tips" />
+      </view>
     </view>
   </view>
   <view class="app-bot">
