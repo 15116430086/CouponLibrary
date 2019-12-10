@@ -18,9 +18,8 @@
       <view class="ticket-box">
         <view class="tb-title">
           <view>{{item.CouponName}}</view>
-
-
-          <image wx:if="{{!item.ReleaseIDs}}" data-indexs="{{index}}" bindtap="edit" src="/static/images/wrt.png" />
+          <image wx:if="{{!item.ReleaseIDs}}" data-indexs="{{index}}" data-edit="1" bindtap="edit" src="/static/images/wrt_new.png" />
+          <image wx:else data-indexs="{{index}}" data-edit="0" bindtap="edit" src="/static/images/show.png" />
         </view>
         <view class="tb-mes" style="color:#000;margin-bottom:30rpx;">发券数量：{{item.ReleaseNUM}}｜托管金额：￥{{item.ReleaseCommission}}</view>
         <view class="tb-mes">
@@ -44,7 +43,7 @@
           <view wx:if="{{item.ReleaseIDs && item.Couponstatus==1}}" style=" color:#F08002" data-CouponID="{{item.CouponID}}" bindtap="Details">待审核</view>
           <view wx:elif="{{item.ReleaseIDs && item.Couponstatus==0}}" style=" color:#016FB4" data-CouponID="{{item.CouponID}}" bindtap="Details">待支付</view>
           <view wx:elif="{{item.ReleaseIDs && item.Couponstatus==2}}" data-CouponID="{{item.CouponID}}" bindtap="Details">待支付</view>
-          <view wx:else data-CouponID="{{item.CouponID}}" bindtap="delCoupon">删除此券</view>
+          <view wx:else style=" color:#CCCCCC" data-CouponID="{{item.CouponID}}" data-CouponName="{{item.CouponName}}" bindtap="delCoupon">删除券</view>
 
         </view>
       </view>
