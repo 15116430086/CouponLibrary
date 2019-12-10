@@ -1,173 +1,242 @@
 /* pages/myTicket/myTicket.wxss */
-@import "/template/BotOne/BotOne.wxss";
 
+@import "/template/BotOne/BotOne.wxss";
 .homebox {
-  width: 100%;
-  height: auto;
-  position: relative;
-  padding-bottom: 100rpx;
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding-bottom: 100rpx;
 }
 
 .home-top {
-  width: 100%;
-  height: 284rpx;
-  background: rgba(255, 112, 49, 1);
-  color: #fff;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 100;
+    width: 100%;
+    height: 284rpx;
+    background: rgba(255, 112, 49, 1);
+    color: #fff;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
 }
 
 .home-name {
-  text-align: center;
-  height: 44rpx;
-  line-height: 44rpx;
+    text-align: center;
+    height: 44rpx;
+    line-height: 44rpx;
 }
 
 .homeTop-mid {
-  width: calc(100% - 192rpx);
-  margin: 20rpx auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+    width: calc(100% - 192rpx);
+    margin: 20rpx auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.htm-div, .htm-btn {
-  width: 252rpx;
-  height: 80rpx;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 28rpx;
+.htm-div,
+.htm-btn {
+    width: 252rpx;
+    height: 80rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
 }
 
 .htm-div image {
-  display: block;
-  flex-shrink: 1;
-  width: 48rpx;
-  height: 48rpx;
-  margin-right: 20rpx;
+    display: block;
+    flex-shrink: 1;
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 20rpx;
 }
 
 .htm-div view {
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 .htm-btn {
-  background: rgba(255, 240, 222, 1);
-  border-radius: 40rpx;
-  color: #e85819;
-  text-align: center;
-  line-height: 80rpx;
+    background: rgba(255, 240, 222, 1);
+    border-radius: 40rpx;
+    color: #e85819;
+    text-align: center;
+    line-height: 80rpx;
 }
 
 .home-mid {
-  margin-top: 304rpx;
-  width: 100%;
-  height: auto;
+    margin-top: 304rpx;
+    width: 100%;
+    height: auto;
 }
 
 .home-card {
-  width: calc(100% - 80rpx);
-  margin: 20rpx auto;
-  height: auto;
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.16);
-  border-radius: 20rpx;
+    width: calc(100% - 80rpx);
+    margin: 20rpx auto;
+    height: auto;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.16);
+    border-radius: 20rpx;
 }
 
 .home-one {
-  width: calc(100% - 80rpx);
-  margin: 0px auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-size: 28rpx;
-  justify-content: space-between;
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 28rpx;
+    justify-content: space-between;
 }
 
-.home-sec{
- width: calc(100% - 150rpx);
- height: 92rpx;
- display: flex;
- flex-direction: row;
- align-items: center;
+.home-sec {
+    width: calc(100% - 150rpx);
+    height: 92rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .home-oneB {
-  width: auto;
-  max-width: calc(100% - 120rpx);
-  height: 92rpx;
-  text-align: left;
-  line-height: 92rpx;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    width: auto;
+    max-width: calc(100% - 120rpx);
+    height: 92rpx;
+    text-align: left;
+    line-height: 92rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .one {
-  color: #000;
-  height: 92rpx;
-  line-height: 92rpx;
-}
-.home-oc{
-  width: 120rpx;
-  height: 92rpx;
-  font-weight: 500;
-   white-space: nowrap;
-   text-align: left;
-   line-height: 92rpx;
-   color:#e85819;
- 
+    color: #000;
+    height: 92rpx;
+    line-height: 92rpx;
 }
 
-
+.home-oc {
+    width: 120rpx;
+    height: 92rpx;
+    font-weight: 500;
+    white-space: nowrap;
+    text-align: left;
+    line-height: 92rpx;
+    color: #e85819;
+}
 
 .two {
-  margin-bottom: 32rpx;
+    margin-bottom: 32rpx;
 }
 
 .three {
-  margin-bottom: 10rpx;
-  color: #333;
+    margin-bottom: 10rpx;
+    color: #333;
 }
 
 .four {
-  margin-bottom: 10rpx;
-  color: #333;
+    margin-bottom: 10rpx;
+    color: #333;
 }
 
 .five {
-  margin-bottom: 20rpx;
-  color: #333;
+    margin-bottom: 20rpx;
+    color: #333;
 }
 
 .Six {
-  height: 106rpx;
-  line-height: 106rpx;
-  font-size: 26rpx;
-  border-top: 1px dashed #ffd7c6;
+    height: 106rpx;
+    line-height: 106rpx;
+    font-size: 26rpx;
+    border-top: 1px dashed #ffd7c6;
 }
 
 .homebot {
-  width: calc(100% - 80rpx);
-  margin: 20rpx auto;
-  color: #999;
-  font-size: 26rpx;
+    width: calc(100% - 80rpx);
+    margin: 20rpx auto;
+    color: #999;
+    font-size: 26rpx;
 }
 
 .choose-bot {
-  width: 100%;
-  height: 98rpx;
-  background-color: #fff;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  box-shadow: 3px 0px 8px rgba(0, 0, 0, 0.16);
+    width: 100%;
+    height: 98rpx;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    box-shadow: 3px 0px 8px rgba(0, 0, 0, 0.16);
+}
+
+.v-model {
+    width: 512rpx;
+    height: 510rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20rpx;
+    font-size: 32rpx;
+    background-color: #FFFFFF;
+    justify-content: flex-end;
+}
+
+.vm-title {
+    margin-top: 80rpx;
+    width: 100%;
+    text-align: center;
+    color: #333333;
+    font-weight: 600;
+}
+
+.vm-tip {
+    color: #E85819;
+    margin-top: 20rpx;
+}
+
+.vm-imput {
+    margin-top: 90rpx;
+    width: 320rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.vm-imput image {
+    width: 40rpx;
+    height: 40rpx;
+    flex-shrink: 0;
+    margin-bottom: 10rpx;
+}
+
+.vm-imput input {
+    width: calc(100% - 60rpx);
+    margin-left: 20rpx;
+    margin-bottom: 10rpx;
+}
+
+.ip {
+    color: #EBE8E8;
+    font-size: 32rpx;
+}
+
+.vm-bot {
+    margin-top: 85rpx;
+    width: 100%;
+    height: 86rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-top: 1px solid #CCCCCC;
+}
+
+.vm-bot view {
+    flex: 1;
+    line-height: 86rpx;
+    height: 100%;
+    text-align: center;
+    border-right: 1px solid #CCCCCC;
 }
