@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "配置管理",
+  "navigationBarBackgroundColor": "#FF7031",
+  "navigationBarTextStyle": "white"
 }

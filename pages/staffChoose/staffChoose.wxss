@@ -46,10 +46,15 @@ page {
     align-items: center;
 }
 
+.v-left{
+  width: calc(100% - 60rpx);
+}
+
 .v-left image {
     width: 88rpx;
     height: 88rpx;
     border-radius: 10rpx;
+    flex-shrink: 0;
 }
 
 .v-txt {
@@ -58,6 +63,10 @@ page {
 }
 
 .v-name {
+    width: calc(100% - 130rpx);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     color: #000;
     font-size: 32rpx;
     margin-left: 40rpx;

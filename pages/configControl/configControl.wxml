@@ -1,2 +1,39 @@
-<!--pages/configControl/configControl.wxml-->
-<text>pages/configControl/configControl.wxml</text>
+<!-- pages/configControl/configControl.wxml -->
+<view class="home-top">
+    <view class="home-block">
+        <view class="home-name">
+            <view class="home-title">收款通知</view>
+            <view class="home-rule">开启后，微信收款公众号将向你推送收款通知</view>
+        </view>
+        <view class="home-right">
+            <van-switch checked="{{ checked }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange" />
+        </view>
+    </view>
+    <view class="home-block">
+        <view class="home-name">
+            <view class="home-title">收款语音播报</view>
+            <view class="home-rule">开启后，收款成功将通过语音告知收款金额</view>
+        </view>
+        <view class="home-right">
+            <van-switch checked="{{ checked1 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange" />
+        </view>
+    </view>
+</view>
+<view class="home-top">
+    <view class="bot-block">
+        <view class="home-title">使用帮助</view>
+        <image class="home-img" src="/static/images/right-arr1.png"/>
+    </view>
+    <view class="bot-block">
+        <view class="home-title">功能更新</view>
+        <image class="home-img" src="/static/images/right-arr1.png"/>
+    </view>
+    <view class="bot-block">
+        <view class="home-title">建议反馈</view>
+        <image class="home-img" src="/static/images/right-arr1.png"/>
+    </view>
+    <view class="bot-block">
+        <view class="home-title">违规申诉</view>
+        <image class="home-img" src="/static/images/right-arr1.png"/>
+    </view>
+</view>
