@@ -10,8 +10,6 @@ Page({
     checked: true,
     selIndex: "",
     datalist:{},
-    shopinfo:{},
-    groupinfo:{},
     StaffID:""
   },
 
@@ -26,7 +24,7 @@ Page({
     this.data.StaffID = options.staffid;
     var data={
       ShopID: options.shopid,
-      pStaffID: options.staffid,
+      StaffID: options.staffid,
       pGroupID: app.globalData.AppGroupInfo.GroupID
     };
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/GetJurisdictionList", "POST", data, app.globalData.appkeyid, this.GetJurisdictionList);
@@ -37,8 +35,6 @@ Page({
     var json=res.data.Data;
     chat.setData({
       datalist: json.JurisdictionList,
-      groupinfo: json.Group,
-      shopinfo: json.Shop
     });
 
   },
@@ -68,7 +64,7 @@ Page({
     }
     var data={
       arr: utils.syJsonSafe(arr),
-      pStaffID: this.data.StaffID
+      StaffID: this.data.StaffID
     };
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/AddJurisdiction", "POST", data, app.globalData.appkeyid, this.AddJurisdiction);
   },

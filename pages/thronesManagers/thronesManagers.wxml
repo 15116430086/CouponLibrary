@@ -1,16 +1,5 @@
 <!--pages/thronesManager /thronesManager.wxml-->
 <view class="v-box">
-    <view class="v-top">
-        <image src="{{groupinfo.ImageOne}}" class="v-img"/>
-        <view class="v-title">
-            <view class="v-txt">{{groupinfo.GroupName}}</view>
-            <!-- <image src="/static/images/wrt3.png" /> -->
-        </view>
-         <view class="v-title">
-            <view class="v-tname">{{shopinfo.ShopName}}</view>
-            <view class="v-span">店长</view>
-        </view>
-    </view>
     <view class="v-mid">
         请选择需要开启的权限
     </view>

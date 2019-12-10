@@ -14,7 +14,7 @@
 </view>-->
 <!-- 店长 -->
 <view class="v-box">
-    <view class="v-title">管理员</view>
+    <view class="v-title" wx:if="{{AdministratorsList.length>0}}">店员</view>
     <view class="v-block" wx:if="{{state}}">
         <view class="v-left">
             <view class="v-n">设置</view>
@@ -40,7 +40,7 @@
 
 <!-- 店员 -->
 <view class="v-box">
-    <view class="v-title">店员</view>
+    <!-- <view class="v-title">店员</view>
     <block wx:for="{{datalist}}">
         <view class="v-block">
             <view class="v-left">
@@ -49,7 +49,7 @@
                 <view class="v-name">{{item.StaffName}}</view>
             </view>
         </view>
-    </block>
+    </block> -->
      <view class="v-block">
         <view class="v-left" bindtap="addStaff">
             <image src="/static/images/img.png" />
