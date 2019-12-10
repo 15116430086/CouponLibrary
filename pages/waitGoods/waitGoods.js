@@ -10,8 +10,8 @@ Page({
     orderstate:"",
     orderid: "",
     type: "",
-    Addressee:"",//收货人
-    AddressInfo:"",//收货人地址
+    Consignee:"",//收货人
+    Address:"",//收货人地址
     Telephone:"",//联系电话
     TruePayMoney:"",//收款总额
     CouponName:"",//券名称
@@ -44,8 +44,8 @@ Page({
     wx.hideLoading();
     if (json.flag) {
       that.setData({
-        Addressee: json.data[0].Addressee,//收货人
-        AddressInfo: json.data[0].AddressInfo,//收货人地址
+        Consignee: json.data[0].Consignee,//收货人
+        Address: json.data[0].Address,//收货人地址
         Telephone: json.data[0].Telephone,//联系电话
         TruePayMoney: json.data[0].TruePayMoney,//收款总额
         CouponName: json.data[0].CouponName,//券名称
