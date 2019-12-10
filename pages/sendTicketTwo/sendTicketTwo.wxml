@@ -10,21 +10,21 @@
   <view hidden='{{currentId!=0}}' class="mes-block">
     <view class="mes-top">
       <view class="top-mes">
-        现金抵用券，将券发布至指定商户或券平台，商户
-        <text>免费领券</text> 赠送给其会员为您引流并赚取佣金。
+        由商家自主设定将券发布至自营/指定商户或券库联盟平台，商户
+        <text>免费领券</text>赠送给会员，会员在使用该券时可抵现金使用。
       </view>
     </view>
   </view>
   <view hidden='{{currentId!=1}}' class="mes-block">
     <view class="mes-top">
-      <view class="top-mes">联盟商户购买商品团购券后，销售或赠送给消费者，消费者可使用团购券在线下或线上兑换商品。</view>
+      <view class="top-mes">商家自主设定将券发布至券库联盟平台，其他商家付费购买后用于赠送给会员，会员并可使用该券兑换商品或服务</view>
     </view>
   </view>
 </view>
 <form class="ticket-box" bindsubmit="formSubmit">
   <view class="ticket-block">
     <view class="ticket-name">券名称</view>
-    <input type="text" value="{{pCoupon_Info.CouponName}}" placeholder="输入券名称(限定12字以内)" name="CouponName" placeholder-class="pclass" maxlength="12"/>
+    <input type="text" value="{{pCoupon_Info.CouponName}}" placeholder="输入券名称(限定12字以内)" name="CouponName" placeholder-class="pclass" maxlength="12" />
   </view>
   <view class="ticket-block">
     <view class="ticket-name">券面值</view>
@@ -68,7 +68,7 @@
 
         <text wx:if="{{pArrProductID.length>0}}" bindtap="jumpChoose">已选{{pArrProductID.length}}个商品</text>
         <text wx:elif="{{idb=='001'}}" bindtap="jumpChoose">(请选择受理商品/业务)</text>
-      
+
       </view>
       <image src="/static/images/botarr.png" class="bot-box-image" />
     </view>
@@ -123,7 +123,7 @@
     <view class="ticket-name">添加图片</view>
     <view class="addImg-box">
       <view class="add-img" wx:if="{{imageOne}}">
-        <image src="{{imageOne}}" class="addImg-box-image" bindtap="preImg" mode='aspectFill'/>
+        <image src="{{imageOne}}" class="addImg-box-image" bindtap="preImg" mode='aspectFill' />
         <image src="/static/images/cha4.png" class="cha4" bindtap="delImg"></image>
       </view>
 
@@ -137,7 +137,7 @@
     <view class="ticket-name">使用规则</view>
     <view class="addImg-box">
       <view class="add-img" wx:if="{{imageTwo}}">
-        <image src="{{imageTwo}}" class="addImg-box-image" bindtap="preImg2" mode='aspectFill'/>
+        <image src="{{imageTwo}}" class="addImg-box-image" bindtap="preImg2" mode='aspectFill' />
         <image src="/static/images/cha4.png" class="cha4" bindtap="delImg2"></image>
       </view>
       <image src="/static/images/img.png" bindtap="imgadd2" class="addImg-box-image" wx:else />
@@ -145,15 +145,18 @@
     </view>
   </view>
   <!-- 券详情 -->
-  <view class="addImg">
+  <view class="addImg" style="margin-bottom:0px">
     <view class="ticket-name">图文详情</view>
-    <view class="addImg-box">
-      <view class="add-img" wx:if="{{imageTre}}">
-        <image src="{{imageTre}}" class="addImg-box-image" bindtap="preImg3" mode='aspectFill'/>
-        <image src="/static/images/cha4.png" class="cha4" bindtap="delImg3"></image>
+    <view class="addImg-boxs">
+      <view class="add-img" wx:for="{{imageTre}}" wx:for-item="item" style="margin-bottom:40rpx">
+        <image src="{{item}}" class="addImg-box-image" bindtap="preImg3" data-index="{{index}}" mode='aspectFill' />
+        <image src="/static/images/cha4.png" class="cha4" bindtap="delImg3" data-index="{{index}}"></image>
+        <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;" class="img-tips" />
       </view>
-      <image src="/static/images/img.png" bindtap="imgadd3" class="addImg-box-image" wx:else />
-      <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left: 40rpx;" />
+      <view class="add-img" style="margin-bottom:40rpx" wx:if="{{imageTre.length<5}}">
+        <image src="/static/images/img.png" bindtap="imgadd3" class="addImg-box-image" />
+        <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;" class="img-tips" />
+      </view>
     </view>
   </view>
   <view class="app-bot">

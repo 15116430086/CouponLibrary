@@ -6,16 +6,17 @@ page {
 
 .v-box {
     width: 100%;
-    height: 282rpx;
+    height: 280rpx;
     background-color: #FF7031;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    padding-top: 40rpx;
 }
 
 .v-block {
-    width: calc(100% - 200rpx);
+    width: calc(100% - 80rpx);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -25,15 +26,16 @@ page {
 .v-top {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
 }
 
 .v-title {
-    color: #333333;
-    font-size: 32rpx;
-    font-weight: 600;
+    color: #FFFFFF;
+    font-size: 24rpx;
+    font-weight: 500;
     white-space: nowrap;
+    opacity: 0.59;
 }
 
 .v-cash {
@@ -41,8 +43,9 @@ page {
     font-size: 48rpx;
     font-weight: 600;
     width: 384rpx;
-    border-bottom: 1px solid #FFFFFF;
+    /* border-bottom: 1px solid #FFFFFF; */
     margin-left: 10rpx;
+    text-align: center;
 }
 
 .v-cash text {
@@ -51,32 +54,59 @@ page {
 
 .v-mid {
     color: #FFFFFF;
-    font-size: 26rpx;
     width: 100%;
     white-space: nowrap;
-    margin-top: 20rpx;
-}
-
-.v-bot {
-    margin-top: 40rpx;
-    width: 100%;
-    height: auto;
+    margin-top: 30rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
+.v-mid-block {
+    flex: 1;
+    height: 56rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.vmb-money {
+    margin-top: 20rpx;
+    font-size: 32rpx;
+}
+
+.v-bot {
+    width: 100%;
+    background-color: #FFFFFF;
+    height: 108rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .v-btn {
-    width: 252rpx;
-    height: 80rpx;
+    flex: 1;
+    height: 56rpx;
     text-align: center;
-    line-height: 80rpx;
-    background-color: #FFF0DE;
-    color: #E85819;
+    line-height: 56rpx;
+    background-color: #FFFFFF;
+    color: #333333;
     font-size: 28rpx;
     font-weight: 600;
-    border-radius: 40rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #EDEDED;
+}
+
+.v-btn image {
+    width: 50rpx;
+    height: 50rpx;
+    flex-shrink: 0;
+    margin-right: 20rpx;
 }
 
 .v-all {
@@ -164,9 +194,6 @@ page {
     white-space: nowrap;
 }
 
-
-
-
 .mask {
     width: 100%;
     height: 100%;
@@ -197,13 +224,14 @@ page {
     color: #333333;
     margin-top: 80rpx;
     margin-bottom: 20rpx;
-
 }
-.vmask-title1{
+
+.vmask-title1 {
     margin-bottom: 80rpx;
- font-size: 24rpx;
+    font-size: 24rpx;
     color: #999;
 }
+
 .vm-mid {
     width: 476rpx;
     height: 88rpx;

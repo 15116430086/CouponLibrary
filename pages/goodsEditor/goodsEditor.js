@@ -396,9 +396,13 @@ Page({
     if (options.productid) {
       that.setData({
         productid: options.productid,
-        type: options.type
+        type: options.type,
+        edit: options.edit
       })
 
+      wx.setNavigationBarTitle({
+        title: options.edit == 1 ? "商品编辑" :"商品详情" // 其他页面传过来的标题名
+      })
     }
     that.GetProductCategory()
     that.GetSpecificationsAttribute()

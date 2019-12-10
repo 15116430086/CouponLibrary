@@ -30,7 +30,7 @@
     </view>
 </navigator>
 
-<navigator url="../orderManagement/orderManagement">
+<navigator url="../orderManagement/orderManagement?ordertype=0">
     <view class="v-bot">
         <view class="vb-name">订单管理</view>
         <view class="v-right">

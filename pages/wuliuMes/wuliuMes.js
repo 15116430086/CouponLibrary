@@ -1,12 +1,11 @@
-// pages/configControl/configControl.js
+// pages/wuliuMes/wuliuMes.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    checked: true,
-    checked1: true
+
   },
 
   /**
@@ -15,21 +14,7 @@ Page({
   onLoad: function (options) {
 
   },
-  onChange(e) {
-    console.log(e);
-    let that = this;
-    let detail = e.detail;
-    let index = e.currentTarget.dataset.index;
-    if (index == 1) {
-      that.setData({
-        checked: detail
-      })
-    } else {
-      // 需要手动对 checked 状态进行更新
-      that.setData({ checked1: detail });
-    }
 
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

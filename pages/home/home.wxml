@@ -5,8 +5,8 @@
     <view class="homeTop-name">{{GroupName}}</view>
     <view class="homeTop-left">
       <!-- <view class="search-box" bindtap="Jumptap"> -->
-        <image src="/static/images/serch1.png" background-size="cover" style="width:60rpx;height:60rpx" bindtap="Jumptap"></image>
-        <!-- <view>搜索领券</view>
+      <image src="/static/images/serch1.png" background-size="cover" style="width:60rpx;height:60rpx" bindtap="Jumptap"></image>
+      <!-- <view>搜索领券</view>
       </view> -->
       <view class="mes-box" bindtap="noticetap">
         <view>{{CouponCount.countNewMsg}}</view>
@@ -36,7 +36,7 @@
 
           <view>推券动态</view>
         </view>
-        <view class="dynblock-mes"  style="text-align:left">
+        <view class="dynblock-mes" style="text-align:left">
           <view>会员领券: {{CouponCount.CouponNUM}}</view>
           <view>会员核销: {{CouponCount.WriteOffNUM}}</view>
           <view>推券佣金: {{CouponCount.sumIncomeMoney}}</view>
@@ -54,66 +54,16 @@
   </view>
   <!-- 导航栏 -->
   <view class="home-nav">
-    <navigator url="../sendTicketOne/sendTicketOne" hover-class="none">
-      <image src="/static/images/home/1.png"></image>
-      <view>我要发券</view>
-
-    </navigator>
-    <navigator url="../chooseTicket/chooseTicket" hover-class="none">
-      <image src="/static/images/home/2.png"></image>
-      <view>平台选券</view>
-    </navigator>
-    <navigator url="../scanSend/scanSend" hover-class="none">
-      <image src="/static/images/home/4.png"></image>
-      <view>扫码赠券</view>
-
-    </navigator>
-    <navigator url="../sendTicket/main" bindtap="onWxScanCode" hover-class="none">
-      <image src="/static/images/home/3.png"></image>
-      <view>扫码核券</view>
-
-    </navigator>
-    <navigator url="../management/management" hover-class="none">
-      <image src="/static/images/home/5.png"></image>
-      <view>会员管理</view>
-
-    </navigator>
-    <navigator url="../doorContor/doorContor" hover-class="none">
-      <image src="/static/images/home/6.png"></image>
-      <view>门店管理</view>
-
-    </navigator>
-    <navigator url="../orderManagement/orderManagement" hover-class="none">
-      <image src="/static/images/home/7.png"></image>
-      <view>收单记录</view>
-
-    </navigator>
-    <navigator url="../myMoney/myMoney" hover-class="none">
-      <image src="/static/images/home/8.png"></image>
-      <view>我的资金</view>
-
-    </navigator>
-    <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
-      <image src="/static/images/home/9.png"></image>
-      <view>营业管理</view>
-
-    </navigator>
-    <navigator url="../shopCli/shopCli" hover-class="none">
-      <image src="/static/images/home/10.png"></image>
-      <view>商家货架</view>
-
-    </navigator>
-    <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
-      <image src="/static/images/home/11.png"></image>
-      <view>配置管理</view>
-
-    </navigator>
-    <navigator bindtap="perfecttap" url="../sendTicket/main" hover-class="none">
-      <image src="/static/images/home/12.png"></image>
-      <view>联名促销</view>
-
-    </navigator>
-
+    <block wx:for="{{CouponCount.Jurisdiction}}" wx:index="index" wx:key="ID">
+      <navigator url="{{item.Url}}" wx:if="{{item.bindtap==''}}" hover-class="none">
+        <image src="{{item.Image}}"></image>
+        <view>{{item.Name}}</view>
+      </navigator>
+      <navigator url="{{item.Url}}" wx:else bindtap="{{item.bindtap}}" hover-class="none">
+        <image src="{{item.Image}}"></image>
+        <view>{{item.Name}}</view>
+      </navigator>
+    </block>
   </view>
 
 

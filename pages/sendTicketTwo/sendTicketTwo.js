@@ -13,7 +13,7 @@ Page({
       name: '代金券',
       typeId: 0
     }, {
-      name: '团购券',
+      name: '礼物券',
       typeId: 1
     }],
     value: 3,
@@ -124,8 +124,7 @@ Page({
       CouponMoney: 1,
       ExpirationDate: '',
       ExpiredType: 10,
-      CouponDetails: "",
-      // ReleaseNUM: "", //发布数量
+      CouponDetails: '',
       ReceiveUpperLimit: 1,
       UsageRule: "",
       ImageOne: "",
@@ -138,7 +137,7 @@ Page({
     },
     imageOne: "",
     imageTwo: "",
-    imageTre: "",
+    imageTre: [],
     idm: "",
     df_value: 2,
     types: 0 //默认类型为添加
@@ -149,6 +148,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(this.data.imageTre);
     wx.setStorageSync("pArrProductKey", "");
     console.log(options.pCoupon_Info);
     if (options.pCoupon_Info) { //说明是修改
@@ -169,13 +169,11 @@ Page({
       Coupon_Info.SalePrice = Info.SalePrice;
       Coupon_Info.CouponID = Info.CouponID;
       Coupon_Info.IsAppointProduct = Info.IsAppointProduct
-      if (Info.WriteOffType == 0 && Info.IsAppointProduct == 1) {
-        var data = {
-          CouponID: Info.CouponID
-        }
-        utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/Getproductlist", "POST", data, app.globalData.appkeyid, this.Getproductlist)
-      }
 
+      var data = {
+        pCouponID: Info.CouponID
+      }
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponInfoPicture", "POST", data, app.globalData.appkeyid, this.GetCouponInfoPictureBack)
 
 
       if (Info.ReceiveRule == 0) {
@@ -212,32 +210,49 @@ Page({
           idd: "002"
         });
       }
-
+      var imageTre = []
+      if (Info.CouponDetails != '') {
+        imageTre.push(Info.CouponDetails)
+      }
       this.setData({
         types: 1,
         pCoupon_Info: Coupon_Info,
         date: Info.ExpirationDate,
         imageOne: Info.ImageOne,
         imageTwo: Info.UsageRule,
-        imageTre: Info.CouponDetails,
+        imageTre: imageTre,
         shareshow1: true,
         shareshow2: true,
         shareshow: true
       });
     }
-    console.log(this.data.pCoupon_Info);
+
   },
-  Getproductlist: function(res) {
-    var chat = this;
+  GetCouponInfoPictureBack: function(res) {
+    var that = this;
     var json = res.data.Data;
     var list = [];
-    for (var i in json.data) {
-      list.push(json.data[i].ProductID);
+    if (json.pdudata) {
+      for (var i in json.data) {
+        list.push(json.data[i].ProductID);
+      }
+      wx.setStorageSync("pArrProductKey", list);
+      that.setData({
+        pArrProductID: list
+      });
     }
-    wx.setStorageSync("pArrProductKey", list);
-    chat.setData({
-      pArrProductID: list
-    });
+
+    if (json.imgDdta) {
+      let imageTre = that.data.imageTre;
+      for (let i in json.imgDdta) {
+        imageTre.push(json.imgDdta[i].ImageURL)
+      }
+
+      that.setData({
+        imageTre: imageTre
+      })
+
+    }
   },
   bindPickerChange_hx: function(e) {
     let that = this;
@@ -272,11 +287,10 @@ Page({
     pCoupon_Info.CouponName = val.CouponName; //券名称
     pCoupon_Info.CouponMoney = val.CouponMoney; //券面值
     pCoupon_Info.CouponType = that.data.currentId;
-    // pCoupon_Info.ReleaseNUM = val.ReleaseNUM; //券数量
     pCoupon_Info.ReceiveUpperLimit = val.ReceiveUpperLimit; //领取上限
     if (that.data.currentId == 1)
       pCoupon_Info.SalePrice = val.SalePrice;
-    data.pCoupon_Info = utils.syJsonSafe(that.data.pCoupon_Info);
+
     if (pCoupon_Info.CouponName == '') {
       wx.showToast({
         title: "请输入券名称!",
@@ -302,15 +316,6 @@ Page({
       return
     }
 
-
-    // if (pCoupon_Info.ReleaseNUM == '') {
-    //   wx.showToast({
-    //     title: "请输入发布数量!",
-    //     icon: "none",
-    //     duration: 1500
-    //   });
-    //   return
-    // }
     if (pCoupon_Info.ReceiveUpperLimit == '' || pCoupon_Info.ReceiveUpperLimit == 0) {
       wx.showToast({
         title: "请输入领取上限!",
@@ -343,7 +348,8 @@ Page({
       });
       return
     }
-    if (pCoupon_Info.CouponDetails == '') {
+    var imageTre = that.data.imageTre;
+    if (imageTre.length == 0) {
       wx.showToast({
         title: "请上传图片!",
         icon: "none",
@@ -351,15 +357,24 @@ Page({
       });
       return
     }
-    console.log(data)
+    var oCoupon_Picture = []
+    for (let i in imageTre) {
+      if (i == 0) {
+        pCoupon_Info.CouponDetails = imageTre[0];
+      } else {
+        oCoupon_Picture.push({
+          ImageType: 0,
+          ImageURL: imageTre[i],
+          SortIndex: i
+        })
+      }
+    }
+
+    data.pCoupon_Info = utils.syJsonSafe(pCoupon_Info);
+    data.pLsitPicture = utils.syJsonSafe(oCoupon_Picture);
+
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/NewCouponInfo", "POST", data, app.globalData.appkeyid, that.GetDataBack)
-    // if (pCoupon_Info.CouponName && pCoupon_Info.CouponMoney && pCoupon_Info.ReleaseNUM && pCoupon_Info.ReceiveUpperLimit && pCoupon_Info.SalePrice ) {
-    //   utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/NewCouponInfo", "POST", data, app.globalData.appkeyid, that.GetDataBack)
-    // }else{
-    //   wx.showToast({
-    //     title: '请',
-    //   })
-    // }
+
   },
   GetDataBack(json) {
     let that = this;
@@ -368,8 +383,10 @@ Page({
     let pCoupon_Info = JSON.stringify(that.data.pCoupon_Info);
     if (json.flag) {
       var pages = getCurrentPages();
-      var prevPage = pages[pages.length - 2];//上一个页面
-      prevPage.setData({ isRefresh: true });
+      var prevPage = pages[pages.length - 2]; //上一个页面
+      prevPage.setData({
+        isRefresh: true
+      });
       console.log(json.msg);
       wx.redirectTo({
         url: '../startTicket/startTicket?pCoupon_Info=' + pCoupon_Info + "&CouponID=" + json.CouponID,
@@ -377,8 +394,8 @@ Page({
     } else {
       wx.showToast({
         title: json.msg,
-        icon:"none",
-        duration:2000
+        icon: "none",
+        duration: 2000
       })
       console.log(json.msg);
     }
@@ -618,36 +635,41 @@ Page({
     let id = e.currentTarget.dataset.id;
     console.log(id);
     let pAppKeyId = app.globalData.appkeyid
-    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack3)
+    let imageTre = that.data.imageTre;
+    utils.UploadImg(5 - imageTre.length, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack3)
 
   },
   pCallBack3(e) {
     console.log(e)
-    console.log(img)
     let that = this;
-    let pCoupon_Info = that.data.pCoupon_Info;
-    let img = e[0];
+    let imageTre = that.data.imageTre;
+    let img = e;
 
     if (img.length > 0) {
-      pCoupon_Info.CouponDetails = img;
+      imageTre = imageTre.concat(img);
       that.setData({
-        imageTre: img
+        imageTre: imageTre
       })
     }
   },
   preImg3(e) {
     let that = this;
     let srcImg = that.data.imageTre;
-    let srcArr = [];
-    srcArr.push(srcImg);
+
+    let id = e.currentTarget.dataset.index;
+
     wx.previewImage({
-      current: srcImg, // 当前显示图片的http链接  
-      urls: srcArr
+      current: srcImg[id],
+      urls: srcImg
     })
   },
   delImg3(e) {
-    this.setData({
-      imageTre: ""
+    let that = this;
+    let imageTre = that.data.imageTre;
+    let itemIndex = e.currentTarget.dataset.index;
+    imageTre.splice(itemIndex, 1);
+    that.setData({
+      imageTre: imageTre
     })
   },
 

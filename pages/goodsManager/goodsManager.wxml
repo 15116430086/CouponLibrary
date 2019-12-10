@@ -29,7 +29,9 @@
       <view class="v-bot">
         <view class="v-span">本商品最大购买量{{item.StockNum}}</view>
         <view class="v-set">     
-        <view class="v-blue"></view>   
+            <navigator url="../goodsEditor/goodsEditor?edit=0&type={{item.ProductType}}&productid={{item.ProductID}}">
+            <view class="v-blue">查看</view>
+          </navigator>
           <view class="v-blue" data-ProductID='{{item.ProductID}}' data-ProductName='{{item.ProductName}}' bindtap="Lowershelf">下架</view>
         </view>
       </view>
@@ -56,7 +58,7 @@
       </view>
       <view class="v-bot" style="color:#CCCCCC;justify-content: flex-end;font-size:28rpx">
         <view class="v-set">
-          <navigator url="../goodsEditor/goodsEditor?type={{item.ProductType}}&productid={{item.ProductID}}">
+          <navigator url="../goodsEditor/goodsEditor?edit=1&type={{item.ProductType}}&productid={{item.ProductID}}">
             <view class="v-blue">编辑</view>
           </navigator>
           <view class="v-blue" data-ProductID='{{item.ProductID}}' data-ProductName='{{item.ProductName}}' bindtap="Lowershelf">上架</view>
