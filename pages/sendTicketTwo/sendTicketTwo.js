@@ -239,7 +239,7 @@ Page({
     var list = [];
     if (json.pdudata) {
       for (var i in json.pdudata) {
-        list.push(json.data[i].ProductID);
+        list.push(json.pdudata[i].ProductID);
       }
       wx.setStorageSync("pArrProductKey", list);
       that.setData({
