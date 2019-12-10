@@ -23,15 +23,19 @@
       <view class="home-card">
         <view class="home-one one">
           <view class="home-sec">
-            <view style="font-size:32rpx;font-weight:600" class="home-oneB">{{item.CouponName}}</view>
-            <view class="home-oc">【{{item.GroupID==item.SendGroupID?'自营券':'商家券'}}】</view>        
+            <view style="font-size:32rpx;font-weight:600" class="home-oneB">
+              {{item.CouponName}}
+            </view>
+            <view class="home-oc">【{{item.GroupID==item.SendGroupID?'自营券':'商家券'}}】</view>
           </view>
-          <view style="color:#E85819;" data-ReleaseID='{{item.ReleaseID}}' data-CouponID='{{item.CouponID}}' bindtap="onBindReceiveTap">继续领券</view>
+          <view style="color:#E85819;" data-ReleaseID='{{item.ReleaseID}}' data-CouponID='{{item.CouponID}}' bindtap="onBindReceiveTap">
+            继续领券
+          </view>
         </view>
         <view class="home-one two">
           <view style="color:#000000;font-weight:600">领券数量 : {{item.ReceiveNUM}}</view>
+          <view style="color:#429859;">赚佣金 : ￥{{item.Commission}}</view>
         </view>
-
         <view class="home-one three" wx:if="{{item.UnitMoney>0 || item.ReceiveMoney>0 }}">
           <view>领券单价 : {{item.UnitMoney}}</view>
           <view>领券金额 : {{item.ReceiveMoney}}</view>
@@ -40,16 +44,31 @@
           <view>会员领用 : {{item.GiveNUM}}</view>
           <view>使用数量 : {{item.ConsumeNUM}}</view>
         </view>
-
         <view class="home-one five">
           <view>待用数量 : {{item.StandByNUM}}</view>
           <view>过期数量 : {{item.ExpireNUM}}</view>
         </view>
         <view class="home-one Six">
-          <view style="color:#000000;">领券日期 : {{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd hh:mm:ss",true)}}</view>
-          <view style="color:#429859;">赚佣金 : ￥{{item.Commission}}</view>
+          <view style="color:#000000;">
+            领券日期 : {{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd hh:mm:ss",true)}}
+          </view>
+          <view style="color:#999999;" bindtap="showPop">申请退券</view>
         </view>
       </view>
+      <van-popup show="{{ show }}" bind:close="onClose" round>
+        <view class="v-model">
+          <view class="vm-title">{{item.CouponName}}</view>
+          <view class="vm-tip">申请退券</view>
+          <view class="vm-imput">
+            <image src="/static/images/bi.png" />
+            <input placeholder="请输入退券数量" placeholder-class="ip"/>
+          </view>
+          <view class="vm-bot">
+            <view bindtap="onClose">返回</view>
+            <view style="color:#E85819;border:none">确定</view>
+          </view>
+        </view>
+      </van-popup>
     </block>
   </view>
   <view class="homebot">

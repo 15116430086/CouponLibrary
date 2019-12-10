@@ -8,14 +8,22 @@ Page({
    */
   data: {
     isDisabled: false,  //表示页面加载完成时disabled为启用状态
-    type:1,      //0普通购物，1业务办理
-    orderid:'',   //订单编号
-    titleName:'', //业务名
-    orderstate:0,     //订单状态
+    type:1,             //0普通购物，1业务办理
+    orderid:'',         //订单编号
+    titleName:'',       //业务名
+    orderstate:0,       //订单状态
+    EC_ID:'',           //快递公司编码
     CourierNumber:'',
     CourierCompany:'',
     ExpressTel:'',
     GroupName: app.globalData.AppGroupInfo.GroupName,//集团名称
+    columns: [
+      { text: '杭州', id: "123" },
+      { text: '宁波', id: "234" },
+      { text: '温州', id: "569" }
+    ],
+    show: false,
+    company: ""
   },
   //快递单号
   CourierNumberInput: function (e) {
@@ -90,7 +98,8 @@ Page({
     data.pState = 3;
     data.pCourierCompany = this.data.CourierCompany;
     data.pCourierNumber = this.data.CourierNumber;
-    data.pExpressTel = this.data.ExpressTel
+    data.pExpressTel = this.data.ExpressTel;
+    data.pEC_ID = this.data.EC_ID
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/UpdateWriteOffOrderState", "POST", data, app.globalData.appkeyid, this.isDeliverBack)
   },
 
@@ -117,9 +126,10 @@ Page({
     that.setData({
       orderstate: options.orderstate,
       orderid: options.orderid,
-      //type: options.type
+      type: options.type
     })
     that.GetData();
+    that.GetExpressCompanylist();
   },
 
   
@@ -149,6 +159,54 @@ Page({
         })
       }
     }
+  },
+
+  GetExpressCompanylist: function () {
+    let that = this;
+    var data = {};
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetExpressCompany", "POST", data, app.globalData.appkeyid, this.GetExpressCompanylistBack)
+  },
+  GetExpressCompanylistBack: function (json) {
+    let that = this;
+    var json = json.data.Data;
+    if (json.flag) {
+      // that.setData({
+      //   CourierNumber: json.data[0].CourierNumber,
+      //   CourierCompany: json.data[0].CourierCompany,
+      //   ExpressTel: json.data[0].ExpressTel
+      // })
+      // if (json.data[0].State == 3 || json.data[0].State == 4) {
+      //   that.setData({
+      //     isDisabled: true,  //修改isDisabled的值为true（即启用状态）
+      //   })
+      // }
+    }
+  },
+
+  showPop(e) {
+    this.setData({
+      show: true
+    })
+  },
+  onConfirm(event) {
+    const { picker, value, index } = event.detail;
+    console.log(event.detail.value.id);
+    let text = event.detail.value.text;
+    this.setData({
+      company: text,
+      show: false
+    })
+  },
+
+  onCancel() {
+    this.setData({
+      show: false
+    })
+  },
+  onClose() {
+    this.setData({
+      show: false
+    })
   },
 
   /**
