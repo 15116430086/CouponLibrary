@@ -16,7 +16,10 @@
     <view class="v-bot">
         <view wx:if="{{type==0}}" class="v-block">
             <view class="v-name">快递单号</view>
-            <input type="text" bindinput ="CourierNumberInput" value="{{CourierNumber}}" class="v-mes" placeholder="请输入快递单号" placeholder-class="ip" disabled='{{isDisabled}}'></input>
+             <view class="v-input">
+            <input type="number" placeholder="请输入快递单号" placeholder-class="ip" bindinput ="CourierNumberInput" value="{{CourierNumber}}" class="v-mes" disabled='{{isDisabled}}'/>
+            <image src="/static/images/saoma.png" />
+        </view>
         </view>
         <view wx:if="{{type==1}}" class="v-block">
             <view class="v-name">受理单号</view>
@@ -25,7 +28,11 @@
 
         <view wx:if="{{type==0}}" class="v-block">
             <view class="v-name">快递公司</view>
-            <input type="text" bindinput ="CourierCompanyInput" value="{{CourierCompany}}" class="v-mes" placeholder="请输入快递公司" placeholder-class="ip" disabled='{{isDisabled}}'></input>
+            <!-- <input type="text" bindinput ="CourierCompanyInput" value="{{CourierCompany}}" class="v-mes" placeholder="请输入快递公司" placeholder-class="ip" disabled='{{isDisabled}}'></input> -->
+             <view class="v-input" bindtap="showPop">
+            <input type="text" placeholder="请输入快递公司" value="{{company}}" placeholder-class="ip" disabled="false"/>
+            <image src="/static/images/botarr.png" style="width:22rpx;height:14rpx"/>
+        </view>
         </view>
         <view wx:if="{{type==1}}" class="v-block">
             <view class="v-name">业务员工</view>
@@ -44,3 +51,19 @@
 </view>
 <view wx:if="{{orderstate==2}}" class="v-btn" bindtap="isDeliver">确认发货/办理</view>
 <!-- <view wx:if="{{orderstate==3}}" class="v-btn" bindtap="NotifyBuyers">通知买家</view> -->
+
+
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  round
+  close-on-click-overlay = "true"
+  safe-area-inset-bottom
+
+  custom-style="height: auto;"
+  bind:close="onClose"
+>
+<van-picker columns="{{ columns }}"  show-toolbar
+ confirm-button-text="完成" bind:cancel="onCancel"
+  bind:confirm="onConfirm" toolbar-class="toolbar-class"/>
+</van-popup>

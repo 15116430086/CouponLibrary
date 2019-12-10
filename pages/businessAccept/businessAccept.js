@@ -17,6 +17,13 @@ Page({
     CourierCompany:'',
     ExpressTel:'',
     GroupName: app.globalData.AppGroupInfo.GroupName,//集团名称
+    columns: [
+      { text: '杭州', id: "123" },
+      { text: '宁波', id: "234" },
+      { text: '温州', id: "569" }
+    ],
+    show: false,
+    company: ""
   },
   //快递单号
   CourierNumberInput: function (e) {
@@ -176,7 +183,31 @@ Page({
     }
   },
 
+  showPop(e) {
+    this.setData({
+      show: true
+    })
+  },
+  onConfirm(event) {
+    const { picker, value, index } = event.detail;
+    console.log(event.detail.value.id);
+    let text = event.detail.value.text;
+    this.setData({
+      company: text,
+      show: false
+    })
+  },
 
+  onCancel() {
+    this.setData({
+      show: false
+    })
+  },
+  onClose() {
+    this.setData({
+      show: false
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
