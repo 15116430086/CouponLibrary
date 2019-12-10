@@ -1,0 +1,68 @@
+/* pages/wuliuMes/wuliuMes.wxss */
+
+page {
+    background-color: #ededed;
+}
+
+.v-box {
+    width: calc(100% - 40rpx);
+    height: auto;
+    margin: 20rpx auto;
+    background-color: #FFFFFF;
+    border-radius: 20rpx;
+    color: #999999;
+    font-size: 24rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+}
+
+.v-block {
+    width: calc(100% - 20rpx);
+    height: 140rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.v-left {
+    width: 100rpx;
+    position: relative;
+}
+
+.v-time {
+    width: 80rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.v-line {
+    width: 15rpx;
+    height: 15rpx;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    position: absolute;
+    right: -8.5rpx;
+    z-index: 10;
+    top: 8rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.v-line view {
+    width: 8rpx;
+    height: 8rpx;
+    background-color: #CCCCCC;
+    border-radius: 50%;
+}
+
+.v-right {
+    width: calc(100% - 120rpx);
+    height: 140rpx;
+    padding-left: 20rpx;
+    border-left: 1px solid #CCCCCC;
+}

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/wuliuMes/wuliuMes",
     "pages/image-cropper/image-cropper",
     "pages/paySuccess/paySuccess",
     "pages/moreShop/moreShop",
@@ -85,6 +86,7 @@
     "pages/noPayMoney/noPayMoney",
     "pages/regPlane/regPlane",
     "pages/secretBook/secretBook"
+   
   ],
   "permission": {
     "scope.userLocation": {
