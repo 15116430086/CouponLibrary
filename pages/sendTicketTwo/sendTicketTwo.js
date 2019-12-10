@@ -148,9 +148,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(this.data.imageTre);
     wx.setStorageSync("pArrProductKey", "");
-    console.log(options.pCoupon_Info);
+    var edit = 0;
+    if (options.edit) {
+      edit = options.edit
+      this.setData({
+        edit: edit
+      })
+    }
     if (options.pCoupon_Info) { //说明是修改
       var Info = JSON.parse(options.pCoupon_Info);
       var Coupon_Info = this.data.pCoupon_Info;
