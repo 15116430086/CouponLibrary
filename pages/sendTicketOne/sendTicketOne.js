@@ -20,7 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    
+
   },
   /**
    * 生命周期函数--监听页面显示
@@ -34,7 +34,9 @@ Page({
         scrollTop: 0
       })
     }
-    this.setData({ isRefresh:false});
+    this.setData({
+      isRefresh: false
+    });
   },
 
   //托管佣金明细页跳转
@@ -81,10 +83,11 @@ Page({
   },
   edit: function(event) {
     let index = event.currentTarget.dataset.indexs;
+    let edit = event.currentTarget.dataset.edit;
     let datalist = this.data.datalist[index];
     let data = JSON.stringify(datalist);
     wx.navigateTo({
-      url: '../sendTicketTwo/sendTicketTwo?pCoupon_Info=' + data
+      url: '../sendTicketTwo/sendTicketTwo?pCoupon_Info=' + data + '&edit=' + edit
     })
   },
 
@@ -160,10 +163,47 @@ Page({
       url: '../sendTicketTwo/sendTicketTwo',
     })
   },
-  Details: function(event) {  
+  Details: function(event) {
     var CouponIDs = event.currentTarget.dataset.couponid
     wx.navigateTo({
       url: '../watchMes/watchMes?CouponID=' + CouponIDs,
     })
+  },
+  delCoupon: function(event) {
+    let that = this;
+    var CouponID = event.currentTarget.dataset.couponid
+    var CouponName = event.currentTarget.dataset.couponname
+    wx.showModal({
+      title: '确认删除',
+      content: '你确定要删除[' + CouponName + ']吗？',
+      success: function(res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          var data = {
+            pGroupID: app.globalData.AppGroupInfo.GroupID,
+            pCouponID: CouponID
+          };
+          utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/DelCouponInfo", "POST", data, app.globalData.appkeyid, that.DelCouponInfoBack);
+        }
+      }
+    })
+  },
+  DelCouponInfoBack: function(res) {
+    var json = res.data.Data;
+    if (json.flag) {
+      wx.showToast({
+        title: json.msg,
+        duration: 2000,
+        success: function(res) {
+          page = 1;
+          this.GetData();
+        },
+      })
+    } else {
+      wx.showToast({
+        title: json.msg,
+      })
+    }
   }
+
 })
