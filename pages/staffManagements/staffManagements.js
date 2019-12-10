@@ -104,5 +104,12 @@ Page({
     wx.navigateTo({
       url: '../staffChoose/staffChoose?shopid=' + this.data.shopID,
     })
+  },
+  Jurisdiction:function(event){//设置权限
+    var StaffID = event.currentTarget.dataset.staffid
+    wx.navigateTo({
+      url: '../thronesManagers/thronesManagers?staffid=' + StaffID + "&shopid=" + this.data.shopID,
+    })
+
   }
 })
