@@ -8,24 +8,43 @@
         <navigator url="../businessAccept/businessAccept?orderid={{orderid}}"  wx:if="{{orderstate==2}}">
           <view class="v-btn">填写货单</view>
           </navigator>
-          <navigator url="../wuliuMes/wuliuMes?LogisticsNumber={{CourierNumber}}&EC_ID={{EC_ID}}" wx:if="{{orderstate==3 || orderstate==4}}">
+          <navigator url="../wuliuMes/wuliuMes?LogisticsNumber={{CourierNumber}}&EC_ID={{EC_ID}}" wx:if="{{ProductType==0 &&(orderstate==3 || orderstate==4)}}">
           <view class="v-btn" >查看物流</view>
         </navigator>
     </view>
 
-    <view class="v-mid" wx:if="{{orderstate==3 || orderstate==4}}">
+<block wx:if="{{ProductType==0 &&(orderstate==3 || orderstate==4)}}">
+    <view class="v-mid">
         <view class="v-name">快递单号</view>
         <input value="{{ CourierNumber }}" class="v-mes" disabled="false"/>
     </view>
 
-    <view class="v-mid" wx:if="{{orderstate==3 || orderstate==4}}">
+    <view class="v-mid">
         <view class="v-name">快递公司</view>
         <input value="{{ CourierCompany }}" class="v-mes" disabled="false"/>
     </view>
-    <view class="v-mid" wx:if="{{orderstate==3 || orderstate==4}}">
+    <view class="v-mid">
         <view class="v-name">快递客服</view>
         <input value="{{ ExpressTel }}" class="v-mes" disabled="false"/>
     </view>
+</block>
+
+<block wx:if="{{ProductType==1 &&(orderstate==3 || orderstate==4)}}">
+    <view class="v-mid">
+        <view class="v-name">受理单号</view>
+        <input value="{{ CourierNumber }}" class="v-mes" disabled="false"/>
+    </view>
+
+    <view class="v-mid">
+        <view class="v-name">业务员工</view>
+        <input value="{{ CourierCompany }}" class="v-mes" disabled="false"/>
+    </view>
+    <view class="v-mid">
+        <view class="v-name">联系电话</view>
+        <input value="{{ ExpressTel }}" class="v-mes" disabled="false"/>
+    </view>
+</block>
+
 
 
     <view class="v-mid">

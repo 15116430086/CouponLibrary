@@ -17,7 +17,7 @@
         <view wx:if="{{type==0}}" class="v-block">
             <view class="v-name">快递单号</view>
              <view class="v-input">
-            <input type="number" placeholder="请输入快递单号" placeholder-class="ip" bindinput ="CourierNumberInput" value="{{CourierNumber}}" class="v-mes" disabled='{{isDisabled}}'/>
+            <input type="text" placeholder="请输入快递单号" placeholder-class="ip" bindinput ="CourierNumberInput" value="{{CourierNumber}}" class="v-mes" disabled='{{isDisabled}}'/>
             <!-- <image src="/static/images/saoma.png" /> -->
         </view>
         </view>

@@ -480,7 +480,11 @@ Page({
       that.setData({
         hexiao: "线上受理",
         idb: id
+      });
+      wx.navigateTo({
+        url: '../chooseBuyGoods/chooseBuyGoods',
       })
+     
     } else {
       that.setData({
         hexiao: "线下消费",
@@ -702,11 +706,7 @@ Page({
     // that.data.pCoupon_Info.pArrProductID = that.data.pArrProductID;
     // console.log(that.data.pCoupon_Info)
   },
-  jumpChoose(e) {
-    wx.navigateTo({
-      url: '../chooseBuyGoods/chooseBuyGoods',
-    })
-  },
+ 
   /**
    * 生命周期函数--监听页面隐藏
    */
