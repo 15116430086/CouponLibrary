@@ -1,34 +1,67 @@
-<!-- 搜索框 -->
-<view class="v-top">
-    <view class="home-top">
-        <view class="search-box">
-            <view class="search-left">
-                <image src="/static/images/serch.png" background-size="cover" style="margin-left:30rpx;margin-right:30rpx" />
-                <input value="" placeholder="商品/业务名称" bindInput="onChange" bindtap="onSearch" focus="true" />
+<view class="home-box">
+    <view class="v-top">
+        <view class="v-add">
+            <view class="va-left">
+                <image src="/static/images/lanadd.png" />
+                <view>添加商品</view>
             </view>
-            <image src="/static/images/err.png" background-size="cover" style="margin-right:30rpx;" bindtap="onClear" v-if="flag==1" />
+            <image src="/static/images/bluearr.png" class="va-arr" />
         </view>
-        <view class="home-btn">搜索</view>
-    </view>
-</view>
-<view class="v-box">
-    <!-- <van-checkbox-group value="{{ result }}" bind:change="onChange">
-        <van-checkbox name="a">复选框 a</van-checkbox>
-        <van-checkbox name="b">复选框 b</van-checkbox>
-        <van-checkbox name="c">复选框 c</van-checkbox>
-    </van-checkbox-group> -->
-    <van-checkbox-group value="{{ result }}" bind:change="onChange">
-        <view class="v-block" wx:for="{{userlist}}">
-            <view class="v-left">
-                <image src="{{item.ImageOne==''?'/static/images/swp.png':item.ImageOne}}" />
-                <view class="v-mid">
-                    <view class="v-t">{{item.ProductName}}</view>
-                    <view class="v-b">售价：¥{{item.SalePrice}}</view>
+        <!-- 加block的地方做判断  显示有无 -->
+        <block>
+            <view class="bot-block">
+                <view class="home-title">所有商品</view>
+                <view class="home-right">
+                    <van-switch checked="{{ checked }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="swChange" data-index="1" />
                 </view>
             </view>
-                <van-checkbox name="{{item.ProductID}}" checked-color="#E85819"></van-checkbox>
+            <view class="bot-block">
+                <view class="home-title">指定商品</view>
+                <view class="home-right">
+                    <van-switch checked="{{ checked1 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="swChange" data-index="2" />
+                </view>
+            </view>
+        </block>
+        <!-- 搜索框 -->
+        <!-- 加block的地方做判断  显示有无 -->
+        <block>
+            <view class="home-top">
+                <view class="search-box">
+                    <view class="search-left">
+                        <image src="/static/images/serch.png" background-size="cover" style="margin-left:30rpx;margin-right:30rpx" />
+                        <input value="" placeholder="商品/业务名称" bindInput="onChange" bindtap="onSearch" focus="true" />
+                    </view>
+                    <image src="/static/images/err.png" background-size="cover" style="margin-right:30rpx;" bindtap="onClear" v-if="flag==1" />
+                </view>
+                <view class="home-btn">搜索</view>
+            </view>
+        </block>
+    </view>
+    <!-- 加block的地方做判断  显示有无 -->
+    <block>
+        <view class="v-box">
+            <van-checkbox-group value="{{ result }}" bind:change="onChange">
+                <view class="v-block" wx:for="{{userlist}}">
+                    <view class="v-left">
+                        <image src="{{item.ImageOne==''?'/static/images/swp.png':item.ImageOne}}" />
+                        <view class="v-mid">
+                            <view class="v-t">{{item.ProductName}}</view>
+                            <view class="v-b">售价：¥{{item.SalePrice}}</view>
+                        </view>
+                    </view>
+                    <van-checkbox name="{{item.ProductID}}" checked-color="#E85819"></van-checkbox>
+                </view>
+            </van-checkbox-group>
         </view>
-        
-    </van-checkbox-group>
+    </block>
+    <!-- 没有的话显示图片  做判断 -->
+    <block wx:if="{{0==1}}">
+        <view class="v-img">
+            <image src="/static/images/kong.png" class="cG-img" />
+            <view>暂无关联的商品！请添加商品</view>
+        </view>
+    </block>
+    <view class="app-bot" style="background-color: transparent;">
+        <view class="v-btn" bindtap="jumpBack">确定</view>
+    </view>
 </view>
-<view class="v-btn" bindtap="jumpBack">确定</view>
