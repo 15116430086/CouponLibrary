@@ -17,13 +17,13 @@ Page({
     CourierCompany:'',
     ExpressTel:'',
     GroupName: app.globalData.AppGroupInfo.GroupName,//集团名称
-    columns: [
-      { text: '杭州', id: "123" },
-      { text: '宁波', id: "234" },
-      { text: '温州', id: "569" }
-    ],
+    columns: [],
     show: false,
-    company: ""
+    company: "",
+    index:0,
+    orderstate:0,
+    type:0,
+    orderid:''
   },
   //快递单号
   CourierNumberInput: function (e) {
@@ -46,7 +46,7 @@ Page({
 
   //点击确认发货按钮
   isDeliver: function(event) {
-    if (!this.data.CourierCompany){
+    if (!this.data.CourierNumber){
       if(this.data.type==0){
         wx.showToast({
           title: '请输入快递单号!',
@@ -99,11 +99,17 @@ Page({
     data.pCourierCompany = this.data.CourierCompany;
     data.pCourierNumber = this.data.CourierNumber;
     data.pExpressTel = this.data.ExpressTel;
-    data.pEC_ID = this.data.EC_ID
+    if (this.data.type == 0) {
+      data.pEC_ID = this.data.columns[this.data.index].EC_ID;
+    }
+    else{
+      data.pEC_ID ="";
+    }
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/UpdateWriteOffOrderState", "POST", data, app.globalData.appkeyid, this.isDeliverBack)
   },
 
   isDeliverBack: function (json) {
+    let that = this;
     console.log(json);
     var json = json.data.Data;
     wx.hideLoading();
@@ -114,7 +120,7 @@ Page({
         duration: 2000
       })
       wx.navigateTo({
-        url: '../orderManagement/orderManagement'
+        url: '../waitGoods/waitGoods?orderid=' + that.data.orderid,
       })
     }
   },
@@ -124,9 +130,7 @@ Page({
   onLoad: function (options) {
     let that = this;
     that.setData({
-      orderstate: options.orderstate,
       orderid: options.orderid,
-      type: options.type
     })
     that.GetData();
     that.GetExpressCompanylist();
@@ -151,7 +155,9 @@ Page({
       that.setData({
         CourierNumber: json.data[0].CourierNumber,
         CourierCompany: json.data[0].CourierCompany,
-        ExpressTel: json.data[0].ExpressTel
+        ExpressTel: json.data[0].ExpressTel,
+        orderstate: json.data[0].State,
+        type: json.data[0].ProductType
       })
       if (json.data[0].State == 3 || json.data[0].State == 4){
         that.setData({
@@ -170,16 +176,10 @@ Page({
     let that = this;
     var json = json.data.Data;
     if (json.flag) {
-      // that.setData({
-      //   CourierNumber: json.data[0].CourierNumber,
-      //   CourierCompany: json.data[0].CourierCompany,
-      //   ExpressTel: json.data[0].ExpressTel
-      // })
-      // if (json.data[0].State == 3 || json.data[0].State == 4) {
-      //   that.setData({
-      //     isDisabled: true,  //修改isDisabled的值为true（即启用状态）
-      //   })
-      // }
+      that.setData({
+        columns: json.data
+      })
+      console.log(that.data.columns);
     }
   },
 
@@ -193,7 +193,8 @@ Page({
     console.log(event.detail.value.id);
     let text = event.detail.value.text;
     this.setData({
-      company: text,
+      CourierCompany: text,
+      index: event.detail.index,
       show: false
     })
   },

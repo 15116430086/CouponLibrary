@@ -26,6 +26,10 @@ Page({
     SalePrice:"",//单价
     GroupName:"",//集团名称
     ImageOne:"",//图片
+    CourierNumber:"",//快递单号
+    CourierCompany:"",//快递公司
+    ExpressTel:"",//快递电话
+    EC_ID:"",//快递公司编码
   },
 
   GetData: function () {
@@ -59,6 +63,11 @@ Page({
         SalePrice: json.data[0].SalePrice,//单价
         GroupName:app.globalData.AppGroupInfo.GroupName,//集团名称
         ImageOne: json.data[0].ImageOne,//图片
+        orderstate:json.data[0].State,
+        CourierNumber: json.data[0].CourierNumber,//快递单号
+        CourierCompany: json.data[0].CourierCompany,//快递公司
+        ExpressTel: json.data[0].ExpressTel,//快递电话
+        EC_ID: json.data[0].EC_ID,//快递公司编码
       })
     }
   },
@@ -70,9 +79,7 @@ Page({
   onLoad: function (options) {
     let that = this;
     that.setData({
-      orderstate: options.orderstate,
       orderid: options.orderid,
-      type: options.type
     })
     that.GetData();
   },

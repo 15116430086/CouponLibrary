@@ -52,20 +52,20 @@
           <view style="color:#000000;">
             领券日期 : {{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd hh:mm:ss",true)}}
           </view>
-          <view style="color:#999999;" bindtap="showPop">申请退券</view>
+          <view style="color:#999999;" data-index="{{index}}" bindtap="showPop">申请退券</view>
         </view>
       </view>
-      <van-popup show="{{ show }}" bind:close="onClose" round>
+      <van-popup show="{{ show==index }}" bind:close="onClose" round>
         <view class="v-model">
           <view class="vm-title">{{item.CouponName}}</view>
           <view class="vm-tip">申请退券</view>
           <view class="vm-imput">
             <image src="/static/images/bi.png" />
-            <input placeholder="请输入退券数量" placeholder-class="ip"/>
+            <input bindblur="onInputBlur" value="{{backnum}}" placeholder="最多可退数量{{item.ReceiveNUM-item.GiveNUM}}" placeholder-class="ip"/>
           </view>
           <view class="vm-bot">
             <view bindtap="onClose">返回</view>
-            <view style="color:#E85819;border:none">确定</view>
+            <view data-ReceiveID="{{item.ReceiveID}}" data-ReceiveNUM="{{item.ReceiveNUM}}" data-GiveNUM="{{item.GiveNUM}}" bindtap="onEnterBack" style="color:#E85819;border:none">确定</view>
           </view>
         </view>
       </van-popup>

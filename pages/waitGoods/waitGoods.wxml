@@ -5,11 +5,29 @@
         <view wx:if="{{orderstate==2}}" class="v-title">待发货/受理</view>
         <view wx:elif="{{orderstate==3}}" class="v-title">已发货/已受理</view>
         <view wx:elif="{{orderstate==4}}" class="v-title">已完成</view>
-        <navigator url="../businessAccept/businessAccept?type={{type}}&orderid={{orderid}}&orderstate={{orderstate}}">
-        <view class="v-btn" wx:if="{{orderstate==2}}">填写货单</view>
-        <view class="v-btn" wx:elif="{{orderstate==3 || orderstate==4}}">查看货单</view>
+        <navigator url="../businessAccept/businessAccept?orderid={{orderid}}"  wx:if="{{orderstate==2}}">
+          <view class="v-btn">填写货单</view>
+          </navigator>
+          <navigator url="../wuliuMes/wuliuMes?LogisticsNumber={{CourierNumber}}&EC_ID={{EC_ID}}" wx:if="{{orderstate==3 || orderstate==4}}">
+          <view class="v-btn" >查看物流</view>
         </navigator>
     </view>
+
+    <view class="v-mid" wx:if="{{orderstate==3 || orderstate==4}}">
+        <view class="v-name">快递单号</view>
+        <input value="{{ CourierNumber }}" class="v-mes" disabled="false"/>
+    </view>
+
+    <view class="v-mid" wx:if="{{orderstate==3 || orderstate==4}}">
+        <view class="v-name">快递公司</view>
+        <input value="{{ CourierCompany }}" class="v-mes" disabled="false"/>
+    </view>
+    <view class="v-mid" wx:if="{{orderstate==3 || orderstate==4}}">
+        <view class="v-name">快递客服</view>
+        <input value="{{ ExpressTel }}" class="v-mes" disabled="false"/>
+    </view>
+
+
     <view class="v-mid">
         <view class="v-name">收货人</view>
         <view class="v-mes">{{Consignee}}</view>

@@ -41,6 +41,7 @@ Page({
     data.pPageSize = 20;
     data.pState = state
     data.pOrderType = ordertype
+    data.pShopID = app.globalData.AppStaffInfo.ShopID
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GetCouponWriteOffOrderPage", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {
@@ -117,13 +118,11 @@ Page({
   },
 
   JumpwaitGoods: function(e) {
-    var type = e.currentTarget.dataset.type;
     var orderid = e.currentTarget.dataset.orderid;
-    var orderstate = e.currentTarget.dataset.orderstate;
     var writeofftype = e.currentTarget.dataset.writeofftype;
     if (writeofftype == 0) {
       wx.navigateTo({
-        url: '../waitGoods/waitGoods?type=' + type + '&orderid=' + orderid + '&orderstate=' + orderstate,
+        url: '../waitGoods/waitGoods?orderid=' + orderid,
       })
     }
   },

@@ -28,12 +28,12 @@ page {
 }
 
 .v-left {
-    width: 100rpx;
+    width: 160rpx;
     position: relative;
 }
 
 .v-time {
-    width: 80rpx;
+    width: 150rpx;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
