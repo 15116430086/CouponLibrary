@@ -160,7 +160,7 @@ Page({
   },
   Issuing: function() {
     wx.navigateTo({
-      url: '../sendTicketTwo/sendTicketTwo',
+      url: '../sendTicketTwo/sendTicketTwo?edit=1',
     })
   },
   Details: function(event) {

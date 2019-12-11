@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    state:1,//判断是否从发券那边跳转过来  默认不是的
     checked: true,
     type: 0, //0商品，1业务
     productid: '',
@@ -383,7 +384,14 @@ Page({
         duration: 2000
       })
       setTimeout(function() {
-        wx.navigateBack()
+        if (that.data.state==0){
+          wx.navigateBack({
+            url: '../chooseBuyGoods/chooseBuyGoods'
+          });
+        }else{
+          wx.navigateBack()
+        }
+        
       }, 2000);
     }
   },
@@ -397,7 +405,8 @@ Page({
       that.setData({
         productid: options.productid,
         type: options.type,
-        edit: options.edit
+        edit: options.edit,
+        state: options.state
       })
 
       wx.setNavigationBarTitle({
