@@ -11,16 +11,15 @@ Page({
         result: [],
         userlist: [],
         lastpage: 0,
-        checked: true,
-        checked1: true
+        checked: false,
+     
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        let that = this;
-        that.GetData();
+        
 
     },
 
@@ -87,23 +86,31 @@ Page({
         let thispage = pages[pages.length - 1]
         let parPage = pages[pages.length - 2] //上级页面
         let result = that.data.result;
+        var checked=that.data.checked;
         console.log(parPage)
         if (result.length > 0) {
             parPage.setData({
                 pArrProductID: result
             })
-
             wx.setStorageSync("pArrProductKey", result);
-
+           wx.setStorageSync("ArrProductchecked", checked);
             wx.navigateBack({
                 delta: 1
             })
         } else {
-            wx.showToast({
-                title: '请选择关联商品!',
-                icon: 'none',
-                duration: 2000
+          if (checked){//说明是全部产品
+            wx.setStorageSync("ArrProductchecked", checked);
+            wx.navigateBack({
+              delta: 1
             })
+          }else{
+            wx.showToast({
+              title: '请选择关联商品!',
+              icon: 'none',
+              duration: 2000
+            })
+          }
+            
         }
 
     },
@@ -115,31 +122,25 @@ Page({
         let that = this;
         let detail = e.detail;
         let index = e.currentTarget.dataset.index;
-        let checked1 = that.data.checked1;
-        if (index == 1) {
+        let checked = !that.data.checked;
+       
             that.setData({
-                checked: detail
+              checked: checked
             })
-        } else {
-            // 需要手动对 checked 状态进行更新
-            that.setData({
-                checked1: detail
-            });
-        }
-
     },
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
-
+    
+    addcommodity:function() {
+      wx.navigateTo({
+        url: "../goodsEditor/goodsEditor?state=0"
+      })
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+      let that = this;
+      that.GetData();
     },
 
     /**
