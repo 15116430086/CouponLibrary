@@ -68,6 +68,7 @@ Page({
         CourierCompany: json.data[0].CourierCompany,//快递公司
         ExpressTel: json.data[0].ExpressTel,//快递电话
         EC_ID: json.data[0].EC_ID,//快递公司编码
+        writeofftype: json.data[0].WriteOffType,//订单类型 0线下 1线下
       })
     }
   },
