@@ -24,7 +24,8 @@ Page({
         color: "#E85819",
         id: 2
       }
-    ]
+    ],
+    show: -1
   },
 
   onBindBotOneTap: function(event) {
@@ -58,7 +59,6 @@ Page({
     //隐藏 加载中的提示
     wx.hideLoading();
     if (json.flag) {
-      console.log(json.msg);
       if (page == 1) {
         this.setData({
           couponNUM: json.CouponNUM,
@@ -89,6 +89,91 @@ Page({
 
   },
 
+  onInputBlur: function(e) {
+    let value = e.detail.value;
+    this.setData({
+      backnum: value == '' ? 0 : value
+    });
+  },
+  showPop(e) {
+    let index = e.target.dataset.index
+    this.setData({
+      show: index,
+      backnum: ''
+    })
+  },
+  onClose() {
+    this.setData({
+      show: -1
+    });
+  },
+  onEnterBack: function(e) {
+    let that = this;
+    let ReceiveID = e.target.dataset.receiveid
+    let ReceiveNUM = e.target.dataset.receivenum
+    let GiveNUM = e.target.dataset.givenum
+    let oBalanceNum = ReceiveNUM - GiveNUM
+    let backnum = this.data.backnum
+    if (backnum <= 0) {
+      wx.showToast({
+        title: '请输入退券数量！',
+        icon: 'none',
+        duration: 2000
+      })
+
+      return;
+    }
+    if (oBalanceNum < backnum) {
+      wx.showToast({
+        title: '退券数量不能大于(' + oBalanceNum + ')',
+        icon: 'none',
+        duration: 2000
+      })
+
+      return;
+    }
+    //显示 加载中的提示
+    wx.showLoading({
+      title: '退券中...',
+    })
+    var data = {
+      pGroupID: app.globalData.AppGroupInfo.GroupID,
+      pReceiveID: ReceiveID,
+      pBackNUM: backnum
+    }
+
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/BackReceiveCouponInfo", "POST", data, app.globalData.appkeyid, that.ReceiveCouponInfoBack)
+
+  },
+
+  ReceiveCouponInfoBack: function(json) {
+    let that = this;
+    var json = json.data.Data;
+    //隐藏 加载中的提示
+    wx.hideLoading();
+    if (json.flag) {
+      wx.showToast({
+        title: json.msg,
+        icon: 'none',
+        duration: 2000
+      })
+      that.setData({
+        show: -1
+      });
+      setTimeout(function () {
+        page = 1;
+        that.GetData(page);
+      }, 2000);  
+
+    } else {
+      wx.showToast({
+        title: json.msg,
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -107,7 +192,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    let that = this;   
+    let that = this;
     that.setData({
       GroupName: app.globalData.AppGroupInfo.GroupName
     })

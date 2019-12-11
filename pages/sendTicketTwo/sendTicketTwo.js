@@ -238,8 +238,8 @@ Page({
     var json = res.data.Data;
     var list = [];
     if (json.pdudata) {
-      for (var i in json.data) {
-        list.push(json.data[i].ProductID);
+      for (var i in json.pdudata) {
+        list.push(json.pdudata[i].ProductID);
       }
       wx.setStorageSync("pArrProductKey", list);
       that.setData({
