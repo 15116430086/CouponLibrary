@@ -8,7 +8,7 @@
 <view hidden='{{currentId!=0}}' class="mes-block">
     <block wx:for="{{stayorderlist}}" wx:for-index="index" wx:key="WriteOffOrderID">
     <!-- <navigator url="../waitGoods/waitGoods?type={{item.ProductType}}&orderid={{item.WriteOffOrderID}}&orderstate={{item.State}}"> -->
-    <view bindtap="JumpwaitGoods" data-type="{{item.ProductType}}" data-orderid="{{item.WriteOffOrderID}}" data-orderstate="{{item.State}}" data-writeOffType="{{item.WriteOffType}}">
+    <view bindtap="JumpwaitGoods" data-orderid="{{item.WriteOffOrderID}}" data-writeOffType="{{item.WriteOffType}}">
         <view class="mes-top">
             <view class="mes-left">
                 <image wx:if="{{ item.ImageOne=='' }}" src="/static/images/swp.png"></image>
@@ -34,7 +34,7 @@
 <view hidden='{{currentId!=1}}' class="mes-block">
     <block wx:for="{{alreadyorderlist}}" wx:for-index="index" wx:key="WriteOffOrderID">
     <!-- <navigator url="../waitGoods/waitGoods?type={{item.ProductType}}&orderid={{item.WriteOffOrderID}}&orderstate={{item.State}}"> -->
-    <view bindtap="JumpwaitGoods" data-type="{{item.ProductType}}" data-orderid="{{item.WriteOffOrderID}}" data-orderstate="{{item.State}}" data-writeOffType="{{item.WriteOffType}}">
+    <view bindtap="JumpwaitGoods" data-orderid="{{item.WriteOffOrderID}}" data-writeOffType="{{item.WriteOffType}}">
         <view class="mes-top">
             <view class="mes-left">
                 <image wx:if="{{ item.ImageOne=='' }}" src="/static/images/swp.png"></image>
@@ -60,7 +60,7 @@
 <view hidden='{{currentId!=2}}' class="mes-block">
     <block wx:for="{{completedorderlist}}" wx:for-index="index" wx:key="WriteOffOrderID">
     <!-- <navigator url="../waitGoods/waitGoods?type={{item.ProductType}}&orderid={{item.WriteOffOrderID}}&orderstate={{item.State}}"> -->
-    <view bindtap="JumpwaitGoods" data-type="{{item.ProductType}}" data-orderid="{{item.WriteOffOrderID}}" data-orderstate="{{item.State}}" data-writeOffType="{{item.WriteOffType}}">
+    <view bindtap="JumpwaitGoods" data-orderid="{{item.WriteOffOrderID}}" data-writeOffType="{{item.WriteOffType}}">
         <view class="mes-top">
             <view class="mes-left">
                 <image wx:if="{{ item.ImageOne=='' }}" src="/static/images/swp.png"></image>

@@ -117,13 +117,11 @@ Page({
   },
 
   JumpwaitGoods: function(e) {
-    var type = e.currentTarget.dataset.type;
     var orderid = e.currentTarget.dataset.orderid;
-    var orderstate = e.currentTarget.dataset.orderstate;
     var writeofftype = e.currentTarget.dataset.writeofftype;
     if (writeofftype == 0) {
       wx.navigateTo({
-        url: '../waitGoods/waitGoods?type=' + type + '&orderid=' + orderid + '&orderstate=' + orderstate,
+        url: '../waitGoods/waitGoods?orderid=' + orderid,
       })
     }
   },

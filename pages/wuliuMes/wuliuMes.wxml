@@ -1,5 +1,6 @@
 <!-- pages/wuliuMes/wuliuMes.wxml -->
 <view class="v-box">
+<block wx:for="{{stayorderlist}}" wx:for-index="index" wx:key="WriteOffOrderID">
     <view class="v-block">
         <view class="v-left">
             <view class="v-time">
@@ -14,46 +15,5 @@
             【上海市】 【顾村自然居】（021-66036063、660307 35、66030732、66030752） 的 李永洪（1381848053 2） 已揽收
         </view>
     </view>
-    <view class="v-block">
-        <view class="v-left">
-            <view class="v-time">
-                <view>09-17</view>
-                <view>20:12</view>
-            </view>
-             <view class="v-line">
-                <view ></view>
-            </view>
-        </view>
-        <view class="v-right">
-            【上海市】李永洪（1381848053 2） 已揽收
-        </view>
-    </view>
-    <view class="v-block">
-        <view class="v-left">
-            <view class="v-time">
-                <view>09-17</view>
-                <view>20:12</view>
-            </view>
-            <view class="v-line">
-                <view ></view>
-            </view>
-        </view>
-        <view class="v-right">
-            【长沙市】  
-        </view>
-    </view>
-    <view class="v-block">
-        <view class="v-left">
-            <view class="v-time">
-                <view>09-17</view>
-                <view>20:12</view>
-            </view>
-             <view class="v-line">
-                <view ></view>
-            </view>
-        </view>
-        <view class="v-right">
-            【长沙市】 快件离开  
-        </view>
-    </view>
+</<block>
 </view>
