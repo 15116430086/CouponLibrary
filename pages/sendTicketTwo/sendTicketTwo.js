@@ -1,7 +1,7 @@
 // pages/sendTicketTwo/sendTicketTwo.js
 let app = getApp();
 let utils = require("../../utils/util.js")
-
+var edit = 1;
 Page({
 
   /**
@@ -149,7 +149,8 @@ Page({
    */
   onLoad: function(options) {
     wx.setStorageSync("pArrProductKey", "");
-    var edit = 0;
+    wx.setStorageSync("ArrProductchecked", "");
+   
     if (options.edit) {
       edit = options.edit
       this.setData({
@@ -286,6 +287,17 @@ Page({
       pCoupon_Info.IsAppointProduct = 1; //指定商品
     }
 
+    if (wx.getStorageSync("ArrProductchecked") == false) {//如果是指定商品
+
+      if (that.data.pArrProductID.length == 0){
+        wx.showToast({
+          title: "请选择商品!",
+          icon: "none",
+          duration: 1500
+        });
+        return
+      }
+    }
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pArrProductID = utils.syJsonSafe(that.data.pArrProductID);
     pCoupon_Info.GroupID = app.globalData.AppGroupInfo.GroupID;
@@ -486,6 +498,7 @@ Page({
       })
      
     } else {
+      wx.setStorageSync("ArrProductchecked", "");//清除线上全部缓存
       that.setData({
         hexiao: "线下消费",
         idb: id,
@@ -695,7 +708,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.setData({
+      edit: edit
+    })
     var productList = wx.getStorageSync("pArrProductKey");
     if (productList.length > 0) {
       this.setData({
