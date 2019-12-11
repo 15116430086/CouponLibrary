@@ -41,6 +41,7 @@ Page({
     data.pPageSize = 20;
     data.pState = state
     data.pOrderType = ordertype
+    data.pShopID = app.globalData.AppStaffInfo.ShopID
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GetCouponWriteOffOrderPage", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {
