@@ -2,7 +2,7 @@
 
 page {
     background-color: #EDEDED;
-    height: 110%;
+    height: 100%;
 }
 
 .v-top {
@@ -68,7 +68,7 @@ page {
 }
 
 .v-box {
-    margin-top: 20rpx;
+    /* margin-top: 20rpx; */
     width: 100%;
     height: auto;
     background-color: #FFF;
@@ -127,4 +127,82 @@ page {
     margin: 40rpx auto;
     background: rgba(232, 88, 25, 1);
     border-radius: 20rpx;
+}
+
+.v-add {
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
+    height: 98rpx;
+    line-height: 98rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.va-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.va-left image {
+    width: 46rpx;
+    height: 46rpx;
+    flex-shrink: 0;
+    margin-left: 20rpx;
+}
+
+.va-left view {
+    margin-left: 20rpx;
+    color: #016FB4;
+    font-size: 32rpx;
+}
+
+.va-arr {
+    width: 14rpx;
+    height: 24rpx;
+    flex-shrink: 0;
+}
+
+.home-title {
+    color: #666666;
+    font-size: 32rpx;
+    font-weight: 500;
+}
+
+.bot-block {
+    width: calc(100% - 80rpx);
+    height: 98rpx;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home-box {
+    width: 100%;
+    height: auto;
+    padding-bottom: 128rpx;
+}
+
+.cG-img {
+    width: 230rpx;
+    height: 130rpx;
+    flex-shrink: 0;
+    margin-bottom: 40rpx;
+}
+
+.v-img {
+    position: relative;
+    top: 500rpx;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #999999;
+    font-size: 32rpx;
 }
