@@ -30,6 +30,7 @@ Page({
     CourierCompany:"",//快递公司
     ExpressTel:"",//快递电话
     EC_ID:"",//快递公司编码
+    ProductType:0,//商品类型0普通购物1业务办理
   },
 
   GetData: function () {
@@ -68,6 +69,7 @@ Page({
         CourierCompany: json.data[0].CourierCompany,//快递公司
         ExpressTel: json.data[0].ExpressTel,//快递电话
         EC_ID: json.data[0].EC_ID,//快递公司编码
+        ProductType: json.data[0].ProductType
       })
     }
   },
