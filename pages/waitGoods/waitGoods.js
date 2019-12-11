@@ -29,6 +29,7 @@ Page({
     CourierNumber:"",//快递单号
     CourierCompany:"",//快递公司
     ExpressTel:"",//快递电话
+    EC_ID:"",//快递公司编码
   },
 
   GetData: function () {
@@ -66,6 +67,7 @@ Page({
         CourierNumber: json.data[0].CourierNumber,//快递单号
         CourierCompany: json.data[0].CourierCompany,//快递公司
         ExpressTel: json.data[0].ExpressTel,//快递电话
+        EC_ID: json.data[0].EC_ID,//快递公司编码
       })
     }
   },

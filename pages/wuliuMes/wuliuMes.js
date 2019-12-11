@@ -1,4 +1,4 @@
-pages/wuliuMes/wuliuMes.js
+//pages/wuliuMes/wuliuMes.js
 var utils = require("../../utils/util.js")
 const app = getApp();
 Page({
@@ -7,17 +7,45 @@ Page({
    * 页面的初始数据
    */
   data: {
-    expressList:[]
+    expressList:[],
+    EC_ID: "",//快递公司编码
+    CourierNumber: "",//快递单号
   },
 
-
+  GetData: function () {
+    let that = this;
+    //显示 加载中的提示
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    var data = {};
+    data.EC_ID = that.data.EC_ID;
+    data.LogisticsNumber = that.data.CourierNumber;
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/Logisticsinformation", "POST", data, app.globalData.appkeyid, that.GetDataBack)
+  },
+  GetDataBack: function (json) {
+    let that = this;
+    var json = json.data.Data;
+    var ht = JSON.parse(json.html);
+    wx.hideLoading();
+    if (ht.Traces.length>0) {
+      that.setData({
+        expressList: ht.Traces.reverse()
+      })
+    }
+  },
 
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let that = this;
+    that.setData({
+      EC_ID: options.EC_ID,
+      CourierNumber: options.LogisticsNumber,
+    })
+    that.GetData();
   },
 
   /**
