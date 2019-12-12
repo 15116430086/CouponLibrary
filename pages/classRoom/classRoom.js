@@ -1,22 +1,30 @@
 // pages/classRoom/classRoom.js
+var utils = require("../../utils/util.js")
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    url:"https://www.baidu.com"
+    pageIndex:1,
+    pageSize:10,
+    datalist:{},
+    isRefresh:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var data={
+      pPageIndex: this.data.pageIndex,
+      pPageSize: this.data.pageSize
+    };
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponHomeView/GetQuestionBank", "POST", data, app.globalData.appkeyid, this.GetQuestionBank)
   },
   jumpWeb(e){
-    let url = e.currentTarget.dataset.url;
-    url = this.data.url;
+    var url = e.currentTarget.dataset.url;
     wx.navigateTo({
       url: '../webView/webView?url='+url,
     })
@@ -24,8 +32,37 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
+  GetQuestionBank: function (res) {
+    var chat=this;
+    var json=res.data.Data;
+    if(json.flag){
+      if (chat.data.pageIndex==1){
+        chat.setData({
+          pageIndex: chat.data.pageIndex+1,
+          datalist: json.data
+        });
+      }else{
+        var list = chat.data.datalist
+        var newlists = list.concat(json.data) //合并数据 res.data 你的数组数据
+        chat.setData({
+          datalist: newlists,
+          pageIndex:chat.data.pageIndex+1
+        });
+      }
+    }else{
+      if (chat.data.pageIndex == 1){
+        wx.showToast({
+          title: json.msg,
+          icon: "暂无数据"
+        });
+      }else{
+        chat.setData({
+          isRefresh:false
+        });
+        
+      }
+      
+    }
   },
 
   /**
@@ -60,6 +97,11 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    var data = {
+      pPageIndex: this.data.pageIndex,
+      pPageSize: this.data.pageSize
+    };
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponHomeView/GetQuestionBank", "POST", data, app.globalData.appkeyid, this.GetQuestionBank)
 
   },
 
