@@ -10,14 +10,19 @@ Page({
   data: {
     CouponCount: null,
     lastpage: 0,
-    GroupName:"",
-    noticeList:[
-      {title:"A商家领用了100张【10元现金券】"},
-      { title: "B商家领用了100张【10元现金券】" },
-      { title: "C商家领用了100张【10元现金券】" },
+    GroupName: "",
+    noticeList: [{
+        title: "A商家领用了100张【10元现金券】"
+      },
+      {
+        title: "B商家领用了100张【10元现金券】"
+      },
+      {
+        title: "C商家领用了100张【10元现金券】"
+      },
     ]
   },
-  onWxScanCode: function () {
+  onWxScanCode: function() {
     // wx.navigateTo({
     //   url: '../scanCheck/scanCheck?CouponCode=100701'
     // }); 
@@ -25,18 +30,18 @@ Page({
       success(res) {
         console.log(res)
         wx.navigateTo({
-          url: '../scanCheck/scanCheck?CouponCode='+res.result
-        });                        
+          url: '../scanCheck/scanCheck?CouponCode=' + res.result
+        });
       }
     })
   },
-  GetData: function () {
+  GetData: function() {
     let that = this;
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponHomeView/GetHomeCouponCount", "POST", data, app.globalData.appkeyid, that.GetDataBack)
   },
-  GetDataBack: function (json) {
+  GetDataBack: function(json) {
     let that = this;
     console.log(json);
     var data = json.data.Data;
@@ -48,74 +53,81 @@ Page({
     }
   },
 
-Jumptap:function(){
-   wx.navigateTo({
-     url: '../getTicketList/getTicketList?quick=0',
-   })
-},
+  Jumptap: function() {
+    wx.navigateTo({
+      url: '../getTicketList/getTicketList?quick=0',
+    })
+  },
 
-  noticetap:function(){
+  noticetap: function() {
     wx.navigateTo({
       url: '../sysNotice/sysNotice',
     })
   },
 
 
-  JumpwatchMesOne:function(e){
+  JumpwatchMesOne: function(e) {
     var releaseid = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../watchMesOne/watchMesOne?releaseid=' + releaseid,
     })
   },
 
-  perfecttap: function (e) {
+  perfecttap: function(e) {
     let index = e.currentTarget.dataset.index;
     console.log(index)
-    switch(index){
-      case "1":
-       wx.navigateTo({
-        url: '../classRoom/classRoom',
-      });
-      break;
+    switch (index) {
+      case "19":
+        wx.navigateTo({
+          url: '../classRoom/classRoom',
+        });
+        break;
 
-      case "2": 
-      wx.showToast({
-        image: '/static/images/dp.png',
-        title: '功能正在完善中',
-        icon: 'none',
-        duration: 2000
-      });
+      case "29":
+        wx.showToast({
+          image: '/static/images/dp.png',
+          title: '功能正在完善中',
+          icon: 'none',
+          duration: 2000
+        });
         break;
-      case "3": 
-      wx.showToast({
-        image: '/static/images/dp.png',
-        title: '功能正在完善中',
-        icon: 'none',
-        duration: 2000
-      });
+      case "39":
+        wx.showToast({
+          image: '/static/images/dp.png',
+          title: '功能正在完善中',
+          icon: 'none',
+          duration: 2000
+        });
         break;
+      default:
+        wx.showToast({
+          image: '/static/images/dp.png',
+          title: '功能正在完善中',
+          icon: 'none',
+          duration: 2000
+        });
     }
-    
+
   },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     let that = this;
     that.setData({
       GroupName: app.globalData.AppGroupInfo.GroupName
@@ -126,35 +138,35 @@ Jumptap:function(){
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
     console.log("返回");
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

@@ -59,7 +59,7 @@
         <image src="{{item.Image}}"></image>
         <view>{{item.Name}}</view>
       </navigator>
-      <navigator url="{{item.Url}}" wx:else bindtap="{{item.bindtap}}" hover-class="none">
+      <navigator url="{{item.Url}}" wx:else bindtap="{{item.bindtap}}" data-index="{{index}}" hover-class="none">
         <image src="{{item.Image}}"></image>
         <view>{{item.Name}}</view>
       </navigator>
@@ -70,8 +70,8 @@
 
   <!-- 辅助页 还没开发 -->
   <view class="home-bot">
-    <view bindtap="perfecttap" data-index="1">券库讲堂</view>
-    <view bindtap="perfecttap" data-index="2">在线客服</view>
-    <view bindtap="perfecttap" data-index="3">投诉建议</view>
+    <view bindtap="perfecttap" data-index="19">券库讲堂</view>
+    <view bindtap="perfecttap" data-index="29">在线客服</view>
+    <view bindtap="perfecttap" data-index="39">投诉建议</view>
   </view>
 </view>
