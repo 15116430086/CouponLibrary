@@ -1,67 +1,79 @@
+.tic-all {
+  width: 100%;
+  height: 240rpx;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+}
+
 .ticket-box {
-    width: 100%;
-    height: 240rpx;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 20rpx;
-    background-color: #ffffff;
-    /* border-bottom: 0.3px solid #EFEFEF; */
+  width: calc(100% - 80rpx);
+  height: 100%;
+  margin: 0px auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* border-bottom: 0.3px solid #EFEFEF; */
 }
 
 .ticket-img {
-    width: 168rpx;
-    height: 168rpx;
-    margin-left: 40rpx;
-    border-radius: 10rpx;
+  width: 168rpx;
+  height: 168rpx;
+  border-radius: 10rpx;
+  flex-shrink: 0;
 }
 
 .ticket-mes {
-    height: 168rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-left: 30rpx;
-    flex-shrink: 1;
+  width: calc(100% - 208rpx);
+  height: 168rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 20rpx;
+  
 }
 
 .ticket-sec {
-    font-size: 24rpx;
-    font-weight: 500;
-    line-height: 34rpx;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+  font-size: 24rpx;
+  font-weight: 500;
+  line-height: 34rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .ticket-secimg {
-    margin-right: 16rpx;
-    width: 31rpx;
-    height: 31rpx;
-     position: relative;
-    /* top: 5rpx; */
-    left: 5rpx;
+  margin-right: 16rpx;
+  width: 31rpx;
+  height: 31rpx;
+  position: relative;
+  /* top: 5rpx; */
+  left: 5rpx;
 }
 
 .ticket-sec text {
-    width: 428rpx;
+  width: 428rpx;
 }
 
 .ticket-mes-p {
-    font-size: 32rpx;
-    font-weight: 600;
-    line-height: 44rpx;
-    color: rgba(51, 51, 51, 1);
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 32rpx;
+  font-weight: 600;
+  line-height: 44rpx;
+  color: rgba(51, 51, 51, 1);
 }
 
 .ticket-mes-ul {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 24rpx;
-    font-weight: 500;
-    line-height: 34rpx;
-    color: rgba(153, 153, 153, 1);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24rpx;
+  font-weight: 500;
+  line-height: 34rpx;
+  color: rgba(153, 153, 153, 1);
 }
