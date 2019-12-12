@@ -18,7 +18,7 @@
         <image src="/static/images/serch.png" background-size="cover" style="margin-left:14rpx;margin-right:10rpx" />
         <input value="" placeholder="输入商户" placeholder-class="ip" bindinput="GroupNameInput" bindtap="onSearch" />
       </view>
-      <image src="/static/images/err.png" background-size="cover" style="margin-right:15rpx;" bindtap="onClear" v-if="flag==1" />
+      <!-- <image src="/static/images/err.png" background-size="cover" style="margin-right:15rpx;" catchtap="onClear" v-if="flag==1" /> -->
     </view>
     <view class="home-btn" bindtap="search">搜索</view>
   </view>
