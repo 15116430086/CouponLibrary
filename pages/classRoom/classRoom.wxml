@@ -1,12 +1,9 @@
 <!--pages/classRoom/classRoom.wxml-->
-<block></block>
 <view class="v-box">
+<block wx:for="{{datalist}}">
   <view class="v-block">
-    <view class="v-txt">手机丢了怎么办？</view>
+    <view class="v-txt" data-url="{{item.Content}}" bindtap="jumpWeb">{{item.Title}}</view>
     <image src="/static/images/right-arr1.png"></image>
   </view>
-  <view class="v-block">
-    <view class="v-txt" data-url="{{url}}" bindtap="jumpWeb">手机如何找回？</view>
-    <image src="/static/images/right-arr1.png"></image>
-  </view>
+  </block>
 </view>
