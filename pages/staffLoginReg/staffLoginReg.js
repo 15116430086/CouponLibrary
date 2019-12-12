@@ -53,8 +53,7 @@ Page({
     var data = {};
     data.Text = res.encryptedData;
     data.AesIV = res.iv;
-    data.code = app.globalData.logincode;
-    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.code = app.globalData.logincode;   
     data.ShopID = this.data.ShopID;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/AddStaff", "POST", data, app.globalData.appkeyid, this.getUserInfoBack)
   },
