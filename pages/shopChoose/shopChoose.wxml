@@ -101,7 +101,7 @@
       <block wx:for="{{huanlist}}" wx:for-index="index">
         <view class="m-block">
           <view class="mb-right">
-            <image src="/static/images/swp.png" />
+          <image src="{{item.ImageOne==''?'/static/images/swp.png':item.ImageOne}}" />
             <view class="mb-txt">{{item.GroupName}}</view>
           </view>
           <image src="/static/images/cha2.png" data-index="{{index}}" catchtap="deletetap" class="m-cha" />
