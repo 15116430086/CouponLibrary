@@ -15,15 +15,12 @@ Page({
    */
   onLoad: function(options) {
     var data = decodeURIComponent(options.q).split('=');
-    if (data.length==2)
-    {
+    if (data.length == 2) {
       var shopID = data[1];
       this.setData({
         ShopID: shopID
       });
-    }
-    else
-    {
+    } else {
       wx.reLaunch({
         url: '../login/login',
       })
@@ -66,10 +63,19 @@ Page({
     var json = res.data.Data;
     if (json.flag) {
       if (json.flag && json.state == 3) {
-        wx.setStorageSync('appkeyid', json.data)
-        wx.reLaunch({
-          url: '../home/home',
-        })
+        wx.setStorageSync('miniappkeyid', json.data)
+        var appkeyid = wx.getStorageSync('miniappkeyid');
+        if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
+          app.globalData.appkeyid = appkeyid.FSessionKey;
+          var loginInfo = JSON.parse(appkeyid.FContent);
+          app.globalData.AppWxUserInfo = loginInfo.AppWxUserInfo;
+          app.globalData.AppStaffInfo = loginInfo.AppStaffInfo;
+          app.globalData.AppGroupInfo = loginInfo.AppGroupInfo;
+          app.globalData.AppShopInfo = loginInfo.AppShopInfo;
+          wx.reLaunch({
+            url: '../home/home',
+          })
+        }
       }
     } else {
       wx.showToast({

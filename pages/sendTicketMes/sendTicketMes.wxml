@@ -41,7 +41,7 @@
       overlay
       safe-area-inset-bottom
     >
-      <van-picker show-toolbar columns="{{shoplist}}" valueKey="ShopName" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
+      <van-picker show-toolbar columns="{{shoplist}}"  valueKey="ShopName" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
     </van-popup>
 
     <!-- 券类型 -->
