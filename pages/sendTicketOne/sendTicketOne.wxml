@@ -42,7 +42,7 @@
           <!-- 是哪个状态就用哪个颜色 -->
           <view wx:if="{{item.ReleaseIDs && item.Couponstatus==1}}" style=" color:#F08002" data-CouponID="{{item.CouponID}}" bindtap="Details">待审核</view>
           <view wx:elif="{{item.ReleaseIDs && item.Couponstatus==0}}" style=" color:#016FB4" data-CouponID="{{item.CouponID}}" bindtap="Details">待支付</view>
-          <view wx:elif="{{item.ReleaseIDs && item.Couponstatus==2}}" data-CouponID="{{item.CouponID}}" bindtap="Details">待支付</view>
+          <view wx:elif="{{item.ReleaseIDs && item.Couponstatus==2}}" data-CouponID="{{item.CouponID}}" bindtap="Details">查看明细</view>
           <view wx:else style=" color:#CCCCCC" data-CouponID="{{item.CouponID}}" data-CouponName="{{item.CouponName}}" bindtap="delCoupon">删除券</view>
 
         </view>

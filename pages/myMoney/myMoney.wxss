@@ -112,6 +112,7 @@ page {
 .v-all {
     width: 100%;
     height: auto;
+    margin-top: 20rpx;
     background-color: #FFFFFF;
 }
 

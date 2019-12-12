@@ -51,6 +51,7 @@ Page({
       }
     ],
     idb: "",
+    ArrProductchecked:false,
     shareshow1: false,
     getItem2: [{
         id: '001',
@@ -149,7 +150,7 @@ Page({
    */
   onLoad: function(options) {
     wx.setStorageSync("pArrProductKey", "");
-    wx.setStorageSync("ArrProductchecked", "");
+    wx.setStorageSync("ArrProductchecked", false);
    
     if (options.edit) {
       edit = options.edit
@@ -287,7 +288,7 @@ Page({
       pCoupon_Info.IsAppointProduct = 1; //指定商品
     }
 
-    if (wx.getStorageSync("ArrProductchecked") == false) {//如果是指定商品
+    if (!this.data.ArrProductchecked && pCoupon_Info.WriteOffType == 0) {//如果是指定商品 并且是线上消费
 
       if (that.data.pArrProductID.length == 0){
         wx.showToast({
@@ -471,9 +472,11 @@ Page({
       });
     }
   },
-
-
-
+  jumpChoose:function(){
+    wx.navigateTo({
+      url: '../chooseBuyGoods/chooseBuyGoods',
+    })
+  },
   // 核销方式
   clickRule1(e) {
     var that = this;
@@ -498,7 +501,8 @@ Page({
       })
      
     } else {
-      wx.setStorageSync("ArrProductchecked", "");//清除线上全部缓存
+      wx.setStorageSync("ArrProductchecked", false);//清除线上全部缓存
+      wx.setStorageSync("pArrProductKey", "");
       that.setData({
         hexiao: "线下消费",
         idb: id,
@@ -708,8 +712,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+     var checked= wx.getStorageSync("ArrProductchecked");
     this.setData({
-      edit: edit
+      edit: edit,
+      ArrProductchecked: checked
     })
     var productList = wx.getStorageSync("pArrProductKey");
     if (productList.length > 0) {

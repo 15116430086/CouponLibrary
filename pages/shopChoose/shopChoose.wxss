@@ -89,7 +89,7 @@ page {
 .v-box {
     /* margin-top: 20rpx; */
     width: 100%;
-    height: calc(100% - 280rpx);
+    height: calc(100% - 228rpx);
     margin-top: 100rpx;
     background-color: #FFF;
     overflow: scroll;

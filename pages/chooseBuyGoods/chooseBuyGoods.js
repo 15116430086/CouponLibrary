@@ -87,30 +87,30 @@ Page({
         let parPage = pages[pages.length - 2] //上级页面
         let result = that.data.result;
         var checked=that.data.checked;
-        console.log(parPage)
-        if (result.length > 0) {
+        if (checked){
+
+          //说明是全部产品
+            wx.setStorageSync("ArrProductchecked", checked);
+            wx.setStorageSync("pArrProductKey", "");
+            wx.navigateBack({
+              delta: 1
+            })
+        }
+        else if (result.length > 0) {
             parPage.setData({
                 pArrProductID: result
             })
             wx.setStorageSync("pArrProductKey", result);
-           wx.setStorageSync("ArrProductchecked", checked);
+            wx.setStorageSync("ArrProductchecked", checked);
             wx.navigateBack({
                 delta: 1
             })
         } else {
-          if (checked){//说明是全部产品
-            wx.setStorageSync("ArrProductchecked", checked);
-            wx.navigateBack({
-              delta: 1
-            })
-          }else{
             wx.showToast({
               title: '请选择关联商品!',
               icon: 'none',
               duration: 2000
             })
-          }
-            
         }
 
     },

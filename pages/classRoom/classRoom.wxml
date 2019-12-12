@@ -1,0 +1,9 @@
+<!--pages/classRoom/classRoom.wxml-->
+<view class="v-box">
+<block wx:for="{{datalist}}">
+  <view class="v-block">
+    <view class="v-txt" data-url="{{item.Content}}" bindtap="jumpWeb">{{item.Title}}</view>
+    <image src="/static/images/right-arr1.png"></image>
+  </view>
+  </block>
+</view>

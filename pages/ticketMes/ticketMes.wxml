@@ -8,7 +8,7 @@
   <view class="home-mes">
     <view class="home-groupName">{{datalist[0].CouponName}}</view>
     <view class="home-tishi">
-      <view class="ht-left">到店专享 | 无条件使用</view>
+      <view class="ht-left">到店专享 | 凭使用规则使用</view>
       <view class="ht-right">已销量 {{datalist[0].ReceiveNUM}}</view>
     </view>
   </view>
