@@ -472,9 +472,11 @@ Page({
       });
     }
   },
-
-
-
+  jumpChoose:function(){
+    wx.navigateTo({
+      url: '../chooseBuyGoods/chooseBuyGoods',
+    })
+  },
   // 核销方式
   clickRule1(e) {
     var that = this;
