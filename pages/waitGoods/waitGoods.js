@@ -73,7 +73,24 @@ Page({
         ProductType: json.data[0].ProductType
       })
     }
+    if (that.data.orderstate==2){
+      wx.setNavigationBarTitle({
+        title:'待发货/受理'
+      })
+    }
+    if (that.data.orderstate == 3) {
+      wx.setNavigationBarTitle({
+        title:'已发货/受理' 
+      })
+    }
+    if (that.data.orderstate == 4) {
+      wx.setNavigationBarTitle({
+        title: '已完成' 
+      })
+    }
   },
+
+
 
 
   /**
