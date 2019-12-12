@@ -5,7 +5,7 @@
     flex-direction: row;
     align-items: center;
     border-top: 1px solid #EDEDED;
-    border-bottom: 1px solid #EDEDED;
+    /* border-bottom: 1px solid #EDEDED; */
 }
 
 .ticketShop-one {
@@ -15,8 +15,12 @@
     line-height: 34rpx;
     color: rgba(153, 153, 153, 1);
     margin-left: 40rpx;
+    width: 200rpx;
 }
-
+.ticketShop-one view{
+  
+  white-space: nowrap;
+}
 .tsone-one {
     font-size: 28rpx;
     font-weight: 600;
@@ -26,7 +30,9 @@
 }
 
 .ticketShop-two {
-    margin-left: 70rpx;
+    margin-left: 55rpx;
+    margin-right: 40rpx;
+    width: calc(100% - 340rpx);
     font-size: 24rpx;
     font-weight: 500;
     line-height: 34rpx;
@@ -34,6 +40,10 @@
 }
 
 .tstwo-one {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-size: 28rpx;
     font-weight: 600;
     line-height: 40rpx;

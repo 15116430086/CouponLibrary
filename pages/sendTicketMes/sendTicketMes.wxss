@@ -24,26 +24,37 @@ page {
 }
 
 .home-span {
-    width: 30%;
+    width: 32%;
     white-space: nowrap;
     /* margin-right: 20rpx; */
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     color: #666666;
     font-size: 28rpx;
     background-color: #f4f4f4;
     border-radius: 20rpx;
     height: 60rpx;
+    position: relative;
 }
+.home-span view{
+  width: calc(100% - 35rpx);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  left: -10rpx;
 
+}
 .home-span image {
     display: block;
-    flex-shrink: 1;
+    flex-shrink: 0;
     width: 14rpx;
     height: 10rpx;
-    margin-left: 40rpx;
+    position: absolute;
+    right: 10rpx;
     border-radius: 10rpx;
 }
 
@@ -89,7 +100,7 @@ text-overflow:ellipsis;
 white-space:nowrap;
     color: #333333;
     font-size: 28rpx;
-    margin-bottom: 10rpx;
+    /* margin-bottom: 10rpx; */
 }
 
 .stm-bot {
