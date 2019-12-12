@@ -1,45 +1,58 @@
 <!-- 搜索框 -->
-<view class="v-top">
-  <view class="home-top">
-    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcancel="bindMultiPickerCancel" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
-      <view class="home-span">
-        <view>{{RegionName}}</view>
+<view class="v-all">
+  <view class="v-top">
+    <view class="home-top">
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcancel="bindMultiPickerCancel" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
+        <view class="home-span">
+          <view>{{RegionName}}</view>
+          <image src="/static/images/sel.png" />
+        </view>
+      </picker>
+
+      <view class="home-span" bindtap="showPopup2">
+        <view>{{industryName}}</view>
         <image src="/static/images/sel.png" />
       </view>
-    </picker>
 
-    <view class="home-span" bindtap="showPopup2">
-      <view>{{industryName}}</view>
-      <image src="/static/images/sel.png" />
-    </view>
-
-    <view class="search-box">
-      <view class="search-left">
-        <image src="/static/images/serch.png" background-size="cover" style="margin-left:14rpx;margin-right:10rpx" />
-        <input value="" placeholder="输入商户" placeholder-class="ip" bindinput="GroupNameInput" bindtap="onSearch" />
+      <view class="search-box">
+        <view class="search-left">
+          <image src="/static/images/serch.png" background-size="cover" style="margin-left:14rpx;margin-right:10rpx" />
+          <input value="" placeholder="输入商户" placeholder-class="ip" bindinput="GroupNameInput" bindtap="onSearch" />
+        </view>
+        <!-- <image src="/static/images/err.png" background-size="cover" style="margin-right:15rpx;" catchtap="onClear" v-if="flag==1" /> -->
       </view>
-      <!-- <image src="/static/images/err.png" background-size="cover" style="margin-right:15rpx;" catchtap="onClear" v-if="flag==1" /> -->
+      <view class="home-btn" bindtap="search">搜索</view>
     </view>
-    <view class="home-btn" bindtap="search">搜索</view>
+  </view>
+
+  <view class="v-box">
+    <van-checkbox-group value="{{ result }}" catch:change="onChange">
+      <block wx:for="{{Grouplist}}" wx:for-index="index" wx:key="GroupID">
+        <view class="v-block">
+          <view class="v-left">
+            <image src="{{item.ImageOne==''?'/static/images/swp.png':item.ImageOne}}" />
+            <view class="v-mid">
+              <view class="v-t">{{item.GroupName}}</view>
+              <view class="v-b">{{item.Introduction}}</view>
+            </view>
+          </view>
+          <van-checkbox name="{{index}}" checked-color="#E85819"></van-checkbox>
+        </view>
+      </block>
+    </van-checkbox-group>
+  </view>
+  <view class="v-bot-btn">
+    <view class="v-btn">
+      <view class="vb-left" bindtap="shoptap">
+        <image src="/static/images/ok.png" />
+        <view class="vb-txt">已选择
+          <text>{{result.length}}</text>个店铺</view>
+      </view>
+      <view class="vb-right" bindtap="isChoice">确认选择</view>
+    </view>
   </view>
 </view>
 
-<view class="v-box">
-  <van-checkbox-group value="{{ result }}" catch:change="onChange">
-    <block wx:for="{{Grouplist}}" wx:for-index="index" wx:key="GroupID">
-      <view class="v-block">
-        <view class="v-left">
-          <image src="{{item.ImageOne==''?'/static/images/swp.png':item.ImageOne}}" />
-          <view class="v-mid">
-            <view class="v-t">{{item.GroupName}}</view>
-            <view class="v-b">{{item.Introduction}}</view>
-          </view>
-        </view>
-        <van-checkbox name="{{index}}" checked-color="#E85819"></van-checkbox>
-      </view>
-    </block>
-  </van-checkbox-group>
-</view>
 
 
 
@@ -69,16 +82,7 @@
 </view> -->
 
 
-<view class="v-bot-btn">
-  <view class="v-btn">
-    <view class="vb-left" bindtap="shoptap">
-      <image src="/static/images/ok.png" />
-      <view class="vb-txt">已选择
-        <text>{{result.length}}</text>个店铺</view>
-    </view>
-    <view class="vb-right" bindtap="isChoice">确认选择</view>
-  </view>
-</view>
+
 
 
 
