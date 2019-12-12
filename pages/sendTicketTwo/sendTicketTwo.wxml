@@ -66,7 +66,8 @@
       <view class="bot-left">
         <view class="{{idb?'':'pclass'}}">{{hexiao}}</view>
 
-        <text wx:if="{{pArrProductID.length>0}}" bindtap="jumpChoose">已选{{pArrProductID.length}}个商品</text>
+        <text wx:if="{{ArrProductchecked}}" bindtap="jumpChoose">已选全部商品</text>
+         <text wx:elif="{{pArrProductID.length>0}}" bindtap="jumpChoose">已选{{pArrProductID.length}}个商品</text>
         <text wx:elif="{{idb=='001'}}" bindtap="jumpChoose">(请选择受理商品/业务)</text>
 
       </view>
@@ -160,6 +161,6 @@
     </view>
   </view>
   <view class="app-bot" wx:if="{{edit=='1'}}">
-    <button class="playBtn" disabled="{{edit=='0'}}"  formType="submit">开始发券</button>
+    <button class="playBtn" formType="submit">开始发券</button>
   </view>
 </form>

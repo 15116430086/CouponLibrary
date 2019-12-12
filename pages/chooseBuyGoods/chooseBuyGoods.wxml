@@ -1,6 +1,6 @@
 <view class="home-box">
     <view class="v-top">
-        <view class="v-add">
+        <view class="v-add" bindtap="addcommodity">
             <view class="va-left">
                 <image src="/static/images/lanadd.png" />
                 <view>添加商品</view>
@@ -18,14 +18,14 @@
             <view class="bot-block">
                 <view class="home-title">指定商品</view>
                 <view class="home-right">
-                    <van-switch checked="{{ checked1 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="swChange" data-index="2" />
+                    <van-switch checked="{{ !checked }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="swChange" data-index="2" />
                 </view>
             </view>
         </block>
         <!-- 搜索框 -->
         <!-- 加block的地方做判断  显示有无 -->
         <block>
-            <view class="home-top">
+            <view class="home-top" wx:if="{{ 1==0 }}">
                 <view class="search-box">
                     <view class="search-left">
                         <image src="/static/images/serch.png" background-size="cover" style="margin-left:30rpx;margin-right:30rpx" />
@@ -39,7 +39,7 @@
     </view>
     <!-- 加block的地方做判断  显示有无 -->
     <block>
-        <view class="v-box">
+        <view class="v-box" wx:if="{{ !checked }}">
             <van-checkbox-group value="{{ result }}" bind:change="onChange">
                 <view class="v-block" wx:for="{{userlist}}">
                     <view class="v-left">

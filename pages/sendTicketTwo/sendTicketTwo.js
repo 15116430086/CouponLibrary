@@ -1,7 +1,7 @@
 // pages/sendTicketTwo/sendTicketTwo.js
 let app = getApp();
 let utils = require("../../utils/util.js")
-
+var edit = 1;
 Page({
 
   /**
@@ -51,6 +51,7 @@ Page({
       }
     ],
     idb: "",
+    ArrProductchecked:false,
     shareshow1: false,
     getItem2: [{
         id: '001',
@@ -149,7 +150,8 @@ Page({
    */
   onLoad: function(options) {
     wx.setStorageSync("pArrProductKey", "");
-    var edit = 0;
+    wx.setStorageSync("ArrProductchecked", false);
+   
     if (options.edit) {
       edit = options.edit
       this.setData({
@@ -286,6 +288,17 @@ Page({
       pCoupon_Info.IsAppointProduct = 1; //指定商品
     }
 
+    if (!this.data.ArrProductchecked && pCoupon_Info.WriteOffType == 0) {//如果是指定商品 并且是线上消费
+
+      if (that.data.pArrProductID.length == 0){
+        wx.showToast({
+          title: "请选择商品!",
+          icon: "none",
+          duration: 1500
+        });
+        return
+      }
+    }
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pArrProductID = utils.syJsonSafe(that.data.pArrProductID);
     pCoupon_Info.GroupID = app.globalData.AppGroupInfo.GroupID;
@@ -486,6 +499,8 @@ Page({
       })
      
     } else {
+      wx.setStorageSync("ArrProductchecked", false);//清除线上全部缓存
+      wx.setStorageSync("pArrProductKey", "");
       that.setData({
         hexiao: "线下消费",
         idb: id,
@@ -695,7 +710,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+     var checked= wx.getStorageSync("ArrProductchecked");
+    this.setData({
+      edit: edit,
+      ArrProductchecked: checked
+    })
     var productList = wx.getStorageSync("pArrProductKey");
     if (productList.length > 0) {
       this.setData({

@@ -68,6 +68,7 @@ page {
     width: 128rpx;
     height: 128rpx;
     margin-right: 20rpx;
+    flex-shrink: 0;
 }
 
 .mes-right {
