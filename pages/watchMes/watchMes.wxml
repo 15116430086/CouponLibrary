@@ -3,9 +3,10 @@
 <view class="v-box">
   <view class="v-top">
     <view class="v-title">{{CouponInfo.CouponName}}</view>
-    <view class="v-go" data-CouponID="{{CouponInfo.CouponID}}" bindtap="jumpOk">继续发券</view>
+    <view class="v-go" data-CouponID="{{CouponInfo.CouponID}}" data-Couponstatus="{{datalist[0].State}}" data-ReleaseIDs="{{datalist[0].ReleaseID}}" bindtap="jumpOk">继续发券</view>
+    
   </view>
-  <view class="v-mid">已发券:{{CouponInfo.ReleaseNUM}}</view>
+  <view class="v-mid">已发券:{{CouponInfo.ReleaseNUM}}{{datalist.State}}</view>
   <view class="v-block">
     <view class="v-c">
       <view>领用商家：{{CouponInfo.ReceiveShopNUM}}</view>
