@@ -68,13 +68,34 @@ Jumptap:function(){
     })
   },
 
-  perfecttap: function () {
-    wx.showToast({
-      image:'/static/images/dp.png',
-      title: '功能正在完善中',
-      icon: 'none',
-      duration: 2000
-    })
+  perfecttap: function (e) {
+    let index = e.currentTarget.dataset.index;
+    console.log(index)
+    switch(index){
+      case "1":
+       wx.navigateTo({
+        url: '../classRoom/classRoom',
+      });
+      break;
+
+      case "2": 
+      wx.showToast({
+        image: '/static/images/dp.png',
+        title: '功能正在完善中',
+        icon: 'none',
+        duration: 2000
+      });
+        break;
+      case "3": 
+      wx.showToast({
+        image: '/static/images/dp.png',
+        title: '功能正在完善中',
+        icon: 'none',
+        duration: 2000
+      });
+        break;
+    }
+    
   },
   
   /**
