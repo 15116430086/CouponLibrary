@@ -23,9 +23,7 @@
       <view class="home-card">
         <view class="home-one one">
           <view class="home-sec">
-            <view style="font-size:32rpx;font-weight:600" class="home-oneB">
-              {{item.CouponName}}
-            </view>
+            <view style="font-size:32rpx;font-weight:600" class="home-oneB">{{item.CouponName}}</view>
             <view class="home-oc">【{{item.GroupID==item.SendGroupID?'自营券':'商家券'}}】</view>
           </view>
           <view style="color:#E85819;" data-ReleaseID='{{item.ReleaseID}}' data-CouponID='{{item.CouponID}}' bindtap="onBindReceiveTap">
