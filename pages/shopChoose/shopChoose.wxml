@@ -92,7 +92,7 @@
 </van-popup>
 
 
-<van-popup show="{{showMask}}" bind:close="downMask" position="bottom" round close-on-click-overlay overlay safe-area-inset-bottom="true" safe-area-inset-top="true">
+<van-popup show="{{showMask}}" bind:close="downMask" custom-style="height: auto;padding-bottom:128rpx;"  position="bottom" round close-on-click-overlay overlay safe-area-inset-bottom="true" safe-area-inset-top="true">
   <view class="mask-bot" wx:if="{{showMask}}">
     <view class="m-span">
       <view class="m-title">选择商户预览</view>
