@@ -15,7 +15,7 @@
     </view>
     <view class="homeTop-mid">
       <navigator class="htm-btn" url="../sendTicketConfig/sendTicketConfig">赠券配置</navigator>
-      <navigator class="htm-btn" url="../sendTicketMes/sendTicketMes">赠券明细</navigator>
+      <navigator class="htm-btn" url="../sendTicketMes/sendTicketMes?shoptype=0">赠券明细</navigator>
     </view>
   </view>
   <view class="home-mid">
@@ -23,9 +23,7 @@
       <view class="home-card">
         <view class="home-one one">
           <view class="home-sec">
-            <view style="font-size:32rpx;font-weight:600" class="home-oneB">
-              {{item.CouponName}}
-            </view>
+            <view style="font-size:32rpx;font-weight:600" class="home-oneB">{{item.CouponName}}</view>
             <view class="home-oc">【{{item.GroupID==item.SendGroupID?'自营券':'商家券'}}】</view>
           </view>
           <view style="color:#E85819;" data-ReleaseID='{{item.ReleaseID}}' data-CouponID='{{item.CouponID}}' bindtap="onBindReceiveTap">

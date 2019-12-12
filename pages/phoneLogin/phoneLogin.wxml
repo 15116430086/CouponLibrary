@@ -17,5 +17,5 @@
     <view class="v-btn" style="color:#CCCCCC;font-weight:500" wx:else>{{time + "s"}}</view>
   </view>
   <button class="v-true" open-type="getUserInfo" bindgetuserinfo="isConfirmLogin">确认登录</button>
-  <button class="v-wxtel" style="color:#016FB4;" open-type="getPhoneNumber" bindgetphonenumber="onPhoneLoginTap">授权微信手机号登录</button>
+  <button class="v-wxtel" style="color:#016FB4;" open-type="getPhoneNumber" bindgetphonenumber="onPhoneLoginTap">授权微信登录</button>
 </view>

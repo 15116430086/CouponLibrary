@@ -2,6 +2,7 @@
 var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1;
+var shoptype = 0;
 Page({
 
   /**
@@ -48,7 +49,7 @@ Page({
     data.pPageSize = 30;
     data.pShopID = that.data.shopID;
     data.pCouponType = that.data.couponType;
-    data.pDateTime=that.data.selectDate;
+    data.pDateTime = that.data.selectDate;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponItemListPage", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {
@@ -93,6 +94,15 @@ Page({
   onLoad: function(options) {
     let that = this;
     page = 1;
+
+    shoptype = options.shoptype;
+    if (shoptype == 1) {
+      that.setData({
+        shopID: app.globalData.AppShopInfo.ShopID,
+        shopName: app.globalData.AppShopInfo.ShopName,
+        shoptype: shoptype
+      })
+    }
     that.GetData(page);
 
     that.GetShopList();
@@ -108,7 +118,7 @@ Page({
     console.log(json);
     var json = json.data.Data;
     if (json.flag) {
-      var shoplist = [{       
+      var shoplist = [{
         ShopName: "全部店铺",
         ShopID: -1
       }];
@@ -128,9 +138,11 @@ Page({
   showPopup1() {
 
     let that = this;
-    that.setData({
-      show1: true
-    })
+    if (shoptype == 0) {
+      that.setData({
+        show1: true
+      })
+    }
   },
   showPopup2() {
 
@@ -202,13 +214,13 @@ Page({
       value,
       index
     } = event.detail;
-    console.log(`当前值：${value.text}, 当前索引：${index}`);
+    console.log(`当前值：${value.ShopName}, 当前索引：${index}`);
 
     let that = this;
     that.setData({
       show1: false,
       shopID: value.ShopID,
-      shopName: value.text
+      shopName: value.ShopName
     })
     page = 1;
     that.GetData(page);
