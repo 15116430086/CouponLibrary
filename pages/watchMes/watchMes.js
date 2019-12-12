@@ -126,7 +126,6 @@ Page({
         icon: 'success',
         duration: 2000
       })
-
     }
   },
 
@@ -137,12 +136,41 @@ Page({
       url: '../watchMesOne/watchMesOne?releaseid=' + releaseid,
     })
   },
-  jumpOk: function(event) { //继续发券
 
+
+  jumpOk: function(e) { //继续发券
+    var CouponID = e.currentTarget.dataset.couponid;
+    var Couponstatus = e.currentTarget.dataset.couponstatus; //发券状态
+    var ReleaseIDs = e.currentTarget.dataset.releaseids; //发券编号
+    if (ReleaseIDs) {
+      if (Couponstatus == 1) {
+        wx.showToast({
+          title: "存在待审核的发布券",
+          icon: "none",
+          duration: 1500
+        });
+        return
+      }
+
+      if (Couponstatus == 0) {
+        wx.showToast({
+          title: "存在待支付的发布券",
+          icon: "none",
+          duration: 1500
+        });
+        return
+      }
+    }
+    let datalist = this.data.CouponInfo;
+    let data = JSON.stringify(datalist);
     wx.navigateTo({
-      url: '../startTicket/startTicket?pCoupon_Info=' + JSON.stringify(this.data.CouponInfo) + "&CouponID=" + this.data.CouponInfo.CouponID,
+      url: '../startTicket/startTicket?pCoupon_Info=' + data + "&CouponID=" + CouponID,
     })
   },
+  
+
+
+
   pay: function(event) {
     var monery = event.currentTarget.dataset.monery;
     var ReleaseID = event.currentTarget.dataset.releaseid;
