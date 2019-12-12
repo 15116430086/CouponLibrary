@@ -1,0 +1,40 @@
+/* pages/classRoom/classRoom.wxss */
+page{
+  background-color: #ededed;
+}
+.v-box{
+  width: 100%;
+  height: auto;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.v-block{
+   width: calc(100% - 80rpx);
+   height: 98rpx;
+   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ededed;
+}
+.v-block:last-child{
+  border:none
+}
+
+.v-block image{
+  width: 10rpx;
+  height: 18rpx;
+  flex-shrink: 0;
+}
+
+.v-txt{
+  width: calc(100% - 20rpx);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color:#666666;
+  font-size: 32rpx;
+}

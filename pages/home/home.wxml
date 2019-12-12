@@ -70,8 +70,8 @@
 
   <!-- 辅助页 还没开发 -->
   <view class="home-bot">
-    <view bindtap="perfecttap">券库讲堂</view>
-    <view bindtap="perfecttap">在线客服</view>
-    <view bindtap="perfecttap">投诉建议</view>
+    <view bindtap="perfecttap" data-index="1">券库讲堂</view>
+    <view bindtap="perfecttap" data-index="2">在线客服</view>
+    <view bindtap="perfecttap" data-index="3">投诉建议</view>
   </view>
 </view>
