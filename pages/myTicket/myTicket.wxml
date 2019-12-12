@@ -15,7 +15,7 @@
     </view>
     <view class="homeTop-mid">
       <navigator class="htm-btn" url="../sendTicketConfig/sendTicketConfig">赠券配置</navigator>
-      <navigator class="htm-btn" url="../sendTicketMes/sendTicketMes">赠券明细</navigator>
+      <navigator class="htm-btn" url="../sendTicketMes/sendTicketMes?shoptype=0">赠券明细</navigator>
     </view>
   </view>
   <view class="home-mid">

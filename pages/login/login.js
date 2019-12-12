@@ -89,7 +89,7 @@ Page({
       app.globalData.AppWxUserInfo = loginInfo.AppWxUserInfo;
       app.globalData.AppStaffInfo = loginInfo.AppStaffInfo;
       app.globalData.AppGroupInfo = loginInfo.AppGroupInfo;
-
+      app.globalData.AppShopInfo = loginInfo.AppShopInfo;
       wx.reLaunch({
         url: '../home/home',
       })
