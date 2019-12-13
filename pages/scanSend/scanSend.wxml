@@ -14,7 +14,7 @@
             <view class="sS-n">
               <view class="sSn-one">{{item.GroupName}}</view>
                <view wx:if="{{item.CouponType==0}}" class="sSn-two">(现金券)</view>
-              <view wx:else class="sSn-two">(团购券)</view>
+              <view wx:else class="sSn-two">(礼物券)</view>
             </view>
             <view class="sS-mes">
               <text>领券日期：{{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd",true)}}</text>

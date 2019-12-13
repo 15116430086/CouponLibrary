@@ -26,7 +26,7 @@ Page({
     industryCode: "",
     multiArray: [],    
     multiIndex:[17,0,0],
-    coupontype: ["全部券种", "现金券", "团购券"],
+    coupontype: ["全部券种", "现金券", "礼物券"],
      typeName: "全部券种",
     show2: false,
     tshow: false,

@@ -344,7 +344,7 @@ Page({
     }
     if (pCoupon_Info.SalePrice == '' && that.data.currentId == 1) {
       wx.showToast({
-        title: "请输入团购价!",
+        title: "请输入销售价!",
         icon: "none",
         duration: 1500
       });
