@@ -24,10 +24,10 @@ Page({
     qData: null,
     industryName: "全部行业",
     industryCode: "",
-    multiArray: [],    
-    multiIndex:[17,0,0],
+    multiArray: [],
+    multiIndex: [17, 0, 0],
     coupontype: ["全部券种", "现金券", "礼物券"],
-     typeName: "全部券种",
+    typeName: "全部券种",
     show2: false,
     tshow: false,
     couponType: -1,
@@ -56,7 +56,7 @@ Page({
       couponType: index - 1,
       typeName: value
     })
-    
+
   },
   ontCancel(e) {
     let that = this;
@@ -124,6 +124,7 @@ Page({
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/QueryCouponInfo", "POST", data, app.globalData.appkeyid, this.GetQueryCouponBack)
   },
   GetQueryCouponBack: function(json) {
+    let that = this;
     console.log(json);
     var json = json.data.Data;
     //隐藏 加载中的提示
@@ -131,7 +132,7 @@ Page({
     if (json.flag) {
       console.log(json.msg);
       if (page == 1) {
-        this.setData({
+        that.setData({
           hotTicketBox: json.data,
           lastpage: json.pageCount //你的总页数   
         });
@@ -147,6 +148,12 @@ Page({
       }
 
     } else {
+      if (page == 1) {
+        that.setData({
+          hotTicketBox: [],
+          lastpage: 0 //你的总页数   
+        })
+      }
       wx.showToast({
         title: '没有找到相关数据!',
         icon: 'none',
@@ -292,12 +299,11 @@ Page({
     utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
 
-  bindMultiPickerCancel:function()
-  {
+  bindMultiPickerCancel: function() {
     //console.log('picker发送取消，携带值为', e.detail.value)
     this.setData({
-      RegionName:"所有地区"
-    })    
+      RegionName: "所有地区"
+    })
   },
   bindMultiPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -305,7 +311,7 @@ Page({
       multiArray: this.data.multiArray,
       multiIndex: e.detail.value
     };
-   
+
     this.setData({
       multiIndex: data.multiIndex,
       RegionName: data.multiArray[2][data.multiIndex[2]].RegionName

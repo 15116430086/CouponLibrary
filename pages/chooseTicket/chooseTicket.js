@@ -9,8 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    images: [
-    ],
+    images: [],
     multiArray: [],
     multiIndex: [17, 0, 0],
     lastpage: 0,
@@ -20,10 +19,8 @@ Page({
     duration: 500,
     color: "#FFF0DE",
     activeColor: "#E85819",
-    imgUrls: [
-    ],
-    hotTicketBox: [
-    ],
+    imgUrls: [],
+    hotTicketBox: [],
     currentID: "1",
     BotOne: [{
         url: "/static/images/pt1.png",
@@ -38,12 +35,10 @@ Page({
         id: 2
       }
     ],
-    shopArrays: [
-    ],
+    shopArrays: [],
 
   },
-  bindcancel:function()
-  {
+  bindcancel: function() {
     wx.showLoading({
       title: '数据加载中...',
     })
@@ -136,16 +131,23 @@ Page({
           lastpage: json.pageCount //你的总页数   
         });
       }
-    }
-    else
-    {
+    } else {
+      if (page == 1) {
+        that.setData({
+          images: [],
+          imgUrls: [],
+          shopArrays: [],
+          hotTicketBox: [],
+          lastpage: 0 //你的总页数   
+        })
+      }
       wx.showToast({
         title: '没有找到相关数据!',
         icon: 'none',
         duration: 2000
       })
     }
-   
+
   },
 
   /**
@@ -162,7 +164,7 @@ Page({
     that.GetData(page);
     that.GetRegionIndustry();
   },
-  GetRegionIndustry: function () {
+  GetRegionIndustry: function() {
     let that = this;
 
     regionData = wx.getStorageSync('Region');
@@ -179,7 +181,7 @@ Page({
     utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
 
-  bindMultiPickerCancel: function () {
+  bindMultiPickerCancel: function() {
     //console.log('picker发送取消，携带值为', e.detail.value)
     this.setData({
       RegionName: "所有地区"
@@ -188,7 +190,7 @@ Page({
     page = 1;
     this.GetData(page);
   },
-  bindMultiPickerChange: function (e) {
+  bindMultiPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     var data = {
       multiArray: this.data.multiArray,
@@ -203,7 +205,7 @@ Page({
     page = 1;
     this.GetData(page);
   },
-  bindMultiPickerColumnChange: function (e) {
+  bindMultiPickerColumnChange: function(e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     var data = {
       multiArray: this.data.multiArray,
