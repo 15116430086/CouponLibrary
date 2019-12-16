@@ -9,7 +9,7 @@ Page({
   data: {
     contents: [{
         id: '',
-        title: '全部商户',
+      title: '全部商户(不含自营店铺)',
         isSel: false
       },
       {
