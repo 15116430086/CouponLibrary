@@ -16,7 +16,7 @@
             <view class="ticket-block">
                 <view class="ticket-name">指定商户</view>
                 <view class="ticket-flex" bindtap="showHide">
-                    <view class="tf-name" wx:if="{{sign==1}}">全部</view>
+                    <view class="tf-name" wx:if="{{sign==1}}">全部商户(不含自营店铺)</view>
                     <view class="tf-name" wx:elif="{{sign==2}}">自营店铺</view>
                     <view class="tf-name" wx:elif="{{sign==3}}">已选{{GroupIDList.length}}个商户</view>
                     <image src="/static/images/right-arr1.png" />
