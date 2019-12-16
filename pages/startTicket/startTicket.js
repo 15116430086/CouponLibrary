@@ -197,7 +197,7 @@ Page({
       return;
     }
 
-    if (this.data.sign != 2 && this.data.Limited<=0) {
+    if (this.data.sign != 2 && this.data.Limited <= 0) {
       wx.showToast({
         title: "请选设置领取限制",
         icon: "none"
@@ -210,7 +210,7 @@ Page({
     if (this.data.sign == 1) { //说明是全部商户
 
       this.setData({
-       
+
         Doyoupay: true, //说明要支付
       });
     }
@@ -227,9 +227,16 @@ Page({
       this.setData({
         regionID: [],
         IndustryCodes: [],
-        Doyoupay: true, //说明不要支付
+        Doyoupay: true, //说明要支付
       });
 
+      if (this.data.GroupIDList.length == 0) {
+        wx.showToast({
+          title: "请至少选择一个商户！",
+          icon: "none"
+        });
+        return;
+      }
     }
 
 
@@ -267,8 +274,10 @@ Page({
     var json = res.data.Data;
     if (json.flag) {
       var pages = getCurrentPages();
-      var prevPage = pages[pages.length - 2];//上一个页面
-      prevPage.setData({ isRefresh:true});
+      var prevPage = pages[pages.length - 2]; //上一个页面
+      prevPage.setData({
+        isRefresh: true
+      });
       chat.setData({
         ReleaseID: json.ReleaseID
       });

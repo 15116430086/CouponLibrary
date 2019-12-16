@@ -50,7 +50,8 @@ App({
         longitudeY: 112.93886,
         regionName: "",
         //apiurl: "http://test.miboon.com/LibraryAPI/"
-        apiurl: "https://wx.wap.meiguwen.com/LibraryAPI/"
-            //apiurl: "http://localhost:7562/"
+        //apiurl: "https://wx.wap.meiguwen.com/LibraryAPI/"       
+        apiurl: "https://wx.wap.quankuzg.com/LibraryAPI/"
+        //apiurl: "http://localhost:7562/"
     }
 })
