@@ -7,7 +7,7 @@
         <view>券面值:￥{{item.CouponMoney}}</view>
       </view>
       <view class="ticketShop-two">
-        <view class="tstwo-one">{{item.CouponName}}</view>
+        <view class="tstwo-one"><text style="color:#e85819; font-size: 24rpx;width:110rpx; margin-right: 5rpx;" >[{{item.WriteOffType==0?"线上券":"线下券"}}]</text>{{item.CouponName}}</view>
         <view>已领取{{item.ReceiveNUM}}</view>
       </view>
     </view>

@@ -24,11 +24,11 @@
 <form class="ticket-box" bindsubmit="formSubmit">
   <view class="ticket-block">
     <view class="ticket-name">券名称</view>
-    <input type="text" value="{{pCoupon_Info.CouponName}}" placeholder="输入券名称(限定12字以内)" name="CouponName" placeholder-class="pclass" maxlength="12" />
+    <input type="text" value="{{pCoupon_Info.CouponName}}" disabled="{{edit=='0'}}" placeholder="输入券名称(限定12字以内)" name="CouponName" placeholder-class="pclass" maxlength="12" />
   </view>
   <view class="ticket-block">
     <view class="ticket-name">券面值</view>
-    <input type="number" value="{{pCoupon_Info.CouponMoney}}" placeholder="输入券面值" name="CouponMoney" placeholder-class="pclass" />
+    <input type="number" value="{{pCoupon_Info.CouponMoney}}" disabled="{{edit=='0'}}"  placeholder="输入券面值" name="CouponMoney" placeholder-class="pclass" />
   </view>
   <!-- <view class="ticket-block">
     <view class="ticket-name">发布数量</view>
@@ -36,11 +36,11 @@
   </view> -->
   <view class="ticket-block">
     <view class="ticket-name">会员领取上限</view>
-    <input type="number" value="{{pCoupon_Info.ReceiveUpperLimit}}" placeholder="设置领取上限" name="ReceiveUpperLimit" placeholder-class="pclass" />
+    <input type="number" value="{{pCoupon_Info.ReceiveUpperLimit}}" disabled="{{edit=='0'}}"  placeholder="设置领取上限" name="ReceiveUpperLimit" placeholder-class="pclass" />
   </view>
   <view class="ticket-block" wx:if="{{currentId==1}}">
-    <view class="ticket-name">团购价</view>
-    <input type="number" value="{{pCoupon_Info.SalePrice}}" placeholder="设置领购售价" name="SalePrice" placeholder-class="pclass" />
+    <view class="ticket-name">销售价</view>
+    <input type="number" value="{{pCoupon_Info.SalePrice}}" disabled="{{edit=='0'}}"  placeholder="设置销售价" name="SalePrice" placeholder-class="pclass" />
   </view>
   <!-- 领购规则 -->
   <view class="ticket-block" bindtap="clickRule">
@@ -99,7 +99,7 @@
       </view>
     </view>
 
-    <picker name="picker_hx" class="cybm_pic_1" value="{{df_value}}" data-selecthx="{{pic_array[hx_index].name}}" range="{{pic_array}}" range-key="{{'name'}}" bindchange="bindPickerChange_hx">
+    <picker name="picker_hx" class="cybm_pic_1" disabled="{{edit=='0'}}" value="{{df_value}}" data-selecthx="{{pic_array[hx_index].name}}" range="{{pic_array}}" range-key="{{'name'}}" bindchange="bindPickerChange_hx">
       <view class="ticket-blocks">
         <view class="bot-boxs" bindtap="clickTrue2" data-id="002">
           <view class="bot-span">指定天数</view>
@@ -121,11 +121,11 @@
 
   <!-- 添加图片 -->
   <view class="addImg">
-    <view class="ticket-name">添加图片</view>
+    <view class="ticket-name">添加主图</view>
     <view class="addImg-box">
       <view class="add-img" wx:if="{{imageOne}}">
         <image src="{{imageOne}}" class="addImg-box-image" bindtap="preImg" mode='aspectFill' />
-        <image src="/static/images/cha4.png" class="cha4" bindtap="delImg"></image>
+        <image src="/static/images/cha4.png" wx:if="{{edit=='1'}}" class="cha4" bindtap="delImg"></image>
       </view>
 
       <image src="/static/images/img.png" bindtap="imgadd" class="addImg-box-image" wx:else></image>
@@ -139,10 +139,10 @@
     <view class="addImg-box">
       <view class="add-img" wx:if="{{imageTwo}}">
         <image src="{{imageTwo}}" class="addImg-box-image" bindtap="preImg2" mode='aspectFill' />
-        <image src="/static/images/cha4.png" class="cha4" bindtap="delImg2"></image>
+        <image src="/static/images/cha4.png" wx:if="{{edit=='1'}}" class="cha4" bindtap="delImg2"></image>
       </view>
       <image src="/static/images/img.png" bindtap="imgadd2" class="addImg-box-image" wx:else />
-      <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;margin-left: 40rpx;" />
+      <image src="/static/images/img-1.png"  style="width:244rpx;height:84rpx;margin-left: 40rpx;" />
     </view>
   </view>
   <!-- 券详情 -->
@@ -151,10 +151,10 @@
     <view class="addImg-boxs">
       <view class="add-img" wx:for="{{imageTre}}" wx:for-item="item" style="margin-bottom:40rpx">
         <image src="{{item}}" class="addImg-box-image" bindtap="preImg3" data-index="{{index}}" mode='aspectFill' />
-        <image src="/static/images/cha4.png" class="cha4" bindtap="delImg3" data-index="{{index}}"></image>
+        <image src="/static/images/cha4.png" wx:if="{{edit=='1'}}"  class="cha4" bindtap="delImg3" data-index="{{index}}"></image>
         <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;" class="img-tips" />
       </view>
-      <view class="add-img" style="margin-bottom:40rpx" wx:if="{{imageTre.length<5}}">
+      <view class="add-img" style="margin-bottom:40rpx" wx:if="{{imageTre.length<5 && edit=='1'}}">
         <image src="/static/images/img.png" bindtap="imgadd3" class="addImg-box-image" />
         <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;" class="img-tips" />
       </view>

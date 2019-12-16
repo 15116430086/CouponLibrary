@@ -108,7 +108,7 @@ Page({
       type = 1;
     }
     let that = this;
-    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, typeid, type)
+    utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, typeid, type)
   },
   UpFileImgBak: function (img, type) {
     let that = this;

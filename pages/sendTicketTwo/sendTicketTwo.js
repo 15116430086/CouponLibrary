@@ -51,7 +51,7 @@ Page({
       }
     ],
     idb: "",
-    ArrProductchecked:false,
+    ArrProductchecked: false,
     shareshow1: false,
     getItem2: [{
         id: '001',
@@ -151,7 +151,7 @@ Page({
   onLoad: function(options) {
     wx.setStorageSync("pArrProductKey", "");
     wx.setStorageSync("ArrProductchecked", false);
-   
+
     if (options.edit) {
       edit = options.edit
       this.setData({
@@ -288,9 +288,9 @@ Page({
       pCoupon_Info.IsAppointProduct = 1; //指定商品
     }
 
-    if (!this.data.ArrProductchecked && pCoupon_Info.WriteOffType == 0) {//如果是指定商品 并且是线上消费
+    if (!this.data.ArrProductchecked && pCoupon_Info.WriteOffType == 0) { //如果是指定商品 并且是线上消费
 
-      if (that.data.pArrProductID.length == 0){
+      if (that.data.pArrProductID.length == 0) {
         wx.showToast({
           title: "请选择商品!",
           icon: "none",
@@ -344,7 +344,7 @@ Page({
     }
     if (pCoupon_Info.SalePrice == '' && that.data.currentId == 1) {
       wx.showToast({
-        title: "请输入团购价!",
+        title: "请输入销售价!",
         icon: "none",
         duration: 1500
       });
@@ -352,7 +352,7 @@ Page({
     }
     if (pCoupon_Info.ImageOne == '') {
       wx.showToast({
-        title: "请上传图片!",
+        title: "请上传券主图!",
         icon: "none",
         duration: 1500
       });
@@ -360,7 +360,7 @@ Page({
     }
     if (pCoupon_Info.UsageRule == '') {
       wx.showToast({
-        title: "请上传图片!",
+        title: "请上传使用规则!",
         icon: "none",
         duration: 1500
       });
@@ -369,7 +369,7 @@ Page({
     var imageTre = that.data.imageTre;
     if (imageTre.length == 0) {
       wx.showToast({
-        title: "请上传图片!",
+        title: "请上传券详情!",
         icon: "none",
         duration: 1500
       });
@@ -454,6 +454,9 @@ Page({
 
   clickTrue(e) {
     let that = this;
+    if (that.data.edit == '0') {
+      return //查看详情不可编辑
+    }
     let id = e.currentTarget.dataset.id;
     let pCoupon_Info = that.data.pCoupon_Info;
     let type = e.currentTarget.dataset.type;
@@ -472,7 +475,7 @@ Page({
       });
     }
   },
-  jumpChoose:function(){
+  jumpChoose: function() {
     wx.navigateTo({
       url: '../chooseBuyGoods/chooseBuyGoods',
     })
@@ -487,6 +490,9 @@ Page({
   },
   clickTrue1(e) {
     let that = this;
+    if (that.data.edit == '0') {
+      return //查看详情不可编辑
+    }
     let id = e.currentTarget.dataset.id;
     let pCoupon_Info = that.data.pCoupon_Info;
     let type = e.currentTarget.dataset.type;
@@ -499,9 +505,9 @@ Page({
       wx.navigateTo({
         url: '../chooseBuyGoods/chooseBuyGoods',
       })
-     
+
     } else {
-      wx.setStorageSync("ArrProductchecked", false);//清除线上全部缓存
+      wx.setStorageSync("ArrProductchecked", false); //清除线上全部缓存
       wx.setStorageSync("pArrProductKey", "");
       that.setData({
         hexiao: "线下消费",
@@ -523,6 +529,9 @@ Page({
   },
   clickTrue2(e) {
     let that = this;
+    if (that.data.edit == '0') {
+      return //查看详情不可编辑
+    }
     let id = e.currentTarget.dataset.id;
     if (id == "001") {
       that.setData({
@@ -579,7 +588,7 @@ Page({
     let id = e.currentTarget.dataset.id;
     console.log(id);
     let pAppKeyId = app.globalData.appkeyid
-    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack, id)
+    utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack, id)
 
   },
   pCallBack(e, id) {
@@ -620,7 +629,7 @@ Page({
     let that = this;
     let id = e.currentTarget.dataset.id;
     let pAppKeyId = app.globalData.appkeyid
-    utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack2)
+    utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack2)
 
   },
   pCallBack2(e) {
@@ -662,7 +671,7 @@ Page({
     console.log(id);
     let pAppKeyId = app.globalData.appkeyid
     let imageTre = that.data.imageTre;
-    utils.UploadImg(5 - imageTre.length, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack3)
+    utils.UploadImg(app.globalData.upimgurl, 5 - imageTre.length, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack3)
 
   },
   pCallBack3(e) {
@@ -712,7 +721,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-     var checked= wx.getStorageSync("ArrProductchecked");
+    var checked = wx.getStorageSync("ArrProductchecked");
     this.setData({
       edit: edit,
       ArrProductchecked: checked
@@ -727,7 +736,7 @@ Page({
     // that.data.pCoupon_Info.pArrProductID = that.data.pArrProductID;
     // console.log(that.data.pCoupon_Info)
   },
- 
+
   /**
    * 生命周期函数--监听页面隐藏
    */

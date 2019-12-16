@@ -56,6 +56,10 @@ Page({
   },
 
   selectThree(e) {
+    if(this.data.edit==0)
+    {
+      return;
+    }
     let id = e.target.dataset.id
 
     this.setData({
@@ -88,12 +92,15 @@ Page({
   //商品主图
   onUpImageTap: function(e) {
     let that = this;
+    if (that.data.edit == 0) {
+      return;
+    }
     const {
       index
     } = e.currentTarget.dataset;
     var mainImage = that.data.mainImage
     if (mainImage[index].state == 0) {
-      utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, index)
+      utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, index)
     } else {
       wx.previewImage({
         urls: [mainImage[index].url]
@@ -141,12 +148,15 @@ Page({
   },
   onAddDelDetailsTap: function(e) {
     let that = this;
+    if (that.data.edit == 0) {
+      return;
+    }
     const {
       index
     } = e.currentTarget.dataset;
     var ProductDetails = that.data.ProductDetails
     if (ProductDetails[index].state == 0) {
-      utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpDetailsImgBak, index)
+      utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpDetailsImgBak, index)
     } else {
       wx.previewImage({
         urls: [ProductDetails[index].url]
@@ -361,6 +371,8 @@ Page({
     oCoupon_Product.CustomAttribute = JSON.stringify(CustomAttribute);
     oCoupon_Product.GroupID = app.globalData.AppGroupInfo.GroupID;
     oCoupon_Product.ProductID = that.data.productid;
+    oCoupon_Product.Postage = that.data.Postage;
+
     wx.showLoading({
       title: '数据加载中...',
     })
@@ -582,6 +594,9 @@ Page({
   },
 
   showPopup() {
+    if (this.data.edit == 0) {
+      return;
+    }
     this.setData({
       show: true
     });
@@ -593,6 +608,9 @@ Page({
     });
   },
   showpPopup() {
+    if (this.data.edit == 0) {
+      return;
+    }
     this.setData({
       pshow: true
     });
@@ -657,6 +675,10 @@ Page({
   },
   showPopup2() {
     let that = this;
+    if(that.data.edit==0)
+    {
+      return;
+    }
     that.setData({
       show2: true
     })
@@ -730,6 +752,9 @@ Page({
   },
   onAddSpecificationsTap: function() {
     let that = this;
+    if (that.data.edit == 0) {
+      return;
+    }
     var productSpecifications = that.data.ProductSpecifications;
     var specifications = {
       CostPrice: 0,
