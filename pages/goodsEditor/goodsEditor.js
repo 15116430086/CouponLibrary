@@ -93,7 +93,7 @@ Page({
     } = e.currentTarget.dataset;
     var mainImage = that.data.mainImage
     if (mainImage[index].state == 0) {
-      utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, index)
+      utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, index)
     } else {
       wx.previewImage({
         urls: [mainImage[index].url]
@@ -146,7 +146,7 @@ Page({
     } = e.currentTarget.dataset;
     var ProductDetails = that.data.ProductDetails
     if (ProductDetails[index].state == 0) {
-      utils.UploadImg(1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpDetailsImgBak, index)
+      utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpDetailsImgBak, index)
     } else {
       wx.previewImage({
         urls: [ProductDetails[index].url]
@@ -362,7 +362,7 @@ Page({
     oCoupon_Product.GroupID = app.globalData.AppGroupInfo.GroupID;
     oCoupon_Product.ProductID = that.data.productid;
     oCoupon_Product.Postage = that.data.Postage;
-    
+
     wx.showLoading({
       title: '数据加载中...',
     })
