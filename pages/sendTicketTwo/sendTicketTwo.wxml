@@ -121,7 +121,7 @@
 
   <!-- 添加图片 -->
   <view class="addImg">
-    <view class="ticket-name">添加图片</view>
+    <view class="ticket-name">添加主图</view>
     <view class="addImg-box">
       <view class="add-img" wx:if="{{imageOne}}">
         <image src="{{imageOne}}" class="addImg-box-image" bindtap="preImg" mode='aspectFill' />

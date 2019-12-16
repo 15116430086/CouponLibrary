@@ -352,7 +352,7 @@ Page({
     }
     if (pCoupon_Info.ImageOne == '') {
       wx.showToast({
-        title: "请上传图片!",
+        title: "请上传券主图!",
         icon: "none",
         duration: 1500
       });
@@ -360,7 +360,7 @@ Page({
     }
     if (pCoupon_Info.UsageRule == '') {
       wx.showToast({
-        title: "请上传图片!",
+        title: "请上传使用规则!",
         icon: "none",
         duration: 1500
       });
@@ -369,7 +369,7 @@ Page({
     var imageTre = that.data.imageTre;
     if (imageTre.length == 0) {
       wx.showToast({
-        title: "请上传图片!",
+        title: "请上传券详情!",
         icon: "none",
         duration: 1500
       });

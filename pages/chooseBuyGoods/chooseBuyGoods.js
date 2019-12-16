@@ -45,15 +45,18 @@ Page({
       console.log(json.msg);
       console.log(json)
       if (page == 1) {
-        this.setData({
+        that.setData({
+          totalRecords: json.totalRecords,
           userlist: json.data,
           lastpage: json.pageCount //你的总页数   
+
         });
       } else {
         //获取上次加载的数据
         var oldlists = that.data.userlist;
         var newlists = oldlists.concat(json.data) //合并数据 res.data 你的数组数据
         that.setData({
+          totalRecords: json.totalRecords,
           userlist: newlists,
           lastpage: json.pageCount //你的总页数   
         });
@@ -63,6 +66,14 @@ Page({
       });
 
     } else {
+      if (page == 1) {
+        that.setData({
+          totalRecords: 0,
+          userlist: [],
+          lastpage: 0 //你的总页数   
+
+        });
+      }
       wx.showToast({
         title: '没有找到相关数据!',
         icon: 'none',
@@ -147,14 +158,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    
   },
 
   /**

@@ -56,6 +56,10 @@ Page({
   },
 
   selectThree(e) {
+    if(this.data.edit==0)
+    {
+      return;
+    }
     let id = e.target.dataset.id
 
     this.setData({
@@ -88,6 +92,9 @@ Page({
   //商品主图
   onUpImageTap: function(e) {
     let that = this;
+    if (that.data.edit == 0) {
+      return;
+    }
     const {
       index
     } = e.currentTarget.dataset;
@@ -141,6 +148,9 @@ Page({
   },
   onAddDelDetailsTap: function(e) {
     let that = this;
+    if (that.data.edit == 0) {
+      return;
+    }
     const {
       index
     } = e.currentTarget.dataset;
@@ -584,6 +594,9 @@ Page({
   },
 
   showPopup() {
+    if (this.data.edit == 0) {
+      return;
+    }
     this.setData({
       show: true
     });
@@ -595,6 +608,9 @@ Page({
     });
   },
   showpPopup() {
+    if (this.data.edit == 0) {
+      return;
+    }
     this.setData({
       pshow: true
     });
@@ -659,6 +675,10 @@ Page({
   },
   showPopup2() {
     let that = this;
+    if(that.data.edit==0)
+    {
+      return;
+    }
     that.setData({
       show2: true
     })
@@ -732,6 +752,9 @@ Page({
   },
   onAddSpecificationsTap: function() {
     let that = this;
+    if (that.data.edit == 0) {
+      return;
+    }
     var productSpecifications = that.data.ProductSpecifications;
     var specifications = {
       CostPrice: 0,
