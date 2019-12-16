@@ -12,7 +12,7 @@ Page({
     userlist: [],
     lastpage: 0,
     checked: false,
-    totalRecords:0
+    totalRecords: 0
   },
 
   /**
@@ -103,9 +103,9 @@ Page({
     var checked = that.data.checked;
     if (checked) {
 
-      if (that.data.totalRecords==0){//说明没有产品
+      if (that.data.totalRecords == 0) { //说明没有产品
         wx.showToast({
-          title: '请选新增产品',
+          title: '请新增产品',
           icon: 'none',
           duration: 2000
         })
@@ -168,14 +168,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-    
+
   },
 
   /**
