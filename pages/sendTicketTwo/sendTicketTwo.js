@@ -151,7 +151,7 @@ Page({
   onLoad: function(options) {
     wx.setStorageSync("pArrProductKey", "");
     wx.setStorageSync("ArrProductchecked", false);
-
+    wx.setStorageSync("ProductCount",0);
     if (options.edit) {
       edit = options.edit
       this.setData({
@@ -299,6 +299,15 @@ Page({
         return
       }
     }
+    if (this.data.ArrProductchecked && pCoupon_Info.WriteOffType == 0 && wx.getStorageSync("ProductCount")==0) { //如果是全部商品 并且是线上消费
+      wx.showToast({
+        title: "请先创建商品!",
+        icon: "none",
+        duration: 1500
+      });
+      return
+    }
+
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pArrProductID = utils.syJsonSafe(that.data.pArrProductID);
     pCoupon_Info.GroupID = app.globalData.AppGroupInfo.GroupID;
