@@ -361,6 +361,8 @@ Page({
     oCoupon_Product.CustomAttribute = JSON.stringify(CustomAttribute);
     oCoupon_Product.GroupID = app.globalData.AppGroupInfo.GroupID;
     oCoupon_Product.ProductID = that.data.productid;
+    oCoupon_Product.Postage = that.data.Postage;
+    
     wx.showLoading({
       title: '数据加载中...',
     })
