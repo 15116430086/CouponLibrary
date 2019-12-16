@@ -1,6 +1,7 @@
 // pages/businessAccept/businessAccept.js
 var utils = require("../../utils/util.js")
 const app = getApp();
+var ordertype = 0;
 Page({
 
   /**
@@ -120,7 +121,7 @@ Page({
         duration: 2000
       })
       wx.navigateTo({
-        url: '../waitGoods/waitGoods?orderid=' + that.data.orderid,
+        url: '../orderManagement/orderManagement?ordertype=' + ordertype +'&currentId=1',
       })
     }
   },
@@ -129,6 +130,7 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+    ordertype = options.ordertype;
     that.setData({
       orderid: options.orderid,
     })

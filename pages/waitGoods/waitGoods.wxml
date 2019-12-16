@@ -5,7 +5,7 @@
         <view wx:if="{{orderstate==2}}" class="v-title">待发货/受理</view>
         <view wx:elif="{{orderstate==3}}" class="v-title">已发货/已受理</view>
         <view wx:elif="{{orderstate==4}}" class="v-title">已完成</view>
-        <navigator url="../businessAccept/businessAccept?orderid={{orderid}}"  wx:if="{{orderstate==2}}">
+        <navigator url="../businessAccept/businessAccept?orderid={{orderid}}&ordertype={{Distinguish}}"  wx:if="{{orderstate==2}}">
           <view class="v-btn">填写货单</view>
           </navigator>
           <navigator url="../wuliuMes/wuliuMes?LogisticsNumber={{CourierNumber}}&EC_ID={{EC_ID}}" wx:if="{{ProductType==0 &&(orderstate==3 || orderstate==4)}}">

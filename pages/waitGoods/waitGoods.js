@@ -1,6 +1,7 @@
 // pages/waitGoods/waitGoods.js
 var utils = require("../../utils/util.js")
 const app = getApp();
+var ordertype = 0;
 Page({
 
   /**
@@ -31,6 +32,7 @@ Page({
     ExpressTel:"",//快递电话
     EC_ID:"",//快递公司编码
     ProductType:0,//商品类型0普通购物1业务办理
+    Distinguish:0,
   },
 
   GetData: function () {
@@ -98,8 +100,10 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+    ordertype = options.ordertype;
     that.setData({
       orderid: options.orderid,
+      Distinguish: ordertype
     })
     that.GetData();
   },

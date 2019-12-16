@@ -120,11 +120,11 @@ Page({
   JumpwaitGoods: function(e) {
     var orderid = e.currentTarget.dataset.orderid;
     var writeofftype = e.currentTarget.dataset.writeofftype;
-
+    var type = ordertype;
       wx.navigateTo({
-        url: '../waitGoods/waitGoods?orderid=' + orderid,
+        url: '../waitGoods/waitGoods?orderid=' + orderid + '&ordertype=' + type,
       })
-    
+    console.log(type);
   },
 
 
@@ -132,7 +132,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    let that = this;
     ordertype = options.ordertype;
+    if (options.currentId){
+      that.setData({
+        currentId: options.currentId
+      })
+    }
   },
 
 
