@@ -119,7 +119,7 @@ page {
 .m-block {
     width: calc(100% - 80rpx);
     margin: 0px auto;
-    height: 120rpx;
+    height: 140rpx;
     position: relative;
 }
 
@@ -132,8 +132,8 @@ page {
 }
 
 .m-left image {
-    width: 76rpx;
-    height: 76rpx;
+    width: 88rpx;
+    height: 88rpx;
     margin-right: 20rpx;
     border-radius: 10rpx;
     flex-shrink: 0;
@@ -141,7 +141,10 @@ page {
 
 .m-mid {
     width: calc(100% - 96rpx);
-    height: 76rpx;
+    height: 88rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .m-right {
@@ -150,17 +153,17 @@ page {
     text-align: right;
     position: absolute;
     right: 0px;
-    top: 70rpx;
+    top: 80rpx;
 }
 
 .m-title {
     width: 98%;
-    color: #000;
-    font-size: 28rpx;
+    color: #333;
+    font-size: 30rpx;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .m-mes {
