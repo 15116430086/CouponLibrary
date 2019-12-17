@@ -45,7 +45,7 @@ App({
             GroupID: 100000,
             GroupName: "湖南券库移分公司"
         },
-        appkeyid: "CouponShopManger:251a8042-8243-40b5-b6a5-bce185cc8dea",
+        appkeyid: "",
         latitudeX: 28.22778,
         longitudeY: 112.93886,
         regionName: "",
