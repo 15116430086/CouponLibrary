@@ -46,7 +46,8 @@
             </view>
             <view class="m-span" wx:if="{{item.CapitalType==1}}" style="color:#016FB4;border:1px solid #016FB4">佣</view>
             <view class="m-span" wx:if="{{item.CapitalType==0}}" style="color:#E30000;border:1px solid #E30000">退</view>
-            <view class="m-span" wx:if="{{item.CapitalType==2}}" style="color:#429859;border:1px solid #429859">券</view>
+            <view class="m-span" wx:if="{{item.CapitalType==2 && item.BusinessType==3}}" style="color:#429859;border:1px solid #429859">券</view>
+            <view class="m-span" wx:if="{{item.CapitalType==2 && item.BusinessType==4}}" style="color:#429859;border:1px solid #429859">售</view>
           </view>
         </view>
       </view>
