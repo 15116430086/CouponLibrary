@@ -12,7 +12,7 @@ Page({
     userlist: [],
     lastpage: 0,
     checked: false,
-
+    totalRecords: 0
   },
 
   /**
@@ -45,24 +45,37 @@ Page({
       console.log(json.msg);
       console.log(json)
       if (page == 1) {
-        this.setData({
+        that.setData({
+          totalRecords: json.totalRecords,
           userlist: json.data,
           lastpage: json.pageCount //你的总页数   
         });
+        wx.setStorageSync("ProductCount", json.totalRecords);
       } else {
         //获取上次加载的数据
         var oldlists = that.data.userlist;
         var newlists = oldlists.concat(json.data) //合并数据 res.data 你的数组数据
         that.setData({
+          totalRecords: json.totalRecords,
           userlist: newlists,
           lastpage: json.pageCount //你的总页数   
         });
+        wx.setStorageSync("ProductCount", json.totalRecords);
       }
       that.setData({
         result: wx.getStorageSync("pArrProductKey")
       });
 
     } else {
+      if (page == 1) {
+        that.setData({
+          totalRecords: 0,
+          userlist: [],
+          lastpage: 0 //你的总页数   
+
+        });
+        wx.setStorageSync("ProductCount", 0);
+      }
       wx.showToast({
         title: '没有找到相关数据!',
         icon: 'none',
@@ -90,6 +103,14 @@ Page({
     var checked = that.data.checked;
     if (checked) {
 
+      if (that.data.totalRecords == 0) { //说明没有产品
+        wx.showToast({
+          title: '请新增产品',
+          icon: 'none',
+          duration: 2000
+        })
+        return;
+      }
       //说明是全部产品
       wx.setStorageSync("ArrProductchecked", checked);
       wx.setStorageSync("pArrProductKey", "");
