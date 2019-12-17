@@ -63,7 +63,12 @@
 <view class="v-bot">
     <view class="v-span">
         <view class="v-text">收款总额</view>
-        <view>￥{{TruePayMoney}} ({{CouponName}}￥{{CouponMoney}})</view>
+        <view>￥{{TruePayMoney+Postage}} <block wx:if="{{Postage>0}}">(含运费)</block></view>
+    </view>
+    <view class="v-span">
+        <view class="v-text">代金券抵用</view>
+        <view>-￥{{CouponMoney}}</view>
+        <!-- ￥{{CouponName}} -->
     </view>
     <view class="v-span">
         <view class="v-text">商品总价</view>
