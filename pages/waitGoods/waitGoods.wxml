@@ -66,8 +66,8 @@
         <view>￥{{TruePayMoney+Postage}} <block wx:if="{{Postage>0}}">(含运费)</block></view>
     </view>
     <view class="v-span">
-        <view class="v-text">代金券抵用</view>
-        <view>-￥{{CouponMoney}}</view>
+        <view class="v-text">优惠</view>
+        <view>-￥{{CouponMoney}}（{{CouponName}}）</view>
         <!-- ￥{{CouponName}} -->
     </view>
     <view class="v-span">
