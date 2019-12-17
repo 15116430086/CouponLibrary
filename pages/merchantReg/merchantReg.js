@@ -14,7 +14,7 @@ Page({
       name: '连锁商户',
       typeId: '1'
     }, {
-      name: '个体商户',
+      name: '单个商户',
       typeId: '2'
     }],
     "placeholder": "请输入文本",
@@ -356,8 +356,8 @@ Page({
     }
 
     wx.showModal({
-      title: '券库商户注册',
-      content: '您确定注册成' + typename,
+      title: '券库商家注册',
+      //content: '您确定注册成' + typename,
       success: function (res) {
         if (res.confirm) {
           console.log('用户点击确定')
@@ -416,7 +416,7 @@ Page({
       if (json.flag) {
 
         wx.showModal({
-          title: '券库商户注册',
+          title: '券库商家注册',
           content: json.msg,
           showCancel: false,
           success(res) {
