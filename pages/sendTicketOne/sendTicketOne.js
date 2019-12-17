@@ -189,6 +189,7 @@ Page({
     })
   },
   DelCouponInfoBack: function(res) {
+    let that = this;
     var json = res.data.Data;
     if (json.flag) {
       wx.showToast({
@@ -196,7 +197,7 @@ Page({
         duration: 2000,
         success: function(res) {
           page = 1;
-          this.GetData();
+          that.GetData();
         },
       })
     } else {
