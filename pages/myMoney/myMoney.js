@@ -10,17 +10,17 @@ Page({
   data: {
     Capitaldetailslist: [],
     lastpage: 0,
-    sumBalanceMoney:0,
-    sumDrawbackMoney:0,
-    sumCommissionMoney:0,
-    sumCollectionMoney:0,
+    sumBalanceMoney: 0,
+    sumDrawbackMoney: 0,
+    sumCommissionMoney: 0,
+    sumCollectionMoney: 0,
     dAccountName: "",
     dBankCardNumber: "",
     dOpeningBank: "",
-    showView:false,
+    showView: false,
   },
 
-  GetData: function () {
+  GetData: function() {
     let that = this;
     //显示 加载中的提示
     wx.showLoading({
@@ -33,7 +33,7 @@ Page({
     data.pDateMonth = '';
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponCapitalView/GetCapitalInfo", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
-  GetDataBack: function (json) {
+  GetDataBack: function(json) {
     let that = this;
     var json = json.data.Data;
     wx.hideLoading();
@@ -41,10 +41,10 @@ Page({
       console.log(json.msg);
       if (page == 1) {
         this.setData({
-          sumBalanceMoney:json.CapitalTypeSun.sumBalanceMoney,          //结算总额，佣金余额
-          sumCollectionMoney: json.CapitalTypeSun.sumCollectionMoney,   //平台代收资金
-          sumCommissionMoney:json.CapitalTypeSun.sumCommissionMoney,    //佣金收入
-          sumDrawbackMoney:json.CapitalTypeSun.sumDrawbackMoney,        //佣金回退
+          sumBalanceMoney: json.CapitalTypeSun.sumBalanceMoney, //结算总额，佣金余额
+          sumCollectionMoney: json.CapitalTypeSun.sumCollectionMoney, //平台代收资金
+          sumCommissionMoney: json.CapitalTypeSun.sumCommissionMoney, //佣金收入
+          sumDrawbackMoney: json.CapitalTypeSun.sumDrawbackMoney, //佣金回退
           dAccountName: json.dataGroup[0].AccountName,
           dBankCardNumber: json.dataGroup[0].BankCardNumber,
           dOpeningBank: json.dataGroup[0].OpeningBank,
@@ -69,27 +69,25 @@ Page({
     }
   },
 
-  startSettlement: function (event){
+  startSettlement: function(event) {
     let that = this;
-    if (that.data.sumBalanceMoney<=0){
+    if (that.data.sumBalanceMoney <= 0) {
       wx.showToast({
         title: '没有要结算的资金',
         icon: "none",
         duration: 2000
       })
       return;
-    }
-    else
-    {
+    } else {
       that.setData({
-        showView:true
+        showView: true
       })
     }
   },
 
-  isAdd:function(e){
+  isAdd: function(e) {
     let that = this;
-    if (e.detail.value.dOpeningBank==""){
+    if (e.detail.value.dOpeningBank == "") {
       wx.showToast({
         title: "请输入开户行！",
         icon: "none",
@@ -97,7 +95,7 @@ Page({
       })
       return;
     }
-    if (e.detail.value.dAccountName == ""){
+    if (e.detail.value.dAccountName == "") {
       wx.showToast({
         title: "请输入银行用户名！",
         icon: "none",
@@ -105,7 +103,7 @@ Page({
       })
       return;
     }
-    if (e.detail.value.dBankCardNumber == ""){
+    if (e.detail.value.dBankCardNumber == "") {
       wx.showToast({
         title: "请输入银行卡号！",
         icon: "none",
@@ -114,13 +112,13 @@ Page({
       return;
     }
     var data = {}
-      data.pGroupID = app.globalData.AppGroupInfo.GroupID;
-      data.pAccountName = e.detail.value.dAccountName,
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pAccountName = e.detail.value.dAccountName,
       data.pBankCardNumber = e.detail.value.dBankCardNumber,
       data.pOpeningBank = e.detail.value.dOpeningBank
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponCapitalView/AddCapitalWithdrawal", "POST", data, app.globalData.appkeyid, that.startSettlementBack)
   },
-  startSettlementBack: function (json) {
+  startSettlementBack: function(json) {
     let that = this;
     var json = json.data.Data;
     if (json.flag) {
@@ -129,12 +127,13 @@ Page({
         icon: "none",
         duration: 2000
       })
-      that.setData({ showView:false});
+      that.setData({
+        showView: false
+      });
       wx.navigateTo({
         url: '../banlanceMes/banlanceMes'
       })
-    }
-    else {
+    } else {
       wx.showToast({
         title: json.msg,
         icon: "none",
@@ -143,7 +142,7 @@ Page({
     }
     //that.GetData();
   },
-  
+
   coles(e) {
     let that = this;
     let showView = that.data.showView;
@@ -158,50 +157,51 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    let that = this;
-    that.GetData();
+  onLoad: function(options) {
+
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
-  
+
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    this.onLoad();
+  onShow: function() {
+    let that = this;
+    page = 1;
+    that.GetData();
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     let that = this;
     if (that.data.lastpage > page) {
       page++
@@ -219,7 +219,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })
