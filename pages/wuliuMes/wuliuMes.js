@@ -30,7 +30,7 @@ Page({
     wx.hideLoading();
     if (ht.Traces.length > 0) {
       that.setData({
-        expressList: ht.Traces.reverse(),
+        expressList: ht.Traces,
       })
     }
   },
