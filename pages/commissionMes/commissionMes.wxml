@@ -7,7 +7,7 @@
         <view class="v-price"><text>￥</text>{{sumBalanceMoney}}</view>
     </view>
     <view class="v-mes">
-        托管金回退¥{{sumDrawbackMoney}} l 佣金收入¥{{sumCommissionMoney}} l 代收资金¥{{sumCollectionMoney}}
+        托管金退回¥{{sumDrawbackMoney}} l 佣金收入¥{{sumCommissionMoney}} l 代收资金¥{{sumCollectionMoney}}
     </view>
 </view>
 <block wx:for="{{Capitaldetailslist}}" wx:for-index="index" wx:key="index" >
