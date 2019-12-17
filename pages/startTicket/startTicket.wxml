@@ -4,7 +4,7 @@
         <view class="v-title">{{pCoupon_Info.CouponType==1?"礼物":"代金"}}券发布</view>
         <view class="v-rule">
             <text>注*</text>
-            配置联盟商代金券领取权限，并支付联盟商推广托管佣金，仅会员成功核销后，才结算佣金。代金券过期，佣金将自动退还。
+            配置联盟商{{pCoupon_Info.CouponType==1?"礼物":"代金"}}券领取权限，并支付联盟商推广托管佣金，仅会员成功核销后，才结算佣金。{{pCoupon_Info.CouponType==1?"礼物":"代金"}}券过期，佣金将自动退还。
         </view>
     </view>
     <view class="mes-block">
