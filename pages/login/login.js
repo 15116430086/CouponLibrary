@@ -76,12 +76,11 @@ Page({
     if (!region || !industry) {
       utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid)
     }
-    
+
   },
 
-  GetGeocoderBack: function(res)
-  {    
-    app.globalData.regionName = res[0].ad_info.district  
+  GetGeocoderBack: function(res) {
+    app.globalData.regionName = res[0].ad_info.district
     var appkeyid = wx.getStorageSync('miniappkeyid');
     if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
       app.globalData.appkeyid = appkeyid.FSessionKey;
@@ -90,9 +89,9 @@ Page({
       app.globalData.AppStaffInfo = loginInfo.AppStaffInfo;
       app.globalData.AppGroupInfo = loginInfo.AppGroupInfo;
       app.globalData.AppShopInfo = loginInfo.AppShopInfo;
-      wx.reLaunch({
-        url: '../home/home',
-      })
+        wx.reLaunch({
+          url: '../home/home',
+        })
     }
     console.log(JSON.stringify(res));
   },
@@ -112,7 +111,7 @@ Page({
         app.globalData.latitudeX = res.latitude
         app.globalData.longitudeY = res.longitude
 
-        utils.reverseGeocoder(res.latitude, res.longitude,that.GetGeocoderBack)
+        utils.reverseGeocoder(res.latitude, res.longitude, that.GetGeocoderBack)
       },
       complete(res) {
         //隐藏 加载中的提示
