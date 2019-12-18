@@ -52,6 +52,13 @@ Page({
       disabled: !disabled
     })
   },
+
+  onClose(e){
+    let that = this;
+    that.setData({
+      show2: false
+    })
+  },
   onRegAddressTap: function () {
     let that = this;
     wx.chooseLocation({
