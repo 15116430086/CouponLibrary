@@ -1,0 +1,29 @@
+ <block>
+        <view class="v-box">
+            <van-checkbox-group value="{{ result }}" bind:change="onChange">
+                <view class="v-block">
+                    <view class="v-left">
+                        <image src="/static/images/swp.png" />
+                        <view class="v-mid">
+                            <view class="v-t">中国联通宽带受理业务</view>
+                            <view class="v-b">时尚水果店</view>
+                            <view class="v-p">剩余100 l <text style="color:#999999">已赠送50</text></view>
+                        </view>
+                    </view>
+                    <van-checkbox name="c" checked-color="#E85819"></van-checkbox>
+                </view>
+                <view class="v-block">
+                    <view class="v-left">
+                        <image src="/static/images/swp.png" />
+                        <view class="v-mid">
+                            <view class="v-t">中国联通宽带受理业务</view>
+                            <view class="v-b">时尚水果店</view>
+                            <view class="v-p">剩余100 l <text style="color:#999999">已赠送50</text></view>
+                        </view>
+                    </view>
+                    <van-checkbox name="b" checked-color="#E85819"></van-checkbox>
+                </view>
+            </van-checkbox-group>
+        </view>
+        <view class="v-btn">确定</view>
+    </block>

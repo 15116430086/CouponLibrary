@@ -1,0 +1,70 @@
+/* pages/goodsConfig/goodsConfig.wxss */
+page{
+  background-color: #ededed;
+}
+.v-box {
+    /* margin-top: 20rpx; */
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+    /* padding-bottom: 20rpx; */
+}
+
+.v-block {
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
+    height: 200rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.v-left image {
+    width: 128rpx;
+    height: 128rpx;
+    border-radius: 10rpx;
+    margin-right: 40rpx;
+}
+
+.v-mid {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 128rpx;
+}
+
+.v-t {
+    color: #000000;
+    font-size: 30rpx;
+    font-weight: 600;
+}
+
+.v-b {
+    color: #666666;
+    font-size: 26rpx;
+}
+
+.v-p {
+    color: #E85819;
+    font-size: 24rpx;
+}
+
+.v-btn {
+    width: 670rpx;
+    height: 98rpx;
+    line-height: 98rpx;
+    text-align: center;
+    color: #FFF;
+    font-size: 32rpx;
+    margin: 40rpx auto;
+    background: #E85819;
+    border-radius: 20rpx;
+}
