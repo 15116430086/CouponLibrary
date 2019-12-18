@@ -27,7 +27,8 @@
         <view class="v-right">¥{{item.SalePrice}}</view>
       </view>
       <view class="v-bot">
-        <view class="v-span">本商品最大购买量{{item.StockNum}}</view>
+        <view class="v-span" style="color:#ededed;font-size:24rpx">本商品最大购买量{{item.StockNum}}</view>
+        <!-- <view class="v-span" bindtap="jumpConfig">商品赠券配置></view> -->
         <view class="v-set">     
             <navigator url="../goodsEditor/goodsEditor?edit=0&type={{item.ProductType}}&productid={{item.ProductID}}">
             <view class="v-blue">查看</view>

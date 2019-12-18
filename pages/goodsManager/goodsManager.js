@@ -107,6 +107,15 @@ Page({
   
   },
 
+  // 跳商品赠券配置
+  jumpConfig(e){
+    wx.navigateTo({
+      url: '../goodsConfig/goodsConfig',
+    })
+  },
+
+
+
   //点击每个导航的点击事件
   handleTap: function(e) {
     let that = this;
