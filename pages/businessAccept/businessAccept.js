@@ -213,9 +213,12 @@ Page({
   },
 
 
-
   onWxScanCode: function () {
     let that = this;
+    that.setData({
+      EC_ID: '',
+      CourierCompany: ''
+    })
     wx.scanCode({
       success(res) {
         that.setData({
@@ -242,15 +245,6 @@ Page({
       })
     }
   },
-
-
-
-
-
-
-
-
-  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

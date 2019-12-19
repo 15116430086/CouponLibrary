@@ -436,6 +436,13 @@ Page({
         currentId: id
       })
     }
+    wx.setStorageSync("pArrProductKey", "");
+    wx.setStorageSync("ArrProductchecked", false);
+    this.setData({
+      pArrProductID:[],
+      ArrProductchecked: false
+    })
+
   },
 
   confirmDate(e) {
@@ -485,9 +492,16 @@ Page({
     }
   },
   jumpChoose: function() {
-    wx.navigateTo({
-      url: '../chooseBuyGoods/chooseBuyGoods',
-    })
+    if (this.data.currentId == 0) {
+      wx.navigateTo({
+        url: '../chooseBuyGoods/chooseBuyGoods',
+      })
+    } else {
+      wx.navigateTo({
+        url: '../chooseBuyGoodsTwo/chooseBuyGoodsTwo',
+      })
+    }
+   
   },
   // 核销方式
   clickRule1(e) {
@@ -511,10 +525,17 @@ Page({
         hexiao: "线上受理",
         idb: id
       });
-      wx.navigateTo({
-        url: '../chooseBuyGoodsTwo/chooseBuyGoodsTwo',
-      })
-
+      if (that.data.currentId==0){
+        wx.navigateTo({
+          url: '../chooseBuyGoods/chooseBuyGoods',
+        })
+      }else{
+        wx.navigateTo({
+          url: '../chooseBuyGoodsTwo/chooseBuyGoodsTwo',
+        })
+      }
+      
+    
     } else {
       wx.setStorageSync("ArrProductchecked", false); //清除线上全部缓存
       wx.setStorageSync("pArrProductKey", "");
