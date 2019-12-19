@@ -63,7 +63,7 @@ Page({
         wx.setStorageSync("ProductCount", json.totalRecords);
       }
       that.setData({
-        result: wx.getStorageSync("pArrProductKey")
+        result: wx.getStorageSync("pArrProductKey")[0]
       });
 
     } else {
@@ -117,11 +117,11 @@ Page({
       wx.navigateBack({
         delta: 1
       })
-    } else if (result.length > 0) {
+    } else if (result) {
       parPage.setData({
-        pArrProductID: result
+        pArrProductID: [result] 
       })
-      wx.setStorageSync("pArrProductKey", result);
+      wx.setStorageSync("pArrProductKey", [result]);
       wx.setStorageSync("ArrProductchecked", checked);
       wx.navigateBack({
         delta: 1

@@ -27,7 +27,7 @@
     <input type="text" value="{{pCoupon_Info.CouponName}}" disabled="{{edit=='0'}}" placeholder="输入券名称(限定12字以内)" name="CouponName" placeholder-class="pclass" maxlength="12" />
   </view>
   <view class="ticket-block">
-    <view class="ticket-name">券面值</view>
+    <view class="ticket-name">券面值<text style="color:#cccccc">（券名称为*元券时请输入对等面值）</text></view>
     <input type="number" value="{{pCoupon_Info.CouponMoney}}" disabled="{{edit=='0'}}"  placeholder="输入券面值" name="CouponMoney" placeholder-class="pclass" />
   </view>
   <!-- <view class="ticket-block">
