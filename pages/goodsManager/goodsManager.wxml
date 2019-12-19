@@ -63,6 +63,7 @@
             <view class="v-blue">编辑</view>
           </navigator>
           <view class="v-blue" data-ProductID='{{item.ProductID}}' data-ProductName='{{item.ProductName}}' bindtap="Lowershelf">上架</view>
+          <view class="v-blue" data-ProductID='{{item.ProductID}}' data-ProductName='{{item.ProductName}}' style="color:#E80000">删除</view>
         </view>
       </view>
     </view>
