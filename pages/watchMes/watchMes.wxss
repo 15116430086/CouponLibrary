@@ -73,11 +73,12 @@ page {
 
 .v-class {
   width: calc(100% - 80rpx);
-  height: 128rpx;
+  height: 100rpx;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  padding-top: 40rpx
 }
 
 .v-left {
@@ -109,6 +110,7 @@ page {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .v-span {
@@ -127,4 +129,53 @@ page {
 .v-right image {
   width: 14rpx;
   height: 22rpx;
+  position: absolute;
+  right: 0rpx;
+  bottom: -42rpx
+}
+
+
+.home-sel {
+    width: calc(100% - 80rpx);
+    height: 75rpx;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.home-span {
+    width: 32%;
+    white-space: nowrap;
+    /* margin-right: 20rpx; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: #666666;
+    font-size: 28rpx;
+    background-color: #ffffff;
+    border-radius: 20rpx;
+    height: 60rpx;
+    position: relative;
+}
+.home-span view{
+  width: 125rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+  /* position: relative;
+  left: -10rpx; */
+
+}
+.home-span image {
+    display: block;
+    flex-shrink: 0;
+    width: 14rpx;
+    height: 10rpx;
+    /* position: absolute;
+    right: 10rpx; */
+    border-radius: 10rpx;
 }

@@ -12,6 +12,26 @@ Page({
     pCouponID: "",
     datalist: [],
     CouponInfo: {},
+    typeName: "指定商户",
+    shopName: "指定行业",
+    selectDate: "指定地区",
+    currentDate: new Date().getTime(),
+    minDate: new Date("2019-10-01").getTime(),
+    formatter(type, value) {
+      if (type === 'year') {
+        return `${value}年`;
+      } else if (type === 'month') {
+        return `${value}月`;
+      } else {
+        return `${value} 日`;
+      }
+      return value;
+    },
+    show1: false,
+    show2: false,
+    show3: false,
+    shoplist: [],
+    columns: ["全部券", "现金券", "礼物券"],
     Paging: true //是否可以加载下一页
   },
 
@@ -101,6 +121,121 @@ Page({
         duration: 2000
       })
     }
+  },
+
+
+  onClose2(e) {
+    let that = this;
+    that.setData({
+      show3: false
+    })
+
+  },
+  showPopup1() {
+
+    let that = this;
+ 
+      that.setData({
+        show1: true
+      })
+    
+  },
+  showPopup2() {
+
+    let that = this;
+    that.setData({
+      show2: true
+    })
+  },
+  showPopup3() {
+
+    let that = this;
+    that.setData({
+      show3: true
+    })
+  },
+
+
+  //指定地区确认
+  confirm(event) {
+    console.log(event.detail); 
+    
+
+    let that = this;
+    that.setData({
+      show3: false,
+      selectDate: event.detail.value
+    })
+
+   
+  },
+  //指定商户确认
+  onConfirm(event) {
+    const {
+      picker,
+      value,
+      index
+    } = event.detail;
+    console.log(`当前值：${value}, 当前索引：${index}`);
+
+    let that = this;
+    that.setData({
+      show2: false,
+      couponType: index - 1,
+      typeName: value
+    })
+    
+  },
+  onCancel(e) {
+
+    let that = this;
+    that.setData({
+      show2: false
+    })
+  },
+  onClose(e) {
+
+    let that = this;
+    that.setData({
+      show2: false
+    })
+  },
+
+  //指定行业
+  onConfirm1(event) {
+    const {
+      picker,
+      value,
+      index
+    } = event.detail;
+    console.log(`当前值：${value.ShopName}, 当前索引：${index}`);
+
+    let that = this;
+    that.setData({
+      show1: false,
+      shopID: value.ShopID,
+      shopName: value.ShopName
+    })
+    page = 1;
+    that.GetData(page);
+  },
+  onCancel1(e) {
+    let that = this;
+    that.setData({
+      show1: false
+    })
+  },
+  onCancel2(e) {
+    let that = this;
+    that.setData({
+      show3: false
+    })
+  },
+  onClose1(e) {
+    let that = this;
+    that.setData({
+      show1: false
+    })
   },
 
 

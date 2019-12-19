@@ -4,7 +4,7 @@
   <view class="v-top">
     <view class="v-title">{{CouponInfo.CouponName}}</view>
     <view class="v-go" data-CouponID="{{CouponInfo.CouponID}}" data-Couponstatus="{{datalist[0].State}}" data-ReleaseIDs="{{datalist[0].ReleaseID}}" bindtap="jumpOk">继续发券</view>
-    
+
   </view>
   <view class="v-mid">已发券:{{CouponInfo.ReleaseNUM}}{{datalist.State}}</view>
   <view class="v-block">
@@ -23,9 +23,9 @@
   </view>
 </view>
 
-<view class="v-bot">
-  <!-- 已通过 -->
-  <block wx:for="{{datalist}}">
+<block wx:for="{{datalist}}">
+  <view class="v-bot">
+    <!-- 已通过 -->
     <view wx:if="{{item.State!=0}}" class="v-class" bindtap="See" data-releaseid="{{item.ReleaseID}}">
       <view class="v-left">
         <view class="v-name">
@@ -40,6 +40,7 @@
         <image bindtap="See" wx:if="{{item.State==2}}" data-releaseid="{{item.ReleaseID}}" src="/static/images/right-arr1.png"></image>
       </view>
     </view>
+
     <view wx:else class="v-class">
       <view class="v-left">
         <view class="v-name">
@@ -55,6 +56,71 @@
       </view>
     </view>
 
-  </block>
 
-</view>
+    <view class="home-sel">
+      <view class="home-span" bindtap="showPopup1">
+        <view>{{shopName}}</view>
+        <image src="/static/images/sel.png" />
+      </view>
+      <view class="home-span" bindtap="showPopup2">
+        <view>{{typeName}}</view>
+        <image src="/static/images/sel.png" />
+      </view>
+      <view class="home-span" bindtap="showPopup3">
+        <view>{{selectDate}}</view>
+        <image src="/static/images/sel.png" />
+      </view>
+    </view>
+
+  </view>
+</block>
+<!-- 商铺类型 -->
+    <van-popup
+      show="{{show1}}"
+      bind:close="onClose1"
+      position="bottom"
+      close-on-click-overlay
+      overlay
+      safe-area-inset-bottom
+    >
+      <van-picker show-toolbar columns="{{shoplist}}"  valueKey="ShopName" bind:cancel="onCancel1" bind:confirm="onConfirm1" confirm-button-text=""
+        cancel-button-text=""
+        title="指定行业"/>
+    </van-popup>
+
+    <!-- 券类型 -->
+    <van-popup
+      show="{{show2}}"
+      bind:close="onClose"
+      position="bottom"
+      close-on-click-overlay
+      overlay
+      safe-area-inset-bottom
+    >
+      <van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" confirm-button-text=""
+        cancel-button-text=""
+        title="指定商户"/>
+    </van-popup>
+
+    <!-- 时间 -->
+    <van-popup
+      show="{{show3}}"
+      bind:close="onClose2"
+      position="bottom"
+      close-on-click-overlay
+      overlay
+      safe-area-inset-bottom
+    >
+      <van-picker
+        columns="{{columns}}"
+        show-toolbar
+        confirm-button-text=""
+        cancel-button-text=""
+        title="指定地区"
+        default-index="{{ 4 }}"
+        bind:cancel="onCancel2"
+        bind:confirm="confirm"       
+        bind:change="change"
+       
+      />
+    </van-popup>
