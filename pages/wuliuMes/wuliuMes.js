@@ -28,9 +28,9 @@ Page({
     var json = json.data.Data;
     var ht = JSON.parse(json.html);
     wx.hideLoading();
-    if (ht.Traces.length > 0) {
+    if (ht.Traces) {
       that.setData({
-        expressList: ht.Traces.reverse(),
+        expressList: ht.Traces,
       })
     }
   },
