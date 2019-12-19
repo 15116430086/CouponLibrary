@@ -6,7 +6,7 @@
         <view class="search-box">
           <view class="search-left">
             <image src="/static/images/serch.png" background-size="cover" style="margin-left:30rpx;margin-right:30rpx" />
-            <input value="" placeholder="商品/业务名称" bindInput="onChange" bindtap="onSearch" focus="true" />
+            <input value="" placeholder="商品/业务名称" bindInput="onChange" bindtap="onSearch"/>
           </view>
           <image src="/static/images/err.png" background-size="cover" style="margin-right:30rpx;" bindtap="onClear" v-if="flag==1" />
         </view>
