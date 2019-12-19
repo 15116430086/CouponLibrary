@@ -129,7 +129,7 @@ Page({
           //   address: res.address
           // })
 
-          utils.getGeocoder(res.address, app.globalData.regionName, chat.getGeocoderBack)
+          utils.getGeocoder(res.address,chat.getGeocoderBack)
         }
       }
     })
