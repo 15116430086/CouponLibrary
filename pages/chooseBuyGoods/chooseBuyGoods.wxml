@@ -43,7 +43,7 @@
             <van-checkbox-group value="{{ result }}" bind:change="onChange">
                 <view class="v-block" wx:for="{{userlist}}">
                     <view class="v-left">
-                        <image src="{{item.ImageOne==''?'/static/images/swp.png':item.ImageOne}}" />
+                        <image bindtap="onupdate" data-type="{{item.ProductType}}" data-productid="{{item.ProductID}}"  src="{{item.ImageOne==''?'/static/images/swp.png':item.ImageOne}}" />
                         <view class="v-mid">
                             <view class="v-t">{{item.ProductName}}</view>
                             <view class="v-b">售价：¥{{item.SalePrice}}</view>
