@@ -53,13 +53,13 @@ Page({
     })
   },
 
-  onClose(e){
+  onClose(e) {
     let that = this;
     that.setData({
       show2: false
     })
   },
-  onRegAddressTap: function () {
+  onRegAddressTap: function() {
     let that = this;
     wx.chooseLocation({
       latitude: app.globalData.latitudeX,
@@ -76,7 +76,7 @@ Page({
       }
     })
   },
-  getGeocoderBack: function (res) {
+  getGeocoderBack: function(res) {
     let that = this;
     var regionName = res.province + res.city + res.district
     var regAddress = that.data.RegisteredAddress.replace(regionName, '')
@@ -88,7 +88,7 @@ Page({
 
     });
   },
-  onPreviewImageTap: function (e) {
+  onPreviewImageTap: function(e) {
     var imgtypeid = e.currentTarget.dataset.type;
     let that = this;
     if (imgtypeid == 0) {
@@ -108,7 +108,28 @@ Page({
     }
   },
 
-  onUpFileImg: function (e) {
+  onDeleteImageTap: function(e) {
+    let that = this;
+    var type = e.currentTarget.dataset.type;
+    if (type == 0) {
+      that.setData({
+        enterpriseLicensing: "", //营业执照
+        flag0: false,
+      })
+    } else if (type == 1) {
+      that.setData({
+        mastergraphimg: "", //形象主图
+        flag1: false,
+      })
+    } else if (type == 2) {
+      that.setData({
+        companyLOGimg: "", //公司LOGO
+        flag2: false,
+      })
+    }
+  },
+
+  onUpFileImg: function(e) {
     var type = 0;
     var typeid = e.currentTarget.dataset.type;
     if (typeid == 0) { //说明是上传营业执照
@@ -117,16 +138,25 @@ Page({
     let that = this;
     utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, typeid, type)
   },
-  UpFileImgBak: function (img, type) {
+  UpFileImgBak: function(img, type) {
     let that = this;
     if (img.length > 0) {
       if (type == 0) {
+        var words_result = JSON.parse(img[1]);
+
+        if (words_result.words_result.单位名称.words == "无") {
+          wx.showToast({
+            title: "营业执照不符合请重新上传!",
+            icon: "none",
+            duration: 2000
+          })
+          return;
+        }
+
         that.setData({
           enterpriseLicensing: img[0], //营业执照
           flag0: true,
         })
-
-        var words_result = JSON.parse(img[1]);
         console.log(words_result);
         var RegisteredAddress = words_result.words_result.地址.words;
 
@@ -160,18 +190,6 @@ Page({
           companyLOGimg: img[0], //公司LOG
           flag2: true,
         })
-      }
-
-
-      if (type == 0) {
-        if (words_result.words_result.单位名称.words == "无") {
-          wx.showToast({
-            title: "营业执照不符合请重新上传!",
-            icon: "none",
-            duration: 2000
-          })
-        }
-        return;
       }
 
       wx.showToast({
@@ -244,7 +262,7 @@ Page({
       show2: false
     });
   },
-  onFormSubmit: function (e) {
+  onFormSubmit: function(e) {
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     let that = this;
     var typename = that.data.currentId == "1" ? "【连锁商户】" : "【个体商户】"
@@ -365,7 +383,7 @@ Page({
     wx.showModal({
       title: '券库商家注册',
       //content: '您确定注册成' + typename,
-      success: function (res) {
+      success: function(res) {
         if (res.confirm) {
           console.log('用户点击确定')
           that.RegCouponGroup(data)
@@ -374,7 +392,7 @@ Page({
     })
   },
 
-  RegCouponGroup: function (data) {
+  RegCouponGroup: function(data) {
     let that = this;
     var multiArray = that.data.multiArray;
     var multiIndex = that.data.multiIndex;
@@ -415,7 +433,7 @@ Page({
 
   },
 
-  RegCouponGroupBack: function (json) {
+  RegCouponGroupBack: function(json) {
     console.log(json);
     var json = json.data.Data;
     if (json) {
@@ -468,12 +486,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     let that = this;
     that.GetRegionIndustry();
   },
   //点击每个导航的点击事件
-  handleTap: function (e) {
+  handleTap: function(e) {
     let id = e.currentTarget.id;
     let that = this;
     if (id) {
@@ -485,53 +503,53 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 
-  GetRegionIndustry: function () {
+  GetRegionIndustry: function() {
     let that = this;
     regionData = wx.getStorageSync('Region');
     var industrylist = wx.getStorageSync('Industry');
@@ -548,13 +566,13 @@ Page({
     utils.GetRegionIndustry(app.globalData.apiurl + "CouponView/LoginView/GetRegionIndustry", "POST", app.globalData.appkeyid, that.GetRegionIndustry)
   },
 
-  getGeocoderRegionBack: function (res) {
+  getGeocoderRegionBack: function(res) {
     let that = this;
     that.setData({
       Geocoder: res
     });
   },
-  bindMultiPickerChange: function (e) {
+  bindMultiPickerChange: function(e) {
     let that = this;
     console.log('picker发送选择改变，携带值为', e.detail.value)
     var data = {
@@ -570,7 +588,7 @@ Page({
     utils.getGeocoder(regionName, that.getGeocoderRegionBack)
 
   },
-  bindMultiPickerColumnChange: function (e) {
+  bindMultiPickerColumnChange: function(e) {
     console.log('修改的列为', e.detail.column, '，值为', e.detail.value);
     var data = {
       multiArray: this.data.multiArray,

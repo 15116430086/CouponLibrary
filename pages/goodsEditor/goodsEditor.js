@@ -52,7 +52,8 @@ Page({
       url: "/static/images/img.png",
       state: 0
     }],
-    upimgnum: 0
+    upimgnum: 0,
+    edit:1
   },
 
   selectThree(e) {

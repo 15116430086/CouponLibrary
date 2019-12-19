@@ -90,7 +90,8 @@
     "pages/noPayMoney/noPayMoney",
     "pages/regPlane/regPlane",
     "pages/secretBook/secretBook",
-    "pages/webView/webView"
+    "pages/webView/webView",
+    "pages/chooseBuyGoodsTwo/chooseBuyGoodsTwo"
   ],
   "permission": {
     "scope.userLocation": {

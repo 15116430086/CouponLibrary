@@ -43,9 +43,9 @@
       </view>
       <view class="t-bot" wx:if="{{flag0}}">
         <view class="t-down">已上传
-          <text data-type="0" bindtap="onUpFileImg" class="seeMes">点击重新上传</text>
+          <text data-type="0" bindtap="onPreviewImageTap" class="seeMes">点击查看预览</text>
         </view>
-        <view class="seeMes" data-type="0" bindtap="onPreviewImageTap">查看预览</view>
+        <view class="seeMes" data-type="0" style="color:#e80000" bindtap="onDeleteImageTap">删除</view>
       </view>
     </view>
     <view class="ticket-block">
@@ -76,13 +76,13 @@
       </picker>
     </view>
     <view class="ticket-block">
-      <view class="ticket-name">经营地址
+      <view class="ticket-name">详细地址
         <text wx:if="{{txtShow == true}}" style="color:#e85819">(请核对)</text>
         <text style="color:red">*</text>
       </view>
       <view class="t-bot">
         <view style="width: 100%;">
-          <input name="RegAddress" type="text" value="{{regAddress}}" placeholder="请输入详细经营地址" placeholder-class="ip" />
+          <input name="RegAddress" type="text" value="{{regAddress}}" placeholder="请输入详细地址" placeholder-class="ip" />
         </view>
         <image bindtap="onRegAddressTap" src="/static/images/address1.png"  style="width:46rpx;height:50rpx"/>
       </view>
@@ -111,9 +111,9 @@
       </view>
       <view class="t-bot" wx:if="{{flag1}}">
         <view class="t-down">已上传
-          <text data-type="1" bindtap="onUpFileImg" class="seeMes">点击重新上传</text>
+          <text data-type="1" bindtap="onPreviewImageTap" class="seeMes">点击查看预览</text>
         </view>
-        <view class="seeMes" data-type="1" bindtap="onPreviewImageTap">查看预览</view>
+        <view class="seeMes" data-type="1" style="color:#e80000" bindtap="onDeleteImageTap">删除</view>
       </view>
     </view>
     <view class="ticket-block">
@@ -124,9 +124,10 @@
       </view>
       <view class="t-bot" wx:if="{{flag2}}">
         <view class="t-down">已上传
-          <text data-type="2" bindtap="onUpFileImg" class="seeMes">点击重新上传</text>
+          <text data-type="2" bindtap="onPreviewImageTap" class="seeMes">点击查看预览</text>
         </view>
-        <view class="seeMes" data-type="2" bindtap="onPreviewImageTap">查看预览</view>
+        <view class="seeMes" data-type="2" style="color:#e80000" bindtap="onDeleteImageTap">删除</view>
+        <!-- <image data-type="2" bindtap="onDeleteImageTap"  src="/static/images/cha4.png" /> -->
       </view>
     </view>
     <!-- <view class="ticket-block">
