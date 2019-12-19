@@ -9,6 +9,18 @@
     </view>
     <!-- 加block的地方做判断  显示有无 -->
     <block>
+
+      <view class="bot-block">
+        <view class="home-title">所有商品</view>
+        <view class="home-right">
+          <van-switch checked="{{ checked }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="swChange" data-index="1" />
+        </view>
+      </view>
+      <view class="bot-block">
+        <view class="home-title">指定商品</view>
+        <view class="home-right">
+          <van-switch checked="{{ !checked }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="swChange" data-index="2" />
+
         <view class="v-box" wx:if="{{ !checked }}">
             <van-checkbox-group value="{{ result }}" bind:change="onChange">
                 <view class="v-block" wx:for="{{userlist}}">
@@ -22,6 +34,7 @@
                     <van-checkbox name="{{item.ProductID}}" checked-color="#E85819"></van-checkbox>
                 </view>
             </van-checkbox-group>
+        </view>
         </view>
       </view>
     </block>
