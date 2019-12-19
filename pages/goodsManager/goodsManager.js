@@ -104,11 +104,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-  
+
   },
 
   // 跳商品赠券配置
-  jumpConfig(e){
+  jumpConfig(e) {
     wx.navigateTo({
       url: '../goodsConfig/goodsConfig',
     })
@@ -131,20 +131,70 @@ Page({
     }
   },
 
+  onDeleteProductTap: function(event) {
+    let that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定删除商品【' + event.currentTarget.dataset.productname + '】?',
+      success: function(res) {
+        if (res.confirm) {
+          var data = {}
+          data.pProductID = event.currentTarget.dataset.productid;
+          data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+          utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/DeleteProduct", "POST", data, app.globalData.appkeyid, that.DeleteProductBack)
+          console.log('弹框后点确认')
+        } else {
+          console.log('弹框后点取消')
+        }
+      }
+    })
+  },
+  DeleteProductBack: function(json) {
+    let that = this;
+    var json = json.data.Data;
+    if (json.flag) {
+      wx.showToast({
+        title: json.msg,
+        icon: "none",
+        duration: 2000
+      })
+      pageM[that.data.currentId].iscleck = true;
+    } else {
+      wx.showToast({
+        title: json.msg,
+        icon: "none",
+        duration: 2000
+      })
+    }
+
+    if (that.data.stayorderlist.length == 1 && that.data.currentId == 0) {
+      that.data.stayorderlist = [];
+      that.setData({
+        stayorderlist: []
+      })
+    }
+    if (that.data.alreadyorderlist.length == 1 && that.data.currentId == 1) {
+      that.data.alreadyorderlist = [];
+      that.setData({
+        alreadyorderlist: []
+      })
+    }
+    that.GetData();
+  },
 
   Lowershelf: function(event) {
     let that = this;
     console.log(event.currentTarget.dataset.productid);
     wx.showModal({
       title: '提示',
-      content: '是否' + (that.data.currentId == 0 ? '下' : '上') + '架【' + event.currentTarget.dataset.productname+'】',
+      content: '确定' + (that.data.currentId == 0 ? '下' : '上') + '架【' + event.currentTarget.dataset.productname + '】?',
       success: function(res) {
         if (res.confirm) {
           var data = {}
-          data.pProductId = event.currentTarget.dataset.productid,
-            data.pState = (1 - that.data.currentId);
-          utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/ProductUpperShelfOrLowerShelf", "POST", data, app.globalData.appkeyid, that.LowershelfBack),
-            console.log('弹框后点确认')
+          data.pProductID = event.currentTarget.dataset.productid;
+          data.pState = (1 - that.data.currentId);
+          utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/ProductUpperShelfOrLowerShelf", "POST", data, app.globalData.appkeyid, that.LowershelfBack)
+          console.log('弹框后点确认')
         } else {
           console.log('弹框后点取消')
         }
@@ -153,7 +203,7 @@ Page({
   },
 
   LowershelfBack: function(json) {
-    let that = this;   
+    let that = this;
     var json = json.data.Data;
     if (json.flag) {
       var title = '该商品' + (that.data.currentId == 0 ? '下' : '上') + '架成功'
@@ -171,9 +221,8 @@ Page({
         duration: 2000
       })
     }
-    if (that.data.stayorderlist.length == 1 && that.data.currentId == 0)
-    {
-      that.data.stayorderlist=[];
+    if (that.data.stayorderlist.length == 1 && that.data.currentId == 0) {
+      that.data.stayorderlist = [];
       that.setData({
         stayorderlist: []
       })
@@ -213,7 +262,7 @@ Page({
       lastpage: 0,
       state: 1,
       iscleck: true
-    }];   
+    }];
     that.setData({
       stayorderlist: [],
       alreadyorderlist: []

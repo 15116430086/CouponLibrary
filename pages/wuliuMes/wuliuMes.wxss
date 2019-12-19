@@ -21,7 +21,7 @@ page {
 
 .v-block {
     width: calc(100% - 20rpx);
-    height: 140rpx;
+    /* min-height: 100px; */
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -30,6 +30,8 @@ page {
 .v-left {
     width: 160rpx;
     position: relative;
+    padding-top: 20rpx;
+    /* border-right: 1px solid #ccc; */
 }
 
 .v-time {
@@ -47,7 +49,7 @@ page {
     position: absolute;
     right: -8.5rpx;
     z-index: 10;
-    top: 8rpx;
+    top: 30rpx;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,9 +64,11 @@ page {
 
 .v-right {
     width: calc(100% - 120rpx);
-    height: 140rpx;
+    height: 100%;
     padding-left: 20rpx;
     border-left: 1px solid #CCCCCC;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
 }
 
 .vbox{

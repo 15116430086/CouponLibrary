@@ -120,11 +120,15 @@ border-radius: 30rpx;
 }
 
 .v-set{
-  width: 208rpx;
+  width: 100%;
   color:#016FB4;
   font-size: 28rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
+}
+
+.v-blue{
+  margin-left: 40rpx;
 }
