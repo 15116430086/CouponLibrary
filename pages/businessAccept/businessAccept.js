@@ -212,6 +212,41 @@ Page({
     })
   },
 
+
+
+  onWxScanCode: function () {
+    let that = this;
+    wx.scanCode({
+      success(res) {
+        that.setData({
+          CourierNumber: res.result
+        })
+        var data = {};
+        data.LogisticsNumber = res.result;
+        utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/NumberQuery", "POST", data, app.globalData.appkeyid, that.GetNumberQueryBack)
+      }
+    })
+  },
+  GetNumberQueryBack: function (json) {
+    let that = this;
+    var json = json.data.Data;
+    if(json.flag){
+      that.setData({
+        columns: json.data
+      })
+    }
+    console.log(that.data.columns);
+  },
+
+
+
+
+
+
+
+
+  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
