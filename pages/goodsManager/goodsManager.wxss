@@ -115,8 +115,8 @@ border-radius: 30rpx;
 
 
 .v-span{
-  color:#EDEDED;
-  font-size: 24rpx;
+ color:#E85819;
+  font-size: 28rpx;
 }
 
 .v-set{

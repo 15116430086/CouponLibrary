@@ -18,7 +18,7 @@ Page({
       typeId: '2'
     }],
     "placeholder": "请输入文本",
-    "maxlength": -1, // 最大输入长度，设置为 -1 的时候不限制最大长度   
+    "maxlength": 11, // 最大输入长度，设置为 -1 的时候不限制最大长度   
     "auto-height": true, // 是否自动增高，设置auto-height时，style.height不生效
     "adjust-position": true, // 键盘弹起时，是否自动上推页面
     show2: false,
@@ -50,6 +50,13 @@ Page({
     that.setData({
       checked: !checked,
       disabled: !disabled
+    })
+  },
+
+  onClose(e){
+    let that = this;
+    that.setData({
+      show2: false
     })
   },
   onRegAddressTap: function () {

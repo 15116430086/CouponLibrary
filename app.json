@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/goodsConfig/goodsConfig",
     "pages/classRoom/classRoom",
     "pages/notifyBuyers/notifyBuyers",
     "pages/writeNote/writeNote",

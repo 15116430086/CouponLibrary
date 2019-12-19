@@ -1,5 +1,5 @@
 <!-- 导航 -->
-<view class="top-block" hidden="true" >
+  <view class="top-block"  hidden="true">
   <view class='top_nav'>
     <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.typeId}}' catchtap='handleTap'>
       {{item.name}}
@@ -24,6 +24,7 @@
     </view>
   </view>
 </view>
+
 <form bindsubmit="onFormSubmit" bindreset="formReset" style="margin-top: -20rpx;" >
   <view class="ticket-box">
     <view class="ticket-block">

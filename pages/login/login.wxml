@@ -8,7 +8,7 @@
         <button class="phoneBtn" style="margin-bottom:40rpx;border:none" bindtap="onPhoneLoginTap" >登录已有账号</button>
 
         <view class="v-bot">
-            <block wx:for="{{itemImage}}">
+            <block wx:for="{{itemImage}}" wx:key="*this">
             <view class="v-class">
                 <image src="{{item.image}}" />
                 <view class="v-title" style="font-weight:500">{{item.title}}</view>
