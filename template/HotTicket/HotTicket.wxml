@@ -2,22 +2,33 @@
   <block wx:for="{{ListCoupon_ReleaseQuery}}" wx:key="ReleaseID">
     <view class="hotboxH">
       <view class="hotblockH">
+        <!-- 左图 -->
+        <image class="ticket-imgH" src="{{item.CouponImageOne}}" mode='aspectFill' />
         <view class="ticket-boxH">
-          <image class="ticket-imgH" src="{{item.CouponImageOne}}" mode='aspectFill'/>
           <view class="ticket-mesH">
-            <view class="ticket-ul-pH">
-              <view class="ticket-mes-pH"><text style="color:#e85819; font-size: 24rpx;width:110rpx; margin-right: 5rpx;" >[{{item.WriteOffType==0?"线上券":"线下券"}}]</text>{{item.CouponName}}</view>
-              <view class="ticket-mesmesH ">{{GroupName}}</view>
+            <view class="v-top">
+              <view class="ticket-ul-pH">
+                <view class="ticket-mes-pH">
+                  <text style="color:#e85819; font-size: 24rpx;width:110rpx; margin-right: 5rpx;">[{{item.WriteOffType==0?"线上券":"线下券"}}]</text>{{item.CouponName}}</view>
+              </view>
+              <view class="left-money" wx:if="{{item.SalePrice>0}}">￥{{item.SalePrice}}</view>
+              <view class="left-money" wx:else></view>
+               
+              
             </view>
-
-            <view class="ticket-mes-ulH">
-              <view class="one">限量{{item.ReleaseNUM}}份</view>|
-              <view class="two">{{item.ReceiveNUM}}已领</view>
+             <view class="ticket-mesmesH ">{{GroupName}}</view>
+            <view class="v-top">
+              <view class="ticket-mes-ulH">
+                <view class="one">限量{{item.ReleaseNUM}}份</view>|
+                <view class="two">{{item.ReceiveNUM}}已领</view>
+              </view>
+              <view class="hotbtnH" wx:if="{{item.SalePrice>0}}"  data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">立即领取</view>
+              <view class="hotbtnH" wx:else data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">免费领取</view>
             </view>
           </view>
         </view>
 
-        <view class="left-block" wx:if="{{item.SalePrice>0}}">
+        <!-- <view class="left-block" wx:if="{{item.SalePrice>0}}">
           <view class="left-money">￥{{item.SalePrice}}</view>
           <view class="hotbtnH" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">立即领取</view>
         </view>
@@ -27,7 +38,7 @@
           <view class="left-money"></view>
 
           <view class="hotbtnH" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">免费领取</view>
-        </view>
+        </view> -->
       </view>
     </view>
   </block>

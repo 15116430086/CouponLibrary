@@ -56,7 +56,7 @@ App({
         //upimgurl: "https://wx.wap.meiguwen.com/LibraryAPI/",  
         //apiurl: "https://wx.wap.meiguwen.com/LibraryAPI/"       
 
-        //upimgurl: "https://test.miboon.com:8080/LibraryAPI/",
+        //upimgurl: "http://test.miboon.com:8080/LibraryAPI/",
         //apiurl: "http://test.miboon.com:8080/LibraryAPI/",
         //apiurl: "http://localhost:7562/"
     }
