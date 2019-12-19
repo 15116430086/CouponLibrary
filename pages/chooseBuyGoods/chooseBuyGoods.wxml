@@ -45,16 +45,16 @@
           <van-checkbox name="{{item.ProductID}}" checked-color="#E85819"></van-checkbox>
           <view class="v-right">
             <view class="v-left">
-              <image src="{{item.ImageOne==''?'/static/images/swp.png':item.ImageOne}}" class="v-left-image" mode='aspectFill'/>
+              <image src="{{item.ImageOne==''?'/static/images/swp.png':item.ImageOne}}" class="v-left-image" mode='aspectFill' />
               <view class="v-mid">
                 <view class="v-t">
                   <view>{{item.ProductName}}</view>
-                  <image src="/static/images/wrt4.png" style="width:34rpx;height:34rpx;"></image>
+                  <image src="/static/images/wrt4.png" data-type='{{item.ProductType}}' data-productid='{{item.ProductID}}' bindtap="onupdate" style="width:34rpx;height:34rpx;"></image>
                 </view>
                 <view class="v-b">售价：¥{{item.SalePrice}}</view>
               </view>
             </view>
-            <image src="/static/images/del1.png" class="v-right-image" />
+            <image data-ProductID='{{item.ProductID}}' data-ProductName='{{item.ProductName}}' bindtap="onDeleteProductTap" src="/static/images/del1.png" class="v-right-image" />
           </view>
         </view>
       </van-checkbox-group>

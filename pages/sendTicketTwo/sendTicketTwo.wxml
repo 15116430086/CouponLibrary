@@ -94,7 +94,7 @@
   <block wx:if="{{shareshow2}}">
     <view class="ticket-blocks">
       <view class="bot-boxs" bindtap="clickTrue2" data-id="001">
-        <view class="bot-span">指定日期(有效期为固定日期)</view>
+        <view class="bot-span">指定日期</view>
         <image src="{{idd==001?'/static/images/ok.png':'/static/images/okk.png'}}" class="bot-ok" />
       </view>
     </view>
@@ -102,7 +102,7 @@
     <picker name="picker_hx" class="cybm_pic_1" disabled="{{edit=='0'}}" value="{{df_value}}" data-selecthx="{{pic_array[hx_index].name}}" range="{{pic_array}}" range-key="{{'name'}}" bindchange="bindPickerChange_hx">
       <view class="ticket-blocks">
         <view class="bot-boxs" bindtap="clickTrue2" data-id="002">
-          <view class="bot-span">指定天数(会员领取后多少天)</view>
+          <view class="bot-span">指定天数(会员领取后多少天有效)</view>
           <image src="{{idd==002?'/static/images/ok.png':'/static/images/okk.png'}}" class="bot-ok" />
         </view>
       </view>
