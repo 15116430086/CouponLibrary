@@ -222,7 +222,7 @@ Page({
           CourierNumber: res.result
         })
         var data = {};
-        data.LogisticsNumber = res.result;
+    data.LogisticsNumber = res.result;
         utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/NumberQuery", "POST", data, app.globalData.appkeyid, that.GetNumberQueryBack)
       }
     })
@@ -231,11 +231,16 @@ Page({
     let that = this;
     var json = json.data.Data;
     if(json.flag){
+      if (json.data.length==1){
+        that.setData({
+          CourierCompany: json.data[0].text,
+          EC_ID: json.data[0].EC_ID,
+        })
+      }
       that.setData({
         columns: json.data
       })
     }
-    console.log(that.data.columns);
   },
 
 
