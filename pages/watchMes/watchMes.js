@@ -31,7 +31,7 @@ Page({
     show2: false,
     show3: false,
     shoplist: [],
-    columns: ["全部券", "现金券", "礼物券"],
+    columns: [],
     Paging: true //是否可以加载下一页
   },
 
@@ -123,7 +123,13 @@ Page({
     }
   },
 
-
+  query:function(releaseid,type){
+    var data = {
+      ReleaseID: releaseid,
+      type: type
+    }
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetSpecifiedlist", "POST", data, app.globalData.appkeyid, this.GetSpecifiedlist);
+},
   onClose2(e) {
     let that = this;
     that.setData({
@@ -131,30 +137,41 @@ Page({
     })
 
   },
-  showPopup1() {
-
-    let that = this;
- 
-      that.setData({
+  showPopup1(event) {
+    var releaseid = event.currentTarget.dataset.releaseid;
+   this.query(releaseid,2);
+      this.setData({
         show1: true
       })
-    
   },
-  showPopup2() {
-
-    let that = this;
-    that.setData({
+  showPopup2(event) {
+    var releaseid = event.currentTarget.dataset.releaseid;
+    this.query(releaseid, 1);
+    this.setData({
       show2: true
     })
   },
-  showPopup3() {
-
-    let that = this;
-    that.setData({
+  showPopup3(event) {
+    var releaseid = event.currentTarget.dataset.releaseid;
+    this.query(releaseid, 0);
+    this.setData({
       show3: true
     })
   },
-
+  GetSpecifiedlist:function(res){
+    var json=res.data.Data;
+    var chat=this;
+    if (json.data.length==0){
+      chat.setData({
+        columns: ["无"]
+      });
+    }else{
+      chat.setData({
+        columns: json.data
+      });
+    }
+   
+  },
 
   //指定地区确认
   confirm(event) {

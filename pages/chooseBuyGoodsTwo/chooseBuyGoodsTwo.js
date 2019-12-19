@@ -22,7 +22,13 @@ Page({
 
 
   },
-
+  onupdate: function (event) {
+    var type = event.currentTarget.dataset.type;
+    var productid = event.currentTarget.dataset.productid;
+    wx.navigateTo({
+      url: '../goodsEditor/goodsEditor?edit=1&type=' + type + '&productid=' + productid + '',
+    })
+  },
 
   GetData: function () {
     let that = this;
