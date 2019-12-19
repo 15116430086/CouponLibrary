@@ -88,11 +88,11 @@ white-space:nowrap;
 .hotbtnH {
   width: 160rpx;
   height: 60rpx;
-  background: rgba(255, 240, 222, 1);
+  background: #E85819;
   font-size: 24rpx;
   font-weight: 600;
   line-height: 60rpx;
-  color: rgba(232, 88, 25, 1);
+  color: #FFFFFF;
   border-radius: 30rpx;
   text-align: center;
 
