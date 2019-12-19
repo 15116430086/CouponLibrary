@@ -512,7 +512,7 @@ Page({
         idb: id
       });
       wx.navigateTo({
-        url: '../chooseBuyGoods/chooseBuyGoods',
+        url: '../chooseBuyGoodsTwo/chooseBuyGoodsTwo',
       })
 
     } else {
