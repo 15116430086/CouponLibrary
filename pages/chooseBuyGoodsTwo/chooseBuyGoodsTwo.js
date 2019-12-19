@@ -18,13 +18,59 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
 
   },
 
 
-  GetData: function () {
+  onupdate: function(event) {
+    var type = event.currentTarget.dataset.type;
+    var productid = event.currentTarget.dataset.productid;
+    wx.navigateTo({
+      url: '../goodsEditor/goodsEditor?edit=1&type=' + type + '&productid=' + productid + '',
+    })
+  },
+
+  onDeleteProductTap: function(event) {
+    let that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定删除商品【' + event.currentTarget.dataset.productname + '】?',
+      success: function(res) {
+        if (res.confirm) {
+          var data = {}
+          data.pProductID = event.currentTarget.dataset.productid;
+          data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+          utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/DeleteProduct", "POST", data, app.globalData.appkeyid, that.DeleteProductBack)
+          console.log('弹框后点确认')
+        } else {
+          console.log('弹框后点取消')
+        }
+      }
+    })
+  },
+  DeleteProductBack: function(json) {
+    let that = this;
+    var json = json.data.Data;
+    if (json.flag) {
+      wx.showToast({
+        title: json.msg,
+        icon: "none",
+        duration: 2000
+      })
+    } else {
+      wx.showToast({
+        title: json.msg,
+        icon: "none",
+        duration: 2000
+      })
+    }
+    page = 1;
+    that.GetData();
+  },
+
+  GetData: function() {
     let that = this;
     //显示 加载中的提示
     wx.showLoading({
@@ -37,7 +83,7 @@ Page({
     data.pState = 0;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/GetPageCouponProduct", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
-  GetDataBack: function (json) {
+  GetDataBack: function(json) {
     let that = this;
     var json = json.data.Data;
     wx.hideLoading();
@@ -119,7 +165,7 @@ Page({
       })
     } else if (result) {
       parPage.setData({
-        pArrProductID: [result] 
+        pArrProductID: [result]
       })
       wx.setStorageSync("pArrProductKey", [result]);
       wx.setStorageSync("ArrProductchecked", checked);
@@ -150,7 +196,7 @@ Page({
     })
   },
 
-  addcommodity: function () {
+  addcommodity: function() {
     wx.navigateTo({
       url: "../goodsEditor/goodsEditor?state=0"
     })
@@ -159,7 +205,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
     let that = this;
     that.GetData();
   },
@@ -167,28 +213,28 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     let that = this;
     if (that.data.lastpage > page) {
       page++
@@ -205,7 +251,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

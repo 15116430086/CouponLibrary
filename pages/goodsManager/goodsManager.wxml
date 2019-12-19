@@ -59,12 +59,12 @@
       </view>
       <view class="v-bot" style="color:#CCCCCC;justify-content: flex-end;font-size:28rpx">
         <view class="v-set">
-          <view class="v-blue" data-ProductID='{{item.ProductID}}' data-ProductName='{{item.ProductName}}' bindtap="onDeleteProductTap" style="color:#999999">删除</view>
           <navigator url="../goodsEditor/goodsEditor?edit=1&type={{item.ProductType}}&productid={{item.ProductID}}">
             <view class="v-blue">编辑</view>
           </navigator>
           <view class="v-blue" data-ProductID='{{item.ProductID}}' data-ProductName='{{item.ProductName}}' bindtap="Lowershelf">上架</view>
-          <view class="v-blue" data-ProductID='{{item.ProductID}}' data-ProductName='{{item.ProductName}}' style="color:#E80000">删除</view>
+          <!-- <view class="v-blue" data-ProductID='{{item.ProductID}}' data-ProductName='{{item.ProductName}}' style="color:#E80000">删除</view>. -->
+          <view class="v-blue" data-ProductID='{{item.ProductID}}' data-ProductName='{{item.ProductName}}' bindtap="onDeleteProductTap" style="color:#CCCCCC">删除</view>
         </view>
       </view>
     </view>

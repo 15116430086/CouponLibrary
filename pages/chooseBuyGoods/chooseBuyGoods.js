@@ -23,13 +23,53 @@ Page({
 
   },
 
-  onupdate:function(event){
+  onupdate: function(event) {
     var type = event.currentTarget.dataset.type;
     var productid = event.currentTarget.dataset.productid;
     wx.navigateTo({
-      url: '../goodsEditor/goodsEditor?edit=1&type=' + type + '&productid=' + productid+'',
+      url: '../goodsEditor/goodsEditor?edit=1&type=' + type + '&productid=' + productid + '',
     })
   },
+
+  onDeleteProductTap: function(event) {
+    let that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定删除商品【' + event.currentTarget.dataset.productname + '】?',
+      success: function(res) {
+        if (res.confirm) {
+          var data = {}
+          data.pProductID = event.currentTarget.dataset.productid;
+          data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+          utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/DeleteProduct", "POST", data, app.globalData.appkeyid, that.DeleteProductBack)
+          console.log('弹框后点确认')
+        } else {
+          console.log('弹框后点取消')
+        }
+      }
+    })
+  },
+
+  DeleteProductBack: function(json) {
+    let that = this;
+    var json = json.data.Data;
+    if (json.flag) {
+      wx.showToast({
+        title: json.msg,
+        icon: "none",
+        duration: 2000
+      })
+    } else {
+      wx.showToast({
+        title: json.msg,
+        icon: "none",
+        duration: 2000
+      })
+    }
+    page = 1;
+    that.GetData();
+  },
+
   GetData: function() {
     let that = this;
     //显示 加载中的提示
