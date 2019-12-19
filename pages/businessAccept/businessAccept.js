@@ -101,7 +101,14 @@ Page({
     data.pCourierNumber = this.data.CourierNumber;
     data.pExpressTel = this.data.ExpressTel;
     if (this.data.type == 0) {
-      data.pEC_ID = this.data.columns[this.data.index].EC_ID;
+      if(this.data.EC_ID==''){
+        data.pEC_ID = this.data.columns[this.data.index].EC_ID;
+      }
+      else
+      {
+        data.pEC_ID = this.data.EC_ID;
+      }
+      
     }
     else{
       data.pEC_ID ="";
@@ -120,7 +127,7 @@ Page({
         icon: "success",
         duration: 2000
       })
-      wx.navigateTo({
+      wx.redirectTo({
         url: '../orderManagement/orderManagement?ordertype=' + ordertype +'&currentId=1',
       })
     }
@@ -239,6 +246,7 @@ Page({
           CourierCompany: json.data[0].text,
           EC_ID: json.data[0].EC_ID,
         })
+        console.log(that.data.EC_ID);
       }
       that.setData({
         columns: json.data
