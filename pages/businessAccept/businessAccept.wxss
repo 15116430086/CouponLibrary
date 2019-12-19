@@ -102,3 +102,13 @@ page {
     width: 32rpx;
     height: 32rpx;
 }
+
+
+
+.vi-image{
+  width: 50rpx;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

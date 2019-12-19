@@ -66,9 +66,12 @@
         <view>￥{{TruePayMoney+Postage}} <block wx:if="{{Postage>0}}">(含运费)</block></view>
     </view>
     <view class="v-span">
+        <view class="v-text">所用券</view>
+        <view>{{CouponName}}</view>
+    </view>
+    <view class="v-span">
         <view class="v-text">优惠</view>
-        <view>-￥{{CouponMoney}}（{{CouponName}}）</view>
-        <!-- ￥{{CouponName}} -->
+        <view>-￥{{CouponMoney}}</view>
     </view>
     <view class="v-span">
         <view class="v-text">商品总价</view>
