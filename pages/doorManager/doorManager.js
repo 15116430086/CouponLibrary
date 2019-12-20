@@ -12,7 +12,9 @@ Page({
     Popup:true,
     shopname:"",
     latitudeX:0,
-    longitudeY:0
+    longitudeY:0,
+    flag0:true,
+    imgone:""
   },
 
   /**
@@ -35,7 +37,8 @@ Page({
       chat.data.latitudeX = json.data[0].LatitudeX;
       chat.data.longitudeY = json.data[0].LongitudeY;
       chat.setData({
-        datalist:json.data
+        datalist:json.data,
+        imgone:json.data[0].ImageOne
       });
     }
   },
@@ -44,6 +47,41 @@ Page({
       url: '../staffManagements/staffManagements?ShopID=' + this.data.shopid,
     })
   },
+  onUpFileImg: function (e) {
+
+    let that = this;
+    utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, 0, 0)
+  },
+  UpFileImgBak: function (img, type) {
+    var chat = this;
+    if (img.length > 0) {
+      chat.setData({
+        imgone: img[0],
+        flag0: true,
+      });
+    }
+  },
+
+  onPreviewImageTap: function (e) {
+    var imgtypeid = e.currentTarget.dataset.type;
+    let that = this;
+    if (imgtypeid == 0) {
+      wx.previewImage({
+        urls: [that.data.imgone],
+      })
+    }
+  },
+  onDeleteImageTap: function (e) {
+    let that = this;
+    var type = e.currentTarget.dataset.type;
+    if (type == 0) {
+      that.setData({
+        imgone: "",
+        flag0: false,
+      })
+    }
+  },
+
   perfecttap:function(){
     wx.showToast({
       image: '/static/images/dp.png',

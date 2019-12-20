@@ -1,35 +1,35 @@
 <!-- pages/doorManager/doorManager.wxml -->
 <view class="v-box">
-    <view class="v-block">
-        <view class="v-title" style="align-items:center">
-            <view class="v-txt">{{datalist[0].ShopName}}</view>
-            <image bindtap="updateshop" src="/static/images/wrt3.png" class="v-title-image"/>
-        </view>
-      <view class="v-title">
-            <image bindtap="updateshop" src="/static/images/shop2.png" class="v-title-image1"/>
-            <view class="v-txt1">{{datalist[0].ShopAddress}}</view>
-        </view>
+  <view class="v-block">
+    <view class="v-title" style="align-items:center">
+      <view class="v-txt">{{datalist[0].ShopName}}</view>
+      <image bindtap="updateshop" src="/static/images/wrt3.png" class="v-title-image" />
     </view>
+    <view class="v-title">
+      <image bindtap="updateshop" src="/static/images/shop2.png" class="v-title-image1" />
+      <view class="v-txt1">{{datalist[0].ShopAddress}}</view>
+    </view>
+  </view>
 </view>
 <view class="v-bot">
-    <!-- <view class="ticket-flex">
+  <!-- <view class="ticket-flex">
         <view class="tf-left">
             <image src="/static/images/ewm3.png" class="tf-left-image"/>
             <view class="tf-name">普通商品</view>
         </view>
         <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
     </view> -->
-    <view class="ticket-flex" bindtap="Jump">
-        <view class="tf-left">
-            <image src="/static/images/man.png" class="tf-left-image"/>
-            <view class="tf-name">店员管理</view>
-        </view>
-        <view class="tf-left" >
-            <view class="tft-txt">{{datalist[0].Staffcount}}人</view>
-            <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
-        </view>
+  <view class="ticket-flex" bindtap="Jump">
+    <view class="tf-left">
+      <image src="/static/images/man.png" class="tf-left-image" />
+      <view class="tf-name">店员管理</view>
     </view>
-    <!-- <view class="ticket-flex">
+    <view class="tf-left">
+      <view class="tft-txt">{{datalist[0].Staffcount}}人</view>
+      <image src="/static/images/right-arr1.png" class="ticket-flex-image " />
+    </view>
+  </view>
+  <!-- <view class="ticket-flex">
         <view class="tf-left">
             <image src="/static/images/shop.png" class="tf-left-image"/>
             <view class="tf-name">普通商品</view>
@@ -37,44 +37,59 @@
         <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
     </view> -->
 
-    <view class="ticket-flex" bindtap="perfecttap">
-        <view class="tf-left">
-            <image src="/static/images/shop.png" class="tf-left-image"/>
-            <view class="tf-name">分享我的店铺</view>
-        </view>
-        <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
+  <view class="ticket-flex" bindtap="perfecttap">
+    <view class="tf-left">
+      <image src="/static/images/shop.png" class="tf-left-image" />
+      <view class="tf-name">分享我的店铺</view>
     </view>
+    <image src="/static/images/right-arr1.png" class="ticket-flex-image " />
+  </view>
 
 
 </view>
 
 
 <!-- hidden="{{Popup}}"   这个加判断-->
-<view class="mask" hidden="{{Popup}}"   bindtap="coles">
-    <view class="vm-mask"  catchtap="nocoles" >
-        <view class="vmask-title">修改店铺</view>
-      
+<view class="mask" hidden="{{Popup}}" bindtap="coles">
+  <view class="vm-mask" catchtap="nocoles">
+    <view class="vmask-title">修改店铺</view>
 
-        <view class="vm-mid">
-            <image src="/static/images/bianxie1.png" />
-            <input type="text" placeholder="请输入店铺名称" value="{{datalist[0].ShopName}}" bindblur="blurs" placeholder-class="pm-class" />
-        </view>
-         <view class="vm-mid">
-            <image src="/static/images/shop1.png" />
-            <input type="text" placeholder="请输入店铺地址" disabled="true" value="{{datalist[0].ShopAddress}}" bindblur="blurs" placeholder-class="pm-class" class="inputOne"/>
-            <view class="blue" bindtap="addressblurs">
-              <image src="/static/images/address1.png" style="width:45rpx;height:45rpx;"></image>
-            </view>
-        </view>
-        <view class="vm-mid">
-            <image src="/static/images/txl1.png" />
-            <input type="number" placeholder="请输入店铺联系人" value="{{datalist[0].Contacts}}" bindblur="blurs" placeholder-class="pm-class"/>
-        </view>
-       <view class="vm-mid">
-            <image src="/static/images/phone1.png" />
-            <input type="number" placeholder="请输入联系方式" value="{{datalist[0].Telephone}}" bindblur="blurs" placeholder-class="pm-class"/>
-        </view>
-        
-        <view class="vm-bot" bindtap="shopUpdate">确认修改</view>
+
+    <view class="vm-mid">
+      <image src="/static/images/bianxie1.png" />
+      <input type="text" placeholder="请输入店铺名称" value="{{datalist[0].ShopName}}" bindblur="blurs" placeholder-class="pm-class" />
     </view>
+    <view class="vm-mid">
+      <image src="/static/images/shop1.png" />
+      <input type="text" placeholder="请输入店铺地址" disabled="true" value="{{datalist[0].ShopAddress}}" bindblur="blurs" placeholder-class="pm-class" class="inputOne" />
+      <view class="blue" bindtap="addressblurs">
+        <image src="/static/images/address1.png" style="width:45rpx;height:45rpx;"></image>
+      </view>
+    </view>
+    <view class="vm-mid">
+      <image src="/static/images/txl1.png" />
+      <input type="number" placeholder="请输入店铺联系人" value="{{datalist[0].Contacts}}" bindblur="blurs" placeholder-class="pm-class" />
+    </view>
+    <view class="vm-mid">
+      <image src="/static/images/phone1.png" />
+      <input type="number" placeholder="请输入联系方式" value="{{datalist[0].Telephone}}" bindblur="blurs" placeholder-class="pm-class" />
+    </view>
+    <view class="vm-mid">
+      <view class="t-bot" data-type="0" bindtap="onUpFileImg" wx:if="{{!flag0}}">
+        <image src="/static/images/pz.png" />
+        <view class="t-bot-view">点击上传店铺形象照</view>
+        <image src="/static/images/zxj.png" class="v-zxj" style="height:32rpx"></image>
+      </view>
+      <view class="t-bot" wx:if="{{flag0}}" style="justify-content:space-between">
+        <image src="/static/images/pz.png" />
+        <view class="t-down" style="color:#333333;position:relative;right:4rpx;">已上传
+        </view>
+        <view data-type="0" style="color:#016FB4;margin-left:25rpx;" bindtap="onPreviewImageTap" class="seeMes">查看预览</view>
+        <view class="seeMes" data-type="0" style="color:#e80000;margin-left:30rpx;" bindtap="onDeleteImageTap">删除</view>
+      </view>
+
+
+    </view>
+    <view class="vm-bot" bindtap="shopUpdate">确认修改</view>
+  </view>
 </view>

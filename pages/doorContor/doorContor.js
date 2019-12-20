@@ -16,7 +16,9 @@ Page({
     Contacts:"",
     Telephone:"",
     latitudeX:0,
-    longitudeY:0
+    longitudeY:0,
+    imgone:"",
+    flag0:false
   },
 
   /**
@@ -99,6 +101,40 @@ Page({
     });
 
   },
+  onUpFileImg: function (e) {
+   
+    let that = this;
+    utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, 0, 0)
+  },
+  UpFileImgBak: function (img, type) {
+    var chat=this;
+    if (img.length > 0) {
+      chat.setData({
+        imgone: img[0],
+        flag0: true,
+      });
+    }
+  },
+
+  onPreviewImageTap: function (e) {
+    var imgtypeid = e.currentTarget.dataset.type;
+    let that = this;
+    if (imgtypeid == 0) {
+      wx.previewImage({
+        urls: [that.data.imgone],
+      })
+    }
+  },
+  onDeleteImageTap: function (e) {
+    let that = this;
+    var type = e.currentTarget.dataset.type;
+    if (type == 0) {
+      that.setData({
+        imgone: "", 
+        flag0: false,
+      })
+    }
+  },
   shopAdd:function(event){
     if (this.data.shopname==""){
 
@@ -129,7 +165,13 @@ Page({
       });
       return;
     }
-
+    if (this.data.imgone == "") {
+      wx.showToast({
+        title: "请上传店铺照片",
+        icon: "none"
+      });
+      return;
+    }
 
 
     if (this.data.Repeat) {
@@ -146,7 +188,8 @@ Page({
         Contacts: this.data.Contacts,
         Telephone: this.data.Telephone,
         latitudeX: this.data.latitudeX,
-        longitudeY: this.data.longitudeY
+        longitudeY: this.data.longitudeY,
+        img: this.data.imgone
       };
       utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/Addshop", "POST", datas, app.globalData.appkeyid, this.Addshop);
     } else {
