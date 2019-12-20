@@ -5,7 +5,7 @@
         <!-- 左图 -->
         <view class="v-left">
           <image class="ticket-imgH" src="{{item.CouponImageOne}}" mode='aspectFill' />
-          <view>线上使用</view>
+          <view>{{item.WriteOffType==0?"线上":"线下"}}使用</view>
         </view>
         <view class="ticket-boxH">
           <view class="ticket-mesH">
@@ -19,7 +19,7 @@
               <view class="left-money" wx:else></view> -->
             </view>
             <view class="ticket-mesmesH ">{{GroupName}}</view>
-            <view class="v-text" style="color:#e85819">面值: ￥{{item.SalePrice}} | 领取价: ￥{{item.SalePrice}}</view>
+            <view class="v-text" style="color:#e85819">面值: ￥{{item.CouponMoney}} | 领取价: ￥{{item.SalePrice}}</view>
                 <view class="v-top">
                   <view class="ticket-mes-ulH">
                     <view class="two">限量{{item.ReleaseNUM}}份 | {{item.ReceiveNUM}}已领</view>
