@@ -10,7 +10,7 @@
           <!-- <image src="/static/images/cha.png" wx:if="{{idb==item.Item_id}}" /> -->
         </view>
       </view>
-      <!-- <input type="text" value="20元现金抵用券" /> -->
+      <!-- <input type="text" value="20元代金抵用券" /> -->
     </view>
   </view>
 
@@ -112,7 +112,7 @@
         </view>
         <image src="/static/images/right-arr1.png" class="ticket-flex-image" />
       </view>
-      <!-- <input type="text" value="20元现金抵用券" /> -->
+      <!-- <input type="text" value="20元代金抵用券" /> -->
     </view>
   </view>
 

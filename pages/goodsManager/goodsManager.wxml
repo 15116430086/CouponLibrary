@@ -34,6 +34,7 @@
             <view class="v-blue">查看</view>
           </navigator>
           <view class="v-blue" data-ProductID='{{item.ProductID}}' data-ProductName='{{item.ProductName}}' bindtap="Lowershelf">下架</view>
+          <view class="v-blue" data-ProductID='{{item.ProductID}}' data-ProductName='{{item.ProductName}}' bindtap="onDeleteProductTap" style="color:#CCCCCC">删除</view>
         </view>
       </view>
     </view>

@@ -1,6 +1,6 @@
 <view class="v-top">
     <view class="v-one">购买此产品，订单完成后即可获得</view>
-    <view class="v-two">【¥20现金抵用券】</view>
+    <view class="v-two">【¥20代金抵用券】</view>
 </view>
 <swiper class='swiper' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true' indicator-dots="{{color}}" indicator-active-color="{{activeColor}}">
     <block wx:for="{{images}}" wx:for-index="index">
@@ -18,7 +18,7 @@
         </view>
         <view class="goodsbox-ul">
             <view>满减用券</view>
-            <view>现金券抵用</view>
+            <view>代金券抵用</view>
         </view>
         <view class="goods-title">时尚水果店 新鲜草莓 爽甜口口 美味不止一夏天</view>
         <view class="share"><image src="/static/images/share.png" />分享</view>
@@ -51,7 +51,7 @@
                 
             </view>
             <view style="color: #666666;">
-                现金券抵用￥
+                代金券抵用￥
                 <text>20</text>
             </view>
         </view>

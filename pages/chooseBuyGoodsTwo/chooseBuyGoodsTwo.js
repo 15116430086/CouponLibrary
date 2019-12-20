@@ -72,8 +72,12 @@ Page({
         duration: 2000
       })
     }
-    page = 1;
-    that.GetData();
+    
+    setTimeout(function () {
+      page = 1;
+      that.GetData();
+    }, 2000);
+
   },
 
   GetData: function() {

@@ -39,7 +39,7 @@
         </view>
       </view>
     </van-collapse-item>
-    <van-collapse-item title="4、您想要高性价比代物券还是现金券？" name="4" border="{{false}}">
+    <van-collapse-item title="4、您想要高性价比代物券还是代金券？" name="4" border="{{false}}">
 <view class="v-boxs">
 <view class="v-block {{item.isSelect==true?'selected':''}}" wx:for="{{threeList}}" wx:key="index" bindtap='selectThree' data-id="{{index}}">
 {{item.Item_Name}}

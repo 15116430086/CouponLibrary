@@ -71,7 +71,7 @@
   </view>
   <view class="homebot">
     <view style="color:#E85819">*默认赠送规则</view>
-    <view>现金券会员可自领，员工可赠送；礼物券仅员工可赠送</view>
+    <view>代金券会员可自领，员工可赠送；礼物券仅员工可赠送</view>
   </view>
   <!-- 底部栏 -->
   <view class="choose-bot">

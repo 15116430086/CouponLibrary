@@ -42,6 +42,10 @@ Page({
     this.setData({
       pCouponID: options.CouponID
     });
+
+  },
+
+  onShow: function() {
     page = 1;
     this.GetData(page);
   },
@@ -60,9 +64,8 @@ Page({
     var json = res.data.Data;
     if (json.flag) {
       if (page == 1) {
-        if (!json.ReleaseList)
-        {
-          json.ReleaseList=[];
+        if (!json.ReleaseList) {
+          json.ReleaseList = [];
         }
         chat.setData({
           datalist: json.ReleaseList,
@@ -74,7 +77,7 @@ Page({
         var newlists = oldlists.concat(json.ReleaseList) //合并数据 res.data 你的数组数据
         chat.setData({
           datalist: newlists,
-          pageCount:json.pageCount
+          pageCount: json.pageCount
         });
       }
 
@@ -123,13 +126,13 @@ Page({
     }
   },
 
-  query:function(releaseid,type){
+  query: function(releaseid, type) {
     var data = {
       ReleaseID: releaseid,
       type: type
     }
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetSpecifiedlist", "POST", data, app.globalData.appkeyid, this.GetSpecifiedlist);
-},
+  },
   onClose2(e) {
     let that = this;
     that.setData({
@@ -139,10 +142,10 @@ Page({
   },
   showPopup1(event) {
     var releaseid = event.currentTarget.dataset.releaseid;
-   this.query(releaseid,2);
-      this.setData({
-        show1: true
-      })
+    this.query(releaseid, 2);
+    this.setData({
+      show1: true
+    })
   },
   showPopup2(event) {
     var releaseid = event.currentTarget.dataset.releaseid;
@@ -158,25 +161,25 @@ Page({
       show3: true
     })
   },
-  GetSpecifiedlist:function(res){
-    var json=res.data.Data;
-    var chat=this;
-    if (json.data.length==0){
+  GetSpecifiedlist: function(res) {
+    var json = res.data.Data;
+    var chat = this;
+    if (json.data.length == 0) {
       chat.setData({
         columns: ["无"]
       });
-    }else{
+    } else {
       chat.setData({
         columns: json.data
       });
     }
-   
+
   },
 
   //指定地区确认
   confirm(event) {
-    console.log(event.detail); 
-    
+    console.log(event.detail);
+
 
     let that = this;
     that.setData({
@@ -184,7 +187,7 @@ Page({
       selectDate: event.detail.value
     })
 
-   
+
   },
   //指定商户确认
   onConfirm(event) {
@@ -201,7 +204,7 @@ Page({
       couponType: index - 1,
       typeName: value
     })
-    
+
   },
   onCancel(e) {
 
@@ -260,13 +263,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-   
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     let that = this;
     if (that.data.lastpage > page) {
       page++
@@ -319,7 +322,7 @@ Page({
       url: '../startTicket/startTicket?pCoupon_Info=' + data + "&CouponID=" + CouponID,
     })
   },
-  
+
 
 
 
