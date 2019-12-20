@@ -1,58 +1,56 @@
 <!--pages/doorContor/doorContor.wxml-->
 <view class="v-box">
-    <!-- <view class="v-mes"><text>*</text>门店可区分收款流水，各门店收款将汇总到你的结算账户，进入门店详情后可下载获取收款码图片</view> -->
-    <view class="v-block" hidden="{{groupType==1}}" bindtap="add">
-        <image src="/static/images/img.png" />
-        添加新的门店
-    </view>
-    <block wx:for="{{shoplist}}">
+  <!-- <view class="v-mes"><text>*</text>门店可区分收款流水，各门店收款将汇总到你的结算账户，进入门店详情后可下载获取收款码图片</view> -->
+  <view class="v-block" hidden="{{groupType==1}}" bindtap="add">
+    <image src="/static/images/img.png" /> 添加新的门店
+  </view>
+  <block wx:for="{{shoplist}}">
     <view class="m-block" data-id="{{item.ShopID}}" bindtap="Jump">
-        <view class="v-title">{{item.ShopName}}</view>
-        <view class="v-num">当前{{item.Staffcount}}人加入</view>
+      <view class="v-title">{{item.ShopName}}</view>
+      <view class="v-num">当前{{item.Staffcount}}人加入</view>
     </view>
-    </block>
+  </block>
 </view>
 <view class="mask" hidden="{{Popup}}" bindtap="coles">
-    <view class="v-mask"  catchtap="nocoles" >
-        <view class="vmask-title">添加店铺</view>
-        <view class="v-mid">
-            <image src="/static/images/bianxie1.png" />
-            <input type="text" placeholder="请输入店铺名称" value="" bindblur="blurs" placeholder-class="p-class"/>
+  <view class="v-mask" catchtap="nocoles">
+    <view class="vmask-title">添加店铺</view>
+    <view class="v-mid">
+      <image src="/static/images/bianxie1.png" />
+      <input type="text" placeholder="请输入店铺名称" value="" bindblur="blurs" placeholder-class="p-class" />
+    </view>
+    <view class="v-mid">
+      <image src="/static/images/shop1.png" />
+      <input type="text" placeholder="请输入店铺地址" disabled="true" value="{{address}}" placeholder-class="p-class" class="inputOne" />
+      <view class="blue" bindtap="addressblurs">
+        <image src="/static/images/address1.png" style="width:45rpx;height:45rpx;"></image>
+      </view>
+    </view>
+    <view class="v-mid">
+      <image src="/static/images/txl1.png" />
+      <input type="text" placeholder="请输入店铺联系人" value="" bindblur="Contactsblurs" placeholder-class="p-class" />
+    </view>
+    <view class="v-mid">
+      <image src="/static/images/phone1.png" />
+      <input type="text" placeholder="请输入联系电话" value="" bindblur="Telephoneblurs" placeholder-class="p-class" />
+    </view>
+    <view class="v-mid">
+
+      <view class="t-bot" data-type="0" bindtap="onUpFileImg" wx:if="{{!flag0}}">
+        <image src="/static/images/pz.png" />
+        <view class="t-bot-view">点击上传店铺形象照</view>
+        <image src="/static/images/zxj.png" class="v-zxj" style="height:32rpx"></image>
+      </view>
+      <view class="t-bot" wx:if="{{flag0}}" style="justify-content:space-between">
+        <image src="/static/images/pz.png" />
+        <view class="t-down" style="color:#333333;position:relative;right:4rpx;">已上传
         </view>
-        <view class="v-mid">
-            <image src="/static/images/shop1.png" />
-            <input type="text" placeholder="请输入店铺地址" disabled="true" value="{{address}}"  placeholder-class="p-class" class="inputOne"/>
-            <view class="blue" bindtap="addressblurs">
-              <image src="/static/images/address1.png" style="width:45rpx;height:45rpx;"></image>
-            </view>
-        </view>
-        <view class="v-mid">
-            <image src="/static/images/txl1.png" />
-            <input type="text" placeholder="请输入店铺联系人" value="" bindblur="Contactsblurs" placeholder-class="p-class"/>
-        </view>
-        <view class="v-mid">
-            <image src="/static/images/phone1.png" />
-            <input type="text" placeholder="请输入联系电话" value="" bindblur="Telephoneblurs" placeholder-class="p-class"/>
-        </view>
-      <view class="v-mid">
-         <view class="ticket-block">
-              <view class="ticket-name">店铺照片
-                <text style="color:red">*</text>
-              </view>
-              <view class="t-bot" data-type="0" bindtap="onUpFileImg" wx:if="{{!flag0}}">
-                <view class="ip">点击上传或拍照</view>
-                <image src="/static/images/zxj.png" />
-              </view>
-              <view class="t-bot" wx:if="{{flag0}}">
-                <view class="t-down">已上传
-                  <text data-type="0" bindtap="onPreviewImageTap" class="seeMes">点击查看预览</text>
-                </view>
-                <view class="seeMes" data-type="0" style="color:#e80000" bindtap="onDeleteImageTap">删除</view>
-              </view>
-          </view>
+        <view data-type="0" style="color:#016FB4;margin-left:25rpx;" bindtap="onPreviewImageTap" class="seeMes">查看预览</view>
+        <view class="seeMes" data-type="0" style="color:#e80000;margin-left:30rpx;" bindtap="onDeleteImageTap">删除</view>
       </view>
 
-        
-        <view class="v-bot" bindtap="shopAdd">确认添加</view>
     </view>
+
+
+    <view class="v-bot" bindtap="shopAdd">确认添加</view>
+  </view>
 </view>

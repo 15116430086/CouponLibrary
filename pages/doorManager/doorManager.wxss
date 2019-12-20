@@ -207,7 +207,7 @@ page {
     font-size: 32rpx;
     color: #333333;
     margin-top: 80rpx;
-        margin-bottom: 80rpx;
+       margin-bottom: 30rpx;
 
 }
 
@@ -219,7 +219,7 @@ page {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 40rpx;
+    margin-bottom: 20rpx;
 }
 
 .vm-mid input {
@@ -267,4 +267,24 @@ page {
     line-height: 44rpx;
     white-space: nowrap;
     margin-left: 10rpx;
+}
+
+
+.t-bot{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.t-bot-view{
+  width: calc(100% - 62rpx) !important;
+  margin-left: 25rpx;
+  color:#E0E0E0;
+}
+
+.v-zxj{
+  
+  position: relative;
+  right:15rpx; 
 }
