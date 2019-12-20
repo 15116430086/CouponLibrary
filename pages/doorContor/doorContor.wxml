@@ -34,6 +34,24 @@
             <image src="/static/images/phone1.png" />
             <input type="text" placeholder="请输入联系电话" value="" bindblur="Telephoneblurs" placeholder-class="p-class"/>
         </view>
+      <view class="v-mid">
+         <view class="ticket-block">
+              <view class="ticket-name">店铺照片
+                <text style="color:red">*</text>
+              </view>
+              <view class="t-bot" data-type="0" bindtap="onUpFileImg" wx:if="{{!flag0}}">
+                <view class="ip">点击上传或拍照</view>
+                <image src="/static/images/zxj.png" />
+              </view>
+              <view class="t-bot" wx:if="{{flag0}}">
+                <view class="t-down">已上传
+                  <text data-type="0" bindtap="onPreviewImageTap" class="seeMes">点击查看预览</text>
+                </view>
+                <view class="seeMes" data-type="0" style="color:#e80000" bindtap="onDeleteImageTap">删除</view>
+              </view>
+          </view>
+      </view>
+
         
         <view class="v-bot" bindtap="shopAdd">确认添加</view>
     </view>
