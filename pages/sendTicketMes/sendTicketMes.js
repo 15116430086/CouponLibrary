@@ -30,7 +30,7 @@ Page({
       }
       return value;
     },
-    columns: ["全部券", "现金券", "礼物券"],
+    columns: ["全部券", "代金券", "礼物券"],
     shoplist: [],
 
     show1: false,

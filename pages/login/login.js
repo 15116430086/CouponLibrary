@@ -99,7 +99,7 @@ Page({
   getLocation: function() {
     //显示 加载中的提示
     wx.showLoading({
-      title: '正在获取你的地理位置...',
+      title: '获取地理位置',
     })
     let that = this;
     wx.getLocation({

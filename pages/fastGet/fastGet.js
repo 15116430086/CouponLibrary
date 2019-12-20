@@ -82,12 +82,12 @@ Page({
     ],
     threeList: [{
         Item_id: "0",
-        Item_Name: "现金券",
+        Item_Name: "代金券",
         isSelect: false
       },
       {
         Item_id: "1",
-        Item_Name: "代金券",
+        Item_Name: "礼物券",
         isSelect: false
       },
       {
