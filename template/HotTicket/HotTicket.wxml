@@ -15,7 +15,7 @@
               <view class="left-money" wx:else></view>
             </view>
             <view class="ticket-mesmesH ">{{GroupName}}</view>
-            <view class="v-text">/距离500m</view>
+            <view class="v-text"><image style="width:20rpx;height:26rpx;padding-right:10rpx;" src='/static/images/add.png'></image>{{Distance}}km</view>
                 <view class="v-top">
                   <view class="ticket-mes-ulH">
                     <view class="one">限量{{item.ReleaseNUM}}份</view>|
