@@ -127,7 +127,9 @@ Page({
       Contacts: this.data.datalist[0].Contacts,
       Telephone: this.data.datalist[0].Telephone,
       latitudeX: this.data.latitudeX,
-      longitudeY: this.data.longitudeY
+      longitudeY: this.data.longitudeY,
+      ImageOne: this.data.imgone
+
     };
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/UpdateShopName", "POST", datas, app.globalData.appkeyid, this.updateStaff);
   },
