@@ -11,8 +11,14 @@
     <view bindtap="JumpwaitGoods" data-orderid="{{item.WriteOffOrderID}}" data-writeOffType="{{item.WriteOffType}}">
         <view class="mes-top">
             <view class="mes-left">
+                <block wx:if="{{item.WriteOffType==0}}">
                 <image wx:if="{{ item.ImageOne=='' }}" src="/static/images/swp.png"></image>
                 <image wx:else src="{{item.ImageOne}}"></image>
+            </block>
+            <block wx:if="{{item.WriteOffType==1}}">
+                <image wx:if="{{ item.UserAvatar=='' }}" src="/static/images/swp.png"></image>
+                <image wx:else src="{{item.UserAvatar}}"></image>
+            </block>
                 {{item.ConsumptionName}}
             </view>
             <view class="mes-right">*{{item.Number}}</view>
@@ -37,8 +43,14 @@
     <view bindtap="JumpwaitGoods" data-orderid="{{item.WriteOffOrderID}}" data-writeOffType="{{item.WriteOffType}}">
         <view class="mes-top">
             <view class="mes-left">
+                <block wx:if="{{item.WriteOffType==0}}">
                 <image wx:if="{{ item.ImageOne=='' }}" src="/static/images/swp.png"></image>
                 <image wx:else src="{{item.ImageOne}}"></image>
+            </block>
+            <block wx:if="{{item.WriteOffType==1}}">
+                <image wx:if="{{ item.UserAvatar=='' }}" src="/static/images/swp.png"></image>
+                <image wx:else src="{{item.UserAvatar}}"></image>
+            </block>
                 {{item.ConsumptionName}}
             </view>
             <view class="mes-right" style="color:#666666">*{{item.Number}}</view>
@@ -63,8 +75,14 @@
     <view bindtap="JumpwaitGoods" data-orderid="{{item.WriteOffOrderID}}" data-writeOffType="{{item.WriteOffType}}">
         <view class="mes-top">
             <view class="mes-left">
+            <block wx:if="{{item.WriteOffType==0}}">
                 <image wx:if="{{ item.ImageOne=='' }}" src="/static/images/swp.png"></image>
                 <image wx:else src="{{item.ImageOne}}"></image>
+            </block>
+            <block wx:if="{{item.WriteOffType==1}}">
+                <image wx:if="{{ item.UserAvatar=='' }}" src="/static/images/swp.png"></image>
+                <image wx:else src="{{item.UserAvatar}}"></image>
+            </block>
                 {{item.ConsumptionName}}
             </view>
             <view class="mes-right" style="color:#666666">*{{item.Number}}</view>
