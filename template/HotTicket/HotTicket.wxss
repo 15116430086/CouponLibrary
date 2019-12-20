@@ -43,6 +43,9 @@
 
 .ticket-mesmesH {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -50,7 +53,17 @@
   font-size: 28rpx;
   font-weight: 500;
   position: relative;
-  top: -20rpx;
+  top: -5rpx;
+}
+
+
+.v-text{
+  color:rgba(1, 111, 180, 1);
+  font-size: 24rpx;
+  white-space: nowrap;
+  width: 100%;
+  position: relative;
+  top: -5rpx;
 }
 
 .v-top {
