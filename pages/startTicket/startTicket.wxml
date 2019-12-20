@@ -27,7 +27,7 @@
                         <image src="{{idx==item.id?'/static/images/ok.png':'/static/images/okk.png'}}" />
                     </view>
                 </view>
-                <!-- <input type="text" value="20元现金抵用券" /> -->
+                <!-- <input type="text" value="20元代金抵用券" /> -->
             </view>
 
            <view class="ticket-block" wx:if="{{shareshow2}}">
@@ -36,7 +36,7 @@
                     <view class="tf-name">{{regionvalue}}</view>
                     <image src="/static/images/right-arr1.png" />
                 </view>
-                <!-- <input type="text" value="20元现金抵用券" /> -->
+                <!-- <input type="text" value="20元代金抵用券" /> -->
             </view>
 
         
@@ -47,7 +47,7 @@
                     <view class="tf-name" wx:else>{{Industryvalue}}</view>
                     <image src="/static/images/right-arr1.png" />
                 </view>
-                <!-- <input type="text" value="20元现金抵用券" /> -->
+                <!-- <input type="text" value="20元代金抵用券" /> -->
             </view>
 
 
@@ -74,7 +74,7 @@
                         {{Commission}}
                     </view>
                 </view>
-                <!-- <input type="text" value="20元现金抵用券" /> -->
+                <!-- <input type="text" value="20元代金抵用券" /> -->
             </view>
         </view>
     </view>

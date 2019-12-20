@@ -380,6 +380,15 @@ Page({
       return;
     }
 
+    if (data.Telephone.length != 11) {
+      wx.showToast({
+        title: "请输入11位的手机号",
+        icon: "none",
+        duration: 1500
+      })
+      return;
+    }
+
     wx.showModal({
       title: '券库商家注册',
       //content: '您确定注册成' + typename,
