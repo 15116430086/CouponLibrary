@@ -156,23 +156,44 @@ function UploadImg(upimgurl, count, pGroupID, pAppKeyId, pCallBack, pOther, type
             "appKeyId": pAppKeyId
           }, // HTTP 请求中其他额外的参数
           success: function(res) {
+            wx.hideLoading();
+            if (res.statusCode == 413) {
+              wx.showToast({
+                title: '图片太大！',
+                icon: 'none'
+              })
+              return;
+            }
+            if (res.statusCode != 200) {
+              wx.showToast({
+                title: res.data,
+                icon: 'none'
+              })
+              return;
+            }
             var json = JSON.parse(res.data);
             if (type == 1) { //说明是营业执照
               imgs.push(json.Data.imgurl);
               imgs.push(json.Data.data);
-              wx.hideLoading();
+
               pCallBack(imgs, pOther);
             } else {
               json.Data = json.Data.replace("true|", "");
               imgs.push(json.Data);
               if (imgs.length == tempFilePaths.length) {
-                wx.hideLoading();
                 pCallBack(imgs, pOther);
               }
             }
 
           },
-          fail: function(res) {}
+          fail: function(res) {
+            wx.hideLoading();
+            wx.showToast({
+              title: "上传失败！",
+              icon: 'none'
+            })
+            return;
+          }
         });
         uploadTask.onProgressUpdate((res) => {
 

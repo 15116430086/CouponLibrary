@@ -50,11 +50,13 @@ App({
         longitudeY: 112.93886,
         regionName: "",
         
-        //upimgurl: "https://wx.wap.quankuzg.com/LibraryAPI/",
-        //apiurl: "https://wx.wap.quankuzg.com/LibraryAPI/",
+        // upimgurl: "https://wx.wap.quankuzg.com/LibraryAPI/",
+        // apiurl: "https://wx.wap.quankuzg.com/LibraryAPI/",
+        // minmapkey:'LC5BZ-J343R-M5AWH-WYNV2-P5UW5-BVFHE',
 
         upimgurl: "https://wx.wap.meiguwen.com/LibraryAPI/",  
-        apiurl: "https://wx.wap.meiguwen.com/LibraryAPI/"       
+        apiurl: "https://wx.wap.meiguwen.com/LibraryAPI/",
+        minmapkey: 'UXCBZ-XKZWU-YHRVE-4RMRW-J63PJ-WRFPI',
 
         //upimgurl: "http://test.miboon.com:8080/LibraryAPI/",
         //apiurl: "http://test.miboon.com:8080/LibraryAPI/",
