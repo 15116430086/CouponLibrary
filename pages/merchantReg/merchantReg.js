@@ -2,6 +2,7 @@
 var utils = require("../../utils/util.js")
 const app = getApp();
 var regionData = [];
+const chooseLocation = requirePlugin('chooseLocation');
 Page({
 
   /**
@@ -61,20 +62,31 @@ Page({
   },
   onRegAddressTap: function() {
     let that = this;
-    wx.chooseLocation({
-      latitude: app.globalData.latitudeX,
-      longitude: app.globalData.longitudeY,
-      success(res) {
-        console.log(JSON.stringify(res));
-        if (res.address) {
-          that.setData({
-            RegisteredAddress: res.address
-          })
+    // wx.chooseLocation({
+    //   latitude: app.globalData.latitudeX,
+    //   longitude: app.globalData.longitudeY,
+    //   success(res) {
+    //     console.log(JSON.stringify(res));
+    //     if (res.address) {
+    //       that.setData({
+    //         RegisteredAddress: res.address
+    //       })
 
-          utils.getGeocoder(res.address, that.getGeocoderBack)
-        }
-      }
-    })
+    //       utils.getGeocoder(res.address, that.getGeocoderBack)
+    //     }
+    //   }
+    // })
+
+   
+    let referer = '券库'; //调用插件的app的名称
+    let location = JSON.stringify({
+      latitude: that.data.Geocoder.latitude || app.globalData.latitudeX,
+      longitude: that.data.Geocoder.longitude || app.globalData.longitudeY
+    });
+
+    wx.navigateTo({
+      url: 'plugin://chooseLocation/index?key=' + app.globalData.minmapkey + '&referer=' + referer + '&location=' + location
+    });
   },
   getGeocoderBack: function(res) {
     let that = this;
@@ -520,7 +532,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    let that = this;
+    let location = chooseLocation.getLocation();
+    if (location && location.address) {
+      that.setData({
+        RegisteredAddress: location.address
+      })
 
+      utils.getGeocoder(location.address, that.getGeocoderBack)
+    }
   },
 
   /**

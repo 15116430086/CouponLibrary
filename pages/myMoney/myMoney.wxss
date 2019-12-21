@@ -231,7 +231,7 @@ page {
 }
 
 .vmask-title1 {
-    margin-bottom: 80rpx;
+    margin-bottom: 40rpx;
     font-size: 24rpx;
     color: #999;
 }
