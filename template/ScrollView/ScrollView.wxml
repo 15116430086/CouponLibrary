@@ -2,7 +2,7 @@
 <template name="ScrollView">
     <view class="swiper-item">
         <view class="item-box" data-GroupID='{{GroupID}}'  bindtap='onGroupDetailsTap'>
-            <image src="{{ImageOne}}"></image>
+            <image src="{{ImageOne}}" mode="aspectFill"></image>
             <view class="swiper-div">{{GroupName}}</view>
         </view>
     </view>
