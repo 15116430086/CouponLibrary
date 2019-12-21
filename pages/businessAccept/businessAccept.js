@@ -248,6 +248,12 @@ Page({
         })
         console.log(that.data.EC_ID);
       }
+      else
+      {
+        that.setData({
+          show: true
+        })
+      }
       that.setData({
         columns: json.data
       })
