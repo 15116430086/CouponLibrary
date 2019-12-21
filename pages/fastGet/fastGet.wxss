@@ -78,10 +78,14 @@
     height: 62rpx;
     border-radius: 36rpx;
     font-size: 12px;
-    color: #CCC;
+    color: #666666;
     text-align: center;
     margin-right: 10rpx;
 }
+.p-class{
+  color:#CCCCCC;
+}
+
 
 .v-line {
     width: 50rpx;

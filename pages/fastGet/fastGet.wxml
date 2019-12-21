@@ -12,9 +12,9 @@
     <van-collapse-item title="2、您想要与您距离多少的商家？（km）" name="2" border="{{false}}">
       <view class="v-all">
         <view class="v-top">
-          <input class="v-one" type="number" bindinput="mindistanceinput" placeholder="最近距离" value="{{mindistance}}" data-id="dataid"></input>
+          <input class="v-one" type="number" bindinput="mindistanceinput" placeholder="最近距离" value="{{mindistance}}" data-id="dataid" placeholder-class="p-class" maxlength="6"></input>
           <view class="v-line"></view>
-          <input class="v-one" type="number" bindinput="maxdistanceinput" placeholder="最远距离" value="{{maxdistance}}" data-id="dataid"></input>
+          <input class="v-one" type="number" bindinput="maxdistanceinput" placeholder="最远距离" value="{{maxdistance}}" data-id="dataid" placeholder-class="p-class" maxlength="6"></input>
         </view>
         <view class="v-box">
           <view class="v-block {{idx==item.Item_id?'selected':''}}" wx:for="{{oneList}}" wx:key="" bindtap='selectOne' data-id="{{item.Item_id}}">
@@ -27,9 +27,9 @@
     <van-collapse-item title="3、您想要券面值区间是多少？（元）" name="3" border="{{false}}">
       <view class="v-all">
         <view class="v-top">
-          <input class="v-one" type="number" bindinput="minmoneyinput" placeholder="最低面值" value="{{minmoney}}" data-id="dataid"></input>
+          <input class="v-one" type="number" bindinput="minmoneyinput" placeholder="最低面值" value="{{minmoney}}" data-id="dataid" placeholder-class="p-class" maxlength="6"></input>
           <view class="v-line"></view>
-          <input class="v-one" type="number" bindinput="maxmoneyinput" placeholder="最高面值" value="{{maxmoney}}" data-id="dataid"></input>
+          <input class="v-one" type="number" bindinput="maxmoneyinput" placeholder="最高面值" value="{{maxmoney}}" data-id="dataid" placeholder-class="p-class" maxlength="6"></input>
         </view>
         <view class="v-box">
           <view class="v-block {{ide==item.Item_id?'selected':''}}" wx:for="{{twoList}}" wx:key="" bindtap='selectTwo' data-id="{{item.Item_id}}">
