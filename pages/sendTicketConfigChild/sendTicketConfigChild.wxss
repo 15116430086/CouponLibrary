@@ -14,12 +14,12 @@ page {
 .home-title {
     color: #000000;
     font-size: 32rpx;
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 
 .bot-block {
     width: calc(100% - 80rpx);
-    height: 128rpx;
+    height: 98rpx;
     margin: 0px auto;
     display: flex;
     flex-direction: row;

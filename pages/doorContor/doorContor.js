@@ -1,6 +1,7 @@
 // pages/doorContor/doorContor.js
 var utils = require("../../utils/util.js");
 var app = getApp();
+const chooseLocation = requirePlugin('chooseLocation');
 Page({
 
   /**
@@ -53,21 +54,45 @@ Page({
       });
   },
   addressblurs: function (event){//店铺地址
-   var chat=this;
-    wx.chooseLocation({
-      latitude: app.globalData.latitudeX,
-      longitude: app.globalData.longitudeY,
-      success(res) {
-        console.log(JSON.stringify(res));
-        if (res.address) {
-          chat.setData({
-            address: res.address
-          })
+    var that=this;
+    // wx.chooseLocation({
+    //   latitude: app.globalData.latitudeX,
+    //   longitude: app.globalData.longitudeY,
+    //   success(res) {
+    //     console.log(JSON.stringify(res));
+    //     if (res.address) {
+    //       chat.setData({
+    //         address: res.address
+    //       })
 
-          utils.getGeocoder(res.address,chat.getGeocoderBack)
-        }
-      }
-    })
+    //       utils.getGeocoder(res.address,chat.getGeocoderBack)
+    //     }
+    //   }
+    // })
+
+    let referer = '券库'; //调用插件的app的名称
+    let location = JSON.stringify({
+      latitude: that.data.latitudeX || app.globalData.latitudeX,
+      longitude: that.data.longitudeY || app.globalData.longitudeY
+    });
+
+    wx.navigateTo({
+      url: 'plugin://chooseLocation/index?key=' + app.globalData.minmapkey + '&referer=' + referer + '&location=' + location
+    });
+  },
+  /**
+ * 生命周期函数--监听页面显示
+ */
+  onShow: function () {
+    let that = this;
+    let location = chooseLocation.getLocation();
+    if (location && location.address) {
+      that.setData({
+        address: location.address
+      })
+
+      utils.getGeocoder(location.address, that.getGeocoderBack)
+    }
   },
   getGeocoderBack:function(res){
     var chat=this;
