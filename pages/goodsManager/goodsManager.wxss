@@ -120,7 +120,7 @@ border-radius: 30rpx;
 }
 
 .v-set{
-  width: 100%;
+  width: 60%;
   color:#016FB4;
   font-size: 28rpx;
   display: flex;
