@@ -166,7 +166,7 @@ function UploadImg(upimgurl, count, pGroupID, pAppKeyId, pCallBack, pOther, type
             }
             if (res.statusCode != 200) {
               wx.showToast({
-                title: res.data,
+                title: '上传失败！',
                 icon: 'none'
               })
               return;
