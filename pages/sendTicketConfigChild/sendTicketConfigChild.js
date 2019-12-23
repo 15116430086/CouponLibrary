@@ -12,6 +12,28 @@ Page({
     staffchecked: true,
     AppointStaff: 0,
     radio: '1',
+    pushList:[
+      {
+        id: 1,
+        name: '普通',
+        ischeck:false
+      },
+      {
+        id: 2,
+        name: '推广',
+        ischeck: false
+      },
+      {
+        id: 3,
+        name: '置顶',
+        ischeck: false
+      },
+      {
+        id: 4,
+        name: '热门',
+        ischeck: false
+      }
+    ],
     shopList: [{
         id: 1,
         name: 'B语言',
@@ -234,6 +256,30 @@ Page({
       })
     }
   },
+
+
+  pushChange(e){
+    console.log(e);
+    let that = this;
+    let pushList = that.data.pushList;
+    let detail = e.detail;
+    let id = e.currentTarget.dataset.id;
+    for (let i in pushList){
+      if (id == pushList[i].id){
+        pushList[i].ischeck = true;
+        that.setData({
+          pushList: pushList
+        })
+      }else{
+        pushList[i].ischeck = false;
+        that.setData({
+          pushList: pushList
+        })
+      }
+    }
+  },  
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
