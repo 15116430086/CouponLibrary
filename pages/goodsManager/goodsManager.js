@@ -109,8 +109,10 @@ Page({
 
   // 跳商品赠券配置
   jumpConfig(e) {
+    var productid = e.currentTarget.dataset.productid
+    console.log(productid);
     wx.navigateTo({
-      url: '../goodsConfig/goodsConfig',
+      url: '../goodsConfig/goodsConfig?productid=' + productid,
     })
   },
 
