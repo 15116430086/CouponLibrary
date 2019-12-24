@@ -10,14 +10,14 @@
   <view hidden='{{currentId!=0}}' class="mes-block">
     <view class="mes-top">
       <view class="top-mes">
-        由商家自主设定将券发布至自营/指定商户或券库商家平台，商户
+        由商家自主设定将券发布至自营/指定商户或券库平台，商家
         <text>免费领券</text>赠送给会员，会员在使用该券时可抵现金使用。
       </view>
     </view>
   </view>
   <view hidden='{{currentId!=1}}' class="mes-block">
     <view class="mes-top">
-      <view class="top-mes">商家自主设定将券发布至券库商家平台，其他商家付费购买后用于赠送给会员，会员并可使用该券兑换商品或服务</view>
+      <view class="top-mes">商家自主设定将券发布至券库平台，其他商家付费购买后用于赠送给会员，会员并可使用该券兑换商品或服务</view>
     </view>
   </view>
 </view>
