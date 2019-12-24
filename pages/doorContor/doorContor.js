@@ -2,6 +2,7 @@
 var utils = require("../../utils/util.js");
 var app = getApp();
 const chooseLocation = requirePlugin('chooseLocation');
+var isLocation = false;
 Page({
 
   /**
@@ -79,6 +80,7 @@ Page({
     wx.navigateTo({
       url: 'plugin://chooseLocation/index?key=' + app.globalData.minmapkey + '&referer=' + referer + '&location=' + location
     });
+    isLocation=true;
   },
   /**
  * 生命周期函数--监听页面显示
@@ -86,7 +88,7 @@ Page({
   onShow: function () {
     let that = this;
     let location = chooseLocation.getLocation();
-    if (location && location.address) {
+    if (location && location.address && isLocation) {
       that.setData({
         address: location.address
       })

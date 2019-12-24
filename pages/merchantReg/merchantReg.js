@@ -3,6 +3,7 @@ var utils = require("../../utils/util.js")
 const app = getApp();
 var regionData = [];
 const chooseLocation = requirePlugin('chooseLocation');
+var isLocation=false;
 Page({
 
   /**
@@ -87,6 +88,7 @@ Page({
     wx.navigateTo({
       url: 'plugin://chooseLocation/index?key=' + app.globalData.minmapkey + '&referer=' + referer + '&location=' + location
     });
+    isLocation=true;
   },
   getGeocoderBack: function(res) {
     let that = this;
@@ -534,13 +536,14 @@ Page({
   onShow: function() {
     let that = this;
     let location = chooseLocation.getLocation();
-    if (location && location.address) {
+    if (location && location.address && isLocation) {
       that.setData({
         RegisteredAddress: location.address
       })
 
       utils.getGeocoder(location.address, that.getGeocoderBack)
     }
+    isLocation=false;
   },
 
   /**
