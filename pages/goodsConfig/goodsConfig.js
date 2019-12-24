@@ -90,7 +90,7 @@ Page({
         icon: "none"
       });
       setTimeout(function(){
-        wx.navigateTo({
+        wx.redirectTo({
           url: '../goodsManager/goodsManager',
         })
       },2000);
