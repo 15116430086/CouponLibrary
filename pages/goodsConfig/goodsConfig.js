@@ -10,7 +10,9 @@ Page({
     result:[],
     productid:"",
     pageIndex:1,
-    datalist:[]
+    datalist:[],
+    stat:true
+
   },
 
   /**
@@ -55,6 +57,7 @@ Page({
           title: "无数据",
           icon: "none"
         });
+        chat.setData({ stat:false})
       }
   },
   onChange(event) {
@@ -99,52 +102,22 @@ Page({
 
     }
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
+  
 
   /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
+   * 页面触底事件
    */
   onReachBottom: function () {
-
+      if(this.data.stat){
+        var datas = {
+          pGroupID: app.globalData.AppGroupInfo.GroupID,
+          pageIndex: this.data.pageIndex,
+          pageSize: 10,
+          ProductID: this.data.productid
+        }
+        utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetTicketlist", "POST", datas, app.globalData.appkeyid, this.GetTicketlist);
+      }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
-  }
 })
