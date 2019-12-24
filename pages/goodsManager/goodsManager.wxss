@@ -62,7 +62,7 @@ border-radius: 30rpx;
 }
 
 .v-left{
-  width: auto;
+  width: calc(100% - 80rpx);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -75,7 +75,7 @@ border-radius: 30rpx;
 }
 
 .v-mid{
-  width: 280rpx;
+  width: calc(100% - 168rpx);
   text-align: left;
 }
 
@@ -85,6 +85,10 @@ border-radius: 30rpx;
   font-size: 32rpx;
   font-weight: 600;
   margin-bottom: 10rpx;
+  display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+overflow: hidden;
 }
 
 .v-mes{
