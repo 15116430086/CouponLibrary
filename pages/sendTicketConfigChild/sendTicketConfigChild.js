@@ -14,23 +14,23 @@ Page({
     radio: '1',
     pushList:[
       {
-        id: 1,
+        id: -1,
         name: '普通',
         ischeck:false
       },
       {
-        id: 2,
+        id: 0,
         name: '推广',
         ischeck: false
       },
       {
-        id: 3,
-        name: '置顶',
+        id: 1,
+        name: '热门',
         ischeck: false
       },
       {
-        id: 4,
-        name: '热门',
+        id: 2,
+        name: '置顶',
         ischeck: false
       }
     ],
@@ -105,7 +105,24 @@ Page({
         duration: 2000
       })
     }
-
+    let pushList = this.data.pushList;
+    if (json.dataGroupExtension.length>0){
+      for (let i in pushList) {
+        if (pushList[i].id == json.dataGroupExtension[0].ExtensionType) {
+          pushList[i].ischeck = true;
+          this.setData({
+            pushList: pushList
+          })
+        }
+      }
+    }
+    else
+    {
+      pushList[0].ischeck=true;
+      this.setData({
+        pushList: pushList
+      })
+    }
   },
 
   /**
@@ -277,7 +294,32 @@ Page({
         })
       }
     }
+    var data={
+      pExtensionType:id
+    }
+    that.groupExtensionOperation(data);
   },  
+
+
+
+  groupExtensionOperation:function(data){
+    let that = this;
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pCouponID = mCouponID;
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GroupExtensionOperation", "POST", data, app.globalData.appkeyid, that.groupExtensionOperationBack)
+  },
+  groupExtensionOperationBack:function(json){
+    console.log(json);
+    var json = json.data.Data;
+    if (json.flag) {
+      wx.showToast({
+        title: '设置成功！',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+
 
 
   /**
