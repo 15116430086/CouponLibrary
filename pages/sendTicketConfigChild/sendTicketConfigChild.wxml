@@ -1,5 +1,5 @@
 <view class="home-top">
-  <view class="bot-block" style="font-weight:600">推券配置</view>
+  <view class="bot-block" style="font-weight:600">券推荐</view>
   <block>
     <view class="bot-block" wx:for="{{pushList}}" wx:for-item="item" wx:key="item">
       <view class="home-title">{{item.name}}</view>
@@ -11,7 +11,7 @@
 </view>
 
 <view class="home-top">
-  <view class="bot-block" style="font-weight:600">领券配置</view>
+  <view class="bot-block" style="font-weight:600">赠券配置</view>
   <view class="bot-block">
     <view class="home-title">会员自领</view>
     <view class="home-right">

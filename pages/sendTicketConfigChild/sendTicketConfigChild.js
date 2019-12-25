@@ -14,22 +14,17 @@ Page({
     radio: '1',
     pushList:[
       {
-        id: -1,
+        id: 0,
         name: '普通',
         ischeck:false
       },
       {
-        id: 0,
-        name: '推广',
-        ischeck: false
-      },
-      {
         id: 1,
-        name: '热门',
+        name: '推荐',
         ischeck: false
-      },
+      },   
       {
-        id: 2,
+        id: 3,
         name: '置顶',
         ischeck: false
       }
