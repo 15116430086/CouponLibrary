@@ -20,17 +20,12 @@ Page({
       },
       {
         id: 1,
-        name: '推广',
+        name: '推荐',
         ischeck: false
-      },
-      {
-        id: 2,
-        name: '热门',
-        ischeck: false
-      },   
+      },  
       {
         id: 3,
-        name: '置顶',
+        name: 'banner',
         ischeck: false
       }
     ],
