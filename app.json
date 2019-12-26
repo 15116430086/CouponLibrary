@@ -91,7 +91,8 @@
     "pages/regPlane/regPlane",
     "pages/secretBook/secretBook",
     "pages/webView/webView",
-    "pages/chooseBuyGoodsTwo/chooseBuyGoodsTwo"
+    "pages/chooseBuyGoodsTwo/chooseBuyGoodsTwo",
+    "pages/imageView/imageView"
   ],
   "permission": {
     "scope.userLocation": {
