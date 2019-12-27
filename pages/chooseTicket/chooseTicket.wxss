@@ -106,6 +106,12 @@ page {
     height: 440rpx;
 }
 
+.swipernull {
+    margin-top: 100rpx;
+    width: 100%;
+    
+}
+
 .swiper image {
     height: 100%;
     width: 100%;
