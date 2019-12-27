@@ -13,8 +13,7 @@
     </view>
   </view>
   <view class="home-groupMes">
-    <image wx:if="{{datalist[0].UsageRule}}" src="{{datalist[0].UsageRule}}" mode="widthFix" />
-    <image wx:else src="/static/images/rule.png" mode="widthFix" />
+    <image wx:if="{{datalist[0].UsageRule}}" src="{{datalist[0].UsageRule}}" mode="widthFix" /> 
     <block wx:for="{{images}}" wx:key="PictureID">
       <image wx:if="{{isShow}}" src="{{item.ImageURL}}" mode="widthFix" />
     </block>
