@@ -45,7 +45,7 @@
     </view>
     <!-- 通知栏上下轮播 -->
     <swiper class="dyn-botmes" interval="3000" autoplay="true" vertical='true' circular='true'>
-      <block wx:for="{{CouponCount.ReceiveCouponList}}" wx:key="{{index}}">
+      <block wx:for="{{CouponCount.ReceiveCouponList}}" wx:key="ReleaseID">
         <swiper-item>
           <view bindtap="JumpwatchMesOne" data-id="{{item.ReleaseID}}" class="swp-view">{{item.GroupName}}领取了{{item.ReceiveNUM}}张【{{item.CouponName}}】</view>
         </swiper-item>
