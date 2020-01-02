@@ -4,8 +4,8 @@
     <view class="v-block">
         <view class="v-top">
             <text class="v-span">{{item.TitleName}}</text>         
-            <text class="v-blue"  decode="{{true}}" wx:if="{{item.MsgType==1}}" bindtap="JumpticketMes" data-relationid="{{item.RelationID}}" data-id="{{item.SendMsgID}}">&nbsp;&nbsp;请立即领取</text>
-            <text class="v-blue"  decode="{{true}}" wx:if="{{item.MsgType==0 || item.MsgType==2}}" bindtap="Eetailstap" data-id="{{item.SendMsgID}}">&nbsp;&nbsp;查看详情</text> 
+            <text class="v-blue"  decode="{{true}}" wx:if="{{item.MsgType==1 || item.MsgType==2}}" bindtap="JumpticketMes" data-relationid="{{item.RelationID}}" data-type="{{item.MsgType}}" data-id="{{item.SendMsgID}}">&nbsp;&nbsp;请立即领取</text>
+            <text class="v-blue"  decode="{{true}}" wx:if="{{item.MsgType==0}}" bindtap="Eetailstap" data-id="{{item.SendMsgID}}">&nbsp;&nbsp;查看详情</text> 
         </view>
         <view class="v-time" style="color:#000">{{item.MsgContent}}</view>
         <view class="v-time">{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
