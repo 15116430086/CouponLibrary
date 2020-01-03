@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    checked: true,
+    checked: false,
     checked1: true
   },
 
@@ -20,7 +20,7 @@ Page({
     let that = this;
     let detail = e.detail;
     let index = e.currentTarget.dataset.index;
-    if (index == 0) {
+    if (index == 0) {  
       that.setData({
         checked: detail
       })
