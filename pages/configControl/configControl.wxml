@@ -2,24 +2,24 @@
 <view class="home-top">
     <view class="home-block">
         <view class="home-name">
-            <view class="home-title">收款通知</view>
-            <view class="home-rule">开启后，微信收款公众号将向你推送收款通知</view>
+            <view class="home-title">订单通知</view>
+            <view class="home-rule">开启后，会员线上下单将向你推送消息通知</view>
         </view>
         <view class="home-right">
-            <van-switch checked="{{ checked }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange" />
+            <van-switch checked="{{ checked }}" data-index="0" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange" />
         </view>
     </view>
-    <view class="home-block">
+    <!-- <view class="home-block">
         <view class="home-name">
             <view class="home-title">收款语音播报</view>
             <view class="home-rule">开启后，收款成功将通过语音告知收款金额</view>
         </view>
         <view class="home-right">
-            <van-switch checked="{{ checked1 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange" />
+            <van-switch checked="{{ checked1 }}" data-index="1" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange" />
         </view>
-    </view>
+    </view> -->
 </view>
-<view class="home-top">
+<!-- <view class="home-top">
     <view class="bot-block">
         <view class="home-title">使用帮助</view>
         <image class="home-img" src="/static/images/right-arr1.png"/>
@@ -36,4 +36,4 @@
         <view class="home-title">违规申诉</view>
         <image class="home-img" src="/static/images/right-arr1.png"/>
     </view>
-</view>
+</view> -->
