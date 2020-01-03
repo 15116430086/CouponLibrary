@@ -59,10 +59,18 @@ Page({
     let that = this;
     var RelationID = e.currentTarget.dataset.relationid;
     var SendMsgID = e.currentTarget.dataset.id;
+    var pType = e.currentTarget.dataset.type;
     that.EditoState(SendMsgID);
-    wx.navigateTo({
-      url: '../ticketMes/ticketMes?ReleaseID=' + RelationID,
-    })
+    if (pType==1){
+      wx.navigateTo({
+        url: '../ticketMes/ticketMes?ReleaseID=' + RelationID,
+      })
+    }
+    else if(pType==2){
+      wx.navigateTo({
+        url: '../waitGoods/waitGoods?orderid=' + RelationID +'&ordertype=0',
+      })
+    }
   },
 
 //点击查看详情
