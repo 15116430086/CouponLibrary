@@ -1,4 +1,4 @@
-<!-- pages/management/management.wxml -->
+<!-- pages/newManager/newManager.wxml -->
 <view class="m-box">
     <view class="mb-block" style="margin-right:60rpx">
         <view class="mb-title">今日新增会员</view>
@@ -23,7 +23,7 @@
         <view class="v-box" bindtap="jumpSpan">
             <view class="v-left">
                 <image src="/static/images/shuqian.png" class="v-left-image" />
-                <view>标签列表</view>
+                <view>会员标签管理</view>
             </view>
             <image src="/static/images/right-arr1.png" class="mbot-arr" />
         </view>

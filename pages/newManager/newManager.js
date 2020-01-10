@@ -1,4 +1,4 @@
-// pages/management/management.js
+// pages/newManager/newManager.js
 Page({
 
   /**
