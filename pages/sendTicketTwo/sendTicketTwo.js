@@ -123,8 +123,8 @@ Page({
       CouponType: 0,
       CouponName: "",
       CouponMoney: 1,
-      ExpirationDate: '',
-      ExpiredType: 10,
+      ExpirationDate: '30',
+      ExpiredType: 1,
       CouponDetails: '',
       ReceiveUpperLimit: 1,
       UsageRule: "",
@@ -429,16 +429,19 @@ Page({
   },
   //点击每个导航的点击事件
   handleTap: function(e) {
-
+    let that = this;
+    if (that.data.edit == '0') {
+      return //查看详情不可编辑
+    }
     let id = e.currentTarget.id;
     if (id) {
-      this.setData({
+      that.setData({
         currentId: id
       })
     }
     wx.setStorageSync("pArrProductKey", "");
     wx.setStorageSync("ArrProductchecked", false);
-    this.setData({
+    that.setData({
       pArrProductID:[],
       ArrProductchecked: false
     })
@@ -469,10 +472,7 @@ Page({
   },
 
   clickTrue(e) {
-    let that = this;
-    if (that.data.edit == '0') {
-      return //查看详情不可编辑
-    }
+    let that = this; 
     let id = e.currentTarget.dataset.id;
     let pCoupon_Info = that.data.pCoupon_Info;
     let type = e.currentTarget.dataset.type;

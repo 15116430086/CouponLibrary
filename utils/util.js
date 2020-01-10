@@ -34,7 +34,25 @@ function AjaxRequest(pUrl, pType, pData, pAppKeyId, pCallBack) {
     },
     method: pType,
     success(res) {
-      pCallBack(res);
+      if (res.statusCode == 200) {
+        if (res.data && res.data.StatusCode == -1) {
+          wx.showToast({
+            title: res.data.Data + '，请重新登录！',
+            icon: "none",
+          })
+          setTimeout(function() {
+            wx.reLaunch({
+              url: '/pages/login/login',
+            })
+          }, 2000);
+        } else {
+          pCallBack(res);
+        }
+      } else {
+        wx.showToast({
+          title: '服务器通讯失败' //'请求失败',
+        })
+      }
     },
     fail(res) {
       wx.showToast({

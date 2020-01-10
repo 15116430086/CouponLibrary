@@ -19,7 +19,7 @@
         <view class="tb-title">
           <text style="color:#e85819; font-size: 24rpx;width:110rpx; margin-right: 5rpx;" >[{{item.WriteOffType==0?"线上券":"线下券"}}]</text><view>{{item.CouponName}}</view>
           <image wx:if="{{!item.ReleaseIDs}}" data-indexs="{{index}}" data-edit="1" bindtap="edit" src="/static/images/wrt_new.png" />
-          <image wx:else data-indexs="{{index}}" data-edit="0" bindtap="edit" src="/static/images/show.png" />
+          <image wx:else data-indexs="{{index}}" data-edit="0" bindtap="edit" src="/static/images/wrt_new.png" />
         </view>
         <view class="tb-mes" style="color:#000;margin-bottom:30rpx;">发券数量：{{item.ReleaseNUM}}｜托管金额：￥{{item.ReleaseCommission}}</view>
         <view class="tb-mes">

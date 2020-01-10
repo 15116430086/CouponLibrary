@@ -22,7 +22,7 @@
     <view class="mes-box" bindtap="onQuickTap">快速领券</view>
   </view>
   <!-- 轮播图 -->
-  <view class="swiper">
+  <view class="swiper" wx:if="{{images.length>0}}">
     <swiper class='swiper' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true' indicator-dots="{{color}}" indicator-active-color="{{activeColor}}">
       <block wx:for="{{images}}" wx:for-index="index" wx:key="*this">
         <swiper-item>
@@ -31,8 +31,10 @@
       </block>
     </swiper>
   </view>
+  <view wx:else  class='swipernull'>
+  </view>
   <!-- 附近商户 -->
-  <view class="near-shop">
+  <view class="near-shop" wx:if="{{imgUrls.length>0}}">
     <view class="ns-title">
       <view>热门商户</view>
     </view>
@@ -49,7 +51,7 @@
     </view>
   </view>
   <!-- 推广集团 -->
-  <view class="near-shop">
+  <view class="near-shop" wx:if="{{shopArrays.length>0}}" >
     <view class="ns-title">
       <view>推广商户</view>
       <navigator class="ns-title-div" url="../moreShop/moreShop" hover-class="none">

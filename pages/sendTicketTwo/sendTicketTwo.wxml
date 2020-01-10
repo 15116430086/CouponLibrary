@@ -24,10 +24,10 @@
 <form class="ticket-box" bindsubmit="formSubmit">
   <view class="ticket-block">
     <view class="ticket-name">券名称</view>
-    <input type="text" value="{{pCoupon_Info.CouponName}}" disabled="{{edit=='0'}}" placeholder="输入券名称(限定12字以内)" name="CouponName" placeholder-class="pclass" maxlength="12" />
+    <input type="text" value="{{pCoupon_Info.CouponName}}" placeholder="输入券名称(限定12字以内)" name="CouponName" placeholder-class="pclass" maxlength="12" />
   </view>
   <view class="ticket-block">
-    <view class="ticket-name">券面值<text style="color:#cccccc">（券名称为*元券时请输入对等面值）</text></view>
+    <view class="ticket-name">券面值<text style="color:#cccccc">（注：发券后不可修改）</text></view>
     <input type="number" value="{{pCoupon_Info.CouponMoney}}" disabled="{{edit=='0'}}"  placeholder="输入券面值" name="CouponMoney" placeholder-class="pclass" />
   </view>
   <!-- <view class="ticket-block">
@@ -36,11 +36,11 @@
   </view> -->
   <view class="ticket-block">
     <view class="ticket-name">会员领取上限</view>
-    <input type="number" value="{{pCoupon_Info.ReceiveUpperLimit}}" disabled="{{edit=='0'}}"  placeholder="设置领取上限" name="ReceiveUpperLimit" placeholder-class="pclass" />
+    <input type="number" value="{{pCoupon_Info.ReceiveUpperLimit}}"  placeholder="设置领取上限" name="ReceiveUpperLimit" placeholder-class="pclass" />
   </view>
   <view class="ticket-block" wx:if="{{currentId==1}}">
     <view class="ticket-name">销售价</view>
-    <input type="number" value="{{pCoupon_Info.SalePrice}}" disabled="{{edit=='0'}}"  placeholder="设置销售价" name="SalePrice" placeholder-class="pclass" />
+    <input type="number" value="{{pCoupon_Info.SalePrice}}"  placeholder="设置销售价" name="SalePrice" placeholder-class="pclass" />
   </view>
   <!-- 领购规则 -->
   <view class="ticket-block" bindtap="clickRule">
@@ -61,7 +61,7 @@
   </block>
   <!-- 核销方式 -->
   <view class="ticket-block" bindtap="clickRule1">
-    <view class="ticket-name">核销方式</view>
+    <view class="ticket-name">核销方式（注：发券后不可修改）</view>
     <view class="bot-box">
       <view class="bot-left">
         <view class="{{idb?'':'pclass'}}">{{hexiao}}</view>
@@ -84,7 +84,7 @@
   </block>
   <!-- 券有效期 -->
   <view class="ticket-block" bindtap="clickRule2">
-    <view class="ticket-name">券有效期</view>
+    <view class="ticket-name">券有效期（注：发券后不可修改）</view>
     <view class="bot-box">
 
       <view class="{{idd?'bot-left':'pclass'}}">{{date}}</view>
@@ -125,7 +125,7 @@
     <view class="addImg-box">
       <view class="add-img" wx:if="{{imageOne}}">
         <image src="{{imageOne}}" class="addImg-box-image" bindtap="preImg" mode='aspectFill' />
-        <image src="/static/images/cha4.png" wx:if="{{edit=='1'}}" class="cha4" bindtap="delImg"></image>
+        <image src="/static/images/cha4.png"  class="cha4" bindtap="delImg"></image>
       </view>
 
       <image src="/static/images/img.png" bindtap="imgadd" class="addImg-box-image" wx:else></image>
@@ -139,7 +139,7 @@
     <view class="addImg-box">
       <view class="add-img" wx:if="{{imageTwo}}">
         <image src="{{imageTwo}}" class="addImg-box-image" bindtap="preImg2" mode='aspectFill' />
-        <image src="/static/images/cha4.png" wx:if="{{edit=='1'}}" class="cha4" bindtap="delImg2"></image>
+        <image src="/static/images/cha4.png"  class="cha4" bindtap="delImg2"></image>
       </view>
       <image src="/static/images/img.png" bindtap="imgadd2" class="addImg-box-image" wx:else />
       <image src="/static/images/img-1.png"  style="width:244rpx;height:84rpx;margin-left: 40rpx;" />
@@ -149,18 +149,18 @@
   <view class="addImg" style="margin-bottom:0px">
     <view class="ticket-name">图文详情</view>
     <view class="addImg-boxs">
-      <view class="add-img" wx:for="{{imageTre}}" wx:for-item="item" style="margin-bottom:40rpx">
+      <view class="add-img" wx:for="{{imageTre}}" wx:for-item="item" wx:key="*this" style="margin-bottom:40rpx">
         <image src="{{item}}" class="addImg-box-image" bindtap="preImg3" data-index="{{index}}" mode='aspectFill' />
-        <image src="/static/images/cha4.png" wx:if="{{edit=='1'}}"  class="cha4" bindtap="delImg3" data-index="{{index}}"></image>
+        <image src="/static/images/cha4.png"  class="cha4" bindtap="delImg3" data-index="{{index}}"></image>
         <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;" class="img-tips" />
       </view>
-      <view class="add-img" style="margin-bottom:40rpx" wx:if="{{imageTre.length<5 && edit=='1'}}">
+      <view class="add-img" style="margin-bottom:40rpx" wx:if="{{imageTre.length<5}}">
         <image src="/static/images/img.png" bindtap="imgadd3" class="addImg-box-image" />
         <image src="/static/images/img-1.png" style="width:244rpx;height:84rpx;" class="img-tips" />
       </view>
     </view>
   </view>
-  <view class="app-bot" wx:if="{{edit=='1'}}">
+  <view class="app-bot" >
     <button class="playBtn" formType="submit">开始发券</button>
   </view>
 </form>

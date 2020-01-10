@@ -59,9 +59,12 @@ Page({
     })
   },
   onGroupDetailsTap: function(event) {
-    wx.navigateTo({
-      url: '../groupMes/groupMes?GroupID=' + event.currentTarget.dataset.groupid
-    })
+    var oGroupID = event.currentTarget.dataset.groupid;
+    if (oGroupID != "") {
+      wx.navigateTo({
+        url: '../groupMes/groupMes?GroupID=' + event.currentTarget.dataset.groupid
+      })
+    }
   },
   onBindBotOneTap: function(event) {
     let that = this;
@@ -114,6 +117,10 @@ Page({
 
         });
 
+        if (json.bflag) {
+          banner = banner.concat(json.Banner);
+        }
+
         that.setData({
           images: banner,
           imgUrls: popular,
@@ -133,8 +140,12 @@ Page({
       }
     } else {
       if (page == 1) {
+        var banner = [];
+        if (json.bflag) {
+          banner = banner.concat(json.Banner);
+        }
         that.setData({
-          images: [],
+          images: banner,
           imgUrls: [],
           shopArrays: [],
           hotTicketBox: [],

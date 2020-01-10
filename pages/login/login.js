@@ -79,23 +79,6 @@ Page({
 
   },
 
-  GetGeocoderBack: function(res) {
-    app.globalData.regionName = res[0].ad_info.district
-    var appkeyid = wx.getStorageSync('miniappkeyid');
-    if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
-      app.globalData.appkeyid = appkeyid.FSessionKey;
-      var loginInfo = JSON.parse(appkeyid.FContent);
-      app.globalData.AppWxUserInfo = loginInfo.AppWxUserInfo;
-      app.globalData.AppStaffInfo = loginInfo.AppStaffInfo;
-      app.globalData.AppGroupInfo = loginInfo.AppGroupInfo;
-      app.globalData.AppShopInfo = loginInfo.AppShopInfo;
-        wx.reLaunch({
-          url: '../home/home',
-        })
-    }
-    console.log(JSON.stringify(res));
-  },
-
   getLocation: function() {
     //显示 加载中的提示
     wx.showLoading({
@@ -119,6 +102,39 @@ Page({
       }
     })
   },
+
+  GetGeocoderBack: function(res) {
+    let that = this;
+    app.globalData.regionName = res[0].ad_info.district
+    var appkeyid = wx.getStorageSync('miniappkeyid');
+    if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
+      app.globalData.appkeyid = appkeyid.FSessionKey;
+      var data = {};
+      data.pAppKeyId = appkeyid.FSessionKey;
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetApiSession", "POST", data, app.globalData.appkeyid, that.CheckLoginState)
+    }   
+  },
+
+  CheckLoginState: function(res) { 
+    var json = res.data.Data;
+    if (json.flag) {
+      wx.setStorageSync('miniappkeyid', json.data)
+      var appkeyid = wx.getStorageSync('miniappkeyid');
+      if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
+        app.globalData.appkeyid = appkeyid.FSessionKey;
+        var loginInfo = JSON.parse(appkeyid.FContent);
+        app.globalData.AppWxUserInfo = loginInfo.AppWxUserInfo;
+        app.globalData.AppStaffInfo = loginInfo.AppStaffInfo;
+        app.globalData.AppGroupInfo = loginInfo.AppGroupInfo;
+        app.globalData.AppShopInfo = loginInfo.AppShopInfo;
+        if (app.globalData.AppStaffInfo && app.globalData.AppStaffInfo.StaffID)
+        wx.reLaunch({
+          url: '../home/home',
+        })
+      }
+    }
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
