@@ -97,7 +97,8 @@
         "pages/addMembers/addMembers",
         "pages/addSpan/addSpan",
         "pages/spanList/spanList",
-        "pages/levelManager/levelManager"
+        "pages/levelManager/levelManager",
+        "pages/mebList/mebList"
     ],
     "permission": {
         "scope.userLocation": {
@@ -130,6 +131,7 @@
         "van-popup": "static/vant/popup/index",
         "van-toast": "static/vant/toast/index",
         "van-picker": "static/vant/picker/index",
-        "van-datetime-picker": "static/vant/datetime-picker/index"
+        "van-datetime-picker": "static/vant/datetime-picker/index",
+        "van-overlay": "static/vant/overlay/index"
     }
 }

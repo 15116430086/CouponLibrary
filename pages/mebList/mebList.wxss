@@ -1,0 +1,159 @@
+.v-box {
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.v-title {
+    width: calc(100% - 80rpx);
+    height: 120rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.v-text {
+    border: 1px solid #ededed;
+    border-radius: 3px;
+    padding: 2rpx 6rpx 2rpx 6rpx;
+    color: #999999;
+    font-size: 22rpx;
+    margin-right: 5rpx;
+}
+
+.v-block {
+    width: calc(100% - 80rpx);
+    height: 120rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-show {
+    color: #CCCCCC;
+    font-size: 24rpx;
+}
+
+.v-title image {
+    width: 46rpx;
+    height: 46rpx;
+    flex-shrink: 0;
+    margin-right: 20rpx;
+}
+
+.v-title view {
+    color: #016FB4;
+    font-size: 32rpx;
+}
+
+.b-block {
+    width: 100%;
+    color: #CCCCCC;
+    font-size: 24rpx;
+    text-align: left;
+}
+
+.b-box {
+    margin: 0px auto;
+    width: calc(100% - 80rpx);
+    height: 120rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-left {
+    width: calc(100% - 80rpx);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 28rpx;
+    color: #333333;
+}
+
+.v-left-image {
+    width: 40rpx;
+    height: 40rpx;
+    flex-shrink: 0;
+    margin-right: 20rpx;
+}
+
+.v-right {
+    color: #CCCCCC;
+    font-size: 24rpx;
+}
+
+.v-left-arr {
+    width: 16rpx;
+    height: 16rpx;
+    margin-right: 10rpx;
+}
+
+.v-block {
+    width: 100%;
+}
+
+.b-left {
+    width: calc(100% - 80rpx);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.v-choose {
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 20rpx;
+    margin-left: 30rpx;
+}
+
+.b-left-img {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 10rpx;
+    flex-shrink: 0;
+    margin-right: 10rpx;
+}
+
+.b-mes {
+    width: calc(100% - 90rpx);
+    display: flex;
+    height: 80rpx;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.b-name {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #000000;
+    font-size: 28rpx;
+}
+
+.blue-arr {
+    width: 14rpx;
+    height: 15rpx;
+    margin-left: 10rpx;
+    flex-shrink: 0;
+}
+
+.b-span {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mbot-arr {
+    width: 10rpx;
+    height: 18rpx;
+    display: block;
+}

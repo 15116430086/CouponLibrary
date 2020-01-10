@@ -1,4 +1,4 @@
-// pages/spanList/spanList.js
+// pages/mebList/mebList.js
 Page({
 
     /**
@@ -15,21 +15,6 @@ Page({
 
     },
 
-    //跳转添加标签
-    jumpAddList(e) {
-        wx.navigateTo({
-            url: '../addSpan/addSpan',
-        })
-    },
-
-    //跳转成员
-    jumpAddMeb(e) {
-        wx.navigateTo({
-            url: '../mebList/mebList',
-        })
-    },
-
-
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -42,6 +27,12 @@ Page({
      */
     onShow: function() {
 
+    },
+
+    jumpAddList(e) {
+        wx.navigateTo({
+            url: '../addMembers/addMembers',
+        })
     },
 
     /**

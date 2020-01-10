@@ -2,20 +2,27 @@
 <view class="v-box">
     <view class="v-title" bindtap="jumpAddList">
         <image src="/static/images/lanadd.png" />
-        <view>添加新标签</view>
+        <view>添加会员</view>
     </view>
-    <view class="v-block" bindtap="jumpAddMeb">
-        <view class="v-left">
-            <view class="v-name">钻石会员</view>
-            <view class="v-list">
-                <view>活跃度满一个月/时长使用/免单/个别条件个别条件个别条件个别条件</view>
-                <image src="/static/images/xj.png" />
+    <view class="b-block">
+        <view class="b-box">
+            <view class="v-left">
+                <view class="b-left">
+                    <image src="/static/images/swp.png" mode="aspectFill" class="b-left-img" />
+                    <view class="b-mes">
+                        <view class="b-name">噢噢啊搜傲视OAOS撒是傲视噢噢啊搜傲视OAOS撒是傲视</view>
+                        <view class="b-span">
+                            <view class="v-text">潜在客户</view>
+                            <view class="v-text">一周多次消费</view>
+                            <view class="v-show">等5个标签</view>
+                            <image src="/static/images/xj.png" class="v-left-arr" style="margin-left:5rpx" />
+                        </view>
+                    </view>
+                </view>
             </view>
+            <image src="/static/images/right-arr1.png" class="mbot-arr" />
         </view>
-        <view class="v-right">
-            <view>100人</view>
-            <image src="/static/images/right-arr1.png" />
-        </view>
+        
     </view>
 </view>
 <!-- <view class="mask" catchtap="hideMask" wx:if="{{isLevel}}">
