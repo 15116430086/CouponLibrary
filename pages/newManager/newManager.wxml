@@ -29,27 +29,14 @@
         </view>
     </view>
     <view class="m-bot">
-        <view class="v-box">
+        <view class="v-box" bindtap="selBlock">
             <view class="v-left">
-                <image src="/static/images/yj.png" class="v-left-arr" />
+                <image src="{{isFlag?'/static/images/xj.png':'/static/images/yj.png'}}" class="v-left-arr" />
                 <view>我的会员</view>
             </view>
             <view class="v-right">28人</view>
         </view>
-        <view class="v-block">
-            <!-- <view class="b-box">
-                <view class="v-left">
-                    <image src="/static/images/f2.png" class="v-choose" />
-                    <view class="b-left">
-                        <image src="/static/images/swp.png" mode="aspectFill" class="b-left-img" />
-                        <view class="b-mes">
-                            <view class="b-name">噢噢啊搜傲视OAOS撒是傲视噢噢啊搜傲视OAOS撒是傲视</view>
-                            <view class="b-block">未设置标签</view>
-                        </view>
-                    </view>
-                </view>
-                <image src="/static/images/right-arr1.png" class="mbot-arr" />
-            </view> -->
+        <view class="v-block" wx:if="{{isFlag == true}}">
             <view class="b-box" wx:for="{{list}}">
                 <view class="v-left">
                     <image src="{{item.isSel?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" bindtap="isSel" data-index="{{index}}"/>
