@@ -48,6 +48,15 @@
     margin-bottom: 5rpx;
 }
 
+
+.v-name image {
+    width: 20rpx;
+    height: 20rpx;
+    flex-shrink: 0;
+    margin-left: 10rpx;
+}
+
+
 .v-left {
     width: calc(100% - 140rpx);
     display: flex;

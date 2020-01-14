@@ -76,6 +76,13 @@ Page({
         })
     },
 
+     //跳转查看标签
+     jumpSeeSpan(e){
+      wx.navigateTo({
+          url: '../seeSpan/seeSpan',
+      })
+  },
+
 
     /**
      * 生命周期函数--监听页面初次渲染完成

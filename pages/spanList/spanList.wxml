@@ -1,24 +1,26 @@
 <!-- pages/levelManager/levelManager.wxml -->
 <view class="v-box">
-    <view class="v-title" bindtap="jumpAddList">
-        <image src="/static/images/lanadd.png" />
-        <view>添加新标签</view>
-    </view>
-    <block wx:for="{{datalist}}" wx:for-index="index" wx:key="LabelID">
-    <view class="v-block" data-labelid="{{ item.LabelID }}" bindtap="jumpAddMeb">
-        <view class="v-left">
-            <view class="v-name">{{ item.LabelName }}</view>
-            <!-- <view class="v-list">
+	<view class="v-title" bindtap="jumpAddList">
+		<image src="/static/images/lanadd.png" />
+		<view>添加新标签</view>
+	</view>
+	<block wx:for="{{datalist}}" wx:for-index="index" wx:key="LabelID">
+		<view class="v-block" data-labelid="{{ item.LabelID }}">
+			<view class="v-left" bindtap="jumpSeeSpan">
+				<view class="v-name">{{ item.LabelName }}
+					<image src="/static/images/xj.png" />
+				</view>
+				<!-- <view class="v-list">
                 <view>活跃度满一个月/时长使用/免单/个别条件个别条件个别条件个别条件</view>
                 <image src="/static/images/xj.png" />
             </view> -->
-        </view>
-        <view class="v-right">
-            <view>{{ item.number }}人</view>
-            <image src="/static/images/right-arr1.png" />
-        </view>
-    </view>
-    </block>
+			</view>
+			<view class="v-right"  bindtap="jumpAddMeb">
+				<view>{{ item.number }}人</view>
+				<image src="/static/images/right-arr1.png" />
+			</view>
+		</view>
+	</block>
 </view>
 <!-- <view class="mask" catchtap="hideMask" wx:if="{{isLevel}}">
     <view class="m-top" catchtap="delLevel">

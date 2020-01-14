@@ -98,7 +98,8 @@
         "pages/addSpan/addSpan",
         "pages/spanList/spanList",
         "pages/levelManager/levelManager",
-        "pages/mebList/mebList"
+        "pages/mebList/mebList",
+        "pages/seeSpan/seeSpan"
     ],
     "permission": {
         "scope.userLocation": {
