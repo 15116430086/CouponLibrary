@@ -11,18 +11,19 @@ Page({
     memberchecked: true,
     staffchecked: true,
     AppointStaff: 0,
-    radio: '1',
-    pushList:[
-      {
+    MemberCollar: 0,
+    sradio: '1',
+    mradio: '1',
+    pushList: [{
         id: 0,
         name: '普通',
-        ischeck:false
+        ischeck: false
       },
       {
         id: 1,
         name: '推荐',
         ischeck: false
-      },  
+      },
       {
         id: 3,
         name: 'banner',
@@ -87,7 +88,7 @@ Page({
     if (json.flag) {
       console.log(JSON.stringify(json.data));
       this.setData({
-        memberchecked: json.data.MemberCollar == 1,
+        memberchecked: json.data.MemberCollar > 0,
         staffchecked: json.data.AppointStaff > 0,
         radio: json.data.AppointStaff.toString(),
         shopList: json.data.ListCoupon_ShopInfo
@@ -101,7 +102,7 @@ Page({
       })
     }
     let pushList = this.data.pushList;
-    if (json.dataGroupExtension.length>0){
+    if (json.dataGroupExtension.length > 0) {
       for (let i in pushList) {
         if (pushList[i].id == json.dataGroupExtension[0].ExtensionType) {
           pushList[i].ischeck = true;
@@ -110,10 +111,8 @@ Page({
           })
         }
       }
-    }
-    else
-    {
-      pushList[0].ischeck=true;
+    } else {
+      pushList[0].ischeck = true;
       this.setData({
         pushList: pushList
       })
@@ -143,14 +142,15 @@ Page({
     if (index == 1) {
       data.pMemberCollar = detail ? 1 : 0;
       that.setData({
-        memberchecked: detail
+        memberchecked: detail,
+        mradio: "1"
       })
     } else {
       data.pAppointStaff = detail ? 1 : 0;
       // 需要手动对 checked 状态进行更新
       that.setData({
         staffchecked: detail,
-        radio: "1"
+        sradio: "1"
       });
     }
 
@@ -161,8 +161,38 @@ Page({
     console.log(event)
     let that = this;
     that.setData({
-      radio: event.detail
+      sradio: event.detail
     });
+  },
+  onAppointMemberClick(event) {
+    let that = this;
+    const {
+      name
+    } = event.currentTarget.dataset;
+    that.setData({
+      mradio: name
+    });
+
+    if (name === "1") {
+      var shopList = that.data.shopList;
+      for (let i in shopList) {
+        var configStaffList = shopList[i].ListCoupon_GiveConfigStaff
+        shopList[i].IsSelected = false;
+        for (let j in configStaffList) {
+          shopList[i].ListCoupon_GiveConfigStaff[j].cdType = false;
+        }
+      }
+
+      that.setData({
+        shopList: shopList,
+      });
+
+      var data = {
+        pMemberCollar: name
+      };
+      that.setCouponGiveConfig(data);
+    }
+
   },
   onAppointStaffClick(event) {
     let that = this;
@@ -170,7 +200,7 @@ Page({
       name
     } = event.currentTarget.dataset;
     that.setData({
-      radio: name
+      sradio: name
     });
 
     if (name === "1") {
@@ -270,40 +300,40 @@ Page({
   },
 
 
-  pushChange(e){
+  pushChange(e) {
     console.log(e);
     let that = this;
     let pushList = that.data.pushList;
     let detail = e.detail;
     let id = e.currentTarget.dataset.id;
-    for (let i in pushList){
-      if (id == pushList[i].id){
+    for (let i in pushList) {
+      if (id == pushList[i].id) {
         pushList[i].ischeck = true;
         that.setData({
           pushList: pushList
         })
-      }else{
+      } else {
         pushList[i].ischeck = false;
         that.setData({
           pushList: pushList
         })
       }
     }
-    var data={
-      pExtensionType:id
+    var data = {
+      pExtensionType: id
     }
     that.groupExtensionOperation(data);
-  },  
+  },
 
 
 
-  groupExtensionOperation:function(data){
+  groupExtensionOperation: function(data) {
     let that = this;
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pCouponID = mCouponID;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GroupExtensionOperation", "POST", data, app.globalData.appkeyid, that.groupExtensionOperationBack)
   },
-  groupExtensionOperationBack:function(json){
+  groupExtensionOperationBack: function(json) {
     console.log(json);
     var json = json.data.Data;
     if (json.flag) {
