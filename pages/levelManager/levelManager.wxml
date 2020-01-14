@@ -4,17 +4,19 @@
         <image src="/static/images/lanadd.png" />
         <view>添加等级</view>
     </view>
-    <view class="v-block">
-        <view class="v-name">钻石会员</view>
-        <view class="{{isLevel?'v-red':'v-del'}}" bindtap="showMask">删除</view>
-    </view>
+    <block wx:for="{{datalist}}" wx:for-index="index" wx:key="GradeID">
+      <view class="v-block">
+          <view class="v-name">{{ item.GradeName }}</view>
+          <view class="{{isLevel?'v-red':'v-del'}}" data-id="{{ item.GradeID }}" bindtap="showMask">删除</view>
+      </view>
+    </block>
 </view>
 <view class="mask" catchtap="hideMask" wx:if="{{isLevel}}">
     <view class="m-top" catchtap="delLevel" >
         <view class="m-title">该等级下还有会员存在，删除后会员放至我的会员</view>
-        <view class="m-del" >删除</view>
+        <view class="m-del" data-gradeid="{{ GradeID }}" bindtap="DelCouponUserGradetap">删除</view>
     </view>
-    <view class="m-bot" catchtap="delLevel">取消</view>
+    <view class="m-bot" catchtap="hideMask">取消</view>
 </view>
 
 <van-popup show="{{ show }}" round bind:close="onClose">
@@ -22,11 +24,11 @@
         <view class="add-name">添加等级</view>
         <view class="add-view">
             <image src="/static/images/bi.png" />
-            <input type="text" placeholder="请输入等级名称" placeholder-class="ip"/>
+            <input type="text" placeholder="请输入等级名称" placeholder-class="ip" bindinput="GradeNameInput"/>
         </view>
         <view class="add-bot">
-            <view class="add-no">取消</view>
-            <view class="add-true" style="border:none">确定</view>
+            <view class="add-no" bindtap="onClose">取消</view>
+            <view class="add-true" style="border:none" bindtap="Determinetap">确定</view>
         </view>
     </view>
 </van-popup>

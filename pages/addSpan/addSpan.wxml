@@ -3,15 +3,14 @@
     <view class="v-title">添加新标签:</view>
     <view class="add-view">
         <image src="/static/images/bi.png" />
-        <input type="text" placeholder="请输入标签名称" placeholder-class="ip" />
+        <input type="text" placeholder="请输入标签名称" placeholder-class="ip" bindinput="LabelNameInput"/>
     </view>
-    <view class="v-title">自定义标签条件:</view>
+    <!-- <view class="v-title">自定义标签条件:</view>
     <view class="v-block">
         <view class="v-ac">活跃度满一个月/时长使用</view>
-        <view class="v-span" style="background-color: #FFFFFF;" bindtap="addNews">+添加新条件</view>
-       
-    </view>
-    <view class="v-btn">确认添加</view>
+        <view class="v-span" style="background-color: #FFFFFF;" bindtap="addNews">+添加新条件</view>       
+    </view> -->
+    <view class="v-btn" bindtap="Determinetap">确认添加</view>
 </view>
 
 <van-popup show="{{ show }}" round bind:close="onClose">
