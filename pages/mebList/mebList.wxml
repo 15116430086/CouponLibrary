@@ -4,26 +4,27 @@
         <image src="/static/images/lanadd.png" />
         <view>添加会员</view>
     </view>
-    <view class="b-block">
-        <view class="b-box">
-            <view class="v-left">
-                <view class="b-left">
-                    <image src="/static/images/swp.png" mode="aspectFill" class="b-left-img" />
-                    <view class="b-mes">
-                        <view class="b-name">噢噢啊搜傲视OAOS撒是傲视噢噢啊搜傲视OAOS撒是傲视</view>
-                        <view class="b-span">
-                            <view class="v-text">潜在客户</view>
-                            <view class="v-text">一周多次消费</view>
-                            <view class="v-show">等5个标签</view>
-                            <image src="/static/images/xj.png" class="v-left-arr" style="margin-left:5rpx" />
-                        </view>
-                    </view>
-                </view>
-            </view>
-            <image src="/static/images/right-arr1.png" class="mbot-arr" />
-        </view>
-        
-    </view>
+    <block wx:for="{{datalist}}" wx:for-index="index" wx:key="UserID">
+      <view class="b-block">
+          <view class="b-box">
+              <view class="v-left">
+                  <view class="b-left">
+                      <image src="{{ item.UserAvatar }}" mode="aspectFill" class="b-left-img" />
+                      <view class="b-mes">
+                          <view class="b-name">{{ item.UserName }}</view>
+                          <view class="b-span">
+                              <view class="v-text">{{ item.LabelName }}</view>
+                              <!-- <view class="v-text">一周多次消费</view>
+                              <view class="v-show">等5个标签</view> -->
+                              <image src="/static/images/xj.png" class="v-left-arr" style="margin-left:5rpx" />
+                          </view>
+                      </view>
+                  </view>
+              </view>
+              <image src="/static/images/right-arr1.png" class="mbot-arr" />
+          </view>        
+      </view>
+    </block>
 </view>
 <!-- <view class="mask" catchtap="hideMask" wx:if="{{isLevel}}">
     <view class="m-top" catchtap="delLevel">

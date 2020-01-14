@@ -5,7 +5,7 @@
         <view>添加新标签</view>
     </view>
     <block wx:for="{{datalist}}" wx:for-index="index" wx:key="LabelID">
-    <view class="v-block" bindtap="jumpAddMeb">
+    <view class="v-block" data-labelid="{{ item.LabelID }}" bindtap="jumpAddMeb">
         <view class="v-left">
             <view class="v-name">{{ item.LabelName }}</view>
             <!-- <view class="v-list">
@@ -14,7 +14,7 @@
             </view> -->
         </view>
         <view class="v-right">
-            <view>100人</view>
+            <view>{{ item.number }}人</view>
             <image src="/static/images/right-arr1.png" />
         </view>
     </view>

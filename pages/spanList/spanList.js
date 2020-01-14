@@ -72,7 +72,7 @@ Page({
     //跳转成员
     jumpAddMeb(e) {
         wx.navigateTo({
-            url: '../mebList/mebList',
+          url: '../mebList/mebList?labelid=' + e.currentTarget.dataset.labelid,
         })
     },
 

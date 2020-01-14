@@ -32,13 +32,13 @@
                 </view>
                 <image src="/static/images/right-arr1.png" class="mbot-arr" />
             </view>
-            <view class="b-box">
+            <!-- <view class="b-box">
                 <view class="c-left" bindtap="allSel">
                     <image src="{{allSel?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" />
                     <view style="color:#E85819">全选</view>
                 </view>
                 <view class="v-blue" bindtap="showLevel">设置会员等级 ＞</view>
-            </view>
+            </view> -->
         </view>
     </view>
 </view>
