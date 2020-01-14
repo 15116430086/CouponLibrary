@@ -1,12 +1,57 @@
 // pages/addSpan/addSpan.js
+var utils = require("../../utils/util.js")
+const app = getApp();
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
-        show: false
+        show: false,
+        LabelName:''
     },
+
+
+  //会员等级名称
+  LabelNameInput: function (e) {
+    this.setData({
+      LabelName: e.detail.value
+    })
+  },
+
+  //添加等级
+  Determinetap: function () {
+    let that = this;
+    if (that.data.LabelName == "") {
+      wx.showToast({
+        title: '会员标签名称不能为空！',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    var data = {}
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pLabelName = that.data.LabelName;
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserMemberView/AddCouponLabelInfo", "POST", data, app.globalData.appkeyid, that.DeterminetapBack)
+  },
+
+  DeterminetapBack: function (json) {
+    let that = this;
+    var json = json.data.Data;
+    if (json.flag) {
+      wx.redirectTo({
+        url: '../spanList/spanList',
+      })
+      
+    }
+    wx.showToast({
+      title: json.msg,
+      icon: 'none',
+      duration: 2000
+    })
+  },
+
+
+
+
+
 
     /**
      * 生命周期函数--监听页面加载

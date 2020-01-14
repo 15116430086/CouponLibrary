@@ -4,39 +4,27 @@
         <view>取消</view>
         <view style="color:#E85819">完成(2)</view>
     </view>
-    <view class="m-bot">
-        <view class="v-box">
+     <view class="m-bot">
+        <view class="v-box" bindtap="selBlock">
             <view class="v-left">
-                <image src="/static/images/yj.png" class="v-left-arr" />
+                <image src="{{isFlag?'/static/images/xj.png':'/static/images/yj.png'}}" class="v-left-arr" />
                 <view>我的会员</view>
             </view>
             <view class="v-right">28人</view>
         </view>
-        <view class="v-block">
-            <view class="b-box">
+        <view class="v-block" wx:if="{{isFlag == true}}">
+            <view class="b-box" wx:for="{{list}}">
                 <view class="v-left">
-                    <image src="/static/images/f2.png" class="v-choose" />
+                    <image src="{{item.isSel?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" bindtap="isSel" data-index="{{index}}"/>
                     <view class="b-left">
-                        <image src="/static/images/swp.png" mode="aspectFill" class="b-left-img" />
+                        <image src="{{item.imageOne}}" mode="aspectFill" class="b-left-img" />
                         <view class="b-mes">
-                            <view class="b-name">噢噢啊搜傲视OAOS撒是傲视噢噢啊搜傲视OAOS撒是傲视</view>
-                            <view class="b-block">未设置标签</view>
-                        </view>
-                    </view>
-                </view>
-                <image src="/static/images/right-arr1.png" class="mbot-arr" />
-            </view>
-            <view class="b-box">
-                <view class="v-left">
-                    <image src="/static/images/f2.png" class="v-choose" />
-                    <view class="b-left">
-                        <image src="/static/images/swp.png" mode="aspectFill" class="b-left-img" />
-                        <view class="b-mes">
-                            <view class="b-name">噢噢啊搜傲视OAOS撒是傲视噢噢啊搜傲视OAOS撒是傲视</view>
-                            <view class="b-span">
-                                <view class="v-text">潜在客户</view>
-                                <view class="v-text">一周多次消费</view>
-                                <view class="v-show">等5个标签</view>
+                            <view class="b-name">{{item.name}}</view>
+                            <view class="b-block" wx:if="{{item.block.length == 0}}">未设置标签</view>
+                            <view class="b-span" wx:else>
+                                <view class="v-text" wx:for="{{item.block}}"  >{{item.span}}</view>
+                                <!-- <view class="v-text">一周多次消费</view>
+                                <view class="v-show">等5个标签</view> -->
                                 <image src="/static/images/xj.png" class="v-left-arr" style="margin-left:5rpx" />
                             </view>
                         </view>
@@ -44,6 +32,13 @@
                 </view>
                 <image src="/static/images/right-arr1.png" class="mbot-arr" />
             </view>
+            <!-- <view class="b-box">
+                <view class="c-left" bindtap="allSel">
+                    <image src="{{allSel?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" />
+                    <view style="color:#E85819">全选</view>
+                </view>
+                <view class="v-blue" bindtap="showLevel">设置会员等级 ＞</view>
+            </view> -->
         </view>
     </view>
 </view>

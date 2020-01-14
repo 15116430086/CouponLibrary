@@ -4,19 +4,21 @@
         <image src="/static/images/lanadd.png" />
         <view>添加新标签</view>
     </view>
-    <view class="v-block" bindtap="jumpAddMeb">
+    <block wx:for="{{datalist}}" wx:for-index="index" wx:key="LabelID">
+    <view class="v-block" data-labelid="{{ item.LabelID }}" bindtap="jumpAddMeb">
         <view class="v-left">
-            <view class="v-name">钻石会员</view>
-            <view class="v-list">
+            <view class="v-name">{{ item.LabelName }}</view>
+            <!-- <view class="v-list">
                 <view>活跃度满一个月/时长使用/免单/个别条件个别条件个别条件个别条件</view>
                 <image src="/static/images/xj.png" />
-            </view>
+            </view> -->
         </view>
         <view class="v-right">
-            <view>100人</view>
+            <view>{{ item.number }}人</view>
             <image src="/static/images/right-arr1.png" />
         </view>
     </view>
+    </block>
 </view>
 <!-- <view class="mask" catchtap="hideMask" wx:if="{{isLevel}}">
     <view class="m-top" catchtap="delLevel">
