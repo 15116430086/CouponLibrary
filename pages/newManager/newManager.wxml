@@ -1,71 +1,73 @@
-<!-- pages/management/management.wxml -->
+<!-- pages/newManager/newManager.wxml -->
 <view class="m-box">
-    <view class="mb-block" style="margin-right:60rpx">
-        <view class="mb-title">今日新增会员</view>
-        <view class="mb-num">1人</view>
-    </view>
-    <view class="mb-block" style="margin-left:60rpx">
-        <view class="mb-title">历史会员</view>
-        <view class="mb-num1">1人</view>
-        <view class="mb-mes">(数据统计至昨天)</view>
-    </view>
+  <view class="mb-block" style="margin-right:60rpx">
+    <view class="mb-title">今日新增会员</view>
+    <view class="mb-num">1人</view>
+  </view>
+  <view class="mb-block" style="margin-left:60rpx">
+    <view class="mb-title">历史会员</view>
+    <view class="mb-num1">1人</view>
+    <view class="mb-mes">(数据统计至昨天)</view>
+  </view>
 </view>
 <view class="m-allbox">
-    <view class="m-mid">会员列表</view>
-    <view class="m-bot">
-        <view class="v-box" bindtap="jumpLevel">
-            <view class="v-left">
-                <image src="/static/images/zuanshi.png" class="v-left-image" />
-                <view>会员等级管理</view>
-            </view>
-            <image src="/static/images/right-arr1.png" class="mbot-arr" />
-        </view>
-        <view class="v-box" bindtap="jumpSpan">
-            <view class="v-left">
-                <image src="/static/images/shuqian.png" class="v-left-image" />
-                <view>标签列表</view>
-            </view>
-            <image src="/static/images/right-arr1.png" class="mbot-arr" />
-        </view>
+  <view class="m-mid">会员列表</view>
+  <view class="m-bot">
+    <view class="v-box" bindtap="jumpLevel">
+      <view class="v-left">
+        <image src="/static/images/zuanshi.png" class="v-left-image" />
+        <view>会员等级管理</view>
+      </view>
+      <image src="/static/images/right-arr1.png" class="mbot-arr" />
     </view>
-    <view class="m-bot">
-        <view class="v-box" bindtap="selBlock">
-            <view class="v-left">
-                <image src="{{isFlag?'/static/images/xj.png':'/static/images/yj.png'}}" class="v-left-arr" />
-                <view>我的会员</view>
-            </view>
-            <view class="v-right">28人</view>
+    <view class="v-box" bindtap="jumpSpan">
+      <view class="v-left">
+        <image src="/static/images/shuqian.png" class="v-left-image" />
+        <view>会员标签管理</view>
+      </view>
+      <image src="/static/images/right-arr1.png" class="mbot-arr" />
+    </view>
+  </view>
+  <view class="m-bot">
+    <block wx:for="{{userlist}}" wx:for-index="findex" wx:for-item="fitem" wx:key="findex">
+      <view class="v-box" bindtap="selBlock"  data-findex='{{findex}}' wx:if="{{fitem.ListCoupon_UserInfo.length > 0}}">
+        <view class="v-left">
+          <image src="{{fitem.IsShow?'/static/images/xj.png':'/static/images/yj.png'}}" class="v-left-arr" />
+          <view>{{fitem.GradeName}}</view>
         </view>
-        <view class="v-block" wx:if="{{isFlag == true}}">
-            <view class="b-box" wx:for="{{list}}">
-                <view class="v-left">
-                    <image src="{{item.isSel?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" bindtap="isSel" data-index="{{index}}"/>
-                    <view class="b-left">
-                        <image src="{{item.imageOne}}" mode="aspectFill" class="b-left-img" />
-                        <view class="b-mes">
-                            <view class="b-name">{{item.name}}</view>
-                            <view class="b-block" wx:if="{{item.block.length == 0}}">未设置标签</view>
-                            <view class="b-span" wx:else>
-                                <view class="v-text" wx:for="{{item.block}}"  >{{item.span}}</view>
-                                <!-- <view class="v-text">一周多次消费</view>
+        <view class="v-right">28人</view>
+      </view>
+      <view class="v-block" wx:if="{{fitem.IsShow}}">
+        <view class="b-box" wx:for="{{fitem.ListCoupon_UserInfo}}" wx:for-item="citem" wx:for-index="cindex"  wx:key="cindex">
+          <view class="v-left">
+            <image src="{{citem.IsCheck?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" bindtap="isSel" data-findex='{{findex}}' data-cindex="{{cindex}}" />
+            <view class="b-left">
+              <image src="{{citem.UserAvatar}}" mode="aspectFill" class="b-left-img" />
+              <view class="b-mes">
+                <view class="b-name">{{citem.UserName}}</view>
+                <view class="b-block" wx:if="{{citem.ListCoupon_LabelInfo.length == 0}}">未设置标签</view>
+                <view class="b-span" wx:else>
+                  <view class="v-text" wx:for="{{citem.ListCoupon_LabelInfo}}" wx:key="index">{{item.LabelName}}</view>
+                  <!-- <view class="v-text">一周多次消费</view>
                                 <view class="v-show">等5个标签</view> -->
-                                <image src="/static/images/xj.png" class="v-left-arr" style="margin-left:5rpx" />
-                            </view>
-                        </view>
-                    </view>
+                  <image src="/static/images/xj.png" class="v-left-arr" style="margin-left:5rpx" />
                 </view>
-                <image src="/static/images/right-arr1.png" class="mbot-arr" />
+              </view>
             </view>
-            <view class="b-box">
-                <view class="c-left" bindtap="allSel">
-                    <image src="{{allSel?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" />
-                    <view style="color:#E85819">全选</view>
-                </view>
-                <view class="v-blue" bindtap="showLevel">设置会员等级 ＞</view>
-            </view>
+          </view>
+          <image src="/static/images/right-arr1.png" class="mbot-arr" />
         </view>
-    </view>
-    <!-- <view class="m-bot">
+        <view class="b-box">
+          <view class="c-left" bindtap="allSel" data-findex='{{findex}}'>
+            <image src="{{fitem.CheckAll?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" />
+            <view style="color:#E85819">全选</view>
+          </view>
+          <view class="v-blue" bindtap="showLevel" data-GradeID='{{fitem.GradeID}}' data-findex='{{findex}}' >{{fitem.GradeID==""?"设置会员等级":"修改会员等级"}} ＞</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- <view class="m-bot">
         <view class="mbot-block">
             <view class="mbot-box">
                 <image src="/static/images/swp.png" class="mbot-img" />
@@ -78,45 +80,45 @@
         </view>
     </view> -->
 </view>
-<van-popup show="{{ show }}" round position="bottom"  bind:close="onClose">
-    <view class="s-view">
-        <view class="s-left">
-            <view class="s-title">设置标签</view>
-            <view class="s-mes">(最多选择6个标签)</view>
-        </view>
-        <view class="s-right">确认</view>
+<van-popup show="{{ show }}" round position="bottom" bind:close="onClose">
+  <view class="s-view">
+    <view class="s-left">
+      <view class="s-title">设置标签</view>
+      <view class="s-mes">(最多选择6个标签)</view>
     </view>
-    <view class="s-box">
-        <view class="s-ac">一周多次消费</view>
-        <view class="s-span">一周多次消费</view>
-        <view class="s-span">一周多次消费</view>
-        <view class="s-span">一周多次消费</view>
+    <view class="s-right">确认</view>
+  </view>
+  <view class="s-box">
+    <view class="s-ac">一周多次消费</view>
+    <view class="s-span">一周多次消费</view>
+    <view class="s-span">一周多次消费</view>
+    <view class="s-span">一周多次消费</view>
+  </view>
+  <view class="s-bot">
+    <view class="s-add">
+      <view class="s-jia">+</view>
+      <input maxlength="6" type="text" placeholder="新建标签" placeholder-class="ip" />
     </view>
-    <view class="s-bot">
-        <view class="s-add">
-            <view class="s-jia">+</view>
-            <input maxlength="6" type="text" placeholder="新建标签" placeholder-class="ip"/>
-        </view>
-        <view class="s-btn">确认添加</view>
-    </view>
+    <view class="s-btn">确认添加</view>
+  </view>
 </van-popup>
 
 
-<van-popup show="{{ showLevel }}" round position="bottom"  bind:close="onClose">
-    <view class="s-view">
-        <view class="s-left">
-            <view class="s-title">设置会员等级</view>       
-        </view>
-        <view class="s-right">完成</view>
+<van-popup show="{{ showLevel }}" round position="bottom" bind:close="onClose">
+  <view class="s-view">
+    <view class="s-left">
+      <view class="s-title">设置会员等级</view>
     </view>
-    <view class="s-box">
-        <block wx:for="{{level}}" wx:key="item">
-            <view  class="{{idx==item.id?'s-block-ac':'s-block'}}" bindtap="isLevel" data-id="{{item.id}}">
-                <view>{{item.title}}</view>
-                <view class="s-lit" wx:if="{{idx==item.id}}">会员当前等级</view>
-            </view>
-        </block>
-        <!-- <view class="s-block">钻石会员</view>
+    <view class="s-right" data-findex='{{showindex}}' bindtap="onConfirm">完成</view>
+  </view>
+  <view class="s-box">
+    <block wx:for="{{userlist}}" wx:key="item">
+      <view class="{{idx==item.GradeID?'s-block-ac':'s-block'}}" bindtap="isLevel" data-id="{{item.GradeID}}">
+        <view>{{item.GradeName}}</view>
+        <view class="s-lit" wx:if="{{idx==item.GradeID}}">会员当前等级</view>
+      </view>
+    </block>
+    <!-- <view class="s-block">钻石会员</view>
         <view class="s-block">钻石会员</view> -->
-    </view>
+  </view>
 </van-popup>
