@@ -13,7 +13,9 @@
                       <view class="b-mes">
                           <view class="b-name">{{ item.UserName }}</view>
                           <view class="b-span">
+                             <block wx:for="{{item.ListCoupon_LabelInfo}}" wx:for-index="index" wx:key="LabelID">
                               <view class="v-text">{{ item.LabelName }}</view>
+                               </block>
                               <!-- <view class="v-text">一周多次消费</view>
                               <view class="v-show">等5个标签</view> -->
                               <image src="/static/images/xj.png" class="v-left-arr" style="margin-left:5rpx" />
