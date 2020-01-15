@@ -3,17 +3,16 @@
     <view class="v-title">添加新标签:</view>
     <view class="add-view">
         <image src="/static/images/bi.png" class="add-view-img"/>
-        <input type="text" placeholder="请输入标签名称" placeholder-class="ip" />
+        <input type="text" placeholder-class="ip" value="{{value}}" bindinput="onInput"/>
         <image src="/static/images/del1.png" class="del-img"></image>
     </view>
-    <view class="v-title">自定义标签条件:</view>
+    <!-- <view class="v-title">自定义标签条件:</view>
     <view class="v-block">
         <view class="v-ac">活跃度满一个月/时长使用</view>
          <view class="v-span">哦啦啦哈哈哈哦也</view>
-        <view class="v-span" style="background-color: #FFFFFF;" bindtap="addNews">+添加新条件</view>
-       
+        <view class="v-span" style="background-color: #FFFFFF;" bindtap="addNews">+添加新条件</view>       
     </view>
-    <view class="v-btn">确认添加</view>
+    <view class="v-btn">确认添加</view> -->
 </view>
 
 <van-popup show="{{ show }}" round bind:close="onClose">
@@ -21,7 +20,7 @@
         <view class="add-name">添加新条件</view>
         <view class="add-view" style="width:306rpx">
             <image src="/static/images/bi.png" />
-            <input type="text" placeholder="请输入条件名称" placeholder-class="ip"/>
+            <input type="text" placeholder="请输入条件名称" placeholder-class="ip" />
         </view>
         <view class="add-bot">
             <view class="add-no">取消</view>

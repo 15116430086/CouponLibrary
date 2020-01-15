@@ -79,7 +79,7 @@ Page({
      //跳转查看标签
      jumpSeeSpan(e){
       wx.navigateTo({
-          url: '../seeSpan/seeSpan',
+          url: '../seeSpan/seeSpan?labelid=' + e.currentTarget.dataset.labelid,
       })
   },
 
