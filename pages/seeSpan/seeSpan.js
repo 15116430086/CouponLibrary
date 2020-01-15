@@ -9,6 +9,7 @@ Page({
       show: false,
       LabelID:'',
       LabelName:'阿萨达',
+      showDel:false
   },
 
   GetData: function () {
@@ -74,6 +75,19 @@ Page({
       this.setData({
           show: false
       })
+  },
+
+  //删除标签
+
+  delSpan(){
+    this.setData({
+        showDel: true
+    })
+  },
+  hideDel(){
+    this.setData({
+        showDel: false
+    })
   },
 
   //获取标签

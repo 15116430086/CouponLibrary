@@ -28,3 +28,19 @@
         </view>
     </view>
 </van-popup>
+
+
+
+<van-popup show="{{ showDel }}" round bind:close="hideDel">
+    <view class="add-box">
+        <view class="add-name">确认删除该标签</view>
+        <view class="add-tips">
+            <view>注:删除该标签后</view>
+            <view>所有会员将不再拥有此标签</view>
+        </view>
+        <view class="add-bot">
+            <view class="add-no">取消</view>
+            <view class="add-true" style="border:none">确定</view>
+        </view>
+    </view>
+</van-popup>
