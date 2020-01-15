@@ -1,10 +1,10 @@
 <!-- pages/addSpan/addSpan.wxml -->
 <view class="v-box">
-    <view class="v-title">添加新标签:</view>
+    <view class="v-title">标签名称:</view>
     <view class="add-view">
         <image src="/static/images/bi.png" class="add-view-img"/>
-        <input type="text" placeholder-class="ip" value="{{value}}" bindinput="onInput"/>
-        <image src="/static/images/del1.png" class="del-img"></image>
+        <input type="text" placeholder-class="ip" value="{{LabelName}}" disabled="true" bindinput="onInput"/>
+        <image src="/static/images/del1.png" class="del-img" bindtap="delSpan"></image>
     </view>
     <!-- <view class="v-title">自定义标签条件:</view>
     <view class="v-block">
@@ -39,8 +39,8 @@
             <view>所有会员将不再拥有此标签</view>
         </view>
         <view class="add-bot">
-            <view class="add-no">取消</view>
-            <view class="add-true" style="border:none">确定</view>
+            <view class="add-no" bindtap="hideDel">取消</view>
+            <view class="add-true" style="border:none" bindtap="Determinetap">确定</view>
         </view>
     </view>
 </van-popup>

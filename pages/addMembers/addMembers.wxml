@@ -1,7 +1,7 @@
 <!-- pages/management/management.wxml -->
 <view class="m-allbox">
     <view class="m-mid">
-        <view>取消</view>
+        <view bindtap="canceltap">取消</view>
         <view style="color:#E85819">完成(2)</view>
     </view>
      <view class="m-bot">

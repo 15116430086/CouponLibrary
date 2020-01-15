@@ -82,8 +82,9 @@ Page({
     },
 
     jumpAddList(e) {
+      let that = this;
         wx.navigateTo({
-            url: '../addMembers/addMembers',
+          url: '../addMembers/addMembers?labelid=' + that.data.labelid,
         })
     },
 

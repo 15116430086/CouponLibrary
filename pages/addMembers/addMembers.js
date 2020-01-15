@@ -9,6 +9,7 @@ Page({
         show: false,
         showLevel: false,
         isFlag: false,
+        labelid:'',
         list: [{
                 imageOne: "/static/images/swp.png",
                 name: "噢噢啊搜傲视OAOS撒是傲视噢噢啊搜傲视OAOS撒是傲视",
@@ -45,11 +46,23 @@ Page({
         idx: ""
     },
 
+
+  canceltap:function(){
+    let that = this;
+    wx.navigateBack({
+      url: '../mebList/mebList?labelid=' + that.data.labelid,
+    })
+  },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+      let that = this;
+      that.setData({
+        labelid: options.labelid
+      })
+      //that.GetData();
     },
 
     /**

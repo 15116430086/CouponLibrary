@@ -29,24 +29,12 @@ Page({
     var json = json.data.Data;
     //隐藏 加载中的提示
     wx.hideLoading();
-    if (json.flag) {
-      if (page == 1) {
+    if (json.flag) {      
         that.setData({
-          datalist: json.data,
-          lastpage: json.pageCount //你的总页数   
+          datalist: json.data,  
         });
-      }
-      else {
-        //获取上次加载的数据
-        var oldlists = that.data.datalist;
-        //合并数据 res.data 你的数组数据
-        var newlists = oldlists.concat(json.data)
-        that.setData({
-          datalist: newlists,
-          lastpage: json.pageCount //你的总页数   
-        });
-      }
-    } else {
+      }      
+     else {
       wx.showToast({
         title: '没有找到相关数据!',
         icon: 'none',
@@ -58,8 +46,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-      let that = this;
-      that.GetData();
+     
     },
 
     //跳转添加标签
@@ -95,7 +82,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+      let that = this;
+      that.GetData();
     },
 
     /**
