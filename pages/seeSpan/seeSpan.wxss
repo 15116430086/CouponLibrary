@@ -1,0 +1,150 @@
+/* pages/seeSpan/seeSpan.wxss */
+/* pages/addSpan/addSpan.wxss */
+
+.v-box {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFFFFF;
+  padding-bottom: 20rpx;
+}
+
+.v-title {
+  width: calc(100% - 80rpx);
+  height: 88rpx;
+  line-height: 88rpx;
+  color: #666666;
+  font-size: 28rpx;
+}
+
+.add-view {
+  width: calc(100% - 80rpx);
+  height: 88rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #ededed;
+  position: relative;
+  top: -10rpx;
+}
+
+.add-view-img {
+  flex-shrink: 0;
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+.del-img{
+  flex-shrink: 0;
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 20rpx;
+}
+.add-view input {
+  width: calc(100% - 120rpx);
+  height: 40rpx;
+}
+
+.v-block {
+  width: calc(100% - 80rpx);
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.v-span {
+  padding: 10rpx 20rpx 10rpx 20rpx;
+  color: #CCCCCC;
+  font-size: 28rpx;
+  background-color: #EFEFEF;
+  border: 1px solid rgba(204, 204, 204, 1);
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.v-ac {
+  padding: 10rpx 20rpx 10rpx 20rpx;
+  color: #E85819;
+  font-size: 28rpx;
+  background-color: #FFF0DE;
+  border: 1px solid #E85819;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.ip {
+  color: #EBE8E8;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.v-btn {
+  width: calc(100% - 40rpx);
+  height: 98rpx;
+  line-height: 98rpx;
+  color: #E85819;
+  font-size: 32rpx;
+  background-color: #FFFFFF;
+  text-align: center;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 40rpx;
+}
+
+.add-box {
+  width: 574rpx;
+  height: 376rpx;
+  background-color: #FFFFFF;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-name {
+  color: #333333;
+  font-size: 32rpx;
+  margin-top: 60rpx;
+  font-weight: 600;
+}
+
+.add-bot {
+  width: 100%;
+  border-top: 1px solid #ededed;
+  color: #CCCCCC;
+  font-size: 32rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 86rpx;
+}
+
+.add-bot view {
+  flex: 1;
+  text-align: center;
+  line-height: 86rpx;
+  border-right: 1px solid #ededed;
+  font-size: 32rpx;
+}
+
+.add-true {
+  border: none;
+  color: #E85819
+}
+
+
+.add-tips{
+  color:#999999;
+  font-size: 28rpx;
+  text-align: center;
+  white-space: nowrap;
+  
+}
