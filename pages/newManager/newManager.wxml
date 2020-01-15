@@ -2,11 +2,11 @@
 <view class="m-box">
   <view class="mb-block" style="margin-right:60rpx">
     <view class="mb-title">今日新增会员</view>
-    <view class="mb-num">1人</view>
+    <view class="mb-num">{{TodayUserNUM}}人</view>
   </view>
   <view class="mb-block" style="margin-left:60rpx">
     <view class="mb-title">历史会员</view>
-    <view class="mb-num1">1人</view>
+    <view class="mb-num1">{{HistoryUserUNM}}人</view>
     <view class="mb-mes">(数据统计至昨天)</view>
   </view>
 </view>
