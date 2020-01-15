@@ -36,10 +36,9 @@ Page({
     let that = this;
     var json = json.data.Data;
     if (json.flag) {
-      wx.redirectTo({
+      wx.navigateBack({
         url: '../spanList/spanList',
-      })
-      
+      })      
     }
     wx.showToast({
       title: json.msg,
