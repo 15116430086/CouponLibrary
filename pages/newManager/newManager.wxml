@@ -38,26 +38,27 @@
         <view class="v-right">{{fitem.ListCoupon_UserInfo.length}}人</view>
       </view>
       <view class="v-block" wx:if="{{fitem.IsShow}}">
-        <navigator url="../moneyDetail/moneyDetail?userid={{citem.UserID}}" class="b-box" wx:for="{{fitem.ListCoupon_UserInfo}}" wx:for-item="citem" wx:for-index="cindex" wx:key="cindex">        
-            <view class="v-left">
-              <image src="{{citem.IsCheck?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" bindtap="isSel" data-findex='{{findex}}' data-cindex="{{cindex}}" />
-              <view class="b-left">
-                <image src="{{citem.UserAvatar}}" mode="aspectFill" class="b-left-img" />
-                <view class="b-mes">
-                  <view class="b-name">{{citem.UserName}}</view>
-                  <view class="b-block" wx:if="{{citem.ListCoupon_LabelInfo.length == 0}}">未设置标签</view>
-                  <view class="b-span" wx:else>
-                    <view class="v-text" wx:for="{{citem.ListCoupon_LabelInfo}}" wx:key="index">{{item.LabelName}}</view>
-                    <!-- <view class="v-text">一周多次消费</view>
+        <view class="b-box" wx:for="{{fitem.ListCoupon_UserInfo}}" wx:for-item="citem" wx:for-index="cindex" wx:key="cindex">
+          <view class="v-left">
+            <image src="{{citem.IsCheck?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" bindtap="isSel" data-findex='{{findex}}' data-cindex="{{cindex}}" />
+            <navigator url="../moneyDetail/moneyDetail?userid={{citem.UserID}}" class="b-left">
+              <image src="{{citem.UserAvatar}}" mode="aspectFill" class="b-left-img" />
+              <view class="b-mes">
+                <view class="b-name">{{citem.UserName}}</view>
+                <view class="b-block" wx:if="{{citem.ListCoupon_LabelInfo.length == 0}}">未设置标签</view>
+                <view class="b-span" wx:else>
+                  <view class="v-text" wx:for="{{citem.ListCoupon_LabelInfo}}" wx:key="index">{{item.LabelName}}</view>
+                  <!-- <view class="v-text">一周多次消费</view>
                                 <view class="v-show">等5个标签</view> -->
-                    <image src="/static/images/xj.png" class="v-left-arr" style="margin-left:5rpx" />
-                  </view>
+                  <image src="/static/images/xj.png" class="v-left-arr" style="margin-left:5rpx" />
                 </view>
               </view>
-            </view>
+            </navigator>
+          </view>
+          <navigator url="../moneyDetail/moneyDetail?userid={{citem.UserID}}">
             <image src="/static/images/right-arr1.png" class="mbot-arr" />
-         
-        </navigator>
+          </navigator>
+        </view>
         <view class="b-box">
           <view class="c-left" bindtap="allSel" data-findex='{{findex}}'>
             <image src="{{fitem.CheckAll?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" />
