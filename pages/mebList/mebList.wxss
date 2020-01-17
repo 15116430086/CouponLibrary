@@ -157,3 +157,52 @@
     height: 18rpx;
     display: block;
 }
+
+.add-box {
+  width: 574rpx;
+  height: 376rpx;
+  background-color: #FFFFFF;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-name {
+  color: #333333;
+  font-size: 32rpx;
+  margin-top: 60rpx;
+  font-weight: 600;
+}
+.add-tips{
+  color:#999999;
+  font-size: 28rpx;
+  text-align: center;
+  white-space: nowrap;
+  
+}
+.add-bot {
+  width: 100%;
+  border-top: 1px solid #ededed;
+  color: #CCCCCC;
+  font-size: 32rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 86rpx;
+}
+.add-true {
+  border: none;
+  color: #E85819
+}
+
+.add-bot view {
+  flex: 1;
+  text-align: center;
+  line-height: 86rpx;
+  border-right: 1px solid #ededed;
+  font-size: 32rpx;
+}
+
+

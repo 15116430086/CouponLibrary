@@ -9,7 +9,8 @@ Page({
     data: {
       datalist:[],
       lastpage: 0,
-      labelid:''
+      labelid:'',
+      userid:'',
     },
 
   GetData: function () {
@@ -56,15 +57,53 @@ Page({
     }
   },
 
+  //删除标签
+
+  delSpan(e) {
+    this.setData({
+      showDel: true,
+      userid:e.currentTarget.dataset.userid
+    })
+  },
+  hideDel() {
+    this.setData({
+      showDel: false
+    })
+  },
+
+//删除
+  Determinetap:function(e){
+    let that = this;
+    var data = {}
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pUserID = that.data.userid;
+    data.pLabelID = that.data.labelid;
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserMemberView/DelUserLabel", "POST", data, app.globalData.appkeyid, that.DeterminetapBack)
+  },
+  DeterminetapBack: function (json) {
+    let that = this;
+    var json = json.data.Data;
+    if (json.flag) {
+      wx.navigateBack({
+        url: '../spanList/spanList',
+      })
+    }
+    wx.showToast({
+      title: json.msg,
+      icon: 'none',
+      duration: 2000
+    })
+  },
+
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-      let that = this;
+      let that = this;      
       that.setData({
         labelid: options.labelid
       })
-      that.GetData();
+      
     },
 
     /**
@@ -78,7 +117,8 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+      let that = this;  
+      that.GetData();
     },
 
     jumpAddList(e) {

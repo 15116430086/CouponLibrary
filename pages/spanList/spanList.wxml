@@ -6,18 +6,19 @@
 	</view>
 	<block wx:for="{{datalist}}" wx:for-index="index" wx:key="LabelID">
 		<view class="v-block">
-			<view class="v-left" data-labelid="{{ item.LabelID }}" bindtap="jumpSeeSpan">
+			<view class="v-left" data-labelid="{{ item.LabelID }}" bindtap="jumpAddMeb">
 				<view class="v-name">{{ item.LabelName }}
-					<image src="/static/images/xj.png" />
+					<!-- <image src="/static/images/xj.png" /> -->
 				</view>
 				<!-- <view class="v-list">
                 <view>活跃度满一个月/时长使用/免单/个别条件个别条件个别条件个别条件</view>
                 <image src="/static/images/xj.png" />
             </view> -->
 			</view>
-			<view class="v-right"  data-labelid="{{ item.LabelID }}" bindtap="jumpAddMeb">
-				<view>{{ item.number }}人</view>
-				<image src="/static/images/right-arr1.png" />
+			<view class="v-right"   >
+				<view data-labelid="{{ item.LabelID }}" bindtap="jumpAddMeb">{{ item.number }}人<image src="/static/images/right-arr1.png" /></view>
+        <view data-labelid="{{ item.LabelID }}" style="margin-left:30rpx"  bindtap="jumpSeeSpan">删除</view>
+				<!-- <image src="/static/images/right-arr1.png" /> -->
 			</view>
 		</view>
 	</block>

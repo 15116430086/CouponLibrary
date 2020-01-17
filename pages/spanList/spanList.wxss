@@ -19,7 +19,7 @@
 
 .v-block {
     width: calc(100% - 80rpx);
-    height: 120rpx;
+    height: 80rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -100,7 +100,7 @@
     width: 10rpx;
     height: 18rpx;
     flex-shrink: 0;
-    margin-left: 20rpx;
+    margin-left: 4rpx;
 }
 
 .mask {

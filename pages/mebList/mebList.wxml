@@ -23,11 +23,28 @@
                       </view>
                   </view>
               </view>
-              <image src="/static/images/right-arr1.png" class="mbot-arr" />
+              <view data-userid="{{ item.UserID }}" bindtap="delSpan">删除</view>
+              <!-- <image src="/static/images/right-arr1.png" class="mbot-arr" /> -->
           </view>        
       </view>
     </block>
 </view>
+
+<van-popup show="{{ showDel }}" round bind:close="hideDel">
+    <view class="add-box">
+        <view class="add-name">确认删除该会员</view>
+        <view class="add-tips">
+            <view>注:删除该会员后</view>
+            <view>该会员将不再拥有此标签</view>
+        </view>
+        <view class="add-bot">
+            <view class="add-no" bindtap="hideDel">取消</view>
+            <view class="add-true" style="border:none" bindtap="Determinetap">确定</view>
+        </view>
+    </view>
+</van-popup>
+
+
 <!-- <view class="mask" catchtap="hideMask" wx:if="{{isLevel}}">
     <view class="m-top" catchtap="delLevel">
         <view class="m-title">该等级下还有会员存在，删除后会员放至我的会员</view>

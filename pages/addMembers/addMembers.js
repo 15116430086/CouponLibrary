@@ -1,15 +1,20 @@
 // pages/management/management.js
+var utils = require("../../utils/util.js")
+const app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        number:0,
         flag: false,
         show: false,
         showLevel: false,
         isFlag: false,
         labelid:'',
+        userlist:[],
+        usershuzu:[],
         list: [{
                 imageOne: "/static/images/swp.png",
                 name: "噢噢啊搜傲视OAOS撒是傲视噢噢啊搜傲视OAOS撒是傲视",
@@ -45,6 +50,70 @@ Page({
         ],
         idx: ""
     },
+  GetData: function () {
+    let that = this;
+    //显示 加载中的提示
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    var data = {};
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserMemberView/GetUserInfo", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+  },
+  GetDataBack: function (json) {
+    let that = this;
+    var json = json.data.Data;
+    wx.hideLoading();
+    if (json.flag) {
+      console.log(json.msg);
+      this.setData({
+        HistoryUserUNM: json.HistoryUserUNM,
+        TodayUserNUM: json.TodayUserNUM,
+        userlist: json.data,
+      });
+
+    } else {
+      wx.showToast({
+        title: '没有找到相关数据!',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+
+//点击完成
+  complete:function(){
+  let that = this;
+  if(that.data.number<=0){
+    wx.showToast({
+      title: '请先选择会员!',
+      icon: 'none',
+      duration: 2000
+    })
+    return;
+  }
+    var data = {};
+    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pLabelID=that.data.labelid;
+    data.pusershuzu = that.data.usershuzu;
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserMemberView/AddCouponUserLabel", "POST", data, app.globalData.appkeyid, that.completeBack)
+  },
+
+  completeBack:function(json){
+    let that = this;
+    var json = json.data.Data;
+    if (json.flag) {
+      wx.navigateBack({
+        url: '../mebList/mebList?labelid=' + that.data.labelid,
+      })
+    }
+    wx.showToast({
+      title: json.msg,
+      icon: 'none',
+      duration: 2000
+    })
+  },
+
 
 
   canceltap:function(){
@@ -62,7 +131,7 @@ Page({
       that.setData({
         labelid: options.labelid
       })
-      //that.GetData();
+      that.GetData();
     },
 
     /**
@@ -75,16 +144,22 @@ Page({
     //展开隐藏会员块 
     selBlock(e) {
         let that = this;
-        let isFlag = that.data.isFlag;
-        if (!isFlag) {
-            that.setData({
-                isFlag: !isFlag
-            })
-        } else {
-            that.setData({
-                isFlag: !isFlag
-            })
-        }
+        let index = e.currentTarget.dataset.findex;
+        let datalist = that.data.userlist;
+        datalist[index].IsShow = !datalist[index].IsShow;
+        that.setData({
+          userlist: datalist,
+        })
+        // let isFlag = that.data.isFlag;
+        // if (!isFlag) {
+        //     that.setData({
+        //         isFlag: !isFlag
+        //     })
+        // } else {
+        //     that.setData({
+        //         isFlag: !isFlag
+        //     })
+        // }
     },
 
 
@@ -127,17 +202,48 @@ Page({
     },
 
     //单选
-    isSel(e) {
-        let that = this;
+    // isSel(e) {
+    //     let that = this;
 
-        let index = e.currentTarget.dataset.index;
-        let list = that.data.list
-        let newli = 'list[' + index + '].isSel';
-        that.setData({
-            [newli]: !that.data.list[index].isSel
-        })
-    },
+    //     let index = e.currentTarget.dataset.index;
+    //     let list = that.data.list
+    //     let newli = 'list[' + index + '].isSel';
+    //     that.setData({
+    //         [newli]: !that.data.list[index].isSel
+    //     })
+    // },
+  isSel(e) {
+    let shu = 0;
+    let that = this;
+    let findex = e.currentTarget.dataset.findex;
+    let cindex = e.currentTarget.dataset.cindex;
+    let userid = e.currentTarget.dataset.id;  
+    let datalist = that.data.userlist;
 
+    datalist[findex].ListCoupon_UserInfo[cindex].IsCheck = !datalist[findex].ListCoupon_UserInfo[cindex].IsCheck
+    that.setData({
+      userlist: datalist,
+    })
+
+    let userarr = that.data.usershuzu    
+    if (datalist[findex].ListCoupon_UserInfo[cindex].IsCheck){     
+      userarr.push(userid)
+      that.setData({
+        number: that.data.number + 1,
+        usershuzu: userarr
+      })
+    }
+    else
+    {      
+      var index = userarr.indexOf(userid); 
+      userarr.splice(index, 1)
+      that.setData({
+        number: that.data.number - 1,
+        usershuzu: userarr
+      })
+    }
+    console.log(that.data.usershuzu);
+  },
 
     //设置会员等级
     showLevel(e) {
@@ -167,7 +273,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-
+      this.GetData();
     },
 
     /**
