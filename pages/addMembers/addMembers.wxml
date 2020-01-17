@@ -27,7 +27,7 @@
                               <view class="v-text" wx:for="{{citem.ListCoupon_LabelInfo}}" wx:key="index">{{item.LabelName}}</view>
                                 <!-- <view class="v-text">一周多次消费</view>
                                 <view class="v-show">等5个标签</view> -->
-                                <image src="/static/images/xj.png" class="v-left-arr" style="margin-left:5rpx" />
+                                <!-- <image src="/static/images/xj.png" class="v-left-arr" style="margin-left:5rpx" /> -->
                             </view>
                         </view>
                     </view>
