@@ -30,7 +30,7 @@
   </view>
   <view class="m-bot">
     <block wx:for="{{userlist}}" wx:for-index="findex" wx:for-item="fitem" wx:key="findex">
-      <view class="v-box" bindtap="selBlock" data-findex='{{findex}}' wx:if="{{fitem.ListCoupon_UserInfo.length > 0}}">
+      <view class="v-box" bindtap="selBlock" data-findex='{{findex}}'>
         <view class="v-left">
           <image src="{{fitem.IsShow?'/static/images/xj.png':'/static/images/yj.png'}}" class="v-left-arr" />
           <view>{{fitem.GradeName}}</view>

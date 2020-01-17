@@ -121,7 +121,21 @@ Page({
   showLevel(e) {
     let that = this;
     let showIndex = e.currentTarget.dataset.findex; 
-    let idx = e.currentTarget.dataset.gradeid;    
+    let idx = e.currentTarget.dataset.gradeid;   
+    let datalist = that.data.userlist;
+    var arrUserID = datalist[showIndex].ListCoupon_UserInfo.filter(function (x, index) {
+      return x.IsCheck
+    });
+
+    if (arrUserID.length == 0) {
+      wx.showToast({
+        title: '请先勾选会员!',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+
     that.setData({
       showLevel: true,
       showindex: showIndex,
