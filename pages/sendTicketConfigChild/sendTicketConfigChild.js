@@ -90,8 +90,10 @@ Page({
       this.setData({
         memberchecked: json.data.MemberCollar > 0,
         staffchecked: json.data.AppointStaff > 0,
-        radio: json.data.AppointStaff.toString(),
-        shopList: json.data.ListCoupon_ShopInfo
+        sradio: json.data.AppointStaff.toString(),
+        mradio: json.data.MemberCollar.toString(),
+        shopList: json.data.ListCoupon_ShopInfo,
+        gradeList: json.data.ListCoupon_ReceiveGradeConfig
 
       });
     } else {
@@ -160,9 +162,16 @@ Page({
   radioChange(event) {
     console.log(event)
     let that = this;
-    that.setData({
-      sradio: event.detail
-    });
+    let type = event.currentTarget.dataset.type;
+    if (type) {
+      that.setData({
+        mradio: event.detail
+      });
+    } else {
+      that.setData({
+        sradio: event.detail
+      });
+    }
   },
   onAppointMemberClick(event) {
     let that = this;
@@ -174,17 +183,13 @@ Page({
     });
 
     if (name === "1") {
-      var shopList = that.data.shopList;
-      for (let i in shopList) {
-        var configStaffList = shopList[i].ListCoupon_GiveConfigStaff
-        shopList[i].IsSelected = false;
-        for (let j in configStaffList) {
-          shopList[i].ListCoupon_GiveConfigStaff[j].cdType = false;
-        }
+      var gradeList = that.data.gradeList;
+      for (let i in gradeList) {
+        gradeList[i].IsCheck = false;
       }
 
       that.setData({
-        shopList: shopList,
+        gradeList: gradeList,
       });
 
       var data = {
@@ -247,6 +252,22 @@ Page({
       pCoupon_GiveConfigInfo: utils.syJsonSafe(staffconfig)
     };
 
+    that.setCouponGiveConfig(data);
+  },
+  onGradeCheckedTap(e) {
+    var that = this;
+    var idx = e.currentTarget.dataset.gradeid;
+    var index = e.currentTarget.dataset.index;
+    var gradeList = that.data.gradeList;
+    gradeList[index].IsCheck = !gradeList[index].IsCheck;
+    var gradeConfigInfo = [gradeList[index]];
+    that.setData({
+      gradeList: gradeList
+    })
+    var data = {
+      pMemberCollar: 2,
+      pCoupon_ReceiveGradeConfig: utils.syJsonSafe(gradeConfigInfo)
+    };
     that.setCouponGiveConfig(data);
   },
   onShopCheckedTap(e) {

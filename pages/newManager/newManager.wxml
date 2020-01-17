@@ -30,7 +30,7 @@
   </view>
   <view class="m-bot">
     <block wx:for="{{userlist}}" wx:for-index="findex" wx:for-item="fitem" wx:key="findex">
-      <view class="v-box" bindtap="selBlock"  data-findex='{{findex}}' wx:if="{{fitem.ListCoupon_UserInfo.length > 0}}">
+      <view class="v-box" bindtap="selBlock" data-findex='{{findex}}' wx:if="{{fitem.ListCoupon_UserInfo.length > 0}}">
         <view class="v-left">
           <image src="{{fitem.IsShow?'/static/images/xj.png':'/static/images/yj.png'}}" class="v-left-arr" />
           <view>{{fitem.GradeName}}</view>
@@ -38,10 +38,10 @@
         <view class="v-right">{{fitem.ListCoupon_UserInfo.length}}人</view>
       </view>
       <view class="v-block" wx:if="{{fitem.IsShow}}">
-        <view class="b-box" wx:for="{{fitem.ListCoupon_UserInfo}}" wx:for-item="citem" wx:for-index="cindex"  wx:key="cindex">
+        <view class="b-box" wx:for="{{fitem.ListCoupon_UserInfo}}" wx:for-item="citem" wx:for-index="cindex" wx:key="cindex">
           <view class="v-left">
             <image src="{{citem.IsCheck?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" bindtap="isSel" data-findex='{{findex}}' data-cindex="{{cindex}}" />
-            <view class="b-left">
+            <navigator url="../moneyDetail/moneyDetail?userid={{citem.UserID}}" class="b-left">
               <image src="{{citem.UserAvatar}}" mode="aspectFill" class="b-left-img" />
               <view class="b-mes">
                 <view class="b-name">{{citem.UserName}}</view>
@@ -53,16 +53,18 @@
                   <image src="/static/images/xj.png" class="v-left-arr" style="margin-left:5rpx" />
                 </view>
               </view>
-            </view>
+            </navigator>
           </view>
-          <image src="/static/images/right-arr1.png" class="mbot-arr" />
+          <navigator url="../moneyDetail/moneyDetail?userid={{citem.UserID}}">
+            <image src="/static/images/right-arr1.png" class="mbot-arr" />
+          </navigator>
         </view>
         <view class="b-box">
           <view class="c-left" bindtap="allSel" data-findex='{{findex}}'>
             <image src="{{fitem.CheckAll?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" />
             <view style="color:#E85819">全选</view>
           </view>
-          <view class="v-blue" bindtap="showLevel" data-GradeID='{{fitem.GradeID}}' data-findex='{{findex}}' >{{fitem.GradeID==""?"设置会员等级":"修改会员等级"}} ＞</view>
+          <view class="v-blue" bindtap="showLevel" data-GradeID='{{fitem.GradeID}}' data-findex='{{findex}}'>{{fitem.GradeID==""?"设置等级":"修改等级"}} ＞</view>
         </view>
       </view>
     </block>

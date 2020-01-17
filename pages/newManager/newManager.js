@@ -124,7 +124,8 @@ Page({
     let idx = e.currentTarget.dataset.gradeid;    
     that.setData({
       showLevel: true,
-      showindex: showIndex
+      showindex: showIndex,
+      idx: idx   
     })
   },
   //隐藏会员等级
@@ -138,9 +139,50 @@ Page({
   onConfirm(e)
   {
     let that = this;
+    let findex = e.currentTarget.dataset.findex; 
+    let gradeID=that.data.idx;
+    let datalist = that.data.userlist;
+    var arrUserID = datalist[findex].ListCoupon_UserInfo.filter(function (x, index) {
+      return x.IsCheck
+    }); 
+    if(arrUserID.length>0)
+    {
+      //显示 加载中的提示
+      wx.showLoading({
+        title: '数据处理中...',
+      })
+      var data = {};
+      data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+      data.arrCoupon_UserQuery = utils.syJsonSafe(arrUserID);
+      data.pGradeID = gradeID;
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserMemberView/SetEditUserGrade", "POST", data, app.globalData.appkeyid, this.SetEditUserGradeBack)      
+    } 
+  },
+
+  SetEditUserGradeBack:function(json)
+  {
+    let that = this;
+    var json = json.data.Data;
+    wx.hideLoading();
     that.setData({
       showLevel: false
     })
+    if (json.flag) {
+      console.log(json.msg);
+      this.setData({
+        HistoryUserUNM: json.HistoryUserUNM,
+        TodayUserNUM: json.TodayUserNUM,
+        userlist: json.data,
+      });
+
+    } else {
+      wx.showToast({
+        title: '没有找到相关数据!',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+
   },
 
   //单选等级
