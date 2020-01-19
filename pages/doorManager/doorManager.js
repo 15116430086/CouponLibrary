@@ -82,13 +82,16 @@ Page({
     }
   },
 
-  perfecttap:function(){
-    wx.showToast({
-      image: '/static/images/dp.png',
-      title: '功能正在完善中',
-      icon: 'none',
-      duration: 2000
-    })
+  perfecttap:function(){//分享我的店铺
+    var datas={
+      GroupID: 6124 //app.globalData.AppGroupInfo.GroupID
+    }
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GettemporaryWxImgUrl", "POST", datas, app.globalData.appkeyid, this.GettemporaryWxImgUrl);
+  },
+  GettemporaryWxImgUrl:function(res){
+    var json=res.data.Data;
+
+
   },
   updateshop:function(event){
     this.setData({ Popup:false});
