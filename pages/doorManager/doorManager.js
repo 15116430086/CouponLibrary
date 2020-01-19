@@ -14,7 +14,8 @@ Page({
     latitudeX:0,
     longitudeY:0,
     flag0:true,
-    imgone:""
+    imgone:"",
+    show:false
   },
 
   /**
@@ -81,8 +82,18 @@ Page({
       })
     }
   },
+  onClose(){
+    this.setData({
+      show:false
+    })
+  },
 
   perfecttap:function(){//分享我的店铺
+
+    let that = this;
+    that.setData({
+      show:true
+    })
     var datas={
       GroupID: 6124 //app.globalData.AppGroupInfo.GroupID
     }
