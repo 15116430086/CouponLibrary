@@ -97,5 +97,5 @@
 
 
 <van-popup show="{{ show }}" bind:close="onClose">
-  <image src="/static/images/erwm.png" style="width:504rpx;height:504rpx;display:block"></image>
+  <image src="{{imgurl}}" style="width:504rpx;height:504rpx;display:block"></image>
 </van-popup>

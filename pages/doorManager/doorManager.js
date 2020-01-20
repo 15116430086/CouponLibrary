@@ -15,7 +15,8 @@ Page({
     longitudeY:0,
     flag0:true,
     imgone:"",
-    show:false
+    show:false,
+    imgurl:""
   },
 
   /**
@@ -83,17 +84,10 @@ Page({
     }
   },
   onClose(){
-    this.setData({
-      show:false
-    })
+    this.setData({ show:false});
   },
 
   perfecttap:function(){//分享我的店铺
-
-    let that = this;
-    that.setData({
-      show:true
-    })
     var datas={
       GroupID: 6124 //app.globalData.AppGroupInfo.GroupID
     }
@@ -101,7 +95,16 @@ Page({
   },
   GettemporaryWxImgUrl:function(res){
     var json=res.data.Data;
-
+    if(json.flag){
+      this.setData({
+        show: true,
+        imgurl:json.url
+    })
+    }else{
+      wx.showToast({
+        title: '获取分享二维码失败',
+      })
+    }
 
   },
   updateshop:function(event){
