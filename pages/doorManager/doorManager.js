@@ -89,7 +89,7 @@ Page({
 
   perfecttap:function(){//分享我的店铺
     var datas={
-      GroupID: 6124 //app.globalData.AppGroupInfo.GroupID
+      GroupID: app.globalData.AppGroupInfo.GroupID //6123
     }
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GettemporaryWxImgUrl", "POST", datas, app.globalData.appkeyid, this.GettemporaryWxImgUrl);
   },
