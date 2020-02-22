@@ -103,7 +103,7 @@ Page({
     }else{
       wx.showToast({
         title: json.msg,
-        icon: none
+        icon: "none"
       })
     }
 
