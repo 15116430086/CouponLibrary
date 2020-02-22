@@ -102,7 +102,7 @@ Page({
     })
     }else{
       wx.showToast({
-        title: '获取分享二维码失败',
+        title: json.msg,
       })
     }
 
