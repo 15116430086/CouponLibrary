@@ -618,7 +618,7 @@ Page({
     let id = e.currentTarget.dataset.id;
     console.log(id);
     let pAppKeyId = app.globalData.appkeyid
-    utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack, id)
+    utils.UploadImg(app.globalData.apiurl, 1, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack, id)
 
   },
   pCallBack(e, id) {
@@ -659,7 +659,7 @@ Page({
     let that = this;
     let id = e.currentTarget.dataset.id;
     let pAppKeyId = app.globalData.appkeyid
-    utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack2)
+    utils.UploadImg(app.globalData.apiurl, 1, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack2)
 
   },
   pCallBack2(e) {
@@ -701,7 +701,7 @@ Page({
     console.log(id);
     let pAppKeyId = app.globalData.appkeyid
     let imageTre = that.data.imageTre;
-    utils.UploadImg(app.globalData.upimgurl, 5 - imageTre.length, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack3)
+    utils.UploadImg(app.globalData.apiurl, 5 - imageTre.length, app.globalData.AppGroupInfo.GroupID, pAppKeyId, that.pCallBack3)
 
   },
   pCallBack3(e) {

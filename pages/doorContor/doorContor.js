@@ -131,7 +131,7 @@ Page({
   onUpFileImg: function (e) {
    
     let that = this;
-    utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, 0, 0)
+    utils.UploadImg(app.globalData.apiurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, 0, 0)
   },
   UpFileImgBak: function (img, type) {
     var chat=this;
