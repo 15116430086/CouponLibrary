@@ -52,7 +52,7 @@ Page({
   onUpFileImg: function (e) {
 
     let that = this;
-    utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, 0, 0)
+    utils.UploadImg(app.globalData.apiurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, 0, 0)
   },
   UpFileImgBak: function (img, type) {
     var chat = this;
@@ -89,7 +89,7 @@ Page({
 
   perfecttap:function(){//分享我的店铺
     var datas={
-      GroupID: 6124 //app.globalData.AppGroupInfo.GroupID
+      GroupID: app.globalData.AppGroupInfo.GroupID //6123
     }
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GettemporaryWxImgUrl", "POST", datas, app.globalData.appkeyid, this.GettemporaryWxImgUrl);
   },
@@ -102,7 +102,8 @@ Page({
     })
     }else{
       wx.showToast({
-        title: '获取分享二维码失败',
+        title: json.msg,
+        icon: "none"
       })
     }
 

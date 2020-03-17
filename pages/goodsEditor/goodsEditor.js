@@ -101,7 +101,7 @@ Page({
     } = e.currentTarget.dataset;
     var mainImage = that.data.mainImage
     if (mainImage[index].state == 0) {
-      utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, index)
+      utils.UploadImg(app.globalData.apiurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpFileImgBak, index)
     } else {
       wx.previewImage({
         urls: [mainImage[index].url]
@@ -157,7 +157,7 @@ Page({
     } = e.currentTarget.dataset;
     var ProductDetails = that.data.ProductDetails
     if (ProductDetails[index].state == 0) {
-      utils.UploadImg(app.globalData.upimgurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpDetailsImgBak, index)
+      utils.UploadImg(app.globalData.apiurl, 1, app.globalData.AppGroupInfo.GroupID, app.globalData.appkeyid, that.UpDetailsImgBak, index)
     } else {
       wx.previewImage({
         urls: [ProductDetails[index].url]
