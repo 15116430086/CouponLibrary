@@ -25,6 +25,11 @@ Page({
         ischeck: false
       },
       {
+        id: 2,
+        name: '热门',
+        ischeck: false
+      },
+      {
         id: 3,
         name: 'banner',
         ischeck: false
