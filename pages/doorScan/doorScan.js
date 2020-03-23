@@ -14,12 +14,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if(options.shopid)
+    {//新增员工二维码
     var datas={
-      ShopID: options.shopid,
-      // pAppId:"wx8beb26cb65805e7a",
-      // pSecret:"c64a2a407262e0f6f289c2fc186071b0"
+      ShopID: options.shopid
     }
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/StoreQRcode", "POST", datas, app.globalData.appkeyid, this.CouponShopView);
+    }
+    
+    if(options.gid)
+    {//店铺分享 小程序码
+      var datas = {
+        gid: options.gid
+      }
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/StoreQRcode", "POST", datas, app.globalData.appkeyid, this.CouponShopView);
+    }    
   },
   CouponShopView:function(res){
    var json=res.data.Data;

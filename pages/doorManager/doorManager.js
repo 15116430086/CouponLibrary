@@ -87,7 +87,14 @@ Page({
     this.setData({ show:false});
   },
 
-  perfecttap:function(){//分享我的店铺
+  cperfecttap:function()
+  {//分享我的店铺 小程序维码
+    wx.navigateTo({
+      url: '../doorScan/doorScan?gid=' + app.globalData.AppGroupInfo.GroupID,
+    })
+  },
+
+  perfecttap:function(){//分享我的店铺 公从号二维码
     var datas={
       GroupID: app.globalData.AppGroupInfo.GroupID //6123
     }
