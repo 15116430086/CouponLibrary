@@ -14,6 +14,8 @@ Page({
     MemberCollar: 0,
     sradio: '1',
     mradio: '1',
+    UserSalePrice:0,
+    UserSalePricechecked:false,
     pushList: [{
         id: 0,
         name: '普通',
@@ -88,6 +90,8 @@ Page({
   GetDataBack: function(json) {
     console.log(json);
     var json = json.data.Data;
+    var chat=this;
+   
     //隐藏 加载中的提示
     wx.hideLoading();
     if (json.flag) {
@@ -101,6 +105,10 @@ Page({
         gradeList: json.data.ListCoupon_ReceiveGradeConfig
 
       });
+      if (json.data.UserSalePrice>0){
+        this.setData({ UserSalePricechecked: true, UserSalePrice: json.data.UserSalePrice});
+      }
+
     } else {
       wx.showToast({
         title: '没有找到相关数据!',
@@ -131,7 +139,7 @@ Page({
    */
   onLoad: function(options) {
     mCouponID = options.CouponID;
-
+    this.data.ReceiveID = options.ReceiveID;
     let that = this;
     that.GetData();
   },
@@ -140,6 +148,54 @@ Page({
   //         // 需要手动对 checked 状态进行更新
   //     this.setData({ checked: detail });
   // },
+  UserSaleChange:function(){
+    this.setData({
+      UserSalePricechecked: !this.data.UserSalePricechecked
+    })
+    if (!this.data.UserSalePricechecked){
+
+      this.setData({ UserSalePrice:0});
+      var data = {
+        CouponID: mCouponID,
+        money:0,
+      };
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/UpdateUserSalePrice", "POST", data, app.globalData.appkeyid, this.UpdateUserSalePrice)
+    }
+  },
+
+  Usermoney:function(e){
+    var UserSalePrice = e.detail.value;
+    if (UserSalePrice<=0){
+      wx.showToast({
+        title: '价格必须大于0',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+    }
+    var data={
+       CouponID: mCouponID,
+       money: UserSalePrice,
+    };
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/UpdateUserSalePrice", "POST", data, app.globalData.appkeyid, this.UpdateUserSalePrice)
+  },
+  UpdateUserSalePrice:function(res){
+  var json=res.data.Data;
+  if(json.flag){
+    wx.showToast({
+      title: '设置成功',
+      icon: 'none',
+      duration: 2000
+    })
+  }else{
+    wx.showToast({
+      title: '设置失败',
+      icon: 'none',
+      duration: 2000
+    })
+  }
+
+  },
   onChange(e) {
     console.log(e);
     let that = this;

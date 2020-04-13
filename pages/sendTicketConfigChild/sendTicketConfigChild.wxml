@@ -1,5 +1,18 @@
 <view class="home-top">
-	<view class="bot-block" style="font-weight:600">券推荐</view>
+	<view class="bot-block" style="font-weight:600">会员领券配置
+    <view class="home-right">
+				<van-switch checked="{{UserSalePricechecked}}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="UserSaleChange" />
+			</view>
+  </view>
+  	<view class="bot-block" wx:if="{{UserSalePricechecked}}">
+			<view class="home-title">会员价格</view>
+			<view class="home-right">
+			 <input type="digit" style="text-indent:40rpx" value="{{UserSalePrice}}" bindblur="Usermoney" placeholder="联盟会员领取价格" placeholder-style="color:#cccccc;text-align:center"></input>
+			</view>
+		</view>
+</view>
+<view class="home-top">
+	<view class="bot-block" style="font-weight:600">商家推券配置</view>
 	<block>
 		<view class="bot-block" wx:for="{{pushList}}" wx:for-item="item" wx:key="item">
 			<view class="home-title">{{item.name}}</view>
@@ -11,7 +24,7 @@
 </view>
 
 <view class="home-top">
-	<view class="bot-block" style="font-weight:600">赠券配置</view>
+	<view class="bot-block" style="font-weight:600">商家赠券配置</view>
 	<view class="bot-block">
 		<view class="home-title">会员自领</view>
 		<view class="home-right">
