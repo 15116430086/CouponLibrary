@@ -27,6 +27,25 @@ page {
     justify-content: space-between;
 }
 
+.bot-flex{
+    width: 100%;
+    height: auto;
+}
+.b-price{
+    width: 300rpx;
+    color: #000000;
+    font-size: 32rpx;
+    text-align: right;
+}
+
+.home-right input{
+    width: 300rpx;
+    color: #000000;
+    text-align: right;
+
+}
+
+
 .radio-block {
     width: calc(100% - 60rpx);
     height: auto;

@@ -1,15 +1,21 @@
 <view class="home-top">
 	<view class="bot-block" style="font-weight:600">会员领券配置
-    <view class="home-right">
-				<van-switch checked="{{UserSalePricechecked}}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="UserSaleChange" />
-			</view>
-  </view>
-  	<view class="bot-block" wx:if="{{UserSalePricechecked}}">
-			<view class="home-title">会员价格</view>
-			<view class="home-right">
-			 <input type="digit" style="text-indent:40rpx" value="{{UserSalePrice}}" bindblur="Usermoney" placeholder="联盟会员领取价格" placeholder-style="color:#cccccc;text-align:center"></input>
+		<view class="home-right">
+			<van-switch checked="{{UserSalePricechecked}}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="UserSaleChange" />
+		</view>
+	</view>
+	<view class="bot-flex" wx:if="{{UserSalePricechecked}}">
+		<view class="bot-block">
+			<view class="home-title">券面额(￥)</view>
+			<view class="b-price"  style="padding-right:20rpx">40</view>
+		</view>
+		<view class="bot-block">
+			<view class="home-title">会员价格(￥)</view>
+			<view class="home-right" style="padding-right:20rpx">
+				<input type="digit" style="text-indent:40rpx" value="{{UserSalePrice}}" bindblur="Usermoney" placeholder="请输入会员领取价" placeholder-style="color:#cccccc;text-align:right;font-size:28rpx"></input>
 			</view>
 		</view>
+	</view>
 </view>
 <view class="home-top">
 	<view class="bot-block" style="font-weight:600">商家推券配置</view>
@@ -43,8 +49,8 @@
 			</van-cell-group>
 		</van-radio-group>
 	</view>
-  <!-- 指定会员等级赠券 -->
-  <view class="check-block" wx:if="{{mradio == 2}}">
+	<!-- 指定会员等级赠券 -->
+	<view class="check-block" wx:if="{{mradio == 2}}">
 		<block wx:for="{{gradeList}}" wx:key="GradeID" wx:for-index="index">
 			<view class='item_container' bindtap='onGradeCheckedTap' data-GradeID="{{item.GradeID}}" data-index='{{index}}'>
 				<text class='text3'>{{item.GradeName}}</text>
