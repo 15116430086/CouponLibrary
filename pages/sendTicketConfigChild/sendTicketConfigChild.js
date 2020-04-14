@@ -104,7 +104,7 @@ Page({
         mradio: json.data.MemberCollar.toString(),
         shopList: json.data.ListCoupon_ShopInfo,
         gradeList: json.data.ListCoupon_ReceiveGradeConfig,
-        Denomination: json.data.CouponMoney
+        Denomination: json.data.SalePrice
       });
       if (json.data.UserSalePrice>0){
         this.setData({ UserSalePricechecked: true, UserSalePrice: json.data.UserSalePrice});
