@@ -7,12 +7,15 @@
 	<view class="bot-flex" wx:if="{{UserSalePricechecked}}">
 		<view class="bot-block">
 			<view class="home-title">券面额(￥)</view>
-			<view class="b-price"  style="padding-right:20rpx">40</view>
+			<view class="b-price"  style="padding-right:20rpx">{{Denomination}}</view>
 		</view>
 		<view class="bot-block">
 			<view class="home-title">会员价格(￥)</view>
-			<view class="home-right" style="padding-right:20rpx">
+			<view wx:if="{{UserSalePrice>0}}" class="home-right" style="padding-right:20rpx">
 				<input type="digit" style="text-indent:40rpx" value="{{UserSalePrice}}" bindblur="Usermoney" placeholder="请输入会员领取价" placeholder-style="color:#cccccc;text-align:right;font-size:28rpx"></input>
+			</view>
+      <view wx:else class="home-right" style="padding-right:20rpx">
+				<input type="digit" style="text-indent:40rpx"  bindblur="Usermoney" placeholder="请输入会员领取价" placeholder-style="color:#cccccc;text-align:right;font-size:28rpx"></input>
 			</view>
 		</view>
 	</view>

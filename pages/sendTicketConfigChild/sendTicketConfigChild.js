@@ -16,6 +16,7 @@ Page({
     mradio: '1',
     UserSalePrice:0,
     UserSalePricechecked:false,
+    Denomination:1,
     pushList: [{
         id: 0,
         name: '普通',
@@ -102,8 +103,8 @@ Page({
         sradio: json.data.AppointStaff.toString(),
         mradio: json.data.MemberCollar.toString(),
         shopList: json.data.ListCoupon_ShopInfo,
-        gradeList: json.data.ListCoupon_ReceiveGradeConfig
-
+        gradeList: json.data.ListCoupon_ReceiveGradeConfig,
+        Denomination: json.data.CouponMoney
       });
       if (json.data.UserSalePrice>0){
         this.setData({ UserSalePricechecked: true, UserSalePrice: json.data.UserSalePrice});
