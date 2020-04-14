@@ -17,6 +17,7 @@ Page({
     UserSalePrice:0,
     UserSalePricechecked:false,
     Denomination:1,
+    Ifocus:false,
     pushList: [{
         id: 0,
         name: '普通',
@@ -134,7 +135,11 @@ Page({
       })
     }
   },
-
+  Eiten:function(){
+      this.setData({
+        Ifocus:true
+      });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
