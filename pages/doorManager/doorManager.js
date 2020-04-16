@@ -38,9 +38,14 @@ Page({
     if(json.flag){
       chat.data.latitudeX = json.data[0].LatitudeX;
       chat.data.longitudeY = json.data[0].LongitudeY;
+      if (!json.data[0].ImageOne){
+        chat.setData({flag0:false});
+
+      }
       chat.setData({
         datalist:json.data,
-        imgone:json.data[0].ImageOne
+        imgone:json.data[0].ImageOne,
+        shopname: json.data[0].ShopName
       });
     }
   },
@@ -125,9 +130,24 @@ Page({
   nocoles:function(event){
     this.setData({ Popup: false });
   },
-  blurs:function(event){
+  ShopNameblurs:function(event){
     this.setData({
       shopname: event.detail.value
+    });
+  },
+  ShopAddressblurs: function (event) {
+    this.setData({
+      ShopAddress: event.detail.value
+    });
+  },
+  Contactsblurs: function (event) {
+    this.setData({
+      Contacts: event.detail.value
+    });
+  },
+  Telephoneblurs: function (event) {
+    this.setData({
+      Telephone: event.detail.value
     });
   },
   shopUpdate:function(event){
