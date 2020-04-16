@@ -164,6 +164,7 @@ Page({
       var data = {
         CouponID: mCouponID,
         money:0,
+        PGroupID: app.globalData.AppGroupInfo.GroupID
       };
       utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/UpdateUserSalePrice", "POST", data, app.globalData.appkeyid, this.UpdateUserSalePrice)
     }
@@ -179,9 +180,21 @@ Page({
       })
       return;
     }
+
+    if (UserSalePrice > this.data.Denomination){
+      wx.showToast({
+        title: '会员价不能大于领券成本价',
+        icon: 'none',
+        duration: 2000
+      })
+      return;
+
+    }
+
     var data={
        CouponID: mCouponID,
        money: UserSalePrice,
+       PGroupID: app.globalData.AppGroupInfo.GroupID
     };
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/UpdateUserSalePrice", "POST", data, app.globalData.appkeyid, this.UpdateUserSalePrice)
   },
