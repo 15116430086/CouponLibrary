@@ -75,6 +75,14 @@ Page({
         ProductType: json.data[0].ProductType
       })
     }
+    else
+    {
+      wx.showToast({
+        title: "未查询到数据或订单已被删除！",
+        icon: "none",
+        duration: 3000
+      })
+    }
     if (that.data.orderstate==2){
       wx.setNavigationBarTitle({
         title:'待发货/受理'
