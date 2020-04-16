@@ -109,8 +109,8 @@ Page({
             this.setData({
                 memberchecked: json.data.MemberCollar > 0,
                 staffchecked: json.data.AppointStaff > 0,
-                sradio: json.data.AppointStaff.toString(),
-                mradio: json.data.MemberCollar.toString(),
+                sradio: json.data.AppointStaff-1,
+                mradio: json.data.MemberCollar-1,
                 shopList: json.data.ListCoupon_ShopInfo,
                 gradeList: json.data.ListCoupon_ReceiveGradeConfig,
                 Denomination: json.data.SalePrice
@@ -267,10 +267,10 @@ Page({
             name
         } = event.currentTarget.dataset;
         that.setData({
-            mradio: name
+            mradio: name-1
         });
 
-        if (name === "1") {
+        if (name === 1) {
             var gradeList = that.data.gradeList;
             for (let i in gradeList) {
                 gradeList[i].IsCheck = false;
@@ -293,10 +293,10 @@ Page({
             name
         } = event.currentTarget.dataset;
         that.setData({
-            sradio: name
+            sradio: name-1
         });
 
-        if (name === "1") {
+        if (name === 1) {
             var shopList = that.data.shopList;
             for (let i in shopList) {
                 var configStaffList = shopList[i].ListCoupon_GiveConfigStaff

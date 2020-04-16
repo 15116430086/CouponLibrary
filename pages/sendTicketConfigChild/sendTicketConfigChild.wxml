@@ -51,7 +51,7 @@
 				</van-cell>
 			</van-cell-group>
 		</van-radio-group> -->
-		<view class="rb-side" bindtap="onAppointMemberClick" data-name="{{index}}" wx:for="{{levelSide}}">
+		<view class="rb-side" bindtap="onAppointMemberClick" data-name="{{index+1}}" wx:for="{{levelSide}}">
 			<view class="rb-title">{{item.name}}</view>
 			<image src="{{index==mradio?'/static/images/ok.png':'/static/images/okk.png'}}"></image>
 		</view>
@@ -83,7 +83,7 @@
 				</van-cell>
 			</van-cell-group>
 		</van-radio-group> -->
-		<view class="rb-side" bindtap="onAppointStaffClick" data-name="{{index}}" wx:for="{{mebSide}}">
+		<view class="rb-side" bindtap="onAppointStaffClick" data-name="{{index+1}}" wx:for="{{mebSide}}">
 			<view class="rb-title">{{item.name}}</view>
 			<image src="{{index==sradio?'/static/images/ok.png':'/static/images/okk.png'}}"></image>
 		</view>
