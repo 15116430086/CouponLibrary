@@ -63,22 +63,22 @@
 
 		<view class="vm-mid">
 			<image src="/static/images/bianxie1.png" />
-			<input type="text" placeholder="请输入店铺名称" value="{{datalist[0].ShopName}}" bindblur="blurs" placeholder-class="pm-class" />
+			<input type="text" placeholder="请输入店铺名称" value="{{datalist[0].ShopName}}" bindblur="ShopNameblurs" placeholder-class="pm-class" />
 		</view>
 		<view class="vm-mid">
 			<image src="/static/images/shop1.png" />
-			<input type="text" placeholder="请输入店铺地址" disabled="true" value="{{datalist[0].ShopAddress}}" bindblur="blurs" placeholder-class="pm-class" class="inputOne" />
+			<input type="text" placeholder="请输入店铺地址" disabled="true" value="{{datalist[0].ShopAddress}}" bindblur="ShopAddressblurs" placeholder-class="pm-class" class="inputOne" />
 			<view class="blue" bindtap="addressblurs">
 				<image src="/static/images/address1.png" style="width:45rpx;height:45rpx;"></image>
 			</view>
 		</view>
 		<view class="vm-mid">
 			<image src="/static/images/txl1.png" />
-			<input type="number" placeholder="请输入店铺联系人" value="{{datalist[0].Contacts}}" bindblur="blurs" placeholder-class="pm-class" />
+			<input type="number" placeholder="请输入店铺联系人" value="{{datalist[0].Contacts}}" bindblur="Contactsblurs" placeholder-class="pm-class" />
 		</view>
 		<view class="vm-mid">
 			<image src="/static/images/phone1.png" />
-			<input type="number" placeholder="请输入联系方式" value="{{datalist[0].Telephone}}" bindblur="blurs" placeholder-class="pm-class" />
+			<input type="number" placeholder="请输入联系方式" value="{{datalist[0].Telephone}}" bindblur="Telephoneblurs" placeholder-class="pm-class" />
 		</view>
 		<view class="vm-mid">
 			<view class="t-bot" data-type="0" bindtap="onUpFileImg" wx:if="{{!flag0}}">
