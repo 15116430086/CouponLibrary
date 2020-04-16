@@ -63,6 +63,28 @@ page {
     margin: 0px auto;
 }
 
+.rb-side{
+    width: calc(100% - 60rpx);
+    margin: 0px auto;
+
+    height: 88rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rb-title{
+    color: #000;
+    font-weight: 600;
+    font-size: 28rpx;
+}
+.rb-side image{
+    width: 40rpx;
+    height: 40rpx;
+    flex-shrink: 0;
+}
+
 .check-block {
     width: calc(100% - 120rpx);
     height: auto;

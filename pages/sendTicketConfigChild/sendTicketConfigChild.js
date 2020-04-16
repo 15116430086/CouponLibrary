@@ -13,72 +13,80 @@ Page({
     AppointStaff: 0,
     MemberCollar: 0,
     sradio: '1',
+    levelSide: [
+      { name: "全部等级" },
+      { name: "指定等级" }
+    ],
+    mebSide: [
+      { name: "全部员工" },
+      { name: "店铺员工" }
+    ],
     mradio: '1',
-    UserSalePrice:0,
-    UserSalePricechecked:false,
-    Denomination:1,
-    Ifocus:false,
+    UserSalePrice: 0,
+    UserSalePricechecked: false,
+    Denomination: 1,
+    Ifocus: false,
     pushList: [{
-        id: 0,
-        name: '普通',
-        ischeck: false
-      },
-      {
-        id: 1,
-        name: '推荐',
-        ischeck: false
-      },
-      {
-        id: 2,
-        name: '热门',
-        ischeck: false
-      },
-      {
-        id: 3,
-        name: 'banner',
-        ischeck: false
-      }
+      id: 0,
+      name: '普通',
+      ischeck: false
+    },
+    {
+      id: 1,
+      name: '推荐',
+      ischeck: false
+    },
+    {
+      id: 2,
+      name: '热门',
+      ischeck: false
+    },
+    {
+      id: 3,
+      name: 'banner',
+      ischeck: false
+    }
     ],
     shopList: [{
-        id: 1,
-        name: 'B语言',
-        isSelected: true,
-        invalidActivty: [{
-          cdName: "哈LOL",
-          cdId: 1,
-          cdType: true,
-        }, {
-          cdName: "bbbb",
-          cdId: 2,
-          cdType: true,
-        }, {
-          cdName: "ccc",
-          cdId: 3,
-          cdType: true,
-        }]
-      },
-      {
-        id: 1,
-        name: 'Java',
-        isSelected: true,
-        invalidActivty: [{
-          cdName: "eee",
-          cdId: 1,
-          cdType: true,
-        }, {
-          cdName: "ffff",
-          cdId: 2,
-          cdType: true,
-        }, {
-          cdName: "gggg",
-          cdId: 3,
-          cdType: true,
-        }]
-      }
+      id: 1,
+      name: 'B语言',
+      isSelected: true,
+      invalidActivty: [{
+        cdName: "哈LOL",
+        cdId: 1,
+        cdType: true,
+      }, {
+        cdName: "bbbb",
+        cdId: 2,
+        cdType: true,
+      }, {
+        cdName: "ccc",
+        cdId: 3,
+        cdType: true,
+      }]
+    },
+    {
+      id: 1,
+      name: 'Java',
+      isSelected: true,
+      invalidActivty: [{
+        cdName: "eee",
+        cdId: 1,
+        cdType: true,
+      }, {
+        cdName: "ffff",
+        cdId: 2,
+        cdType: true,
+      }, {
+        cdName: "gggg",
+        cdId: 3,
+        cdType: true,
+      }]
+    }
     ]
   },
 
-  GetData: function() {
+  GetData: function () {
     let that = this;
     //显示 加载中的提示
     wx.showLoading({
@@ -89,11 +97,11 @@ Page({
     data.pCouponID = mCouponID;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponGiveConfigItem", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
-  GetDataBack: function(json) {
+  GetDataBack: function (json) {
     console.log(json);
     var json = json.data.Data;
-    var chat=this;
-   
+    var chat = this;
+
     //隐藏 加载中的提示
     wx.hideLoading();
     if (json.flag) {
@@ -107,8 +115,8 @@ Page({
         gradeList: json.data.ListCoupon_ReceiveGradeConfig,
         Denomination: json.data.SalePrice
       });
-      if (json.data.UserSalePrice>0){
-        this.setData({ UserSalePricechecked: true, UserSalePrice: json.data.UserSalePrice});
+      if (json.data.UserSalePrice > 0) {
+        this.setData({ UserSalePricechecked: true, UserSalePrice: json.data.UserSalePrice });
       }
 
     } else {
@@ -135,15 +143,15 @@ Page({
       })
     }
   },
-  Eiten:function(){
-      this.setData({
-        Ifocus:true
-      });
+  Eiten: function () {
+    this.setData({
+      Ifocus: true
+    });
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     mCouponID = options.CouponID;
     this.data.ReceiveID = options.ReceiveID;
     let that = this;
@@ -154,25 +162,25 @@ Page({
   //         // 需要手动对 checked 状态进行更新
   //     this.setData({ checked: detail });
   // },
-  UserSaleChange:function(){
+  UserSaleChange: function () {
     this.setData({
       UserSalePricechecked: !this.data.UserSalePricechecked
     })
-    if (!this.data.UserSalePricechecked){
+    if (!this.data.UserSalePricechecked) {
 
-      this.setData({ UserSalePrice:0});
+      this.setData({ UserSalePrice: 0 });
       var data = {
         CouponID: mCouponID,
-        money:0,
+        money: 0,
         PGroupID: app.globalData.AppGroupInfo.GroupID
       };
       utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/UpdateUserSalePrice", "POST", data, app.globalData.appkeyid, this.UpdateUserSalePrice)
     }
   },
 
-  Usermoney:function(e){
+  Usermoney: function (e) {
     var UserSalePrice = e.detail.value;
-    if (UserSalePrice<=0){
+    if (UserSalePrice <= 0) {
       wx.showToast({
         title: '价格必须大于0',
         icon: 'none',
@@ -181,7 +189,7 @@ Page({
       return;
     }
 
-    if (UserSalePrice > this.data.Denomination){
+    if (UserSalePrice > this.data.Denomination) {
       wx.showToast({
         title: '会员价不能大于领券成本价',
         icon: 'none',
@@ -191,28 +199,28 @@ Page({
 
     }
 
-    var data={
-       CouponID: mCouponID,
-       money: UserSalePrice,
-       PGroupID: app.globalData.AppGroupInfo.GroupID
+    var data = {
+      CouponID: mCouponID,
+      money: UserSalePrice,
+      PGroupID: app.globalData.AppGroupInfo.GroupID
     };
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/UpdateUserSalePrice", "POST", data, app.globalData.appkeyid, this.UpdateUserSalePrice)
   },
-  UpdateUserSalePrice:function(res){
-  var json=res.data.Data;
-  if(json.flag){
-    wx.showToast({
-      title: '设置成功',
-      icon: 'none',
-      duration: 2000
-    })
-  }else{
-    wx.showToast({
-      title: '设置失败',
-      icon: 'none',
-      duration: 2000
-    })
-  }
+  UpdateUserSalePrice: function (res) {
+    var json = res.data.Data;
+    if (json.flag) {
+      wx.showToast({
+        title: '设置成功',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      wx.showToast({
+        title: '设置失败',
+        icon: 'none',
+        duration: 2000
+      })
+    }
 
   },
   onChange(e) {
@@ -309,7 +317,7 @@ Page({
     }
 
   },
-  onStaffSelectedTap: function(e) {
+  onStaffSelectedTap: function (e) {
     console.log(e)
     var that = this;
     var findex = e.currentTarget.dataset.findex;
@@ -383,12 +391,12 @@ Page({
 
   },
 
-  setCouponGiveConfig: function(data) {
+  setCouponGiveConfig: function (data) {
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pCouponID = mCouponID;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/SetCouponGiveConfig", "POST", data, app.globalData.appkeyid, this.setCouponGiveConfigBack)
   },
-  setCouponGiveConfigBack: function(json) {
+  setCouponGiveConfigBack: function (json) {
     console.log(json);
     var json = json.data.Data;
     if (json.flag) {
@@ -428,13 +436,13 @@ Page({
 
 
 
-  groupExtensionOperation: function(data) {
+  groupExtensionOperation: function (data) {
     let that = this;
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pCouponID = mCouponID;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GroupExtensionOperation", "POST", data, app.globalData.appkeyid, that.groupExtensionOperationBack)
   },
-  groupExtensionOperationBack: function(json) {
+  groupExtensionOperationBack: function (json) {
     console.log(json);
     var json = json.data.Data;
     if (json.flag) {
@@ -451,49 +459,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })
