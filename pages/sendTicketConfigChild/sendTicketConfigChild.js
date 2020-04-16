@@ -189,15 +189,15 @@ Page({
             return;
         }
 
-        if (UserSalePrice > this.data.Denomination) {
-            wx.showToast({
-                title: '会员价不能大于领券成本价',
-                icon: 'none',
-                duration: 2000
-            })
-            return;
+        // if (UserSalePrice > this.data.Denomination) {
+        //     wx.showToast({
+        //         title: '会员价不能大于领券成本价',
+        //         icon: 'none',
+        //         duration: 2000
+        //     })
+        //     return;
 
-        }
+        // }
 
         var data = {
             CouponID: mCouponID,
