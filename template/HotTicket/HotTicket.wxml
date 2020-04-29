@@ -3,7 +3,7 @@
     <view class="hotboxH">
       <view class="hotblockH">
         <!-- 左图 -->
-        <view class="v-left">
+        <view class="v-left"  data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">
           <image class="ticket-imgH" src="{{item.CouponImageOne}}" mode='aspectFill' />
           <view>{{item.WriteOffType==0?"线上":"线下"}}使用</view>
         </view>
@@ -11,14 +11,14 @@
           <view class="ticket-mesH">
             <view class="v-top">
               <view class="ticket-ul-pH">
-                <view class="ticket-mes-pH">
+                <view class="ticket-mes-pH"  data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">
                   {{item.CouponName}}</view>
               </view>
               <view class="v-text"><image src='/static/images/add4.png'></image>{{Distance}}km </view>
               <!-- <view class="left-money" wx:if="{{item.SalePrice>0}}">￥{{item.SalePrice}}</view>
               <view class="left-money" wx:else></view> -->
             </view>
-            <view class="ticket-mesmesH ">{{GroupName}}</view>
+            <view class="ticket-mesmesH" data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">{{GroupName}}</view>
             <view class="v-text" style="color:#e85819">面值: ￥{{item.CouponMoney}} | 领取价: ￥{{item.SalePrice}}</view>
                 <view class="v-top">
                   <view class="ticket-mes-ulH">
