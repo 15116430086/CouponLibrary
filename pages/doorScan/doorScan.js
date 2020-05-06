@@ -25,7 +25,8 @@ Page({
     if(options.gid)
     {//店铺分享 小程序码
       var datas = {
-        gid: options.gid
+        gid: options.gid,
+        ShopID: options.shopid
       }
       utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/StoreQRcode", "POST", datas, app.globalData.appkeyid, this.CouponShopView);
     }    
