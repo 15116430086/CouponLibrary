@@ -69,12 +69,12 @@ width: calc(100% - 80rpx);
 }
 
 .ruleBox, .imageBox {
-
   width: 100%;
   background-color: #fff;
   height: auto;
   display: flex;
   flex-direction: column;
+  margin-bottom: 110rpx;
 }
 
 .ruleBox image, .imageBox image {
@@ -218,4 +218,40 @@ width: calc(100% - 80rpx);
 .tmbox {
   width: auto;
   height: auto;
+}
+
+
+
+.check-btn {
+  width: calc(100% - 80rpx);
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #E85819;
+  opacity: 1;
+  border-radius: 44rpx;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28rpx; 
+     /* position: fixed; 
+  bottom: 10rpx;  */
+}
+
+.check-btnbackg {
+  background: #ccc;
+  color: #FFFFFF;
+}
+
+
+
+.checkview-btn {
+  width: calc(100% - 0rpx);
+  height: 115rpx; 
+  background: #fff;
+  opacity: 1;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  position: fixed;
+  bottom: 0rpx;
 }
