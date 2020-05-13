@@ -24,7 +24,7 @@ Page({
   },
   onWxScanCode: function() {
     // wx.navigateTo({
-    //   url: '../scanCheck/scanCheck?CouponCode=100701'
+    //   url: '../scanCheck/scanCheck?CouponCode=115901'
     // }); 
     wx.scanCode({
       success(res) {

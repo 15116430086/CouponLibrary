@@ -14,7 +14,7 @@
     </view>
     <view class="sl-two">会员：{{userInfo.UserName}} | 有效期：{{couponiteminfo.ExpirationDate}}</view>
   </view>
-  <view class="sc-btn" wx:if="{{couponiteminfo.State==0}}" data-couponCode="{{couponiteminfo.CouponCode}}" data-userID="{{couponiteminfo.UserID}}" bindtap="onCouponWriteOffTap">核销此券</view>
+
 </view>
 <view class="ruleBox">
   <image wx:if="{{couponiteminfo.UsageRule!=''}}" src="{{couponiteminfo.UsageRule}}" mode="widthFix"/>
@@ -30,6 +30,11 @@
     
     <image src="{{flag?'/static/images/toparr.png':'/static/images/botarr.png'}}"/>
   </view>
+</view>
+
+ <view class="checkview-btn" >
+   <view class="check-btn" wx:if="{{couponiteminfo.State==0}}" data-couponCode="{{couponiteminfo.CouponCode}}" data-userID="{{couponiteminfo.UserID}}" bindtap="onCouponWriteOffTap">核销此券</view>
+      <view class="check-btn check-btnbackg}}" wx:if="{{couponiteminfo.State!=0}}" data-couponCode="{{couponiteminfo.CouponCode}}" data-userID="{{couponiteminfo.UserID}}">券已核销</view>
 </view>
 
 <!--
