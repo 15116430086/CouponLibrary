@@ -48,7 +48,7 @@ page {
     text-align: center;
     line-height: 98rpx;
     border-radius: 20rpx;
-    margin-top: 60rpx;
+    margin-top: 30rpx;
 }
 
 .phoneBtn {
@@ -56,12 +56,14 @@ page {
     width: 598rpx;
     height: 98rpx;
     background: #FF7031;
-    color: #FFF;
+    color: rgba(255, 240, 222, 1);
+    border:1rpx solid rgba(255, 240, 222, 1);
     font-size: 32rpx;
     text-align: center;
     line-height: 98rpx;
     border-radius: 20rpx;
     margin-top: 40rpx;
+    margin-bottom:40rpx;
 }
 
 .v-bot {
