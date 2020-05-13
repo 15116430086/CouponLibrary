@@ -1,0 +1,172 @@
+<!-- 导航 -->
+  <view class="top-block"  hidden="true">
+  <view class='top_nav'>
+    <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id" id='{{item.typeId}}' catchtap='handleTap'>
+      {{item.name}}
+    </view>
+  </view>
+  <!-- 连锁商户 -->
+  <view hidden='{{currentId!=1}}' class="mes-block">
+    <view class="mes-top">
+      <view class="top-mes">
+        *注:
+        <text>拥有两家及以上</text>实体连锁门店；如您是多品牌，请每个品牌申请独立账号。
+      </view>
+    </view>
+  </view>
+  <!-- 个体商户 -->
+  <view hidden='{{currentId!=2}}' class="mes-block">
+    <view class="mes-top">
+      <view class="top-mes">
+        *注:
+        <text>单个实体</text>门店商户；门店管理中自动生成门店信息，后期不能再新增门店。
+      </view>
+    </view>
+  </view>
+</view>
+
+<form bindsubmit="onFormSubmit" bindreset="formReset" style="margin-top: -20rpx;" >
+  <view class="ticket-box">
+    <view class="ticket-block">
+      <view class="ticket-name">所属行业
+        <text style="color:red">*</text>
+      </view>
+      <input type="text" name="IndustryCode" bindtap="showPopup" disabled="true" value="{{industryName}}" placeholder="选择所属行业" placeholder-class="ip" />
+    </view>
+    <view class="ticket-block">
+      <view class="ticket-name">营业执照
+        <text style="color:red">*</text>
+      </view>
+      <view class="t-bot" data-type="0" bindtap="onUpFileImg" wx:if="{{!flag0}}">
+        <view class="ip">点击上传或拍照</view>
+        <image src="/static/images/zxj.png" />
+      </view>
+      <view class="t-bot" wx:if="{{flag0}}">
+        <view class="t-down">已上传
+          <text data-type="0" bindtap="onPreviewImageTap" class="seeMes">点击查看预览</text>
+        </view>
+        <view class="seeMes" data-type="0" style="color:#e80000" bindtap="onDeleteImageTap">删除</view>
+      </view>
+    </view>
+    <view class="ticket-block">
+      <view class="ticket-name">公司全称
+        <text wx:if="{{txtShow == true}}" style="color:#e85819">(请核对)</text>
+        <text style="color:red">*</text>
+      </view>
+      <input type="text" name="GroupName" value="{{GroupName}}" placeholder="营业执照公司名称" placeholder-class="ip" />
+    </view>
+    <!-- <view class="ticket-block">
+      <view class="ticket-name">银行用户名<text style="color:red">*</text></view>
+      <input type="text" name="BankUserName" value="" placeholder="请输入银行用户名" placeholder-class="ip" />
+    </view> -->
+    <view class="ticket-block">
+      <view class="ticket-name">法定代表人
+        <text wx:if="{{txtShow == true}}" style="color:#e85819">(请核对)</text>
+        <text style="color:red">*</text>
+      </view>
+      <input name="LegalPerson" type="text" value="{{LegalPerson}}" placeholder="法定代表人姓名" placeholder-class="ip" />
+    </view>
+    <view class="ticket-block">
+      <view class="ticket-name">经营地区
+        <text wx:if="{{txtShow == true}}" style="color:#e85819">(请核对)</text>
+        <text style="color:red">*</text>
+      </view>
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
+        <input name="RegionName" type="text" value="{{regionName}}" disabled="true" placeholder="请选择经营地区" placeholder-class="ip" />
+      </picker>
+    </view>
+    <view class="ticket-block">
+      <view class="ticket-name">详细地址
+        <text wx:if="{{txtShow == true}}" style="color:#e85819">(请核对)</text>
+        <text style="color:red">*</text>
+      </view>
+      <view class="t-bot">
+        <view style="width: 100%;">
+          <input name="RegAddress" type="text" value="{{regAddress}}" placeholder="请输入详细地址" placeholder-class="ip" />
+        </view>
+        <image bindtap="onRegAddressTap" src="/static/images/address1.png"  style="width:46rpx;height:50rpx"/>
+      </view>
+    </view>
+
+    <view class="ticket-block">
+      <view class="ticket-name">对公银行账号
+        <text style="color:red"></text>
+      </view>
+      <input type="text" name="CorporateBankAccount" value="" placeholder="请输入对公银行账号" placeholder-class="ip" />
+    </view>
+
+    <view class="ticket-block">
+      <view class="ticket-name">开户行
+        <text style="color:red"></text>
+      </view>
+      <input type="text" name="OpeningBank" value="" placeholder="请输入开户行" placeholder-class="ip" />
+    </view>
+    <view class="ticket-block">
+      <view class="ticket-name">公司形象照
+        <text style="color:red">*</text>
+      </view>
+      <view class="t-bot" data-type="1" bindtap="onUpFileImg" wx:if="{{!flag1}}">
+        <view class="ip">点击上传或拍照</view>
+        <image src="/static/images/zxj.png" />
+      </view>
+      <view class="t-bot" wx:if="{{flag1}}">
+        <view class="t-down">已上传
+          <text data-type="1" bindtap="onPreviewImageTap" class="seeMes">点击查看预览</text>
+        </view>
+        <view class="seeMes" data-type="1" style="color:#e80000" bindtap="onDeleteImageTap">删除</view>
+      </view>
+    </view>
+    <view class="ticket-block">
+      <view class="ticket-name">公司LOGO</view>
+      <view class="t-bot" data-type="2" bindtap="onUpFileImg" wx:if="{{!flag2}}">
+        <view class="ip">点击上传或拍照</view>
+        <image src="/static/images/zxj.png" />
+      </view>
+      <view class="t-bot" wx:if="{{flag2}}">
+        <view class="t-down">已上传
+          <text data-type="2" bindtap="onPreviewImageTap" class="seeMes">点击查看预览</text>
+        </view>
+        <view class="seeMes" data-type="2" style="color:#e80000" bindtap="onDeleteImageTap">删除</view>
+        <!-- <image data-type="2" bindtap="onDeleteImageTap"  src="/static/images/cha4.png" /> -->
+      </view>
+    </view>
+    <!-- <view class="ticket-block">
+        <view class="ticket-name">注册地区<text style="color:red">*</text></view>
+        <view class="picker">
+         <view>{{Geocoder.province}}{{Geocoder.city}}{{Geocoder.district}}</view>
+        </view>
+      </view> -->
+    <view class="ticket-block">
+      <view class="ticket-name">联系人
+        <text style="color:red">*</text>
+      </view>
+      <input name="Contacts" type="text" value="{{Contacts}}" placeholder="请填写联系人" placeholder-class="ip" />
+    </view>
+    <view class="ticket-block">
+      <view class="ticket-name">手机号码
+        <text style="color:red">*</text>
+      </view>
+      <input name="Telephone" value="" class="textarea" type="number" placeholder="手机号码将成为登录凭证" placeholder-class="ip" maxlength="{{maxlength}}" auto-height="{{auto-height}}" show-confirm-bar="{{show-confirm-bar}}"></input>
+    </view>
+  </view>
+  <view class="v-check">
+    <view class="bm-bot">
+      <image src="{{checked==true?'/static/images/f1.png':'/static/images/f2.png'}}" bindtap="onChange"></image>
+      <view class="bm-view">
+        <view style="width:auto">注册即表示同意</view>
+        <navigator url="../regPlane/regPlane">《注册协议》</navigator>
+        <view style="width:auto">和</view>
+        <navigator url="../secretBook/secretBook">《隐私权政策》</navigator>
+      </view>
+    </view>
+  </view>
+
+  <view class="app-bot">
+    <button formType="submit" class="playBtn" disabled="{{disabled}}">确认</button>
+  </view>
+</form>
+<!-- 券类型 -->
+<van-popup show="{{show2}}" bind:close="onClose" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
+  <van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+</van-popup>
+

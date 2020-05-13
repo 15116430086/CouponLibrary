@@ -57,7 +57,7 @@ App({
     minmapkey: 'UXCBZ-XKZWU-YHRVE-4RMRW-J63PJ-WRFPI',
    
     //apiurl: "http://test.miboon.com:8080/LibraryAPI/",
-    //minmapkey: 'UXCBZ-XKZWU-YHRVE-4RMRW-J63PJ-WRFPI',
-    //apiurl: "http://localhost:7562/"
+    // minmapkey: 'UXCBZ-XKZWU-YHRVE-4RMRW-J63PJ-WRFPI',
+    // apiurl: "http://localhost:7562/"
   }
 })
