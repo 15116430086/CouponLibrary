@@ -7,7 +7,7 @@
 		<block wx:for="{{Grouplist}}" wx:key="index">
 			<block>
 				<view class="ticket-box">
-					<image class="ticket-img" src="{{item.ImageOne}}"  mode="aspectFill"/>
+					<image class="ticket-img" src="{{item.ImageOne}}" data-groupid="{{item.GroupID}}" bindtap="Jump"  mode="aspectFill"/>
 					<view class="ticket-mes" >
 						<view class="ticket-mes-p" data-groupid="{{item.GroupID}}" bindtap="Jump">{{item.GroupName}}</view>
 						<view class="ticket-sec">
@@ -17,7 +17,7 @@
 						<view class="ticket-mes-ul">
 							<view>联系人：{{item.Contacts}}</view>
 							<view class="tm-flex" bindtap="goNav">
-								 <image src="/static/images/wrt_new.png" bindtap="update" class="rightarr" /> 
+								 <image src="/static/images/wrt_new.png" bindtap="update" data-groupid="{{item.GroupID}}" class="rightarr" /> 
 								
 							</view>
 						</view>

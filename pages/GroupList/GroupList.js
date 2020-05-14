@@ -56,6 +56,12 @@ Page({
       url: '../AddGroup/AddGroup',
     })
   },
+  update:function(event){
+    wx.navigateTo({
+      url: '../AddGroup/AddGroup?pGroupID=' + event.currentTarget.dataset.groupid,
+    })
+
+  },
   /**
   * 页面上拉触底事件的处理函数
   */

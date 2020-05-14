@@ -44,7 +44,9 @@ Page({
     LegalPerson: "", //法人
     CreditCode: "", //社会信用代码
     txtShow: false,
-    pGroupID:0
+    pGroupID:0,
+    Telephone:"",
+    CreateTime:""
   },
   onChange(event) {
     let that = this;
@@ -55,7 +57,75 @@ Page({
       disabled: !disabled
     })
   },
-
+  /**
+    * 生命周期函数--监听页面加载
+    */
+  onLoad: function (options) {
+    this.GetRegionIndustry();
+    if (options.pGroupID) {
+      this.setData({
+        pGroupID: options.pGroupID,
+        checked: false,
+        disabled: false
+      });
+      this.onlog(options.pGroupID);
+    }
+  },
+  onlog:function(id){
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    var data={
+      GroupID: id
+    }
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GeGroupInfo", "POST", data, app.globalData.appkeyid, this.onloglist);
+  },
+  onloglist:function(res){
+   
+    var chat=this;
+    var json=res.data.Data;
+    if(json.flag){
+        var IndustryList= chat.data.columns;
+        
+      for (var s in IndustryList){
+        if (IndustryList[s].IndustryCode == json.data.IndustryCode){
+          chat.setData({ industryName: IndustryList[s].IndustryName});
+        }
+      }
+      if (json.data.LogoImage){
+        chat.setData({ companyLOGimg: json.data.LogoImage, flag2:true});
+      }
+      var regionName=""
+      for(var i in json.Region){
+        regionName += json.Region[i].RegionName;
+      }
+      var Geocoder={
+        city: json.Region[0].RegionName,
+        province: json.Region[1].RegionName,
+        district: json.Region[2].RegionName,
+        latitude: json.data.LatitudeX,
+        longitude: json.data.LongitudeY
+      }
+        chat.setData({
+          GroupName: json.data.GroupName,
+          CreditCode: json.data.EnterpriseCode,
+          regAddress: json.data.RegisteredAddress,
+          enterpriseLicensing: json.data.EnterpriseLicensing, 
+          flag0:true,
+          mastergraphimg: json.data.ImageOne,
+          flag1:true,
+          Contacts: json.data.Contacts,
+          Telephone: json.data.Telephone,
+          LegalPerson: json.data.LegalPerson,
+          industryCode: json.data.IndustryCode,
+          regionName: regionName,
+          RegionID: json.data.RegionID,
+          CreateTime: json.data.CreateTime,
+          Geocoder: Geocoder
+        });
+    }
+    wx.hideLoading();
+  },
   onClose(e) {
     let that = this;
     that.setData({
@@ -304,6 +374,7 @@ Page({
     data.AccountName = data.GroupName
     data.EnterpriseCode = that.data.CreditCode
     data.BankCardNumber = e.detail.value.CorporateBankAccount
+    data.Enterprisename = data.GroupName;
     // if (data.BankCardNumber == '') {
     //   wx.showToast({
     //     title: "请输入对公银行账号！",
@@ -361,7 +432,11 @@ Page({
     }
     data.RegionID = that.data.Geocoder.district
     data.RegisteredAddress = e.detail.value.RegionName + e.detail.value.RegAddress
-
+    data.AffiliatedGroupID = app.globalData.AppGroupInfo.GroupID;
+    if(this.data.pGroupID){
+      data.CreateTime=this.data.CreateTime;
+      data.GroupID = parseInt(this.data.pGroupID);
+    }
     // var reg = /.+?(省|市|自治区|自治州|县|区)/g;
     // var region = data.RegisteredAddress.match(reg);
     // if (region.length > 0) {
@@ -403,17 +478,8 @@ Page({
       })
       return;
     }
-
-    wx.showModal({
-      title: '券库商家注册',
-      //content: '您确定注册成' + typename,
-      success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-          that.RegCouponGroup(data)
-        }
-      }
-    })
+    that.RegCouponGroup(data)
+   
   },
 
   RegCouponGroup: function (data) {
@@ -480,20 +546,7 @@ Page({
     }
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    if(options.pGroupID){
-      this.setData({ 
-        pGroupID: options.pGroupID,
-        checked:true,
-        disabled: false
-        });
-    }
-    let that = this;
-    that.GetRegionIndustry();
-  },
+ 
   //点击每个导航的点击事件
   handleTap: function (e) {
     let id = e.currentTarget.id;

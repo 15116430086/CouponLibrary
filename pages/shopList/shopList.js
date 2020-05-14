@@ -51,8 +51,16 @@ Page({
   },
   add: function() {
     this.setData({
-      Popup: false
+      Popup: false,
+      shopname: "",
+      address: "",
+      Contacts: "",
+      Telephone: "",
+      latitudeX: 0,
+      longitudeY: 0,
+      flag0: false,
     });
+
   },
   blurs: function(event) { //店铺名称
     this.setData({
