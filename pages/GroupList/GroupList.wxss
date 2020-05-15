@@ -1,4 +1,3 @@
-/* pages/doorContor/doorContor.wxss */
 
 page {
     background-color: #EDEDED;
@@ -180,4 +179,112 @@ overflow: hidden;
   
   position: relative;
   right:15rpx; 
+}
+.v-bot {
+    color: #ffffff;
+    width: 498rpx;
+    height: 98rpx;
+    background-color: #E85819;
+    text-align: center;
+    line-height: 98rpx;
+    font-size: 32rpx;
+    border-radius: 20rpx;
+    margin-top: 30rpx;
+}
+
+.shopGroup {
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+
+}
+.ticket-box {
+  width: calc(100% - 80rpx);
+  margin: 0px auto;
+  height: 240rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  /* border-bottom: 0.3px solid #EFEFEF; */
+}
+
+.ticket-img {
+  width: 168rpx;
+  height: 168rpx;
+  border-radius: 10rpx;
+  flex-shrink: 0;
+}
+
+.ticket-mes {
+  width: calc(100% - 198rpx);
+  height: 168rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.ticket-sec {
+  width: 100%;
+  font-size: 24rpx;
+  font-weight: 500;
+  line-height: 34rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-secimg {
+  margin-right: 16rpx;
+  width: 18rpx;
+  height: 24rpx;
+  flex-shrink: 0;
+  position: absolute;
+  top: 4rpx;
+  left: 0px;
+}
+
+.ticket-sec view {
+  width: 100%;
+  text-indent: 30rpx;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.ticket-mes-p {
+  font-size: 32rpx;
+  font-weight: 600;
+  line-height: 44rpx;
+  color: rgba(51, 51, 51, 1);
+}
+
+.ticket-mes-ul {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24rpx;
+  font-weight: 500;
+  line-height: 34rpx;
+  color: rgba(153, 153, 153, 1);
+}
+
+.rightarr {
+  width: 36rpx;
+  height: 36rpx;
+  flex-shrink: 0;
+  padding-left: 110rpx;
+}
+
+
+.tm-flex{
+  width: 145rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
 }

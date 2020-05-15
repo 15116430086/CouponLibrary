@@ -99,7 +99,8 @@
         "pages/spanList/spanList",
         "pages/levelManager/levelManager",
         "pages/mebList/mebList",
-        "pages/seeSpan/seeSpan"
+        "pages/seeSpan/seeSpan",
+        "pages/GroupList/GroupList"
     ],
     "permission": {
         "scope.userLocation": {
