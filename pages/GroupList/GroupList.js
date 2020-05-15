@@ -9,7 +9,8 @@ Page({
     Grouplist: {},
     flags: true,
     pageIndex:1,
-    pageCount:1
+    pageCount:1,
+    searchValue:""
   },
 
   /**
@@ -21,7 +22,8 @@ Page({
   Query(){
     var datas = {
       pGroupID: app.globalData.AppGroupInfo.GroupID,
-      pageIndex: this.data.pageIndex
+      pageIndex: this.data.pageIndex,
+      searchValue: this.data.searchValue
     }
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GetGroupListpage", "POST", datas, app.globalData.appkeyid, this.CouponGroupView);
   },
@@ -45,6 +47,22 @@ Page({
       }
       chat.setData({ pageIndex: chat.data.pageIndex+1});
     }
+  },
+  onbindblur:function(event){
+    this.setData({
+      searchValue: event.detail.value
+    });
+  },
+  onClear:function(){
+    this.setData({
+      searchValue: ""
+    });
+  },
+  onSearch:function(){
+    this.setData({
+      pageIndex:1
+    });
+    this.Query();
   },
   Jump: function (event) {
     wx.navigateTo({

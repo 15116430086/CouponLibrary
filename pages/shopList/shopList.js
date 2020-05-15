@@ -308,7 +308,7 @@ Page({
       }
       chat.setData({
         imgone: json.data[0].ImageOne,
-        ShopName: json.data[0].ShopName,
+        shopname: json.data[0].ShopName,
         Popup: false,
         imgurl: json.data[0].ImageOne,
         address: json.data[0].ShopAddress,

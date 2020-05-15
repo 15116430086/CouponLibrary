@@ -2,7 +2,7 @@
 <view class="v-box">
   <!-- <view class="v-mes"><text>*</text>门店可区分收款流水，各门店收款将汇总到你的结算账户，进入门店详情后可下载获取收款码图片</view> -->
   <view class="v-block"  bindtap="add">
-    <image src="/static/images/img.png" /> 添加新的门店
+    <image src="/static/images/jia.png" /> 添加新的门店
   </view>
   <block wx:for="{{shoplist}}">
     <view class="m-block" data-id="{{item.ShopID}}" bindtap="Jump">
@@ -16,7 +16,7 @@
     <view class="vmask-title">添加店铺</view>
     <view class="v-mid">
       <image src="/static/images/bianxie1.png" />
-      <input type="text" placeholder="请输入店铺名称" value="{{ShopName}}" bindblur="blurs" placeholder-class="p-class" />
+      <input type="text" placeholder="请输入店铺名称" value="{{shopname}}" bindblur="blurs" placeholder-class="p-class" />
     </view>
     <view class="v-mid">
       <image src="/static/images/shop1.png" />

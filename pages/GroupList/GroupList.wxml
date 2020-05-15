@@ -1,8 +1,20 @@
 <view class="v-box">
   <!-- <view class="v-mes"><text>*</text>门店可区分收款流水，各门店收款将汇总到你的结算账户，进入门店详情后可下载获取收款码图片</view> -->
   <view class="v-block" hidden="{{flags}}" bindtap="add">
-    <image src="/static/images/img.png" /> 添加新的商户
+    <image src="/static/images/jia.png" /> 添加新的商户
   </view>
+</view>
+  <view class="home-top">
+    <view class="search-box">
+      <view class="search-left">
+        <image src="/static/images/serch2.png" background-size="cover" style="margin-left:30rpx;margin-right:30rpx" />
+        <input value="{{searchValue}}" placeholder="请输入券面名称" bindblur="onbindblur" placeholder-class="ip" />
+      </view>
+      <image src="/static/images/err1.png" background-size="cover" style="margin-right:30rpx;" bindtap="onClear" v-if="flag==1" />
+    </view>
+    <view class="home-btn" bindtap="onSearch">搜索</view>
+  </view>
+   
 <view style="margin-bottom:144rpx;" class="shopGroup">
 		<block wx:for="{{Grouplist}}" wx:key="index">
 			<block>
@@ -26,4 +38,3 @@
 			</block>
 		</block>
 	</view>
-</view>
