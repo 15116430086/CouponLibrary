@@ -8,12 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    images: [{
-        url: "/static/images/swp.png"
-      },
-      {
-        url: "/static/images/swp.png"
-      }
+    images: [
     ],
     couponiteminfo: null,
     pictures: [],
