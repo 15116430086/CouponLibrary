@@ -44,9 +44,9 @@ Page({
         });
       }else{
         //获取上次加载的数据
-        var oldlists = that.data.Grouplist;
+        var oldlists = chat.data.Grouplist;
         var newlists = oldlists.concat(json.data) //合并数据 res.data 你的数组数据
-        that.setData({
+        chat.setData({
           Grouplist: newlists,
           pageCount: json.pageCount //你的总页数   
         });
