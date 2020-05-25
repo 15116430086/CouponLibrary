@@ -150,14 +150,10 @@ Page({
     // })
 
 
-    let referer = '券库'; //调用插件的app的名称
-    let location = JSON.stringify({
-      latitude: that.data.Geocoder.latitude || app.globalData.latitudeX,
-      longitude: that.data.Geocoder.longitude || app.globalData.longitudeY
-    });
-
+    let referer = '券库商家助手'; //调用插件的app的名称   
+    let category = '生活服务,娱乐休闲,美食';
     wx.navigateTo({
-      url: 'plugin://chooseLocation/index?key=' + app.globalData.minmapkey + '&referer=' + referer + '&location=' + location
+      url: 'plugin://chooseLocation/index?key=' + app.globalData.minmapkey + '&referer=' + referer + '&category=' + category
     });
     isLocation = true;
   },

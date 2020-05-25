@@ -30,7 +30,7 @@ Page({
       },
     ]
   },
-  onMerchantRegTap: function() {
+  onMerchantRegTap: function () {
     wx.getUserInfo({
       success: res => {
         // 登录
@@ -45,7 +45,7 @@ Page({
     })
 
   },
-  onPhoneLoginTap: function(res) {
+  onPhoneLoginTap: function (res) {
     wx.reLaunch({
       url: '../phoneLogin/phoneLogin',
     })
@@ -53,8 +53,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     let that = this;
+    //显示 加载中的提示
+    wx.showLoading({
+      title: '数据加载中',
+      mask: true
+    })
     // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
     wx.getSetting({
       success(res) {
@@ -68,6 +73,10 @@ Page({
         } else {
           that.getLocation();
         }
+      },
+      fail(res) {
+        //隐藏 加载中的提示
+        wx.hideLoading();
       }
     })
 
@@ -79,16 +88,11 @@ Page({
 
   },
 
-  getLocation: function() {
-    //显示 加载中的提示
-    wx.showLoading({
-      title: '获取地理位置',
-    })
+  getLocation: function () {
+
     let that = this;
     wx.getLocation({
       type: 'gcj02',
-      altitude: true,
-      isHighAccuracy: true,
       success(res) {
         console.log(JSON.stringify(res));
         app.globalData.latitudeX = res.latitude
@@ -96,14 +100,14 @@ Page({
 
         utils.reverseGeocoder(res.latitude, res.longitude, that.GetGeocoderBack)
       },
-      complete(res) {
+      fail(res) {
         //隐藏 加载中的提示
         wx.hideLoading();
       }
     })
   },
 
-  GetGeocoderBack: function(res) {
+  GetGeocoderBack: function (res) {
     let that = this;
     app.globalData.regionName = res[0].ad_info.district
     var appkeyid = wx.getStorageSync('miniappkeyid');
@@ -112,10 +116,18 @@ Page({
       var data = {};
       data.pAppKeyId = appkeyid.FSessionKey;
       utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetApiSession", "POST", data, app.globalData.appkeyid, that.CheckLoginState)
-    }   
+    }
+    else
+    {
+      //隐藏 加载中的提示
+      wx.hideLoading();
+    }
+
   },
 
-  CheckLoginState: function(res) { 
+  CheckLoginState: function (res) {
+    //隐藏 加载中的提示
+    wx.hideLoading();
     var json = res.data.Data;
     if (json.flag) {
       wx.setStorageSync('miniappkeyid', json.data)
@@ -128,9 +140,9 @@ Page({
         app.globalData.AppGroupInfo = loginInfo.AppGroupInfo;
         app.globalData.AppShopInfo = loginInfo.AppShopInfo;
         if (app.globalData.AppStaffInfo && app.globalData.AppStaffInfo.StaffID)
-        wx.reLaunch({
-          url: '../home/home',
-        })
+          wx.reLaunch({
+            url: '../home/home',
+          })
       }
     }
   },
@@ -138,49 +150,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })
