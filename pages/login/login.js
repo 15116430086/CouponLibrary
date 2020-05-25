@@ -71,7 +71,7 @@ Page({
             }
           })
         } else {
-          that.getLocation();
+          that.GetGeocoderBack();
         }
       },
       fail(res) {
@@ -109,7 +109,9 @@ Page({
 
   GetGeocoderBack: function (res) {
     let that = this;
-    app.globalData.regionName = res[0].ad_info.district
+    if (res) {
+      app.globalData.regionName = res[0].ad_info.district
+    }
     var appkeyid = wx.getStorageSync('miniappkeyid');
     if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
       app.globalData.appkeyid = appkeyid.FSessionKey;
@@ -125,9 +127,7 @@ Page({
 
   },
 
-  CheckLoginState: function (res) {
-    //隐藏 加载中的提示
-    wx.hideLoading();
+  CheckLoginState: function (res) {  
     var json = res.data.Data;
     if (json.flag) {
       wx.setStorageSync('miniappkeyid', json.data)
@@ -145,6 +145,8 @@ Page({
           })
       }
     }
+      //隐藏 加载中的提示
+      wx.hideLoading();
   },
 
   /**
