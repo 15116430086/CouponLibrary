@@ -44,5 +44,6 @@
         </view> -->
     </view>
 </view>
-
-<view class="v-btn" bindtap="confirm">确认</view>
+<view class="app-bot">
+    <view class="v-btn" bindtap="confirm">确认</view>
+</view>
