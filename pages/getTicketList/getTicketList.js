@@ -190,6 +190,7 @@ Page({
     var multiIndex = that.data.multiIndex;
     var data = that.data.qData;
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
     data.pPageIndex = page;
     data.pPageSize = 30;
     data.pLatitudeX = app.globalData.latitudeX;
