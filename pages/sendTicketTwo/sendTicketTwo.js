@@ -315,6 +315,8 @@ Page({
     pCoupon_Info.CouponMoney = val.CouponMoney; //券面值
     pCoupon_Info.CouponType = that.data.currentId;
     pCoupon_Info.ReceiveUpperLimit = val.ReceiveUpperLimit; //领取上限
+    pCoupon_Info.AffiliatedGroupID=app.globalData.AppGroupInfo.AffiliatedGroupID;//运营商编号
+
     if (that.data.currentId == 1)
       pCoupon_Info.SalePrice = val.SalePrice;
 
