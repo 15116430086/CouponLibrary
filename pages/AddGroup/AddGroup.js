@@ -150,14 +150,10 @@ Page({
     // })
 
 
-    let referer = '券库'; //调用插件的app的名称
-    let location = JSON.stringify({
-      latitude: that.data.Geocoder.latitude || app.globalData.latitudeX,
-      longitude: that.data.Geocoder.longitude || app.globalData.longitudeY
-    });
-
+    let referer = '券库商家助手'; //调用插件的app的名称   
+    let category = '生活服务,娱乐休闲,美食';
     wx.navigateTo({
-      url: 'plugin://chooseLocation/index?key=' + app.globalData.minmapkey + '&referer=' + referer + '&location=' + location
+      url: 'plugin://chooseLocation/index?key=' + app.globalData.minmapkey + '&referer=' + referer + '&category=' + category
     });
     isLocation = true;
   },
@@ -504,38 +500,16 @@ Page({
       if (json.flag) {
 
         wx.showModal({
-          title: '券库商家注册',
+          title: '商家注册',
           content: json.msg,
           showCancel: false,
           success(res) {
             if (res.confirm) {
-              wx.redirectTo({
-                url: '../GroupList/GroupList',
-              })
+              wx.navigateBack()
             }
           }
         })
-
-        // setTimeout(
-        //   function () {
-        //     wx.reLaunch({
-        //       url: '../login/login',
-        //     })
-        //   }, 2000
-        // )
-
-        // wx.setStorageSync('miniappkeyid', json.data)
-        // var appkeyid = wx.getStorageSync('miniappkeyid');
-        // if (appkeyid && appkeyid.FSessionKey && appkeyid.FContent) {
-        //   app.globalData.appkeyid = appkeyid.FSessionKey;
-        //   var loginInfo = JSON.parse(appkeyid.FContent);
-        //   app.globalData.AppWxUserInfo = loginInfo.AppWxUserInfo;
-        //   app.globalData.AppStaffInfo = loginInfo.AppStaffInfo;
-        //   app.globalData.AppGroupInfo = loginInfo.AppGroupInfo;
-        //   wx.reLaunch({
-        //     url: '../home/home',
-        //   })
-        // }
+        
       } else {
         wx.showToast({
           title: json.msg,

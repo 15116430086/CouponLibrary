@@ -54,6 +54,7 @@ Page({
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetListReceiveInfo", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {
+    let that = this;
     console.log(json);
     var json = json.data.Data;
     //隐藏 加载中的提示
