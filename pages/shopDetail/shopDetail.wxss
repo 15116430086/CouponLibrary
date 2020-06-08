@@ -1,4 +1,7 @@
 /* pages/shopDetail/shopDetail.wxss */
+page{
+  background-color: #ededed;
+}
 .top-box {
   width: calc(100% - 40rpx);
   display: flex;
@@ -98,6 +101,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 20rpx;
 }
 
 .shop-title {

@@ -1,0 +1,72 @@
+<!--pages/memberNum/memberNum.wxml-->
+<view class="all-box">
+	<view class="top-box">
+		<view class="search-box">
+			<image src="/static/images/serch.png" background-size="cover"></image>
+			<input placeholder="请输入券面名称" value="{{CouponName}}" bindinput="username"></input>
+		</view>
+		<view class="mes-box" bindtap="seacrh">搜索</view>
+	</view>
+	<!-- 某商户会员总数 -->
+	<block>
+		<view class="top-mes">当前会员总数<text>999人</text></view>
+    
+		<view class="meb-block">
+			<image src="/static/images/logo.png" mode="aspectFill" class="mb-image"></image>
+			<view class="mb-right">
+				<view class="mr-top">欧阳默默HGJKKI哈开会时间就HGJKKI哈开会时间HGJKKI哈开会时间</view>
+				<view class="mr-bot">2020年5月31日 12:21</view>
+			</view>
+		</view>
+	</block>
+
+	<!-- 某商户新增会员总数 -->
+	<block>
+		<view class="top-mes">当前新增会员数<text>999人</text></view>
+
+		<view class="meb-block">
+			<image src="/static/images/logo.png" mode="aspectFill" class="mb-image"></image>
+			<view class="mb-right">
+				<view class="mr-top">欧阳默默HGJKKI哈开会时间就HGJKKI哈开会时间HGJKKI哈开会时间</view>
+				<view class="mr-bot1">
+					<view class="mrb-left">2020年5月31日 12:21</view>
+					<view class="mrb-right">新增会员</view>
+				</view>
+			</view>
+		</view>
+	</block>
+
+	<!-- 某商户核销情况明细 -->
+	<block>
+		<view class="top-mes">当前总核销数<text>999人</text></view>
+
+		<view class="meb-block1">
+			<image src="/static/images/logo.png" mode="aspectFill" class="mb-image1"></image>
+			<view class="mb-right1">
+				<view class="mr-top">欧阳默默HGJKKI哈开会时间就HGJKKI哈开会时间HGJKKI哈开会时间</view>
+				<view class="mr-mid">会员：CK-AJashjaksjaj</view>
+				<view class="mr-bot1">
+					<view class="mrb-left">2020年5月31日 12:21</view>
+					<view class="mrb-right">已核销</view>
+				</view>
+			</view>
+		</view>
+	</block>
+
+	<!-- 某商户已领取情况明细 -->
+	<block>
+		<view class="top-mes">当前券领取总数<text>999人</text></view>
+
+		<view class="meb-block1">
+			<image src="/static/images/logo.png" mode="aspectFill" class="mb-image1"></image>
+			<view class="mb-right1">
+				<view class="mr-top">欧阳默默HGJKKI哈开会时间就HGJKKI哈开会时间HGJKKI哈开会时间</view>
+				<view class="mr-mid">会员：CK-AJashjaksjaj</view>
+				<view class="mr-bot1">
+					<view class="mrb-left">2020年5月31日 12:21</view>
+					<view class="mrb-right">已领取</view>
+				</view>
+			</view>
+		</view>
+	</block>
+</view>

@@ -19,11 +19,27 @@
       <view>长沙岳麓区橘子洲街道天马上社区4楼</view>
     </view>
     <view class="shop-flex">
-      <view class="shop-view">总会员999人>></view>
-      <view class="shop-view or">新增会员999人>></view>
+      <navigator class="shop-view" hover-class="none" url="../memberNum/memberNum">总会员999人>></navigator>
+      <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum">新增会员999人>></navigator>
+    </view>
+  </view>
+
+  <view class="shop-block">
+    <view class="shop-title">湖南展悦科技网技网技网路科技游侠公司</view>
+    <view class="shop-mes">
+      <image src="/static/images/yzsp.png"></image>
+      <view>长沙岳麓区橘子洲街道天马上社区4楼</view>
+    </view>
+    <view class="shop-flex">
+      <navigator class="shop-view" hover-class="none" url="../memberNum/memberNum">已领取999张>></navigator>
+      <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum">已核销999张>></navigator>
     </view>
   </view>
 </view>
+
+
+<!-- 券核销信息 -->
+
 
 
 
