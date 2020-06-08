@@ -1,8 +1,9 @@
 {
     "pages": [
         "pages/login/login",
-        "pages/echartTxT/echartTxT",
         "pages/shopDetail/shopDetail",
+        "pages/memberNum/memberNum",
+        "pages/echartTxT/echartTxT",
         "pages/goodsConfig/goodsConfig",
         "pages/classRoom/classRoom",
         "pages/notifyBuyers/notifyBuyers",
