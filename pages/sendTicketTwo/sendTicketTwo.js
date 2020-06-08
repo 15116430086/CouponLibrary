@@ -315,6 +315,7 @@ Page({
     pCoupon_Info.CouponMoney = val.CouponMoney; //券面值
     pCoupon_Info.CouponType = that.data.currentId;
     pCoupon_Info.ReceiveUpperLimit = val.ReceiveUpperLimit; //领取上限
+    pCoupon_Info.SalePrice = val.SalePrice
     if (that.data.currentId == 1)
       pCoupon_Info.SalePrice = val.SalePrice;
 
@@ -351,7 +352,7 @@ Page({
       });
       return
     }
-    if (pCoupon_Info.SalePrice == '' && that.data.currentId == 1) {
+    if (pCoupon_Info.SalePrice == '') {
       wx.showToast({
         title: "请输入销售价!",
         icon: "none",
