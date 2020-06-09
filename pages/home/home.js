@@ -130,7 +130,7 @@ Page({
   onShow: function() {
     let that = this;
     that.setData({
-      GroupName: app.globalData.AppGroupInfo.GroupName
+      GroupName: app.globalData.AppShopInfo.ShopName
     })
     that.GetData();
   },
