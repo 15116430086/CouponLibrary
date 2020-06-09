@@ -1,11 +1,19 @@
 <!--index.wxml-->
 <view class="top-title">
-	<view class="top-left">我的商户列表</view>
-	<image src="/static/images/right-arr2.png"></image>
+	<view class="top-left" style="margin-left:40rpx">
+		<view class="tl-title">我的商户列表</view>
+		<view class="tl-span">(点击查看列表)</view>
+	</view>
+	<view class="top-left" style="margin-right:40rpx">
+		<view class="tl-title">运营数据分析</view>
+		<view class="tl-span">(点击查看列表)</view>
+	</view>
 </view>
 <view class="top-mes">
-	<image src="/static/images/red-arr.png"></image>
-	<view>券领取、核销数量</view>
+	<view class="top-flex {{idc==item.id?'sel':''}}" wx:for="{{img1}}" data-id="{{item.id}}" bindtap="clkTab">
+		<image src="{{idc==item.id?'/static/images/p1.png':'/static/images/p2.png'}}"></image>
+		<view>{{item.txt}}</view>
+	</view>
 </view>
 <view class="mid-box">
 	<view class="mid-block" bindtap="showTime">
@@ -16,25 +24,8 @@
 
 </view>
 
-<view class="canvas-box {{!show?'':'c-box'}}" >
-	<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}" ></ec-canvas>
-</view>
-
-<view class="top-mes">
-	<image src="/static/images/red-arr.png"></image>
-	<view>会员总数、新增数量</view>
-</view>
-<view class="mid-box">
-	<view class="mid-block">
-		<view>{{date}}</view>
-		<image src="/static/images/hei-arr.png"></image>
-	</view>
-	<view class="mid-flex {{idb==item.id?'selected':''}}" wx:for="{{timeBox}}" bindtap="clkBtnTwo" data-id="{{item.id}}">{{item.txt}}</view>
-
-</view>
-
-<view class="canvas-box {{!show?'':'c-box'}}" >
-	<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec2 }}"></ec-canvas>
+<view class="canvas-box {{!show?'':'c-box'}}">
+	<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
 </view>
 
 

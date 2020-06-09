@@ -1,6 +1,5 @@
 import * as echarts from '../../ec-canvas/echarts';
 let Chart = null;
-let Chart1 = null;
 let utils = require("../../utils/util.js")
 const app = getApp();
 
@@ -19,17 +18,7 @@ Page({
         return Chart
       }
     },
-    ec2: {
-      onInit: function (canvas, width, height) {
-        // 初始化图表
-        Chart1 = echarts.init(canvas, null, {
-          width: width,
-          height: height
-        });
-        canvas.setChart(Chart1);
-        return Chart1
-      }
-    },//第二个折线图
+    
     timeBox: [
       {
         id: 1,
@@ -40,8 +29,18 @@ Page({
         txt: '近一个月'
       }
     ],
-    idx: "",   //月,周
-    idb: "",
+    img1: [
+      {
+        txt: "券领用走势图",
+        id:1
+      },
+      {
+        txt: "券领用走势图",
+        id:2
+      }
+    ],
+    idx: 1,   //月,周
+    idc:1,
     date: "日期",
     hidden: false,
     // 第一条数据
@@ -174,7 +173,7 @@ Page({
       }]
 
     },
-    option2:{
+    option2: {
       title: {
         text: '点击数字查看详情',
         top: 25,
@@ -319,6 +318,13 @@ Page({
   onLoad() {
 
   },
+  clkTab(e){
+    let id = e.currentTarget.dataset.id;
+    let that = this;
+    that.setData({
+      idc: id
+    })
+  },
 
   clkBtn(e) {
     let id = e.currentTarget.dataset.id;
@@ -339,25 +345,6 @@ Page({
     }
   },
 
-  clkBtnTwo(e) {
-    let id = e.currentTarget.dataset.id;
-    let that = this;
-    let option = that.data.option2;
-    that.setData({
-      idb: id
-    })
-    if (id == 1) {
-      console.log("2222")
-      option.xAxis.data = ['第一周', '第二周', '第三周', '第四周'],
-        option.series.data = [480, 146, 1125, 630]
-        console.log(option.series)
-      Chart1.setOption(option);
-    } else {
-      option.xAxis.data = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-        option.series.data = [228, 136, 65, 30, 28, 140, 533]
-      Chart1.setOption(option);
-    }
-  },
 
 
   // 显示日期
@@ -382,8 +369,6 @@ Page({
 
   onReady() {
     setTimeout(this.getData, 2000);
-    console.log(this.data.option)
-    console.log(this.data.option2)
   },
 
 
@@ -391,10 +376,8 @@ Page({
     //获取到折线图 <ec-canvas> 的id，然后再获取数据塞就可以了。
     let that = this;
     let option = that.data.option;
-    let option2 = that.data.option2;
-    Chart.setOption({option});
+    Chart.setOption({ option });
 
-    Chart1.setOption({option2});
     Chart.on('click', function (e) {
       let ename = e.name;//日期
       let value = e.value;//张数
@@ -403,14 +386,7 @@ Page({
       })
 
     });
-    Chart1.on('click', function (e) {
-      let ename = e.name;//日期
-      let value = e.value;//张数
-      wx.navigateTo({
-        url: '../shopDetail/shopDetail?name=' + ename + "&value=" + value,
-      })
-
-    });
+    
     //   return Chart;
     // });
   },

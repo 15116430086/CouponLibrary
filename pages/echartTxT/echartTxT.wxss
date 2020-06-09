@@ -11,7 +11,7 @@ ec-canvas {
 
 .top-title {
   width: 100%;
-  height: 88rpx;
+  height: 260rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -30,29 +30,65 @@ ec-canvas {
 }
 
 .top-left {
-  display: block;
-  margin-left: 40rpx;
+  width: 294rpx;
+  height: 192rpx;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+}
+
+.tl-title{
+  color: #333333;
+  font-size: 32rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+}
+
+.tl-span{
+  color: #F08002;
+  font-size: 24rpx;
 }
 
 
 .top-mes {
-  width: 100%;
+  width: calc(100% - 80rpx);
+  margin: 20rpx auto;
   height: 88rpx;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   color: #000000;
-  font-size: 32rpx;
   font-weight: 500;
+  font-size: 28rpx;
+
+}
+
+.top-flex{
+  width: 336rpx;
+  height: 98rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border-radius: 12rpx;
+  
+}
+
+.sel{
+  background-color: #E85819;
+  color: #FFFFFF;
 }
 
 .top-mes image {
   flex-shrink: 0;
-  width: 14rpx;
-  height: 22rpx;
-  margin-left: 40rpx;
-  margin-right: 20rpx;
+  width: 40rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
 }
 
 .mid-box {
@@ -102,7 +138,7 @@ ec-canvas {
 }
 
 .selected {
-  background-color: #E85819;
+  background-color: #FF8700;
   color: #FFFFFF;
 }
 
