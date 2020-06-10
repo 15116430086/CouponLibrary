@@ -75,7 +75,7 @@ Page({
           title: '操作成功' 
         })
         wx.navigateBack({
-          url: '../staffManagements/staffManagements'
+          url: '/doorC/staffManagements/staffManagements'
         });
       }else{
         wx.showToast({

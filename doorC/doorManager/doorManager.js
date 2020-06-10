@@ -51,7 +51,7 @@ Page({
   },
   Jump:function(event){
     wx.navigateTo({
-      url: '../staffManagements/staffManagements?ShopID=' + this.data.shopid,
+      url: '/doorC/staffManagements/staffManagements?ShopID=' + this.data.shopid,
     })
   },
   onUpFileImg: function (e) {
@@ -95,7 +95,7 @@ Page({
   cperfecttap:function()
   {//分享我的店铺 小程序维码
     wx.navigateTo({
-      url: '../doorScan/doorScan?gid=' + app.globalData.AppGroupInfo.GroupID +'&ShopID=' + this.data.shopid,
+      url: '/doorC/doorScan/doorScan?gid=' + app.globalData.AppGroupInfo.GroupID +'&ShopID=' + this.data.shopid,
     })
   },
 

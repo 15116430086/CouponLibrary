@@ -14,17 +14,16 @@
         "pages/paySuccess/paySuccess",
         "pages/moreShop/moreShop",
         "pages/home/home",
+        "pages/doorContor/doorContor",
         "pages/commissionMes/commissionMes",
         "pages/goodsManager/goodsManager",
         "pages/shopChoose/shopChoose",
-        "pages/doorManager/doorManager",
         "pages/sendTicketTwo/sendTicketTwo",
         "pages/index/index",
         "pages/merchantReg/merchantReg",
         "pages/phoneLogin/phoneLogin",
         "pages/goodsEditor/goodsEditor",
         "pages/industryChoose/industryChoose",
-        "pages/staffChoose/staffChoose",
         "pages/sysNotice/sysNotice",
         "pages/provincialChoose/provincialChoose",
         "pages/test/test",
@@ -35,12 +34,8 @@
         "pages/blockChoose/blockChoose",
         "pages/goodsType/goodsType",
         "pages/addressChoose/addressChoose",
-        "pages/thronesManagers/thronesManagers",
-        "pages/doorContor/doorContor",
         "pages/bossMes/bossMes",
         "pages/shopCli/shopCli",
-        "pages/staffManagements/staffManagements",
-        "pages/doorScan/doorScan",
         "pages/watchMes/watchMes",
         "pages/readTicketInfo/readTicketInfo",
         "pages/banlanceMes/banlanceMes",
@@ -105,6 +100,19 @@
         "pages/seeSpan/seeSpan",
         "pages/GroupList/GroupList"
     ],
+    "subpackages": [
+        {
+          "root": "doorC",
+          "name":"doorC",
+          "pages": [
+            "doorManager/doorManager",
+            "doorScan/doorScan",
+            "staffChoose/staffChoose",
+            "staffManagements/staffManagements",
+            "thronesManagers/thronesManagers"
+          ]
+        }
+      ],
     "permission": {
         "scope.userLocation": {
             "desc": "地理定位将用作小程序默认位置"
