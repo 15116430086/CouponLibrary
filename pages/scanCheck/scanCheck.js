@@ -36,6 +36,7 @@ Page({
     //显示 加载中的提示
     wx.showLoading({
       title: '核券处理中...',
+      mask:true
     })
     const {
       couponcode,

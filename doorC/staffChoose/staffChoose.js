@@ -89,7 +89,7 @@ Page({
   },
   addStaff: function (event) {
     wx.navigateTo({
-      url: '../doorScan/doorScan?shopid=' + this.data.shopID,
+      url: '/doorC/doorScan/doorScan?shopid=' + this.data.shopID,
     })
   },
   addAdministration:function(event){
@@ -126,7 +126,7 @@ Page({
         icon: "none"
       });
       wx.redirectTo({
-        url: "../staffManagements/staffManagements?ShopID=" + chat.data.shopid
+        url: "/doorC/staffManagements/staffManagements?ShopID=" + chat.data.shopid
       })
     }else{
       wx.showToast({

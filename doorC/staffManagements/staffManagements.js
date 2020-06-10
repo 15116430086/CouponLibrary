@@ -63,18 +63,18 @@ Page({
   },
   addStaff: function(event) {
     wx.navigateTo({
-      url: '../doorScan/doorScan?shopid=' + this.data.shopID,
+      url: '/doorC/doorScan/doorScan?shopid=' + this.data.shopID,
     })
   },
   addAdministrators: function(event) {
     wx.navigateTo({
-      url: '../staffChoose/staffChoose?shopid=' + this.data.shopID,
+      url: '/doorC/staffChoose/staffChoose?shopid=' + this.data.shopID,
     })
   },
   Jurisdiction:function(event){//设置权限
     var StaffID = event.currentTarget.dataset.staffid
     wx.navigateTo({
-      url: '../thronesManagers/thronesManagers?staffid=' + StaffID + "&shopid=" + this.data.shopID,
+      url: '/doorC/thronesManagers/thronesManagers?staffid=' + StaffID + "&shopid=" + this.data.shopID,
     })
 
   }
