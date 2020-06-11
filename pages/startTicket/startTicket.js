@@ -137,12 +137,13 @@ Page({
     var number = event.detail.value
     this.setData({
       Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * this.data.ExtensionRate * number)).toFixed(2),
-      Number: number
+      Number: number,
+      Limited:number
     });
   },
   Limit: function(event) { //单商户限制
     this.setData({
-      Limited: event.detail.value
+      Limited:this.data.Number
     });
   },
 
