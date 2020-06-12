@@ -1,0 +1,52 @@
+<!--cashM/myMoney/myMoney.wxml-->
+<view class="v-box">
+  <view class="v-block">
+    <view class="v-top">
+      <view class="v-title">待结算资金  (元)</view>
+      <view class="v-cash">{{sumBalanceMoney}}</view>
+    </view>
+    <!-- <view class="v-mid">佣金退还¥{{sumDrawbackMoney}} | 佣金收入¥{{sumCommissionMoney}} | 代收资金¥{{sumCollectionMoney}}</view> -->
+    <view class="v-mid">
+      <view class="v-mid-block">
+        <view class="v-title">购券  (张)</view>
+        <view class="vmb-money">{{sumDrawbackMoney}}</view>
+      </view>
+      <view class="v-mid-block">
+        <view class="v-title">售券  (张)</view>
+        <view class="vmb-money">{{sumCommissionMoney}}</view>
+      </view>
+      <view class="v-mid-block">
+        <view class="v-title">退券  (张)</view>
+        <view class="vmb-money">{{sumCommissionMoney}}</view>
+      </view>
+      <view class="v-mid-block" style="border:none">
+        <view class="v-title">佣金  (元)</view>
+        <view class="vmb-money">{{sumCollectionMoney}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<navigator class="v-bot" hover-class="none" url="../account/account">
+  <view  class="v-btn" style="border:none">
+    <image src="/static/images/look.png" />
+    <view>结算管理</view>
+  </view>
+  <view class="v-right">
+    <view>查看结算明细</view>
+    <image src="/static/images/right-arr1.png"></image>
+  </view>
+</navigator>
+
+<view class="c-box">
+  <view class="c-block">
+    <image src="/static/images/logo.png" mode="aspectFit"></image>
+    <view class="c-right">
+      <view class="c-name">全场专业器械指导课程次卡优惠券</view>
+      <view class="c-span">购券999张 I 单价¥999 I 售价¥999 I 预付¥999</view>
+      <view class="c-bot">
+        <view class="c1">2020-06-01 12:34</view>
+        <view class="c2">已售50张/<text>剩50张</text></view>
+      </view>
+    </view>
+  </view>
+</view>

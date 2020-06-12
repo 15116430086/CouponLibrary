@@ -111,7 +111,16 @@
             "staffManagements/staffManagements",
             "thronesManagers/thronesManagers"
           ]
-        }
+        },{
+            "root": "cashM",
+            "name":"cashM",
+            "pages": [
+              "myMoney/myMoney",
+              "account/account",
+              "detail/detail",
+              "success/success"
+            ]
+          }
       ],
     "permission": {
         "scope.userLocation": {

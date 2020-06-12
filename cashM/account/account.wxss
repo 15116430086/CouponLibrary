@@ -1,0 +1,155 @@
+/* cashM/account/account.wxss */
+
+page {
+  background-color: #EDEDED;
+}
+
+.v-top {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 168rpx;
+  background-color: #FFFF;
+  margin-bottom: 20rpx;
+}
+
+.v-box {
+  width: calc(100% - 80rpx);
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 30rpx;
+  justify-content: flex-start;
+}
+
+.v-money {
+  color: #333333;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.v-price {
+  margin-left: 20rpx;
+  width: 202rpx;
+  border-bottom: 1px solid #EDEDED;
+  height: 66rpx;
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #E85819
+}
+
+.v-price text {
+  font-size: 28rpx;
+}
+
+.v-mes {
+  width: calc(100% - 80rpx);
+  height: auto;
+  color: #429859;
+  font-size: 28rpx;
+}
+.v-mes text{
+  color: #F08002;
+  margin-left: 40rpx;
+}
+.v-mid {
+  width: 100%;
+  height: auto;
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.v-block {
+  width: calc(100% - 80rpx);
+  height: 180rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  /* margin-bottom: 20rpx; */
+}
+
+.v-block image{
+  width: 108rpx;
+  height: 108rpx;
+  flex-shrink: 0;
+}
+
+.v-right{
+  width: calc(100% - 128rpx);
+  display: flex;
+  height: 138rpx;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.v-one{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 60rpx;
+}
+.v-name{
+  width: calc(100% - 150rpx);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 28rpx;
+  color: #000000;
+}
+
+
+.v-txt{
+  font-size: 28rpx;
+  color: #999999;
+  width: 140rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.v-txt image{
+  width: 10rpx;
+  height: 18rpx;
+  flex-shrink: 0;
+  margin-left: 10rpx;
+}
+
+.v-two{
+  width: 100%;
+  font-size: 28rpx;
+  color: #FF8700;
+  text-align: left;
+}
+
+.v-time{
+  color: #999999;
+  font-size: 24rpx;
+  width: calc(100% - 196rpx);
+}
+
+.v-btn{
+  width: 176rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: center;
+  border: 1px solid #F08002;
+  font-size: 24rpx;
+  color: #F08002;
+  border-radius: 6rpx;
+}
+
+.v-btn2{
+  color: #429859;
+  font-size:26rpx;
+  width: 176rpx;
+  text-align: center;
+}

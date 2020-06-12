@@ -1,0 +1,36 @@
+<!--cashM/detail/detail.wxml-->
+<view class="v-top">
+    <view class="v-box">
+        <view class="v-money">结算总金额:</view>
+        <view class="v-price"><text>￥</text>{{sumBalanceMoney}}</view>
+    </view>
+    <view class="v-mes">
+        售券数量999张 I <text>结算金额¥2000</text> I <text>佣金¥1000</text>
+    </view>
+</view>
+
+<view class="v-all">
+  <block >
+    <view class="m-block">
+      <view class="m-left">
+        <image src="/static/images/logo.png" />
+        <view class="m-mid">
+          <view class="m-title">全场专业器械指导课程次卡优惠券全场专业器械指导课程次卡优惠券</view>
+          <view class="m-mes">
+            <view class="m-time">
+              2020-06-01 12:34
+            </view>
+            <view class="m-span"  style="color:#016FB4;border:1px solid #016FB4">佣</view>
+            <!-- <view class="m-span" wx:if="{{item.CapitalType==0}}" style="color:#E30000;border:1px solid #E30000">退</view>
+            <view class="m-span" wx:if="{{item.CapitalType==2 && item.BusinessType==3}}" style="color:#429859;border:1px solid #429859">券</view>
+            <view class="m-span" wx:if="{{item.CapitalType==2 && item.BusinessType==4}}" style="color:#429859;border:1px solid #429859">售</view> -->
+          </view>
+        </view>
+      </view>
+      <view class="m-right">
+        <view class="m-num">+200</view>
+        <!-- <view class="m-txt">券抵用￥100</view> -->
+      </view>
+    </view>
+  </block>
+</view>

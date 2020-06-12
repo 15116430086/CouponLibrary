@@ -1,0 +1,6 @@
+<view class="content">
+  <image src="/static/images/ok.png" />
+  <view class="content-p">商户结算成功！</view>
+  <view class="v-money">结算金额：¥3000</view>
+  <navigator open-type='redirect' class="content-div one" url="../account/account">确认</navigator>
+</view>

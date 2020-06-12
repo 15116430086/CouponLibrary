@@ -118,6 +118,34 @@
 					"id": -1,
 					"name": "pages/phoneLogin/phoneLogin",
 					"pathName": "pages/phoneLogin/phoneLogin",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "改我的资金",
+					"pathName": "cashM/myMoney/myMoney",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "cashM/account/account",
+					"pathName": "cashM/account/account",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "账单明细",
+					"pathName": "cashM/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "结算成功",
+					"pathName": "cashM/success/success",
 					"scene": null
 				}
 			]
