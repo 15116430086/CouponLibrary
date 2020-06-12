@@ -51,9 +51,9 @@
             </view>
 
 
-            <view class="ticket-block" wx:if="{{sign!=2}}">
+            <view class="ticket-block" hidden="true" wx:if="{{sign!=2}}">
                 <view class="ticket-name">单商户领取限制</view>
-                <input type="number" bindblur="Limit" value="" placeholder="设置数量" placeholder-class="pclass"/>
+                <input type="number" bindblur="Limit" value="{{Number}}" placeholder="设置数量" placeholder-class="pclass"/>
             </view>
             
              <view class="ticket-block">

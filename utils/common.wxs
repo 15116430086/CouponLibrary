@@ -60,9 +60,13 @@ var common = {
     }
 
     return value.replace("^(\d+)(?:\.0+$|(\.\d+?)0+$)", "$1$2");
+  },
+  coFdistance:function(value){
+    return parseFloat(value).toFixed(2);
   }
 }
 module.exports = {
   sysFormatDate: common.coFormatDate,
   sysFormatMoney: common.coFormatMoney,
+  sysFdistance:common.coFdistance
 }

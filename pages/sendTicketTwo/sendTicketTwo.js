@@ -391,6 +391,11 @@ Page({
     for (let i in imageTre) {
       if (i == 0) {
         pCoupon_Info.CouponDetails = imageTre[0];
+        oCoupon_Picture.push({
+          ImageType: 0,
+          ImageURL: imageTre[i],
+          SortIndex: i
+        })
       } else {
         oCoupon_Picture.push({
           ImageType: 0,

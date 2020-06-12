@@ -1,3 +1,4 @@
+ <wxs src="../../utils/common.wxs" module="tools" />
  <view class="home-box">
     <view class="goods-mes">
       <view class="goodsmes-mes">
@@ -24,10 +25,10 @@
       </view>
       <view class="goods-true">
         <view>实付金额</view>
-        <view style="color: #E85819;">￥{{SalePrice}}</view>
+        <view style="color: #E85819;">￥{{tools.sysFdistance(SalePrice)}}</view>
       </view>
     </view>
-    <button wx:if="{{countlist>0}}" bindtap="seve" class="pay-btn"> ￥<text>{{SalePrice}}</text> 确认付款 </button>
+    <button wx:if="{{countlist>0}}" bindtap="seve" class="pay-btn"> ￥<text>{{tools.sysFdistance(SalePrice)}}</text> 确认付款 </button>
     <button wx:else class="notpay-btn"> 该券已被领完 </button>
       
    

@@ -51,7 +51,8 @@ Page({
       return value;
     },
     show: false,
-    ReleaseID: ""
+    ReleaseID: "",
+    ExtensionRate:0
   },
 
   /**
@@ -59,6 +60,7 @@ Page({
    */
   onLoad: function(options) {
     console.log(options);
+    this.exchangerate();
     wx.setStorageSync("Groupkey", "");
     wx.setStorageSync("resultkey", "");
     wx.setStorageSync("industryKey", "");
@@ -71,6 +73,20 @@ Page({
     // utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", {}, app.globalData.appkeyid, this.GetCouponIndustry);
 
   },
+
+  exchangerate:function(){
+    var data={
+      GroupID:app.globalData.AppGroupInfo.GroupID
+    }
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/GetExchangerate", "POST", data, app.globalData.appkeyid, this.exchangerateList);
+  },
+  exchangerateList:function(res){
+    var json=res.Data.data;
+    var chat=this;
+    chat.setData({
+      ExtensionRate:json.ExtensionRate
+    })
+  },
   selChoose(e) {
     let that = this;
     let id = e.currentTarget.dataset.id;
@@ -82,7 +98,7 @@ Page({
         shareshow2: false,
         sign: 3,
         Doyoupay: true,
-        Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * 0.1 * parseInt(this.data.Number))).toFixed(2)
+        Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * this.data.ExtensionRate * parseInt(this.data.Number))).toFixed(2)
       });
       wx.navigateTo({
         url: "../shopChoose/shopChoose"
@@ -99,7 +115,7 @@ Page({
         shareshow2: true,
         sign: 1,
         Doyoupay: true,
-        Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * 0.1 * parseInt(this.data.Number))).toFixed(2)
+        Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * this.data.ExtensionRate * parseInt(this.data.Number))).toFixed(2)
       }); //全部
     }
 
@@ -120,13 +136,14 @@ Page({
   Commissionratio: function(event) { //数量失去焦点计算托管佣金
     var number = event.detail.value
     this.setData({
-      Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * 0.1 * number)).toFixed(2),
-      Number: number
+      Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * this.data.ExtensionRate * number)).toFixed(2),
+      Number: number,
+      Limited:number
     });
   },
   Limit: function(event) { //单商户限制
     this.setData({
-      Limited: event.detail.value
+      Limited:this.data.Number
     });
   },
 
