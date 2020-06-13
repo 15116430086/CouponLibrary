@@ -1,0 +1,33 @@
+<!--data/mes/mes.wxml-->
+<view class="v-all">
+	<view class="tip-block">
+		当前时间段打开总数:<text>400</text>
+	</view>
+
+	<view class="v-block">
+		<view class="v-left">
+			<image src="/static/images/logo.png" class="v-img" />
+			<view class="v-mes">
+				<view class="v-name">按说明你不忙你快进你把你进你把你</view>
+				<view class="v-time">2020年5月26日 14:11</view>
+			</view>
+		</view>
+		<view class="v-right">
+			<view class="v-span">打开100次</view>
+			<image src="/static/images/right-arr1.png" />
+		</view>
+	</view>
+	<view class="v-block">
+		<view class="v-left">
+			<image src="/static/images/logo.png" class="v-img" />
+			<view class="v-mes">
+				<view class="v-name">按说明你不忙你快进你把你进你把你</view>
+				<view class="v-time">2020年5月26日 14:11</view>
+			</view>
+		</view>
+		<view class="v-right">
+			<view class="v-span">打开100次</view>
+		</view>
+	</view>
+
+</view>

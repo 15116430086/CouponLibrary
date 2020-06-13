@@ -1,0 +1,87 @@
+<!--data/detail/detail.wxml-->
+<view class="mid-box">
+	<view class="mid-block" bindtap="showTime">
+		<view>{{date}}</view>
+		<image src="/static/images/hei-arr.png"></image>
+	</view>
+	<view>~</view>
+	<view class="mid-block" bindtap="showTime">
+		<view>{{date}}</view>
+		<image src="/static/images/hei-arr.png"></image>
+	</view>
+</view>
+<view class="mf-box">
+	<view class="mid-flex {{idx==item.id?'selected':''}}" wx:for="{{timeBox}}" bindtap="clkBtn" data-id="{{item.id}}">{{item.txt}}</view>
+</view>
+
+<!-- 运营数据分析 -->
+<view class="m-title">
+  <image src="/static/images/red-arr.png"></image>
+  <view>运营数据分析<text>（点击可查看详情）</text></view>
+</view>
+<view class="v-all">
+	<view class="v-box">
+		<view class="v-name">分享用户:<text style="color:#E85819">20人</text></view>
+		<view class="v-block">
+			<view class="v-span">
+				<view class="v-mes">分享次数</view>
+				<view class="v-num">100次</view>
+			</view>
+			<view class="v-span">
+				<view class="v-mes">打开次数</view>
+				<view class="v-num">9999次</view>
+			</view>
+		</view>
+	</view>
+	<block wx:for="{{databox}}" wx:for-item="ida">
+		<view class="v-box">
+			<view class="v-name">{{ida.name}}:<text style="color:#999999">{{ida.span}}</text></view>
+			<view class="v-block" >
+				<view class="v-span" wx:for="{{ida.data}}">
+					<view class="v-mes">{{item.tname}}</view>
+					<view class="v-num">{{item.num}}</view>
+				</view>
+			</view>
+		</view>
+	</block>
+</view>
+
+<!-- 会员分享次数排行（前十） -->
+<view class="m-title">
+  <image src="/static/images/red-arr.png"></image>
+  <view>会员分享次数排行（前十）</view>
+</view>
+<view class="v-all">
+	<view class="v-top">
+		<view class="v-cell" wx:for="{{cell}}">{{item.txt}}</view>
+	</view>
+	<view class="v-top" wx:for="{{mebCell}}">
+		<view class="v-tr" >{{item.name}}</view>
+		<view class="v-td">{{item.share}}</view>
+		<view class="v-td">{{item.open}}</view>
+		<view class="v-td">{{item.reg}}</view>
+	</view>
+</view>
+
+
+<!-- 店铺领用券排名（前二十） -->
+<view class="m-title">
+  <image src="/static/images/red-arr.png"></image>
+  <view>店铺领用券排名（前二十）</view>
+</view>
+<view class="v-all">
+	<view class="v-top">
+		<view class="v-cell" wx:for="{{cell}}">{{item.txt}}</view>
+	</view>
+	<view class="v-top" wx:for="{{shopCell}}">
+		<view class="v-tr" >{{item.name}}</view>
+		<view class="v-td">{{item.share}}</view>
+		<view class="v-td">{{item.open}}</view>
+		<view class="v-td">{{item.reg}}</view>
+	</view>
+</view>
+
+
+<van-popup show="{{ show }}" position="bottom" z-index="999" bind:close="onClose" safe-area-inset-bottom>
+	<van-datetime-picker type="date" value="{{ currentDate }}" bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+</van-popup>

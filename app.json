@@ -120,6 +120,14 @@
               "detail/detail",
               "success/success"
             ]
+          },{
+            "root": "data",
+            "name":"data",
+            "pages": [
+              "detail/detail",
+              "mes/mes"
+             
+            ]
           }
       ],
     "permission": {

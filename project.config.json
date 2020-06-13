@@ -21,7 +21,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -146,6 +146,20 @@
 					"id": -1,
 					"name": "结算成功",
 					"pathName": "cashM/success/success",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "数据分析详情",
+					"pathName": "data/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "运营数据详情页",
+					"pathName": "data/mes/mes",
 					"scene": null
 				}
 			]
