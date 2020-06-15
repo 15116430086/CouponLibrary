@@ -121,8 +121,8 @@
               "success/success"
             ]
           },{
-            "root": "data",
-            "name":"data",
+            "root": "datac",
+            "name":"datac",
             "pages": [
               "detail/detail",
               "mes/mes"

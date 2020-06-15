@@ -23,10 +23,12 @@
 	<view class="v-box">
 		<view class="v-name">分享用户:<text style="color:#E85819">20人</text></view>
 		<view class="v-block">
+		<navigator url="../mes/mes">
 			<view class="v-span">
 				<view class="v-mes">分享次数</view>
 				<view class="v-num">100次</view>
 			</view>
+		</navigator>
 			<view class="v-span">
 				<view class="v-mes">打开次数</view>
 				<view class="v-num">9999次</view>
