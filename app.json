@@ -121,8 +121,8 @@
               "success/success"
             ]
           },{
-            "root": "datac",
-            "name":"datac",
+            "root": "dataC",
+            "name":"dataC",
             "pages": [
               "detail/detail",
               "mes/mes"
@@ -137,7 +137,7 @@
     },
     "plugins": {
         "chooseLocation": {
-            "version": "1.0.3",
+            "version": "1.0.4",
             "provider": "wx76a9a06e5b4e693e"
         }
     },
