@@ -121,12 +121,12 @@
               "success/success"
             ]
           },{
-            "root": "datac",
-            "name":"datac",
+            "root": "dataC",
+            "name":"dataC",
             "pages": [
               "detail/detail",
-              "mes/mes"
-             
+              "mes/mes",
+              "sharemes/sharemes"
             ]
           }
       ],
