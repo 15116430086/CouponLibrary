@@ -1,4 +1,4 @@
-// data/mes/mes.js
+// data/sharemes/sharemes.js
 var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1; //初始化页数
@@ -8,7 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    PageVisitOpenNumberList:[],
+    PageVisitShareNumberList:[],
     TotalNumber:0,
     StartTime:'',
     EndTime:'',
@@ -27,7 +27,7 @@ Page({
     data.pPageSize = 20;
     data.pStartTime='',
     data.pEndTime='',
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserMemberView/GetPageVisitOpenNumber", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserMemberView/GetPageVisitShareNumber", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
     let that = this;
@@ -36,16 +36,16 @@ Page({
       console.log(json.msg);
       if (page == 1) {
         that.setData({
-          PageVisitOpenNumberList: json.data,
+          PageVisitShareNumberList: json.data,
           TotalNumber:json.Totaldt[0].TotalNumber,
           lastpage: json.pageCount //你的总页数   
         });
       } else {
         //获取上次加载的数据
-        var oldlists = that.data.PageVisitOpenNumberList;
+        var oldlists = that.data.PageVisitShareNumberList;
         var newlists = oldlists.concat(json.data) //合并数据 res.data 你的数组数据
         that.setData({
-          PageVisitOpenNumberList: newlists,
+          PageVisitShareNumberList: newlists,
           lastpage: json.pageCount //你的总页数   
         });
       }
