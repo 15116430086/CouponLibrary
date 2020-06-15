@@ -22,16 +22,16 @@ Page({
     timeBox: [
       {
         id: 1,
-        txt: '近一周'
+        txt: '近一个月'
       },
       {
         id: 2,
-        txt: '近一个月'
+        txt: '近一周'
       }
     ],
     img1: [
       {
-        txt: "券领用走势图",
+        txt: "新增会员走势图",
         id:1
       },
       {
@@ -335,13 +335,17 @@ Page({
       idx: id
     })
     if (id == 1) {
+     
       option.xAxis.data = ['第一周', '第二周', '第三周', '第四周'],
-        option.series.data = [280, 136, 25, 330]
-      Chart.setOption(option);
+        option.series[0].data = [30, 40, 50, 80]
+        that.setData({option:option})
+      Chart.setOption(that.data.option);
     } else {
+      
       option.xAxis.data = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-        option.series.data = [18, 36, 65, 30, 78, 40, 33]
-      Chart.setOption(option);
+        option.series[0].data = [18, 36, 65, 30, 78, 40, 33]
+        that.setData({option:option})
+      Chart.setOption(that.data.option);
     }
   },
 

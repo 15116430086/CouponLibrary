@@ -53,21 +53,30 @@ Page({
     });
   },
   blurnuber: function(event) {
-    if (event.detail.value > this.data.countlist) {
-      wx.showToast({
-        title: "已超过可领数量",
-        icon: "none"
-      });
-      event.detail.value = this.data.number;
-    }
+    
     this.setData({
       number: parseInt(event.detail.value),
       SalePrice: this.data.datalist[0].SalePrice * event.detail.value
     });
 
   },
+   seveTimeout: function (event) {
+        let that = this;
+        
+        setTimeout(function () {
+          that.seve(event)
+        }, 300);
+      },
   seve: function(event) {
     var chta = this;
+    if (chta.data.number > chta.data.countlist) {
+      wx.showToast({
+        title: "已超过可领数量请重新输入",
+        icon: "none"
+      });
+      return;
+    }
+
     if (chta.data.repeat) {
       chta.setData({
         repeat: false
