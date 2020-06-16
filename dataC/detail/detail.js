@@ -189,7 +189,17 @@ Page({
 
     },
 
-
+    JumpPage:function(e){
+        var tname = e.currentTarget.dataset.tname;
+        switch(tname){
+            case '商户发券':
+            wx.navigateTo({
+              url: '../MerchantIssuing/MerchantIssuing',
+            })
+            break;
+        }
+    },
+    
     clkBtn(e) {
         let id = e.currentTarget.dataset.id;
         let that = this;
