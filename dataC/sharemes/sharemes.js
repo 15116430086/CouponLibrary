@@ -59,6 +59,20 @@ Page({
     wx.hideLoading();
   },
 
+
+
+  JumpsharemesDetails:function(e){
+    var userid = e.currentTarget.dataset.userid;
+    wx.navigateTo({
+      url: '../sharemesDetails/sharemesDetails?userid='+userid,
+    })
+  },
+
+
+
+
+
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -84,7 +98,8 @@ Page({
    */
   onShow: function () {
     let that = this;
-    that.GetData();
+    page=1;
+    that.GetData(page);
   },
 
   /**

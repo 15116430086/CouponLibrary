@@ -127,7 +127,10 @@
             "mes/mes",
             "child/child",
             "sharemes/sharemes",
-            "MerchantIssuing/MerchantIssuing"
+            "MerchantIssuing/MerchantIssuing",
+            "UserReceiveCoupon/UserReceiveCoupon",
+            "UserReceiveCouponDetails/UserReceiveCouponDetails",
+            "sharemesDetails/sharemesDetails"
         ]
     }],
     "permission": {

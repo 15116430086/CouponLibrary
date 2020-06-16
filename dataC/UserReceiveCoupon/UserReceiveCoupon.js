@@ -1,4 +1,4 @@
-// data/mes/mes.js
+// dataC/UserReceiveCoupon/UserReceiveCoupon.js
 var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1; //初始化页数
@@ -13,6 +13,8 @@ Page({
     StartTime:'',
     EndTime:'',
     lastpage: 0,
+    type:'',
+    sendgroupid:'',
   },
 
   GetData: function () {
@@ -23,11 +25,12 @@ Page({
     })
     var data = {};
     data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
+    data.pSendgroupid=that.data.sendgroupid
     data.pPageIndex = page;
     data.pPageSize = 20;
     data.pStartTime='',
     data.pEndTime='',
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetMerchantIssuingList", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetCouponStateList", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
     let that = this;
@@ -37,7 +40,6 @@ Page({
       if (page == 1) {
         that.setData({
           DataList: json.data,
-          TotalNumber:json.Totaldt[0].TotalNumber,
           lastpage: json.pageCount //你的总页数   
         });
       } else {
@@ -59,13 +61,6 @@ Page({
     wx.hideLoading();
   },
 
-  JumpMerchantIssuingDetailed:function(e){
-    var sendgroupid = e.currentTarget.dataset.sendgroupid;
-    wx.navigateTo({
-      url: '../UserReceiveCoupon/UserReceiveCoupon?type=0&sendgroupid='+sendgroupid,
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -73,11 +68,26 @@ Page({
     let that = this;
     var StartTime = options.starttime||'';
     var EndTime = options.endtime||'';
+    var type = options.type||'';//0会员领券 1核券 2退券 3已过期
+    var sendgroupid = options.sendgroupid||'';
     that.setData({
       StartTime:StartTime,
-      EndTime:EndTime
+      EndTime:EndTime,
+      type:type,
+      sendgroupid:sendgroupid
     })
   },
+
+
+  JumpUserReceiveCouponDetails:function(e){
+    let that = this;
+    var cuponid = e.currentTarget.dataset.cuponid;
+    wx.navigateTo({
+      url: '../UserReceiveCouponDetails/UserReceiveCouponDetails?cuponid='+cuponid+'&type='+that.data.type,
+    })
+  },
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
