@@ -100,37 +100,36 @@
         "pages/seeSpan/seeSpan",
         "pages/GroupList/GroupList"
     ],
-    "subpackages": [
-        {
-          "root": "doorC",
-          "name":"doorC",
-          "pages": [
+    "subpackages": [{
+        "root": "doorC",
+        "name": "doorC",
+        "pages": [
             "doorManager/doorManager",
             "doorScan/doorScan",
             "staffChoose/staffChoose",
             "staffManagements/staffManagements",
             "thronesManagers/thronesManagers"
-          ]
-        },{
-            "root": "cashM",
-            "name":"cashM",
-            "pages": [
-              "myMoney/myMoney",
-              "account/account",
-              "detail/detail",
-              "success/success"
-            ]
-          },{
-            "root": "dataC",
-            "name":"dataC",
-            "pages": [
-              "detail/detail",
-              "mes/mes",
-              "sharemes/sharemes",
-              "MerchantIssuing/MerchantIssuing"
-            ]
-          }
-      ],
+        ]
+    }, {
+        "root": "cashM",
+        "name": "cashM",
+        "pages": [
+            "myMoney/myMoney",
+            "account/account",
+            "detail/detail",
+            "success/success"
+        ]
+    }, {
+        "root": "dataC",
+        "name": "dataC",
+        "pages": [
+            "detail/detail",
+            "mes/mes",
+            "child/child",
+            "sharemes/sharemes",
+            "MerchantIssuing/MerchantIssuing"
+        ]
+    }],
     "permission": {
         "scope.userLocation": {
             "desc": "地理定位将用作小程序默认位置"

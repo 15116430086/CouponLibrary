@@ -27,7 +27,7 @@ Page({
     data.pPageSize = 20;
     data.pStartTime='',
     data.pEndTime='',
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserMemberView/GetPageVisitShareNumber", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetPageVisitShareNumber", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
     let that = this;

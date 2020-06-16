@@ -160,6 +160,34 @@
 					"id": -1,
 					"name": "运营数据详情页",
 					"pathName": "data/mes/mes",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "cashM/myMoney/myMoney",
+					"pathName": "cashM/myMoney/myMoney",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/echartTxT/echartTxT",
+					"pathName": "pages/echartTxT/echartTxT",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "data/mes/mes",
+					"pathName": "data/mes/mes",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "data/child/child",
+					"pathName": "data/child/child",
 					"scene": null
 				}
 			]
