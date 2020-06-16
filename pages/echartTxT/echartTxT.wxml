@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="top-title">
-	<view class="top-left" style="margin-left:40rpx">
+	<view class="top-left" bindtap="GroupList" style="margin-left:40rpx">
 		<view class="tl-title">我的商户列表</view>
 		<view class="tl-span">(点击查看列表)</view>
 	</view>
