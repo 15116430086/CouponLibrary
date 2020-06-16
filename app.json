@@ -126,7 +126,8 @@
             "pages": [
               "detail/detail",
               "mes/mes",
-              "sharemes/sharemes"
+              "sharemes/sharemes",
+              "MerchantIssuing/MerchantIssuing"
             ]
           }
       ],
