@@ -18,20 +18,21 @@ Page({
         return Chart
       }
     },
-    
+    datime:new Date().getTime(),
+    xAxisdataList:[],
     timeBox: [
       {
         id: 1,
-        txt: '近一周'
+        txt: '近一个月'
       },
       {
         id: 2,
-        txt: '近一个月'
+        txt: '近一周'
       }
     ],
     img1: [
       {
-        txt: "券领用走势图",
+        txt: "新增会员走势图",
         id:1
       },
       {
@@ -118,7 +119,7 @@ Page({
         },
         formatter: function (params, ) {
           let value = params[0].value
-          return `核销:` + value
+          return `新增:` + value
         }
       },
       xAxis: {
@@ -143,7 +144,7 @@ Page({
       yAxis: {
         x: 'center',
         type: 'value',
-        name: '数量/张',
+        name: '数量/人',
         splitLine: {
           lineStyle: {
             type: 'dashed',
@@ -247,7 +248,7 @@ Page({
         },
         formatter: function (params, ) {
           let value = params[0].value
-          return `核销:` + value
+          return `张数:` + value
         }
       },
       xAxis: {
@@ -272,7 +273,7 @@ Page({
       yAxis: {
         x: 'center',
         type: 'value',
-        name: '数量/人',
+        name: '数量/张',
         splitLine: {
           lineStyle: {
             type: 'dashed',
@@ -302,7 +303,7 @@ Page({
       }]
     },
     currentDate: new Date().getTime(),
-    minDate: new Date().getTime(),
+    minDate: 2020,
     formatter(type, value) {
       if (type === 'year') {
         return `${value}年`;
@@ -316,13 +317,19 @@ Page({
   },
 
   onLoad() {
-
+   
   },
   clkTab(e){
     let id = e.currentTarget.dataset.id;
+    if(id==1){
+    this.UserQuery();
+    }else{
+      this.CouponQuery();
+    }
     let that = this;
     that.setData({
-      idc: id
+      idc: id,
+      date:"日期"
     })
   },
 
@@ -332,21 +339,112 @@ Page({
     let option = that.data.option;
     console.log(option)
     that.setData({
-      idx: id
+      idx: id,
+      date:"日期"
     })
-    if (id == 1) {
-      option.xAxis.data = ['第一周', '第二周', '第三周', '第四周'],
-        option.series.data = [280, 136, 25, 330]
-      Chart.setOption(option);
-    } else {
-      option.xAxis.data = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-        option.series.data = [18, 36, 65, 30, 78, 40, 33]
-      Chart.setOption(option);
+    if(that.data.idc==1){
+      that. UserQuery();
+    }else{
+      that.CouponQuery();
     }
+    
+    // if (id == 1) {
+     
+    //   option.xAxis.data = ['5月(1-7)日', '5月(8-15)日', '第三周', '第四周'],
+    //     option.series[0].data = [30, 40, 50, 200]
+    //     that.setData({option:option})
+    //   Chart.setOption(that.data.option);
+    // } else {
+      
+    //   option.xAxis.data = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+    //     option.series[0].data = [18, 36, 65, 30, 78, 40, 33]
+    //     that.setData({option:option})
+    //   Chart.setOption(that.data.option);
+    // }
   },
 
 
+  UserQuery:function(){
+      wx.showLoading({
+        title: '数据加载中...',
+      })
+      var data={
+        endtime:utils.formatTime(this.data.datime),
+        time:this.data.date=="日期"?'':this.data.date,
+        pGroupID:app.globalData.AppGroupInfo.GroupID,
+        type:this.data.idx
+      }
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/withdrawalAccountView/GetNewUserCount", "POST", data, app.globalData.appkeyid, this.GetNewUserCount)
+  },
 
+  GetNewUserCount:function(res){
+    var chat=this;
+    wx.hideLoading();
+      
+   
+  var json=res.data.Data;
+  let option = chat.data.option;
+   if(chat.data.idx==1){
+      var arr=[];
+      arr[0]=json.data[0].week1;
+      arr[1]=json.data[0].week2;
+      arr[2]=json.data[0].week3;
+      arr[3]=json.data[0].week4;
+   }else{
+    var arr=[];
+    arr[0]=json.data[0].week1;
+    arr[1]=json.data[0].week2;
+    arr[2]=json.data[0].week3;
+    arr[3]=json.data[0].week4;
+    arr[4]=json.data[0].week5;
+    arr[5]=json.data[0].week6;
+    arr[6]=json.data[0].week7;
+   }
+   option.xAxis.data =json.xAxisdata;
+   option.series[0].data=arr;
+   chat.setData({option:option,xAxisdataList:json.xAxisdataList})
+   Chart.setOption(chat.data.option);
+   chat.getData()
+  },
+  CouponQuery:function(){
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    var data={
+      endtime:utils.formatTime(this.data.datime),
+      time:this.data.date=="日期"?'':this.data.date,
+      pGroupID:app.globalData.AppGroupInfo.GroupID,
+      type:this.data.idx
+    }
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/withdrawalAccountView/GetCouponCount", "POST", data, app.globalData.appkeyid, this.GetCouponCount)
+  },
+
+  GetCouponCount:function(res) {
+    var chat=this;
+    wx.hideLoading();
+  var json=res.data.Data;
+  let option = chat.data.option2;
+   if(chat.data.idx==1){
+      var arr=[];
+      arr[0]=json.data[0].week1;
+      arr[1]=json.data[0].week2;
+      arr[2]=json.data[0].week3;
+      arr[3]=json.data[0].week4;
+   }else{
+    var arr=[];
+    arr[0]=json.data[0].week1;
+    arr[1]=json.data[0].week2;
+    arr[2]=json.data[0].week3;
+    arr[3]=json.data[0].week4;
+    arr[4]=json.data[0].week5;
+    arr[5]=json.data[0].week6;
+    arr[6]=json.data[0].week7;
+   }
+   option.xAxis.data =json.xAxisdata;
+   option.series[0].data=arr;
+   chat.setData({option2:option,xAxisdataList:json.xAxisdataList})
+   Chart.setOption(chat.data.option2);
+ },
   // 显示日期
   showTime(e) {
     let that = this;
@@ -358,13 +456,18 @@ Page({
     console.log(e.detail);
     let that = this;
     let timer = e.detail;
-    timer = utils.formatTime(timer);
+    timer = utils.formatTimeyears(timer);
     console.log(timer)
     that.setData({
       date: timer,
       show: false,
       hidden: false
     })
+    if(that.data.idc==1){
+      that. UserQuery();
+    }else{
+      that.CouponQuery();
+    }
   },
 
   onReady() {
@@ -381,14 +484,29 @@ Page({
     Chart.on('click', function (e) {
       let ename = e.name;//日期
       let value = e.value;//张数
+      let index=e.dataIndex;
+
       wx.navigateTo({
-        url: '../shopDetail/shopDetail?name=' + ename + "&value=" + value,
+        url: '../shopDetail/shopDetail?name=' + that.data.xAxisdataList[index] + "&value=" + value+"&time="+that.data.date+"&types="+that.data.idc,
       })
 
     });
     
     //   return Chart;
     // });
+  },
+  onShow: function() {
+    this.setData({
+      idc: 1,
+      date:"日期"
+    })
+    this.UserQuery();
+   
+  },
+  GroupList:function () {
+    wx.navigateTo({
+      url: '../GroupList/GroupList',
+    })
   },
   onShareAppMessage: function (res) {
 

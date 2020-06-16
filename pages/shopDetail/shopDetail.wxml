@@ -6,35 +6,40 @@
 	</view>
   <view class="search-box">
 			<image src="/static/images/serch.png" background-size="cover"></image>
-			<input placeholder="请输入券面名称" value="{{CouponName}}" bindinput="username"></input>
+			<input placeholder="{{titleName}}" value="{{search}}" bindinput="username"></input>
 		</view>
 		<view class="mes-box" bindtap="seacrh">搜索</view>
 </view>
 <!-- 商家信息 -->
 <view class="shop-box">
-  <view class="shop-block">
-    <view class="shop-title">湖南展悦科技网技网技网路科技游侠公司</view>
-    <view class="shop-mes">
-      <image src="/static/images/yzsp.png"></image>
-      <view>长沙岳麓区橘子洲街道天马上社区4楼</view>
-    </view>
-    <view class="shop-flex">
-      <navigator class="shop-view" hover-class="none" url="../memberNum/memberNum">总会员999人>></navigator>
-      <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum">新增会员999人>></navigator>
-    </view>
-  </view>
-
-  <view class="shop-block">
-    <view class="shop-title">湖南展悦科技网技网技网路科技游侠公司</view>
-    <view class="shop-mes">
-      <image src="/static/images/yzsp.png"></image>
-      <view>长沙岳麓区橘子洲街道天马上社区4楼</view>
-    </view>
-    <view class="shop-flex">
-      <navigator class="shop-view" hover-class="none" url="../memberNum/memberNum">已领取999张>></navigator>
-      <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum">已核销999张>></navigator>
-    </view>
-  </view>
+    <block wx:if="{{types==1}}" wx:for="{{DataList}}">
+     <view class="shop-block"  >
+        <view class="shop-title">{{item.ShopName}}</view>
+        <view class="shop-mes">
+          <image src="{{item.ImageOne}}"></image>
+          <view>{{item.ShopAddress}}</view>
+        </view>
+        <view class="shop-flex">
+          <navigator class="shop-view" hover-class="none" url="../memberNum/memberNum?GroupID={{item.GroupID}}&time={{searchTime}}&types=0&State=0">总会员{{item.counts}}人>></navigator>
+          <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum?GroupID={{item.GroupID}}&time={{searchTime}}&types=0&State=1">新增会员{{item.newCount}}人>></navigator>
+        </view>
+      </view>
+    </block>
+      
+    <block wx:if="{{types==2}}" wx:for="{{DataList2}}">
+      <view class="shop-block">
+          <view class="shop-title">{{item.GroupName}}</view>
+          <view class="shop-mes">
+            <image src="{{item.ImageOne}}"></image>
+            <view>{{item.RegisteredAddress}}</view>
+          </view>
+          <view class="shop-flex">
+            <navigator class="shop-view" hover-class="none" url="../memberNum/memberNum?GroupID={{item.GroupID}}&time={{searchTime}}&types=1&State=0">已领取{{item.Collected}}张>></navigator>
+            <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum?GroupID={{item.GroupID}}&time={{searchTime}}&types=1&State=1">已核销{{item.Used}}张>></navigator>
+          </view>
+        </view>
+    </block>
+ 
 </view>
 
 
@@ -44,5 +49,5 @@
 
 
 <van-popup show="{{ show }}" position="bottom" z-index="999" bind:close="onClose" safe-area-inset-bottom>
-	<van-datetime-picker type="date" value="{{ currentDate }}" bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+	<van-datetime-picker type="year-month" value="{{ currentDate }}" bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
 </van-popup>

@@ -23,21 +23,27 @@
 	<view class="v-box">
 		<view class="v-name">分享用户:<text style="color:#E85819">20人</text></view>
 		<view class="v-block">
+		<navigator url="../sharemes/sharemes">
 			<view class="v-span">
 				<view class="v-mes">分享次数</view>
 				<view class="v-num">100次</view>
 			</view>
+		</navigator>
+		
+		<navigator url="../mes/mes">
 			<view class="v-span">
 				<view class="v-mes">打开次数</view>
 				<view class="v-num">9999次</view>
 			</view>
+		</navigator>
+
 		</view>
 	</view>
 	<block wx:for="{{databox}}" wx:for-item="ida">
 		<view class="v-box">
 			<view class="v-name">{{ida.name}}:<text style="color:#999999">{{ida.span}}</text></view>
 			<view class="v-block" >
-				<view class="v-span" wx:for="{{ida.data}}">
+				<view class="v-span" wx:for="{{ida.data}}" data-tname="{{item.tname}}" bindtap="JumpPage">
 					<view class="v-mes">{{item.tname}}</view>
 					<view class="v-num">{{item.num}}</view>
 				</view>
