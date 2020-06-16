@@ -19,6 +19,7 @@ Page({
       }
     },
     datime:new Date().getTime(),
+    xAxisdataList:[],
     timeBox: [
       {
         id: 1,
@@ -118,7 +119,7 @@ Page({
         },
         formatter: function (params, ) {
           let value = params[0].value
-          return `人数:` + value
+          return `新增:` + value
         }
       },
       xAxis: {
@@ -302,7 +303,7 @@ Page({
       }]
     },
     currentDate: new Date().getTime(),
-    minDate: new Date().getTime(),
+    minDate: 2020,
     formatter(type, value) {
       if (type === 'year') {
         return `${value}年`;
@@ -316,7 +317,7 @@ Page({
   },
 
   onLoad() {
-
+   
   },
   clkTab(e){
     let id = e.currentTarget.dataset.id;
@@ -401,8 +402,9 @@ Page({
    }
    option.xAxis.data =json.xAxisdata;
    option.series[0].data=arr;
-   chat.setData({option:option})
+   chat.setData({option:option,xAxisdataList:json.xAxisdataList})
    Chart.setOption(chat.data.option);
+   chat.getData()
   },
   CouponQuery:function(){
     wx.showLoading({
@@ -440,7 +442,7 @@ Page({
    }
    option.xAxis.data =json.xAxisdata;
    option.series[0].data=arr;
-   chat.setData({option2:option})
+   chat.setData({option2:option,xAxisdataList:json.xAxisdataList})
    Chart.setOption(chat.data.option2);
  },
   // 显示日期
@@ -482,8 +484,10 @@ Page({
     Chart.on('click', function (e) {
       let ename = e.name;//日期
       let value = e.value;//张数
+      let index=e.dataIndex;
+
       wx.navigateTo({
-        url: '../shopDetail/shopDetail?name=' + ename + "&value=" + value+"&time="+that.data.date+"&types="+that.data.idc,
+        url: '../shopDetail/shopDetail?name=' + that.data.xAxisdataList[index] + "&value=" + value+"&time="+that.data.date+"&types="+that.data.idc,
       })
 
     });
@@ -492,6 +496,10 @@ Page({
     // });
   },
   onShow: function() {
+    this.setData({
+      idc: 1,
+      date:"日期"
+    })
     this.UserQuery();
    
   },
