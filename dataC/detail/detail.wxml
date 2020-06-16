@@ -77,7 +77,7 @@
 </view>
 <view class="v-all">
 	<view class="v-top">
-		<view class="v-cell" wx:for="{{cell}}">{{item.txt}}</view>
+		<view class="v-cell" wx:for="{{cell1}}">{{item.txt}}</view>
 	</view>
 	<view class="v-top" wx:for="{{shopCell}}">
 		<view class="v-tr" >{{item.name}}</view>
