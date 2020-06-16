@@ -27,7 +27,7 @@ Page({
     data.pPageSize = 20;
     data.pStartTime='',
     data.pEndTime='',
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserMemberView/GetPageVisitShareNumber", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetPageVisitShareNumber", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
     let that = this;
@@ -59,6 +59,20 @@ Page({
     wx.hideLoading();
   },
 
+
+
+  JumpsharemesDetails:function(e){
+    var userid = e.currentTarget.dataset.userid;
+    wx.navigateTo({
+      url: '../sharemesDetails/sharemesDetails?userid='+userid,
+    })
+  },
+
+
+
+
+
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -84,7 +98,8 @@ Page({
    */
   onShow: function () {
     let that = this;
-    that.GetData();
+    page=1;
+    that.GetData(page);
   },
 
   /**

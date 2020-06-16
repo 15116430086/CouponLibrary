@@ -85,7 +85,7 @@ Page({
                         num: "20" + `张`
                     },
                     {
-                        tname: "过期券",
+                        tname: "已退券",
                         num: "40" + `张`
                     }
                 ]
@@ -197,6 +197,26 @@ Page({
               url: '../MerchantIssuing/MerchantIssuing',
             })
             break;
+            case '会员领券':
+            wx.navigateTo({
+              url: '../UserReceiveCoupon/UserReceiveCoupon?type=0',
+            })
+            break;
+            case '券核销':
+            wx.navigateTo({
+              url: '../UserReceiveCoupon/UserReceiveCoupon?type=1',
+            })
+            break;
+            case '已退券':
+            wx.navigateTo({
+              url: '../UserReceiveCoupon/UserReceiveCoupon?type=2',
+            })
+            break;
+            case '过期券':
+            wx.navigateTo({
+              url: '../UserReceiveCoupon/UserReceiveCoupon?type=3',
+            })
+            break;            
         }
     },
     
