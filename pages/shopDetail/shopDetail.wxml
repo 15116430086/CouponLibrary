@@ -20,7 +20,7 @@
           <view>{{item.ShopAddress}}</view>
         </view>
         <view class="shop-flex">
-          <navigator class="shop-view" hover-class="none" url="../memberNum/memberNum?GroupID={{item.GroupID}}&time={{searchTime}}&types=0&State=0">总会员{{item.counts}}人>></navigator>
+          <navigator class="shop-view" hover-class="none" url="../memberNum/memberNum?GroupID={{item.GroupID}}&types=0&State=0">总会员{{item.counts}}人>></navigator>
           <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum?GroupID={{item.GroupID}}&time={{searchTime}}&types=0&State=1">新增会员{{item.newCount}}人>></navigator>
         </view>
       </view>

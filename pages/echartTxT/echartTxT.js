@@ -471,7 +471,8 @@ Page({
   },
 
   onReady() {
-    setTimeout(this.getData, 2000);
+    var chat=this;
+    setTimeout(function(){chat.getData()},500);
   },
 
 
@@ -500,8 +501,9 @@ Page({
       idc: 1,
       date:"日期"
     })
-    this.UserQuery();
-   
+    var chat=this;
+
+  setTimeout(function(){chat.UserQuery()},500);
   },
   GroupList:function () {
     wx.navigateTo({
