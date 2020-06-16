@@ -1,6 +1,6 @@
 // pages/shopDetail/shopDetail.js
 let utils = require("../../utils/util.js")
-
+const app = getApp();
 Page({
 
   /**
@@ -20,6 +20,10 @@ Page({
       return value;
     },
     show: false,
+    datatime:"",
+    valuetime:"",
+    types:1,
+    DataList:[]
   },
 
   /**
@@ -27,8 +31,26 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    this.setData({
+      datatime:options.time=='日期'?'':options.time,
+      valuetime:options.name
+    });
   },
 
+  UserQuery:function(){
+    var data={
+      Bingtime:this.data.valuetime,
+      Time:this.data.datatime,
+      pGroupID:app.globalData.AppGroupInfo.GroupID,
+    }
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/withdrawalAccountView/GetUserList", "POST", data, app.globalData.appkeyid, this.GetUserList)
+  },
+
+  GetUserList:function(res) {
+    var json=res.data.Data;
+     var chat=this;
+     chat.setData({DataList:json.data});
+  },
    // 显示日期
    showTime(e){
     let that = this;
@@ -60,7 +82,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      this.UserQuery();
   },
 
   /**

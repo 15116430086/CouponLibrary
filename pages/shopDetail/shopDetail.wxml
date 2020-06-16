@@ -12,29 +12,34 @@
 </view>
 <!-- 商家信息 -->
 <view class="shop-box">
-  <view class="shop-block">
-    <view class="shop-title">湖南展悦科技网技网技网路科技游侠公司</view>
-    <view class="shop-mes">
-      <image src="/static/images/yzsp.png"></image>
-      <view>长沙岳麓区橘子洲街道天马上社区4楼</view>
-    </view>
-    <view class="shop-flex">
-      <navigator class="shop-view" hover-class="none" url="../memberNum/memberNum">总会员999人>></navigator>
-      <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum">新增会员999人>></navigator>
-    </view>
-  </view>
-
-  <view class="shop-block">
-    <view class="shop-title">湖南展悦科技网技网技网路科技游侠公司</view>
-    <view class="shop-mes">
-      <image src="/static/images/yzsp.png"></image>
-      <view>长沙岳麓区橘子洲街道天马上社区4楼</view>
-    </view>
-    <view class="shop-flex">
-      <navigator class="shop-view" hover-class="none" url="../memberNum/memberNum">已领取999张>></navigator>
-      <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum">已核销999张>></navigator>
-    </view>
-  </view>
+    <block wx:if="{{types==1}}" wx:for="{{DataList}}">
+     <view class="shop-block"  >
+        <view class="shop-title">{{item.ShopName}}</view>
+        <view class="shop-mes">
+          <image src="/static/images/yzsp.png"></image>
+          <view>{{item.ShopAddress}}</view>
+        </view>
+        <view class="shop-flex">
+          <navigator class="shop-view" hover-class="none" url="../memberNum/memberNum">总会员{{item.counts}}人>></navigator>
+          <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum">新增会员{{item.newCount}}人>></navigator>
+        </view>
+      </view>
+    </block>
+      
+    <block wx:if="{{types==2}}">
+      <view class="shop-block">
+          <view class="shop-title">湖南展悦科技网技网技网路科技游侠公司</view>
+          <view class="shop-mes">
+            <image src="/static/images/yzsp.png"></image>
+            <view>长沙岳麓区橘子洲街道天马上社区4楼</view>
+          </view>
+          <view class="shop-flex">
+            <navigator class="shop-view" hover-class="none" url="../memberNum/memberNum">已领取999张>></navigator>
+            <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum">已核销999张>></navigator>
+          </view>
+        </view>
+    </block>
+ 
 </view>
 
 
