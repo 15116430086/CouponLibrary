@@ -125,7 +125,8 @@
             "name":"data",
             "pages": [
               "detail/detail",
-              "mes/mes"
+              "mes/mes",
+              "child/child"
              
             ]
           }

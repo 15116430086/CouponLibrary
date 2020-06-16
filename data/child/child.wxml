@@ -1,0 +1,115 @@
+<!--data/child/child.wxml-->
+<!-- 打开次数记录 -->
+<view class="v-all">
+	<view class="v-block">
+		<view class="v-title">通过“粉大大盖码饭券详情”分享链接进入</view>
+		<view class="v-mes">2020年5月31日 12:21</view>
+	</view>
+</view>
+
+
+<!-- 分享次数记录 -->
+<view class="v-all">
+	<view class="flex">
+		<view class="v-left">
+			<view class="v-title">通过“粉大大盖码饭券详情”分享链接进入</view>
+			<view class="v-mes">2020年5月31日 12:21<text>/最后分享时间</text></view>
+		</view>
+		<view class="v-right">
+			<view class="v-share">已分享5</view>
+			<view class="v-share1">分享成功2</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 商户发券记录 -->
+<view class="v-all">
+	<view class="v-block">
+		<view class="v-title">心麦德善治鲜饺17元鲜菇肉馅券名称馅券名称</view>
+		<view class="v-bot">
+			<view class="v-mes">2020年5月31日 12:21</view>
+			<view class="v-send">
+				<view class="send">已分享5<text>/已领432</text></view>
+				<image src="/static/images/right-arr1.png"></image>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 店铺访问记录 -->
+<view class="v-all">
+	<view class="v-block">
+		<view class="v-title">心麦德善治鲜饺17元鲜菇肉馅券名称馅券名称</view>
+		<view class="v-bot">
+			<view class="v-mes">2020年5月31日 12:21 访问店铺页</view>
+			<view class="v-send">
+				<view class="send"><text>访问6次</text></view>
+				<image src="/static/images/right-arr1.png"></image>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+
+<!-- 浏览详情 -->
+<view class="v-all" style="margin-bottom:20rpx">
+	<view class="v-block">
+		<view class="v-title">小程序个人中心页面</view>
+		<view class="v-bot">
+			<view class="v-mes">2020年5月31日 12:21 访问店铺页</view>
+			<view class="v-send">
+				<view class="send"><text>浏览6次</text></view>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="v-all">
+	<view class="v-block">
+		<view class="v-title">店铺详情页面</view>
+		<view class="v-bot">
+			<view class="v-mes">2020年5月31日 12:21 访问店铺页</view>
+			<view class="v-send">
+				<view class="send"><text>浏览6次</text></view>
+				<image src="/static/images/right-arr1.png"></image>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 券领用详情 -->
+<view class="v-all">
+<view class="t-box">
+		<image src="/static/images/logo.png"></image>
+		<view class="t-block">
+			<view class="v-title">心麦德善治鲜饺17元鲜菇肉馅券名称馅券名称</view>
+			<view class="t-bot">
+				<view class="v-mes">2020年5月31日 12:21</view>
+				<view class="t-right"><text>已购买1</text>/<text>核销1</text></view>
+			</view>
+		</view>
+	</view>
+  <view class="t-box">
+		<image src="/static/images/logo.png"></image>
+		<view class="t-block">
+			<view class="v-title">心麦德善治鲜饺17元鲜菇肉馅券名称馅券名称</view>
+			<view class="t-bot">
+				<view class="v-mes">2020年5月31日 12:21</view>
+				<view class="t-right"><text>已购买3</text>/<text>核销2</text>/<text>退券1</text></view>
+			</view>
+		</view>
+	</view>
+	<view class="t-box">
+		<image src="/static/images/logo.png"></image>
+		<view class="t-block">
+			<view class="v-title">心麦德善治鲜饺17元鲜菇肉馅券名称馅券名称</view>
+			<view class="t-bot">
+				<view class="v-mes">2020年5月31日 12:21</view>
+				<view class="t-right"><text>已购买</text>/<text>未核销</text>/<text>未退券</text></view>
+			</view>
+		</view>
+	</view>
+</view>
