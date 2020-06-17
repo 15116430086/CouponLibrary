@@ -1,4 +1,4 @@
-// data/mes/mes.js
+// dataC/CouponAccessRecords/CouponAccessRecords.js
 var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1; //初始化页数
@@ -13,8 +13,7 @@ Page({
     StartTime:'',
     EndTime:'',
     lastpage: 0,
-    type:'',
-    PageName:'',
+    userid:'',
   },
 
   GetData: function () {
@@ -25,12 +24,12 @@ Page({
     })
     var data = {};
     data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
-    data.pType=that.data.type;
+    data.pUserID=that.data.userid
     data.pPageIndex = page;
     data.pPageSize = 20;
     data.pStartTime='',
     data.pEndTime='',
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetPageAccessDetails", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetCouponAccessRecords", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
     let that = this;
@@ -40,8 +39,6 @@ Page({
       if (page == 1) {
         that.setData({
           DataList: json.data,
-          PageName:json.data[0].PageName,
-          TotalNumber:json.Totaldt[0].TotalNumber,
           lastpage: json.pageCount //你的总页数   
         });
       } else {
@@ -63,24 +60,6 @@ Page({
     wx.hideLoading();
   },
 
-  JumpPage:function(e){
-    let that = this;
-    var userid = e.currentTarget.dataset.userid;
-    var type = that.data.type;
-    if(type==4){      
-      wx.navigateTo({
-        url: '../CouponAccessRecords/CouponAccessRecords?userid='+userid,
-      })
-    }
-  },
-
-  // JumpmesDetails:function(e){
-  //   var shareuserid = e.currentTarget.dataset.shareuserid;
-  //   wx.navigateTo({
-  //     url: '../mesDetails/mesDetails?shareuserid='+shareuserid,
-  //   })
-  // },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -88,11 +67,11 @@ Page({
     let that = this;
     var StartTime = options.starttime||'';
     var EndTime = options.endtime||'';
-    var type = options.type||'';
+    var userid = options.userid||'';
     that.setData({
       StartTime:StartTime,
       EndTime:EndTime,
-      type:type,
+      userid:userid
     })
   },
 

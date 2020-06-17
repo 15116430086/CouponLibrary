@@ -107,45 +107,11 @@ Page({
         }
     },
 
-    JumpPage: function (e) {
-        var tname = e.currentTarget.dataset.tname;
-        switch(tname){
-            case '首页':
-            wx.navigateTo({
-              url: '../PageAccessDetails/PageAccessDetails?type=0',
-            })
-            break;
-            case '券详情':
-            wx.navigateTo({
-              url: '../PageAccessDetails/PageAccessDetails?type=4',
-            })
-            break;
-            case '商户发券':
-                wx.navigateTo({
-                    url: '../MerchantIssuing/MerchantIssuing',
-                })
-                break;
-            case '会员领券':
-                wx.navigateTo({
-                    url: '../UserReceiveCoupon/UserReceiveCoupon?type=0',
-                })
-                break;
-            case '券核销':
-                wx.navigateTo({
-                    url: '../UserReceiveCoupon/UserReceiveCoupon?type=1',
-                })
-                break;
-            case '已退券':
-                wx.navigateTo({
-                    url: '../UserReceiveCoupon/UserReceiveCoupon?type=2',
-                })
-                break;
-            case '过期券':
-                wx.navigateTo({
-                    url: '../UserReceiveCoupon/UserReceiveCoupon?type=3',
-                })
-                break;
-        }
+    JumpPage: function (e) {  
+        var url = e.currentTarget.dataset.url;
+        wx.navigateTo({
+            url: url,
+          })
     },
 
     clkBtn(e) {
