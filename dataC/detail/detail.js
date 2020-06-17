@@ -80,12 +80,12 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-       
+
     },
 
     GetData: function () {
         wx.showLoading({
-          title: '数据加载中...',
+            title: '数据加载中...',
         })
         var data = {};
         data.startTime = this.data.sdate;
@@ -107,11 +107,50 @@ Page({
         }
     },
 
-    JumpPage: function (e) {  
+    formatDate: function (date) {
+        var myyear = date.getFullYear();
+        var mymonth = date.getMonth() + 1;
+        var myweekday = date.getDate();
+        if (mymonth < 10) {
+            mymonth = "0" + mymonth;
+        }
+        if (myweekday < 10) {
+            myweekday = "0" + myweekday;
+        }
+        return (myyear + "-" + mymonth + "-" + myweekday);
+    },
+    GetFromDate: function (day, type) {
+        var zdate = new Date();
+        var edate;
+        if (type === 1) {
+            edate = new Date(zdate.getTime() - (day * 24 * 60 * 60 * 1000));
+        } else {
+            edate = new Date(zdate.getTime() + (day * 24 * 60 * 60 * 1000));
+        }
+        return edate;
+    },
+
+    JumpPage: function (e) {
         var url = e.currentTarget.dataset.url;
+        var starttime = this.data.sdate;
+        var endtime = this.data.edate;
+        if (this.data.idx > 0) {
+            endtime = this.formatDate(this.GetFromDate(0, 0))
+            if (this.data.idx == 1) {
+                starttime = this.formatDate(this.GetFromDate(0, 0))
+
+            } else {
+                starttime = this.formatDate(this.GetFromDate(this.data.idx, 1))
+            }
+        }
+        if (url.indexOf("?") != -1) {
+            url += "&starttime=" + starttime + "&endtime=" + endtime;
+        } else {
+            url += "?starttime=" + starttime + "&endtime=" + endtime;
+        }
         wx.navigateTo({
             url: url,
-          })
+        })
     },
 
     clkBtn(e) {
@@ -155,7 +194,7 @@ Page({
                 show: false,
                 hidden: false,
                 idx: 0
-            })            
+            })
         }
 
         that.GetData();
