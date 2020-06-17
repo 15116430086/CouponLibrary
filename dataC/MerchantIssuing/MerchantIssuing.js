@@ -25,8 +25,8 @@ Page({
     data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
     data.pPageIndex = page;
     data.pPageSize = 20;
-    data.pStartTime='',
-    data.pEndTime='',
+    data.pStartTime=that.data.StartTime,
+    data.pEndTime=that.data.EndTime,
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetMerchantIssuingList", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
@@ -60,9 +60,12 @@ Page({
   },
 
   JumpMerchantIssuingDetailed:function(e){
+    let that = this;
+    var StartTime = that.data.StartTime;
+    var EndTime = that.data.EndTime;
     var sendgroupid = e.currentTarget.dataset.sendgroupid;
     wx.navigateTo({
-      url: '../UserReceiveCoupon/UserReceiveCoupon?type=0&sendgroupid='+sendgroupid,
+      url: '../UserReceiveCoupon/UserReceiveCoupon?type=0&sendgroupid='+sendgroupid+'&StartTime='+StartTime+'&EndTime='+EndTime,
     })
   },
 
@@ -71,8 +74,8 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    var StartTime = options.starttime||'';
-    var EndTime = options.endtime||'';
+    var StartTime = options.StartTime||'';
+    var EndTime = options.EndTime||'';
     that.setData({
       StartTime:StartTime,
       EndTime:EndTime

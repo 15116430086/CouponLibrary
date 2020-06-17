@@ -25,8 +25,8 @@ Page({
     data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
     data.pPageIndex = page;
     data.pPageSize = 20;
-    data.pStartTime='',
-    data.pEndTime='',
+    data.pStartTime=that.data.StartTime,
+    data.pEndTime=that.data.EndTime,
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetPageVisitShareNumber", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
@@ -62,9 +62,12 @@ Page({
 
 
   JumpsharemesDetails:function(e){
+    let that = this;
+    var StartTime = that.data.StartTime;
+    var EndTime = that.data.EndTime;
     var userid = e.currentTarget.dataset.userid;
     wx.navigateTo({
-      url: '../sharemesDetails/sharemesDetails?userid='+userid,
+      url: '../sharemesDetails/sharemesDetails?userid='+userid+'&StartTime='+StartTime+'&EndTime='+EndTime,
     })
   },
 
@@ -78,8 +81,8 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    var StartTime = options.starttime||'';
-    var EndTime = options.endtime||'';
+    var StartTime = options.StartTime||'';
+    var EndTime = options.EndTime||'';
     that.setData({
       StartTime:StartTime,
       EndTime:EndTime

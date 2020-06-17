@@ -27,8 +27,8 @@ Page({
     data.pUserID=that.data.shareuserid
     data.pPageIndex = page;
     data.pPageSize = 20;
-    data.pStartTime='',
-    data.pEndTime='',
+    data.pStartTime=that.data.StartTime,
+    data.pEndTime=that.data.EndTime,
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetGetPageVisitOpenNumberDetailed", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
@@ -65,8 +65,8 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    var StartTime = options.starttime||'';
-    var EndTime = options.endtime||'';
+    var StartTime = options.StartTime||'';
+    var EndTime = options.EndTime||'';
     var shareuserid = options.shareuserid||'';
     that.setData({
       StartTime:StartTime,

@@ -27,8 +27,8 @@ Page({
     data.pType=that.data.type;
     data.pPageIndex = page;
     data.pPageSize = 20;
-    data.pStartTime='',
-    data.pEndTime='',
+    data.pStartTime=that.data.StartTime,
+    data.pEndTime=that.data.EndTime,
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetPageAccessDetails", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
@@ -63,16 +63,18 @@ Page({
 
   JumpPage:function(e){
     let that = this;
+    var StartTime = that.data.StartTime;
+    var EndTime = that.data.EndTime;
     var userid = e.currentTarget.dataset.userid;
     var type = that.data.type;
     if(type==4){      
       wx.navigateTo({
-        url: '../CouponAccessRecords/CouponAccessRecords?userid='+userid,
+        url: '../CouponAccessRecords/CouponAccessRecords?userid='+userid+'&StartTime='+StartTime+'&EndTime='+EndTime,
       })
     }
     if(type==5){      
       wx.navigateTo({
-        url: '../ShopAccessDetails/ShopAccessDetails?userid='+userid,
+        url: '../ShopAccessDetails/ShopAccessDetails?userid='+userid+'&StartTime='+StartTime+'&EndTime='+EndTime,
       })
     }
   },
@@ -89,8 +91,8 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    var StartTime = options.starttime||'';
-    var EndTime = options.endtime||'';
+    var StartTime = options.StartTime||'';
+    var EndTime = options.EndTime||'';
     var type = options.type||'';
     that.setData({
       StartTime:StartTime,

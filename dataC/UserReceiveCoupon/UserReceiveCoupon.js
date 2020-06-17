@@ -28,8 +28,8 @@ Page({
     data.pSendgroupid=that.data.sendgroupid
     data.pPageIndex = page;
     data.pPageSize = 20;
-    data.pStartTime='',
-    data.pEndTime='',
+    data.pStartTime=that.data.StartTime,
+    data.pEndTime=that.data.EndTime,
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetCouponStateList", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
@@ -66,8 +66,8 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    var StartTime = options.starttime||'';
-    var EndTime = options.endtime||'';
+    var StartTime = options.StartTime||'';
+    var EndTime = options.EndTime||'';
     var type = options.type||'';//0会员领券 1核券 2退券 3已过期
     var sendgroupid = options.sendgroupid||'';
     that.setData({
@@ -81,9 +81,11 @@ Page({
 
   JumpUserReceiveCouponDetails:function(e){
     let that = this;
+    var StartTime = that.data.StartTime;
+    var EndTime = that.data.EndTime;
     var cuponid = e.currentTarget.dataset.cuponid;
     wx.navigateTo({
-      url: '../UserReceiveCouponDetails/UserReceiveCouponDetails?cuponid='+cuponid+'&type='+that.data.type,
+      url: '../UserReceiveCouponDetails/UserReceiveCouponDetails?cuponid='+cuponid+'&type='+that.data.type+'&StartTime='+StartTime+'&EndTime='+EndTime,
     })
   },
 

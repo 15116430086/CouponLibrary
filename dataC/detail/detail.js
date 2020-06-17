@@ -144,9 +144,9 @@ Page({
             }
         }
         if (url.indexOf("?") != -1) {
-            url += "&starttime=" + starttime + "&endtime=" + endtime;
+            url += "&StartTime=" + starttime + "&EndTime=" + endtime;
         } else {
-            url += "?starttime=" + starttime + "&endtime=" + endtime;
+            url += "?StartTime=" + starttime + "&EndTime=" + endtime;
         }
         wx.navigateTo({
             url: url,
