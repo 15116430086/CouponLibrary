@@ -1,0 +1,20 @@
+<!--dataC/CouponAccessRecords/CouponAccessRecords.wxml-->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+
+<block wx:for="{{DataList}}">
+<view class="v-all">
+	<view class="flex">
+		<view class="v-left">
+			<view class="v-title">{{item.CouponName}}</view>
+			<view class="v-mes">{{common.sysFormatDate(item.LastVisitTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
+		</view>
+		<view class="v-right">
+			<view class="v-share">访问{{item.VisitNum}}</view>
+			<view class="v-share1" wx:if="{{item.Number == 0}}">未购买</view>
+			<view class="v-share1" wx:if="{{item.Number > 0}}">已购买{{item.Number}}</view>
+			<view class="v-share1" wx:if="{{item.PinNumber > 0}}">/核销{{item.PinNumber}}</view>
+			<view class="v-share1" wx:if="{{item.RetreatNumber > 0}}">/退券{{item.RetreatNumber}}</view>
+		</view>
+	</view>
+</view>
+</block>
