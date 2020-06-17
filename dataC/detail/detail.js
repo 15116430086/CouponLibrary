@@ -1,6 +1,6 @@
 // data/detail/detail.js
 let utils = require("../../utils/util.js")
-
+const app = getApp();
 Page({
 
     /**
@@ -12,22 +12,23 @@ Page({
                 txt: '今天'
             },
             {
-                id: 2,
+                id: 3,
                 txt: '三天内'
             },
             {
-                id: 3,
+                id: 7,
                 txt: '一周内'
             },
             {
-                id: 4,
+                id: 30,
                 txt: '一个月内'
             }
         ],
-        date: "日期",
+        sdate: "选择日期",
+        edate: "选择日期",
         idx: 1,
         currentDate: new Date().getTime(),
-        minDate: new Date().getTime(),
+        minDate: new Date('2020-01-01').getTime(),
         formatter(type, value) {
             if (type === 'year') {
                 return `${value}年`;
@@ -36,78 +37,7 @@ Page({
             }
             return value;
         },
-        databox: [{
-                name: "访问深度",
-                span: "(页面访问人数)",
-                data: [{
-                        tname: "首页",
-                        num: "20" + `人`
-                    },
-                    {
-                        tname: "券详情",
-                        num: "80" + `人`
-                    },
-                    {
-                        tname: "店铺页",
-                        num: "61" + `人`
-                    },
-                    {
-                        tname: "我的券",
-                        num: "20" + `人`
-                    },
-                    {
-                        tname: "订单页",
-                        num: "40" + `人`
-                    },
-                    {
-                        tname: "个人中心",
-                        num: "60" + `人`
-                    },
-                ]
-            },
-            {
-                name: "券动态",
-                span: "(券/张)",
-                data: [{
-                        tname: "商户发券",
-                        num: "99999" + `张`
-                    },
-                    {
-                        tname: "会员领券",
-                        num: "80" + `张`
-                    },
-                    {
-                        tname: "券核销",
-                        num: "61" + `张`
-                    },
-                    {
-                        tname: "过期券",
-                        num: "20" + `张`
-                    },
-                    {
-                        tname: "已退券",
-                        num: "40" + `张`
-                    }
-                ]
-            },
-            {
-                name: "用户转化",
-                span: "(/人员转化数)",
-                data: [{
-                        tname: "浏览人数",
-                        num: "99999" + `人`
-                    },
-                    {
-                        tname: "购券人数",
-                        num: "480" + `人`
-                    },
-                    {
-                        tname: "核券人数",
-                        num: "561" + `人`
-                    }
-                ]
-            }
-        ],
+        databox: [],
         cell: [{
                 id: 1,
                 txt: '用户名'
@@ -127,69 +57,57 @@ Page({
         ],
         cell1: [{
                 id: 1,
-                txt: '店铺名称'
+                txt: '商户名称'
             },
             {
                 id: 2,
-                txt: '售券数量'
+                txt: '发券数量'
             },
             {
                 id: 3,
-                txt: '核券数量'
+                txt: '售券数量'
             },
             {
                 id: 4,
-                txt: '过期数量'
+                txt: '核券数量'
             }
         ],
-        mebCell: [{
-                name: "遭不住的夏天已经来了a已经来了已经来了",
-                share: 102,
-                open: 2000,
-                reg: 9999
-            },
-            {
-                name: "遭不住的夏天已经来了a已经来了已经来了",
-                share: 102,
-                open: 2000,
-                reg: 9999
-            },
-            {
-                name: "遭不住的夏天已经来了a已经来了已经来了",
-                share: 102,
-                open: 2000,
-                reg: 9999
-            }
-        ],
-        shopCell: [{
-                name: "愿者上钩纸包 鱼",
-                share: 102,
-                open: 2000,
-                reg: 9999
-            },
-            {
-                name: "闽医堂·推拿 养生",
-                share: 102,
-                open: 2000,
-                reg: 9999
-            },
-            {
-                name: "丽车缘汽车服 务中心(入驻)",
-                share: 102,
-                open: 2000,
-                reg: 9999
-            }
-        ],
+        mebCell: [],
+        shopCell: [],
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function(options) {
-
+    onLoad: function (options) {
+       
     },
 
-    JumpPage:function(e){
+    GetData: function () {
+        wx.showLoading({
+          title: '数据加载中...',
+        })
+        var data = {};
+        data.startTime = this.data.sdate;
+        data.endTime = this.data.edate;
+        data.dayNum = this.data.idx;
+        data.AffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
+        utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponHomeView/GetDataAnalysisHome", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    },
+
+    GetDataBack: function (json) {
+        wx.hideLoading();
+        var json = json.data.Data;
+        if (json.flag) {
+            this.setData({
+                databox: json.DataCount,
+                mebCell: json.ShareRanking,
+                shopCell: json.SellCouponRanking
+            })
+        }
+    },
+
+    JumpPage: function (e) {
         var tname = e.currentTarget.dataset.tname;
         switch(tname){
             case '首页':
@@ -203,33 +121,33 @@ Page({
             })
             break;
             case '商户发券':
-            wx.navigateTo({
-              url: '../MerchantIssuing/MerchantIssuing',
-            })
-            break;
+                wx.navigateTo({
+                    url: '../MerchantIssuing/MerchantIssuing',
+                })
+                break;
             case '会员领券':
-            wx.navigateTo({
-              url: '../UserReceiveCoupon/UserReceiveCoupon?type=0',
-            })
-            break;
+                wx.navigateTo({
+                    url: '../UserReceiveCoupon/UserReceiveCoupon?type=0',
+                })
+                break;
             case '券核销':
-            wx.navigateTo({
-              url: '../UserReceiveCoupon/UserReceiveCoupon?type=1',
-            })
-            break;
+                wx.navigateTo({
+                    url: '../UserReceiveCoupon/UserReceiveCoupon?type=1',
+                })
+                break;
             case '已退券':
-            wx.navigateTo({
-              url: '../UserReceiveCoupon/UserReceiveCoupon?type=2',
-            })
-            break;
+                wx.navigateTo({
+                    url: '../UserReceiveCoupon/UserReceiveCoupon?type=2',
+                })
+                break;
             case '过期券':
-            wx.navigateTo({
-              url: '../UserReceiveCoupon/UserReceiveCoupon?type=3',
-            })
-            break;            
+                wx.navigateTo({
+                    url: '../UserReceiveCoupon/UserReceiveCoupon?type=3',
+                })
+                break;
         }
     },
-    
+
     clkBtn(e) {
         let id = e.currentTarget.dataset.id;
         let that = this;
@@ -237,12 +155,17 @@ Page({
         that.setData({
             idx: id
         })
+        that.GetData();
     },
 
     // 显示日期
     showTime(e) {
         let that = this;
-        that.setData({ show: true, hidden: true });
+        that.setData({
+            show: true,
+            hidden: true,
+            datatype: e.currentTarget.dataset.datetype
+        });
     },
 
     // 日期选择
@@ -252,58 +175,76 @@ Page({
         let timer = e.detail;
         timer = utils.formatTime(timer);
         console.log(timer)
-        that.setData({
-            date: timer,
-            show: false,
-            hidden: false
+        if (that.data.datatype == 0) {
+            that.setData({
+                sdate: timer,
+                show: false,
+                hidden: false,
+                idx: 0
+            })
+        }
+        if (that.data.datatype == 1) {
+            that.setData({
+                edate: timer,
+                show: false,
+                hidden: false,
+                idx: 0
+            })            
+        }
+
+        that.GetData();
+    },
+    onClose() {
+        this.setData({
+            show: false
         })
     },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
-    onReady: function() {
+    onReady: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function() {
-
+    onShow: function () {
+        this.GetData();
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
-    onHide: function() {
+    onHide: function () {
 
     },
 
     /**
      * 生命周期函数--监听页面卸载
      */
-    onUnload: function() {
+    onUnload: function () {
 
     },
 
     /**
      * 页面相关事件处理函数--监听用户下拉动作
      */
-    onPullDownRefresh: function() {
+    onPullDownRefresh: function () {
 
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
-    onReachBottom: function() {
+    onReachBottom: function () {
 
     },
 
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function() {
+    onShareAppMessage: function () {
 
     }
 })

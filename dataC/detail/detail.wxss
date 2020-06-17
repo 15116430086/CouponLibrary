@@ -67,6 +67,7 @@ page {
     background-color: #E85819;
     color: #FFFFFF;
     border-radius: 12rpx;
+
 }
 
 .m-title {
