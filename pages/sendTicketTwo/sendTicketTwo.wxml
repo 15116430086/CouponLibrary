@@ -42,6 +42,12 @@
     <view class="ticket-name">销售价</view>
     <input type="number" value="{{pCoupon_Info.SalePrice}}"  placeholder="设置销售价" name="SalePrice" placeholder-class="pclass" />
   </view>
+
+  <view class="ticket-block" >
+    <view class="ticket-name">预付比例(%)</view>
+    <input type="number" value="{{pCoupon_Info.PrepaymentRatio}}"  placeholder="预付比例" name="PrepaymentRatio" placeholder-class="pclass" />
+  </view>
+
   <!-- 领购规则 -->
   <view class="ticket-block" bindtap="clickRule">
     <view class="ticket-name">会员领取规则</view>
