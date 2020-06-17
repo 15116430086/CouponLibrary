@@ -25,7 +25,9 @@ Page({
         id: 2
       }
     ],
-    show: -1
+    show: -1,
+    backnum:'',
+    butclek:true,
   },
 
   onBindBotOneTap: function(event) {
@@ -110,11 +112,13 @@ Page({
   },
   onEnterBack: function(e) {
     let that = this;
-    let ReceiveID = e.target.dataset.receiveid
-    let ReceiveNUM = e.target.dataset.receivenum
-    let GiveNUM = e.target.dataset.givenum
-    let oBalanceNum = ReceiveNUM - GiveNUM
-    let backnum = this.data.backnum
+    let ReceiveID = e.target.dataset.receiveid;
+    let ReceiveNUM = e.target.dataset.receivenum;
+    let RefundNum=e.target.dataset.refundnum;
+    let GiveNUM = e.target.dataset.givenum;
+    let oBalanceNum = ReceiveNUM - GiveNUM-RefundNum;
+    let backnum = this.data.backnum;
+    
     if (backnum <= 0) {
       wx.showToast({
         title: '请输入退券数量！',
@@ -133,23 +137,29 @@ Page({
 
       return;
     }
-    //显示 加载中的提示
-    wx.showLoading({
-      title: '退券中...',
-    })
-    var data = {
-      pGroupID: app.globalData.AppGroupInfo.GroupID,
-      pReceiveID: ReceiveID,
-      pBackNUM: backnum
+    if(this.data.butclek){
+      this.data.butclek=false;
+        //显示 加载中的提示
+        wx.showLoading({
+          title: '退券中...',
+        })
+        var data = {
+          ReceiveID: ReceiveID,
+          number: backnum
+        }
+
+        //utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/BackReceiveCouponInfo", "POST", data, app.globalData.appkeyid, that.ReceiveCouponInfoBack)
+        utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/Businessendrefund", "POST", data, app.globalData.appkeyid, that.ReceiveCouponInfoBack)
+
     }
 
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/BackReceiveCouponInfo", "POST", data, app.globalData.appkeyid, that.ReceiveCouponInfoBack)
-
+   
   },
 
   ReceiveCouponInfoBack: function(json) {
     let that = this;
     var json = json.data.Data;
+    this.data.butclek=true;
     //隐藏 加载中的提示
     wx.hideLoading();
     if (json.flag) {
