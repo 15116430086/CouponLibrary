@@ -6,12 +6,12 @@
 	</view>
 
 <block wx:for="{{DataList}}">
-	<view class="v-block">
+	<view class="v-block" data-sendgroupid="{{item.SendGroupID}}" bindtap="JumpMerchantIssuingDetailed">
 		<view class="v-left">
 			<image src="{{item.ImageOne}}" class="v-img" />
 			<view class="v-mes">
 				<view class="v-name">{{item.GroupName}}</view>
-				<!-- <view class="v-time">{{common.sysFormatDate(item.LastVisitTime,"yyyy-MM-dd hh:mm:ss",true)}}</view> -->
+				<view class="v-time">{{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd hh:mm:ss",true)}}</view>
 			</view>
 		</view>
 		<view class="v-right">

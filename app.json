@@ -127,7 +127,10 @@
             "mes/mes",
             "child/child",
             "sharemes/sharemes",
-            "MerchantIssuing/MerchantIssuing"
+            "MerchantIssuing/MerchantIssuing",
+            "UserReceiveCoupon/UserReceiveCoupon",
+            "UserReceiveCouponDetails/UserReceiveCouponDetails",
+            "sharemesDetails/sharemesDetails"
         ]
     }],
     "permission": {
@@ -137,7 +140,7 @@
     },
     "plugins": {
         "chooseLocation": {
-            "version": "1.0.3",
+            "version": "1.0.4",
             "provider": "wx76a9a06e5b4e693e"
         }
     },

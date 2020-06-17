@@ -1,4 +1,4 @@
-// data/mes/mes.js
+// dataC/mesDetails/mesDetails.js
 var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1; //初始化页数
@@ -13,6 +13,7 @@ Page({
     StartTime:'',
     EndTime:'',
     lastpage: 0,
+    shareuserid:'',
   },
 
   GetData: function () {
@@ -23,11 +24,12 @@ Page({
     })
     var data = {};
     data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
+    data.pUserID=that.data.shareuserid
     data.pPageIndex = page;
     data.pPageSize = 20;
     data.pStartTime='',
     data.pEndTime='',
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetMerchantIssuingList", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetGetPageVisitOpenNumberDetailed", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
     let that = this;
@@ -37,7 +39,6 @@ Page({
       if (page == 1) {
         that.setData({
           DataList: json.data,
-          TotalNumber:json.Totaldt[0].TotalNumber,
           lastpage: json.pageCount //你的总页数   
         });
       } else {
@@ -59,13 +60,6 @@ Page({
     wx.hideLoading();
   },
 
-  JumpMerchantIssuingDetailed:function(e){
-    var sendgroupid = e.currentTarget.dataset.sendgroupid;
-    wx.navigateTo({
-      url: '../UserReceiveCoupon/UserReceiveCoupon?type=0&sendgroupid='+sendgroupid,
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -73,9 +67,11 @@ Page({
     let that = this;
     var StartTime = options.starttime||'';
     var EndTime = options.endtime||'';
+    var shareuserid = options.shareuserid||'';
     that.setData({
       StartTime:StartTime,
-      EndTime:EndTime
+      EndTime:EndTime,
+      shareuserid:shareuserid
     })
   },
 
