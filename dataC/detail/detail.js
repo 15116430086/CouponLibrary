@@ -192,6 +192,16 @@ Page({
     JumpPage:function(e){
         var tname = e.currentTarget.dataset.tname;
         switch(tname){
+            case '首页':
+            wx.navigateTo({
+              url: '../PageAccessDetails/PageAccessDetails?type=0',
+            })
+            break;
+            case '券详情':
+            wx.navigateTo({
+              url: '../PageAccessDetails/PageAccessDetails?type=4',
+            })
+            break;
             case '商户发券':
             wx.navigateTo({
               url: '../MerchantIssuing/MerchantIssuing',

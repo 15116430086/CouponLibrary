@@ -130,7 +130,8 @@
             "MerchantIssuing/MerchantIssuing",
             "UserReceiveCoupon/UserReceiveCoupon",
             "UserReceiveCouponDetails/UserReceiveCouponDetails",
-            "sharemesDetails/sharemesDetails"
+            "sharemesDetails/sharemesDetails",
+            "PageAccessDetails/PageAccessDetails"
         ]
     }],
     "permission": {
