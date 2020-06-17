@@ -133,8 +133,8 @@ Page({
       WriteOffType: 0, //核销方式
       SalePrice: 0, //领购售价
       CouponID: "",
-      IsAppointProduct: 0
-
+      IsAppointProduct: 0,
+      PrepaymentRatio:100
     },
     imageOne: "",
     imageTwo: "",
@@ -175,8 +175,8 @@ Page({
       Coupon_Info.WriteOffType = Info.WriteOffType;
       Coupon_Info.SalePrice = Info.SalePrice;
       Coupon_Info.CouponID = Info.CouponID;
-      Coupon_Info.IsAppointProduct = Info.IsAppointProduct
-
+      Coupon_Info.IsAppointProduct = Info.IsAppointProduct;
+      Coupon_Info.PrepaymentRatio=Info.PrepaymentRatio*100;
       var data = {
         pCouponID: Info.CouponID
       }
@@ -315,7 +315,8 @@ Page({
     pCoupon_Info.CouponMoney = val.CouponMoney; //券面值
     pCoupon_Info.CouponType = that.data.currentId;
     pCoupon_Info.ReceiveUpperLimit = val.ReceiveUpperLimit; //领取上限
-    pCoupon_Info.SalePrice = val.SalePrice
+    pCoupon_Info.SalePrice = val.SalePrice;
+    pCoupon_Info.PrepaymentRatio=val.PrepaymentRatio/100;
     pCoupon_Info.AffiliatedGroupID=app.globalData.AppGroupInfo.AffiliatedGroupID;//运营商编号
 
     if (that.data.currentId == 1)
