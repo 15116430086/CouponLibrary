@@ -116,10 +116,6 @@ Page({
           return [x, y];
 
 
-        },
-        formatter: function (params, ) {
-          let value = params[0].value
-          return `新增:` + value
         }
       },
       xAxis: {
@@ -163,6 +159,7 @@ Page({
         type: 'line',
         itemStyle: {
           normal: {
+            label:{show:true},
             color: '#E85819',
             lineStyle: {
               color: '#E85819'
@@ -298,6 +295,7 @@ Page({
             }
           }
         },
+        itemStyle:{normal:{show:true}},
         smooth: false,
         data: [48, 56, 75, 50, 18, 30, 23]
       }]
@@ -508,6 +506,12 @@ Page({
   GroupList:function () {
     wx.navigateTo({
       url: '../GroupList/GroupList',
+    })
+  },
+  onDataAnalysis:function()
+  {
+    wx.navigateTo({
+      url: '/dataC/detail/detail',
     })
   },
   onShareAppMessage: function (res) {
