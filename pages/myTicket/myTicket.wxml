@@ -56,7 +56,7 @@
       <van-popup show="{{ show==index }}" bind:close="onClose" round>
         <view class="v-model">
           <view class="vm-title">{{item.CouponName}}</view>
-          <view class="vm-tip">退款金额:{{common.sysFdistance((item.ReceiveMoney / item.ReceiveNUM)*backnum)}}</view>
+          <view class="vm-tip">退款金额:{{common.sysFdistance((item.PrepaymentAmount / item.ReceiveNUM)*backnum)}}</view>
           <view class="vm-imput">
             <image src="/static/images/bi.png" />
             <input bindblur="onInputBlur" value="{{backnum}}" placeholder="最多可退数量{{item.ReceiveNUM-item.GiveNUM-item.RefundNum}}" placeholder-class="ip"/>
