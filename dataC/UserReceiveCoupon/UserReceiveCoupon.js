@@ -24,12 +24,12 @@ Page({
       title: '数据加载中...',
     })
     var data = {};
-    data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
+    data.pAffiliatedGroupID = 15308;//app.globalData.AppGroupInfo.AffiliatedGroupID;
     data.pSendgroupid=that.data.sendgroupid
     data.pPageIndex = page;
     data.pPageSize = 20;
-    data.pStartTime=that.data.StartTime,
-    data.pEndTime=that.data.EndTime,
+    data.pStartTime='';//that.data.StartTime,
+    data.pEndTime='';//that.data.EndTime,
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetCouponStateList", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
