@@ -79,13 +79,6 @@ Page({
     }
   },
 
-  // JumpmesDetails:function(e){
-  //   var shareuserid = e.currentTarget.dataset.shareuserid;
-  //   wx.navigateTo({
-  //     url: '../mesDetails/mesDetails?shareuserid='+shareuserid,
-  //   })
-  // },
-
   /**
    * 生命周期函数--监听页面加载
    */
