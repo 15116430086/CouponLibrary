@@ -116,10 +116,6 @@ Page({
           return [x, y];
 
 
-        },
-        formatter: function (params, ) {
-          let value = params[0].value
-          return `新增:` + value
         }
       },
       xAxis: {
@@ -510,6 +506,12 @@ Page({
   GroupList:function () {
     wx.navigateTo({
       url: '../GroupList/GroupList',
+    })
+  },
+  onDataAnalysis:function()
+  {
+    wx.navigateTo({
+      url: '/dataC/detail/detail',
     })
   },
   onShareAppMessage: function (res) {
