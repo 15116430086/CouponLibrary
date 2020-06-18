@@ -163,6 +163,7 @@ Page({
         type: 'line',
         itemStyle: {
           normal: {
+            label:{show:true},
             color: '#E85819',
             lineStyle: {
               color: '#E85819'
@@ -298,6 +299,7 @@ Page({
             }
           }
         },
+        itemStyle:{normal:{show:true}},
         smooth: false,
         data: [48, 56, 75, 50, 18, 30, 23]
       }]
