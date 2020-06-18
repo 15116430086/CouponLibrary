@@ -7,7 +7,7 @@
 	<view class="v-block">
 		<view class="v-title">{{item.CouponName}}</view>
 		<view class="v-bot">
-			<view class="v-mes">{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
+			<view class="v-mes">{{item.GroupName}}</view>
 			<view class="v-send">
 				<view class="send">发券{{item.fbnumber}}<text>/已领{{item.ylNumber}}</text></view>
 				<image src="/static/images/right-arr1.png"></image>
@@ -23,7 +23,7 @@
 	<view class="v-block">
 		<view class="v-title">{{item.CouponName}}</view>
 		<view class="v-bot">
-			<view class="v-mes">{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
+			<view class="v-mes">{{item.GroupName}}</view>
 			<view class="v-send">
 				<view class="send">已领{{item.ylNumber}}<text>/核销{{item.PinNumber}}</text></view>
 				<image src="/static/images/right-arr1.png"></image>
@@ -39,7 +39,7 @@
 	<view class="v-block">
 		<view class="v-title">{{item.CouponName}}</view>
 		<view class="v-bot">
-			<view class="v-mes">{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
+			<view class="v-mes">{{item.GroupName}}</view>
 			<view class="v-send">
 				<view class="send">已领{{item.ylNumber}}<text>/退券{{item.RetreatNumber}}</text></view>
 				<image src="/static/images/right-arr1.png"></image>
@@ -55,7 +55,7 @@
 	<view class="v-block">
 		<view class="v-title">{{item.CouponName}}</view>
 		<view class="v-bot">
-			<view class="v-mes">{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
+			<view class="v-mes">{{item.GroupName}}</view>
 			<view class="v-send">
 				<view class="send">已领{{item.ylNumber}}<text>/过期{{item.OverdueNumber}}</text></view>
 				<image src="/static/images/right-arr1.png"></image>
