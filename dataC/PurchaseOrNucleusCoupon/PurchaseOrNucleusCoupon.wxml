@@ -1,0 +1,25 @@
+<!--dataC/PurchaseOrNucleusCoupon/PurchaseOrNucleusCoupon.wxml-->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<view class="v-all">
+	<view class="tip-block">
+		当前时间段购券人数:<text>{{DataList.length}}</text>
+	</view>
+
+<block wx:for="{{DataList}}">
+	<view class="v-block" data-userid="{{item.UserID}}" bindtap="JumpPurchaseOrNucleusCouponDetails">
+		<view class="v-left">
+			<image src="{{item.UserAvatar}}" class="v-img" />
+			<view class="v-mes">
+				<view class="v-name">{{item.UserName}}</view>
+				<view class="v-time" wx:if="{{type==0}}">{{common.sysFormatDate(item.PayDate,"yyyy-MM-dd hh:mm:ss",true)}}</view>
+				<view class="v-time" wx:if="{{type==1}}">{{common.sysFormatDate(item.WriteOffDate,"yyyy-MM-dd hh:mm:ss",true)}}</view>
+			</view>
+		</view>
+		<view class="v-right">
+			<view class="v-span" wx:if="{{type==0}}">购券{{item.Number}}张</view>
+			<view class="v-span" wx:if="{{type==1}}">核销{{item.Number}}张</view>
+			<image src="/static/images/right-arr1.png" />
+		</view>
+	</view>
+</block>
+</view>

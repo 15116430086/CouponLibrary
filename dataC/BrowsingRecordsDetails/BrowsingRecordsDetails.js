@@ -1,4 +1,4 @@
-// dataC/ShopAccessDetails/ShopAccessDetails.js
+// dataC/BrowsingRecordsDetails/BrowsingRecordsDetails.js
 var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1; //初始化页数
@@ -29,7 +29,7 @@ Page({
     data.pPageSize = 20;
     data.pStartTime=that.data.StartTime,
     data.pEndTime=that.data.EndTime,
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetShopAccessDetails", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetBrowsingRecordsDetails", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
     let that = this;
@@ -60,15 +60,6 @@ Page({
     wx.hideLoading();
   },
 
-  JumpAccessRecordsShop:function(e){
-    let that = this;
-    var groupid = e.currentTarget.dataset.groupid;
-    var userid=that.data.userid;
-    wx.navigateTo({
-      url: '../AccessRecordsShop/AccessRecordsShop?groupid='+groupid+'&userid='+userid,
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -82,6 +73,21 @@ Page({
       EndTime:EndTime,
       userid:userid,
     })
+  },
+
+
+  
+  JumpCouponOrShopBrowseDetails:function(e){
+    let that = this;
+    var StartTime = that.data.StartTime;
+    var EndTime = that.data.EndTime;
+    var userid = that.data.userid;
+    var pagetypeid = e.currentTarget.dataset.pagetypeid;
+    if(pagetypeid==4 || pagetypeid==5){
+      wx.navigateTo({
+        url: '../CouponOrShopBrowseDetails/CouponOrShopBrowseDetails?userid='+userid+'&StartTime='+StartTime+'&EndTime='+EndTime+'&pagetypeid='+pagetypeid,
+      })
+    }
   },
 
   /**

@@ -1,4 +1,4 @@
-// dataC/ShopAccessDetails/ShopAccessDetails.js
+// dataC/BrowsingRecords/BrowsingRecords.js
 var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1; //初始化页数
@@ -13,7 +13,6 @@ Page({
     StartTime:'',
     EndTime:'',
     lastpage: 0,
-    userid:'',
   },
 
   GetData: function () {
@@ -24,12 +23,11 @@ Page({
     })
     var data = {};
     data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
-    data.pUserID=that.data.userid;
     data.pPageIndex = page;
     data.pPageSize = 20;
     data.pStartTime=that.data.StartTime,
     data.pEndTime=that.data.EndTime,
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetShopAccessDetails", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetBrowsingRecords", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
     let that = this;
@@ -60,12 +58,13 @@ Page({
     wx.hideLoading();
   },
 
-  JumpAccessRecordsShop:function(e){
+  JumpBrowsingRecordsDetails:function(e){
     let that = this;
-    var groupid = e.currentTarget.dataset.groupid;
-    var userid=that.data.userid;
+    var StartTime = that.data.StartTime;
+    var EndTime = that.data.EndTime;
+    var userid = e.currentTarget.dataset.userid;
     wx.navigateTo({
-      url: '../AccessRecordsShop/AccessRecordsShop?groupid='+groupid+'&userid='+userid,
+      url: '../BrowsingRecordsDetails/BrowsingRecordsDetails?userid='+userid+'&StartTime='+StartTime+'&EndTime='+EndTime,
     })
   },
 
@@ -76,11 +75,9 @@ Page({
     let that = this;
     var StartTime = options.StartTime||'';
     var EndTime = options.EndTime||'';
-    var userid=options.userid||'';
     that.setData({
       StartTime:StartTime,
       EndTime:EndTime,
-      userid:userid,
     })
   },
 

@@ -1,17 +1,17 @@
-<!--data/ShopAccessDetails/ShopAccessDetails.wxml-->
+<!--data/CouponOrShopBrowseDetails/CouponOrShopBrowseDetails.wxml-->
 <wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="v-all">
 <block wx:for="{{DataList}}">
-	<view class="v-block" data-groupid="{{item.GroupID}}" bindtap="JumpAccessRecordsShop">
+	<view class="v-block">
 		<view class="v-left">
 			<view class="v-mes">
-				<view class="v-name">{{item.ShopName}}</view>
+				<view class="v-name" wx:if="{{pagetypeid==4}}">{{item.CouponName}}</view>
+				<view class="v-name" wx:if="{{pagetypeid==5}}">{{item.ShopName}}</view>
 				<view class="v-time">{{common.sysFormatDate(item.LastVisitTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
 			</view>
 		</view>
 		<view class="v-right">
-			<view class="v-span">访问{{item.TotalVisitNum}}次</view>
-			<image src="/static/images/right-arr1.png" />
+			<view class="v-span">浏览{{item.VisitNum}}次</view>
 		</view>
 	</view>
 </block>

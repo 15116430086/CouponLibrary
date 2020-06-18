@@ -1,0 +1,104 @@
+/* dataC/PurchaseOrNucleusCouponDetails/PurchaseOrNucleusCouponDetails.wxss */
+
+page {
+    background-color: #ededed;
+}
+
+.v-all {
+    width: 100%;
+    height: auto;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tip-block {
+    width: calc(100% - 80rpx);
+    height: 72rpx;
+    text-align: center;
+    line-height: 72rpx;
+    font-size: 28rpx;
+    color: #333333;
+    background-color: #FFF4E6;
+    font-weight: 600;
+    margin: 20rpx auto;
+}
+
+.tip-block text {
+    color: #E85819;
+}
+
+.v-img {
+    border-radius: 50%;
+    width: 88rpx;
+    height: 88rpx;
+    flex-shrink: 0;
+}
+
+.v-left {
+    width: 480rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-block {
+    width: calc(100% - 80rpx);
+    height: 120rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.v-mes {
+    width: calc(100% - 116rpx);
+    height: 88rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.v-name {
+    width: 100%;
+    color: #333333;
+    font-size: 28rpx;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.v-time {
+    width: 100%;
+    color: #999999;
+    font-size: 24rpx;
+}
+
+.v-span {
+    width: 140rpx;
+    height: 50rpx;
+    background-color: #FFF4E6;
+    font-size: 24rpx;
+    text-align: center;
+    border-radius: 8rpx;
+    line-height: 50rpx;
+    color: #FF8700;
+}
+
+.v-right image {
+    width: 10rpx;
+    height: 18rpx;
+    flex-shrink: 0;
+    margin-left: 20rpx;
+}
+
+.v-right {
+    width: calc(100% - 500rpx);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}

@@ -1,4 +1,4 @@
-// dataC/ShopAccessDetails/ShopAccessDetails.js
+// dataC/PurchaseOrNucleusCouponDetails/PurchaseOrNucleusCouponDetails.js
 var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1; //初始化页数
@@ -14,6 +14,7 @@ Page({
     EndTime:'',
     lastpage: 0,
     userid:'',
+    type:'',
   },
 
   GetData: function () {
@@ -24,12 +25,13 @@ Page({
     })
     var data = {};
     data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
+    data.pType=that.data.type;
     data.pUserID=that.data.userid;
     data.pPageIndex = page;
     data.pPageSize = 20;
     data.pStartTime=that.data.StartTime,
     data.pEndTime=that.data.EndTime,
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetShopAccessDetails", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetPurchaseOrNucleusCouponDetails", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
     let that = this;
@@ -60,15 +62,6 @@ Page({
     wx.hideLoading();
   },
 
-  JumpAccessRecordsShop:function(e){
-    let that = this;
-    var groupid = e.currentTarget.dataset.groupid;
-    var userid=that.data.userid;
-    wx.navigateTo({
-      url: '../AccessRecordsShop/AccessRecordsShop?groupid='+groupid+'&userid='+userid,
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -77,10 +70,12 @@ Page({
     var StartTime = options.StartTime||'';
     var EndTime = options.EndTime||'';
     var userid=options.userid||'';
+    var type = options.type||'';
     that.setData({
       StartTime:StartTime,
       EndTime:EndTime,
       userid:userid,
+      type:type,
     })
   },
 
