@@ -3,7 +3,7 @@
 
 <!-- type=0 领券 -->
 <block wx:for="{{DataList}}" wx:if="{{type==0}}">
-<view class="v-all" data-cuponid="{{item.CouponID}}" bindtap="JumpUserReceiveCouponDetails">
+<view class="v-all" data-couponid="{{item.CouponID}}" bindtap="JumpUserReceiveCouponDetails">
 	<view class="v-block">
 		<view class="v-title">{{item.CouponName}}</view>
 		<view class="v-bot">
@@ -19,7 +19,7 @@
 
 <!-- type=1 核券 -->
 <block wx:for="{{DataList}}" wx:if="{{type==1 && item.PinNumber>0}}">
-<view class="v-all" data-cuponid="{{item.CouponID}}" bindtap="JumpUserReceiveCouponDetails">
+<view class="v-all" data-couponid="{{item.CouponID}}" bindtap="JumpUserReceiveCouponDetails">
 	<view class="v-block">
 		<view class="v-title">{{item.CouponName}}</view>
 		<view class="v-bot">
@@ -35,7 +35,7 @@
 
 <!-- type=2 退券 -->
 <block wx:for="{{DataList}}" wx:if="{{type==2 && item.RetreatNumber>0}}">
-<view class="v-all" data-cuponid="{{item.CouponID}}" bindtap="JumpUserReceiveCouponDetails">
+<view class="v-all" data-couponid="{{item.CouponID}}" bindtap="JumpUserReceiveCouponDetails">
 	<view class="v-block">
 		<view class="v-title">{{item.CouponName}}</view>
 		<view class="v-bot">
@@ -51,7 +51,7 @@
 
 <!-- type=3 已过期 -->
 <block wx:for="{{DataList}}" wx:if="{{type==3 && item.OverdueNumber>0}}">
-<view class="v-all" data-cuponid="{{item.CouponID}}" bindtap="JumpUserReceiveCouponDetails">
+<view class="v-all" data-couponid="{{item.CouponID}}" bindtap="JumpUserReceiveCouponDetails">
 	<view class="v-block">
 		<view class="v-title">{{item.CouponName}}</view>
 		<view class="v-bot">

@@ -13,7 +13,7 @@ Page({
     StartTime:'',
     EndTime:'',
     lastpage: 0,
-    cuponid:''
+    couponid:''
   },
 
   GetData: function () {
@@ -25,7 +25,7 @@ Page({
     var data = {};
     data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
     data.pType=that.data.type;
-    data.pCouponID=that.data.cuponid;
+    data.pCouponID=that.data.couponid;
     data.pPageIndex = page;
     data.pPageSize = 20;
     data.pStartTime=that.data.StartTime,
@@ -68,12 +68,12 @@ Page({
     let that = this;
     var StartTime = options.StartTime||'';
     var EndTime = options.EndTime||'';
-    var cuponid = options.cuponid||'';
+    var couponid = options.couponid||'';
     var type = options.type||'';//0会员领券 1核券 2退券 3已过期
     that.setData({
       StartTime:StartTime,
       EndTime:EndTime,
-      cuponid:cuponid,
+      couponid:couponid,
       type:type
     })
   },

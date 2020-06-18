@@ -24,12 +24,12 @@ Page({
       title: '数据加载中...',
     })
     var data = {};
-    data.pAffiliatedGroupID = 15308;//app.globalData.AppGroupInfo.AffiliatedGroupID;
+    data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
     data.pSendgroupid=that.data.sendgroupid
     data.pPageIndex = page;
     data.pPageSize = 20;
-    data.pStartTime='';//that.data.StartTime,
-    data.pEndTime='';//that.data.EndTime,
+    data.pStartTime=that.data.StartTime,
+    data.pEndTime=that.data.EndTime,
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetCouponStateList", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
@@ -83,9 +83,9 @@ Page({
     let that = this;
     var StartTime = that.data.StartTime;
     var EndTime = that.data.EndTime;
-    var cuponid = e.currentTarget.dataset.cuponid;
+    var couponid = e.currentTarget.dataset.couponid;
     wx.navigateTo({
-      url: '../UserReceiveCouponDetails/UserReceiveCouponDetails?cuponid='+cuponid+'&type='+that.data.type+'&StartTime='+StartTime+'&EndTime='+EndTime,
+      url: '../UserReceiveCouponDetails/UserReceiveCouponDetails?couponid='+couponid+'&type='+that.data.type+'&StartTime='+StartTime+'&EndTime='+EndTime,
     })
   },
 
