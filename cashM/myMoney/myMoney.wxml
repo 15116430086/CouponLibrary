@@ -1,9 +1,10 @@
 <!--cashM/myMoney/myMoney.wxml-->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="v-box">
   <view class="v-block">
     <view class="v-top">
       <view class="v-title">待结算资金  (元)</view>
-      <view class="v-cash">{{sumBalanceMoney}}</view>
+      <view class="v-cash">{{sumBalanceMoney==null?0:sumBalanceMoney}}</view>
     </view>
     <!-- <view class="v-mid">佣金退还¥{{sumDrawbackMoney}} | 佣金收入¥{{sumCommissionMoney}} | 代收资金¥{{sumCollectionMoney}}</view> -->
     <view class="v-mid">
@@ -21,7 +22,7 @@
       </view>
       <view class="v-mid-block" style="border:none">
         <view class="v-title">佣金  (元)</view>
-        <view class="vmb-money">{{sumCollectionMoney}}</view>
+        <view class="vmb-money">{{sumCollectionMoney==null?0:sumCollectionMoney}}</view>
       </view>
     </view>
   </view>
@@ -38,15 +39,18 @@
 </navigator>
 
 <view class="c-box">
-  <view class="c-block">
-    <image src="/static/images/logo.png" mode="aspectFit"></image>
+<block wx:for="{{DataList}}">
+    <view class="c-block">
+    <image src="{{item.ImageOne}}" mode="aspectFit"></image>
     <view class="c-right">
-      <view class="c-name">全场专业器械指导课程次卡优惠券</view>
-      <view class="c-span">购券999张 I 单价¥999 I 售价¥999 I 预付¥999</view>
+      <view class="c-name">{{item.CouponName}}</view>
+      <view class="c-span">购券{{item.ReceiveNUM}}张 I 单价¥{{item.SalePrice}}I 售价¥{{item.UserSalePrice}} I 预付¥{{item.PrepaymentAmount}}</view>
       <view class="c-bot">
-        <view class="c1">2020-06-01 12:34</view>
-        <view class="c2">已售50张/<text>剩50张</text></view>
+        <view class="c1"> {{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd hh:mm",true)}}</view>
+        <view class="c2">已售{{item.GiveNUM}}张/<text>剩{{item.ReceiveNUM-item.RefundNum-item.GiveNUM}}</text></view>
       </view>
     </view>
   </view>
+</block>
+
 </view>
