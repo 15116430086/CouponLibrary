@@ -2,29 +2,31 @@
 <wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="v-top">
     <view class="v-box">
-        <view class="v-money">结算总金额:</view>
-        <view class="v-price"><text>￥</text>{{sumBalanceMoney}}</view>
+        <view class="v-money">待结算总金额:</view>
+        <view class="v-price"><text>￥</text>{{SettlementMoneyCount}}</view>
     </view>
     <view class="v-mes">
-        已结算/商家:20   <text>未结算/商家：10</text>
+          <text>未结算/商家：{{count}}</text>
     </view>
 </view>
 
 <view class="v-mid">
+<block wx:if="{{DataList.length>0}}" wx:if="{{DataList}}">
   <view class="v-block">
-    <image src="/static/images/logo.png" mode="aspectFit"></image>
+    <image src="{{item.ImageOne}}" mode="aspectFit"></image>
     <view class="v-right">
       <navigator class="v-one" hover-class="none" url="../detail/detail">
-        <view class="v-name">Discover Bar发现者音乐清吧吧…</view>
+        <view class="v-name">{{item.GroupName}}</view>
         <view class="v-txt"><view>账单明细</view> <image src="/static/images/right-arr1.png"></image></view>
       </navigator>
-      <view class="v-two">待结算:￥300</view>
+      <view class="v-two">待结算:￥{{item.SettlementMoney}}</view>
       <!-- <view class="v-two" style="color:#999999">已结算:￥300</view> -->
       <view class="v-one">
-        <view class="v-time">2020-06-03 13:21</view>
-        <navigator class="v-btn" url="../success/success" hover-class="none"> 开始结算 </navigator>
+        <view class="v-time">账单数{{item.counts}}</view>
+        <view class="v-btn" hover-class="none" data-groupid="{{item.GroupID}}" bindtap="Settlement"> 开始结算 </view>
         <!-- <view class="v-btn2">已结算</view> -->
       </view>
     </view>
   </view>
+</block>
 </view>
