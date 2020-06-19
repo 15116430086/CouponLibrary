@@ -55,7 +55,7 @@
 <!-- 会员分享次数排行（前十） -->
 <view class="m-title">
   <image src="/static/images/red-arr.png"></image>
-  <view>会员分享次数排行（前十）</view>
+  <view>会员分享排名（前十）</view>
 </view>
 <view class="v-all">
 	<view class="v-top">
@@ -73,7 +73,7 @@
 <!-- 店铺领用券排名（前二十） -->
 <view class="m-title">
   <image src="/static/images/red-arr.png"></image>
-  <view>店铺领用券排名（前二十）</view>
+  <view>商户售券排名（前二十）</view>
 </view>
 <view class="v-all">
 	<view class="v-top">
