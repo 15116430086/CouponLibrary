@@ -131,7 +131,8 @@
             "UserReceiveCoupon/UserReceiveCoupon",
             "UserReceiveCouponDetails/UserReceiveCouponDetails",
             "sharemesDetails/sharemesDetails",
-            "PageAccessDetails/PageAccessDetails"
+            "PageAccessDetails/PageAccessDetails",
+            "MerchantIssuingDetails/MerchantIssuingDetails"
         ]
     }],
     "permission": {

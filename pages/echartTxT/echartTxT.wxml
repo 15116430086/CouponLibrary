@@ -4,7 +4,7 @@
 		<view class="tl-title">我的商户列表</view>
 		<view class="tl-span">(点击查看列表)</view>
 	</view>
-	<view class="top-left" style="margin-right:40rpx">
+	<view class="top-left" bindtap="onDataAnalysis" style="margin-right:40rpx">
 		<view class="tl-title">运营数据分析</view>
 		<view class="tl-span">(点击查看列表)</view>
 	</view>
