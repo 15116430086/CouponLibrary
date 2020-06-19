@@ -15,7 +15,7 @@
   <view class="v-block">
     <image src="{{item.ImageOne}}" mode="aspectFit"></image>
     <view class="v-right">
-      <navigator class="v-one" hover-class="none" url="../detail/detail">
+      <navigator class="v-one" hover-class="none" url="../detail/detail?GroupID={{item.GroupID}}">
         <view class="v-name">{{item.GroupName}}</view>
         <view class="v-txt"><view>账单明细</view> <image src="/static/images/right-arr1.png"></image></view>
       </navigator>
