@@ -89,5 +89,5 @@
 
 
 <van-popup show="{{ show }}" position="bottom" z-index="999" bind:close="onClose" safe-area-inset-bottom>
-	<van-datetime-picker type="date" value="{{ currentDate }}" bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+	<van-datetime-picker type="date" bind:cancel="onClose" value="{{ currentDate }}" bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
 </van-popup>

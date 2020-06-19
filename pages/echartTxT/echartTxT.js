@@ -459,13 +459,23 @@ Page({
     that.setData({
       date: timer,
       show: false,
-      hidden: false
+      hidden: false,
+      idx:0
+      
     })
     if(that.data.idc==1){
       that. UserQuery();
     }else{
       that.CouponQuery();
     }
+  },
+
+  onClose()
+  {
+    this.setData({     
+      show: false,
+      hidden: false      
+    })
   },
 
   onReady() {
