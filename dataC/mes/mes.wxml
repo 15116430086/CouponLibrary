@@ -6,7 +6,7 @@
 	</view>
 
 <block wx:for="{{PageVisitOpenNumberList}}">
-	<view class="v-block" data-shareuserid="{{item.shareuserid}}" bindtap="JumpmesDetails">
+	<view class="v-block" data-shareuserid="{{item.shareuserid}}" data-userid="{{item.UserID}}" bindtap="JumpmesDetails">
 		<view class="v-left">
 			<image src="{{item.UserAvatar}}" class="v-img" />
 			<view class="v-mes">

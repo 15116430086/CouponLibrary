@@ -65,8 +65,9 @@ Page({
     var StartTime = that.data.StartTime;
     var EndTime = that.data.EndTime;
     var shareuserid = e.currentTarget.dataset.shareuserid;
+    var userid = e.currentTarget.dataset.userid;
     wx.navigateTo({
-      url: '../mesDetails/mesDetails?shareuserid='+shareuserid+'&StartTime='+StartTime+'&EndTime='+EndTime,
+      url: '../mesDetails/mesDetails?shareuserid='+shareuserid+'&StartTime='+StartTime+'&EndTime='+EndTime+'&userid='+userid,
     })
   },
 

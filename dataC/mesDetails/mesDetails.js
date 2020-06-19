@@ -14,6 +14,7 @@ Page({
     EndTime:'',
     lastpage: 0,
     shareuserid:'',
+    userid:'',
   },
 
   GetData: function () {
@@ -24,12 +25,13 @@ Page({
     })
     var data = {};
     data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
-    data.pUserID=that.data.shareuserid
+    data.pUserID=that.data.shareuserid;
+    data.pUserID=that.data.userid
     data.pPageIndex = page;
     data.pPageSize = 20;
     data.pStartTime=that.data.StartTime,
     data.pEndTime=that.data.EndTime,
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetGetPageVisitOpenNumberDetailed", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetPageVisitOpenNumberDetailed", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
     let that = this;
@@ -68,10 +70,12 @@ Page({
     var StartTime = options.StartTime||'';
     var EndTime = options.EndTime||'';
     var shareuserid = options.shareuserid||'';
+    var userid = options.userid||'';
     that.setData({
       StartTime:StartTime,
       EndTime:EndTime,
-      shareuserid:shareuserid
+      shareuserid:shareuserid,
+      userid:userid
     })
   },
 
