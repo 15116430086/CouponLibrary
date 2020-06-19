@@ -42,7 +42,7 @@ Page({
   //托管佣金明细页跳转
   JumpCommissionMestap: function() {
     wx.navigateTo({
-      url: '../commissionMes/commissionMes',
+      url: '/sendTicket/commissionMes/commissionMes',
     })
   },
 
@@ -78,7 +78,7 @@ Page({
     let data = JSON.stringify(datalist[index]);
     console.log(data)
     wx.navigateTo({
-      url: '../startTicket/startTicket?pCoupon_Info=' + data + "&CouponID=" + CouponID,
+      url: '/sendTicket/startTicket/startTicket?pCoupon_Info=' + data + "&CouponID=" + CouponID,
     })
   },
   edit: function(event) {
@@ -87,7 +87,7 @@ Page({
     let datalist = this.data.datalist[index];
     let data = JSON.stringify(datalist);
     wx.navigateTo({
-      url: '../sendTicketTwo/sendTicketTwo?pCoupon_Info=' + data + '&edit=' + edit
+      url: '/sendTicket/sendTicketTwo/sendTicketTwo?pCoupon_Info=' + data + '&edit=' + edit
     })
   },
 
@@ -160,13 +160,13 @@ Page({
   },
   Issuing: function() {
     wx.navigateTo({
-      url: '../sendTicketTwo/sendTicketTwo?edit=1',
+      url: '/sendTicket/sendTicketTwo/sendTicketTwo?edit=1',
     })
   },
   Details: function(event) {
     var CouponIDs = event.currentTarget.dataset.couponid
     wx.navigateTo({
-      url: '../watchMes/watchMes?CouponID=' + CouponIDs,
+      url: '/sendTicket/watchMes/watchMes?CouponID=' + CouponIDs,
     })
   },
   delCoupon: function(event) {

@@ -27,7 +27,7 @@ Page({
     var type = event.currentTarget.dataset.type;
     var productid = event.currentTarget.dataset.productid;
     wx.navigateTo({
-      url: '../goodsEditor/goodsEditor?edit=1&type=' + type + '&productid=' + productid + '',
+      url: '/sendTicket/goodsEditor/goodsEditor?edit=1&type=' + type + '&productid=' + productid + '',
     })
   },
 
@@ -201,7 +201,7 @@ Page({
 
   addcommodity: function() {
     wx.navigateTo({
-      url: "../goodsEditor/goodsEditor?state=0"
+      url: "/sendTicket/goodsEditor/goodsEditor?state=0"
     })
   },
 

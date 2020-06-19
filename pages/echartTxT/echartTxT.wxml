@@ -16,7 +16,7 @@
 	</view>
 </view>
 <view class="mid-box">
-	<view class="mid-block" bindtap="showTime">
+	<view class="mid-block {{idx==0?'selected':''}}" bindtap="showTime">
 		<view>{{date}}</view>
 		<image src="/static/images/hei-arr.png"></image>
 	</view>
@@ -30,5 +30,5 @@
 
 
 <van-popup show="{{ show }}" position="bottom" z-index="999" bind:close="onClose" safe-area-inset-bottom>
-	<van-datetime-picker type="year-month" value="{{ currentDate }}" bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+	<van-datetime-picker type="year-month" bind:cancel="onClose" value="{{ currentDate }}" max-date="{{currentDate}}" bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
 </van-popup>

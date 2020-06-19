@@ -1,5 +1,5 @@
 <!--dataC/UserReceiveCoupon/UserReceiveCoupon.wxml-->
-<wxs module="common" src="../utils/common.wxs"></wxs>
+<wxs module="common" src="../../utils/common.wxs"></wxs>
 
 <!-- type=0 领券 -->
 <block wx:for="{{DataList}}" wx:if="{{type==0}}">

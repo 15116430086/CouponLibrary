@@ -101,7 +101,7 @@ Page({
         Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * this.data.ExtensionRate * parseInt(this.data.Number))).toFixed(2)
       });
       wx.navigateTo({
-        url: "../shopChoose/shopChoose"
+        url: "/sendTicket/shopChoose/shopChoose"
       })
     } else if (id == "001") {
       that.setData({
@@ -129,7 +129,7 @@ Page({
   },
   Selectindustry: function(event) { //选择行业
     wx.navigateTo({
-      url: '../industryChoose/industryChoose',
+      url: '/sendTicket/industryChoose/industryChoose',
     })
 
   },
@@ -182,7 +182,7 @@ Page({
   },
   Regionselection: function(event) { //选择区域
     wx.navigateTo({
-      url: '../provincialChoose/provincialChoose',
+      url: '/sendTicket/provincialChoose/provincialChoose',
     })
   },
   pay: function(event) {
@@ -310,7 +310,7 @@ Page({
             console.log(res);
             if (res.errMsg == "requestPayment:ok") {
               wx.navigateBack({
-                url: '../sendTicketOne/sendTicketOne'
+                url: '/sendTicket/sendTicketOne/sendTicketOne'
               });
             }
           },
@@ -330,7 +330,7 @@ Page({
           duration: 2000
         })
         wx.navigateBack({
-          url: '../sendTicketOne/sendTicketOne'
+          url: '/sendTicket/sendTicketOne/sendTicketOne'
         });
       }
     } else {

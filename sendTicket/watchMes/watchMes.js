@@ -288,7 +288,7 @@ Page({
   See: function(event) {
     var releaseid = event.currentTarget.dataset.releaseid
     wx.navigateTo({
-      url: '../watchMesOne/watchMesOne?releaseid=' + releaseid,
+      url: '/sendTicket/watchMesOne/watchMesOne?releaseid=' + releaseid,
     })
   },
 
@@ -319,7 +319,7 @@ Page({
     let datalist = this.data.CouponInfo;
     let data = JSON.stringify(datalist);
     wx.navigateTo({
-      url: '../startTicket/startTicket?pCoupon_Info=' + data + "&CouponID=" + CouponID,
+      url: '/sendTicket/startTicket/startTicket?pCoupon_Info=' + data + "&CouponID=" + CouponID,
     })
   },
 

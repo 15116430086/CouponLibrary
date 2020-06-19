@@ -301,7 +301,7 @@ Page({
       }]
     },
     currentDate: new Date().getTime(),
-    minDate: 2020,
+    minDate: new Date('2020-01-01').getTime(),
     formatter(type, value) {
       if (type === 'year') {
         return `${value}年`;
@@ -459,13 +459,23 @@ Page({
     that.setData({
       date: timer,
       show: false,
-      hidden: false
+      hidden: false,
+      idx:0
+      
     })
     if(that.data.idc==1){
       that. UserQuery();
     }else{
       that.CouponQuery();
     }
+  },
+
+  onClose()
+  {
+    this.setData({     
+      show: false,
+      hidden: false      
+    })
   },
 
   onReady() {
