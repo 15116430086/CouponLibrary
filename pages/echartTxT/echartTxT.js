@@ -301,7 +301,7 @@ Page({
       }]
     },
     currentDate: new Date().getTime(),
-    minDate: 2020,
+    minDate: new Date('2020-01-01').getTime(),
     formatter(type, value) {
       if (type === 'year') {
         return `${value}年`;
