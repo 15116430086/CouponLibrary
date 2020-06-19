@@ -79,14 +79,14 @@ Page({
   // 跳转会员等级管理
   jumpLevel(e) {
     wx.navigateTo({
-      url: '../levelManager/levelManager?id=1&page=4',
+      url: '/mebC/levelManager/levelManager?id=1&page=4',
     })
   },
 
   //跳转标签列表
   jumpSpan(e) {
     wx.navigateTo({
-      url: '../spanList/spanList',
+      url: '/mebC/spanList/spanList',
     })
   },
 

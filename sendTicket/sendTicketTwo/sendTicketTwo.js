@@ -425,7 +425,7 @@ Page({
       });
       console.log(json.msg);
       wx.redirectTo({
-        url: '../startTicket/startTicket?pCoupon_Info=' + pCoupon_Info + "&CouponID=" + json.CouponID,
+        url: '/sendTicket/startTicket/startTicket?pCoupon_Info=' + pCoupon_Info + "&CouponID=" + json.CouponID,
       })
     } else {
       wx.showToast({
@@ -503,11 +503,11 @@ Page({
   jumpChoose: function() {
     if (this.data.currentId == 0) {
       wx.navigateTo({
-        url: '../chooseBuyGoods/chooseBuyGoods',
+        url: '/sendTicket/chooseBuyGoods/chooseBuyGoods',
       })
     } else {
       wx.navigateTo({
-        url: '../chooseBuyGoodsTwo/chooseBuyGoodsTwo',
+        url: '/sendTicket/chooseBuyGoodsTwo/chooseBuyGoodsTwo',
       })
     }
    
@@ -536,11 +536,11 @@ Page({
       });
       if (that.data.currentId==0){
         wx.navigateTo({
-          url: '../chooseBuyGoods/chooseBuyGoods',
+          url: '/sendTicket/chooseBuyGoods/chooseBuyGoods',
         })
       }else{
         wx.navigateTo({
-          url: '../chooseBuyGoodsTwo/chooseBuyGoodsTwo',
+          url: '/sendTicket/chooseBuyGoodsTwo/chooseBuyGoodsTwo',
         })
       }
       

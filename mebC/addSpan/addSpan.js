@@ -37,7 +37,7 @@ Page({
     var json = json.data.Data;
     if (json.flag) {
       wx.navigateBack({
-        url: '../spanList/spanList',
+        url: '/mebC/spanList/spanList',
       })      
     }
     wx.showToast({
