@@ -263,7 +263,7 @@ Page({
       ReleaseNUM: this.data.Number,
       State: 0,
       ReceiveUpperLimit: this.data.Limited,
-      ReleaseCommission: this.data.Commission,
+      //ReleaseCommission: this.data.Commission,
       GroupID: app.globalData.AppGroupInfo.GroupID,
       ReceiveTerm: this.data.date
     }
