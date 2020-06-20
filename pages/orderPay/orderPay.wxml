@@ -28,7 +28,7 @@
         <view style="color: #E85819;">￥{{tools.sysFdistance(SalePrice)}}</view>
       </view>
     </view>
-    <button wx:if="{{countlist>0}}" bindtap=" seveTimeout" class="pay-btn"> ￥<text>{{tools.sysFdistance(SalePrice)}}</text> 确认付款 </button>
+    <button wx:if="{{countlist>0}}" bindtap="onSeveTimeout" class="pay-btn"> ￥<text>{{tools.sysFdistance(SalePrice)}}</text> 确认付款 </button>
     <button wx:else class="notpay-btn"> 该券已被领完 </button>
       
    
