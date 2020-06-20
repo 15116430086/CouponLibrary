@@ -67,7 +67,7 @@
     <van-datetime-picker type="date" value="{{ currentDate }}" bind:cancel="onCancel"    bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
            </van-popup>
 
-            <view class="ticket-block">
+            <view class="ticket-block" hidden="true">
                 <view class="ticket-name">托管推广佣金/托管佣金为面值10%</view>
                 <view class="ticket-flex">
                     <view class="tf-name">

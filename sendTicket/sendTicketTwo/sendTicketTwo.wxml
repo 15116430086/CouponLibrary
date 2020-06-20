@@ -27,7 +27,7 @@
     <input type="text" value="{{pCoupon_Info.CouponName}}" placeholder="输入券名称(限定12字以内)" name="CouponName" placeholder-class="pclass" maxlength="12" />
   </view>
   <view class="ticket-block">
-    <view class="ticket-name">券面值<text style="color:#cccccc">（注：发券后不可修改）</text></view>
+    <view class="ticket-name">原价<text style="color:#cccccc">（注：发券后不可修改）</text></view>
     <input type="number" value="{{pCoupon_Info.CouponMoney}}" disabled="{{edit=='0'}}"  placeholder="输入券面值" name="CouponMoney" placeholder-class="pclass" />
   </view>
   <!-- <view class="ticket-block">
@@ -39,7 +39,7 @@
     <input type="number" value="{{pCoupon_Info.ReceiveUpperLimit}}"  placeholder="设置领取上限" name="ReceiveUpperLimit" placeholder-class="pclass" />
   </view>
   <view class="ticket-block" >
-    <view class="ticket-name">销售价</view>
+    <view class="ticket-name">渠道价</view>
     <input type="number" value="{{pCoupon_Info.SalePrice}}"  placeholder="设置销售价" name="SalePrice" placeholder-class="pclass" />
   </view>
 
