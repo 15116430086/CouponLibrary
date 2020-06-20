@@ -60,9 +60,8 @@ Page({
     });
 
   },
-   seveTimeout: function (event) {
-        let that = this;
-        
+  onSeveTimeout: function (event) {
+        let that = this;        
         setTimeout(function () {
           that.seve(event)
         }, 300);
