@@ -9,7 +9,10 @@ Page({
     SalePrice: 0,
     countlist: 0,
     number: 1,
-    repeat: true
+    repeat: true,
+    yfMoney:0,
+    sfMoney:0,
+    PrepaymentRatio:0
   },
 
   /**
@@ -28,9 +31,11 @@ Page({
     var chat = this;
     var json = res.data.Data;
     chat.setData({
-      SalePrice: json.data[0].SalePrice,
       countlist: json.count,
-      datalist: json.data
+      datalist: json.data,
+      PrepaymentRatio:json.data[0].PrepaymentRatio * 100,
+      yfMoney:json.data[0].SalePrice,
+      sfMoney:json.data[0].SalePrice * json.data[0].PrepaymentRatio,
     });
   },
   plus: function(event) { //加数量
@@ -39,7 +44,8 @@ Page({
     }
     this.setData({
       number: parseInt(this.data.number + 1),
-      SalePrice: this.data.datalist[0].SalePrice * (this.data.number + 1)
+      yfMoney:this.data.datalist[0].SalePrice * (this.data.number + 1),
+      sfMoney: this.data.datalist[0].SalePrice * (this.data.number + 1) * (this.data.PrepaymentRatio / 100)
     });
 
   },
@@ -49,7 +55,8 @@ Page({
     }
     this.setData({
       number: parseInt(this.data.number - 1),
-      SalePrice: this.data.datalist[0].SalePrice * (this.data.number - 1)
+      yfMoney:this.data.datalist[0].SalePrice * (this.data.number - 1),
+      sfMoney: this.data.datalist[0].SalePrice * (this.data.number - 1) * (this.data.PrepaymentRatio / 100)
     });
   },
   blurnuber: function(event) {

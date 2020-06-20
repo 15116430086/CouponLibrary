@@ -7,11 +7,11 @@
           <image wx:else src="/static/images/swp.png" />
           <view class="goodsmes-mes-ul-one">
             <view>{{datalist[0].CouponName}}</view>
-            <view style="font-size: 13px;color: #666666;">商家名称</view>
+            <view style="font-size: 13px;color: #666666;">{{datalist[0].GroupName}}</view>
           </view>
         </view>
 
-        <view class="goodsmes-price">￥{{datalist[0].CouponMoney}}</view>
+        <view class="goodsmes-price">原价￥{{datalist[0].CouponMoney}}</view>
       </view>
       <view class="goods-num">
         <view>数量</view>
@@ -24,15 +24,16 @@
         </view>
       </view>
       <view class="goods-true">
-        <view>预付全款/预付50% </view>
-        <view style="color: #E85819;">单价￥{{tools.sysFdistance(SalePrice)}}</view>
+        <view wx:if="{{PrepaymentRatio == 100}}">预付全款</view>
+        <view wx:if="{{PrepaymentRatio != 100 && PrepaymentRatio != 0}}">预付{{PrepaymentRatio}}% </view>
+        <view style="color: #E85819;">单价￥{{tools.sysFdistance(datalist[0].SalePrice)}}</view>
       </view>
        <view class="goods-true">
-        <view>应付：￥201</view>
-        <view style="color: #E85819;">预付￥{{tools.sysFdistance(SalePrice)}}</view>
+        <view>应付：￥{{tools.sysFdistance(yfMoney)}}</view>
+        <view style="color: #E85819;">预付￥{{tools.sysFdistance(sfMoney)}}</view>
       </view>
     </view>
-    <button wx:if="{{countlist>0}}" bindtap="onSeveTimeout" class="pay-btn"> ￥<text>{{tools.sysFdistance(SalePrice)}}</text> 确认付款 </button>
+    <button wx:if="{{countlist>0}}" bindtap="onSeveTimeout" class="pay-btn"> <text wx:if="{{sfMoney>0}}">￥{{tools.sysFdistance(sfMoney)}}</text> 确认付款 </button>
     <button wx:else class="notpay-btn"> 该券已被领完 </button>
       
    
