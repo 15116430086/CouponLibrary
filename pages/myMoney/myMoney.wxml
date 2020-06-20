@@ -13,11 +13,11 @@
         <view class="vmb-money">{{Tobesettled}}</view>
       </view>
       <view class="v-mid-block">
-        <view class="v-title">推广佣金  (元)</view>
+        <view class="v-title">佣金收入  (元)</view>
         <view class="vmb-money">{{sumCommissionMoney}}</view>
       </view>
       <view class="v-mid-block" style="border:none">
-        <view class="v-title">售券收易 (元)</view>
+        <view class="v-title">售券收入 (元)</view>
         <view class="vmb-money">{{sumCollectionMoney}}</view>
       </view>
     </view>
