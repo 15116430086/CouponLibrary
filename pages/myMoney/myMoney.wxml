@@ -10,7 +10,7 @@
     <view class="v-mid">
       <view class="v-mid-block">
         <view class="v-title">待结算  (元)</view>
-        <view class="vmb-money">{{sumDrawbackMoney}}</view>
+        <view class="vmb-money">{{Tobesettled}}</view>
       </view>
       <view class="v-mid-block">
         <view class="v-title">推广佣金  (元)</view>
