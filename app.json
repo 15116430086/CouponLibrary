@@ -101,7 +101,8 @@
             "myMoney/myMoney",
             "account/account",
             "detail/detail",
-            "success/success"
+            "success/success",
+            "mes/mes"
         ]
     }, {
         "root": "dataC",

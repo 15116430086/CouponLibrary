@@ -3,34 +3,34 @@
 <view class="v-box">
   <view class="v-block">
     <view class="v-top">
-      <view class="v-title">待结算资金  (元)</view>
+      <view class="v-title">待提现资金  (元)</view>
       <view class="v-cash">{{sumBalanceMoney}}</view>
     </view>
     <!-- <view class="v-mid">佣金退还¥{{sumDrawbackMoney}} | 佣金收入¥{{sumCommissionMoney}} | 代收资金¥{{sumCollectionMoney}}</view> -->
     <view class="v-mid">
-      <view class="v-mid-block">
-        <view class="v-title">佣金退还  (元)</view>
-        <view class="vmb-money">{{sumDrawbackMoney}}</view>
-      </view>
-      <view class="v-mid-block">
+      <navigator class="v-mid-block" hover-class="none" url="/cashM/mes/mes">
+        <view class="v-title">待结算  (元)</view>
+        <view class="vmb-money">{{Tobesettled}} <text style="font-size:28rpx;position:relative;top:-2rpx"> > </text></view>
+      </navigator>
+      <navigator class="v-mid-block" hover-class="none" url="/cashM/mes/mes">
         <view class="v-title">佣金收入  (元)</view>
-        <view class="vmb-money">{{sumCommissionMoney}}</view>
-      </view>
-      <view class="v-mid-block" style="border:none">
-        <view class="v-title">销售收入  (元)</view>
-        <view class="vmb-money">{{sumCollectionMoney}}</view>
-      </view>
+        <view class="vmb-money">{{sumCommissionMoney}} <text style="font-size:28rpx;position:relative;top:-2rpx"> > </text></view>
+      </navigator>
+      <navigator class="v-mid-block" style="border:none" hover-class="none" url="/cashM/mes/mes">
+        <view class="v-title">售券收入 (元)</view>
+        <view class="vmb-money">{{sumCollectionMoney}} <text style="font-size:28rpx;position:relative;top:-2rpx"> > </text></view>
+      </navigator>
     </view>
   </view>
 </view>
 <view class="v-bot">
   <view class="v-btn" bindtap="startSettlement">
     <image src="/static/images/xie.png" />
-    <view>开始结算</view>
+    <view>开始提现</view>
   </view>
   <navigator url="../banlanceMes/banlanceMes" class="v-btn" style="border:none">
     <image src="/static/images/look.png" />
-    <view>结算明细</view>
+    <view>提现明细</view>
   </navigator>
 </view>
 <view class="v-all">
@@ -80,7 +80,7 @@
         <image src="/static/images/card1.png" />
         <input type="number" placeholder="请输入银行卡号" name="dBankCardNumber" value="{{dBankCardNumber}}" bindblur="blurs" placeholder-class="pm-class" />
       </view>
-      <button formType="submit" class="vm-bot">确认结算</button>
+      <button formType="submit" class="vm-bot">确认提现</button>
     </view>
   </view>
 </form>
