@@ -9,15 +9,15 @@
     <!-- <view class="v-mid">佣金退还¥{{sumDrawbackMoney}} | 佣金收入¥{{sumCommissionMoney}} | 代收资金¥{{sumCollectionMoney}}</view> -->
     <view class="v-mid">
       <view class="v-mid-block">
-        <view class="v-title">购券  (张)</view>
+        <view class="v-title">会员购券  (元)</view>
         <view class="vmb-money">{{sumDrawbackMoney}}</view>
       </view>
       <view class="v-mid-block">
-        <view class="v-title">售券  (张)</view>
+        <view class="v-title">售券  (元)</view>
         <view class="vmb-money">{{sumCommissionMoney}}</view>
       </view>
       <view class="v-mid-block">
-        <view class="v-title">退券  (张)</view>
+        <view class="v-title">会员退券  (元)</view>
         <view class="vmb-money">{{sumCommissionMoney}}</view>
       </view>
       <view class="v-mid-block" style="border:none">
