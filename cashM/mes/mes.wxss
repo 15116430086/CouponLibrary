@@ -1,0 +1,141 @@
+/* cashM/mes/mes.wxss */
+page{
+  background-color: #ededed;
+}
+.v-all {
+  width: 100%;
+  height: auto;
+  /* margin-top: 20rpx; */
+  background-color: #FFFFFF;
+}
+
+.m-block {
+  width: calc(100% - 80rpx);
+  margin: 0px auto;
+  height: 140rpx;
+  position: relative;
+}
+
+.m-left {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.m-left image {
+  width: 88rpx;
+  height: 88rpx;
+  margin-right: 20rpx;
+  border-radius: 10rpx;
+  flex-shrink: 0;
+}
+
+.m-mid {
+  width: calc(100% - 96rpx);
+  height: 88rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.m-right {
+  width: 108rpx;
+  height: auto;
+  text-align: right;
+  position: absolute;
+  right: 0px;
+  top: 80rpx;
+}
+
+.m-title {
+  width: 98%;
+  color: #333;
+  font-size: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.m-mes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.m-time {
+  color: #666666;
+  font-size: 24rpx;
+  margin-right: 20rpx;
+}
+
+.m-span {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 6rpx;
+  font-size: 22rpx;
+  line-height: 36rpx;
+  text-align: center;
+}
+
+.m-num {
+  color: #429859;
+  font-size: 24rpx;
+}
+
+.m-txt {
+  color: #E85819;
+  font-size: 20rpx;
+  white-space: nowrap;
+}
+
+.mid-box {
+  width: 100%;
+  margin: 0px auto;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  background-color: #FFFFFF;
+}
+
+.mid-block {
+  margin-left: 40rpx;
+  width: 288rpx;
+  height: 72rpx;
+  background-color: #FFFFFF;
+  border-radius: 12rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.mid-block view {
+  width: auto;
+  color: #333333;
+  font-size: 28rpx;
+  white-space: nowrap;
+  text-align: left;
+  margin-right: 10rpx;
+}
+
+.mid-block image {
+  width: 16rpx;
+  height: 12rpx;
+  flex-shrink: 0;
+  margin-left: 10rpx;
+}
+
+.mid-flex{
+  width: 100%;
+  margin-bottom: 20rpx;
+  color: #666666;
+  font-size: 24rpx;
+}
+.mid-flex text{
+  margin-left: 40rpx;
+}
