@@ -18,7 +18,7 @@
       </view>
       <view class="v-mid-block" style="border:none">
         <view class="v-title">销售收入  (元)</view>
-        <view class="vmb-money">{{sumCollectionMoney}}</view>
+        <view class="vmb-money">{{sumCollectionMoney}} <text style="font-size:28rpx;position:relative;top:-2rpx">></text></view>
       </view>
     </view>
   </view>
