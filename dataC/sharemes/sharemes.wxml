@@ -11,7 +11,7 @@
 			<image src="{{item.UserAvatar}}" class="v-img" />
 			<view class="v-mes">
 				<view class="v-name">{{item.UserName}}</view>
-				<!-- <view class="v-time">{{common.sysFormatDate(item.LastShareTime,"yyyy-MM-dd hh:mm:ss",true)}}</view> -->
+				<view class="v-time">{{common.sysFormatDate(item.LastShareTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
 			</view>
 		</view>
 		<view class="v-right">
