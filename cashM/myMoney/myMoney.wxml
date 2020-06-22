@@ -44,7 +44,7 @@
     <image src="{{item.ImageOne}}" mode="aspectFit"></image>
     <view class="c-right">
       <view class="c-name">{{item.CouponName}}</view>
-      <view class="c-span">购券{{item.ReceiveNUM}}张 | 单价¥{{item.SalePrice}}| 总额{{item.UserSalePrice}} | 预付¥{{item.PrepaymentAmount}}</view>
+      <view class="c-span">购券{{item.ReceiveNUM}}张 | 单价¥{{item.SalePrice}}| 总额{{item.ReceiveMoney}} | 预付¥{{item.PrepaymentAmount}}</view>
       <view class="c-bot">
         <view class="c1">{{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd hh:mm",true)}}</view>
         <view class="c2">已售{{item.GiveNUM}}张/<text>剩{{item.ReceiveNUM-item.RefundNum-item.GiveNUM}}张</text></view>

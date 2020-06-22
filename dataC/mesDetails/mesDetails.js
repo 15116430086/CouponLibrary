@@ -25,7 +25,7 @@ Page({
     })
     var data = {};
     data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
-    data.pUserID=that.data.shareuserid;
+    data.pShareUserID=that.data.shareuserid;
     data.pUserID=that.data.userid
     data.pPageIndex = page;
     data.pPageSize = 20;
