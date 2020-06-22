@@ -48,6 +48,7 @@ Page({
           dAccountName: json.dataGroup[0].AccountName,
           dBankCardNumber: json.dataGroup[0].BankCardNumber,
           dOpeningBank: json.dataGroup[0].OpeningBank,
+          Tobesettled:json.CapitalTypeSun.Tobesettled, 
           Capitaldetailslist: json.data,
           lastpage: json.pageCount //你的总页数   
         });
