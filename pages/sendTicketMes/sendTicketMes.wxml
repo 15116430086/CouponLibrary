@@ -2,7 +2,7 @@
 <view class="home-box">
     <view class="home-sel">
       <view class="home-span" bindtap="showPopup1">
-        <view>{{shopName}}</view>
+        <view>{{GroupName}}</view>
         <image src="/static/images/sel.png" />
       </view>
       <view class="home-span" bindtap="showPopup2">
@@ -41,7 +41,7 @@
       overlay
       safe-area-inset-bottom
     >
-      <van-picker show-toolbar columns="{{shoplist}}"  valueKey="ShopName" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
+      <van-picker show-toolbar columns="{{shoplist}}"  valueKey="GroupName" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
     </van-popup>
 
     <!-- 券类型 -->
