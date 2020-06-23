@@ -8,15 +8,15 @@
     </view>
     <!-- <view class="v-mid">佣金退还¥{{sumDrawbackMoney}} | 佣金收入¥{{sumCommissionMoney}} | 代收资金¥{{sumCollectionMoney}}</view> -->
     <view class="v-mid">
-      <navigator class="v-mid-block" hover-class="none" url="/cashM/mes/mes">
+      <navigator class="v-mid-block" hover-class="none" url="/cashM/mes/mes?type=0&MoeryCount={{Tobesettled}}">
         <view class="v-title">待结算  (元)</view>
         <view class="vmb-money">{{Tobesettled}} <text style="font-size:28rpx;position:relative;top:-2rpx"> > </text></view>
       </navigator>
-      <navigator class="v-mid-block" hover-class="none" url="/cashM/mes/mes">
+      <navigator class="v-mid-block" hover-class="none" url="/cashM/mes/mes?type=1&MoeryCount={{sumCommissionMoney}}">
         <view class="v-title">佣金收入  (元)</view>
         <view class="vmb-money">{{sumCommissionMoney}} <text style="font-size:28rpx;position:relative;top:-2rpx"> > </text></view>
       </navigator>
-      <navigator class="v-mid-block" style="border:none" hover-class="none" url="/cashM/mes/mes">
+      <navigator class="v-mid-block" style="border:none" hover-class="none" url="/cashM/mes/mes?type=2&MoeryCount={{sumCollectionMoney}}">
         <view class="v-title">售券收入 (元)</view>
         <view class="vmb-money">{{sumCollectionMoney}} <text style="font-size:28rpx;position:relative;top:-2rpx"> > </text></view>
       </navigator>
