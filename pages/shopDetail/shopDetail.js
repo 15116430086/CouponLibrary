@@ -10,7 +10,7 @@ Page({
     date: "日期",
     hidden: false,
     currentDate: new Date().getTime(),
-    minDate: new Date('2020-01-01').getTime(),
+    minDate: new Date('2020/01/01').getTime(),
     formatter(type, value) {
       if (type === 'year') {
         return `${value}年`;
