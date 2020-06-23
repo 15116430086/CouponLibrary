@@ -33,7 +33,7 @@
     <view>结算管理</view>
   </view>
   <view class="v-right">
-    <view>查看结算明细</view>
+    <view>待结算明细</view>
     <image src="/static/images/right-arr1.png"></image>
   </view>
 </navigator>

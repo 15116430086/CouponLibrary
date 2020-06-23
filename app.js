@@ -50,7 +50,7 @@ App({
     longitudeY: 112.93886,
     regionName: "",
  
-    apiurl: "https://wx.wap.quankuzg.com/LibraryAPI/",
+    //apiurl: "https://wx.wap.quankuzg.com/LibraryAPI/",
     minmapkey:'LC5BZ-J343R-M5AWH-WYNV2-P5UW5-BVFHE',
 
     // apiurl: "https://wx.wap.meiguwen.com/LibraryAPI/",
@@ -58,6 +58,6 @@ App({
    
     //apiurl: "http://test.miboon.com:8080/LibraryAPI/",
     // minmapkey: 'UXCBZ-XKZWU-YHRVE-4RMRW-J63PJ-WRFPI',
-    //  apiurl: "http://localhost:7562/"
+     apiurl: "http://localhost:7562/"
   }
 })
