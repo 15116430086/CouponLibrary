@@ -1,6 +1,6 @@
 // cashM/mes/mes.js
 let utils = require("../../utils/util.js")
-
+const app = getApp();
 Page({
 
   /**
@@ -18,15 +18,86 @@ Page({
       }
       return value;
     },
+    type:0,//0待结算，1佣金收入 2券收入
+    Capitaldetailslist:{},
+    pageIndex:1,
+    pageCount:1,
+    MoeryCount:0,
+    DataList:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({MoeryCount:options.MoeryCount});
+      if(options.type==0){
+        this.Incometobereceived();
+      }else{
 
+        this.setData({type:options.type});
+        this.Query();
+      }
   },
+  //待收入
+  Incometobereceived(){
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    var data={
 
+      GroupID:app.globalData.AppGroupInfo.GroupID,
+      startTime:this.data.date=="日期"?"":this.data.date
+    };
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/OperatorfundsView/GetIncometobereceived", "POST", data, app.globalData.appkeyid, this.GetIncometobereceived)
+  },
+  GetIncometobereceived:function(res){
+    wx.hideLoading();
+    var json=res.data.Data;
+    var chat=this;
+    if(json.flag){
+        chat.setData({
+          Capitaldetailslist: json.data || null,
+        });
+    
+    }
+  },
+  Query:function(){
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    var data={
+      pageIndex:this.data.pageIndex,
+      pageSize:10,
+      CapitalType:this.data.type,
+      GroupID:app.globalData.AppGroupInfo.GroupID,
+      startTime:this.data.date=="日期"?"":this.data.date
+    };
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/OperatorfundsView/GetIncomedetails", "POST", data, app.globalData.appkeyid, this.GetIncomedetails)
+  },
+  GetIncomedetails:function(res){
+    wx.hideLoading();
+    var json=res.data.Data;
+    var chat=this;
+    if(json.flag){
+      if (chat.data.pageIndex == 1) {
+        chat.setData({
+          DataList: json.data || null,
+          pageCount: json.pageCount //你的总页数   
+        });
+      } else {
+        //获取上次加载的数据
+        var oldlists = chat.data.DataList;
+        var newlists = oldlists.concat(json.data) //合并数据 res.data 你的数组数据
+        chat.setData({
+          DataList: newlists,
+          pageCount: json.pageCount, //你的总页数   
+        });
+      }
+      chat.setData({pageIndex:chat.data.pageIndex+1});
+    }
+  
+  },
     // 显示日期
     showTime(e) {
       let that = this;
@@ -46,7 +117,13 @@ Page({
         hidden: false,
         idx:0
       })
-     
+     if(that.data.type==0){
+
+      that.Incometobereceived();
+     }else{
+      that.Query();
+
+     }
     },
 
   /**
