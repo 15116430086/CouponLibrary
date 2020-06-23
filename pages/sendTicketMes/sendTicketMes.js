@@ -13,10 +13,10 @@ Page({
     sumCouponMoney: 0,
     GiveCouponList: [],
     lastpage: 0,
-    shopID: "",
+    GroupID: 0,
     couponType: -1,
     typeName: "全部券",
-    shopName: "全部店铺",
+    GroupName: "全部店铺",
     selectDate: "选择日期",
     currentDate: new Date().getTime(),
     minDate: new Date("2019-10-01").getTime(),
@@ -44,10 +44,10 @@ Page({
       title: '数据加载中...',
     })
     var data = {};
-    data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pSGroupID = that.data.GroupID;
     data.pPageIndex = page;
     data.pPageSize = 30;
-    data.pShopID = that.data.shopID;
+    data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
     data.pCouponType = that.data.couponType;
     data.pDateTime = that.data.selectDate;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponItemListPage", "POST", data, app.globalData.appkeyid, this.GetDataBack)
@@ -55,12 +55,13 @@ Page({
   GetDataBack: function(json) {
     console.log(json);
     var json = json.data.Data;
+    let that = this;
     //隐藏 加载中的提示
     wx.hideLoading();
     if (json.flag) {
       console.log(json.msg);
       if (page == 1) {
-        this.setData({
+        that.setData({
           sumCouponNum: json.sumCouponNum,
           sumCouponMoney: json.sumCouponMoney,
           GiveCouponList: json.data,
@@ -80,6 +81,12 @@ Page({
       }
 
     } else {
+      that.setData({
+        sumCouponNum: 0,
+        sumCouponMoney: 0,
+        GiveCouponList: [],
+        lastpage: 0 //你的总页数   
+      });
       wx.showToast({
         title: '没有找到相关数据!',
         icon: 'none',
@@ -96,21 +103,29 @@ Page({
     page = 1;
 
     shoptype = options.shoptype;
-    if (shoptype == 1) {
+    
       that.setData({
-        shopID: app.globalData.AppShopInfo.ShopID,
-        shopName: app.globalData.AppShopInfo.ShopName,
-        shoptype: shoptype
+        GroupName: app.globalData.AppGroupInfo.GroupName,
+        shoptype: shoptype,
+        GroupID:app.globalData.AppGroupInfo.GroupID
       })
-    }
-    that.GetData(page);
 
+      if(app.globalData.AppGroupInfo.GroupID == app.globalData.AppGroupInfo.AffiliatedGroupID){
+        that.setData({         
+          GroupID:0
+        })
+      }
+      
+    
+    that.GetData(page);
+    if(app.globalData.AppGroupInfo.GroupID == app.globalData.AppGroupInfo.AffiliatedGroupID){
     that.GetShopList();
+    }
   },
   GetShopList: function() {
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/GetGroupShop", "POST", data, app.globalData.appkeyid, this.GetShopListck)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/GetGroupDrop", "POST", data, app.globalData.appkeyid, this.GetShopListck)
 
   },
   GetShopListck: function(json) {
@@ -119,14 +134,16 @@ Page({
     var json = json.data.Data;
     if (json.flag) {
       var shoplist = [{
-        ShopName: "全部店铺",
-        ShopID: -1
+        GroupName: "全部店铺",
+        GroupID: 0
       }];
       shoplist = shoplist.concat(json.data)
       that.setData({
-        shoplist: shoplist
+        shoplist: shoplist,
+        GroupName:shoplist[0].GroupName
       })
     }
+    console.log(that.data.shoplist);
   },
   onClose2(e) {
     let that = this;
@@ -136,9 +153,8 @@ Page({
 
   },
   showPopup1() {
-
     let that = this;
-    if (shoptype == 0) {
+    if(app.globalData.AppGroupInfo.GroupID == app.globalData.AppGroupInfo.AffiliatedGroupID){
       that.setData({
         show1: true
       })
@@ -214,13 +230,13 @@ Page({
       value,
       index
     } = event.detail;
-    console.log(`当前值：${value.ShopName}, 当前索引：${index}`);
+    console.log(`当前值：${value.GroupName}, 当前索引：${index}`);
 
     let that = this;
     that.setData({
       show1: false,
-      shopID: value.ShopID,
-      shopName: value.ShopName
+      GroupID: value.GroupID,
+      GroupName: value.GroupName
     })
     page = 1;
     that.GetData(page);

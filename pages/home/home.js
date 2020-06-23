@@ -67,9 +67,9 @@ Page({
 
 
   JumpwatchMesOne: function(e) {
-    var releaseid = e.currentTarget.dataset.id;
+    var couponcode = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../watchMesOne/watchMesOne?releaseid=' + releaseid,
+      url: '../sendTicketMes/sendTicketMes',
     })
   },
 
