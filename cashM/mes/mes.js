@@ -117,7 +117,13 @@ Page({
         hidden: false,
         idx:0
       })
-     
+     if(that.data.type==0){
+
+      that.Incometobereceived();
+     }else{
+      that.Query();
+
+     }
     },
 
   /**
