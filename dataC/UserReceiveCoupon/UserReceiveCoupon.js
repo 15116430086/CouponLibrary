@@ -15,6 +15,7 @@ Page({
     lastpage: 0,
     type:'',
     sendgroupid:'',
+    identification:1
   },
 
   GetData: function () {
@@ -23,14 +24,25 @@ Page({
     wx.showLoading({
       title: '数据加载中...',
     })
-    var data = {};
-    data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
-    data.pSendgroupid=that.data.sendgroupid
-    data.pPageIndex = page;
-    data.pPageSize = 20;
-    data.pStartTime=that.data.StartTime,
-    data.pEndTime=that.data.EndTime,
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetCouponStateList", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    if(that.data.identification==0){
+      var data = {};
+      data.GroupID = app.globalData.AppGroupInfo.GroupID;
+      data.pPageIndex = page;
+      data.pPageSize = 20;
+      data.pStartTime=that.data.StartTime,
+      data.pEndTime=that.data.EndTime,
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetMerchantCouponStateList", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    }else{
+      var data = {};
+      data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
+      data.pSendgroupid=that.data.sendgroupid
+      data.pPageIndex = page;
+      data.pPageSize = 20;
+      data.pStartTime=that.data.StartTime,
+      data.pEndTime=that.data.EndTime,
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetCouponStateList", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    }
+   
   },
   GetDataBack: function (json) {
     let that = this;
@@ -66,6 +78,9 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+    if(options.identification==0){
+        that.setData({identification:options.identification});
+    }
     var StartTime = options.StartTime||'';
     var EndTime = options.EndTime||'';
     var type = options.type||'';//0会员领券 1核券 2退券 3已过期
