@@ -6,7 +6,7 @@
         <view class="v-price"><text>￥</text>{{Totalamount}}</view>
     </view>
     <view class="v-mes">
-      <text>待结算¥{{Unsettled}}</text> I <text>已结算¥{{Settled}}</text>
+      <text>待结算¥{{Unsettled}}</text> I <text>已结算¥{{Settled}}</text>I <text>待入账¥{{Totalamount-Settled-Unsettled}}</text>
     </view>
 </view>
 
