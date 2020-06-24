@@ -37,7 +37,7 @@
           <view>推券动态</view>
         </view>
         <view class="dynblock-mes" style="text-align:left">
-          <view>会员领券: {{CouponCount.CouponNUM}}</view>
+          <view>会员购券: {{CouponCount.CouponNUM}}</view>
           <view>会员核销: {{CouponCount.WriteOffNUM}}</view>
           <view>推券佣金: {{CouponCount.sumIncomeMoney}}</view>
         </view>
