@@ -14,6 +14,7 @@ Page({
     EndTime:'',
     lastpage: 0,
     sendgroupid:'',
+    types:0
   },
 
   GetData: function () {
@@ -71,7 +72,8 @@ Page({
     that.setData({
       StartTime:StartTime,
       EndTime:EndTime,
-      sendgroupid:sendgroupid
+      sendgroupid:sendgroupid,
+      types:options.types || 0
     })
   },
 
