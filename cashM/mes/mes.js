@@ -23,20 +23,27 @@ Page({
     pageIndex:1,
     pageCount:1,
     MoeryCount:0,
-    DataList:{}
+    DataList:{},
+    identification:0
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({MoeryCount:options.MoeryCount});
+    this.setData({MoeryCount:options.MoeryCount,identification:options.identification|| 0});
       if(options.type==0){
         this.Incometobereceived();
       }else{
 
         this.setData({type:options.type});
-        this.Query();
+        if(options.identification==1){
+          this.OperatorsIncomedetails();
+        }else{
+          this.Query();
+        }
+        
       }
   },
   //待收入
@@ -97,6 +104,41 @@ Page({
       chat.setData({pageIndex:chat.data.pageIndex+1});
     }
   
+  },
+//运营商结算详细
+  OperatorsIncomedetails:function(){
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    var data={
+      pageIndex:this.data.pageIndex,
+      pageSize:10,
+      GroupID:app.globalData.AppGroupInfo.GroupID,
+      startTime:this.data.date=="日期"?"":this.data.date
+    };
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/OperatorfundsView/GetOperatorsIncomedetails", "POST", data, app.globalData.appkeyid, this.GetOperatorsIncomedetails)
+  },
+  GetOperatorsIncomedetails:function(res){
+    wx.hideLoading();
+    var json=res.data.Data;
+    var chat=this;
+    if(json.flag){
+      if (chat.data.pageIndex == 1) {
+        chat.setData({
+          DataList: json.data || null,
+          pageCount: json.pageCount //你的总页数   
+        });
+      } else {
+        //获取上次加载的数据
+        var oldlists = chat.data.DataList;
+        var newlists = oldlists.concat(json.data) //合并数据 res.data 你的数组数据
+        chat.setData({
+          DataList: newlists,
+          pageCount: json.pageCount, //你的总页数   
+        });
+      }
+      chat.setData({pageIndex:chat.data.pageIndex+1});
+    }
   },
     // 显示日期
     showTime(e) {
@@ -165,7 +207,22 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    if(options.type==0){
+        if(this.data.pageIndex>this.data.pageCount){
+          return;
+        }
+      this.Incometobereceived();
+    }else{
 
+      if(this.data.pageIndex>this.data.pageCount){
+        return;
+      }
+      if(options.identification==0){
+        this.Query();
+      }else{
+        this.OperatorsIncomedetails();
+      }
+    }
   },
 
   /**

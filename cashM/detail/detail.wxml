@@ -2,7 +2,7 @@
 <wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="v-top">
     <view class="v-box">
-        <view class="v-money">结算总金额:</view>
+        <view class="v-money">购券总金额:</view>
         <view class="v-price"><text>￥</text>{{Totalamount}}</view>
     </view>
     <view class="v-mes">
@@ -21,7 +21,7 @@
             <view class="m-time">
              {{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm",true)}}
             </view>
-            <view class="m-span"  style="color:#016FB4;border:1px solid #016FB4"></view>
+            <!-- <view class="m-span"  style="color:#016FB4;border:1px solid #016FB4"></view> -->
             <!-- <view class="m-span" wx:if="{{item.CapitalType==0}}" style="color:#E30000;border:1px solid #E30000">退</view>
             <view class="m-span" wx:if="{{item.CapitalType==2 && item.BusinessType==3}}" style="color:#429859;border:1px solid #429859">券</view>
             <view class="m-span" wx:if="{{item.CapitalType==2 && item.BusinessType==4}}" style="color:#429859;border:1px solid #429859">售</view> -->

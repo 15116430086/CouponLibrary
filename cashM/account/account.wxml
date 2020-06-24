@@ -11,7 +11,7 @@
 </view>
 
 <view class="v-mid">
-<block wx:if="{{DataList.length>0}}" wx:if="{{DataList}}">
+<block wx:if="{{DataList.length>0}}" wx:for="{{DataList}}">
   <view class="v-block">
     <image src="{{item.ImageOne}}" mode="aspectFit"></image>
     <view class="v-right">
