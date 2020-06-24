@@ -17,7 +17,7 @@
     <view class="stm-mes">
       总数量 :
       <text style="margin-right:10px;">{{sumCouponNum}}</text> 总金额：￥
-      <text>{{sumSalePrice}}</text>
+      <text>{{sumReceiveMoney}}</text>
     </view>
     <block wx:for="{{GiveCouponList}}">
     <view class="stm-block">
