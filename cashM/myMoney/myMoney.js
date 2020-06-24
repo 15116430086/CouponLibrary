@@ -102,6 +102,19 @@ Page({
       url: '../../pages/sendTicketMes/sendTicketMes',
     })
   },
+  CommissionJump:function(event){
+
+    var sumcollectionmoney= event.currentTarget.dataset.sumcollectionmoney;
+    wx.navigateTo({
+      url: '../mes/mes?identification=2&type=1&MoeryCount='+sumcollectionmoney,
+    })
+  },
+  RefundJump:function(event){
+    var sumrefundmoney= event.currentTarget.dataset.sumrefundmoney;
+    wx.navigateTo({
+      url: '../mes/mes?identification=3&type=1&MoeryCount='+sumrefundmoney,
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
