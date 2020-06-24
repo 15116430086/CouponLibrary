@@ -3,6 +3,7 @@
 	<view class="mid-block  {{idx==0?'selected':''}}" bindtap="showTime" data-datetype="0" >
 		<view>{{sdate}}</view>
 		<image src="/static/images/hei-arr.png"></image>
+		<!-- <image src="{{idx==0?'/static/images/sel.png':'/static/images/hei-arr.png'}}"></image> -->
 	</view>
 	<view>~</view>
 	<view class="mid-block  {{idx==0?'selected':''}}" bindtap="showTime" data-datetype="1">
