@@ -26,12 +26,12 @@ page {
     display: flex;
     flex-direction: row;
     align-items: center;
+    color: #333333;
     justify-content: center;
 }
 
 .mid-block view {
     width: 180rpx;
-    color: #333333;
     font-size: 28rpx;
     white-space: nowrap;
     text-align: center;
