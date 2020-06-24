@@ -32,7 +32,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({MoeryCount:options.MoeryCount,identification:options.identification|| 0});
+    this.setData({MoeryCount:options.MoeryCount,identification:parseInt(options.identification || 0)});
       if(options.type==0){
         this.Incometobereceived();
       }else{
@@ -70,6 +70,8 @@ Page({
           Capitaldetailslist: json.data || null,
         });
     
+    }else{
+      chat.setData({Capitaldetailslist:{}});
     }
   },
   Query:function(){
@@ -105,6 +107,8 @@ Page({
         });
       }
       chat.setData({pageIndex:chat.data.pageIndex+1});
+    }else{
+      chat.setData({DataList:{}});
     }
   
   },
@@ -141,6 +145,8 @@ Page({
         });
       }
       chat.setData({pageIndex:chat.data.pageIndex+1});
+    }else{
+      chat.setData({DataList:{}});
     }
   },
   CommissionExpenses:function(){
@@ -175,6 +181,8 @@ Page({
         });
       }
       chat.setData({pageIndex:chat.data.pageIndex+1});
+    }else{
+      chat.setData({DataList:{}});
     }
   },
     // 显示日期
@@ -243,6 +251,8 @@ Page({
           });
         }
         chat.setData({pageIndex:chat.data.pageIndex+1});
+      }else{
+        chat.setData({DataList:{}});
       }
     },
   /**
