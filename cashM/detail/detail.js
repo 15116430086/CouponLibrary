@@ -21,6 +21,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({GroupID:options.GroupID});
+    this.Query();
   },
   Query:function () {
     wx.showLoading({
