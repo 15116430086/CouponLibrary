@@ -63,7 +63,7 @@ Page({
       if (page == 1) {
         that.setData({
           sumCouponNum: json.sumCouponNum,
-          sumCouponMoney: json.sumCouponMoney,
+          sumReceiveMoney: json.sumReceiveMoney,
           GiveCouponList: json.data,
           lastpage: json.pageCount //你的总页数   
         });

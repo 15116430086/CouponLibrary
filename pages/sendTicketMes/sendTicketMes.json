@@ -2,7 +2,7 @@
     "enablePullDownRefresh": true,
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "赠券明细",
+    "navigationBarTitleText": "购券明细",
     "navigationBarTextStyle": "black",
     "usingComponents": {
         "van-datetime-picker": "/static/vant/datetime-picker/index",
