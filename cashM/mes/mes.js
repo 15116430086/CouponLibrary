@@ -23,7 +23,8 @@ Page({
     pageIndex:1,
     pageCount:1,
     MoeryCount:0,
-    DataList:{}
+    DataList:{},
+    
   },
 
   /**

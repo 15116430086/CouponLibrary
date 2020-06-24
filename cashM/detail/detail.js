@@ -30,7 +30,7 @@ Page({
     var data={
       GroupID:this.data.GroupID,
       pageIndex:this.data.pageIndex,
-      pageSize:this.data.pageSize,
+      pageSize:10,
       AffiliatedGroupID:app.globalData.AppGroupInfo.GroupID
     };
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/OperatorfundsView/Detailstobesettled", "POST", data, app.globalData.appkeyid, this.Detailstobesettled)
