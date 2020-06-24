@@ -11,7 +11,7 @@ Page({
     sumDrawbackMoney:0,
     sumCommissionMoney:0,
     sumCollectionMoney:0,
-    sumDrawbackMoney:0,
+    sumRefundMoney:0,
     pageIndex:1,
     pageCount:1,
     DataList:[]
@@ -39,7 +39,7 @@ Page({
           sumDrawbackMoney:json.data[0].sumDrawbackMoney,
           sumCommissionMoney:json.data[0].sumCommissionMoney,
           sumCollectionMoney:json.data[0].sumCollectionMoney,
-          sumDrawbackMoney:json.data[0].sumDrawbackMoney
+          sumRefundMoney:json.data[0].sumRefundMoney
         });
     }
   },
@@ -91,7 +91,17 @@ Page({
       this.Query();
       this.QueryList();
   },
-
+  DetailsJump:function(event){
+    var sumdrawbackmoney= event.currentTarget.dataset.sumdrawbackmoney;
+    wx.navigateTo({
+      url: '../mes/mes?identification=1&type=1&MoeryCount='+sumdrawbackmoney,
+    })
+  },
+  memberJump:function(){
+    wx.navigateTo({
+      url: '../../pages/sendTicketMes/sendTicketMes',
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
