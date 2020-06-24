@@ -489,7 +489,7 @@ Page({
     let that = this;
     let option = that.data.option;
     Chart.setOption({ option });
-
+    Chart.off('click');
     Chart.on('click', function (e) {
       let ename = e.name;//日期
       let value = e.value;//张数
