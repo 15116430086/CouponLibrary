@@ -8,20 +8,20 @@
     </view>
     <!-- <view class="v-mid">佣金退还¥{{sumDrawbackMoney}} | 佣金收入¥{{sumCommissionMoney}} | 代收资金¥{{sumCollectionMoney}}</view> -->
     <view class="v-mid">
-      <view class="v-mid-block">
-        <view class="v-title">会员购券  (元)</view>
+      <view class="v-mid-block" bindtap="DetailsJump" data-sumdrawbackmoney="{{sumDrawbackMoney}}">
+        <view class="v-title">平台购券  (元)</view>
         <view class="vmb-money">{{sumDrawbackMoney}}</view>
       </view>
-      <view class="v-mid-block">
-        <view class="v-title">售券  (元)</view>
+      <view class="v-mid-block" bindtap="memberJump">
+        <view class="v-title">会员购券  (元)</view>
         <view class="vmb-money">{{sumCommissionMoney}}</view>
       </view>
-      <view class="v-mid-block">
+      <view class="v-mid-block" bindtap="RefundJump" data-sumrefundmoney="{{sumRefundMoney}}">
         <view class="v-title">会员退券  (元)</view>
-        <view class="vmb-money">{{sumCommissionMoney}}</view>
+        <view class="vmb-money">{{sumRefundMoney}}</view>
       </view>
-      <view class="v-mid-block" style="border:none">
-        <view class="v-title">佣金  (元)</view>
+      <view class="v-mid-block" bindtap="CommissionJump" data-sumcollectionmoney="{{sumCollectionMoney==null?0:sumCollectionMoney}}"  style="border:none">
+        <view class="v-title">佣金支出  (元)</view>
         <view class="vmb-money">{{sumCollectionMoney==null?0:sumCollectionMoney}}</view>
       </view>
     </view>
@@ -33,7 +33,7 @@
     <view>结算管理</view>
   </view>
   <view class="v-right">
-    <view>查看结算明细</view>
+    <view>待结算明细</view>
     <image src="/static/images/right-arr1.png"></image>
   </view>
 </navigator>

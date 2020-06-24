@@ -1,4 +1,4 @@
-<!--data/detail/detail.wxml-->
+<!--pages/Businessmanagement/Businessmanagement.wxml.wxml-->
 <view class="mid-box">
 	<view class="mid-block  {{idx==0?'selected':''}}" bindtap="showTime" data-datetype="0" >
 		<view>{{sdate}}</view>
@@ -20,28 +20,10 @@
   <view>运营数据分析<text>（点击可查看详情）</text></view>
 </view>
 <view class="v-all">
-	<!-- <view class="v-box">
-		<view class="v-name">分享用户:<text style="color:#E85819">20人</text></view>
-		<view class="v-block">
-		<navigator url="../sharemes/sharemes">
-			<view class="v-span">
-				<view class="v-mes">分享次数</view>
-				<view class="v-num">100次</view>
-			</view>
-		</navigator>
-		
-		<navigator url="../mes/mes">
-			<view class="v-span">
-				<view class="v-mes">打开次数</view>
-				<view class="v-num">9999次</view>
-			</view>
-		</navigator>
 
-		</view>
-	</view> -->
 	<block wx:for="{{databox}}" wx:for-item="ida">
 		<view class="v-box">
-			<view class="v-name">{{ida.name}}：<text style="color:#999999">{{ida.span}}</text></view>
+			<view class="v-name">{{ida.name}}:<text style="color:#999999">{{ida.span}}</text></view>
 			<view class="v-block" >
 				<view class="v-span" wx:for="{{ida.data}}" data-tname="{{item.tname}}" data-url="{{item.url}}" bindtap="JumpPage">
 					<view class="v-mes">{{item.tname}}</view>
@@ -52,38 +34,20 @@
 	</block>
 </view>
 
-<!-- 会员分享次数排行（前十） -->
-<view class="m-title">
-  <image src="/static/images/red-arr.png"></image>
-  <view>会员分享排名（前十）</view>
-</view>
-<view class="v-all">
-	<view class="v-top">
-		<view class="v-cell" wx:for="{{cell}}">{{item.txt}}</view>
-	</view>
-	<view class="v-top" wx:for="{{mebCell}}">
-		<view class="v-tr" >{{item.UserName}}</view>
-		<view class="v-td">{{item.SNum}}</view>
-		<view class="v-td">{{item.VNUm}}</view>
-		<view class="v-td">{{item.RUser}}</view>
-	</view>
-</view>
-
-
 <!-- 店铺领用券排名（前二十） -->
 <view class="m-title">
   <image src="/static/images/red-arr.png"></image>
-  <view>商户售券排名（前二十）</view>
+  <view>券动态</view>
 </view>
 <view class="v-all">
 	<view class="v-top">
 		<view class="v-cell" wx:for="{{cell1}}">{{item.txt}}</view>
 	</view>
 	<view class="v-top" wx:for="{{shopCell}}">
-		<view class="v-tr" >{{item.GroupName}}</view>
-		<view class="v-td">{{item.SendNum}}</view>
-		<view class="v-td">{{item.ReceiveNum}}</view>
-		<view class="v-td">{{item.ConsumeNum}}</view>
+		<view class="v-tr" >{{item.CouponName}}</view>
+		<view class="v-td">{{item.GiveNUM}}</view>
+		<view class="v-td">{{item.Memberpurchase}}</view>
+		<view class="v-td">{{item.Membersales}}</view>
 	</view>
 </view>
 

@@ -2,7 +2,7 @@
 <view class="home-box">
     <view class="home-sel">
       <view class="home-span" bindtap="showPopup1">
-        <view>{{shopName}}</view>
+        <view>{{GroupName}}</view>
         <image src="/static/images/sel.png" />
       </view>
       <view class="home-span" bindtap="showPopup2">
@@ -16,8 +16,8 @@
     </view>
     <view class="stm-mes">
       总数量 :
-      <text style="margin-right:10px;">{{sumCouponNum}}</text> 总面额：￥
-      <text>{{sumCouponMoney}}</text>
+      <text style="margin-right:10px;">{{sumCouponNum}}</text> 总金额：￥
+      <text>{{sumReceiveMoney}}</text>
     </view>
     <block wx:for="{{GiveCouponList}}">
     <view class="stm-block">
@@ -41,7 +41,7 @@
       overlay
       safe-area-inset-bottom
     >
-      <van-picker show-toolbar columns="{{shoplist}}"  valueKey="ShopName" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
+      <van-picker show-toolbar columns="{{shoplist}}"  valueKey="GroupName" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
     </van-popup>
 
     <!-- 券类型 -->
