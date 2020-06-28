@@ -144,6 +144,7 @@
       "root": "mebC",
       "name": "mebC",
       "pages": [
+        "myExtend/myExtend",
         "levelManager/levelManager",
         "addSpan/addSpan",
         "seeSpan/seeSpan",
