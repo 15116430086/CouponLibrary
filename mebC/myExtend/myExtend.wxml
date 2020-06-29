@@ -1,17 +1,18 @@
 <!--mebC/myExtend/myExtend.wxml-->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="top-mes">
-	<view class="top-flex {{idc==item.id?'sel':''}}" wx:for="{{img1}}" data-id="{{item.id}}" bindtap="clkTab">
+	<view class="top-flex {{currentId==item.id?'sel':''}}" wx:for="{{img1}}" data-id="{{item.id}}" bindtap="clkTab">
 		<view>{{item.txt}}</view>
 	</view>
 </view>
 <view class="home-box">
 	<view class="home-sel">
 		<view class="home-span" bindtap="showPopup1">
-			<view>{{GroupName}}</view>
+			<view>{{ShopName}}</view>
 			<image src="/static/images/sel.png" />
 		</view>
 		<view class="home-span" bindtap="showPopup2">
-			<view>{{typeName}}</view>
+			<view>{{selectDateStart}}</view>
 			<image src="/static/images/sel.png" />
 		</view>
 		<view class="home-span" bindtap="showPopup3">
@@ -19,55 +20,64 @@
 			<image src="/static/images/sel.png" />
 		</view>
 	</view>
-	<view class="stm-mes" wx:if="{{idc == 1}}">
-		数量:100 , 总金额:￥500
-		<text style="margin-left:40rpx;">首购数 500 ,金额￥500</text>
+	<view class="stm-mes" wx:if="{{currentId == 0}}">
+		数量:{{Odernumber}} , 总金额:￥{{TruePayMoneyCount}}
+		<text style="margin-left:40rpx;">首购数:{{FirstConsumeCount}} ,金额￥{{FirstConsumeMoneryCount}}</text>
 	</view>
 
 	<!-- 推广订单 -->
-	<block  wx:if="{{idc == 1}}">
+	<block wx:if="{{currentId == 0}}">
+	<block wx:for="{{PromotionorderList}}">
 		<view class="order-box">
-			<image src="../../static/images/user.png" />
+			<image src="{{item.ImageOne}}" />
 			<view class="o-right">
 				<view class="o-top">
-					<view class="o-name">哈哈圣诞节暗红色的就暗示的啥都好说哈师大【会员平台自领】</view>
-					<view class="o-price">￥10</view>
+					<view class="o-name">{{item.CouponName}}</view>
+					<view class="o-price">￥{{item.TruePayMoney}}</view>
 				</view>
 				<view class="stm-bot">
-          <view class="stm-nnn">究极厉害店铺达摩无敌</view>         
-          <view class="stm-time">09-08 12：21 消费</view>
+          <view class="stm-nnn">{{item.ShopName}}</view>         
+          <view class="stm-time">{{common.sysFormatDate(item.CreateTime,"MM-dd hh:mm")}} 消费</view>
         </view>
 			</view>
 		</view>
 	</block>
+	</block>
 
 	<!-- 推广会员 -->
-	<block  wx:if="{{idc == 2}}">
+	<block  wx:if="{{currentId == 1}}">
+	<block wx:for="{{PromotionmembersList}}">
 		<navigator class="stm-block" hover-class="none" url="../../pages/moneyDetail/moneyDetail">
-			<image src="../../static/images/user.png" />
+			<image src="{{item.UserAvatar}}" />
 			<view class="stmb-left">
-				<view class="stm-top">哈哈圣诞节暗红色的就暗示的啥都好说哈师大【会员平台自领】</view>
+				<view class="stm-top">{{item.UserName}}</view>
 				<view class="stm-bot">
-					<view class="stm-time">2020-12-30 12：30：23</view>
+					<view class="stm-time">{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
 				</view>
 			</view>
 		</navigator>
+	</block>
 	</block>
 
 
 
 	<!-- 商铺类型 -->
 	<van-popup show="{{show1}}" bind:close="onClose1" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
-		<van-picker show-toolbar columns="{{shoplist}}" valueKey="GroupName" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
+		<van-picker show-toolbar columns="{{shoplist}}" valueKey="ShopName" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
 	</van-popup>
 
 	<!-- 券类型 -->
-	<van-popup show="{{show2}}" bind:close="onClose" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
+	<!-- <van-popup show="{{show2}}" bind:close="onClose" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
 		<van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+	</van-popup> -->
+
+<!-- 时间 -->
+	<van-popup show="{{show2}}" bind:close="onClose2" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
+		<van-datetime-picker type="date" value="{{currentDateStart}}" min-date="{{minDate}}" max-date="{{maxDate}}" bind:input="onInput" bind:cancel="onCancel2" bind:confirm="confirmStart" bind:change="change" formatter="{{ formatterStart }}" />
 	</van-popup>
 
 	<!-- 时间 -->
-	<van-popup show="{{show3}}" bind:close="onClose2" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
-		<van-datetime-picker type="date" value="{{currentDate}}" min-date="{{minDate}}" bind:input="onInput" bind:cancel="onCancel2" bind:confirm="confirm" bind:change="change" formatter="{{ formatter }}" />
+	<van-popup show="{{show3}}" bind:close="onClose3" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
+		<van-datetime-picker type="date" value="{{currentDate}}" min-date="{{minDate}}"  max-date="{{maxDate}}"  bind:input="onInput" bind:cancel="onCancel3" bind:confirm="confirm" bind:change="change" formatter="{{ formatter }}" />
 	</van-popup>
 </view>
