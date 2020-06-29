@@ -53,11 +53,11 @@
 </view>
 
 <!-- 会员分享次数排行（前十） -->
-<view class="m-title">
+<view class="m-title" wx:if="{{mebCell.length>0}}">
 	<image src="/static/images/red-arr.png"></image>
 	<view>会员分享排名（前十）</view>
 </view>
-<view class="v-all">
+<view class="v-all" wx:if="{{mebCell.length>0}}">
 	<view class="v-top">
 		<view class="v-cell" wx:for="{{cell}}">{{item.txt}}</view>
 	</view>
@@ -71,11 +71,11 @@
 
 
 <!-- 店铺领用券排名（前二十） -->
-<view class="m-title">
+<view class="m-title" wx:if="{{shopCell.length>0}}">
 	<image src="/static/images/red-arr.png"></image>
 	<view>商户售券排名（前二十）</view>
 </view>
-<view class="v-all">
+<view class="v-all" wx:if="{{shopCell.length>0}}">
 	<view class="v-top">
 		<view class="v-cell" wx:for="{{cell1}}">{{item.txt}}</view>
 	</view>
