@@ -4,9 +4,13 @@ var common = {
    * value 将要格式化的值
    * format 格式化的格式
    **/
-  coFormatDate: function (value, format, isapi) {
+  coFormatDate: function (value, format, isapi,isIOS) {
     var regYear = getRegExp("(y+)", "i");
     value = value.replace('T', ' ');
+    if(isIOS)
+    {
+      value=value.substring(5, 16);
+    }
     if (isapi) {     
       return value;
     }
