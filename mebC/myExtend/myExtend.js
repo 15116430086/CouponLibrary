@@ -105,10 +105,15 @@ Page({
       that.setData({         
         shopID:0
       })
-    }
-    if(app.globalData.AppGroupInfo.GroupID == app.globalData.AppGroupInfo.AffiliatedGroupID){
-    that.GetShopList();
-    }
+      that.GetShopList();
+    } 
+    else
+    {
+      that.setData({       
+        ShopName: app.globalData.AppShopInfo.ShopName,  
+        shopID:app.globalData.AppStaffInfo.ShopID
+      })
+    }  
   },
  
   GetData: function() {
