@@ -1,0 +1,73 @@
+<!--mebC/myExtend/myExtend.wxml-->
+<view class="top-mes">
+	<view class="top-flex {{idc==item.id?'sel':''}}" wx:for="{{img1}}" data-id="{{item.id}}" bindtap="clkTab">
+		<view>{{item.txt}}</view>
+	</view>
+</view>
+<view class="home-box">
+	<view class="home-sel">
+		<view class="home-span" bindtap="showPopup1">
+			<view>{{GroupName}}</view>
+			<image src="/static/images/sel.png" />
+		</view>
+		<view class="home-span" bindtap="showPopup2">
+			<view>{{typeName}}</view>
+			<image src="/static/images/sel.png" />
+		</view>
+		<view class="home-span" bindtap="showPopup3">
+			<view>{{selectDate}}</view>
+			<image src="/static/images/sel.png" />
+		</view>
+	</view>
+	<view class="stm-mes" wx:if="{{idc == 1}}">
+		数量:100 , 总金额:￥500
+		<text style="margin-left:40rpx;">首购数 500 ,金额￥500</text>
+	</view>
+
+	<!-- 推广订单 -->
+	<block  wx:if="{{idc == 1}}">
+		<view class="order-box">
+			<image src="../../static/images/user.png" />
+			<view class="o-right">
+				<view class="o-top">
+					<view class="o-name">哈哈圣诞节暗红色的就暗示的啥都好说哈师大【会员平台自领】</view>
+					<view class="o-price">￥10</view>
+				</view>
+				<view class="stm-bot">
+          <view class="stm-nnn">究极厉害店铺达摩无敌</view>         
+          <view class="stm-time">09-08 12：21 消费</view>
+        </view>
+			</view>
+		</view>
+	</block>
+
+	<!-- 推广会员 -->
+	<block  wx:if="{{idc == 2}}">
+		<navigator class="stm-block" hover-class="none" url="../../pages/moneyDetail/moneyDetail">
+			<image src="../../static/images/user.png" />
+			<view class="stmb-left">
+				<view class="stm-top">哈哈圣诞节暗红色的就暗示的啥都好说哈师大【会员平台自领】</view>
+				<view class="stm-bot">
+					<view class="stm-time">2020-12-30 12：30：23</view>
+				</view>
+			</view>
+		</navigator>
+	</block>
+
+
+
+	<!-- 商铺类型 -->
+	<van-popup show="{{show1}}" bind:close="onClose1" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
+		<van-picker show-toolbar columns="{{shoplist}}" valueKey="GroupName" bind:cancel="onCancel1" bind:confirm="onConfirm1" />
+	</van-popup>
+
+	<!-- 券类型 -->
+	<van-popup show="{{show2}}" bind:close="onClose" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
+		<van-picker show-toolbar columns="{{columns}}" bind:cancel="onCancel" bind:confirm="onConfirm" />
+	</van-popup>
+
+	<!-- 时间 -->
+	<van-popup show="{{show3}}" bind:close="onClose2" position="bottom" close-on-click-overlay overlay safe-area-inset-bottom>
+		<van-datetime-picker type="date" value="{{currentDate}}" min-date="{{minDate}}" bind:input="onInput" bind:cancel="onCancel2" bind:confirm="confirm" bind:change="change" formatter="{{ formatter }}" />
+	</van-popup>
+</view>

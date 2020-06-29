@@ -93,7 +93,7 @@ Page({
             console.log(res);
             if (res.errMsg == "requestPayment:ok") {
               chta.setData({ butCket: true});
-              chat.Query();
+              wx.navigateBack();
             }
           },
           fail(res) {
@@ -112,7 +112,16 @@ Page({
             chta.setData({ butCket: true});
           }
         })
+      }else{
+        wx.showToast({
+          title: json.msg,
+          icon: "none"
+        });
+        chta.setData({ butCket: true});
+        wx.navigateBack();
       }
+
+
     }else{
       wx.showToast({
         title: json.msg,
