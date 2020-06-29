@@ -185,7 +185,11 @@ Page({
       if (that.data.currentId == 0) {
         if (pageM[that.data.currentId].page == 1) {
             that.setData({
-              PromotionorderList:[]
+              PromotionorderList:[],
+              Odernumber: 0,
+              TruePayMoneyCount: 0,
+              FirstConsumeCount: 0,
+              FirstConsumeMoneryCount: 0
             })
         }
       }
