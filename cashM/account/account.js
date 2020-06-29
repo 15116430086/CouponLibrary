@@ -93,8 +93,13 @@ Page({
             console.log(res);
             if (res.errMsg == "requestPayment:ok") {
               chta.setData({ butCket: true});
-              wx.navigateBack();
+              
+              wx.showToast({
+                title: json.msg,
+                icon: "none"
+              });
             }
+            setTimeout(function(){  wx.navigateBack();},2000);
           },
           fail(res) {
             if (res.errMsg == "requestPayment:fail cancel") {
