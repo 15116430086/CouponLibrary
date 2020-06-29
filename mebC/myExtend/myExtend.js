@@ -226,7 +226,7 @@ Page({
     var json = json.data.Data;
     if (json.flag) {
       var shoplist = [{
-        ShopName: "全部店铺",
+        ShopName: "全部推广门店 ",
         ShopID: 0
       }];
       shoplist = shoplist.concat(json.data)

@@ -37,7 +37,7 @@
 				</view>
 				<view class="stm-bot">
           <view class="stm-nnn">{{item.ShopName}}</view>         
-          <view class="stm-time">{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}} 消费</view>
+          <view class="stm-time">{{common.sysFormatDate(item.CreateTime,"yyyy/MM/dd hh:mm:ss")}} 消费</view>
         </view>
 			</view>
 		</view>
