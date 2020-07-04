@@ -27,8 +27,9 @@ Page({
     if(that.data.identification==0){
       var data = {};
       data.GroupID = app.globalData.AppGroupInfo.GroupID;
-      data.pPageIndex = page;
-      data.pPageSize = 20;
+      // data.pPageIndex = page;
+      // data.pPageSize = 20;
+      data.pType=that.data.type,
       data.pStartTime=that.data.StartTime,
       data.pEndTime=that.data.EndTime,
       utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetMerchantCouponStateList", "POST", data, app.globalData.appkeyid, this.GetDataBack)
@@ -36,8 +37,9 @@ Page({
       var data = {};
       data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
       data.pSendgroupid=that.data.sendgroupid
-      data.pPageIndex = page;
-      data.pPageSize = 20;
+      // data.pPageIndex = page;
+      // data.pPageSize = 20;
+      data.pType=that.data.type,
       data.pStartTime=that.data.StartTime,
       data.pEndTime=that.data.EndTime,
       utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetCouponStateList", "POST", data, app.globalData.appkeyid, this.GetDataBack)
@@ -49,23 +51,26 @@ Page({
     var json = json.data.Data;    
     if (json.flag) {
       console.log(json.msg);
-      if (page == 1) {
         that.setData({
           DataList: json.data,
-          lastpage: json.pageCount //你的总页数   
         });
-      } else {
-        //获取上次加载的数据
-        var oldlists = that.data.DataList;
-        var newlists = oldlists.concat(json.data) //合并数据 res.data 你的数组数据
-        that.setData({
-          DataList: newlists,
-          lastpage: json.pageCount //你的总页数   
-        });
-      }
+      // if (page == 1) {
+      //   that.setData({
+      //     DataList: json.data,
+      //     lastpage: json.pageCount //你的总页数   
+      //   });
+      // } else {
+      //   //获取上次加载的数据
+      //   var oldlists = that.data.DataList;
+      //   var newlists = oldlists.concat(json.data) //合并数据 res.data 你的数组数据
+      //   that.setData({
+      //     DataList: newlists,
+      //     lastpage: json.pageCount //你的总页数   
+      //   });
+      // }
     } else {
       wx.showToast({
-        title: '没有找到相关数据!',
+        title: json.msg,
         icon: 'none',
         duration: 2000
       })
@@ -118,8 +123,9 @@ Page({
    */
   onShow: function () {
     let that = this;
-    page=1;
-    that.GetData(page);
+    // page=1;
+    // that.GetData(page);
+    that.GetData();
   },
 
   /**
@@ -147,18 +153,18 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    let that = this;
-    if (that.data.lastpage > page) {
-      page++
-      that.GetData(page);
-    } else if (that.data.lastpage == page) {
-      page++;
-      wx.showToast({
-        title: '没有更多数据!',
-        icon: 'none',
-        duration: 2000
-      })
-    }
+    // let that = this;
+    // if (that.data.lastpage > page) {
+    //   page++
+    //   that.GetData(page);
+    // } else if (that.data.lastpage == page) {
+    //   page++;
+    //   wx.showToast({
+    //     title: '没有更多数据!',
+    //     icon: 'none',
+    //     duration: 2000
+    //   })
+    // }
   },
 
   /**

@@ -14,6 +14,7 @@ Page({
     lastpage: 0,
     type:'',
     PageName:'',
+    PeopleTotal:0
   },
 
   GetData: function () {
@@ -40,7 +41,8 @@ Page({
         that.setData({
           DataList: json.data,
           PageName:json.data[0].PageName,
-          lastpage: json.pageCount //你的总页数   
+          PeopleTotal: json.PeopleTotal, 
+          lastpage: json.pageCount //你的总页数   //你的总页数   
         });
       } else {
         //获取上次加载的数据
@@ -48,7 +50,7 @@ Page({
         var newlists = oldlists.concat(json.data) //合并数据 res.data 你的数组数据
         that.setData({
           DataList: newlists,
-          lastpage: json.pageCount //你的总页数   
+         
         });
       }
     } else {
