@@ -27,8 +27,8 @@ Page({
     if(that.data.identification==0){
       var data = {};
       data.GroupID = app.globalData.AppGroupInfo.GroupID;
-      // data.pPageIndex = page;
-      // data.pPageSize = 20;
+      data.pPageIndex = page;
+      data.pPageSize = 20;
       data.pType=that.data.type,
       data.pStartTime=that.data.StartTime,
       data.pEndTime=that.data.EndTime,
@@ -37,8 +37,8 @@ Page({
       var data = {};
       data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
       data.pSendgroupid=that.data.sendgroupid
-      // data.pPageIndex = page;
-      // data.pPageSize = 20;
+      data.pPageIndex = page;
+      data.pPageSize = 20;
       data.pType=that.data.type,
       data.pStartTime=that.data.StartTime,
       data.pEndTime=that.data.EndTime,
