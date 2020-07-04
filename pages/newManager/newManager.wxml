@@ -35,7 +35,7 @@
           <image src="{{fitem.IsShow?'/static/images/xj.png':'/static/images/yj.png'}}" class="v-left-arr" />
           <view>{{fitem.GradeName}}</view>
         </view>
-        <view class="v-right">{{fitem.ListCoupon_UserInfo.length}}人</view>
+        <view class="v-right">{{fitem.UserCount}}人</view>
       </view>
       <view class="v-block" wx:if="{{fitem.IsShow}}">
         <view class="b-box" wx:for="{{fitem.ListCoupon_UserInfo}}" wx:for-item="citem" wx:for-index="cindex" wx:key="cindex">
@@ -58,7 +58,13 @@
           <navigator url="../moneyDetail/moneyDetail?userid={{citem.UserID}}">
             <image src="/static/images/right-arr1.png" class="mbot-arr" />
           </navigator>
+        
+        
+        
+        
+        
         </view>
+        <view style="text-align: center;" bindtap="onPageNext" data-findex="{{findex}}" data-lastindex="{{fitem.ListCoupon_UserInfo.length}}" >查看更多</view>
         <view class="b-box">
           <view class="c-left" bindtap="allSel" data-findex='{{findex}}'>
             <image src="{{fitem.CheckAll?'/static/images/f2.png':'/static/images/f1.png'}}" class="v-choose" />

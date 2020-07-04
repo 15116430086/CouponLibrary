@@ -24,6 +24,7 @@ Page({
     })
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
     data.pPageIndex = page;
     data.pPageSize = 20;
     data.pLatitudeX = app.globalData.latitudeX;
