@@ -62,7 +62,7 @@
 		<view class="v-cell" wx:for="{{cell}}">{{item.txt}}</view>
 	</view>
 	<view class="v-top" wx:for="{{mebCell}}">
-		<view class="v-tr">{{item.UserName}}</view>
+		<view class="v-tr">{{item.UserName==''?'匿名会员':item.UserName}}</view>
 		<view class="v-td">{{item.SNum}}</view>
 		<view class="v-td">{{item.VNUm}}</view>
 		<view class="v-td">{{item.RUser}}</view>

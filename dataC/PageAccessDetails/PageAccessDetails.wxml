@@ -2,15 +2,16 @@
 <wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="v-all">
 	<view class="tip-block">
-		当前时间段{{PageName}}访问人数:<text>{{DataList.length}}</text>
+		当前时间段{{PageName}}访问人数:<text>{{PeopleTotal}}</text>
 	</view>
 
 <block wx:for="{{DataList}}">
 	<view class="v-block" data-userid="{{item.UserID}}" bindtap="JumpPage">
 		<view class="v-left">
-			<image src="{{item.UserAvatar}}" class="v-img" />
+			<image wx:if="{{item.UserAvatar!=''}}" src="{{item.UserAvatar}}" class="v-img" />
+			<image wx:else src="../../static/images/me1.png" class="v-img" />
 			<view class="v-mes">
-				<view class="v-name">{{item.UserName}}</view>
+				<view class="v-name">{{item.UserName==''?'匿名会员':item.UserName}}</view>
 				<view class="v-time">{{common.sysFormatDate(item.LastVisitTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
 			</view>
 		</view>
