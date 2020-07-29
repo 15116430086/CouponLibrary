@@ -1,0 +1,26 @@
+<!--pages/receipt/receipt.wxml-->
+<view class='top_nav'>
+    <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id"  data-tagid='{{item.atg}}'     id='{{item.typeId}}'   catchtap='handleTap'>
+        {{item.name}}
+    </view>
+</view>
+
+
+<view hidden='{{currentId!=0}}' class="mes-block">
+    <view class="m-class">
+      <view class="m-time">
+        <view class="mt-left">2020-9</view>
+        <view class="mt-right">明细 > </view>
+      </view>
+      <block>
+        <view class="m-box">
+          <view class="mb-left">麻辣香锅究极达摩无敌宇宙超值套餐</view>
+          <view class="mb-right">120张</view>
+        </view>
+      </block>
+      <view class="m-bot">
+         <view class="mb-left">合计</view>
+          <view class="mb-right">120张</view>
+      </view>
+    </view>
+</view>

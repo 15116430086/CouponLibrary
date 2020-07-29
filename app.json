@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/login/login",
+    "pages/receipt/receipt",
     "pages/echartTxT/echartTxT",
     "pages/shopDetail/shopDetail",
     "pages/memberNum/memberNum",

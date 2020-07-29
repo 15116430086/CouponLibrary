@@ -27,7 +27,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -194,6 +194,13 @@
 					"id": -1,
 					"name": "data/child/child",
 					"pathName": "data/child/child",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/receipt/receipt",
+					"pathName": "pages/receipt/receipt",
 					"scene": null
 				}
 			]
