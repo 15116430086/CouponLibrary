@@ -1,6 +1,7 @@
 /* pages/receipt/receipt.wxss */
 page {
   background-color: #EDEDED;
+  padding-top: 140rpx;
 }
 
 .top_nav {
@@ -9,6 +10,9 @@ page {
   height: 110rpx;
   background-color: #ffffff;
   padding-left: 40rpx;
+  position: fixed;
+  top: 0px;
+  left: 0px;
   /* border-bottom: 4rpx solid #EDEDED; */
 }
 
@@ -45,7 +49,7 @@ page {
   width: calc(100% - 80rpx);
   border-radius: 10rpx;
   background-color: #ffffff;
-  margin-top: 40rpx;
+  margin-bottom: 40rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
