@@ -1,26 +1,53 @@
 <!--pages/receipt/receipt.wxml-->
 <view class='top_nav'>
-    <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id"  data-tagid='{{item.atg}}'     id='{{item.typeId}}'   catchtap='handleTap'>
+    <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id"  data-tagid='{{item.atg}}'     id='{{item.typeId}}' catchtap='handleTap'>
         {{item.name}}
     </view>
 </view>
 
 
 <view hidden='{{currentId!=0}}' class="mes-block">
+<block wx:for="{{Monthlist}}">
     <view class="m-class">
       <view class="m-time">
-        <view class="mt-left">2020-9</view>
-        <view class="mt-right">明细 > </view>
+        <view class="mt-left">{{item.PayDate}}</view>
+        <view class="mt-right" data-time="{{item.PayDate}}" bindtap="DaySummary">明细 > </view>
       </view>
       <block>
+        <block wx:for="{{item.CouponItem}}" wx:for-item="coupon">
         <view class="m-box">
-          <view class="mb-left">麻辣香锅究极达摩无敌宇宙超值套餐</view>
-          <view class="mb-right">120张</view>
+          <view class="mb-left">{{coupon.CouponName}}</view>
+          <view class="mb-right">{{coupon.Number}}张</view>
         </view>
+        </block>
       </block>
       <view class="m-bot">
          <view class="mb-left">合计</view>
-          <view class="mb-right">120张</view>
+          <view class="mb-right">{{item.Totail}}张</view>
       </view>
     </view>
+    </block>
+</view>
+
+<view hidden='{{currentId!=1}}' class="mes-block">
+<block wx:for="{{Daylist}}">
+    <view class="m-class">
+      <view class="m-time">
+        <view class="mt-left">{{item.PayDate}}</view>
+          <navigator url="../orderDetails/orderDetails?time={{item.PayDate}}" hover-class="none" class="mt-right">明细 > </navigator>
+      </view>
+      <block>
+        <block wx:for="{{item.CouponItem}}" wx:for-item="coupon">
+        <view class="m-box">
+          <view class="mb-left">{{coupon.CouponName}}</view>
+          <view class="mb-right">{{coupon.Number}}张</view>
+        </view>
+        </block>
+      </block>
+      <view class="m-bot">
+         <view class="mb-left">合计</view>
+          <view class="mb-right">{{item.Totail}}张</view>
+      </view>
+    </view>
+</block>
 </view>
