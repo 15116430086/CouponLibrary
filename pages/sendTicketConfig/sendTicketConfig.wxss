@@ -119,7 +119,7 @@ page {
     border-bottom: 1px solid #e6d9af;
     width: calc(100% - 80rpx);
     margin: 0px auto;
-    height: 80rpx;
+    height: 100rpx;
     background-color: #fff;
     /* padding-left: 40rpx; */
     border-bottom: 2rpx solid #ededed;
@@ -147,7 +147,7 @@ page {
 
   .nav-hover {
     color: #e85819;
-    font-size: 30rpx;
+    font-size: 34rpx;
     font-weight: 600;
     border-bottom: 8rpx solid #e85819;
   }

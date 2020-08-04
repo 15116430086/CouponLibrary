@@ -243,7 +243,7 @@ page {
 
   .nav-hover {
     color: #e85819;
-    font-size: 30rpx;
+    font-size: 34rpx;
     font-weight: 600;
     border-bottom: 8rpx solid #e85819;
   }
