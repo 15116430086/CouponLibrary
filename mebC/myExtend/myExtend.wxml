@@ -29,7 +29,7 @@
 	<block wx:if="{{currentId == 0}}">
 	<block wx:for="{{PromotionorderList}}">
 		<view class="order-box">
-			<image src="{{item.ImageOne}}" />
+			<image src="{{tools.getImagsize(item.ImageOne,240)}}" />
 			<view class="o-right">
 				<view class="o-top">
 					<view class="o-name">{{item.CouponName}}</view>

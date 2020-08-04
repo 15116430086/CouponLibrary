@@ -1,10 +1,11 @@
+<wxs src="../../utils/common.wxs" module="tools" />
 <template name="hotTicketBox">
   <block wx:for="{{ListCoupon_ReleaseQuery}}" wx:key="ReleaseID">
     <view class="hotboxH">
       <view class="hotblockH">
         <!-- 左图 -->
         <view class="v-left"  data-ReleaseID="{{item.ReleaseID}}" data-CouponID="{{item.CouponID}}" bindtap="onBindReceiveTap">
-          <image class="ticket-imgH" src="{{item.CouponImageOne}}" mode='aspectFill' />
+          <image class="ticket-imgH" src="{{tools.getImagsize(item.CouponImageOne,240)}}" mode='aspectFill' />
           <view>{{item.WriteOffType==0?"线上":"线下"}}使用</view>
         </view>
         <view class="ticket-boxH">
