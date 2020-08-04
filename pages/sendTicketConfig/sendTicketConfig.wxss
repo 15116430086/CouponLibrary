@@ -30,7 +30,7 @@ page {
 
 .home-block {
     width: calc(100% - 80rpx);
-    height: 128rpx;
+    height: 105rpx;
     margin: 0px auto;
     display: flex;
     flex-direction: row;
@@ -52,7 +52,7 @@ page {
 
 .home-rule {
     color: #666666;
-    font-size: 28rpx;
+    font-size: 26rpx;
 }
 
 .home-top {
@@ -114,3 +114,58 @@ page {
     margin-left: 20rpx;
     
 }
+
+.top_nav1 {
+    border-bottom: 1px solid #e6d9af;
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
+    height: 80rpx;
+    background-color: #fff;
+    /* padding-left: 40rpx; */
+    border-bottom: 2rpx solid #ededed;
+   margin-bottom: 10rpx;
+    z-index: 100;
+    box-sizing: border-box;
+    display: flex;
+    white-space: nowrap;
+    /*这个属性很重要*/
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-name {
+    display: inline-block;
+    color: #999;
+    width: auto;
+    font-weight: 600;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: left;
+    font-size: 28rpx;
+    margin-right: 54rpx;
+  }
+
+  .nav-hover {
+    color: #e85819;
+    font-size: 30rpx;
+    font-weight: 600;
+    border-bottom: 8rpx solid #e85819;
+  }
+
+  .none {
+    width: 100%;
+    height: 370rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ccc;
+    font-size: 28rpx;
+  }
+  
+  .none image {
+    width: 182rpx;
+    height: 162rpx;
+    flex-shrink: 0;
+    margin-bottom: 30rpx;
+  }

@@ -10,7 +10,11 @@ Page({
   data: {
     searchValue: "",
     couponList: [],
-    lastpage: 0
+    lastpage: 0,
+    section: [],
+    IndustryCode:"C1",
+    currentId: 'C1', 
+    isshow:false, 
   },
   GetData: function() {
     let that = this;
@@ -23,6 +27,7 @@ Page({
     data.pPageIndex = page;
     data.pPageSize = 30;
     data.pSearchName = that.data.searchValue;
+    data.pIndustryCode= that.data.IndustryCode == "C1" ?"": that.data.IndustryCode,
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponGiveConfig", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {
@@ -33,8 +38,9 @@ Page({
     if (json.flag) {
       console.log(json.msg);
       if (page == 1) {
-        this.setData({
+        that.setData({
           couponList: json.data,
+          isshow:false,
           lastpage: json.pageCount //你的总页数   
         });
       } else {
@@ -49,6 +55,12 @@ Page({
       }
 
     } else {
+      if (page == 1) {
+        that.setData({
+          couponList: [],
+          isshow:true 
+        });
+      }
       wx.showToast({
         title: '没有找到相关数据!',
         icon: 'none',
@@ -64,6 +76,7 @@ Page({
     let that = this;
     page = 1;
     that.GetData(page);
+    that.GetCouponIndustry();
   },
 
   onbindblur: function(e) {
@@ -101,6 +114,51 @@ Page({
       duration: 2000
     })
   },
+
+  handleTap: function (e) {
+    let that = this
+    let id = e.currentTarget.dataset.id;
+    var industryCode=id;
+    if (id == 1) {
+      industryCode = "C1";
+    }
+      that.setData({
+        isshow:false,
+        currentId: id,
+        IndustryCode: industryCode,
+      })      
+      page=1,
+      that.GetData(page);
+  },
+
+  GetCouponIndustry: function () { //获取行业数据
+    var datas = {
+      pGID: app.globalData.AppGroupInfo.GroupID,
+      pGradeID: app.globalData.AppWxUserInfo.GradeID
+    }
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", datas, app.globalData.appkeyid, this.GetCouponIndustryList);
+  },
+  GetCouponIndustryList: function (res) {
+    var json = res.data.Data;
+    var chat = this;
+    var section = [{
+      IndustryName: "全部",
+      IndustryCode: "C1",      
+    }];
+    if (json.flag) {
+
+      var newlists = section.concat(json.data) //合并数据 res.data 你的数组数据
+      chat.setData({
+        section: newlists,
+        currentId: chat.data.IndustryCode        
+      });
+      chat.setData({        
+        itemindex:chat.data.IndustryCode
+      });
+    }
+   
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

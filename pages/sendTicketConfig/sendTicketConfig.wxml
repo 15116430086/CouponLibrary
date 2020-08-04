@@ -11,9 +11,19 @@
     <view class="home-btn" bindtap="onSearch">搜索</view>
   </view>
 
+	<view class="top_nav1 ">
+		<scroll-view scroll-x="true" scroll-into-view="{{itemindex}}" style="width: 100%" scroll-with-animation="true">
+			<view class="nav-name {{item.IndustryCode == currentId ? 'nav-hover':''}}" id="{{item.IndustryCode}}"  wx:for="{{section}}" wx:key="id" data-id='{{item.IndustryCode}}' bindtap='handleTap'>
+				{{item.IndustryName}}
+			</view>
+		</scroll-view>
+	</view>
+
+
+
   <block wx:for="{{couponList}}" wx:key="CouponID" wx:for-index="index">
-  <view wx:if="{{item.State==1}}" data-couponid="{{item.CouponID}}" data-state="{{item.State}}" bindtap="UpdateCouponInfoState">下架</view>
-  <view wx:elif="{{item.State==2}}" data-couponid="{{item.CouponID}}" data-state="{{item.State}}" bindtap="UpdateCouponInfoState">上架</view>
+  <!-- <view wx:if="{{item.State==1}}" data-couponid="{{item.CouponID}}" data-state="{{item.State}}" bindtap="UpdateCouponInfoState">下架</view>
+  <view wx:elif="{{item.State==2}}" data-couponid="{{item.CouponID}}" data-state="{{item.State}}" bindtap="UpdateCouponInfoState">上架</view> -->
     <navigator class="home-block" url="../sendTicketConfigChild/sendTicketConfigChild?CouponID={{item.CouponID}}">
       <view class="home-name">
         <view>{{item.CouponName}}</view>
@@ -30,4 +40,9 @@
       <image src="/static/images/right-arr1.png" />
     </navigator>
   </block>
+  <view wx:if="{{isshow}}" class="none">
+		<image src="/static/images/none.png"></image>
+		<view>对不起！</view>
+		<view>该行业下没有券</view>
+	</view>
 </view>
