@@ -60,6 +60,10 @@ Page({
       title: '数据加载中',
       mask: true
     })
+    this.setData({
+      logoimg: app.globalData.apiurl + 'miniProgramImg/' + app.globalData.sysaAppid + '.png',
+      proname: app.globalData.sysName
+    })
     // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.record" 这个 scope
     wx.getSetting({
       success(res) {
@@ -118,16 +122,14 @@ Page({
       var data = {};
       data.pAppKeyId = appkeyid.FSessionKey;
       utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetApiSession", "POST", data, app.globalData.appkeyid, that.CheckLoginState)
-    }
-    else
-    {
+    } else {
       //隐藏 加载中的提示
       wx.hideLoading();
     }
 
   },
 
-  CheckLoginState: function (res) {  
+  CheckLoginState: function (res) {
     var json = res.data.Data;
     if (json.flag) {
       wx.setStorageSync('miniappkeyid', json.data)
@@ -145,8 +147,8 @@ Page({
           })
       }
     }
-      //隐藏 加载中的提示
-      wx.hideLoading();
+    //隐藏 加载中的提示
+    wx.hideLoading();
   },
 
   /**

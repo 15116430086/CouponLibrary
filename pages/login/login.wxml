@@ -1,9 +1,9 @@
 <!--pages/login/login.wxml-->
 <view class="v-box">
     
-        <image src="/static/images/logo.png" class="logo"/>
-        <view class="v-topTitle">欢迎进入券库</view>
-        <view class="v-topMes">券库是服务于商家的异业资源整合平台，帮助商家拓展销售渠道，整合会员权益，提升客户终身价值。</view>
+        <image src="{{logoimg}}" class="logo"/>
+        <view class="v-topTitle">欢迎进入{{proname}}</view>
+        <view class="v-topMes">{{proname}}是服务于商家的异业资源整合平台，帮助商家拓展销售渠道，整合会员权益，提升客户终身价值。</view>
         <button class="loginBtn" open-type="getUserInfo" bindgetuserinfo="onMerchantRegTap" >商家注册</button>
         <button class="phoneBtn" bindtap="onPhoneLoginTap" >立即登录</button>
 
