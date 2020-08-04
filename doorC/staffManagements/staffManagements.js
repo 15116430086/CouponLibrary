@@ -23,8 +23,8 @@ Page({
       shopID: options.ShopID
     });
     var datas = {
-      pageIndex: this.data.pageIndex,
-      pageSize: 5,
+      pageIndex: 0,
+      pageSize: 100,
       ShopID: this.data.shopID,
       IsShopowner: 1,
       StaffID: app.globalData.AppStaffInfo.StaffID
