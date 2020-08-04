@@ -1,13 +1,19 @@
 <view class="home-box">
-  <view class="home-img">
-    <view class="home-v">
-      <view class="home-view">
-        <text style="color:#e30000;">*</text>默认赠送规则：</view>
-      <view>代金券会员可自领，员工可赠送；礼物券仅员工可赠送</view>
+  <!-- 搜索框 -->
+  <view class="home-top">
+    <view class="search-box">
+      <view class="search-left">
+        <image src="/static/images/serch2.png" background-size="cover" style="margin-left:30rpx;margin-right:30rpx" />
+        <input value="{{searchValue}}" placeholder="请输入券面名称" bindblur="onbindblur" placeholder-class="ip" />
+      </view>
+      <image src="/static/images/err1.png" background-size="cover" style="margin-right:30rpx;" bindtap="onClear" v-if="flag==1" />
     </view>
+    <view class="home-btn" bindtap="onSearch">搜索</view>
   </view>
 
   <block wx:for="{{couponList}}" wx:key="CouponID" wx:for-index="index">
+  <view wx:if="{{item.State==1}}" data-couponid="{{item.CouponID}}" data-state="{{item.State}}" bindtap="UpdateCouponInfoState">下架</view>
+  <view wx:elif="{{item.State==2}}" data-couponid="{{item.CouponID}}" data-state="{{item.State}}" bindtap="UpdateCouponInfoState">上架</view>
     <navigator class="home-block" url="../sendTicketConfigChild/sendTicketConfigChild?CouponID={{item.CouponID}}">
       <view class="home-name">
         <view>{{item.CouponName}}</view>

@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    searchValue: "",
     couponList: [],
     lastpage: 0
   },
@@ -21,6 +22,7 @@ Page({
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pPageIndex = page;
     data.pPageSize = 30;
+    data.pSearchName = that.data.searchValue;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponGiveConfig", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function(json) {
@@ -62,6 +64,42 @@ Page({
     let that = this;
     page = 1;
     that.GetData(page);
+  },
+
+  onbindblur: function(e) {
+    this.setData({
+      searchValue: e.detail.value
+    })
+  },
+  onSearch: function(event) {
+    let that = this;
+    page = 1;
+    that.GetData(page);
+  },
+
+
+  UpdateCouponInfoState:function(e){
+    var CouponID = e.currentTarget.dataset.couponid;
+    var State = e.currentTarget.dataset.state;
+    var data = {};
+    data.pCouponID = CouponID;
+    data.pState = State;
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/UpdateCouponInfoState", "POST", data, app.globalData.appkeyid, this.GetUpdateCouponInfoState)
+  },
+
+  GetUpdateCouponInfoState:function(json){
+    let that = this;
+    var json = json.data.Data;
+    //隐藏 加载中的提示
+    wx.hideLoading();
+    if (json.flag) {
+      that.GetData();
+    }
+    wx.showToast({
+      title: json.msg,
+      icon: 'none',
+      duration: 2000
+    })
   },
 
   /**
