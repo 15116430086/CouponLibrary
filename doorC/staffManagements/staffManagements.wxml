@@ -2,7 +2,7 @@
 
 <!-- 店员 -->
 <view class="v-box">
-    <!-- <view class="v-title">店员</view>
+	<!-- <view class="v-title">店员</view>
     <block wx:for="{{datalist}}">
         <view class="v-block">
             <view class="v-left">
@@ -12,35 +12,52 @@
             </view>
         </view>
     </block> -->
-     <view class="v-block">
-        <view class="v-left" bindtap="addStaff">
-            <image src="/static/images/img.png" />
-            <view class="v-name" style="color:#999">添加新成员</view>
-        </view>
-    </view>
+	<view class="v-block">
+		<view class="v-left" bindtap="addStaff">
+			<image src="/static/images/img.png" />
+			<view class="v-name" style="color:#999">添加新成员</view>
+		</view>
+	</view>
 </view>
 <!-- 管理员 -->
 <view class="v-box">
-    <view class="v-title" wx:if="{{AdministratorsList.length>0}}">店员管理</view>
-    <view class="v-block" wx:if="{{state}}">
-        <view class="v-left">
-            <view class="v-n">设置</view>
+	<view class="v-title" wx:if="{{AdministratorsList.length>0}}">店员管理</view>
+	<view class="v-block" wx:if="{{state}}">
+		<view class="v-left">
+			<view class="v-n">设置</view>
+		</view>
+		<view class="v-right" bindtap="addAdministrators">
+			<view class="v-txt">点击设置管理员</view>
+			<image src="/static/images/right-arr1.png" class="v-arr" />
+		</view>
+	</view>
+	<!-- <block wx:for="{{AdministratorsList}}">
+		<view class="v-block" bindtap="Jurisdiction" data-staffid="{{item.StaffID}}">
+			<view class="v-left">
+				<image wx:if="{{item.StaffAvatar!=''}}" src="{{item.StaffAvatar}}" />
+				<image wx:else src="/static/images/swp.png" />
+				<view class="v-name">{{item.StaffName}}</view>
+			</view>
+			<view class="v-right">
+				<image src="/static/images/right-arr1.png" class="v-arr" />
+			</view>
+		</view>
+	</block> -->
+    <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" wx:for="{{AdministratorsList}}" wx:key>
+    　　<view class="content" style="{{item.txtStyle}}" data-index='{{index}}' bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchE">
+    　　　　<view class="v-block" bindtap="Jurisdiction" data-staffid="{{item.StaffID}}">
+                <view class="v-left">
+                    <image wx:if="{{item.StaffAvatar!=''}}" src="{{item.StaffAvatar}}" />
+                    <image wx:else src="/static/images/swp.png" />
+                    <view class="v-name">{{item.StaffName}}</view>
+                </view>
+                <view class="v-right">
+                    <image src="/static/images/right-arr1.png" class="v-arr" />
+                </view>
+            </view>
         </view>
-        <view class="v-right" bindtap="addAdministrators">
-            <view class="v-txt">点击设置管理员</view>
-            <image src="/static/images/right-arr1.png" class="v-arr" />
-        </view>
+        <view class="del" data-id="{{item.StaffID}}" catchtap="delBtn" data-index="{{index}}">删除</view>
     </view>
-       <block wx:for="{{AdministratorsList}}">
-        <view class="v-block" bindtap="Jurisdiction" data-staffid="{{item.StaffID}}">
-           <view class="v-left" >
-                  <image wx:if="{{item.StaffAvatar!=''}}" src="{{item.StaffAvatar}}" />
-                  <image wx:else src="/static/images/swp.png" />
-                <view class="v-name">{{item.StaffName}}</view>
-            </view>
-            <view class="v-right">
-                <image src="/static/images/right-arr1.png" class="v-arr" />
-            </view>
-        </view>
-       </block>
- </view>
+</view>
+
+
