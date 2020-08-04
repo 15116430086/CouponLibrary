@@ -9,7 +9,7 @@ Page({
    */
   data: {
     groupInfo: [{
-      GroupName: "湖南券库",
+      GroupName: "湖南",
       Introduction: "/static/images/swp.png"
     }],
     images: [{

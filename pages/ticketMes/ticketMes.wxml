@@ -1,8 +1,8 @@
 <import src="/template/payStore/payStore" />
-
+<wxs src="../../utils/common.wxs" module="tools" />
 <view class="home-box">
   <view class="swiper">
-    <image wx:if="{{datalist[0].ImageOne}}" src='{{datalist[0].ImageOne}}' class='u-img-slide' mode='aspectFill' />
+    <image wx:if="{{datalist[0].ImageOne}}" src='{{tools.getImagsize(datalist[0].ImageOne,480)}}' class='u-img-slide' mode='aspectFill' />
     <image wx:else src='/static/images/swp.png' class='u-img-slide' mode='aspectFill' />
   </view>
   <view class="home-mes">

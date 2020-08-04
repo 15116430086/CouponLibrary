@@ -84,7 +84,7 @@ Page({
     //   }
     // })
 
-    let referer = '券库商家助手'; //调用插件的app的名称 
+    let referer = app.globalData.sysName+'商家助手'; //调用插件的app的名称 
     let category = '生活服务,娱乐休闲,美食';
     wx.navigateTo({
       url: 'plugin://chooseLocation/index?key=' + app.globalData.minmapkey + '&referer=' + referer + '&category=' + category
