@@ -62,7 +62,7 @@
                 <image src="/static/images/right-arr1.png" />
               </navigator>
           </view>
-          <view class="del" data-id="{{item.CouponID}}" catchtap="delBtn" data-index="{{index}}">删除</view>
+          <view class="del" data-couponid="{{item.CouponID}}" catchtap="UpdateCouponInfoState" data-index="{{index}}">下架</view>
     </view>
 
 

@@ -179,12 +179,22 @@ Page({
 
 
   UpdateCouponInfoState:function(e){
+    let that = this;
     var CouponID = e.currentTarget.dataset.couponid;
-    var State = e.currentTarget.dataset.state;
-    var data = {};
-    data.pCouponID = CouponID;
-    data.pState = State;
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/UpdateCouponInfoState", "POST", data, app.globalData.appkeyid, this.GetUpdateCouponInfoState)
+    wx.showModal({
+      title: '提示',
+      content: '确定下架吗？',
+      success(res) {
+        if (res.confirm) {
+          var data = {};
+          data.pCouponID = CouponID;
+          data.pState = 0;
+          utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/UpdateCouponInfoState", "POST", data, app.globalData.appkeyid, that.GetUpdateCouponInfoState)
+        } else if (res.cancel) {
+          console.log('用户点击取消');
+        }
+    }
+  })
   },
 
   GetUpdateCouponInfoState:function(json){
