@@ -24,16 +24,10 @@ Page({
   onLoad: function (options) {
     this.setData({
       shopID: options.ShopID
-    });
-    var datas = {
-      pageIndex: 0,
-      pageSize: 100,
-      ShopID: this.data.shopID,
-      IsShopowner: 1,
-      StaffID: app.globalData.AppStaffInfo.StaffID
-    }
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/ShopStaff", "POST", datas, app.globalData.appkeyid, this.ShopStaff);
+    });   
+    this.GetData(); 
   },
+
   ShopStaff: function (res) {
     var chat = this;
     var json = res.data.Data;
@@ -43,6 +37,19 @@ Page({
       });
     }
   },
+
+GetData:function(){
+  var datas = {
+    pageIndex: 0,
+    pageSize: 100,
+    ShopID: this.data.shopID,
+    IsShopowner: 1,
+    StaffID: app.globalData.AppStaffInfo.StaffID
+  }
+  utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/ShopStaff", "POST", datas, app.globalData.appkeyid, this.ShopStaff);
+
+},
+
 
   touchE: function (e) {
     // console.log(e);
@@ -125,8 +132,36 @@ Page({
 
 // 删除按钮！
   delBtn(e){
-    console.log(e)
-  },
+    let that = this;
+    var StaffID = e.currentTarget.dataset.id;
+    wx.showModal({
+      title: '提示',
+      content: '确定删除吗？',
+      success(res) {
+        if (res.confirm) {
+　　　　　 var datas={}
+              datas.StaffID = StaffID
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/deleteShopStaff", "POST", datas, app.globalData.appkeyid, that.deleteShopStaff);
+        } else if (res.cancel) {
+          console.log('用户点击取消');
+        }
+    }
+  })
+},
+
+deleteShopStaff:function(res){
+  let that = this;
+  var json = res.data.Data;
+  if (json.flag) {
+    that.GetData();
+  }
+  wx.showToast({
+    title: json.msg,
+    icon: 'none',
+    duration: 2000
+  })
+},
+
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
