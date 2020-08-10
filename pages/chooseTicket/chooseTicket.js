@@ -202,7 +202,8 @@ Page({
   GetCouponIndustry: function () { //获取行业数据
     var datas = {
       pGID: app.globalData.AppGroupInfo.GroupID,
-      pGradeID: app.globalData.AppWxUserInfo.GradeID
+      pGradeID: app.globalData.AppWxUserInfo.GradeID,
+      State: 0
     }
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", datas, app.globalData.appkeyid, this.GetCouponIndustryList);
   },
