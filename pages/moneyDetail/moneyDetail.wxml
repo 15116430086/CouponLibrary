@@ -55,7 +55,11 @@
           <block wx:for="{{lingcoupon}}" wx:for-index="index" wx:key="UserID">
             <view class="m-mesBlock">
                 <view class="mbb-left">
-                    <view class="mbot-name"> 【{{item.CouponName}}】 已领取</view>
+                    <view class="mbot-name" wx:if="{{item.State==0}}"> 【{{item.CouponName}}】 待核销</view>
+                    <view class="mbot-name" wx:if="{{item.State==1}}"> 【{{item.CouponName}}】 已核销</view>
+                    <view class="mbot-name" wx:if="{{item.State==2}}"> 【{{item.CouponName}}】 待支付</view>
+                    <view class="mbot-name" wx:if="{{item.State==3}}"> 【{{item.CouponName}}】 已退款</view>
+
                     <view class="mbot-bot"><text >{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</text></view>
                     <view class="mbot-bot"><text >{{item.ShopName==null?'':item.ShopName}}</text> </view>
                 </view>
