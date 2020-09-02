@@ -24,6 +24,18 @@ page {
     padding-bottom: 110rpx;
 }
 
+.hb-box{
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    z-index: 100;
+}
+
 .home-top {
     width: 100%;
     height: 100rpx;
@@ -32,10 +44,6 @@ page {
     align-items: center;
     justify-content: space-between;
     background-color: #fff;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    z-index: 100;
 }
 
 .h-name {
@@ -107,7 +115,7 @@ page {
 }
 
 .swipernull {
-    margin-top: 100rpx;
+    margin-top: 175rpx;
     width: 100%;
     
 }
@@ -202,3 +210,40 @@ page {
     left: 0px;
     box-shadow: 3px 0px 8px rgba(0, 0, 0, 0.16);
 }
+
+.top_nav1 {
+    border-bottom: 1px solid #e6d9af;
+    width: calc(100% - 80rpx);
+    margin: 0px auto;
+    height: 80rpx;
+    background-color: #fff;
+    /* padding-left: 40rpx; */
+    border-bottom: 2rpx solid #ededed;
+   margin-bottom: 10rpx;
+    z-index: 100;
+    box-sizing: border-box;
+    display: flex;
+    white-space: nowrap;
+    /*这个属性很重要*/
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-name {
+    display: inline-block;
+    color: #999;
+    width: auto;
+    font-weight: 600;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: left;
+    font-size: 28rpx;
+    margin-right: 54rpx;
+  }
+
+  .nav-hover {
+    color: #e85819;
+    font-size: 34rpx;
+    font-weight: 600;
+    border-bottom: 8rpx solid #e85819;
+  }

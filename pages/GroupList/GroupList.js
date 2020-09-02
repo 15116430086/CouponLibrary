@@ -40,7 +40,8 @@ Page({
       if(chat.data.pageIndex==1){
         chat.setData({
           Grouplist: json.data,
-          flags: false
+          flags: false,
+          pageCount: json.pageCount //你的总页数   
         });
       }else{
         //获取上次加载的数据

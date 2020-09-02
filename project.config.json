@@ -32,7 +32,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.4",
-	"appid": "wx117b537276ef955e",
+	"appid": "wx9c4aca37e0f311b2",
 	"projectname": "Qku-miniapp",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -194,6 +194,13 @@
 					"id": -1,
 					"name": "data/child/child",
 					"pathName": "data/child/child",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/receipt/receipt",
+					"pathName": "pages/receipt/receipt",
 					"scene": null
 				}
 			]

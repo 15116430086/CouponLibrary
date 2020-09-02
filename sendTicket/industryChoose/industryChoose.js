@@ -7,7 +7,7 @@ Page({
   },
   onLoad() {
 
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetListIndustry", "POST", {}, app.globalData.appkeyid, this.GetCouponIndustry);
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetListIndustry", "POST", {State: 0}, app.globalData.appkeyid, this.GetCouponIndustry);
 
   },
   GetCouponIndustry: function(res) {

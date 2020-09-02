@@ -13,6 +13,7 @@ Page({
     StartTime:'',
     EndTime:'',
     lastpage: 0,
+    PeopleTotal:0
   },
 
   GetData: function () {
@@ -37,7 +38,8 @@ Page({
       if (page == 1) {
         that.setData({
           DataList: json.data,
-          lastpage: json.pageCount //你的总页数   
+          lastpage: json.pageCount, //你的总页数 
+          PeopleTotal:json.PeopleTotal  
         });
       } else {
         //获取上次加载的数据

@@ -2,7 +2,7 @@
 <wxs module="common" src="../../utils/common.wxs"></wxs>
 <view class="v-all">
 	<view class="tip-block">
-		当前时间段<block wx:if="{{type==0}}">购</block><block wx:if="{{type==1}}">核</block>券人数:<text>{{DataList.length}}</text>
+		当前时间段<block wx:if="{{type==0}}">购</block><block wx:if="{{type==1}}">核</block>券人数:<text>{{PeopleTotal}}</text>
 	</view>
 
 <block wx:for="{{DataList}}">

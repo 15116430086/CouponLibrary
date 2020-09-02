@@ -2,11 +2,11 @@
     <view class="v-top">
         <image src="/static/images/swp.png" class="v-img" />
         <view class="v-title">
-            <view class="v-txt">湖南券库网络科技</view>
+            <view class="v-txt">湖南{{proname}}网络科技</view>
             <image src="/static/images/wrt3.png" />
         </view>
         <view class="v-title">
-            <view class="v-tname">湖南券库网络科技</view>
+            <view class="v-tname">湖南{{proname}}网络科技</view>
             <view class="v-span">店长</view>
         </view>
     </view>

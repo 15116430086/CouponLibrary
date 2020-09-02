@@ -1,9 +1,10 @@
+<wxs src="../../utils/common.wxs" module="tools" />
 <template name="payStore">
   <!-- 底部栏 -->
   <block>
     <view class="tic-all">
       <view class="ticket-box">
-        <image class="ticket-img" wx:if="{{ImageOne}}" src="{{ImageOne}}" mode='aspectFill' />
+        <image class="ticket-img" wx:if="{{ImageOne}}" src="{{tools.getImagsize(ImageOne,240)}}" mode='aspectFill' />
         <image class="ticket-img" wx:else src="/static/images/swp.png" />
         <navigator class="ticket-mes" url="../storeMes/main?uid=3">
           <view class="ticket-mes-p">{{ShopName}}</view>

@@ -29,7 +29,7 @@
 	<block wx:if="{{currentId == 0}}">
 	<block wx:for="{{PromotionorderList}}">
 		<view class="order-box">
-			<image src="{{item.ImageOne}}" />
+			<image src="{{common.getImagsize(item.ImageOne,240)}}" />
 			<view class="o-right">
 				<view class="o-top">
 					<view class="o-name">{{item.CouponName}}</view>
@@ -47,7 +47,7 @@
 	<!-- 推广会员 -->
 	<block  wx:if="{{currentId == 1}}">
 	<block wx:for="{{PromotionmembersList}}">
-		<navigator class="stm-block" hover-class="none" url="../../pages/moneyDetail/moneyDetail">
+		<navigator class="stm-block" hover-class="none" url="../../pages/moneyDetail/moneyDetail?userid={{item.UserID}}">
 			<image src="{{item.UserAvatar}}" />
 			<view class="stmb-left">
 				<view class="stm-top">{{item.UserName}}</view>

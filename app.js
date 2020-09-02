@@ -1,12 +1,16 @@
 //app.js
 var utils = require("utils/util.js")
-
+const accountInfo = wx.getAccountInfoSync();
 App({
     onLaunch: function() {
         // 展示本地存储能力
         var logs = wx.getStorageSync('logs') || []
         logs.unshift(Date.now())
         wx.setStorageSync('logs', logs)
+        this.globalData.sysaAppid = accountInfo.miniProgram.appId
+        wx.setNavigationBarTitle({
+            title: this.globalData.sysName + '商家助手'
+        })
 
         // 登录
         wx.login({
@@ -43,18 +47,20 @@ App({
         AppStaffInfo: null,
         AppGroupInfo: {
             GroupID: 100000,
-            GroupName: "湖南券库移分公司"
+            GroupName: "湖南券库"
         },
         appkeyid: "",
         latitudeX: 28.22778,
         longitudeY: 112.93886,
         regionName: "",
+        sysName: "世纪",
+        sysaAppid: '',
 
         // apiurl: "https://wx.wap.quankuzg.com/LibraryAPI/",
-         minmapkey: 'LC5BZ-J343R-M5AWH-WYNV2-P5UW5-BVFHE',
+        // minmapkey: 'LC5BZ-J343R-M5AWH-WYNV2-P5UW5-BVFHE',
 
-        // apiurl: "https://wx.wap.meiguwen.com/LibraryAPI/",
-        //  minmapkey: 'UXCBZ-XKZWU-YHRVE-4RMRW-J63PJ-WRFPI',
+        apiurl: "https://wx.wap.quankuzg.com/PleasureAPI/",
+        minmapkey:'DV7BZ-GESWW-XKVRT-OE2FG-C2EN2-NDFYF',
 
         //apiurl: "http://test.miboon.com:8080/LibraryAPI/",
         //minmapkey: 'UXCBZ-XKZWU-YHRVE-4RMRW-J63PJ-WRFPI',
