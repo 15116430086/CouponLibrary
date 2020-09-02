@@ -12,7 +12,9 @@ Page({
     pageCount:1,
     DataList:[],
     ActivityID:"",
-    ShopID:""
+    ShopID:"",
+    EndPayData:"",
+    types:0
   },
 
   /**
@@ -22,7 +24,9 @@ Page({
     this.setData({
       Time:options.PayData,
       ActivityID:options.ActivityID||"",
-      ShopID:options.shopid||""
+      ShopID:options.shopid||"",
+      types:options.types,
+      EndPayData:options.EndPayData
     });
   },
   Query:function(){
@@ -33,10 +37,11 @@ Page({
       pPageIndex: this.data.pageIndex,
       pPageSize: 20,
       startCreateDate: this.data.Time,
-      endCreateDate: this.data.Time,
-      pAffiliatedGroupID:app.globalData.AppGroupInfo.AffiliatedGroupID,
+      endCreateDate: this.data.EndPayData,
+      pAffiliatedGroupID:this.data.types==1?0:app.globalData.AppGroupInfo.AffiliatedGroupID,
       ActivityID: this.data.ActivityID,
       ShopID: this.data.ShopID,
+      GroupID:this.data.types==0?0:app.globalData.AppGroupInfo.GroupID
     }
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserMemberView/GetUserActivityPurchase", "POST", data, app.globalData.appkeyid, this.QueryList)
   },

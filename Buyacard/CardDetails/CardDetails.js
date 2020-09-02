@@ -76,7 +76,7 @@ Page({
     var PayData=e.currentTarget.dataset.time;
     var ActivityID=e.currentTarget.dataset.activityid;
     wx.navigateTo({
-     url: "../MemberList/MemberList?shopid="+shopid+"&PayData="+PayData+"&ActivityID="+ActivityID,
+     url: "../MemberList/MemberList?shopid="+shopid+"&PayData="+PayData+"&ActivityID="+ActivityID+"&types=0&EndPayData="+PayData,
      })
    },
   /**
