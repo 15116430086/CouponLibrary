@@ -1,0 +1,50 @@
+<!--Buyacard/CardDetails/CardDetails.wxml-->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<view class="home-box">
+	<!--按活动查 -->
+	<block wx:if="{{types == 1}}">
+		<block wx:for="{{DataList}}">
+			<view class="order-box" data-activityid="{{item.ActivityID}}" data-time="{{item.PayDate}}" data-shopid="{{item.ShopID}}"  bindtap="Jump">
+				<!-- <image src="{{item.ImageOne}}" /> -->
+				<view class="o-right">
+					<view class="o-top">
+						<view class="o-name">店铺：{{item.ShopName}}</view>
+						<view class="o-price">￥{{item.ActualPayTotal}}</view>
+					</view>
+					<view class="stm-bot">
+						<view class="stm-nnn">订单数：{{item.Number}}</view>         
+						<view class="stm-time">{{common.sysFormatDate(item.PayDate,"yyyy-MM-dd hh:mm",true)}} </view>
+					</view>
+				</view>
+			</view>
+		</block>
+	</block>
+
+	<!-- 按店铺查 -->
+	<block  wx:if="{{types == 2}}">
+		<block wx:for="{{DataList}}">
+			<!-- <navigator class="stm-block" hover-class="none" url="../../pages/moneyDetail/moneyDetail">
+				<image src="{{item.ShopName}}" />
+				<view class="stmb-left">
+					<view class="stm-top">{{item.ActualPayTotal}}</view>
+					<view class="stm-bot">
+						<view class="stm-time">{{common.sysFormatDate(item.PayDate,"yyyy-MM-dd hh:mm",true)}}</view>
+					</view>
+				</view>
+			</navigator> -->
+			<view class="order-box" data-shopid="{{item.ShopID}}" data-activityid="{{item.ActivityID}}" data-time="{{item.PayDate}}"  bindtap="Jump">
+				<!-- <image src="{{item.ImageOne}}" /> -->
+				<view class="o-right">
+					<view class="o-top">
+						<view class="o-name">活动：{{item.ActivityName}}</view>
+						<view class="o-price">￥{{item.ActualPayTotal}}</view>
+					</view>
+					<view class="stm-bot">
+						<view class="stm-nnn">订单数量：{{item.Number}}</view>         
+						<view class="stm-time">{{common.sysFormatDate(item.PayDate,"yyyy-MM-dd hh:mm",true)}} </view>
+					</view>
+				</view>
+			</view>
+		</block>
+	</block>
+</view>

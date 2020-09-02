@@ -1,0 +1,23 @@
+<!--Buyacard/MemberList/MemberList.wxml-->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<view class="home-box">
+	<!--按活动查 -->
+
+		<block wx:for="{{DataList}}">
+			<view class="order-box">
+				<image src="{{item.UserAvatar}}" />
+				<view class="o-right">
+					<view class="o-top">
+						<view class="o-name">{{item.UserName}}</view>
+						<view class="o-price">￥{{item.ActualPay}}</view>
+					</view>
+					<view class="stm-bot">
+						<view class="stm-nnn">活动：{{item.ActivityName}}</view>         
+						<view class="stm-time">{{common.sysFormatDate(item.PayDate,"yyyy-MM-dd hh:mm",true)}} </view>
+					</view>
+				</view>
+			</view>
+		</block>
+
+</view>
+

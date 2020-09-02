@@ -152,6 +152,15 @@
         "mebList/mebList",
         "addMembers/addMembers"
       ]
+    },{
+      "root": "Buyacard",
+      "name": "Buyacard",
+      "pages": [
+        "Cardlist/Cardlist",
+        "CardDetails/CardDetails",
+        "MemberList/MemberList"
+      ]
+
     }
   ],
   "permission": {
