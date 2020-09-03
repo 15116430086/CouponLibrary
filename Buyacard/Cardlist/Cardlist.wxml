@@ -45,7 +45,7 @@
 						<view class="o-price">￥{{item.ActualPayTotal}}</view>
 					</view>
 					<view class="stm-bot">
-						<view class="stm-nnn">下单时间：</view>         
+						<view class="stm-nnn">订单数：{{item.Number}}</view>         
 						<view class="stm-time">{{common.sysFormatDate(item.PayDate,"yyyy-MM-dd hh:mm",true)}} </view>
 					</view>
 				</view>

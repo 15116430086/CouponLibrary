@@ -14,7 +14,9 @@ Page({
     ActivityID:"",
     ShopID:"",
     EndPayData:"",
-    types:0
+    types:0,
+    orderCount:0,
+    monery:0
   },
 
   /**
@@ -54,7 +56,9 @@ Page({
         chat.setData({
           DataList: json.data,
           pageCount: json.pageCount,
-          pageIndex: chat.data.pageIndex + 1
+          pageIndex: chat.data.pageIndex + 1,
+          orderCount:json.orderCount,
+          monery:json.sumMonery
         });
       } else {
         //获取上次加载的数据
@@ -63,7 +67,10 @@ Page({
         chat.setData({
           DataList: newlists,
           pageCount: json.pageCount, //你的总页数,
-          pageIndex: chat.data.pageIndex + 1
+          pageIndex: chat.data.pageIndex + 1,
+          list:json.list,
+          orderCount:json.orderCount,
+          monery:json.sumMonery
         });
       }
     }else{

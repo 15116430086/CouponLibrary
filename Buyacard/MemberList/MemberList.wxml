@@ -3,6 +3,12 @@
 <view class="home-box">
 	<!--按活动查 -->
 
+<view class="stm-mes" wx:if="{{types == 0}}">
+		<text style="margin-left:40rpx;">店铺:{{DataList[0].ShopName}},日期:{{DataList[0].PayDate}},总金额￥{{monery}},总订单{{orderCount}}</text>
+</view>
+<view class="stm-mes" wx:if="{{types == 1}}">
+		<text style="margin-left:40rpx;">日期:{{list[0].PayDate}},总金额￥{{monery}},总订单{{orderCount}}</text>
+</view>
 		<block wx:for="{{DataList}}">
 			<view class="order-box">
 				<image src="{{item.UserAvatar}}" />
