@@ -29,6 +29,7 @@ Page({
     PromotionmembersList:[],
     lastpage: 0,
     GroupID: 0,
+    userCount:0,
     couponType: -1,
     shopID:0,
     selectDateStart: "开始日期",
@@ -157,7 +158,8 @@ Page({
             Odernumber: json.Odernumber,
             TruePayMoneyCount: json.TruePayMoneyCount,
             FirstConsumeCount: json.FirstConsumeCount,
-            FirstConsumeMoneryCount: json.FirstConsumeMoneryCount
+            FirstConsumeMoneryCount: json.FirstConsumeMoneryCount,
+           
           })
         } else {
           //获取上次加载的数据
@@ -174,7 +176,8 @@ Page({
         pageM[that.data.currentId].iscleck = false;
         if (pageM[that.data.currentId].page == 1) {
           that.setData({
-            PromotionmembersList: json.data
+            PromotionmembersList: json.data,
+            userCount:json.userCount
           })
         } else {
           //获取上次加载的数据
@@ -182,7 +185,8 @@ Page({
           var newlists = oldlists.concat(json.data) //合并数据 res.data 你的数组数据
 
           that.setData({
-            PromotionmembersList: newlists
+            PromotionmembersList: newlists,
+            userCount:json.userCount
           });
         }
       }

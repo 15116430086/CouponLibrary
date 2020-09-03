@@ -24,7 +24,9 @@
 		数量:{{Odernumber}} , 总金额:￥{{TruePayMoneyCount}}
 		<text style="margin-left:40rpx;">首购数:{{FirstConsumeCount}} ,金额￥{{FirstConsumeMoneryCount}}</text>
 	</view>
-
+<view class="stm-mes" wx:if="{{currentId == 1}}">
+		总数量:{{userCount}}
+	</view>
 	<!-- 推广订单 -->
 	<block wx:if="{{currentId == 0}}">
 	<block wx:for="{{PromotionorderList}}">
