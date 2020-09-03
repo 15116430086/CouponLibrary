@@ -4,7 +4,7 @@
 	<!--按活动查 -->
 
 <view class="stm-mes" wx:if="{{types == 0}}">
-		<text style="margin-left:40rpx;">店铺:{{DataList[0].ShopName}},总金额￥{{monery}},总订单{{orderCount}}</text>
+		<text style="margin-left:40rpx;">{{DataList[0].ShopName}},总金额￥{{monery}},总订单{{orderCount}}</text>
 </view>
 <view class="stm-mes" wx:if="{{types == 1}}">
 		<text style="margin-left:40rpx;">总金额￥{{monery}},总订单{{orderCount}}</text>
