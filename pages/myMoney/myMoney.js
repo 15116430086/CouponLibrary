@@ -18,6 +18,7 @@ Page({
     dBankCardNumber: "",
     dOpeningBank: "",
     showView: false,
+    Withdrawal:0
   },
 
   GetData: function() {
@@ -50,6 +51,7 @@ Page({
           dOpeningBank: json.dataGroup[0].OpeningBank,
           Tobesettled:json.CapitalTypeSun.Tobesettled, 
           Capitaldetailslist: json.data,
+          Withdrawal:json.Withdrawal,
           lastpage: json.pageCount //你的总页数   
         });
       } else {
@@ -58,6 +60,7 @@ Page({
         var newlists = oldlists.concat(json.data) //合并数据 res.data 你的数组数据
         that.setData({
           Capitaldetailslist: newlists,
+          Withdrawal:json.Withdrawal,
           lastpage: json.pageCount //你的总页数   
         });
       }
@@ -80,9 +83,27 @@ Page({
       })
       return;
     } else {
-      that.setData({
-        showView: true
-      })
+
+      if(that.data.Withdrawal==1){
+          that.setData({
+            showView: true
+          })
+       }else{
+        wx.showModal({
+          title: '提示',
+          content: '确定要提现么？',
+          success: function (sm) {
+            if (sm.confirm) {
+              var data = {}
+                data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+                utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponCapitalView/AddCapitalWithdrawal", "POST", data, app.globalData.appkeyid, that.startSettlementBack)
+              } else if (sm.cancel) {
+                console.log('用户点击取消')
+              }
+            }
+          })
+
+       }
     }
   },
 
@@ -116,7 +137,7 @@ Page({
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pAccountName = e.detail.value.dAccountName,
       data.pBankCardNumber = e.detail.value.dBankCardNumber,
-      data.pOpeningBank = e.detail.value.dOpeningBank
+      data.pOpeningBank = e.detail.value.dOpeningBank,
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponCapitalView/AddCapitalWithdrawal", "POST", data, app.globalData.appkeyid, that.startSettlementBack)
   },
   startSettlementBack: function(json) {
