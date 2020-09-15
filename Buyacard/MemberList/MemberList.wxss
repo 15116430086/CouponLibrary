@@ -98,9 +98,12 @@ page {
   color: #333333;
   width: calc(100% - 80rpx);
   text-align: left;
-  font-size: 28rpx;
+  font-size: 30rpx;
   margin: 20rpx auto;
   font-weight: 600;
+  line-height: 54rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 1px #cccccc solid;
 }
 
 .stm-block {

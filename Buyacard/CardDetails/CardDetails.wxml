@@ -3,18 +3,18 @@
 <view class="home-box">
 	<view class="stm-mes" wx:if="{{types == 1}}">
 		<view>
-			活动:<text>{{DataList[0].ActivityName}}</text>,日期:<text> {{DataList[0].PayDate}}</text>
+			活动:<text>{{DataList[0].ActivityName}}</text>      日期:<text> {{DataList[0].PayDate}}</text>
 		</view>
 		<view>
-			总金额￥<text>{{monery}}</text>,总订单 <text> {{orderCount}}</text>
+			总金额:￥<text>{{monery}}</text>     总订单:<text> {{orderCount}}</text>
 		</view>
 	</view>
 	<view class="stm-mes" wx:if="{{types == 2}}">
 		<view>
-			店铺:<text>{{DataList[0].ShopName}}</text>,日期:<text> {{DataList[0].PayDate}}</text>
+			店铺:<text>{{DataList[0].ShopName}}</text>      日期:<text> {{DataList[0].PayDate}}</text>
 		</view>
 		<view>
-			总金额￥<text>{{monery}}</text>,总订单 <text> {{orderCount}}</text>
+			总金额:￥<text>{{monery}}</text>     总订单:<text> {{orderCount}}</text>
 		</view>
 	</view>
 	<!--按活动查 -->
