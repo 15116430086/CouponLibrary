@@ -53,14 +53,14 @@ App({
         latitudeX: 28.22778,
         longitudeY: 112.93886,
         regionName: "",
-        sysName: "券库",
+        sysName: "世纪",
         sysaAppid: '',
 
-        apiurl: "https://wx.wap.quankuzg.com/LibraryAPI/",
-        minmapkey: 'LC5BZ-J343R-M5AWH-WYNV2-P5UW5-BVFHE',
+        // apiurl: "https://wx.wap.quankuzg.com/LibraryAPI/",
+        // minmapkey: 'LC5BZ-J343R-M5AWH-WYNV2-P5UW5-BVFHE',
 
-        // apiurl: "https://wx.wap.quankuzg.com/PleasureAPI/",
-        // minmapkey:'DV7BZ-GESWW-XKVRT-OE2FG-C2EN2-NDFYF',
+        apiurl: "https://wx.wap.quankuzg.com/PleasureAPI/",
+        minmapkey:'DV7BZ-GESWW-XKVRT-OE2FG-C2EN2-NDFYF',
 
         // apiurl: "https://wx.wap.quankuzg.com/TestAPI/",
         // minmapkey:'DV7BZ-GESWW-XKVRT-OE2FG-C2EN2-NDFYF',
