@@ -1,0 +1,110 @@
+<!-- pages/newHome/newHome.wxml -->
+<view class="v-top">
+    <view class="v-flex">
+        <view>展悅科技有限公司</view>
+        <image src="/static/images/talk1.png" class="v-img" />
+    </view>
+    <view class="v-flex1">
+        <view class="v-block">
+            <view class="v-class">成交销售额(GMV）</view>
+            <view class="v-time">2020.08.20-2020.08.26</view>
+            <view class="v-bot">
+                <view class="v-num">
+                    266<text style="font-size:40rpx">w</text>
+                </view>
+                <view class="v-box">
+                    <view class="v-ri">
+                        <image src="/static/images/san.png" class="v-san" />
+                        <view>22.3%</view>
+                    </view>
+                    <view class="v-grey">相比上周期</view>
+                </view>
+            </view>
+        </view>
+        <view class="v-block">
+            <view class="v-class">成交销售额(GMV）</view>
+            <view class="v-time">2020.08.20-2020.08.26</view>
+            <view class="v-bot">
+                <view class="v-num">
+                    63.7<text style="font-size:40rpx">w</text>
+                </view>
+                <view class="v-box">
+                    <view class="v-ri">
+                        <image src="/static/images/san2.png" class="v-san" />
+                        <view style="color:#04877B">22.3%</view>
+                    </view>
+                    <view class="v-grey">相比上周期</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="mid-box">
+    <view class="mid-mid">
+        <view class="mid-top">
+            <view class="mid-span">
+                <view class="mid-title">
+                    <view>昨日活跃用户</view>
+                    <image src="/static/images/wh.png" class="wh"/>
+                </view>
+                <view class="mid-num">1156</view>
+                <view class="mid-mes">
+                    <image src="/static/images/san1.png" class="v-san" style="top:0px"/>
+                    <view>11.3%  相比上周期</view>
+                </view>
+            </view>
+            <view class="mid-line"></view>
+            <view class="mid-span">
+                <view class="mid-title">
+                    <view>昨日活跃用户</view>
+                    <image src="/static/images/wh.png" class="wh"/>
+                </view>
+                <view class="mid-num">1156</view>
+                <view class="mid-mes">
+                    <image src="/static/images/san2.png" class="v-san" style="top:0px"/>
+                    <view><text style="color:#04877B">11.3% </text> 相比上周期</view>
+                </view>
+            </view>
+        </view>
+        <view class="b-block1" >
+            <view class="b-left">
+                <view>
+                    今日浏览量:
+                    <text>500</text>
+                </view>
+            </view>
+            <image src="/static/images/right-arr1.png" class="b-arr" />
+        </view>
+    </view>
+    <navigator class="b-block" hover-class="none" url="../newEchart/newEchart">
+        <view class="b-left">
+            <image src="/static/images/hyy.png" class="b-img" />
+            <view>
+                今日新增会员:
+                <text>500</text>
+            </view>
+        </view>
+        <image src="/static/images/right-arr1.png" class="b-arr" />
+    </navigator>
+    <navigator class="b-block" hover-class="none" url="../newEchart/newEchart">
+        <view class="b-left">
+            <image src="/static/images/ddd.png" class="b-img" />
+            <view>
+                今日订单:
+                <text>185笔订单</text>
+                <text>金额￥18290</text>
+            </view>
+        </view>
+        <image src="/static/images/right-arr1.png" class="b-arr" />
+    </navigator>
+    <navigator class="b-block">
+        <view class="b-left">
+            <image src="/static/images/shop11.png" class="b-img" />
+            <view>
+                我的商户(数量):
+                <text>500</text>
+            </view>
+        </view>
+        <image src="/static/images/right-arr1.png" class="b-arr" />
+    </navigator>
+</view>

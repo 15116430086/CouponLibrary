@@ -1,0 +1,17 @@
+<!--index.wxml-->
+
+<view class="top-mes">
+	
+<view class="mf-box">
+	<view class="mid-flex {{idx==item.id?'selected':''}}" wx:for="{{timeBox}}" bindtap="clkBtn" data-id="{{item.id}}">{{item.txt}}</view>
+</view>
+</view>
+
+<view class="canvas-box {{!show?'':'c-box'}}">
+	<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+</view>
+
+
+<van-popup show="{{ show }}" position="bottom" z-index="999" bind:close="onClose" safe-area-inset-bottom>
+	<van-datetime-picker type="year-month" bind:cancel="onClose" value="{{ currentDate }}" max-date="{{currentDate}}" bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+</van-popup>
