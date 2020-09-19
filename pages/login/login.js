@@ -142,9 +142,16 @@ Page({
         app.globalData.AppGroupInfo = loginInfo.AppGroupInfo;
         app.globalData.AppShopInfo = loginInfo.AppShopInfo;
         if (app.globalData.AppStaffInfo && app.globalData.AppStaffInfo.StaffID)
-          wx.reLaunch({
-            url: '../home/home',
-          })
+
+            if (loginInfo.AppGroupInfo.GroupID == loginInfo.AppGroupInfo.AffiliatedGroupID) {
+            wx.reLaunch({
+              url: '../newHome/newHome',
+            })
+          } else {
+            wx.reLaunch({
+              url: '../home/home',
+            })
+          }
       }
     }
     //隐藏 加载中的提示
