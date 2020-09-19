@@ -240,3 +240,11 @@
     flex-direction: row;
     align-items: center;
 }
+
+.gr {
+    color: #04877B;
+}
+
+.grg {
+    color: #787878
+}
