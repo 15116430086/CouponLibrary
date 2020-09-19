@@ -53,7 +53,7 @@ App({
         latitudeX: 28.22778,
         longitudeY: 112.93886,
         regionName: "",
-        sysName: "券库",//世纪
+        sysName: "世纪",//券库
         sysaAppid: '',
 
         // apiurl: "https://wx.wap.quankuzg.com/LibraryAPI/",

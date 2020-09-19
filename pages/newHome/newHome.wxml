@@ -21,11 +21,11 @@
                         </block>
                         <block wx:elif="{{CouponCount.GMVCompared == 0}}">
                             <image src="/static/images/san1.png" class="v-san" />
-                            <view class="grg">{{CouponCount.GMVCompared}}</view>
+                            <view class="grg">{{CouponCount.GMVCompared}}%</view>
                         </block>
                         <block wx:else>
                             <image src="/static/images/san2.png" class="v-san" />
-                            <view class="gr">{{CouponCount.GMVCompared}}</view>
+                            <view class="gr">{{CouponCount.GMVCompared}}%</view>
                         </block>
                     </view>
                     <view class="v-grey">相比上周期</view>
@@ -48,11 +48,11 @@
                         </block>
                         <block wx:elif="{{CouponCount.ActiveusersCompared == 0}}">
                             <image src="/static/images/san1.png" class="v-san" />
-                            <view class="grg">{{CouponCount.ActiveusersCompared}}</view>
+                            <view class="grg">{{CouponCount.ActiveusersCompared}}%</view>
                         </block>
                         <block wx:else>
                             <image src="/static/images/san2.png" class="v-san" />
-                            <view class="gr">{{CouponCount.ActiveusersCompared}}</view>
+                            <view class="gr">{{CouponCount.ActiveusersCompared}}%</view>
                         </block>
                     </view>
                     <view class="v-grey">相比上周期</view>
@@ -73,12 +73,12 @@
                 <view class="mid-mes">
                     <block wx:if="{{CouponCount.BrowseyesterdayCompared > 0}}">
                         <image src="/static/images/san.png" class="v-san" />
-                        <view>{{CouponCount.BrowseyesterdayCompared}}  相比上周期</view>
+                        <view>{{CouponCount.BrowseyesterdayCompared}}%  相比上周期</view>
                     </block>
                     <block wx:elif="{{CouponCount.BrowseyesterdayCompared == 0}}">
                         <image src="/static/images/san1.png" class="v-san" style="top:0px" />
                         <view>
-                            <text class="grg">{{CouponCount.BrowseyesterdayCompared}}</text>
+                            <text class="grg">{{CouponCount.BrowseyesterdayCompared}}%</text>
                             相比上周期
                         </view>
                     </block>
@@ -86,7 +86,7 @@
                         <image src="/static/images/san2.png" class="v-san" />
                         <view>
                             <text class="gr"></text>
-                            {{CouponCount.BrowseyesterdayCompared}}  相比上周期
+                            {{CouponCount.BrowseyesterdayCompared}}%  相比上周期
                         </view>
                     </block>
                 </view>
@@ -101,12 +101,12 @@
                 <view class="mid-mes">
                      <block wx:if="{{CouponCount.ActiveusersCompared > 0}}">
                         <image src="/static/images/san.png" class="v-san" />
-                        <view>{{CouponCount.BrowseyesterdayCompared}}  相比上周期</view>
+                        <view>{{CouponCount.BrowseyesterdayCompared}}%  相比上周期</view>
                     </block>
                     <block wx:elif="{{CouponCount.ActiveusersCompared == 0}}">
                         <image src="/static/images/san1.png" class="v-san" style="top:0px" />
                         <view>
-                            <text class="grg">{{CouponCount.ActiveusersCompared}}</text>
+                            <text class="grg">{{CouponCount.ActiveusersCompared}}%</text>
                             相比上周期
                         </view>
                     </block>
@@ -114,7 +114,7 @@
                         <image src="/static/images/san2.png" class="v-san" />
                         <view>
                             <text class="gr"></text>
-                            {{CouponCount.ActiveusersCompared}}  相比上周期
+                            {{CouponCount.ActiveusersCompared}}%  相比上周期
                         </view>
                     </block>
                 </view>
