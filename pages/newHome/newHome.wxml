@@ -140,7 +140,7 @@
         </view>
         <image src="/static/images/right-arr1.png" class="b-arr" />
     </navigator>
-    <navigator class="b-block" hover-class="none" url="../newEchart/newEchart">
+    <navigator class="b-block" hover-class="none" url="../newEchartOd/newEchartOd">
         <view class="b-left">
             <image src="/static/images/ddd.png" class="b-img" />
             <view>

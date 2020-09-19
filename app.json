@@ -3,6 +3,7 @@
         "pages/login/login",
         "pages/newHome/newHome",
         "pages/newEchart/newEchart",
+        "pages/newEchartOd/newEchartOd",
         "pages/receipt/receipt",
         "pages/echartTxT/echartTxT",
         "pages/shopDetail/shopDetail",
