@@ -160,7 +160,7 @@
         <view class="b-left">
             <image src="/static/images/shop11.png" class="b-img" />
             <view>
-                我的商户(数量):
+                我的商户:
                 <text>{{CouponCount.countGroup}}</text>
             </view>
         </view>
