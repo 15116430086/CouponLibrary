@@ -126,7 +126,7 @@
         </view>
         <navigator class="b-block1" url="/dataC/detail/detail" hover-class="none">
             <view class="b-left">
-                <image src="/static/images/eye.png" class="b-img" />
+               <image src="/static/images/lnl.png" class="b-img" />
                 <view>
                     今日浏览量:
                     <text>{{CouponCount.browse}}</text>
@@ -160,7 +160,7 @@
         <view class="b-left">
             <image src="/static/images/shop11.png" class="b-img" />
             <view>
-                我的商户(数量):
+                我的商户:
                 <text>{{CouponCount.countGroup}}</text>
             </view>
         </view>

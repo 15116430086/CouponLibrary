@@ -492,8 +492,8 @@ Page({
     onLoad() {
         let id = 0;
         let that = this;
-        setTimeout(function() { that.UserQuery(id); }, 200);
-
+        setTimeout(function(){that.UserQuery(id);},300);
+        
     },
 
 
