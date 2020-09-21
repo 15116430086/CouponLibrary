@@ -126,6 +126,7 @@
         </view>
         <navigator class="b-block1" url="/dataC/detail/detail" hover-class="none">
             <view class="b-left">
+                <image src="/static/images/eye.png" class="b-img" />
                 <view>
                     今日浏览量:
                     <text>{{CouponCount.browse}}</text>
