@@ -641,25 +641,29 @@ Page({
         //获取到折线图 <ec-canvas> 的id，然后再获取数据塞就可以了。
         let that = this;
         let option = that.data.option;
-        let option2 = that.data.option;
-        let option3 = that.data.option;
+        let option2 = that.data.option2;
+        let option3 = that.data.option3;
+
         Chart.setOption({ option });
         Chart1.setOption({ option2 });
         Chart2.setOption({ option3 });
+
         Chart.off('click');
         Chart1.off('click');
         Chart2.off('click');
+
         Chart.on('click', function(e) {
             let ename = e.name; //日期
             let value = e.value; //张数
             let index = e.dataIndex;
-
+            console.log("0");
             wx.navigateTo({
                 url: '../shopDetail/shopDetail?name=' + that.data.xAxisdataList[index] + "&value=" + value + "&time=" + that.data.date + "&types=" + that.data.idc,
             })
 
         });
         Chart1.on('click', function(e) {
+            console.log("1");
             let ename = e.name; //日期
             let value = e.value; //张数
             let index = e.dataIndex;
@@ -670,6 +674,7 @@ Page({
 
         });
         Chart2.on('click', function(e) {
+            console.log("2");
             let ename = e.name; //日期
             let value = e.value; //张数
             let index = e.dataIndex;

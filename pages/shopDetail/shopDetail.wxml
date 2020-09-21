@@ -36,7 +36,7 @@
           <view class="shop-flex">
             <navigator class="shop-view" hover-class="none" url="../memberNum/memberNum?GroupID={{item.GroupID}}&time={{searchTime}}&types=1&State=0">已领取{{item.Collected}}张>></navigator>
             <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum?GroupID={{item.GroupID}}&time={{searchTime}}&types=1&State=1">已核销{{item.Used}}张>></navigator>
-          <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum?GroupID={{item.GroupID}}&time={{searchTime}}&types=1&State=0">已退券{{item.Collected}}张>></navigator>
+          <navigator class="shop-view or" hover-class="none" url="../memberNum/memberNum?GroupID={{item.GroupID}}&time={{searchTime}}&types=1&State=3">已退券{{item.Refund}}张>></navigator>
           </view>
         </view>
     </block>
