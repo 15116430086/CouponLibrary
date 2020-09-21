@@ -1,6 +1,6 @@
 <!-- pages/newHome/newHome.wxml -->
-<view class="v-top">
-    <view class="v-flex">
+<view class="v-top" style="height: 180rpx;">
+    <view class="v-flex" style="margin-top: 10rpx;">
         <view>{{GroupName}}</view>
         <image src="/static/images/talk1.png" class="v-img" />
     </view>
