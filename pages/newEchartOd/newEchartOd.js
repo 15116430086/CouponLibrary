@@ -333,13 +333,13 @@ Page({
                 type: 'line',
                 itemStyle: {
                     normal: {
+                        label: { show: true },
                         color: '#E85819',
                         lineStyle: {
                             color: '#E85819'
                         }
                     }
                 },
-                itemStyle: { normal: { show: true } },
                 smooth: false,
                 data: [48, 56, 75, 50, 18, 30, 23]
             }]
@@ -464,13 +464,13 @@ Page({
                 type: 'line',
                 itemStyle: {
                     normal: {
+                        label: { show: true },
                         color: '#E85819',
                         lineStyle: {
                             color: '#E85819'
                         }
                     }
                 },
-                itemStyle: { normal: { show: true } },
                 smooth: false,
                 data: [48, 56, 75, 50, 18, 30, 23]
             }]
@@ -492,8 +492,8 @@ Page({
     onLoad() {
         let id = 0;
         let that = this;
-        setTimeout(function(){that.UserQuery(id);},200);
-        
+        setTimeout(function() { that.UserQuery(id); }, 200);
+
     },
 
 

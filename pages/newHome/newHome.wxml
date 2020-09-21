@@ -2,7 +2,11 @@
 <view class="v-top" style="height: 180rpx;">
     <view class="v-flex" style="margin-top: 10rpx;">
         <view>{{GroupName}}</view>
-        <image src="/static/images/talk1.png" class="v-img" />
+      
+        <view class="mes-box" bindtap="noticetap">
+            <view wx:if="{{CouponCount.countNewMsg > 0}}">{{CouponCount.countNewMsg}}</view>
+            <image src="/static/images/talk1.png" background-size="cover" class="v-img" ></image>
+        </view>
     </view>
     <view class="v-flex1">
         <view class="v-block">
