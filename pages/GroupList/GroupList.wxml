@@ -1,4 +1,4 @@
-<view class="v-box">
+<view class="v-box" hidden="{{type}}">
   <!-- <view class="v-mes"><text>*</text>门店可区分收款流水，各门店收款将汇总到你的结算账户，进入门店详情后可下载获取收款码图片</view> -->
   <view class="v-block" hidden="{{flags}}" bindtap="add">
     <image src="/static/images/jia.png" /> 添加新的商户
@@ -28,7 +28,7 @@
 						</view>
 						<view class="ticket-mes-ul">
 							<view>联系人：{{item.Contacts}}</view>
-							<view class="tm-flex" bindtap="goNav">
+							<view class="tm-flex" bindtap="goNav" hidden ="{{type}}">
 								 <image src="/static/images/wrt_new.png" bindtap="update" data-groupid="{{item.GroupID}}" class="rightarr" /> 
 								
 							</view>

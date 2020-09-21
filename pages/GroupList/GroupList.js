@@ -10,14 +10,19 @@ Page({
     flags: true,
     pageIndex:1,
     pageCount:1,
-    searchValue:""
+    searchValue:"",
+    type:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    if(options.type == false) {
+      that.setData({
+        type:false
+      })
+    }
   },
 
   onShow:function()

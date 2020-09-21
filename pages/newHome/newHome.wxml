@@ -120,7 +120,7 @@
                 </view>
             </view>
         </view>
-        <view class="b-block1">
+        <navigator class="b-block1" url="/dataC/detail/detail" hover-class="none">
             <view class="b-left">
                 <view>
                     今日浏览量:
@@ -128,7 +128,7 @@
                 </view>
             </view>
             <image src="/static/images/right-arr1.png" class="b-arr" />
-        </view>
+        </navigator>
     </view>
     <navigator class="b-block" hover-class="none" url="../newEchart/newEchart">
         <view class="b-left">
@@ -151,7 +151,7 @@
         </view>
         <image src="/static/images/right-arr1.png" class="b-arr" />
     </navigator>
-    <navigator class="b-block">
+    <navigator class="b-block" url="../GroupList/GroupList?type=false" hover-class="none">
         <view class="b-left">
             <image src="/static/images/shop11.png" class="b-img" />
             <view>
