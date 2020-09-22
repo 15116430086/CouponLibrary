@@ -156,6 +156,17 @@
         </view>
         <image src="/static/images/right-arr1.png" class="b-arr" />
     </navigator>
+    <navigator class="b-block" hover-class="none" url="/Buyacard/Cardlist/Cardlist">
+        <view class="b-left">
+            <image src="/static/images/ddd.png" class="b-img" />
+            <view>
+                今日购卡订单:
+                <text>{{CouponCount.Buyacartoday}}笔订单</text>
+                <text>金额￥{{CouponCount.BuyacardMonery}}</text>
+            </view>
+        </view>
+        <image src="/static/images/right-arr1.png" class="b-arr" />
+    </navigator>
     <navigator class="b-block" url="../GroupList/GroupList?type=false" hover-class="none">
         <view class="b-left">
             <image src="/static/images/shop11.png" class="b-img" />
