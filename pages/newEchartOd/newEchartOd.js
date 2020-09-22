@@ -182,7 +182,7 @@ Page({
             yAxis: {
                 x: 'center',
                 type: 'value',
-                name: '领券数量/张',
+                name: '购券数量/张',
                 splitLine: {
                     lineStyle: {
                         type: 'dashed',
