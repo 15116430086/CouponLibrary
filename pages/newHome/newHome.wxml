@@ -139,7 +139,7 @@
         <view class="b-left">
             <image src="/static/images/hyy.png" class="b-img" />
             <view>
-                今日新增会员:
+                今日新会员:
                 <text>{{CouponCount.UserNum}}</text>
             </view>
         </view>
@@ -149,8 +149,8 @@
         <view class="b-left">
             <image src="/static/images/ddd.png" class="b-img" />
             <view>
-                今日订单:
-                <text>{{CouponCount.Ordertoday}}笔订单</text>
+                今日售券:
+                <text>{{CouponCount.Ordertoday}}笔</text>
                 <text>金额￥{{CouponCount.orderMonery}}</text>
             </view>
         </view>
@@ -160,8 +160,8 @@
         <view class="b-left">
             <image src="/static/images/ddd.png" class="b-img" />
             <view>
-                今日购卡订单:
-                <text>{{CouponCount.Buyacartoday}}笔订单</text>
+                今日售卡:
+                <text>{{CouponCount.Buyacartoday}}笔</text>
                 <text>金额￥{{CouponCount.BuyacardMonery}}</text>
             </view>
         </view>
