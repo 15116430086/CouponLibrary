@@ -53,14 +53,14 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
@@ -71,7 +71,28 @@ Page({
     let datalist = that.data.userlist;
     datalist[index].IsShow = !datalist[index].IsShow;
     that.setData({
-      userlist: datalist,      
+      userlist: datalist,
+    })
+  },
+
+  onPageNext(e) {
+    let that = this;
+    let index = e.currentTarget.dataset.findex;
+    let datalist = that.data.userlist;
+    let userdata = that.data.userData;
+    var userallInfo = userdata[index].ListCoupon_UserInfo;
+    let lastindex = e.currentTarget.dataset.lastindex;
+    if (userallInfo.length > lastindex) {
+      var info = userallInfo.slice(lastindex, lastindex + 100);
+      datalist[index].ListCoupon_UserInfo = datalist[index].ListCoupon_UserInfo.concat(info)
+    }
+    if (userallInfo.length <= lastindex + 100)
+     wx.showToast({
+       title: '已到底拉...!',
+     })
+
+    that.setData({
+      userlist: datalist,
     })
   },
 
@@ -96,8 +117,8 @@ Page({
     let index = e.currentTarget.dataset.findex;
     let datalist = that.data.userlist;
     datalist[index].CheckAll = !datalist[index].CheckAll;
-    for (let i in datalist[index].ListCoupon_UserInfo) {   
-      datalist[index].ListCoupon_UserInfo[i].IsCheck = datalist[index].CheckAll      
+    for (let i in datalist[index].ListCoupon_UserInfo) {
+      datalist[index].ListCoupon_UserInfo[i].IsCheck = datalist[index].CheckAll
     }
     that.setData({
       userlist: datalist,
@@ -120,8 +141,8 @@ Page({
   //设置会员等级
   showLevel(e) {
     let that = this;
-    let showIndex = e.currentTarget.dataset.findex; 
-    let idx = e.currentTarget.dataset.gradeid;   
+    let showIndex = e.currentTarget.dataset.findex;
+    let idx = e.currentTarget.dataset.gradeid;
     let datalist = that.data.userlist;
     var arrUserID = datalist[showIndex].ListCoupon_UserInfo.filter(function (x, index) {
       return x.IsCheck
@@ -139,7 +160,7 @@ Page({
     that.setData({
       showLevel: true,
       showindex: showIndex,
-      idx: idx   
+      idx: idx
     })
   },
   //隐藏会员等级
@@ -150,17 +171,15 @@ Page({
     })
   },
 
-  onConfirm(e)
-  {
+  onConfirm(e) {
     let that = this;
-    let findex = e.currentTarget.dataset.findex; 
-    let gradeID=that.data.idx;
+    let findex = e.currentTarget.dataset.findex;
+    let gradeID = that.data.idx;
     let datalist = that.data.userlist;
     var arrUserID = datalist[findex].ListCoupon_UserInfo.filter(function (x, index) {
       return x.IsCheck
-    }); 
-    if(arrUserID.length>0)
-    {
+    });
+    if (arrUserID.length > 0) {
       //显示 加载中的提示
       wx.showLoading({
         title: '数据处理中...',
@@ -169,12 +188,11 @@ Page({
       data.pGroupID = app.globalData.AppGroupInfo.GroupID;
       data.arrCoupon_UserQuery = utils.syJsonSafe(arrUserID);
       data.pGradeID = gradeID;
-      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserMemberView/SetEditUserGrade", "POST", data, app.globalData.appkeyid, this.SetEditUserGradeBack)      
-    } 
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserMemberView/SetEditUserGrade", "POST", data, app.globalData.appkeyid, this.SetEditUserGradeBack)
+    }
   },
 
-  SetEditUserGradeBack:function(json)
-  {
+  SetEditUserGradeBack: function (json) {
     let that = this;
     var json = json.data.Data;
     wx.hideLoading();
@@ -212,11 +230,11 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     this.GetData();
   },
 
-  GetData: function() {
+  GetData: function () {
     let that = this;
     //显示 加载中的提示
     wx.showLoading({
@@ -226,16 +244,30 @@ Page({
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponUserMemberView/GetUserInfo", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
-  GetDataBack: function(json) {
+  GetDataBack: function (json) {
     let that = this;
     var json = json.data.Data;
     wx.hideLoading();
     if (json.flag) {
       console.log(json.msg);
+      var userdata = json.data;
+      var showuser = [];
+      for (let i in userdata) {
+        showuser.push({
+          GradeID: userdata[i].GradeID,
+          GradeName: userdata[i].GradeName,
+          GroupID: userdata[i].GroupID,
+          IsShow: userdata[i].IsShow,
+          CheckAll: userdata[i].CheckAll,
+          UserCount: userdata[i].ListCoupon_UserInfo.length,        
+          ListCoupon_UserInfo: userdata[i].ListCoupon_UserInfo.slice(0, 100)
+        })
+      }
       this.setData({
         HistoryUserUNM: json.HistoryUserUNM,
         TodayUserNUM: json.TodayUserNUM,
-        userlist: json.data,
+        userlist: showuser,
+        userData: json.data
       });
 
     } else {
@@ -250,35 +282,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

@@ -1,20 +1,20 @@
 <!--pages/thronesManager /thronesManager.wxml-->
 <view class="v-box">
-    <view class="v-mid">
-        请选择需要开启的权限
-    </view>
+	<view class="v-mid">
+		请选择需要开启的权限
+	</view>
 
-    <view class="v-bot">
-    <block wx:for="{{datalist}}">
-        <view class="v-block">
-            <view class="v-left">
-                <view class="v-t">{{item.Name}}</view>
-                <view class="v-m">{{item.Describe}}</view>
-            </view>
-  <van-switch checked="{{ item.checked==1 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange" data-index="{{index}}" />
-        </view>
-    </block>
-         <!-- <view class="v-block">
+	<view class="v-bot">
+		<block wx:for="{{datalist}}">
+			<view class="v-block">
+				<view class="v-left">
+					<view class="v-t">{{item.Name}}</view>
+					<view class="v-m">{{item.Describe}}</view>
+				</view>
+				<van-switch checked="{{ item.checked==1 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange" data-index="{{index}}" />
+			</view>
+		</block>
+		<!-- <view class="v-block">
             <view class="v-left">
                 <view class="v-t">查看打款记录权限</view>
                 <view class="v-m">查看结算资金每日打款记录</view>
@@ -42,8 +42,8 @@
             </view>
              <van-switch checked="{{ checked5 }}" active-color="#E85819" inactive-color="#CCCCCC" size="36rpx" bind:change="onChange5" data-index="5" />
         </view> -->
-    </view>
-</view>
-<view class="app-bot">
-    <view class="v-btn" bindtap="confirm">确认</view>
+	</view>
+	<view class="app-bot">
+		<view class="v-btn" bindtap="confirm">确认</view>
+	</view>
 </view>

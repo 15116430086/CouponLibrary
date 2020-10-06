@@ -11,13 +11,13 @@ Page({
     code: "",
     phonelength: 0,
     codelength: 0,
-    time:60,
-    isCode:true,
-    sendMes:"发送验证码"
+    time: 60,
+    isCode: true,
+    sendMes: "发送验证码"
   },
 
   //手机号码
-  phoneinput: function(e) {
+  phoneinput: function (e) {
     let that = this;
     that.setData({
       phone: e.detail.value,
@@ -25,7 +25,7 @@ Page({
     })
   },
   //验证码
-  codeinput: function(e) {
+  codeinput: function (e) {
     let that = this;
     that.setData({
       code: e.detail.value,
@@ -33,7 +33,7 @@ Page({
     })
   },
   //发送验证码
-  sendCode(e){
+  sendCode(e) {
     if (this.data.phone == "") {
       wx.showToast({
         title: '请输入手机号码!',
@@ -51,49 +51,48 @@ Page({
       return;
     }
     var Phones = this.data.phone;
-    var data={
+    var data = {
       Phone: Phones
     }
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/Getverificationcode", "POST", data, app.globalData.appkeyid, this.Getverificationcode)
   },
-  
-  Getverificationcode:function(res){
-    var chat=this;
+
+  Getverificationcode: function (res) {
+    var chat = this;
     var json = res.data.Data;
-      if(json.flag){
-        let promise = new Promise((resolve, reject) => {
-          let setTimer = setInterval(
-            () => {
+    if (json.flag) {
+      let promise = new Promise((resolve, reject) => {
+        let setTimer = setInterval(
+          () => {
+            chat.setData({
+              isCode: false,
+              time: chat.data.time - 1
+            })
+            if (chat.data.time <= 0) {
               chat.setData({
-                isCode: false,
-                time: chat.data.time - 1
+                time: 60,
+                isCode: true,
+                sendMes: "重新发送"
               })
-              if (chat.data.time <= 0) {
-                chat.setData({
-                  time: 60,
-                  isCode: true,
-                  sendMes: "重新发送"
-                })
-                resolve(setTimer)
-              }
+              resolve(setTimer)
             }
-            , 1000)
-        })
-        promise.then((setTimer) => {
-          clearInterval(setTimer)
-        })
+          }, 1000)
+      })
+      promise.then((setTimer) => {
+        clearInterval(setTimer)
+      })
 
-      }else{
-        wx.showToast({
-          title: json.msg,
-          icon: "none",
-          duration: 3000
-        })
+    } else {
+      wx.showToast({
+        title: json.msg,
+        icon: "none",
+        duration: 3000
+      })
 
-      }
+    }
   },
 
-  isConfirmLogin: function() {
+  isConfirmLogin: function () {
     let that = this;
     if (that.data.phone == "") {
       wx.showToast({
@@ -155,7 +154,7 @@ Page({
     })
   },
 
-  onPhoneLoginTap: function(res) {
+  onPhoneLoginTap: function (res) {
     // 登录
     var detail = res.detail;
     if (detail.errMsg == "getPhoneNumber:ok") {
@@ -174,7 +173,7 @@ Page({
       })
     }
   },
-  GetPhoneNumbeLoginBack: function(json) {
+  GetPhoneNumbeLoginBack: function (json) {
     console.log(json);
     wx.hideLoading();
     var json = json.data.Data;
@@ -190,16 +189,22 @@ Page({
           app.globalData.AppStaffInfo = loginInfo.AppStaffInfo;
           app.globalData.AppGroupInfo = loginInfo.AppGroupInfo;
           app.globalData.AppShopInfo = loginInfo.AppShopInfo;
-          wx.reLaunch({
-            url: '../home/home',
-          })
+          if (loginInfo.AppGroupInfo.GroupID == loginInfo.AppGroupInfo.AffiliatedGroupID) {
+            wx.reLaunch({
+              url: '../newHome/newHome',
+            })
+          } else {
+            wx.reLaunch({
+              url: '../home/home',
+            })
+          }
         }
       } else {
         if (json.state == 3) {
           wx.showModal({
             title: '登录失败',
             content: json.msg,
-            success: function(res) {
+            success: function (res) {
               if (res.confirm) {
                 console.log('用户点击确定')
                 wx.reLaunch({
@@ -213,7 +218,7 @@ Page({
             title: '登录失败',
             showCancel: false,
             content: json.msg,
-            success: function(res) {
+            success: function (res) {
               if (res.confirm) {
                 console.log('用户点击确定')
               }
@@ -227,56 +232,58 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-
+  onLoad: function (options) {
+    this.setData({
+      proname: app.globalData.sysName
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

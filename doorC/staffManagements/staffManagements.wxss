@@ -37,6 +37,8 @@ page {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    top: -15rpx;
 }
 
 .v-left,
@@ -45,8 +47,9 @@ page {
     flex-direction: row;
     align-items: center;
 }
-.v-left{
-  width: calc(100% - 100rpx);
+
+.v-left {
+    width: calc(100% - 100rpx);
 }
 
 .v-left image {
@@ -62,10 +65,10 @@ page {
 }
 
 .v-name {
-  width: calc(100% - 140rpx);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    width: calc(100% - 140rpx);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     color: #000;
     font-size: 32rpx;
     margin-left: 40rpx;
@@ -76,4 +79,51 @@ page {
     width: 10rpx;
     height: 18rpx;
     margin-left: 20rpx;
+}
+
+
+
+
+.touch-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 10rpx;
+    background: #ffffff;
+    height: 132rpx;
+    align-items: center;
+}
+
+.content {
+    width: 100%;
+    margin-right: 0;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+    -webkit-transform: translateX(90px);
+    transform: translateX(90px);
+    margin-left: -90px;
+}
+
+.del {
+    width: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    -webkit-transform: translateX(90px);
+    transform: translateX(90px);
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+    font-size: 35rpx;
+    color: #ffffff;
+    height: 100%;
+    background-color: red;
+}
+
+.touch-move-active .content,
+.touch-move-active .del {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
 }

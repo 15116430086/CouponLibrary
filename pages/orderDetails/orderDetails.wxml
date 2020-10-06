@@ -1,0 +1,31 @@
+<!-- pages/orderDetails/orderDetails.wxml -->
+
+<view class="mes-block">
+    <block wx:for="{{orderDetailslist}}" wx:for-index="index" wx:key="WriteOffOrderID">
+    <!-- <navigator url="../waitGoods/waitGoods?type={{item.ProductType}}&orderid={{item.WriteOffOrderID}}&orderstate={{item.State}}"> -->
+    <view bindtap="JumpwaitGoods" data-orderid="{{item.WriteOffOrderID}}" data-writeOffType="{{item.WriteOffType}}">
+        <view class="mes-top">
+            <view class="mes-left">
+            <block wx:if="{{item.WriteOffType==0}}">
+                <image wx:if="{{ item.ImageOne=='' }}" src="/static/images/swp.png"></image>
+                <image wx:else src="{{item.ImageOne}}"></image>
+            </block>
+            <block wx:if="{{item.WriteOffType==1}}">
+                <image wx:if="{{ item.UserAvatar=='' }}" src="/static/images/swp.png"></image>
+                <image wx:else src="{{item.UserAvatar}}"></image>
+            </block>
+                {{item.ConsumptionName}}
+            </view>
+            <view class="mes-right" style="color:#666666">*{{item.Number}}</view>
+        </view>
+        <view class="mes-bot">
+            <view class="bot-left">
+                <view class="bot-blue">订单号：{{item.WriteOffOrderID}}</view>
+                <view class="bot-time">{{item.PayDate}}</view>
+            </view>
+            <view class="bot-type" style="color:#CCCCCC">已完成</view>
+        </view>
+        </view>
+        <!-- </navigator> -->
+    </block>
+</view>

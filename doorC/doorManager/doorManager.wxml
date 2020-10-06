@@ -37,13 +37,13 @@
         <image src="/static/images/right-arr1.png" class="ticket-flex-image "/>
     </view> -->
 
-	<view class="ticket-flex" bindtap="perfecttap">
+	<!-- <view class="ticket-flex" bindtap="perfecttap">
 		<view class="tf-left">
 			<image src="/static/images/shop.png" class="tf-left-image" />
 			<view class="tf-name">公众号分享码</view>
 		</view>
 		<image src="/static/images/right-arr1.png" class="ticket-flex-image " />
-	</view>
+	</view> -->
 	<view class="ticket-flex" bindtap="cperfecttap">
 		<view class="tf-left">
 			<image src="/static/images/shop.png" class="tf-left-image" />

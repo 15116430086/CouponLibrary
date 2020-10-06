@@ -1,0 +1,21 @@
+<!--index.wxml-->
+
+<view class="top-mes">
+	
+<view class="mf-box">
+	<view class="mid-flex {{idx==item.id?'selected':''}}" wx:for="{{timeBox}}" bindtap="clkBtn" data-id="{{item.id}}">{{item.txt}}</view>
+</view>
+</view>
+
+<view class="canvas-box">
+	<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+</view>
+
+<view class="canvas-box">
+	<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec1 }}"></ec-canvas>
+</view>
+
+<view class="canvas-box">
+	<ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ ec2 }}"></ec-canvas>
+</view>
+

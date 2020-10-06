@@ -2,6 +2,7 @@
 
 page {
     background-color: #EDEDED;
+    padding-bottom: 180rpx;
 }
 
 .v-box {
@@ -12,7 +13,7 @@ page {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 140rpx;
+    
 }
 
 .v-top {

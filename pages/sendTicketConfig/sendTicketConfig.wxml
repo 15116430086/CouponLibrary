@@ -1,17 +1,34 @@
 <view class="home-box">
-  <view class="home-img">
-    <view class="home-v">
-      <view class="home-view">
-        <text style="color:#e30000;">*</text>默认赠送规则：</view>
-      <view>代金券会员可自领，员工可赠送；礼物券仅员工可赠送</view>
+  <!-- 搜索框 -->
+  <view class="home-top">
+    <view class="search-box">
+      <view class="search-left">
+        <image src="/static/images/serch2.png" background-size="cover" style="margin-left:30rpx;margin-right:30rpx" />
+        <input value="{{searchValue}}" placeholder="请输入券面名称" bindblur="onbindblur" placeholder-class="ip" />
+      </view>
+      <image src="/static/images/err1.png" background-size="cover" style="margin-right:30rpx;" bindtap="onClear" v-if="flag==1" />
     </view>
+    <view class="home-btn" bindtap="onSearch">搜索</view>
   </view>
 
-  <block wx:for="{{couponList}}" wx:key="CouponID" wx:for-index="index">
-    <navigator class="home-block" url="../sendTicketConfigChild/sendTicketConfigChild?CouponID={{item.CouponID}}">
-      <view class="home-name">
+	<view class="top_nav1 ">
+		<scroll-view scroll-x="true" scroll-into-view="{{itemindex}}" style="width: 100%" scroll-with-animation="true">
+			<view class="nav-name {{item.IndustryCode == currentId ? 'nav-hover':''}}" id="{{item.IndustryCode}}"  wx:for="{{section}}" wx:key="id" data-id='{{item.IndustryCode}}' bindtap='handleTap'>
+				{{item.IndustryName}}
+			</view>
+		</scroll-view>
+	</view>
+
+
+
+  <!-- <block wx:for="{{couponList}}" wx:key="CouponID" wx:for-index="index"> -->
+  <!-- <view wx:if="{{item.State==1}}" data-couponid="{{item.CouponID}}" data-state="{{item.State}}" bindtap="UpdateCouponInfoState">下架</view>
+  <view wx:elif="{{item.State==2}}" data-couponid="{{item.CouponID}}" data-state="{{item.State}}" bindtap="UpdateCouponInfoState">上架</view> -->
+    <!-- <navigator class="home-block" url="../sendTicketConfigChild/sendTicketConfigChild?CouponID={{item.CouponID}}" hover-class="none"> -->
+      <!-- <view class="home-name">
         <view>{{item.CouponName}}</view>
-        <view class="home-rule" wx:if="{{item.MemberCollar==1 && item.AppointStaff==1}}">所有会员等级，全部员工可增送</view>
+        <view class="home-rule">{{item.GroupName}}</view> -->
+        <!-- <view class="home-rule" wx:if="{{item.MemberCollar==1 && item.AppointStaff==1}}">所有会员等级，全部员工可增送</view>
         <view class="home-rule" wx:elif="{{item.MemberCollar==1 && item.AppointStaff==2}}">所有会员等级，部分员工可增送</view>
         <view class="home-rule" wx:elif="{{item.MemberCollar==2 && item.AppointStaff==1}}">部分会员等级，全部员工可增送</view>
         <view class="home-rule" wx:elif="{{item.MemberCollar==2 && item.AppointStaff==2}}">部分会员等级，部分员工可增送</view>
@@ -19,9 +36,39 @@
         <view class="home-rule" wx:elif="{{item.MemberCollar==2 && item.AppointStaff==0}}">部分会员等级</view>
         <view class="home-rule" wx:elif="{{item.MemberCollar==0 && item.AppointStaff==1}}">全部员工可增送</view>
         <view class="home-rule" wx:elif="{{item.MemberCollar==0 && item.AppointStaff==2}}">部分员工可增送</view>
-        <view class="home-rule" wx:else>默认赠送规则</view>
-      </view>
+        <view class="home-rule" wx:else>默认赠送规则</view> -->
+      <!-- </view>
       <image src="/static/images/right-arr1.png" />
     </navigator>
-  </block>
+  </block> -->
+
+ 
+    <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}"  wx:for="{{couponList}}" wx:key="CouponID" wx:for-index="index" wx:key>
+      　　<view class="content" style="{{item.txtStyle}}" data-index='{{index}}' bindtouchstart="touchstart" bindtouchmove="touchmove" bindtouchend="touchE">
+      　　　　<navigator class="home-block" url="../sendTicketConfigChild/sendTicketConfigChild?CouponID={{item.CouponID}}" hover-class="none">
+                <view class="home-name">
+                  <view>{{item.CouponName}}</view>
+                  <view class="home-rule">{{item.GroupName}}</view>
+                  <!-- <view class="home-rule" wx:if="{{item.MemberCollar==1 && item.AppointStaff==1}}">所有会员等级，全部员工可增送</view>
+                  <view class="home-rule" wx:elif="{{item.MemberCollar==1 && item.AppointStaff==2}}">所有会员等级，部分员工可增送</view>
+                  <view class="home-rule" wx:elif="{{item.MemberCollar==2 && item.AppointStaff==1}}">部分会员等级，全部员工可增送</view>
+                  <view class="home-rule" wx:elif="{{item.MemberCollar==2 && item.AppointStaff==2}}">部分会员等级，部分员工可增送</view>
+                  <view class="home-rule" wx:elif="{{item.MemberCollar==1 && item.AppointStaff==0}}">所有会员等级</view>
+                  <view class="home-rule" wx:elif="{{item.MemberCollar==2 && item.AppointStaff==0}}">部分会员等级</view>
+                  <view class="home-rule" wx:elif="{{item.MemberCollar==0 && item.AppointStaff==1}}">全部员工可增送</view>
+                  <view class="home-rule" wx:elif="{{item.MemberCollar==0 && item.AppointStaff==2}}">部分员工可增送</view>
+                  <view class="home-rule" wx:else>默认赠送规则</view> -->
+                </view>
+                <image src="/static/images/right-arr1.png" />
+              </navigator>
+          </view>
+          <view class="del" data-couponid="{{item.CouponID}}" catchtap="UpdateCouponInfoState" data-index="{{index}}">下架</view>
+    </view>
+
+
+  <view wx:if="{{isshow}}" class="none">
+		<image src="/static/images/none.png"></image>
+		<view>对不起！</view>
+		<view>该行业下没有券</view>
+	</view>
 </view>

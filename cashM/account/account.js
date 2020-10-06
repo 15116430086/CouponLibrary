@@ -93,8 +93,13 @@ Page({
             console.log(res);
             if (res.errMsg == "requestPayment:ok") {
               chta.setData({ butCket: true});
-              chat.Query();
+              
+              wx.showToast({
+                title: json.msg,
+                icon: "none"
+              });
             }
+            setTimeout(function(){  wx.navigateBack();},2000);
           },
           fail(res) {
             if (res.errMsg == "requestPayment:fail cancel") {
@@ -112,7 +117,16 @@ Page({
             chta.setData({ butCket: true});
           }
         })
+      }else{
+        wx.showToast({
+          title: json.msg,
+          icon: "none"
+        });
+        chta.setData({ butCket: true});
+        wx.navigateBack();
       }
+
+
     }else{
       wx.showToast({
         title: json.msg,

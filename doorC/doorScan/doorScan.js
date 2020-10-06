@@ -13,7 +13,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     if (options.shopid) { //新增员工二维码
       var datas = {
         ShopID: options.shopid
@@ -23,13 +23,14 @@ Page({
 
     if (options.gid) { //店铺分享 小程序码
       var datas = {
-        gid: options.gid,
-        ShopID: options.shopid
+        GroupID: options.gid,
+        ShopID: options.shopid,
+        AffiliatedGroupID: app.globalData.AppGroupInfo.AffiliatedGroupID
       }
       utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponGroupView/StoreQRcode", "POST", datas, app.globalData.appkeyid, this.CouponShopView);
     }
   },
-  CouponShopView: function(res) {
+  CouponShopView: function (res) {
     var json = res.data.Data;
     var chat = this;
     chat.setData({

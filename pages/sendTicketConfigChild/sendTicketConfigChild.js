@@ -33,7 +33,7 @@ Page({
             },
             {
                 id: 1,
-                name: '推荐',
+                name: '爆品',
                 ischeck: false
             },
             {

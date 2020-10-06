@@ -10,14 +10,19 @@ Page({
     flags: true,
     pageIndex:1,
     pageCount:1,
-    searchValue:""
+    searchValue:"",
+    type:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    if(options.type == false) {
+      that.setData({
+        type:false
+      })
+    }
   },
 
   onShow:function()
@@ -40,7 +45,8 @@ Page({
       if(chat.data.pageIndex==1){
         chat.setData({
           Grouplist: json.data,
-          flags: false
+          flags: false,
+          pageCount: json.pageCount //你的总页数   
         });
       }else{
         //获取上次加载的数据

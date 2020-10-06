@@ -55,6 +55,23 @@ Page({
                 txt: '注册人数'
             }
         ],
+        ucell: [{
+                id: 1,
+                txt: '会员姓名'
+            },
+            {
+                id: 2,
+                txt: '购券数量'
+            },
+            {
+                id: 3,
+                txt: '核券数量'
+            },
+            {
+                id: 4,
+                txt: '退券数量'
+            }
+        ],
         cell1: [{
                 id: 1,
                 txt: '商户名称'
@@ -72,6 +89,7 @@ Page({
                 txt: '核券数量'
             }
         ],
+        userCell: [],
         mebCell: [],
         shopCell: [],
     },
@@ -102,7 +120,8 @@ Page({
             this.setData({
                 databox: json.DataCount,
                 mebCell: json.ShareRanking,
-                shopCell: json.SellCouponRanking
+                shopCell: json.SellCouponRanking,
+                userCell: json.UserCouponRanking
             })
         }
     },

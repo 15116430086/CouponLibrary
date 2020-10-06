@@ -1,191 +1,202 @@
 {
-  "pages": [
-    "pages/login/login",
-    "pages/echartTxT/echartTxT",
-    "pages/shopDetail/shopDetail",
-    "pages/memberNum/memberNum",
-    "pages/goodsConfig/goodsConfig",
-    "pages/classRoom/classRoom",
-    "pages/notifyBuyers/notifyBuyers",
-    "pages/writeNote/writeNote",
-    "pages/businessAccept/businessAccept",
-    "pages/wuliuMes/wuliuMes",
-    "pages/paySuccess/paySuccess",
-    "pages/moreShop/moreShop",
-    "pages/home/home",
-    "pages/doorContor/doorContor",
-    "pages/goodsManager/goodsManager",
-    "pages/index/index",
-    "pages/merchantReg/merchantReg",
-    "pages/phoneLogin/phoneLogin",
-    "pages/goodsEditor/goodsEditor",
-    "pages/sysNotice/sysNotice",
-    "pages/test/test",
-    "pages/fastGet/fastGet",
-    "pages/staffLoginReg/staffLoginReg",
-    "pages/cityChoose/cityChoose",
-    "pages/blockChoose/blockChoose",
-    "pages/goodsType/goodsType",
-    "pages/addressChoose/addressChoose",
-    "pages/bossMes/bossMes",
-    "pages/shopCli/shopCli",
-    "pages/readTicketInfo/readTicketInfo",
-    "pages/banlanceMes/banlanceMes",
-    "pages/configLook/configLook",
-    "pages/quanKu/quanKu",
-    "pages/onlySeeMe/onlySeeMe",
-    "pages/configGoods/configGoods",
-    "pages/proRule/proRule",
-    "pages/addProduct/addProduct",
-    "pages/jointPro/jointPro",
-    "pages/myMoney/myMoney",
-    "pages/moneyDetail/moneyDetail",
-    "pages/management/management",
-    "pages/scanSend/scanSend",
-    "pages/shopScan/shopScan",
-    "pages/sendTicketConfigChild/sendTicketConfigChild",
-    "pages/yewuDescribe/yewuDescribe",
-    "pages/goodsNotice/goodsNotice",
-    "pages/goodsEditorTwo/goodsEditorTwo",
-    "pages/startGoods/startGoods",
-    "pages/sendTicketMes/sendTicketMes",
-    "pages/goodsNoticeTwo/goodsNoticeTwo",
-    "pages/sendTicketConfig/sendTicketConfig",
-    "pages/waitGoods/waitGoods",
-    "pages/searchPage/searchPage",
-    "pages/getTicketList/getTicketList",
-    "pages/shopIntroduction/shopIntroduction",
-    "pages/orderManagement/orderManagement",
-    "pages/groupMes/groupMes",
-    "pages/ticketMes/ticketMes",
-    "pages/chooseTicket/chooseTicket",
-    "pages/storeMes/storeMes",
-    "pages/shopList/shopList",
-    "pages/configControl/configControl",
-    "pages/scanCheck/scanCheck",
-    "pages/sendTicketOne/sendTicketOne",
-    "pages/sendTicket/sendTicket",
-    "pages/orderPay/orderPay",
-    "pages/myTicket/myTicket",
-    "pages/logs/logs",
-    "template/swiper/swiper",
-    "template/ScrollView/ScrollView",
-    "template/HotTicket/HotTicket",
-    "template/ShopMes/ShopMes",
-    "template/BotOne/BotOne",
-    "template/TicketBox/TicketBox",
-    "template/payStore/payStore",
-    "pages/ticketShenHe/ticketShenHe",
-    "pages/noPayMoney/noPayMoney",
-    "pages/regPlane/regPlane",
-    "pages/secretBook/secretBook",
-    "pages/webView/webView",
-    "pages/chooseBuyGoodsTwo/chooseBuyGoodsTwo",
-    "pages/newManager/newManager",
-    "pages/GroupList/GroupList",
-    "pages/Businessmanagement/Businessmanagement"
-  ],
-  "subpackages": [
-    {
-      "root": "doorC",
-      "name": "doorC",
-      "pages": [
-        "doorManager/doorManager",
-        "doorScan/doorScan",
-        "staffChoose/staffChoose",
-        "staffManagements/staffManagements",
-        "thronesManagers/thronesManagers"
-      ]
+    "pages": [
+        "pages/login/login",
+        "pages/newHome/newHome",
+        "pages/newEchart/newEchart",
+        "pages/newEchartOd/newEchartOd",
+        "pages/receipt/receipt",
+        "pages/echartTxT/echartTxT",
+        "pages/shopDetail/shopDetail",
+        "pages/memberNum/memberNum",
+        "pages/goodsConfig/goodsConfig",
+        "pages/classRoom/classRoom",
+        "pages/notifyBuyers/notifyBuyers",
+        "pages/writeNote/writeNote",
+        "pages/businessAccept/businessAccept",
+        "pages/wuliuMes/wuliuMes",
+        "pages/paySuccess/paySuccess",
+        "pages/moreShop/moreShop",
+        "pages/home/home",
+        "pages/doorContor/doorContor",
+        "pages/goodsManager/goodsManager",
+        "pages/index/index",
+        "pages/merchantReg/merchantReg",
+        "pages/phoneLogin/phoneLogin",
+        "pages/goodsEditor/goodsEditor",
+        "pages/sysNotice/sysNotice",
+        "pages/test/test",
+        "pages/fastGet/fastGet",
+        "pages/staffLoginReg/staffLoginReg",
+        "pages/cityChoose/cityChoose",
+        "pages/blockChoose/blockChoose",
+        "pages/goodsType/goodsType",
+        "pages/addressChoose/addressChoose",
+        "pages/bossMes/bossMes",
+        "pages/shopCli/shopCli",
+        "pages/readTicketInfo/readTicketInfo",
+        "pages/banlanceMes/banlanceMes",
+        "pages/configLook/configLook",
+        "pages/quanKu/quanKu",
+        "pages/onlySeeMe/onlySeeMe",
+        "pages/configGoods/configGoods",
+        "pages/proRule/proRule",
+        "pages/addProduct/addProduct",
+        "pages/jointPro/jointPro",
+        "pages/myMoney/myMoney",
+        "pages/moneyDetail/moneyDetail",
+        "pages/management/management",
+        "pages/scanSend/scanSend",
+        "pages/shopScan/shopScan",
+        "pages/sendTicketConfigChild/sendTicketConfigChild",
+        "pages/yewuDescribe/yewuDescribe",
+        "pages/goodsNotice/goodsNotice",
+        "pages/goodsEditorTwo/goodsEditorTwo",
+        "pages/startGoods/startGoods",
+        "pages/sendTicketMes/sendTicketMes",
+        "pages/goodsNoticeTwo/goodsNoticeTwo",
+        "pages/sendTicketConfig/sendTicketConfig",
+        "pages/waitGoods/waitGoods",
+        "pages/searchPage/searchPage",
+        "pages/getTicketList/getTicketList",
+        "pages/shopIntroduction/shopIntroduction",
+        "pages/orderManagement/orderManagement",
+        "pages/groupMes/groupMes",
+        "pages/ticketMes/ticketMes",
+        "pages/chooseTicket/chooseTicket",
+        "pages/storeMes/storeMes",
+        "pages/shopList/shopList",
+        "pages/configControl/configControl",
+        "pages/scanCheck/scanCheck",
+        "pages/sendTicketOne/sendTicketOne",
+        "pages/sendTicket/sendTicket",
+        "pages/orderPay/orderPay",
+        "pages/myTicket/myTicket",
+        "pages/logs/logs",
+        "template/swiper/swiper",
+        "template/ScrollView/ScrollView",
+        "template/HotTicket/HotTicket",
+        "template/ShopMes/ShopMes",
+        "template/BotOne/BotOne",
+        "template/TicketBox/TicketBox",
+        "template/payStore/payStore",
+        "pages/ticketShenHe/ticketShenHe",
+        "pages/noPayMoney/noPayMoney",
+        "pages/regPlane/regPlane",
+        "pages/secretBook/secretBook",
+        "pages/webView/webView",
+        "pages/chooseBuyGoodsTwo/chooseBuyGoodsTwo",
+        "pages/newManager/newManager",
+        "pages/GroupList/GroupList",
+        "pages/Businessmanagement/Businessmanagement"
+    ],
+    "subpackages": [{
+            "root": "doorC",
+            "name": "doorC",
+            "pages": [
+                "doorManager/doorManager",
+                "doorScan/doorScan",
+                "staffChoose/staffChoose",
+                "staffManagements/staffManagements",
+                "thronesManagers/thronesManagers"
+            ]
+        },
+        {
+            "root": "cashM",
+            "name": "cashM",
+            "pages": [
+                "myMoney/myMoney",
+                "account/account",
+                "detail/detail",
+                "success/success",
+                "mes/mes"
+            ]
+        },
+        {
+            "root": "dataC",
+            "name": "dataC",
+            "pages": [
+                "detail/detail",
+                "mes/mes",
+                "child/child",
+                "sharemes/sharemes",
+                "MerchantIssuing/MerchantIssuing",
+                "UserReceiveCoupon/UserReceiveCoupon",
+                "UserReceiveCouponDetails/UserReceiveCouponDetails",
+                "sharemesDetails/sharemesDetails",
+                "PageAccessDetails/PageAccessDetails",
+                "MerchantIssuingDetails/MerchantIssuingDetails"
+            ]
+        },
+        {
+            "root": "sendTicket",
+            "name": "sendTicket",
+            "pages": [
+                "sendTicketTwo/sendTicketTwo",
+                "commissionMes/commissionMes",
+                "chooseBuyGoods/chooseBuyGoods",
+                "startTicket/startTicket",
+                "shopChoose/shopChoose",
+                "provincialChoose/provincialChoose",
+                "industryChoose/industryChoose",
+                "watchMes/watchMes",
+                "watchMesOne/watchMesOne",
+                "goodsEditor/goodsEditor"
+            ]
+        },
+        {
+            "root": "mebC",
+            "name": "mebC",
+            "pages": [
+                "myExtend/myExtend",
+                "levelManager/levelManager",
+                "addSpan/addSpan",
+                "seeSpan/seeSpan",
+                "spanList/spanList",
+                "mebList/mebList",
+                "addMembers/addMembers"
+            ]
+        }, {
+            "root": "Buyacard",
+            "name": "Buyacard",
+            "pages": [
+                "Cardlist/Cardlist",
+                "CardDetails/CardDetails",
+                "MemberList/MemberList"
+            ]
+
+        }
+    ],
+    "permission": {
+        "scope.userLocation": {
+            "desc": "地理定位将用作小程序默认位置"
+        }
     },
-    {
-      "root": "cashM",
-      "name": "cashM",
-      "pages": [
-        "myMoney/myMoney",
-        "account/account",
-        "detail/detail",
-        "success/success",
-        "mes/mes"
-      ]
+    "plugins": {
+        "chooseLocation": {
+            "version": "1.0.4",
+            "provider": "wx76a9a06e5b4e693e"
+        }
     },
-    {
-      "root": "dataC",
-      "name": "dataC",
-      "pages": [
-        "detail/detail",
-        "mes/mes",
-        "child/child",
-        "sharemes/sharemes",
-        "MerchantIssuing/MerchantIssuing",
-        "UserReceiveCoupon/UserReceiveCoupon",
-        "UserReceiveCouponDetails/UserReceiveCouponDetails",
-        "sharemesDetails/sharemesDetails",
-        "PageAccessDetails/PageAccessDetails",
-        "MerchantIssuingDetails/MerchantIssuingDetails"
-      ]
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTextStyle": "black"
     },
-    {
-      "root": "sendTicket",
-      "name": "sendTicket",
-      "pages": [
-        "sendTicketTwo/sendTicketTwo",
-        "commissionMes/commissionMes",
-        "chooseBuyGoods/chooseBuyGoods",
-        "startTicket/startTicket",
-        "shopChoose/shopChoose",
-        "provincialChoose/provincialChoose",
-        "industryChoose/industryChoose",
-        "watchMes/watchMes",
-        "watchMesOne/watchMesOne",
-        "goodsEditor/goodsEditor"
-      ]
-    },
-    {
-      "root": "mebC",
-      "name": "mebC",
-      "pages": [
-        "myExtend/myExtend",
-        "levelManager/levelManager",
-        "addSpan/addSpan",
-        "seeSpan/seeSpan",
-        "spanList/spanList",
-        "mebList/mebList",
-        "addMembers/addMembers"
-      ]
+    "sitemapLocation": "sitemap.json",
+    "usingComponents": {
+        "van-switch": "static/vant/switch/index",
+        "van-radio": "static/vant/radio/index",
+        "van-radio-group": "static/vant/radio-group/index",
+        "van-cell": "static/vant/cell/index",
+        "van-cell-group": "static/vant/cell-group/index",
+        "van-checkbox": "static/vant/checkbox/index",
+        "van-checkbox-group": "static/vant/checkbox-group/index",
+        "van-collapse": "static/vant/collapse/index",
+        "van-collapse-item": "static/vant/collapse-item/index",
+        "van-popup": "static/vant/popup/index",
+        "van-toast": "static/vant/toast/index",
+        "van-picker": "static/vant/picker/index",
+        "van-datetime-picker": "static/vant/datetime-picker/index",
+        "van-overlay": "static/vant/overlay/index"
     }
-  ],
-  "permission": {
-    "scope.userLocation": {
-      "desc": "地理定位将用作小程序默认位置"
-    }
-  },
-  "plugins": {
-    "chooseLocation": {
-      "version": "1.0.4",
-      "provider": "wx76a9a06e5b4e693e"
-    }
-  },
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "券库商家助手",
-    "navigationBarTextStyle": "black"
-  },
-  "sitemapLocation": "sitemap.json",
-  "usingComponents": {
-    "van-switch": "static/vant/switch/index",
-    "van-radio": "static/vant/radio/index",
-    "van-radio-group": "static/vant/radio-group/index",
-    "van-cell": "static/vant/cell/index",
-    "van-cell-group": "static/vant/cell-group/index",
-    "van-checkbox": "static/vant/checkbox/index",
-    "van-checkbox-group": "static/vant/checkbox-group/index",
-    "van-collapse": "static/vant/collapse/index",
-    "van-collapse-item": "static/vant/collapse-item/index",
-    "van-popup": "static/vant/popup/index",
-    "van-toast": "static/vant/toast/index",
-    "van-picker": "static/vant/picker/index",
-    "van-datetime-picker": "static/vant/datetime-picker/index",
-    "van-overlay": "static/vant/overlay/index"
-  }
 }

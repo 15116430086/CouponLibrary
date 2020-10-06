@@ -95,7 +95,7 @@ Page({
   cperfecttap:function()
   {//分享我的店铺 小程序维码
     wx.navigateTo({
-      url: '/doorC/doorScan/doorScan?gid=' + app.globalData.AppGroupInfo.GroupID +'&ShopID=' + this.data.shopid,
+      url: '/doorC/doorScan/doorScan?gid=' + app.globalData.AppGroupInfo.GroupID +'&shopid=' + this.data.shopid,
     })
   },
 

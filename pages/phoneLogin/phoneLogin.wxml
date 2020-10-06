@@ -2,7 +2,7 @@
 <view class="box">
   <view class="home_top">
     <view class="v-title">您好!</view>
-    <view class="v-tip">欢迎来到券库商家助手</view>
+    <view class="v-tip">欢迎来到{{proname}}商家助手</view>
   </view>
 </view>
 <view class="v-mid">

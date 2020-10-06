@@ -4,9 +4,13 @@ var common = {
    * value 将要格式化的值
    * format 格式化的格式
    **/
-  coFormatDate: function (value, format, isapi) {
+  coFormatDate: function (value, format, isapi,isIOS) {
     var regYear = getRegExp("(y+)", "i");
     value = value.replace('T', ' ');
+    if(isIOS)
+    {
+      value=value.substring(5, 16);
+    }
     if (isapi) {     
       return value;
     }
@@ -63,10 +67,14 @@ var common = {
   },
   coFdistance:function(value){
     return parseFloat(value).toFixed(2);
+  },
+  setImagsize: function (url, size) {
+    return url.replace('.png', size + '.png').replace('.jpg', size + '.jpg');
   }
 }
 module.exports = {
   sysFormatDate: common.coFormatDate,
   sysFormatMoney: common.coFormatMoney,
-  sysFdistance:common.coFdistance
+  sysFdistance:common.coFdistance,
+  getImagsize: common.setImagsize
 }

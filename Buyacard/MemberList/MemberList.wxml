@@ -1,0 +1,34 @@
+<!--Buyacard/MemberList/MemberList.wxml-->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<view class="home-box">
+	<!--按活动查 -->
+
+<view class="stm-mes" wx:if="{{types == 0}}">
+<view>
+		<text >门店:{{DataList[0].ShopName}}</text>
+		</view>
+		<view>
+		<text >总金额:￥{{monery}}    总订单:{{orderCount}}</text>
+		</view>
+</view>
+<view class="stm-mes" wx:if="{{types == 1}}">
+		<text >总金额:￥{{monery}}    总订单:{{orderCount}}</text>
+</view>
+		<block wx:for="{{DataList}}">
+			<view class="order-box">
+				<image src="{{item.UserAvatar}}" />
+				<view class="o-right">
+					<view class="o-top">
+						<view class="o-name">{{item.ActivityName}}</view>
+						<view class="o-price">￥{{item.ActualPay}}</view>
+					</view>
+					<view class="stm-bot">
+						<view class="stm-nnn">{{item.UserName}}</view>         
+						<view class="stm-time">{{common.sysFormatDate(item.PayDate,"yyyy-MM-dd hh:mm",true)}} </view>
+					</view>
+				</view>
+			</view>
+		</block>
+
+</view>
+

@@ -5,8 +5,10 @@
 <import src="/template/BotOne/BotOne" />
 
 <view class="home-box">
+
   <!-- 头部 -->
-  <view class="home-top">
+  <view class="hb-box">
+    <view class="home-top">
     <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcancel="bindMultiPickerCancel" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" range-key="{{'RegionName'}}">
       <view class="homeTop-name">
         <view class="h-name">{{RegionName}}</view>
@@ -21,12 +23,24 @@
     </view>
     <view class="mes-box" bindtap="onQuickTap">快速领券</view>
   </view>
+
+	<view class="top_nav1 ">
+		<scroll-view scroll-x="true" scroll-into-view="{{itemindex}}" style="width: 100%" scroll-with-animation="true">
+			<view class="nav-name {{item.IndustryCode == currentIds ? 'nav-hover':''}}" id="{{item.IndustryCode}}"  wx:for="{{section}}" wx:key="id" data-id='{{item.IndustryCode}}' bindtap='handleTap'>
+				{{item.IndustryName}}
+			</view>
+		</scroll-view>
+	</view>
+  </view>
+  
+
+
   <!-- 轮播图 -->
   <view class="swiper" wx:if="{{images.length>0}}">
     <swiper class='swiper' indicator-dots='true' autoplay='true' interval='5000' duration='1000' circular='true' indicator-dots="{{color}}" indicator-active-color="{{activeColor}}">
       <block wx:for="{{images}}" wx:for-index="index" wx:key="*this">
         <swiper-item>
-          <image src='{{item.ImageOne}}' data-GroupID='{{item.GroupID}}' bindtap='onGroupDetailsTap' class='u-img-slide' mode='aspectFill'></image>
+          <image src='{{tools.getImagsize(item.ImageOne,480)}}' data-GroupID='{{item.GroupID}}' bindtap='onGroupDetailsTap' class='u-img-slide' mode='aspectFill'></image>
         </swiper-item>
       </block>
     </swiper>

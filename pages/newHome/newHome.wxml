@@ -1,0 +1,180 @@
+<!-- pages/newHome/newHome.wxml -->
+<view class="v-top" style="height: 180rpx;">
+    <view class="v-flex" style="margin-top: 10rpx;">
+        <view>{{GroupName}}</view>
+      
+        <view class="mes-box" bindtap="noticetap">
+            <view wx:if="{{CouponCount.countNewMsg > 0}}">{{CouponCount.countNewMsg}}</view>
+            <image src="/static/images/talk1.png" background-size="cover" class="v-img" ></image>
+        </view>
+    </view>
+    <view class="v-flex1">
+        <view class="v-block">
+            <view class="v-class">成交销售额(GMV）</view>
+            <view class="v-time">{{CouponCount.timeText}}</view>
+            <view class="v-bot">
+                <view class="v-num">
+                    {{CouponCount.GMVMonery}}
+                    <!-- <text style="font-size:40rpx">w</text> -->
+                </view>
+                <view class="v-box">
+                    <view class="v-ri">
+                        <block wx:if="{{CouponCount.GMVCompared > 0}}">
+                            <image src="/static/images/san.png" class="v-san" />
+                            <view>{{CouponCount.GMVCompared}}</view>
+                        </block>
+                        <block wx:elif="{{CouponCount.GMVCompared == 0}}">
+                            <image src="/static/images/san1.png" class="v-san" />
+                            <view class="grg">{{CouponCount.GMVCompared}}%</view>
+                        </block>
+                        <block wx:else>
+                            <image src="/static/images/san2.png" class="v-san" />
+                            <view class="gr">{{CouponCount.GMVCompared}}%</view>
+                        </block>
+                    </view>
+                    <view class="v-grey">相比上周期</view>
+                </view>
+            </view>
+        </view>
+        <view class="v-block">
+            <view class="v-class">订单量</view>
+            <view class="v-time">{{CouponCount.timeText}}</view>
+            <view class="v-bot">
+                <view class="v-num">
+                    {{CouponCount.orderCount}}
+                    <!-- <text style="font-size:40rpx">w</text> -->
+                </view>
+                <view class="v-box">
+                    <view class="v-ri">
+                        <block wx:if="{{CouponCount.ActiveusersCompared > 0}}">
+                            <image src="/static/images/san.png" class="v-san" />
+                            <view>{{CouponCount.ActiveusersCompared}}</view>
+                        </block>
+                        <block wx:elif="{{CouponCount.ActiveusersCompared == 0}}">
+                            <image src="/static/images/san1.png" class="v-san" />
+                            <view class="grg">{{CouponCount.ActiveusersCompared}}%</view>
+                        </block>
+                        <block wx:else>
+                            <image src="/static/images/san2.png" class="v-san" />
+                            <view class="gr">{{CouponCount.ActiveusersCompared}}%</view>
+                        </block>
+                    </view>
+                    <view class="v-grey">相比上周期</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="mid-box">
+    <view class="mid-mid">
+        <view class="mid-top">
+            <view class="mid-span">
+                <view class="mid-title">
+                    <view>昨日活跃用户</view>
+                    <image src="/static/images/wh.png" class="wh" />
+                </view>
+                <view class="mid-num">{{CouponCount.Browseyesterday}}</view>
+                <view class="mid-mes">
+                    <block wx:if="{{CouponCount.BrowseyesterdayCompared > 0}}">
+                        <image src="/static/images/san.png" class="v-san" />
+                        <view>{{CouponCount.BrowseyesterdayCompared}}%  相比上周期</view>
+                    </block>
+                    <block wx:elif="{{CouponCount.BrowseyesterdayCompared == 0}}">
+                        <image src="/static/images/san1.png" class="v-san" style="top:0px" />
+                        <view>
+                            <text class="grg">{{CouponCount.BrowseyesterdayCompared}}%</text>
+                            相比上周期
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <image src="/static/images/san2.png" class="v-san" />
+                        <view>
+                            <text class="gr"></text>
+                            {{CouponCount.BrowseyesterdayCompared}}%  相比上周期
+                        </view>
+                    </block>
+                </view>
+            </view>
+            <view class="mid-line"></view>
+            <view class="mid-span">
+                <view class="mid-title">
+                    <view>过去7天活跃用户</view>
+                    <image src="/static/images/wh.png" class="wh" />
+                </view>
+                <view class="mid-num">{{CouponCount.Activeusers}}</view>
+                <view class="mid-mes">
+                     <block wx:if="{{CouponCount.ActiveusersCompared > 0}}">
+                        <image src="/static/images/san.png" class="v-san" />
+                        <view>{{CouponCount.BrowseyesterdayCompared}}%  相比上周期</view>
+                    </block>
+                    <block wx:elif="{{CouponCount.ActiveusersCompared == 0}}">
+                        <image src="/static/images/san1.png" class="v-san" style="top:0px" />
+                        <view>
+                            <text class="grg">{{CouponCount.ActiveusersCompared}}%</text>
+                            相比上周期
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <image src="/static/images/san2.png" class="v-san" />
+                        <view>
+                            <text class="gr"></text>
+                            {{CouponCount.ActiveusersCompared}}%  相比上周期
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <navigator class="b-block1" url="/dataC/detail/detail" hover-class="none">
+            <view class="b-left">
+               <image src="/static/images/lnl.png" class="b-img" />
+                <view>
+                    今日浏览量:
+                    <text>{{CouponCount.browse}}</text>
+                </view>
+            </view>
+            <image src="/static/images/right-arr1.png" class="b-arr" />
+        </navigator>
+    </view>
+    <navigator class="b-block" hover-class="none" url="../newEchart/newEchart">
+        <view class="b-left">
+            <image src="/static/images/hyy.png" class="b-img" />
+            <view>
+                今日新会员:
+                <text>{{CouponCount.UserNum}}</text>
+            </view>
+        </view>
+        <image src="/static/images/right-arr1.png" class="b-arr" />
+    </navigator>
+    <navigator class="b-block" hover-class="none" url="../newEchartOd/newEchartOd">
+        <view class="b-left">
+            <image src="/static/images/ddd.png" class="b-img" />
+            <view>
+                今日售券:
+                <text>{{CouponCount.Ordertoday}}笔</text>
+                <text>金额￥{{CouponCount.orderMonery}}</text>
+            </view>
+        </view>
+        <image src="/static/images/right-arr1.png" class="b-arr" />
+    </navigator>
+    <navigator class="b-block" hover-class="none" url="/Buyacard/Cardlist/Cardlist">
+        <view class="b-left">
+            <image src="/static/images/ddd.png" class="b-img" />
+            <view>
+                今日售卡:
+                <text>{{CouponCount.Buyacartoday}}笔</text>
+                <text>金额￥{{CouponCount.BuyacardMonery}}</text>
+            </view>
+        </view>
+        <image src="/static/images/right-arr1.png" class="b-arr" />
+    </navigator>
+    <navigator class="b-block" url="../GroupList/GroupList?type=false" hover-class="none">
+        <view class="b-left">
+            <image src="/static/images/shop11.png" class="b-img" />
+            <view>
+                我的商户:
+                <text>{{CouponCount.countGroup}}</text>
+            </view>
+        </view>
+        <image src="/static/images/right-arr1.png" class="b-arr" />
+    </navigator>
+</view>

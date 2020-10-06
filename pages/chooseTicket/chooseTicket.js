@@ -20,6 +20,9 @@ Page({
     color: "#FFF0DE",
     activeColor: "#E85819",
     imgUrls: [],
+    section: [],
+    IndustryCode:"C1",
+    currentIds: 'C1', 
     hotTicketBox: [],
     currentID: "1",
     BotOne: [{
@@ -86,6 +89,7 @@ Page({
     data.pPageSize = 20;
     data.pLatitudeX = app.globalData.latitudeX;
     data.pLongitudeY = app.globalData.longitudeY;
+    data.pIndustryCodeSingle= that.data.IndustryCode == "C1" ?"": that.data.IndustryCode,
     data.pRegionID = that.data.RegionName != '' ? that.data.RegionName : app.globalData.regionName;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/QueryCouponInfo", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
@@ -175,7 +179,58 @@ Page({
     page = 1;
     that.GetData(page);
     that.GetRegionIndustry();
+    that.GetCouponIndustry();
   },
+
+
+  handleTap: function (e) {
+    let that = this
+    let id = e.currentTarget.dataset.id;
+    var industryCode=id;
+    if (id == 1) {
+      industryCode = "C1";
+    }
+      that.setData({
+        isshow:false,
+        currentIds: id,
+        IndustryCode: industryCode,
+      })      
+      page=1,
+      that.GetData(page);
+  },
+
+  GetCouponIndustry: function () { //获取行业数据
+    var datas = {
+      pGID: app.globalData.AppGroupInfo.GroupID,
+      pGradeID: app.globalData.AppWxUserInfo.GradeID,
+      State: 0
+    }
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", datas, app.globalData.appkeyid, this.GetCouponIndustryList);
+  },
+  GetCouponIndustryList: function (res) {
+    var json = res.data.Data;
+    var chat = this;
+    var section = [{
+      IndustryName: "全部",
+      IndustryCode: "C1",      
+    }];
+    if (json.flag) {
+
+      var newlists = section.concat(json.data) //合并数据 res.data 你的数组数据
+      chat.setData({
+        section: newlists,
+        currentIds: chat.data.IndustryCode        
+      });
+      chat.setData({        
+        itemindex:chat.data.IndustryCode
+      });
+    }   
+  },
+
+
+
+
+
   GetRegionIndustry: function() {
     let that = this;
 
