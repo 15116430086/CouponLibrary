@@ -190,7 +190,7 @@
         <view class="b-left">
             <image src="/static/images/home/12.png" class="b-img" />
             <view>
-                赠券配置
+                售券配置
             </view>     
         </view>
         <image src="/static/images/right-arr1.png" class="b-arr" />
