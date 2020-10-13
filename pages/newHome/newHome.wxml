@@ -177,4 +177,22 @@
         </view>
         <image src="/static/images/right-arr1.png" class="b-arr" />
     </navigator>
+    <navigator class="b-block" url="../shopCli/shopCli" hover-class="none">
+        <view class="b-left">
+            <image src="/static/images/home/10.png" class="b-img" />
+            <view>
+                商品货架
+            </view>     
+        </view>
+        <image src="/static/images/right-arr1.png" class="b-arr" />
+    </navigator>      
+    <navigator class="b-block" url="../sendTicketConfig/sendTicketConfig" hover-class="none">
+        <view class="b-left">
+            <image src="/static/images/home/12.png" class="b-img" />
+            <view>
+                赠券配置
+            </view>     
+        </view>
+        <image src="/static/images/right-arr1.png" class="b-arr" />
+    </navigator>      
 </view>
