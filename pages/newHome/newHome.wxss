@@ -253,7 +253,7 @@
 
 .mid-num {
     color: #FF7031;
-    font-size: 50rpx;
+    font-size: 44rpx;
     font-weight: bold;
 }
 
