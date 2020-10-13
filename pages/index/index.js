@@ -83,6 +83,7 @@ Page({
     data.AesIV = res.iv;
     data.code = app.globalData.logincode
     data.appkeyid = wx.getStorageSync('appkeyid');
+    
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetWxLoginAuth", "POST", data, app.globalData.appkeyid, this.getUserInfoBack)
   },
   getUserInfoBack: function(json) {

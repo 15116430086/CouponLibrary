@@ -146,6 +146,7 @@ Page({
               data.code = app.globalData.logincode;
               data.pHoneNumber = that.data.phone;
               data.pCheckCode = that.data.code;
+              data.AppId = app.globalData.sysaAppid;
               utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetWxPhoneNumbeLogin", "POST", data, app.globalData.appkeyid, that.GetPhoneNumbeLoginBack)
             }
           }
@@ -168,6 +169,7 @@ Page({
           data.Text = detail.encryptedData;
           data.AesIV = detail.iv;
           data.code = res.code
+          data.AppId = app.globalData.sysaAppid;
           utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/GetWxLoginAuth", "POST", data, app.globalData.appkeyid, that.GetPhoneNumbeLoginBack)
         }
       })

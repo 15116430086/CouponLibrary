@@ -55,6 +55,7 @@ Page({
     data.AesIV = res.iv;
     data.code = app.globalData.logincode;   
     data.ShopID = this.data.ShopID;
+    data.AppId=app.globalData.sysaAppid;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/AddStaff", "POST", data, app.globalData.appkeyid, this.getUserInfoBack)
   },
 
