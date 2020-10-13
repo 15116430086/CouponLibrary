@@ -179,7 +179,7 @@
     </navigator>
     <navigator class="b-block" url="../shopCli/shopCli" hover-class="none">
         <view class="b-left">
-            <image src="/static/images/home/10.png" class="b-img" />
+            <image src="/static/images/shop13.png" class="b-img" />
             <view>
                 商品货架
             </view>     
@@ -188,7 +188,7 @@
     </navigator>      
     <navigator class="b-block" url="../sendTicketConfig/sendTicketConfig" hover-class="none">
         <view class="b-left">
-            <image src="/static/images/home/12.png" class="b-img" />
+            <image src="/static/images/shop12.png" class="b-img" />
             <view>
                 售券配置
             </view>     
