@@ -16,5 +16,9 @@
             </van-checkbox-group>
             </block>
         </view>
-        <view class="v-btn" bindtap="seve">确定</view>
+
+        <view class="bt-box">
+           <view class="playBtn"  bindtap="seve">确定</view>
+       </view>
+        <!-- <view class="nv-bt" bindtap="seve">确定</view> -->
     </block>
