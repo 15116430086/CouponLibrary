@@ -191,7 +191,7 @@ page {
     transition: all 0.4s;
     -webkit-transform: translateX(90px);
     transform: translateX(90px);
-    margin-left: -90px;
+    margin-left: -120px;
 }
 
 .del {
