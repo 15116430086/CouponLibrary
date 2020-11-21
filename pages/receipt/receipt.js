@@ -21,7 +21,7 @@ Page({
     }],
     currentId:0,
     Month:'',
-
+    ShopID:0,
   },
 
 
@@ -36,7 +36,7 @@ Page({
     var data = {};
     data.pageIndex=pageindex,
     data.pageSize=10,
-    data.pShopID = app.globalData.AppStaffInfo.ShopID,
+    data.pShopID = that.data.ShopID,
     data.pGroupBy = that.data.section[quantity].GroupBy,
     data.pMonth = that.data.Month,
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/GetMonthWriteOffOrder", "POST", data, app.globalData.appkeyid, this.GetDataBack)
@@ -103,7 +103,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let shopid = options.ShopID || '';
+    let shopname = options.shopname||app.globalData.AppShopInfo.ShopName;
+    wx.setNavigationBarTitle({
+      title:shopname
+    });
+    if(shopid==""){
+      shopid=app.globalData.AppStaffInfo.ShopID;
 
+    }
+    this.setData({
+      ShopID: shopid,
+    });
   },
   //点击每个导航的点击事件
   handleTap: function (e) {

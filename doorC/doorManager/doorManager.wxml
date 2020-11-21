@@ -52,6 +52,14 @@
 		<image src="/static/images/right-arr1.png" class="ticket-flex-image " />
 	</view>
 
+	<view class="ticket-flex" bindtap="Jumpreceipt">
+		<view class="tf-left">
+			<image src="/static/images/shop.png" class="tf-left-image" />
+			<view class="tf-name">收单记录</view>
+		</view>
+		<image src="/static/images/right-arr1.png" class="ticket-flex-image " />
+	</view>
+
 </view>
 
 
