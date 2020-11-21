@@ -54,6 +54,13 @@ Page({
       url: '/doorC/staffManagements/staffManagements?ShopID=' + this.data.shopid,
     })
   },
+
+  Jumpreceipt:function(){
+    wx.navigateTo({
+      url: '/pages/receipt/receipt?ShopID=' + this.data.shopid+'&shopname='+this.data.shopname,
+    })
+  },
+
   onUpFileImg: function (e) {
 
     let that = this;
