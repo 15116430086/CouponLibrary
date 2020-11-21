@@ -177,7 +177,7 @@ page {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     margin-bottom: 10rpx;
     background: #ffffff;
     height: 105rpx;
