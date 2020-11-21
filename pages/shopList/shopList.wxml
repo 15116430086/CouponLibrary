@@ -1,13 +1,12 @@
 
-<view class="v-box">
-  <!-- <view class="v-mes"><text>*</text>门店可区分收款流水，各门店收款将汇总到你的结算账户，进入门店详情后可下载获取收款码图片</view> -->
-  <view class="v-block"  bindtap="add">
+<view class="v-box"> 
+  <!-- <view class="v-block"  bindtap="add">
     <image src="/static/images/jia.png" /> 添加新的门店
-  </view>
+  </view> -->
   <block wx:for="{{shoplist}}">
-    <view class="m-block" data-id="{{item.ShopID}}" bindtap="Jump">
+    <view class="m-block" data-id="{{item.ShopID}}" >
       <view class="v-title">{{item.ShopName}}</view>
-      <view class="v-num">当前{{item.Staffcount}}人加入</view>
+      <view class="v-num">地址：{{item.ShopAddress}}</view>
     </view>
   </block>
 </view>
