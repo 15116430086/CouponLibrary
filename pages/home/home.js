@@ -39,6 +39,7 @@ Page({
     let that = this;
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
+    data.ShopID=app.globalData.AppStaffInfo.ShopID;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponHomeView/GetHomeCouponCount", "POST", data, app.globalData.appkeyid, that.GetDataBack)
   },
   GetDataBack: function (json) {

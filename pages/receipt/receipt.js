@@ -22,6 +22,7 @@ Page({
     currentId:0,
     Month:'',
     ShopID:0,
+    ShopName:""
   },
 
 
@@ -114,6 +115,7 @@ Page({
     }
     this.setData({
       ShopID: shopid,
+      ShopName:shopname
     });
   },
   //点击每个导航的点击事件

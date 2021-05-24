@@ -34,7 +34,7 @@
     <view class="m-class">
       <view class="m-time">
         <view class="mt-left">{{item.PayDate}}</view>
-          <navigator url="../orderDetails/orderDetails?time={{item.PayDate}}" hover-class="none" class="mt-right">明细 > </navigator>
+          <navigator url="../orderDetails/orderDetails?time={{item.PayDate}}&shopid={{ShopID}}&shopname={{ShopName}}" hover-class="none" class="mt-right">明细 > </navigator>
       </view>
       <block>
         <block wx:for="{{item.CouponItem}}" wx:for-item="coupon">

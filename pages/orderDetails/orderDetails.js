@@ -12,6 +12,7 @@ Page({
     orderDetailslist: [],
     currentId: 0,
     time:'',
+    shopid:0
   },
 
   GetData: function() {
@@ -26,7 +27,7 @@ Page({
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
     data.pPageIndex = pageindex;
     data.pPageSize = 10;
-    data.pShopID = app.globalData.AppStaffInfo.ShopID,
+    data.pShopID = this.data.shopid,
     data.pDateTime=that.data.time,
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponProductView/GetOrderDetails", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
@@ -80,6 +81,15 @@ Page({
       that.setData({
         time: options.time
       })
+      let shopid = options.shopid || app.globalData.AppStaffInfo.ShopID;
+      let shopname = options.shopname||app.globalData.AppShopInfo.ShopName;
+      wx.setNavigationBarTitle({
+        title:shopname
+      });
+      this.setData({
+        shopid: shopid,
+        ShopName:shopname
+      });
   },
 
 
