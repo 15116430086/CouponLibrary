@@ -195,4 +195,13 @@
         </view>
         <image src="/static/images/right-arr1.png" class="b-arr" />
     </navigator>      
+    <navigator class="b-block" url="../home/home" hover-class="none">
+        <view class="b-left">
+            <image src="/static/images/home/6.png" class="b-img" />
+            <view>
+                系统管理
+            </view>     
+        </view>
+        <image src="/static/images/right-arr1.png" class="b-arr" />
+    </navigator>     
 </view>
