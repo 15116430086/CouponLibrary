@@ -8,7 +8,7 @@ Page({
    */
   data: {
     datalist: {},
-    AdministratorsList: {},
+    AdministratorsList: [],
     Paging: true,
     pageIndex: 1,
     shopID: "",
@@ -24,31 +24,38 @@ Page({
   onLoad: function (options) {
     this.setData({
       shopID: options.ShopID
-    });   
-    this.GetData(); 
+    });
+    this.GetData();
   },
 
   ShopStaff: function (res) {
     var chat = this;
     var json = res.data.Data;
+
     if (json.flag) {
+      let slist = this.data.AdministratorsList;
+      slist = slist.concat(json.data)
       chat.setData({
-        AdministratorsList: json.data
+        AdministratorsList: slist
       });
+    } else {
+      this.setData({
+        Paging: false
+      })
     }
   },
 
-GetData:function(){
-  var datas = {
-    pageIndex: 0,
-    pageSize: 100,
-    ShopID: this.data.shopID,
-    IsShopowner: 1,
-    StaffID: app.globalData.AppStaffInfo.StaffID
-  }
-  utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/ShopStaff", "POST", datas, app.globalData.appkeyid, this.ShopStaff);
+  GetData: function () {
+    var datas = {
+      pageIndex: 1,
+      pageSize: 20,
+      ShopID: this.data.shopID,
+      IsShopowner: 1,
+      StaffID: app.globalData.AppStaffInfo.StaffID
+    }
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/ShopStaff", "POST", datas, app.globalData.appkeyid, this.ShopStaff);
 
-},
+  },
 
 
   touchE: function (e) {
@@ -130,8 +137,8 @@ GetData:function(){
     return 360 * Math.atan(_Y / _X) / (2 * Math.PI);
   },
 
-// 删除按钮！
-  delBtn(e){
+  // 删除按钮！
+  delBtn(e) {
     let that = this;
     var StaffID = e.currentTarget.dataset.id;
     wx.showModal({
@@ -139,28 +146,28 @@ GetData:function(){
       content: '确定删除吗？',
       success(res) {
         if (res.confirm) {
-　　　　　 var datas={}
-              datas.StaffID = StaffID
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/deleteShopStaff", "POST", datas, app.globalData.appkeyid, that.deleteShopStaff);
+          var datas = {}
+          datas.StaffID = StaffID
+          utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/deleteShopStaff", "POST", datas, app.globalData.appkeyid, that.deleteShopStaff);
         } else if (res.cancel) {
           console.log('用户点击取消');
         }
-    }
-  })
-},
+      }
+    })
+  },
 
-deleteShopStaff:function(res){
-  let that = this;
-  var json = res.data.Data;
-  if (json.flag) {
-    that.GetData();
-  }
-  wx.showToast({
-    title: json.msg,
-    icon: 'none',
-    duration: 2000
-  })
-},
+  deleteShopStaff: function (res) {
+    let that = this;
+    var json = res.data.Data;
+    if (json.flag) {
+      that.GetData();
+    }
+    wx.showToast({
+      title: json.msg,
+      icon: 'none',
+      duration: 2000
+    })
+  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -175,12 +182,13 @@ deleteShopStaff:function(res){
   onReachBottom: function () {
     if (this.data.Paging) {
       var datas = {
-        pageIndex: this.data.pageIndex,
-        pageSize: 5,
+        pageIndex: ++this.data.pageIndex,
+        pageSize: 20,
         ShopID: this.data.shopID,
-        IsShopowner: 0
+        IsShopowner: 1,
+        StaffID: app.globalData.AppStaffInfo.StaffID
       }
-      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/ShopStaff", "POST", datas, app.globalData.appkeyid, this.ShopStaffList);
+      utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/ShopStaff", "POST", datas, app.globalData.appkeyid, this.ShopStaff);
     }
   },
   addStaff: function (event) {
