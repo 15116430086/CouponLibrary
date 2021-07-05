@@ -110,6 +110,16 @@ Page({
     }
 
   },
+  coles: function() {
+    app.globalData.AppGroupInfo=null;
+    app.globalData.AppStaffInfo=null;
+    app.globalData.AppWxUserInfo=null;
+    app.globalData.AppShopInfo=null;
+    wx.setStorageSync('miniappkeyid', "")
+    wx.reLaunch({
+      url: '../login/login',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

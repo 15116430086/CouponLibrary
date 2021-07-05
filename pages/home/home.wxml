@@ -64,6 +64,10 @@
         <view>{{item.Name}}</view>
       </navigator>
     </block>
+    <navigator url=""  bindtap="coles" hover-class="none">
+        <image src="../../static/images/home/coles.png"></image>
+        <view>退出登录</view>
+      </navigator>
   </view>
 
 
