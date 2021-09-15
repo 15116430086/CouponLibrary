@@ -26,6 +26,41 @@ Page({
       })
     }
   },
+
+  
+  getUserProfile: function (e) {
+    wx.showLoading({
+      title: "数据加载中...",
+      mask: true
+    });
+    let that = this;
+    wx.getUserProfile({
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: res => {
+        // 登录
+        var detail = res;
+        if (detail.errMsg == "getUserProfile:ok") {
+          wx.login({
+            success: lres => {
+              // 发送 res.code 到后台换取 openId, sessionKey, unionId      
+              app.globalData.logincode = lres.code;
+              that.AddShopStaff(res);
+            }
+          });
+        }
+      },
+      fail: res => {
+        wx.login({
+          success: res => {
+            // 发送 res.code 到后台换取 openId, sessionKey, unionId      
+            app.globalData.logincode = res.code;
+          }
+        });
+      }
+    })
+
+  },
+
   authorization: function(enent) {
     var chat = this;
     // 登录

@@ -1,0 +1,156 @@
+{
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": 0,
+          "name": "我要发券",
+          "pathName": "pages/sendTicketTwo/sendTicketTwo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "选择关联商品",
+          "pathName": "pages/chooseBuyGoods/chooseBuyGoods",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/home/home",
+          "pathName": "pages/shopChoose/shopChoose",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/staffLoginReg/staffLoginReg",
+          "pathName": "pages/staffLoginReg/staffLoginReg",
+          "query": "ShopID=100001",
+          "scene": 1047
+        },
+        {
+          "id": -1,
+          "name": "pages/sendTicketConfig/sendTicketConfig",
+          "pathName": "pages/sendTicketConfig/sendTicketConfig",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/merchantReg/merchantReg",
+          "pathName": "pages/merchantReg/merchantReg",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/regPlane/regPlane",
+          "pathName": "pages/regPlane/regPlane",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/secretBook/secretBook",
+          "pathName": "pages/secretBook/secretBook",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/phoneLogin/phoneLogin",
+          "pathName": "pages/phoneLogin/phoneLogin",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "改我的资金",
+          "pathName": "cashM/myMoney/myMoney",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "cashM/account/account",
+          "pathName": "cashM/account/account",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "账单明细",
+          "pathName": "cashM/detail/detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "结算成功",
+          "pathName": "cashM/success/success",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "数据分析详情",
+          "pathName": "data/detail/detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "运营数据详情页",
+          "pathName": "data/mes/mes",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "cashM/myMoney/myMoney",
+          "pathName": "cashM/myMoney/myMoney",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/echartTxT/echartTxT",
+          "pathName": "pages/echartTxT/echartTxT",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "data/mes/mes",
+          "pathName": "data/mes/mes",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "data/child/child",
+          "pathName": "data/child/child",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/receipt/receipt",
+          "pathName": "pages/receipt/receipt",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}
