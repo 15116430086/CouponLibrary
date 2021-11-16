@@ -118,9 +118,9 @@ Page({
       })
       return;
     }
-    if (that.data.codelength != 4) {
+    if (that.data.codelength < 6) {
       wx.showToast({
-        title: '请输入4位数的验证码!',
+        title: '请输入6位数的验证码!',
         icon: "none",
         duration: 2000
       })
