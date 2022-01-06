@@ -90,7 +90,7 @@ white-space:nowrap;
 
 .dynamic-box {
     width: calc(100% - 80rpx);
-    height: 448rpx;
+    height: 240rpx;
     background-color: #e85819;
     border-radius: 20rpx;
     margin: 10rpx auto;
@@ -203,3 +203,27 @@ white-space:nowrap;
     align-items: center;
     justify-content: space-between;
 }
+.mf-box {
+    width: calc(100% - 80rpx);
+    margin-top: 20rpx;
+    height: 80rpx;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .mid-flex {
+    flex: 1;
+    height: 80rpx;
+    background-color: #FFFFFF;
+    text-align: center;
+    line-height: 80rpx;
+    font-size: 28rpx;
+  }
+  .selected {
+    background-color: #ff8e4d;
+    color: #FFFFFF;
+    border-radius: 12rpx;
+  
+  }

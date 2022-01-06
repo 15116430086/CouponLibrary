@@ -7,7 +7,7 @@
     </view>
   </view>
   <!-- 代金券 -->
-  <view hidden='{{currentId!=0}}' class="mes-block">
+  <!-- <view hidden='{{currentId!=0}}' class="mes-block">
     <view class="mes-top">
       <view class="top-mes">
         由商家自主设定将券发布至自营/指定商户或{{proname}}平台，商家
@@ -19,7 +19,7 @@
     <view class="mes-top">
       <view class="top-mes">商家自主设定将券发布至{{proname}}平台，其他商家付费购买后用于赠送给会员，会员并可使用该券兑换商品或服务</view>
     </view>
-  </view>
+  </view> -->
 </view>
 <form class="ticket-box" bindsubmit="formSubmit">
   <view class="ticket-block">
@@ -39,7 +39,7 @@
     <input type="number" value="{{pCoupon_Info.ReceiveUpperLimit}}"  placeholder="设置领取上限" name="ReceiveUpperLimit" placeholder-class="pclass" />
   </view>
   <view class="ticket-block" >
-    <view class="ticket-name">渠道价</view>
+    <view class="ticket-name">采购价</view>
     <input type="number" value="{{pCoupon_Info.SalePrice}}"  placeholder="设置销售价" name="SalePrice" placeholder-class="pclass" />
   </view>
 
@@ -49,7 +49,7 @@
   </view>
 
   <!-- 领购规则 -->
-  <view class="ticket-block" bindtap="clickRule">
+  <!-- <view class="ticket-block" bindtap="clickRule">
     <view class="ticket-name">会员领取规则</view>
     <view class="bot-box">
       <view class="{{idx?'bot-left':'pclass'}}">{{getRule}}</view>
@@ -64,9 +64,9 @@
         <image src="{{idx==item.id?'/static/images/ok.png':'/static/images/okk.png'}}" class="bot-ok" />
       </view>
     </view>
-  </block>
+  </block> -->
   <!-- 核销方式 -->
-  <view class="ticket-block" bindtap="clickRule1">
+  <!-- <view class="ticket-block" bindtap="clickRule1">
     <view class="ticket-name">核销方式（注：发券后不可修改）</view>
     <view class="bot-box">
       <view class="bot-left">
@@ -87,7 +87,7 @@
         <image src="{{idb==item.id?'/static/images/ok.png':'/static/images/okk.png'}}" class="bot-ok" />
       </view>
     </view>
-  </block>
+  </block> -->
   <!-- 券有效期 -->
   <view class="ticket-block" bindtap="clickRule2">
     <view class="ticket-name">券有效期（注：发券后不可修改）</view>

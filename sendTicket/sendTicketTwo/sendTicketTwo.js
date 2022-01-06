@@ -12,9 +12,6 @@ Page({
     section: [{
       name: '代金券',
       typeId: 0
-    }, {
-      name: '礼物券',
-      typeId: 1
     }],
     value: 3,
     "placeholder": "请输入文本",
@@ -129,8 +126,8 @@ Page({
       ReceiveUpperLimit: 1,
       UsageRule: "",
       ImageOne: "",
-      ReceiveRule: 0, //领取规则
-      WriteOffType: 0, //核销方式
+      ReceiveRule: 1, //领取规则
+      WriteOffType: 1, //核销方式
       SalePrice: 0, //领购售价
       CouponID: "",
       IsAppointProduct: 0,
@@ -321,7 +318,6 @@ Page({
     pCoupon_Info.SalePrice = val.SalePrice;
     pCoupon_Info.PrepaymentRatio=val.PrepaymentRatio/100;
     pCoupon_Info.AffiliatedGroupID=app.globalData.AppGroupInfo.AffiliatedGroupID;//运营商编号
-
     if (that.data.currentId == 1)
       pCoupon_Info.SalePrice = val.SalePrice;
 
