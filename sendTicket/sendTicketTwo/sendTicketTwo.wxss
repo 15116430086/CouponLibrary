@@ -69,7 +69,7 @@ page {
 }
 
 .ticket-box, form {
-  margin-top: 246rpx;
+  margin-top: 110rpx;
   display: block;
   width: 100%;
   height: auto;

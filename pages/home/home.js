@@ -8,7 +8,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    CouponCount: null,
+    Jurisdiction: [],
+    OrderNUM:0,
+    WriteOffNUM:0,
     lastpage: 0,
     GroupName: "",
     noticeList: [{
@@ -20,7 +22,26 @@ Page({
       {
         title: "C商家领用了100张【10元代金券】"
       },
-    ]
+    ],
+    dayNum:0,
+    timeBox: [{
+      id: 0,
+      txt: '今天'
+  },
+  {
+      id: 3,
+      txt: '三天内'
+  },
+  {
+      id: 7,
+      txt: '一周内'
+  },
+  {
+      id: 30,
+      txt: '一个月内'
+  }
+],
+
   },
   onWxScanCode: function () {
     // wx.navigateTo({
@@ -39,8 +60,9 @@ Page({
     let that = this;
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
-    data.ShopID=app.globalData.AppStaffInfo.ShopID;
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponHomeView/GetHomeCouponCount", "POST", data, app.globalData.appkeyid, that.GetDataBack)
+    data.dayNum=that.data.dayNum;
+    data.Telephone=app.globalData.AppStaffInfo.Telephone;
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponHomeView/NewGetHome", "POST", data, app.globalData.appkeyid, that.GetDataBack)
   },
   GetDataBack: function (json) {
     let that = this;
@@ -49,7 +71,10 @@ Page({
     if (data) {
       console.log(data.msg);
       that.setData({
-        CouponCount: data
+        WriteOffNUM: data.WriteOffNUM,
+        OrderNUM:data.OrderNUM,
+        GroupName:data.shopInfo.ShopName,
+        Jurisdiction:data.Jurisdiction
       })
     }
   },
@@ -139,7 +164,15 @@ Page({
   onReady: function () {
 
   },
-
+  clkBtn(e) {
+    let id = e.currentTarget.dataset.id;
+    let that = this;
+  
+    that.setData({
+      dayNum: id
+    })
+    that.GetData();
+  },
   /**
    * 生命周期函数--监听页面显示
    */
