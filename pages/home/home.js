@@ -9,8 +9,8 @@ Page({
    */
   data: {
     Jurisdiction: [],
-    OrderNUM:0,
-    WriteOffNUM:0,
+    OrderNUM: 0,
+    WriteOffNUM: 0,
     lastpage: 0,
     GroupName: "",
     noticeList: [{
@@ -23,24 +23,24 @@ Page({
         title: "C商家领用了100张【10元代金券】"
       },
     ],
-    dayNum:0,
+    dayNum: 0,
     timeBox: [{
-      id: 0,
-      txt: '今天'
-  },
-  {
-      id: 3,
-      txt: '三天内'
-  },
-  {
-      id: 7,
-      txt: '一周内'
-  },
-  {
-      id: 30,
-      txt: '一个月内'
-  }
-],
+        id: 0,
+        txt: '今天'
+      },
+      {
+        id: 3,
+        txt: '三天内'
+      },
+      {
+        id: 7,
+        txt: '一周内'
+      },
+      {
+        id: 30,
+        txt: '一个月内'
+      }
+    ],
 
   },
   onWxScanCode: function () {
@@ -60,8 +60,8 @@ Page({
     let that = this;
     var data = {};
     data.pGroupID = app.globalData.AppGroupInfo.GroupID;
-    data.dayNum=that.data.dayNum;
-    data.Telephone=app.globalData.AppStaffInfo.Telephone;
+    data.dayNum = that.data.dayNum;
+    data.Telephone = app.globalData.AppStaffInfo.Telephone;
     utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponHomeView/NewGetHome", "POST", data, app.globalData.appkeyid, that.GetDataBack)
   },
   GetDataBack: function (json) {
@@ -72,9 +72,9 @@ Page({
       console.log(data.msg);
       that.setData({
         WriteOffNUM: data.WriteOffNUM,
-        OrderNUM:data.OrderNUM,
-        GroupName:data.shopInfo.ShopName,
-        Jurisdiction:data.Jurisdiction
+        OrderNUM: data.OrderNUM,
+        GroupName: data.shopInfo.ShopName,
+        Jurisdiction: data.Jurisdiction
       })
     }
   },
@@ -135,11 +135,11 @@ Page({
     }
 
   },
-  coles: function() {
-    app.globalData.AppGroupInfo=null;
-    app.globalData.AppStaffInfo=null;
-    app.globalData.AppWxUserInfo=null;
-    app.globalData.AppShopInfo=null;
+  coles: function () {
+    app.globalData.AppGroupInfo = null;
+    app.globalData.AppStaffInfo = null;
+    app.globalData.AppWxUserInfo = null;
+    app.globalData.AppShopInfo = null;
     wx.setStorageSync('miniappkeyid', "")
     wx.reLaunch({
       url: '../login/login',
@@ -167,7 +167,7 @@ Page({
   clkBtn(e) {
     let id = e.currentTarget.dataset.id;
     let that = this;
-  
+
     that.setData({
       dayNum: id
     })

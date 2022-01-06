@@ -1,5 +1,21 @@
 <!--pages/receipt/receipt.wxml-->
+
+
+
 <view class='top_nav'>
+
+    <view class="mid-box">
+    <view class="mid-block  {{idx==0?'tselected':''}}" bindtap="showTime" data-datetype="0" >
+      <view>{{sdate}}</view>
+      <image src="/static/images/hei-arr.png"></image>
+    </view>
+    <view>~</view>
+    <view class="mid-block  {{idx==0?'tselected':''}}" bindtap="showTime" data-datetype="1">
+      <view>{{edate}}</view>
+      <image src="/static/images/hei-arr.png"></image>
+    </view>
+  </view>
+
     <view class="nav-name {{item.typeId == currentId ? 'nav-hover':''}}" wx:for="{{section}}" wx:key="id"  data-tagid='{{item.atg}}'     id='{{item.typeId}}' catchtap='handleTap'>
         {{item.name}}
     </view>
@@ -51,3 +67,7 @@
     </view>
 </block>
 </view>
+
+<van-popup show="{{ show }}" position="bottom" z-index="999" bind:close="onClose" safe-area-inset-bottom>
+	<van-datetime-picker type="date" bind:cancel="onClose" value="{{ currentDate }}" max-date="{{currentDate}}" bind:input="onInput" bind:confirm="confirmDate" min-date="{{ minDate }}" formatter="{{ formatter }}" />
+</van-popup>

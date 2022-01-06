@@ -90,7 +90,7 @@ white-space:nowrap;
 
 .dynamic-box {
     width: calc(100% - 80rpx);
-    height: 240rpx;
+    /* height: 240rpx; */
     background-color: #e85819;
     border-radius: 20rpx;
     margin: 10rpx auto;
@@ -135,7 +135,7 @@ white-space:nowrap;
     margin-right: 10rpx;
 }
 .dynblock-mes{
-  margin-top: 10rpx;
+  margin-top: 26rpx;
 }
 .dynblock-mes view {
     margin-bottom: 14rpx;
@@ -224,6 +224,6 @@ white-space:nowrap;
   .selected {
     background-color: #ff8e4d;
     color: #FFFFFF;
-    border-radius: 12rpx;
+    /* border-radius: 12rpx; */
   
   }
