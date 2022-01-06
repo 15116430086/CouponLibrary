@@ -6,19 +6,15 @@
     <view class="v-go" data-CouponID="{{CouponInfo.CouponID}}" data-Couponstatus="{{datalist[0].State}}" data-ReleaseIDs="{{datalist[0].ReleaseID}}" bindtap="jumpOk">继续发券</view>
 
   </view>
-  <view class="v-mid">已发券:{{CouponInfo.ReleaseNUM}}{{datalist.State}}</view>
+  <view class="v-mid">发布总数:{{CouponInfo.ReleaseNUM}}{{datalist.State}}</view>
   <view class="v-block">
     <view class="v-c">
-      <view>领用商家：{{CouponInfo.ReceiveShopNUM}}</view>
-      <view>领取数量：{{CouponInfo.ReceiveNUM}}</view>
+      <view>已售数量：{{CouponInfo.ReceiveShopNUM}}</view>
+      <view>库存余量：{{CouponInfo.ReceiveNUM}}</view>
     </view>
     <view class="v-c">
-      <view>会员领用：{{CouponInfo.GiveNUM}}</view>
-      <view>使用数量：{{CouponInfo.ConsumeNUM}}</view>
-    </view>
-    <view class="v-c">
-      <view>待用数量：{{(CouponInfo.ReleaseNUM-CouponInfo.ReceiveNUM) + (CouponInfo.GiveNUM-CouponInfo.ConsumeNUM-CouponInfo.ExpireNUM)}}</view>
-      <view>过期数量：{{CouponInfo.ExpireNUM}}</view>
+      <view>会员领取：{{CouponInfo.GiveNUM}}</view>
+      <view>已核数量：{{CouponInfo.ConsumeNUM}}</view>
     </view>
   </view>
 </view>
@@ -37,7 +33,7 @@
       <view class="v-right">
         <view wx:if="{{item.State==2}}" class="v-span" style="color:#429859;border:1px solid #429859">已通过</view>
         <view wx:elif="{{item.State==1}}" class="v-span" style="color:#F08002;border:1px solid #F08002">待审核</view>
-        <image bindtap="See" wx:if="{{item.State==2}}" data-releaseid="{{item.ReleaseID}}" src="/static/images/right-arr1.png"></image>
+        <!-- <image bindtap="See" wx:if="{{item.State==2}}" data-releaseid="{{item.ReleaseID}}" src="/static/images/right-arr1.png"></image> -->
       </view>
     </view>
 
@@ -57,7 +53,7 @@
     </view>
 
 
-    <view class="home-sel">
+    <!-- <view class="home-sel">
       <view class="home-span" data-releaseid="{{item.ReleaseID}}" bindtap="showPopup1">
         <view>{{shopName}}</view>
         <image src="/static/images/sel.png" />
@@ -70,7 +66,7 @@
         <view>{{selectDate}}</view>
         <image src="/static/images/sel.png" />
       </view>
-    </view>
+    </view> -->
 
   </view>
 </block>

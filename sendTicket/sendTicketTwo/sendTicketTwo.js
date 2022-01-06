@@ -177,6 +177,7 @@ Page({
       Coupon_Info.CouponID = Info.CouponID;
       Coupon_Info.IsAppointProduct = Info.IsAppointProduct;
       Coupon_Info.PrepaymentRatio=Info.PrepaymentRatio*100;
+      Coupon_Info.PurchasePrice=Coupon_Info.SalePrice;
       var data = {
         pCouponID: Info.CouponID
       }

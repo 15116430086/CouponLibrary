@@ -52,7 +52,8 @@ Page({
     },
     show: false,
     ReleaseID: "",
-    ExtensionRate:0
+    ExtensionRate:0,
+    PurchasePrice:0
   },
 
   /**
@@ -68,7 +69,8 @@ Page({
     var oCoupon_Info = JSON.parse(options.pCoupon_Info);
     oCoupon_Info.CouponID = options.CouponID
     this.setData({
-      pCoupon_Info: oCoupon_Info
+      pCoupon_Info: oCoupon_Info,
+      PurchasePrice:oCoupon_Info.PurchasePrice
     });
     // utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", {}, app.globalData.appkeyid, this.GetCouponIndustry);
 
@@ -133,17 +135,27 @@ Page({
     })
 
   },
-  Commissionratio: function(event) { //数量失去焦点计算托管佣金
-    var number = event.detail.value
+  moery:function(event){
+    var PurchasePrice = event.detail.value;
     this.setData({
-      Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * this.data.ExtensionRate * number)).toFixed(2),
-      Number: number,
-      Limited:number
+      PurchasePrice:PurchasePrice
     });
   },
-  Limit: function(event) { //单商户限制
+  Commissionratio: function(event) { //数量
+    var number = event.detail.value
+    // this.setData({
+    //   Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * this.data.ExtensionRate * number)).toFixed(2),
+    //   Number: number,
+    //   Limited:number
+    // });
     this.setData({
-      Limited:this.data.Number
+        Number: number,
+       });
+  },
+  Limit: function(event) { //商户最低采购份数
+    var number = event.detail.value
+    this.setData({
+      Limited:number
     });
   },
 
@@ -265,7 +277,8 @@ Page({
       ReceiveUpperLimit: this.data.Limited,
       //ReleaseCommission: this.data.Commission,
       GroupID: app.globalData.AppGroupInfo.GroupID,
-      ReceiveTerm: this.data.date
+      ReceiveTerm: this.data.date,
+      PurchasePrice:this.data.PurchasePrice
     }
 
     var datas = {

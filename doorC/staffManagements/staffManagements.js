@@ -23,7 +23,7 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      shopID: options.ShopID
+      shopID: options.ShopID || app.globalData.AppStaffInfo.ShopID
     });
     this.GetData();
   },

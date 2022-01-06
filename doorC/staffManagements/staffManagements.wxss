@@ -70,7 +70,7 @@ page {
     text-overflow: ellipsis;
     white-space: nowrap;
     color: #000;
-    font-size: 32rpx;
+    font-size: 24rpx;
     margin-left: 40rpx;
     /* font-weight: 600; */
 }

@@ -1,19 +1,23 @@
 <!-- pages/startTicket/startTicket.wxml -->
 <view class="v-box">
     <view class="v-top">
-        <view class="v-title">{{pCoupon_Info.CouponType==1?"礼物":"代金"}}券发布</view>
-        <view class="v-rule">
+        <view class="v-title">{{pCoupon_Info.CouponName}} 发布</view>
+        <!-- <view class="v-rule">
             <text>注*</text>
             配置联盟商{{pCoupon_Info.CouponType==1?"礼物":"代金"}}券领取权限，并支付联盟商推广托管佣金，仅会员成功核销后，才结算佣金。{{pCoupon_Info.CouponType==1?"礼物":"代金"}}券过期，佣金将自动退还。
-        </view>
+        </view> -->
     </view>
     <view class="mes-block">
         <view class="ticket-box">
+            <view class="ticket-block">
+                <view class="ticket-name">金额</view>
+                <input type="number" bindblur="moery" value="{{PurchasePrice}}" placeholder="设置数量" placeholder-class="pclass"/>
+            </view>
              <view class="ticket-block">
                 <view class="ticket-name">发布数量</view>
                 <input type="number" bindblur="Commissionratio" value="" placeholder="设置数量" placeholder-class="pclass"/>
             </view>
-            <view class="ticket-block">
+            <!-- <view class="ticket-block">
                 <view class="ticket-name">指定商户</view>
                 <view class="ticket-flex" bindtap="showHide">
                     <view class="tf-name" wx:if="{{sign==1}}">全部商户(不含自营店铺)</view>
@@ -27,36 +31,36 @@
                         <image src="{{idx==item.id?'/static/images/ok.png':'/static/images/okk.png'}}" />
                     </view>
                 </view>
-                <!-- <input type="text" value="20元代金抵用券" /> -->
-            </view>
 
-           <view class="ticket-block" wx:if="{{shareshow2}}">
+            </view> -->
+
+           <!-- <view class="ticket-block" wx:if="{{shareshow2}}">
                 <view class="ticket-name">指定地区</view>
                 <view class="ticket-flex" bindtap="Regionselection">
                     <view class="tf-name">{{regionvalue}}</view>
                     <image src="/static/images/right-arr1.png" />
                 </view>
-                <!-- <input type="text" value="20元代金抵用券" /> -->
-            </view>
+               
+            </view> -->
 
         
-            <view class="ticket-block" bindtap="Selectindustry"  wx:if="{{shareshow2}}">
+            <!-- <view class="ticket-block" bindtap="Selectindustry"  wx:if="{{shareshow2}}">
                 <view class="ticket-name">指定行业</view>
                 <view class="ticket-flex">
                     <view class="tf-name" wx:if="{{IndustryCodes.length>0}}">已选{{Industryvalue}}个行业</view>
                     <view class="tf-name" wx:else>{{Industryvalue}}</view>
                     <image src="/static/images/right-arr1.png" />
                 </view>
-                <!-- <input type="text" value="20元代金抵用券" /> -->
-            </view>
+               
+            </view> -->
 
 
-            <view class="ticket-block" hidden="true" wx:if="{{sign!=2}}">
-                <view class="ticket-name">单商户领取限制</view>
+            <view class="ticket-block">
+                <view class="ticket-name">商户最低采购份数</view>
                 <input type="number" bindblur="Limit" value="{{Number}}" placeholder="设置数量" placeholder-class="pclass"/>
             </view>
             
-             <view class="ticket-block">
+             <!-- <view class="ticket-block">
               <view class="ticket-name">领取期限</view>
                <view class="ticket-flex" bindtap="showDate">
                     <view class="tf-name">{{date}}</view>
@@ -74,12 +78,11 @@
                         {{Commission}}
                     </view>
                 </view>
-                <!-- <input type="text" value="20元代金抵用券" /> -->
-            </view>
+              
+            </view> -->
         </view>
     </view>
 </view>
- <view class="playBtn" bindtap="pay" wx:if="{{Doyoupay}}">支付佣金</view>
- <view class="playBtn" bindtap="pay" wx:else>确认发布</view>
-<!-- <view class="v-box" bindtap="imgbtn">点我</view>
-<image src="{{imageUrl}}" /> -->
+<view class="playBtn" bindtap="pay">确认发布</view>
+ <!-- <view class="playBtn" bindtap="pay" wx:if="{{Doyoupay}}">支付佣金</view>
+ <view class="playBtn" bindtap="pay" wx:else>确认发布</view> -->

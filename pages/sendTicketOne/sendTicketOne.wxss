@@ -9,7 +9,7 @@ page {
 .home-box {
   width: 100%;
   height: auto;
-  margin-top: 128rpx;
+  /* margin-top: 128rpx; */
   padding-bottom: 128rpx;
 }
 

@@ -49,7 +49,7 @@
                 <view class="v-left">
                     <image wx:if="{{item.StaffAvatar!=''}}" src="{{item.StaffAvatar}}" />
                     <image wx:else src="/static/images/swp.png" />
-                    <view class="v-name">{{item.StaffName}}</view>
+                    <view class="v-name">{{item.Telephone}} {{item.StaffName}}</view>
                 </view>
                 <view class="v-right">
                     <image src="/static/images/right-arr1.png" class="v-arr" />
