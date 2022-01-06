@@ -33,9 +33,6 @@ const formatTimeyears = date => {
   return [year, month].map(formatNumber).join('/')
 
 }
-
-
-
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -57,7 +54,7 @@ function AjaxRequest(pUrl, pType, pData, pAppKeyId, pCallBack) {
             title: res.data.Data + '，请重新登录！',
             icon: "none",
           })
-          setTimeout(function() {
+          setTimeout(function () {
             wx.reLaunch({
               url: '/pages/login/login',
             })
@@ -190,7 +187,7 @@ function UploadImg(upimgurl, count, pGroupID, pAppKeyId, pCallBack, pOther, type
             'content-type': 'multipart/form-data', // 默认值
             "appKeyId": pAppKeyId
           }, // HTTP 请求中其他额外的参数
-          success: function(res) {
+          success: function (res) {
             wx.hideLoading();
             if (res.statusCode == 413) {
               wx.showToast({
@@ -221,7 +218,7 @@ function UploadImg(upimgurl, count, pGroupID, pAppKeyId, pCallBack, pOther, type
             }
 
           },
-          fail: function(res) {
+          fail: function (res) {
             wx.hideLoading();
             wx.showToast({
               title: "上传失败！",
@@ -303,44 +300,44 @@ function GetRegionIndustryBack(json, pCallBack) {
   }
 }
 
-function reverseGeocoder(latitude, longitude, pCallBack) {       
-  qqmapsdk.reverseGeocoder({    
+function reverseGeocoder(latitude, longitude, pCallBack) {
+  qqmapsdk.reverseGeocoder({
     location: {
       latitude: latitude,
       longitude: longitude
     },
     sig: 'KkXF9nGuNrp3LWqyWPrbvTtbHSgC2eu',
-    success: function(res) { //成功后的回调
-              
-      console.log(res);        
-      var res = res.result;        
-      var mks = [];        
+    success: function (res) { //成功后的回调
+
+      console.log(res);
+      var res = res.result;
+      var mks = [];
       mks.push({ // 获取返回结果，放到mks数组中
-                  
+
         title: res.address,
-                  id: 0,
-                  latitude: res.location.lat,
-                  longitude: res.location.lng,
-                  iconPath: './resources/placeholder.png', //图标路径
-                  width: 20,
-                  height: 20,
-                  callout: { //在markers上展示地址名称，根据需求是否需要
-                      
+        id: 0,
+        latitude: res.location.lat,
+        longitude: res.location.lng,
+        iconPath: './resources/placeholder.png', //图标路径
+        width: 20,
+        height: 20,
+        callout: { //在markers上展示地址名称，根据需求是否需要
+
           content: res.address,
-                      color: '#000',
-                      display: 'ALWAYS'          
+          color: '#000',
+          display: 'ALWAYS'
         },
         ad_info: res.ad_info
       });
       if (pCallBack)
-        pCallBack(mks);      
+        pCallBack(mks);
     },
-          fail: function(error) {        
-      console.error(error);      
+    fail: function (error) {
+      console.error(error);
     },
-          complete: function(res) {        
-      console.log(res);      
-    }    
+    complete: function (res) {
+      console.log(res);
+    }
   })
 
 }
@@ -351,7 +348,7 @@ function getGeocoder(address, pCallBack) {
     //获取表单传入地址
     address: address, //地址参数，例：固定地址，address: '北京市海淀区彩和坊路海淀西大街74号'  
     sig: 'KkXF9nGuNrp3LWqyWPrbvTtbHSgC2eu',
-    success: function(res) { //成功后的回调
+    success: function (res) { //成功后的回调
       console.log(res);
       var res = res.result;
       var newres = {
@@ -362,12 +359,12 @@ function getGeocoder(address, pCallBack) {
         district: res.address_components.district
       }
       if (pCallBack)
-        pCallBack(newres);    
+        pCallBack(newres);
     },
-    fail: function(error) {
+    fail: function (error) {
       console.log(error);
     },
-    complete: function(res) {
+    complete: function (res) {
       console.log(res);
     }
   })
@@ -384,5 +381,5 @@ module.exports = {
   GetRegionIndustry: GetRegionIndustry,
   reverseGeocoder: reverseGeocoder,
   getGeocoder: getGeocoder,
-  formatTimeyears:formatTimeyears
+  formatTimeyears: formatTimeyears
 }
