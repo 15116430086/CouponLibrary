@@ -1,0 +1,18 @@
+<!--dataC/Supplierprocurement/Supplierprocurement.wxml-->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<!-- 券领用详情 -->
+<block wx:for="{{DataList}}">
+<view class="v-all">
+  <view class="t-box">
+		<view class="t-block">
+			<view class="v-title">{{item.SupplierName}}</view>
+			<view class="t-bot">
+				<view class="v-mes">{{common.sysFormatDate(item.PurchaseDate,"yyyy-MM-dd hh:mm",true)}}</view>
+				<view class="t-right">
+					<text>采购数{{item.Quantity}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+</block>

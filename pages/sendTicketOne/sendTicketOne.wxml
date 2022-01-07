@@ -21,16 +21,16 @@
           <image wx:if="{{!item.ReleaseIDs}}" data-indexs="{{index}}" data-edit="1" bindtap="edit" src="/static/images/wrt_new.png" />
           <image wx:else data-indexs="{{index}}" data-edit="0" bindtap="edit" src="/static/images/wrt_new.png" />
         </view>
-        <view class="tb-mes" style="color:#000;margin-bottom:30rpx;">发布总数：{{item.ReleaseNUM}}｜最低采购：{{item.ReleaseCommission}}</view>
+        <view class="tb-mes" style="color:#000;margin-bottom:30rpx;">发布总数：{{item.ReleaseNUM}}｜最低采购：{{item.ReceiveUpperLimit}}</view>
         <view class="tb-mes">
           <view class="dynblock-mes" style="text-align:left">
             <view>已售数量：{{item.ReceiveShopNUM}}</view>
-            <view>会员领取：{{item.GiveNUM}}</view>
+            <view>会员领取：{{item.ReceivedNumber}}</view>
           
           </view>
 
           <view class="dynblock-mes" style="text-align:left">
-            <view>库存余量：{{item.ReceiveNUM}}</view>
+            <view>库存余量：{{item.ReleaseNUM-item.ReceiveShopNUM}}</view>
             <view>已核数量：{{item.ConsumeNUM}}</view>
         
           </view>

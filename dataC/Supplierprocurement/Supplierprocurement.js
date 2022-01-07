@@ -1,4 +1,4 @@
-// dataC/MerchantIssuingDetails/MerchantIssuingDetails.js
+// dataC/UserReceiveCouponDetails/UserReceiveCouponDetails.js
 var utils = require("../../utils/util.js")
 const app = getApp();
 var page = 1; //初始化页数
@@ -13,8 +13,7 @@ Page({
     StartTime:'',
     EndTime:'',
     lastpage: 0,
-    sendgroupid:'',
-    types:0
+    couponid:''
   },
 
   GetData: function () {
@@ -24,13 +23,13 @@ Page({
       title: '数据加载中...',
     })
     var data = {};
-    data.pAffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID;
-    data.pSendgroupid=that.data.sendgroupid
+    data.pType=that.data.type;
+    data.pCouponID=that.data.couponid;
     data.pPageIndex = page;
     data.pPageSize = 20;
     data.pStartTime=that.data.StartTime,
     data.pEndTime=that.data.EndTime,
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetMerchantIssuingListDetails", "POST", data, app.globalData.appkeyid, this.GetDataBack)
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponDataAnalysisView/GetSupplierprocurement", "POST", data, app.globalData.appkeyid, this.GetDataBack)
   },
   GetDataBack: function (json) {
     let that = this;
@@ -68,27 +67,15 @@ Page({
     let that = this;
     var StartTime = options.StartTime||'';
     var EndTime = options.EndTime||'';
-    var sendgroupid = options.sendgroupid||'';
+    var couponid = options.couponid||'';
+    var type = options.type||'';//0会员领券 1核券 2退券 3已过期
     that.setData({
       StartTime:StartTime,
       EndTime:EndTime,
-      sendgroupid:sendgroupid,
-      types:options.types || 0
+      couponid:couponid,
+      type:type
     })
   },
-
-
-  JumpUserReceiveCouponDetails:function(e){
-    let that = this;
-    var StartTime = that.data.StartTime;
-    var EndTime = that.data.EndTime;
-    var couponid = e.currentTarget.dataset.couponid;
-    wx.navigateTo({
-      url: '../Supplierprocurement/Supplierprocurement?couponid='+couponid+'&type=0&StartTime='+StartTime+'&EndTime='+EndTime,
-    })
-  },
-
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -124,7 +124,8 @@
                 "UserReceiveCouponDetails/UserReceiveCouponDetails",
                 "sharemesDetails/sharemesDetails",
                 "PageAccessDetails/PageAccessDetails",
-                "MerchantIssuingDetails/MerchantIssuingDetails"
+                "MerchantIssuingDetails/MerchantIssuingDetails",
+                "Supplierprocurement/Supplierprocurement"
             ]
         },
         {

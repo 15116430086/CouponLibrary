@@ -105,7 +105,7 @@ page {
 }
 
 .v-right {
-  width: 240rpx;
+  /* width: 240rpx; */
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -121,7 +121,7 @@ page {
   line-height: 32rpx;
   text-align: center;
   font-size: 22rpx;
-  margin-right: 80rpx;
+  /* margin-right: 80rpx; */
   white-space: nowrap;
   border-radius: 5rpx;
 }

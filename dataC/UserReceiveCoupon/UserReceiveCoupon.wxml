@@ -9,7 +9,7 @@
 		<view class="v-bot">
 			<view class="v-mes">{{item.GroupName}}</view>
 			<view class="v-send">
-				<view class="send">发券{{item.fbnumber}}<text>/已领{{item.ylNumber}}</text></view>
+				<view class="send"><text>已领{{item.ylNumber}}</text></view>
 				<image src="/static/images/right-arr1.png"></image>
 			</view>
 		</view>

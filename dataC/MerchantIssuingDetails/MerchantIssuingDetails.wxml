@@ -7,10 +7,10 @@
 	<view class="v-block">
 		<view class="v-title">{{item.CouponName}}</view>
 		<view class="v-bot">
-			<view class="v-mes">{{common.sysFormatDate(item.ReceiveDate,"yyyy-MM-dd hh:mm:ss",true)}}</view>
+			<view class="v-mes" wx:if="{{StartTime!=EndTime}}">{{common.sysFormatDate(StartTime,"MM-dd",true)}}至{{common.sysFormatDate(EndTime,"MM-dd",true)}}</view>
+			<view class="v-mes" wx:else>{{common.sysFormatDate(StartTime,"MM-dd",true)}}</view>
 			<view class="v-send">
-				<view class="send" wx:if="{{types==0}}">发券{{item.ReleaseNUM}}<text>/平台领购{{item.ReceiveNUM}}</text><text>/会员领取{{item.ylNumber}}</text></view>
-					<view class="send" wx:else>已发布{{item.ReceiveNUM}}<text>/会员领取{{item.ylNumber}}</text></view>
+					<view class="send">销售数{{item.SalesNumber}}<text></text></view>
 				<image src="/static/images/right-arr1.png"></image>
 			</view>
 		</view>

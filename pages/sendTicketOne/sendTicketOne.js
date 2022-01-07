@@ -102,7 +102,7 @@ Page({
       pPageIndex: page,
       pPageSize: 20
     }
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetCouponReleaseList", "POST", datas, app.globalData.appkeyid, this.GetCouponReleaseList);
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/GetNewCouponReleaseList", "POST", datas, app.globalData.appkeyid, this.GetCouponReleaseList);
   },
   GetCouponReleaseList: function(res) {
     wx.hideLoading({});

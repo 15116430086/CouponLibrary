@@ -50,9 +50,9 @@
 
 
   <!-- 辅助页 还没开发 -->
-  <view class="home-bot">
+  <!-- <view class="home-bot">
     <view bindtap="perfecttap" data-index="19">{{proname}}讲堂</view>
     <view bindtap="perfecttap" data-index="29">在线客服</view>
     <view bindtap="perfecttap" data-index="39">投诉建议</view>
-  </view>
+  </view> -->
 </view>

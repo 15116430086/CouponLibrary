@@ -6,14 +6,14 @@
     <view class="v-go" data-CouponID="{{CouponInfo.CouponID}}" data-Couponstatus="{{datalist[0].State}}" data-ReleaseIDs="{{datalist[0].ReleaseID}}" bindtap="jumpOk">继续发券</view>
 
   </view>
-  <view class="v-mid">发布总数:{{CouponInfo.ReleaseNUM}}{{datalist.State}}</view>
+  <view class="v-mid">发布总数:{{CouponInfo.ReleaseNUM}}| 最低采购：{{CouponInfo.ReceiveUpperLimit}}{{datalist.State}}</view>
   <view class="v-block">
     <view class="v-c">
       <view>已售数量：{{CouponInfo.ReceiveShopNUM}}</view>
-      <view>库存余量：{{CouponInfo.ReceiveNUM}}</view>
+      <view>库存余量：{{CouponInfo.ReleaseNUM-CouponInfo.ReceiveShopNUM}}</view>
     </view>
     <view class="v-c">
-      <view>会员领取：{{CouponInfo.GiveNUM}}</view>
+      <view>会员领取：{{CouponInfo.ReceivedNumber}}</view>
       <view>已核数量：{{CouponInfo.ConsumeNUM}}</view>
     </view>
   </view>
@@ -22,7 +22,7 @@
 <block wx:for="{{datalist}}">
   <view class="v-bot">
     <!-- 已通过 -->
-    <view wx:if="{{item.State!=0}}" class="v-class" bindtap="See" data-releaseid="{{item.ReleaseID}}">
+    <view wx:if="{{item.State!=0}}" class="v-class" data-releaseid="{{item.ReleaseID}}">
       <view class="v-left">
         <view class="v-name">
           <view>已发布：{{item.ReleaseNUM}}张</view>
