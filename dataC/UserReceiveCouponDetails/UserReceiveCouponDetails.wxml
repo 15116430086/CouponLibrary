@@ -11,11 +11,11 @@
 				<view class="v-mes">{{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm:ss",true)}}</view>
 				<view class="t-right">
 					<text wx:if="{{item.Number>0}}">已购买{{item.Number}}/</text>
-					<text wx:else >未购买/</text>
-					<text wx:if="{{item.PinNumber>0}}">核销{{item.PinNumber}}/</text>
-					<text wx:else >未核销/</text>
-					<text wx:if="{{item.RetreatNumber>0}}">退券{{item.RetreatNumber}}</text>
-					<text wx:else >未退券</text>
+					<text wx:else >未购买0/</text>
+					<text wx:if="{{item.PinNumber>0}}">已核销{{item.PinNumber}}</text>
+					<text wx:else >未核销0</text>
+					<!-- <text wx:if="{{item.RetreatNumber>0}}">退券{{item.RetreatNumber}}</text>
+					<text wx:else >未退券</text> -->
 				</view>
 			</view>
 		</view>
