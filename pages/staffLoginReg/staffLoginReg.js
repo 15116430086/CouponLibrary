@@ -27,11 +27,11 @@ Page({
         ShopID: shopID
       });
     } 
-    // else {
-    //   wx.reLaunch({
-    //     url: '../login/login',
-    //   })
-    // }
+    else {
+      wx.reLaunch({
+        url: '../login/login',
+      })
+    }
   },
   //发送验证码
   sendCode(e) {
