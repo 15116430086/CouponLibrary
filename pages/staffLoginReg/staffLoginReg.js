@@ -7,7 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ShopID: ""
+    ShopID: "",
+    isCode: true,
+    sendMes: "发送验证码",
+    time: "60",
+    code: "",
+    phone:"",
+    StaffName:""
   },
 
   /**
@@ -20,82 +26,147 @@ Page({
       this.setData({
         ShopID: shopID
       });
-    } else {
-      wx.reLaunch({
-        url: '../login/login',
+    } 
+    // else {
+    //   wx.reLaunch({
+    //     url: '../login/login',
+    //   })
+    // }
+  },
+  //发送验证码
+  sendCode(e) {
+    if (this.data.phone == "") {
+      wx.showToast({
+        title: '请输入手机号码!',
+        icon: "none",
+        duration: 2000
       })
+      return;
+    }
+    var data = {
+      Phone:  this.data.phone
+    }
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/LoginView/Getverificationcode", "POST", data, app.globalData.appkeyid, this.Getverificationcode)
+  },
+
+  Getverificationcode: function (res) {
+    var chat = this;
+    var json = res.data.Data;
+    if (json.flag) {
+      let promise = new Promise((resolve, reject) => {
+        let setTimer = setInterval(
+          () => {
+            chat.setData({
+              isCode: false,
+              time: chat.data.time - 1
+            })
+            if (chat.data.time <= 0) {
+              chat.setData({
+                time: 60,
+                isCode: true,
+                sendMes: "重新发送"
+              })
+              resolve(setTimer)
+            }
+          }, 1000)
+      })
+      promise.then((setTimer) => {
+        clearInterval(setTimer)
+      })
+
+    } else {
+      wx.showToast({
+        title: json.msg,
+        icon: "none",
+        duration: 3000
+      })
+
     }
   },
 
-  
-  getUserProfile: function (e) {
-    wx.showLoading({
-      title: "数据加载中...",
-      mask: true
-    });
-    let that = this;
-    wx.getUserProfile({
-      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: res => {
-        // 登录
-        var detail = res;
-        if (detail.errMsg == "getUserProfile:ok") {
-          wx.login({
-            success: lres => {
-              // 发送 res.code 到后台换取 openId, sessionKey, unionId      
-              app.globalData.logincode = lres.code;
-              that.AddShopStaff(res);
-            }
-          });
-        }
-      },
-      fail: res => {
-        wx.login({
-          success: res => {
-            // 发送 res.code 到后台换取 openId, sessionKey, unionId      
-            app.globalData.logincode = res.code;
-          }
-        });
-      }
-    })
 
+ 
+ //手机号码
+ phoneinput: function (e) {
+  let that = this;
+  that.setData({
+    phone: e.detail.value
+  })
+},
+  //验证码
+  codeinput: function (e) {
+    let that = this;
+    that.setData({
+      code: e.detail.value,
+    })
+  },
+  nameinput: function (e) {
+    let that = this;
+    that.setData({
+      StaffName: e.detail.value,
+    })
   },
 
-  authorization: function(enent) {
-    var chat = this;
-    // 登录
+  isConfirmLogin: function () {
+    let that = this;
+    if (that.data.StaffName == "") {
+      wx.showToast({
+        title: '请输入姓名!',
+        icon: "none",
+        duration: 2000
+      })
+      return;
+    }
+
+    if (that.data.phone == "") {
+      wx.showToast({
+        title: '请输入手机号码!',
+        icon: "none",
+        duration: 2000
+      })
+      return;
+    }
+    if (that.data.code == "") {
+      wx.showToast({
+        title: '请输入验证码!',
+        icon: "none",
+        duration: 2000
+      })
+      return;
+    }
+    wx.showLoading({
+      title: '数据加载中...',
+    })
     wx.login({
       success: res => {
         let that = this;
         // 发送 res.code 到后台换取 openId, sessionKey, unionId      
         app.globalData.logincode = res.code;
-
         wx.getUserInfo({
           success: res => {
             // 登录
             var detail = res;
             if (detail.errMsg == "getUserInfo:ok") {
               app.globalData.userInfo = res.userInfo
-              chat.AddShopStaff(res);
+              var data = {};
+              data.Text = detail.encryptedData;
+              data.AesIV = detail.iv;
+              data.code = app.globalData.logincode;
+              data.pCheckCode = that.data.code;
+              data.AppId = app.globalData.sysaAppid;
+              data.StaffName=that.data.StaffName;
+              data.ShopID = that.data.ShopID;
+              data.Telephone=that.data.phone;
+              utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/AddStaff", "POST", data, app.globalData.appkeyid, that.getUserInfoBack)
             }
           }
         })
       }
     })
-
   },
-  AddShopStaff: function(res) {
-    var data = {};
-    data.Text = res.encryptedData;
-    data.AesIV = res.iv;
-    data.code = app.globalData.logincode;   
-    data.ShopID = this.data.ShopID;
-    data.AppId=app.globalData.sysaAppid;
-    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponShopView/AddStaff", "POST", data, app.globalData.appkeyid, this.getUserInfoBack)
-  },
-
   getUserInfoBack: function(res) {
     var json = res.data.Data;
+    wx.hideLoading();
     if (json.flag) {
       if (json.flag && json.state == 3) {
         wx.setStorageSync('miniappkeyid', json.data)

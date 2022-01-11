@@ -1,8 +1,24 @@
 <!--pages/staffLoginReg/staffLoginReg.wxml-->
-<view class="v-box">
-  <image src="/static/images/dp.png"></image>
-  <view class="v-tip">您好！您正通过 扫码注册员工账号，请授权绑定账号</view>
-
-  <!-- <button  open-type="getUserInfo" bindgetuserinfo="authorization">点击授权绑定账号</button> -->
-  <button  bindtap="getUserProfile" >点击授权绑定账号</button>
+<view class="box">
+  <view class="home_top">
+    <view class="v-title">您好!</view>
+    <view class="v-tip">您正通过扫码注册员工账号</view>
+  </view>
+</view>
+<view class="v-mid">
+  <view class="v-block">
+    <image src="/static/images/man.png" />
+    <input class="v-input" bindblur="nameinput" bindinput="nameinput" type="number" maxlength="11" placeholder-class="ip" placeholder="请输入姓名" />
+  </view>
+  <view class="v-block">
+    <image src="/static/images/p.png" />
+    <input class="v-input" bindblur="phoneinput" bindinput="phoneinput" type="number" maxlength="11" placeholder-class="ip" placeholder="请输入手机号" />
+  </view>
+  <view class="v-block">
+    <image src="/static/images/key.png" />
+    <input class="v-input1" bindblur="codeinput" type="number" maxlength="6" placeholder-class="ip" placeholder="输入验证码" />
+    <view class="v-btn" bindtap="sendCode" wx:if="{{isCode}}">{{sendMes}}</view>
+    <view class="v-btn" style="color:#CCCCCC;font-weight:500" wx:else>{{time + "s"}}</view>
+  </view>
+  <button class="v-true" open-type="getUserInfo" bindgetuserinfo="isConfirmLogin">确认注册</button>
 </view>
