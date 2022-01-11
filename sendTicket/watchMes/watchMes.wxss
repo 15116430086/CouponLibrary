@@ -18,7 +18,7 @@ page {
 .v-top {
   margin-top: 40rpx;
   margin-bottom: 20rpx;
-  width: calc(100% - 160rpx);
+  width: calc(100% - 100rpx);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -48,7 +48,7 @@ page {
 }
 
 .v-mid {
-  width: calc(100% - 160rpx);
+  width: calc(100% - 100rpx);
   text-align: left;
   color: #333;
   margin-bottom: 40rpx;
@@ -56,7 +56,7 @@ page {
 }
 
 .v-block {
-  width: calc(100% - 160rpx);
+  width: calc(100% - 100rpx);
   color: #333;
   margin-bottom: 40rpx;
   font-size: 28rpx;

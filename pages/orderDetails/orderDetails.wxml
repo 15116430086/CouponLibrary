@@ -23,7 +23,7 @@
                 <view class="bot-blue">订单号：{{item.WriteOffOrderID}}</view>
                 <view class="bot-time">{{item.PayDate}}</view>
             </view>
-            <view class="bot-type" style="color:#CCCCCC">已完成</view>
+            <view class="bot-type" style="color:#CCCCCC">已核销</view>
         </view>
         </view>
         <!-- </navigator> -->
