@@ -154,7 +154,7 @@ Page({
       if (type == 0) {
         var words_result = JSON.parse(img[1]);
 
-        if (words_result.words_result.单位名称.words == "无") {
+        if (words_result.errmsg!="ok") {
           wx.showToast({
             title: "营业执照不符合请重新上传!",
             icon: "none",
@@ -168,7 +168,7 @@ Page({
           flag0: true,
         })
         console.log(words_result);
-        var RegisteredAddress = words_result.words_result.地址.words;
+        var RegisteredAddress = words_result.address;
 
         var reg = /.+?(省|市|自治区|自治州|县|区)/g;
         var region = RegisteredAddress.match(reg);
@@ -179,13 +179,13 @@ Page({
           regAddress = RegisteredAddress.replace(regionName, '')
         }
         that.setData({
-          GroupName: words_result.words_result.单位名称.words,
-          RegisteredAddress: RegisteredAddress,
+          GroupName: words_result.enterprise_name,
+          RegisteredAddress: address,
           regionName: regionName,
           regAddress: regAddress,
-          LegalPerson: words_result.words_result.法人.words,
-          Contacts: words_result.words_result.法人.words,
-          CreditCode: words_result.words_result.社会信用代码.words
+          LegalPerson: words_result.legal_representative,
+          Contacts: words_result.legal_representative,
+          CreditCode: words_result.reg_num
         });
 
         utils.getGeocoder(regionName, that.getGeocoderBack)
