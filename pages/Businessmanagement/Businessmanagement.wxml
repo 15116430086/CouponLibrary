@@ -17,13 +17,13 @@
 <!-- 运营数据分析 -->
 <view class="m-title">
   <image src="/static/images/red-arr.png"></image>
-  <view>运营数据分析<text>（点击可查看详情）</text></view>
+  <view>运营数据</view>
 </view>
 <view class="v-all">
 
 	<block wx:for="{{databox}}" wx:for-item="ida">
 		<view class="v-box">
-			<view class="v-name">{{ida.name}}:<text style="color:#999999">{{ida.span}}</text></view>
+			<!-- <view class="v-name">{{ida.name}}:<text style="color:#999999">{{ida.span}}</text></view> -->
 			<view class="v-block" >
 				<view class="v-span" wx:for="{{ida.data}}" data-tname="{{item.tname}}" data-url="{{item.url}}" bindtap="JumpPage">
 					<view class="v-mes">{{item.tname}}</view>
