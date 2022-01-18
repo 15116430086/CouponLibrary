@@ -152,7 +152,7 @@ Page({
     let that = this;
     if (img.length > 0) {
       if (type == 0) {
-        var words_result = JSON.parse(img[1]);
+        var words_result = img[1];
 
         if (words_result.errmsg!="ok") {
           wx.showToast({
@@ -180,7 +180,7 @@ Page({
         }
         that.setData({
           GroupName: words_result.enterprise_name,
-          RegisteredAddress: address,
+          RegisteredAddress: words_result.address,
           regionName: regionName,
           regAddress: regAddress,
           LegalPerson: words_result.legal_representative,
