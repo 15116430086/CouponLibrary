@@ -4,21 +4,21 @@
   <view class="v-block">
     <view class="v-top">
       <view class="v-title">总销售金额  (元)</view>
-      <view class="v-cash">{{ReceiveMoney}}</view>
+      <view class="v-cash">￥{{ReceiveMoney}}</view>
     </view>
     <!-- <view class="v-mid">佣金退还¥{{sumDrawbackMoney}} | 佣金收入¥{{sumCommissionMoney}} | 代收资金¥{{sumCollectionMoney}}</view> -->
     <view class="v-mid">
       <navigator class="v-mid-block" hover-class="none">
         <view class="v-title">已结算  (元)</view>
-        <view class="vmb-money">{{SettlementMoney}} <text style="font-size:28rpx;position:relative;top:-2rpx">  </text></view>
+        <view class="vmb-money">￥{{SettlementMoney}} <text style="font-size:28rpx;position:relative;top:-2rpx">  </text></view>
       </navigator>
       <navigator class="v-mid-block" hover-class="none">
         <view class="v-title">未结算  (元)</view>
-        <view class="vmb-money">{{Unsettled}} <text style="font-size:28rpx;position:relative;top:-2rpx"> </text></view>
+        <view class="vmb-money">￥{{Unsettled}} <text style="font-size:28rpx;position:relative;top:-2rpx"> </text></view>
       </navigator>
       <navigator class="v-mid-block" style="border:none" hover-class="none" >
         <view class="v-title">待入账 (元)</view>
-        <view class="vmb-money">{{ReceiveMoney-(SettlementMoney+Unsettled)}} <text style="font-size:28rpx;position:relative;top:-2rpx">  </text></view>
+        <view class="vmb-money">￥{{ReceiveMoney-(SettlementMoney+Unsettled)}} <text style="font-size:28rpx;position:relative;top:-2rpx">  </text></view>
       </navigator>
     </view>
   </view>
@@ -40,14 +40,16 @@
         <image src="{{item.ImageOne==''?'/static/images/swp.png':item.ImageOne}}" mode="aspectFill"/>
         <view class="m-mid">
           <view class="m-title">{{item.CouponName}}</view>
+         
           <view class="m-mes">
             <view class="m-span"style="color:#429859;border:1px solid #429859">券</view>
           </view>
         </view>
       </view>
       <view class="m-right">
-        <view class="m-num">+{{item.SettlementMoney}}</view>
-        <!-- <view class="m-txt">券抵用￥100</view> -->
+        <view style="font-size:22rpx;">数量：{{item.SettlementNum}}</view>
+        <view class="m-num">+￥{{item.SettlementMoney}}</view>
+
       </view>
     </view>
   </block>

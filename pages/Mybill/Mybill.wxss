@@ -148,12 +148,12 @@ page {
 }
 
 .m-right {
-  width: 108rpx;
+  /* width: 108rpx; */
   height: auto;
   text-align: right;
   position: absolute;
   right: 0px;
-  top: 80rpx;
+  top: 40rpx;
 }
 
 .m-title {
@@ -190,6 +190,7 @@ page {
 .m-num {
   color: #429859;
   font-size: 24rpx;
+  line-height: 48rpx;
 }
 
 .m-txt {
