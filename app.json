@@ -87,7 +87,9 @@
         "pages/chooseBuyGoodsTwo/chooseBuyGoodsTwo",
         "pages/newManager/newManager",
         "pages/GroupList/GroupList",
-        "pages/Businessmanagement/Businessmanagement"
+        "pages/Businessmanagement/Businessmanagement",
+        "pages/Mybill/Mybill",
+        "pages/MybillDetails/MybillDetails"
     ],
     "subpackages": [{
             "root": "doorC",

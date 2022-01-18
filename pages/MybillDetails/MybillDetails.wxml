@@ -1,0 +1,26 @@
+<!--pages/MybillDetails/MybillDetails.wxml-->
+<!-- pages/myMoney/myMoney.wxml -->
+<wxs module="common" src="../../utils/common.wxs"></wxs>
+<view class="v-all">
+  <block wx:for="{{Capitaldetailslist}}" wx:for-index="index" wx:key="CouponID">
+    <view class="m-block">
+      <view class="m-left">
+        <!-- <image src="{{item.ImageOne==''?'/static/images/swp.png':item.ImageOne}}" mode="aspectFill"/> -->
+        <view class="m-mid">
+          <view class="m-title">{{item.ItemName}}</view>
+          <view class="m-mes">
+            <view class="m-time">
+              {{common.sysFormatDate(item.CreateTime,"yyyy-MM-dd hh:mm")}}
+            </view>
+            <view class="m-span"style="color:#429859;border:1px solid #429859">券</view>
+          </view>
+        </view>
+      </view>
+      <view class="m-right">
+        <view class="m-num">+{{item.SettlementMoney}}</view>
+        <!-- <view class="m-txt">券抵用￥100</view> -->
+      </view>
+    </view>
+  </block>
+</view>
+
