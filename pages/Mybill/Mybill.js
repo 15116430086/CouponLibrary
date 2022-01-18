@@ -70,6 +70,14 @@ Page({
        url: '../MybillDetails/MybillDetails?CouponID='+couponid+"&State="+this.data.State,
      })
   },
+  selects:function(event){
+    var id= event.currentTarget.dataset.id;
+    this.setData({
+      State:id,
+      pageIndex:1
+    });
+    this.GetData();
+  },
   /**
    * 生命周期函数--监听页面加载
    */

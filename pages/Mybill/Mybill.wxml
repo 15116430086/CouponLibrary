@@ -24,11 +24,11 @@
   </view>
 </view>
 <view class="v-bot">
-  <view class="v-btn v-bborder">
+  <view class="v-btn {{State==1?'v-bborder':''}} " bindtap="selects" data-id="1">
     <image src="/static/images/xie.png" />
     <view>已结算</view>
   </view>
-  <view  class="v-btn" style="border:none">
+  <view  class="v-btn {{State==0?'v-bborder':''}}" style="border-right:none" bindtap="selects" data-id="0">
     <image src="/static/images/look.png" />
     <view>待结算</view>
   </view>
