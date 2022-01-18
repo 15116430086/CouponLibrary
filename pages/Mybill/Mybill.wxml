@@ -24,14 +24,14 @@
   </view>
 </view>
 <view class="v-bot">
-  <view class="v-btn">
+  <view class="v-btn v-bborder">
     <image src="/static/images/xie.png" />
     <view>已结算</view>
   </view>
-  <navigator  class="v-btn" style="border:none">
+  <view  class="v-btn" style="border:none">
     <image src="/static/images/look.png" />
     <view>待结算</view>
-  </navigator>
+  </view>
 </view>
 <view class="v-all">
   <block wx:for="{{Capitaldetailslist}}" wx:for-index="index" wx:key="CouponID">

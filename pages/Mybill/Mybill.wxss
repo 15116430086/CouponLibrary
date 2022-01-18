@@ -88,9 +88,9 @@ page {
 
 .v-btn {
   flex: 1;
-  height: 56rpx;
+  /* height: 56rpx; */
   text-align: center;
-  line-height: 56rpx;
+  line-height: 104rpx;
   background-color: #FFFFFF;
   color: #333333;
   font-size: 28rpx;
@@ -99,7 +99,13 @@ page {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-right: 1px solid #EDEDED;
+  border-right: 1px solid #EDEDED; 
+}
+
+.v-bborder
+{
+  border-bottom: 5rpx solid #FF7031;
+  color: #FF7031;
 }
 
 .v-btn image {
