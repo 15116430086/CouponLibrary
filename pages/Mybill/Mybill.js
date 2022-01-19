@@ -14,7 +14,8 @@ Page({
     SettlementMoney: 0,//已结算
     Unsettled: 0,//未结算
     pageIndex:1,
-    pageCount:1
+    pageCount:1,
+    Submit:true
   },
 
   GetData: function() {
@@ -77,6 +78,50 @@ Page({
       pageIndex:1
     });
     this.GetData();
+  },
+  EnterButtom:function(){
+    var chat=this;
+    wx.showModal({
+      title: '提示',
+      content: '确定提交申请么？',
+      success: function (sm) {
+        if (sm.confirm) {
+            // 用户点击了确定 可以调用删除方法了
+            chat.ApplicationSettlement();
+          } else if (sm.cancel) {
+            console.log('用户点击取消')
+          }
+        }
+      })
+  },
+  ApplicationSettlement:function(){
+    var data={
+      GroupID:app.globalData.AppGroupInfo.GroupID
+    }
+    if(this.data.Submit){
+      wx.showLoading({
+        title: '数据加载中',
+        mask: true
+      })
+      this.data.Submit=false;
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponCapitalView/ApplicationSettlement", "POST", data, app.globalData.appkeyid, this.ApplicationBack)
+    }else{
+      wx.showToast({
+        title: '请勿重复提交!',
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  },
+  ApplicationBack:function(res){
+    wx.hideLoading();
+    var json=res.data.Data;
+    this.data.Submit=true;
+      wx.showToast({
+        title: json.msg,
+        icon: 'none',
+        duration: 2000
+      })
   },
   /**
    * 生命周期函数--监听页面加载

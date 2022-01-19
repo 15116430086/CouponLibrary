@@ -13,7 +13,7 @@
         <view class="vmb-money">￥{{SettlementMoney}} <text style="font-size:28rpx;position:relative;top:-2rpx">  </text></view>
       </navigator>
       <navigator class="v-mid-block" hover-class="none">
-        <view class="v-title">未结算  (元)</view>
+        <view class="v-title">待结算  (元)</view>
         <view class="vmb-money">￥{{Unsettled}} <text style="font-size:28rpx;position:relative;top:-2rpx"> </text></view>
       </navigator>
       <navigator class="v-mid-block" style="border:none" hover-class="none" >
