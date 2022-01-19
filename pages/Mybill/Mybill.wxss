@@ -99,11 +99,10 @@ page {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-right: 1px solid #EDEDED; 
+  border-right: 1px solid #EDEDED;
 }
 
-.v-bborder
-{
+.v-bborder {
   border-bottom: 5rpx solid #FF7031;
   color: #FF7031;
 }
@@ -120,6 +119,7 @@ page {
   height: auto;
   margin-top: 20rpx;
   background-color: #FFFFFF;
+  margin-bottom: 100rpx;
 }
 
 .m-block {
@@ -298,4 +298,22 @@ page {
   line-height: 44rpx;
   white-space: nowrap;
   margin-left: 10rpx;
+}
+
+.buttomview {
+  width: 90%;
+  height: 80rpx;
+  position: fixed;
+  bottom: 8rpx;
+  margin: 0 auto;
+  background-color: #E85819;
+  border-radius: 40rpx;
+  text-align: center;
+  color: #ffffff;
+  font-size: 36rpx;
+  font-weight: bold;
+  letter-spacing: 8rpx;
+  left: 0;
+  right: 0;
+  line-height: 80rpx;
 }
