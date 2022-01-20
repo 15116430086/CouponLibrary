@@ -54,4 +54,4 @@
     </view>
   </block>
 </view>
-<view wx:if="{{State==0}}" class="buttomview" bindtap="EnterButtom">申请结算</view>
+<view wx:if="{{State==0 && Capitaldetailslist.length>0}}" class="buttomview" bindtap="EnterButtom">申请结算</view>

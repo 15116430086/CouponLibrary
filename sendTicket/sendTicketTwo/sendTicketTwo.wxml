@@ -39,7 +39,7 @@
     <input type="number" value="{{pCoupon_Info.ReceiveUpperLimit}}"  placeholder="设置领取上限" name="ReceiveUpperLimit" placeholder-class="pclass" />
   </view>
   <view class="ticket-block" >
-    <view class="ticket-name">采购价</view>
+    <view class="ticket-name">批发单价</view>
     <input type="number" value="{{pCoupon_Info.SalePrice}}"  placeholder="设置销售价" name="SalePrice" placeholder-class="pclass" />
   </view>
 

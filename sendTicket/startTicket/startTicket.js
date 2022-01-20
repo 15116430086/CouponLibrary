@@ -61,7 +61,7 @@ Page({
    */
   onLoad: function(options) {
     console.log(options);
-    this.exchangerate();
+    // this.exchangerate();
     wx.setStorageSync("Groupkey", "");
     wx.setStorageSync("resultkey", "");
     wx.setStorageSync("industryKey", "");

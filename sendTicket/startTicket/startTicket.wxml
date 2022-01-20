@@ -10,7 +10,7 @@
     <view class="mes-block">
         <view class="ticket-box">
             <view class="ticket-block">
-                <view class="ticket-name">金额</view>
+                <view class="ticket-name">批发单价</view>
                 <input type="number" bindblur="moery" value="{{PurchasePrice}}" placeholder="设置数量" placeholder-class="pclass"/>
             </view>
              <view class="ticket-block">
@@ -56,7 +56,7 @@
 
 
             <view class="ticket-block">
-                <view class="ticket-name">商户最低采购份数</view>
+                <view class="ticket-name">最低批发份数</view>
                 <input type="number" bindblur="Limit" value="{{Number}}" placeholder="设置数量" placeholder-class="pclass"/>
             </view>
             
