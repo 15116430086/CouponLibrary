@@ -29,7 +29,7 @@ Page({
     df_value: 1, //行业索引
     regionvalue: "地区选择", //最终选择地区值
     regionID: [], //最终选择地区ID
-    Number: 0, //券数量
+    Number: 1, //券数量
     Commission: 0, //佣金比列
     IndustryCodes: [], //最终行业ID
     Industryvalue: "请选择行业", //最终选择行业名称
@@ -72,10 +72,21 @@ Page({
       pCoupon_Info: oCoupon_Info,
       PurchasePrice:oCoupon_Info.PurchasePrice
     });
-    // utils.AjaxRequest(app.globalData.apiurl + "CouponView/CouponIndustryView/GetCouponIndustry", "POST", {}, app.globalData.appkeyid, this.GetCouponIndustry);
+    var data={
+      CouponID: options.CouponID
+    }
+    utils.AjaxRequest(app.globalData.apiurl + "CouponView/CoupoInfoView/MinimumNumber", "POST", data, app.globalData.appkeyid, this.MinimumNumber);
 
   },
-
+  MinimumNumber:function(res){
+    var chat=this;
+    var json=res.data.Data;
+    if(json.flag){
+      chat.setData({
+        Number:json.Number
+      });
+    }
+  },
   exchangerate:function(){
     var data={
       GroupID:app.globalData.AppGroupInfo.GroupID
@@ -142,15 +153,15 @@ Page({
     });
   },
   Commissionratio: function(event) { //数量
-    var number = event.detail.value
+    ///var number = event.detail.value
     // this.setData({
     //   Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * this.data.ExtensionRate * number)).toFixed(2),
     //   Number: number,
     //   Limited:number
     // });
-    this.setData({
-        Number: number,
-       });
+    // this.setData({
+    //     Number: number,
+    //    });
   },
   Limit: function(event) { //商户最低采购份数
     var number = event.detail.value
