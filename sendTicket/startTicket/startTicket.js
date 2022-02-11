@@ -83,7 +83,7 @@ Page({
     var json=res.data.Data;
     if(json.flag){
       chat.setData({
-        Number:json.Number
+        Limited:json.Number
       });
     }
   },
