@@ -153,15 +153,15 @@ Page({
     });
   },
   Commissionratio: function(event) { //数量
-    ///var number = event.detail.value
+    var number = event.detail.value
     // this.setData({
     //   Commission: parseFloat((this.data.pCoupon_Info.CouponMoney * this.data.ExtensionRate * number)).toFixed(2),
     //   Number: number,
     //   Limited:number
     // });
-    // this.setData({
-    //     Number: number,
-    //    });
+    this.setData({
+        Number: number,
+       });
   },
   Limit: function(event) { //商户最低采购份数
     var number = event.detail.value
@@ -221,9 +221,9 @@ Page({
       });
       return;
     }
-    if ((!this.data.Limited || this.data.Limited <= 0) && this.data.sign == 1) {
+    if ((!this.data.Limited || this.data.Limited <= 0)) {
       wx.showToast({
-        title: "单商户领取限制异常",
+        title: "设置最低批发份数",
         icon: "none"
       });
       return;
@@ -237,13 +237,13 @@ Page({
       return;
     }
 
-    if (this.data.sign != 2 && this.data.Limited <= 0) {
-      wx.showToast({
-        title: "请选设置领取限制",
-        icon: "none"
-      });
-      return;
-    }
+    // if (this.data.sign != 2 && this.data.Limited <= 0) {
+    //   wx.showToast({
+    //     title: "请选设置领取限制",
+    //     icon: "none"
+    //   });
+    //   return;
+    // }
 
 
 

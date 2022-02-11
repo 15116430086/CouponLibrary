@@ -57,7 +57,7 @@
 
             <view class="ticket-block">
                 <view class="ticket-name">最低批发份数</view>
-                <input type="number" bindblur="Limit" value="{{Number}}" placeholder="设置数量" placeholder-class="pclass"/>
+                <input type="number" bindblur="Limit" value="{{Limited}}" placeholder="设置数量" placeholder-class="pclass"/>
             </view>
             
              <!-- <view class="ticket-block">
