@@ -176,7 +176,7 @@ Page({
       Coupon_Info.SalePrice = Info.SalePrice;
       Coupon_Info.CouponID = Info.CouponID;
       Coupon_Info.IsAppointProduct = Info.IsAppointProduct;
-      Coupon_Info.PrepaymentRatio=Info.PrepaymentRatio*100;
+      Coupon_Info.PrepaymentRatio=Info.PrepaymentRatio;
       Coupon_Info.PurchasePrice=Coupon_Info.SalePrice;
       var data = {
         pCouponID: Info.CouponID
@@ -317,7 +317,7 @@ Page({
     pCoupon_Info.CouponType = that.data.currentId;
     pCoupon_Info.ReceiveUpperLimit = val.ReceiveUpperLimit; //领取上限
     pCoupon_Info.SalePrice = val.SalePrice;
-    pCoupon_Info.PrepaymentRatio=val.PrepaymentRatio/100;
+    pCoupon_Info.PrepaymentRatio=val.PrepaymentRatio;
     pCoupon_Info.AffiliatedGroupID=app.globalData.AppGroupInfo.AffiliatedGroupID;//运营商编号
     if (that.data.currentId == 1)
       pCoupon_Info.SalePrice = val.SalePrice;
