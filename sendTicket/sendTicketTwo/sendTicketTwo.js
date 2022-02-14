@@ -131,7 +131,7 @@ Page({
       SalePrice: 0, //领购售价
       CouponID: "",
       IsAppointProduct: 0,
-      PrepaymentRatio:100
+      PrepaymentRatio: 100
     },
     imageOne: "",
     imageTwo: "",
@@ -145,13 +145,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-    this.setData({ 
+  onLoad: function (options) {
+    this.setData({
       proname: app.globalData.sysName
     })
     wx.setStorageSync("pArrProductKey", "");
     wx.setStorageSync("ArrProductchecked", false);
-    wx.setStorageSync("ProductCount",0);
+    wx.setStorageSync("ProductCount", 0);
     if (options.edit) {
       edit = options.edit
       this.setData({
@@ -176,8 +176,9 @@ Page({
       Coupon_Info.SalePrice = Info.SalePrice;
       Coupon_Info.CouponID = Info.CouponID;
       Coupon_Info.IsAppointProduct = Info.IsAppointProduct;
-      Coupon_Info.PrepaymentRatio=Info.PrepaymentRatio;
-      Coupon_Info.PurchasePrice=Coupon_Info.SalePrice;
+      Coupon_Info.PrepaymentRatio = Info.PrepaymentRatio;
+      Coupon_Info.PurchasePrice = Coupon_Info.SalePrice;
+      this.data.CouponID = Info.CouponID;
       var data = {
         pCouponID: Info.CouponID
       }
@@ -236,7 +237,7 @@ Page({
     }
 
   },
-  GetCouponInfoPictureBack: function(res) {
+  GetCouponInfoPictureBack: function (res) {
     var that = this;
     var json = res.data.Data;
     var list = [];
@@ -262,7 +263,7 @@ Page({
 
     }
   },
-  bindPickerChange_hx: function(e) {
+  bindPickerChange_hx: function (e) {
     let that = this;
     console.log('picker发送选择改变，携带值为', e);
     let pic_array = that.data.pic_array;
@@ -278,7 +279,7 @@ Page({
   },
 
 
-  formSubmit: function(e) {
+  formSubmit: function (e) {
     console.log(e.detail.value)
     let val = e.detail.value;
     let that = this;
@@ -300,7 +301,7 @@ Page({
         return
       }
     }
-    if (this.data.ArrProductchecked && pCoupon_Info.WriteOffType == 0 && wx.getStorageSync("ProductCount")==0) { //如果是全部商品 并且是线上消费
+    if (this.data.ArrProductchecked && pCoupon_Info.WriteOffType == 0 && wx.getStorageSync("ProductCount") == 0) { //如果是全部商品 并且是线上消费
       wx.showToast({
         title: "请先创建商品!",
         icon: "none",
@@ -317,8 +318,8 @@ Page({
     pCoupon_Info.CouponType = that.data.currentId;
     pCoupon_Info.ReceiveUpperLimit = val.ReceiveUpperLimit; //领取上限
     pCoupon_Info.SalePrice = val.SalePrice;
-    pCoupon_Info.PrepaymentRatio=val.PrepaymentRatio;
-    pCoupon_Info.AffiliatedGroupID=app.globalData.AppGroupInfo.AffiliatedGroupID;//运营商编号
+    pCoupon_Info.PrepaymentRatio = val.PrepaymentRatio;
+    pCoupon_Info.AffiliatedGroupID = app.globalData.AppGroupInfo.AffiliatedGroupID; //运营商编号
     if (that.data.currentId == 1)
       pCoupon_Info.SalePrice = val.SalePrice;
 
@@ -424,9 +425,15 @@ Page({
         isRefresh: true
       });
       console.log(json.msg);
-      wx.redirectTo({
-        url: '/sendTicket/startTicket/startTicket?pCoupon_Info=' + pCoupon_Info + "&CouponID=" + json.CouponID,
-      })
+      if (that.data.CouponID) {
+        wx.navigateBack({
+          delta: 1,
+        })
+      } else {
+        wx.redirectTo({
+          url: '/sendTicket/startTicket/startTicket?pCoupon_Info=' + pCoupon_Info + "&CouponID=" + json.CouponID,
+        })
+      }
     } else {
       wx.showToast({
         title: json.msg,
@@ -437,7 +444,7 @@ Page({
     }
   },
   //点击每个导航的点击事件
-  handleTap: function(e) {
+  handleTap: function (e) {
     let that = this;
     if (that.data.edit == '0') {
       return //查看详情不可编辑
@@ -451,7 +458,7 @@ Page({
     wx.setStorageSync("pArrProductKey", "");
     wx.setStorageSync("ArrProductchecked", false);
     that.setData({
-      pArrProductID:[],
+      pArrProductID: [],
       ArrProductchecked: false
     })
 
@@ -481,7 +488,7 @@ Page({
   },
 
   clickTrue(e) {
-    let that = this; 
+    let that = this;
     let id = e.currentTarget.dataset.id;
     let pCoupon_Info = that.data.pCoupon_Info;
     let type = e.currentTarget.dataset.type;
@@ -500,7 +507,7 @@ Page({
       });
     }
   },
-  jumpChoose: function() {
+  jumpChoose: function () {
     if (this.data.currentId == 0) {
       wx.navigateTo({
         url: '/sendTicket/chooseBuyGoods/chooseBuyGoods',
@@ -510,7 +517,7 @@ Page({
         url: '/sendTicket/chooseBuyGoodsTwo/chooseBuyGoodsTwo',
       })
     }
-   
+
   },
   // 核销方式
   clickRule1(e) {
@@ -534,17 +541,17 @@ Page({
         hexiao: "线上受理",
         idb: id
       });
-      if (that.data.currentId==0){
+      if (that.data.currentId == 0) {
         wx.navigateTo({
           url: '/sendTicket/chooseBuyGoods/chooseBuyGoods',
         })
-      }else{
+      } else {
         wx.navigateTo({
           url: '/sendTicket/chooseBuyGoodsTwo/chooseBuyGoodsTwo',
         })
       }
-      
-    
+
+
     } else {
       wx.setStorageSync("ArrProductchecked", false); //清除线上全部缓存
       wx.setStorageSync("pArrProductKey", "");
@@ -752,14 +759,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
     var checked = wx.getStorageSync("ArrProductchecked");
     this.setData({
       edit: edit,
@@ -779,35 +786,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

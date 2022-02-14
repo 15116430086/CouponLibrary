@@ -37,7 +37,7 @@
         </view>
 
         <view class="tb-bot">
-          <view bindtap="jumpOk" data-index="{{index}}" data-Couponstatus="{{item.Couponstatus}}" data-ReleaseIDs="{{item.ReleaseIDs}}" data-CouponID="{{item.CouponID}}">继续发券</view>
+          <view bindtap="jumpOk" data-index="{{index}}" data-Couponstatus="{{item.Couponstatus}}" data-ReleaseIDs="{{item.ReleaseIDs}}" data-CouponID="{{item.CouponID}}">新增发布</view>
 
           <!-- 是哪个状态就用哪个颜色 -->
           <view wx:if="{{item.ReleaseIDs && item.Couponstatus==1}}" style=" color:#F08002" data-CouponID="{{item.CouponID}}" bindtap="Details">待审核</view>
