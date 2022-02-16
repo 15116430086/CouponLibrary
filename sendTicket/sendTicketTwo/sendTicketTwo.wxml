@@ -167,6 +167,6 @@
     </view>
   </view>
   <view class="app-bot" >
-    <button class="playBtn" formType="submit">开始发券</button>
+    <button class="playBtn" formType="submit">保存并发布</button>
   </view>
 </form>
