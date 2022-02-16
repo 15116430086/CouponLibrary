@@ -3,7 +3,7 @@
 <view class="v-box">
   <view class="v-block">
     <view class="v-top">
-      <view class="v-title">总销售金额  (元)</view>
+      <view class="v-title">销售总额  (元)</view>
       <view class="v-cash">￥{{ReceiveMoney}}</view>
     </view>
     <!-- <view class="v-mid">佣金退还¥{{sumDrawbackMoney}} | 佣金收入¥{{sumCommissionMoney}} | 代收资金¥{{sumCollectionMoney}}</view> -->
@@ -11,6 +11,10 @@
       <navigator class="v-mid-block" hover-class="none">
         <view class="v-title">已结算  (元)</view>
         <view class="vmb-money">￥{{SettlementMoney}} <text style="font-size:28rpx;position:relative;top:-2rpx">  </text></view>
+      </navigator>
+      <navigator class="v-mid-block" hover-class="none">
+        <view class="v-title">到账额  (元)</view>
+        <view class="vmb-money">￥{{Arrivalaccount}} <text style="font-size:28rpx;position:relative;top:-2rpx">  </text></view>
       </navigator>
       <navigator class="v-mid-block" hover-class="none">
         <view class="v-title">待结算  (元)</view>
