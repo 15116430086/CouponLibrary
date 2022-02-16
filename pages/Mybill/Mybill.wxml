@@ -18,7 +18,7 @@
       </navigator>
       <navigator class="v-mid-block" style="border:none" hover-class="none" >
         <view class="v-title">待入账 (元)</view>
-        <view class="vmb-money">￥{{ReceiveMoney-(SettlementMoney+Unsettled)}} <text style="font-size:28rpx;position:relative;top:-2rpx">  </text></view>
+        <view class="vmb-money">￥{{common.sysFdistance(ReceiveMoney-(SettlementMoney+Unsettled))}} <text style="font-size:28rpx;position:relative;top:-2rpx">  </text></view>
       </navigator>
     </view>
   </view>
