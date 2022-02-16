@@ -8,7 +8,7 @@
 <view class="v-mid">
   <view class="v-block">
     <image src="/static/images/man.png" />
-    <input class="v-input" bindblur="nameinput" bindinput="nameinput" type="number" maxlength="11" placeholder-class="ip" placeholder="请输入姓名" />
+    <input class="v-input" bindblur="nameinput" bindinput="nameinput" type="text" maxlength="11" placeholder-class="ip" placeholder="请输入姓名" />
   </view>
   <view class="v-block">
     <image src="/static/images/p.png" />
