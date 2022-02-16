@@ -15,7 +15,8 @@ Page({
     Unsettled: 0,//未结算
     pageIndex:1,
     pageCount:1,
-    Submit:true
+    Submit:true,
+    Arrivalaccount:0//到账金额
   },
 
   GetData: function() {
@@ -42,6 +43,7 @@ Page({
           ReceiveMoney: json.ReceiveMoney, //结算总额，佣金余额
           SettlementMoney: json.SettlementMoney, //平台代收资金
           Unsettled: json.Unsettled, //佣金收入
+          Arrivalaccount:json.Arrivalaccount,
           Capitaldetailslist: json.data,
           pageCount:json.pageCount 
         });
