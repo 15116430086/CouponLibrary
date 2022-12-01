@@ -135,6 +135,11 @@ Page({
     }
 
   },
+  writebill: function () {
+    wx.navigateTo({
+      url: '/doorC/WriteBll/WriteBll',
+    })
+  },
   coles: function () {
     app.globalData.AppGroupInfo = null;
     app.globalData.AppStaffInfo = null;

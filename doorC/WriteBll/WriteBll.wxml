@@ -1,0 +1,47 @@
+<!--doorC/WriteBll/WriteBll.wxml-->
+<view class="v-main">
+    <view class="mid-box">
+        <view class="mid-block  {{idx==0?'selected':''}}" bindtap="showTime" data-datetype="0">
+            <view>2022年</view>
+            <image src="/static/images/hei-arr.png"></image>
+        </view>
+        <view class="typename typecolor">按店汇总</view>
+        <view class="typename">按券汇总</view>
+    </view>
+    <scroll-view scroll-x="{{true}}" class="scroll-month">
+        <view class="m-item {{index==0?'s-bot':''}}" wx:for="{{12}}" wx:key="index">{{item+1}}月</view>
+    </scroll-view>
+</view>
+
+<view class="ListHeader">
+    <view class="h-name">名称</view>
+    <view class="h-column">数量</view>
+    <view class="h-column">金额</view>
+    <view class="h-column"></view>
+</view>
+<view>
+    <view class="ListTable">
+        <view class="h-name">A店</view>
+        <view class="h-column">2</view>
+        <view class="h-column">3</view>
+        <view class="h-column"><image class="clickimg" src="../../static/images/toparr.png"></image></view>
+    </view>
+    <view  class="ListItem">
+        <view class="i-name">券1</view>
+        <view class="i-column">1</view>
+        <view class="i-column">1.8</view>
+        <view class="i-column">明细</view>
+    </view>
+    <view  class="ListItem">
+        <view class="i-name">券2</view>
+        <view class="i-column">1</view>
+        <view class="i-column">1.2</view>
+        <view class="i-column">明细</view>
+    </view>
+</view>
+<view class="ListTable">
+    <view class="h-name">B店</view>
+    <view class="h-column">2</view>
+    <view class="h-column">3</view>
+    <view class="h-column"><image class="clickimg" src="../../static/images/right-arr1.png"></image></view>
+</view>

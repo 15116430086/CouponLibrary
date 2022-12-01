@@ -41,6 +41,10 @@
         <view>{{item.Name}}</view>
       </navigator>
     </block>
+    <navigator url=" " bindtap="writebill" hover-class="none">
+        <image src="../../static/images/home/3.png"></image>
+        <view>核销账单</view>
+      </navigator>
     <navigator url=""  bindtap="coles" hover-class="none">
         <image src="../../static/images/home/coles.png"></image>
         <view>退出登录</view>
